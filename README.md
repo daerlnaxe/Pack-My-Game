@@ -3,7 +3,7 @@
 Download PackMyGame x32.zip or PackMyGame x64.zip for executable files  
 Téléchargez PackMyGame x32.zip ou PackMyGame x64.zip pour avoir les fichiers exécutables  
 
-Vous pouvez lire une version Française de ce readmer dans les fichiers texte.  
+Vous pouvez lire une version Française de ce readme dans les fichiers texte.  
 
 ## Note
 	* Don't move or delete files from the source (never)
@@ -34,16 +34,17 @@ Vous pouvez lire une version Française de ce readmer dans les fichiers texte.
 	* Remove from listview the game packed
 
 ## TODO
-	- [ ] Finish Translation fr
-	- [ ] Correct the english version		
-	- [ ] Integrate help
-	- [ ] Carroussel to see image files to overwrite etc... (if necessary)		
-	- [ ] Add Debug Options in panel config
-	- [ ] Mode silent without box prompt ? (All overwrite)
-	- [ ] Mode silent without log window
-	- [ ] Contextual menu with 7zip only, ziponly ?
-	- [ ] Edit info in short list ? => it means to load total information of the game.
-	- [ ] Splashscreen on loading
-	- [ ] Ameliorate config with own browser system  and box path editable
-	- [ ] md5 Compareason ?
-	- [ ] Move VFolder, HFolder, copyfile, reconstruct path (set a security basic path option)
+
+- [ ] Finish Translation fr
+- [ ] Correct the english version		
+- [ ] Integrate help
+- [ ] Carroussel to see image files to overwrite etc... (if necessary)		
+- [ ] Add Debug Options in panel config
+- [ ] Mode silent without box prompt ? (All overwrite)
+- [ ] Mode silent without log window
+- [ ] Contextual menu with 7zip only, ziponly ?
+- [ ] Edit info in short list ? => it means to load total information of the game.
+- [ ] Splashscreen on loading
+- [ ] Ameliorate config with own browser system  and box path editable
+- [ ] md5 Compareason ?
+- [ ] Move VFolder, HFolder, copyfile, reconstruct path (set a security basic path option)
