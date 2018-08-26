@@ -1,7 +1,7 @@
 # Pack-My-Game
 
-Download PackMyGame x32.zip or PackMyGame x64.zip for executable files  
-Téléchargez PackMyGame x32.zip ou PackMyGame x64.zip pour avoir les fichiers exécutables  
+Download PackMyGame x86.zip or PackMyGame x64.zip for executable files  
+Téléchargez PackMyGame x86.zip ou PackMyGame x64.zip pour avoir les fichiers exécutables  
 
 Vous pouvez lire une version Française de ce readme dans les fichiers texte.  
 
