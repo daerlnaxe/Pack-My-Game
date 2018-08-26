@@ -8,11 +8,11 @@ Vous pouvez lire une version Française de ce readme dans les fichiers texte.
 
 
 ## What it do:
- * It copy then compress everything about a game contained in the db of LaunchBox app.
- * It generate a short xml file with the main information about the game
- * it take images, pdf manual, video, music, rom file.
- * Take also the cheatcode files if you fill the path ('GameName-*.*')
- * Generate a tree view file.
+ * It copies then compress everything about a game contained in the db of LaunchBox app.
+ * It generates a short xml file with the main information about the game
+ * It takes images, pdf manual, video, music, rom file.
+ * It takes also the cheatcode files if you fill the path ('GameName-*.*')
+ * It generates a tree view file.
  * 7z and zip compression
 	
 ## Why ?
@@ -22,12 +22,13 @@ for later, just in case there was a problem.
 ## Note
  * Use it only with roms.
  * Don't move or delete files from the source (never)
- * Ask before to overwrite roms, manuals, music, video that are in the working directory meanwhile
+ * It asks before to overwrite roms, manuals, music, video that are in the working directory meanwhile
  the copy (the target directory)
- * Currently it ask a global permission to overwrite for the image/pictures files, even if there is
+ * Currently it asks a global permission to overwrite for the image/pictures files, even if there is
 no image file in the the destination folder.
  * The clones are added only if they are grouped with a main in LaunchBox
  * Compression 7z and zip
+ * It logs everything during the game treatment in a window, and a file.
 		
 ## Version
 ### Alpha01: 08/2018
