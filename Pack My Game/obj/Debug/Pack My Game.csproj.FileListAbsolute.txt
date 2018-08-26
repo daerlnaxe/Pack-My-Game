@@ -1,0 +1,59 @@
+E:\Programmation\C#\Pack My Game\Pack My Game\bin\Debug\Txt\Credits-En.txt
+E:\Programmation\C#\Pack My Game\Pack My Game\bin\Debug\Txt\Credits-Fr.txt
+E:\Programmation\C#\Pack My Game\Pack My Game\bin\Debug\Txt\Help-En.txt
+E:\Programmation\C#\Pack My Game\Pack My Game\bin\Debug\Txt\Help-Fr.txt
+E:\Programmation\C#\Pack My Game\Pack My Game\bin\Debug\Pack My Game.exe.config
+E:\Programmation\C#\Pack My Game\Pack My Game\bin\Debug\Pack My Game.exe.manifest
+E:\Programmation\C#\Pack My Game\Pack My Game\bin\Debug\Pack My Game.application
+E:\Programmation\C#\Pack My Game\Pack My Game\bin\Debug\Pack My Game.exe
+E:\Programmation\C#\Pack My Game\Pack My Game\bin\Debug\Pack My Game.pdb
+E:\Programmation\C#\Pack My Game\Pack My Game\bin\Debug\fr\Pack My Game.resources.dll
+E:\Programmation\C#\Pack My Game\Pack My Game\bin\Debug\DotNetZip.dll
+E:\Programmation\C#\Pack My Game\Pack My Game\bin\Debug\MyControls.dll
+E:\Programmation\C#\Pack My Game\Pack My Game\bin\Debug\SevenZipSharp.dll
+E:\Programmation\C#\Pack My Game\Pack My Game\bin\Debug\DotNetZip.xml
+E:\Programmation\C#\Pack My Game\Pack My Game\bin\Debug\MyControls.pdb
+E:\Programmation\C#\Pack My Game\Pack My Game\bin\Debug\fr\MyControls.resources.dll
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack My Game.csprojAssemblyReference.cache
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.AboutBox.resources
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.Form1.resources
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.ProgressCompFolder.resources
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.ZipComp_Progress.resources
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.Config.resources
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.Credits.resources
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.MB_Decision.resources
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.Help.resources
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.InfoScreen.resources
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.MainWindow.resources
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.SelectFolder.resources
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.SplashScreen.resources
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.Properties.Resources.resources
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.Config.fr.resources
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.Credits.fr.resources
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.MainWindow.fr.resources
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack My Game.csproj.GenerateResource.cache
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack My Game.csproj.CoreCompileInputs.cache
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\fr\Pack My Game.resources.dll
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack My Game.exe.manifest
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack My Game.application
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack My Game.csproj.CopyComplete
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack My Game.exe
+E:\Programmation\C#\Pack My Game\Pack My Game\obj\Debug\Pack My Game.pdb
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug\Txt\Credits-En.txt
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug\Txt\Credits-Fr.txt
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug\Txt\Help-En.txt
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug\Txt\Help-Fr.txt
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug\Pack My Game.exe.config
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug\Pack My Game.exe.manifest
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug\Pack My Game.application
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug\Pack My Game.exe
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug\Pack My Game.pdb
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug\fr\Pack My Game.resources.dll
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug\DlnxLocalTransfert.dll
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug\DotNetZip.dll
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug\MyControls.dll
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug\SevenZipSharp.dll
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug\DlnxLocalTransfert.pdb
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug\DotNetZip.xml
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug\MyControls.pdb
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug\fr\MyControls.resources.dll

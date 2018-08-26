@@ -1,0 +1,55 @@
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Release x64\Txt\Credits-En.txt
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Release x64\Txt\Credits-Fr.txt
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Release x64\Txt\Help-En.txt
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Release x64\Txt\Help-Fr.txt
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Release x64\Pack My Game.exe.config
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Release x64\Pack My Game.exe.manifest
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Release x64\Pack My Game.application
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Release x64\Pack My Game.exe
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Release x64\fr\Pack My Game.resources.dll
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Release x64\DlnxLocalTransfert.dll
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Release x64\DotNetZip.dll
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Release x64\MyControls.dll
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Release x64\SevenZipSharp.dll
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Release x64\DlnxLocalTransfert.pdb
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Release x64\DotNetZip.xml
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Release x64\MyControls.pdb
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\Release x64\fr\MyControls.resources.dll
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\obj\Release x64\Pack_My_Game.IHM.AboutBox.resources
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\obj\Release x64\Pack_My_Game.IHM.ProgressCompFolder.resources
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\obj\Release x64\Pack_My_Game.IHM.ZipComp_Progress.resources
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\obj\Release x64\Pack_My_Game.IHM.Config.resources
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\obj\Release x64\Pack_My_Game.IHM.Credits.resources
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\obj\Release x64\Pack_My_Game.IHM.Help.resources
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\obj\Release x64\Pack_My_Game.IHM.InfoScreen.resources
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\obj\Release x64\Pack_My_Game.MainWindow.resources
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\obj\Release x64\Pack_My_Game.IHM.SelectFolder.resources
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\obj\Release x64\Pack_My_Game.IHM.SplashScreen.resources
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\obj\Release x64\Pack_My_Game.Properties.Resources.resources
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\obj\Release x64\Pack_My_Game.IHM.Config.fr.resources
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\obj\Release x64\Pack_My_Game.IHM.Credits.fr.resources
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\obj\Release x64\Pack_My_Game.MainWindow.fr.resources
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\obj\Release x64\Pack My Game.csproj.GenerateResource.cache
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\obj\Release x64\Pack My Game.csproj.CoreCompileInputs.cache
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\obj\Release x64\fr\Pack My Game.resources.dll
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\obj\Release x64\Pack My Game.exe.manifest
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\obj\Release x64\Pack My Game.application
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\obj\Release x64\Pack My Game.csproj.CopyComplete
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\obj\Release x64\Pack My Game.exe
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\PackMyGame x64\Txt\Credits-En.txt
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\PackMyGame x64\Txt\Credits-Fr.txt
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\PackMyGame x64\Txt\Help-En.txt
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\PackMyGame x64\Txt\Help-Fr.txt
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\PackMyGame x64\Pack My Game.exe.config
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\PackMyGame x64\Pack My Game.exe.manifest
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\PackMyGame x64\Pack My Game.application
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\PackMyGame x64\Pack My Game.exe
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\PackMyGame x64\fr\Pack My Game.resources.dll
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\PackMyGame x64\DlnxLocalTransfert.dll
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\PackMyGame x64\DotNetZip.dll
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\PackMyGame x64\MyControls.dll
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\PackMyGame x64\SevenZipSharp.dll
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\PackMyGame x64\DlnxLocalTransfert.pdb
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\PackMyGame x64\DotNetZip.xml
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\PackMyGame x64\MyControls.pdb
+C:\Users\daerlnaxe\Google Drive\Programmation\CSharp\Pack My Game\Pack My Game\bin\PackMyGame x64\fr\MyControls.resources.dll

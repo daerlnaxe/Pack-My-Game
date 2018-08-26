@@ -1,0 +1,19 @@
+Step to the left, step to the righ, clap your hands....
+
+Ok... sorry... 
+This is a basic version English/French to help you. I'm not very good in Englis, so my apologizes.
+
+What it do:
+  - Get ONE rom, relative pictures, xml datas to construct a zip with everything. 
+  - Warning, it will not the same structure but one i think to be more easy, to the unzip.
+  - No, it not alterate in any case your datas, roms, etc.
+  - It must permit to transmit this packs for the future.
+
+#1: Go to modify settings to select the LaunchBox folder (for the while you can't select 
+directly the file, if there is update in the future i will see.
+
+#2: Select an output folder where pack. !!! DON'T SELECT the LauncherBox folder !!!
+
+#3: Optionnal you can specify the compression algorithm
+
+#4: Next steps are intuitives, you select the machine, then you select the game... go.
