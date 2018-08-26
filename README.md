@@ -9,7 +9,8 @@ Vous pouvez lire une version Française de ce readme dans les fichiers texte.
 	* Don't move or delete files from the source (never)
 	* Ask before to overwrite roms, manuals, music, video that are in the working directory meanwhile
 	the copy (the target directory)
-	* Currently it ask a global permission to overwrite for the image/pictures files, even if no files are already present
+	* Currently it ask a global permission to overwrite for the image/pictures files, even if there is
+	no image file in the the destination folder.
 	* The clones are added only if they are grouped with a main in LaunchBox
 	* Compression 7z and zip
 		
@@ -35,6 +36,7 @@ Vous pouvez lire une version Française de ce readme dans les fichiers texte.
 
 ## TODO
 
+- [ ] Find a better way to handle images files
 - [ ] Finish Translation fr
 - [ ] Correct the english version		
 - [ ] Integrate help
