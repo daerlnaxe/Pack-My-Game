@@ -27,6 +27,14 @@ no image file in the the destination folder.
 		
 ## Version
 
+### Alpha10: 27/08/2018
+ * Set up of a system updating parameters to follow builds upgrade.
+ * French Translation achieved
+ * Translation files for variables
+ * Some modifications about configuration (path verification, possibility to copy/paste...)
+ * Bug fixes in configuration section
+ * Integration of the help and credits sections 
+
 ### Alpha02: 26/08/2018
  * Box to ask for images 
  * Externalization of method: transfers verification (possibility to evolve to "decision for all" system
@@ -51,10 +59,7 @@ silent debug...)
 - [ ] Filter supports
 - [ ] Security on work folder
 - [ ] Find a better way to handle images files
-- [x] Finish Translation fr
 - [ ] Correct the english version		
-- [x] Integrate help
-- [x] Integrate crédits
 - [ ] Carroussel to see image files to overwrite etc... (if necessary)		
 - [ ] Add Debug Options in panel config
 - [ ] Mode silent without box prompt ? (All overwrite)
