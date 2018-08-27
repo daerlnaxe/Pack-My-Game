@@ -52,6 +52,8 @@ silent debug...)
 
 ## TODO
 
+- [ ] Filter supports
+- [ ] Security on work folder
 - [ ] Find a better way to handle images files
 - [ ] Finish Translation fr
 - [ ] Correct the english version		
