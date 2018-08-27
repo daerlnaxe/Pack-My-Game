@@ -21,6 +21,13 @@ Téléchargez [PackMyGame-x86.zip](https://github.com/daerlnaxe/Pack-My-Game/blo
  * Les clones ajoutés ne le sont qu'à condition d'être groupés dans LaunchBox
 		
 ## Version
+
+### Alpha02: 26/08/2018
+ * Box to ask for images 
+ * Externalization of method: transfers verification (possibility to evolve to "decision for all" system, silent debug...)
+ * Boucle pour lancer plusieurs jeux (implémenté mais pas réellement testé - le mode jeu seul fonctionne sur la même méthode)
+ * Lever de la listview le jeu packé
+ 
 ### Alpha01: 08/2018
  * 1st functionnal release
  * Module pour trad: Config 50%
@@ -33,19 +40,16 @@ Téléchargez [PackMyGame-x86.zip](https://github.com/daerlnaxe/Pack-My-Game/blo
  * Création d'un Schéma du contenu
  * Ajout des clones
 
-### Alpha02: 26/08/2018
- * Box to ask for images 
- * Externalization of method: transfers verification (possibility to evolve to "decision for all" system, silent debug...)
- * Boucle pour lancer plusieurs jeux (implémenté mais pas réellement testé - le mode jeu seul fonctionne sur la même méthode)
- * Lever de la listview le jeu packé
 		
 ### TODO
+ - [ ] Filtrer les plateformes
+ - [ ] Securité sur le dossier de travail sur la page principale (en plus de celle de PackMe)
+ - [ ] Trouver un meilleur moyen de gérer la confirmation au niveau des images
  - [ ] Finir la traduction fr
  - [ ] Corriger la version anglaise
  - [x] Intégrer l'aide
  - [x] Intégrer les crédits
- - [ ] Ajouter miniatture pour les photos sur la box de collision (voir si nécessaire)
- - [ ] Boucle pour procéder sur plusieurs  jeux
+ - [ ] Ajouter miniature pour les photos sur la box de collision (voir si nécessaire)
  - [ ] Ajout d'un mode debug silencieux
  - [ ] Mode silent sans box ? (All overwrite)
  - [ ] Mode silent sans fenêtre window
