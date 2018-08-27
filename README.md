@@ -51,11 +51,12 @@ silent debug...)
  * Remove from listview the game packed
 
 ## TODO
-
+- [ ] Filter supports
+- [ ] Security on work folder
 - [ ] Find a better way to handle images files
 - [ ] Finish Translation fr
 - [ ] Correct the english version		
-- [ ] Integrate help
+- [x] Integrate help
 - [ ] Carroussel to see image files to overwrite etc... (if necessary)		
 - [ ] Add Debug Options in panel config
 - [ ] Mode silent without box prompt ? (All overwrite)
