@@ -20,7 +20,15 @@ Téléchargez [PackMyGame-x86.zip](https://github.com/daerlnaxe/Pack-My-Game/blo
  * Actuellement le programme demande une permission globale avant d'écraser les fichiers images en cas d'éventuel conflit qu'il y ait ou non des fichiers images dans le répertoire de travail.
  * Les clones ajoutés ne le sont qu'à condition d'être groupés dans LaunchBox
 		
-## Version
+## Versions
+
+### Alpha10: 27/08/2018
+* Mise en place d'un système d'upgrade du fichier configuration pour suivre les builds.
+* Traduction française terminée.
+* Fichiers de traduction des variables dispo.
+* Quelques modifications à propos de la configuration (verification des chemins, possibilités de copier/coller...)
+* Bug fixes en section configuration
+* Integration des sections d'aide et des crédits.
 
 ### Alpha02: 26/08/2018
  * Box to ask for images 
@@ -45,10 +53,7 @@ Téléchargez [PackMyGame-x86.zip](https://github.com/daerlnaxe/Pack-My-Game/blo
  - [ ] Filtrer les plateformes
  - [ ] Securité sur le dossier de travail sur la page principale (en plus de celle de PackMe)
  - [ ] Trouver un meilleur moyen de gérer la confirmation au niveau des images
- - [x] Finir la traduction fr
  - [ ] Corriger la version anglaise
- - [x] Intégrer l'aide
- - [x] Intégrer les crédits
  - [ ] Ajouter miniature pour les photos sur la box de collision (voir si nécessaire)
  - [ ] Ajout d'un mode debug silencieux
  - [ ] Mode silent sans box ? (All overwrite)
@@ -57,5 +62,5 @@ Téléchargez [PackMyGame-x86.zip](https://github.com/daerlnaxe/Pack-My-Game/blo
  - [ ] Editer les infos dans la short list ? => signifie de charger la totalité du jeu
  - [ ] Splashscreen au loading
  - [ ] Ameliorate config with own browser system  and box path editable (personel: voir dans Gesum, probablement déjà présent)
- - [ ] md5 Compareason md5 ?
+ - [ ] md5 Compareason md5 (Upgrader le projet dlnxLocalTransfert) ?
  - [ ] Bouger VFolder, HFolder, copyfile, reconstruct path (mettre une option basique de sécurité sur le chemin)
