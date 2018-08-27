@@ -58,7 +58,7 @@ Téléchargez [PackMyGame-x86.zip](https://github.com/daerlnaxe/Pack-My-Game/blo
  - [ ] Ajout d'un mode debug silencieux
  - [ ] Mode silent sans box ? (All overwrite)
  - [ ] Mode silent sans fenêtre window
- - [ ] Fenetre contextuelle clic droit list view, avec justZip & just7Z
+ - [ ] Fenetre contextuelle clic droit list view, avec justZip & just7Z + faire infoxml seul, tree seul.
  - [ ] Editer les infos dans la short list ? => signifie de charger la totalité du jeu
  - [ ] Splashscreen au loading
  - [ ] Ameliorate config with own browser system  and box path editable (personel: voir dans Gesum, probablement déjà présent)
