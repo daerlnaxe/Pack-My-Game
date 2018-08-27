@@ -16,6 +16,7 @@ using Pack_My_Game.Compression;
 using System.Diagnostics;
 using DlnxLocalTransfert;
 using DlnxLocalTransfert.IHM;
+using Pack_My_Game.IHM;
 
 namespace Pack_My_Game.Pack
 {
@@ -111,8 +112,8 @@ namespace Pack_My_Game.Pack
 
             IWrite.WriteLine("===== Report of errors: =====");
             IWrite.WriteLine($"[Initialize] ID:\t'{ID}'");
-            IWrite.WriteLine($"[Initialize] System Selected: '{_SystemName}'");
-            IWrite.WriteLine($"[Initialize] Game Selected: '{_ZeGame.Title}' - Rom: '{_ZeGame.FileName}'");
+            IWrite.WriteLine($"[Initialize] {Lang.SystemSelected}: '{_SystemName}'");
+            IWrite.WriteLine($"[Initialize] {Lang.GameSelected}: '{_ZeGame.Title}' - Rom: '{_ZeGame.FileName}'");
 
             // Folder Verification
             //if (Directory.Exists(_GamePath))
@@ -189,12 +190,12 @@ namespace Pack_My_Game.Pack
             #endregion
 
             // Creation of System folder and working assign            
-            IWrite.WriteLine($"[Run] Creation of folder: '{_SystemName}'");
+            IWrite.WriteLine($"[Run] {Lang.CreationFolder}: '{_SystemName}'");
             Directory.CreateDirectory(_SystemName);
             Directory.SetCurrentDirectory(_SystemPath);
 
             // Creation of Game folder
-            IWrite.WriteLine($"[Run] Creation of folder: '{_GamePath}'");
+            IWrite.WriteLine($"[Run] {Lang.CreationFolder}: '{_GamePath}'");
             Directory.CreateDirectory(_GamePath);
             Directory.SetCurrentDirectory(_GamePath);
 
@@ -255,7 +256,7 @@ namespace Pack_My_Game.Pack
             }
 
             // Erase the temp folder
-            if (MessageBox.Show($"Would you want to ERASE the temp folder '{_OutPutFileName}' ?", "Erase", MessageBoxButtons.YesNo, MessageBoxIcon.Question)== DialogResult.Yes)
+            if (MessageBox.Show($"{Lang.EraseTmpFolder} '{_OutPutFileName}' ?", Lang.Erase, MessageBoxButtons.YesNo, MessageBoxIcon.Question)== DialogResult.Yes)
             {
                 try
                 {
@@ -403,7 +404,7 @@ namespace Pack_My_Game.Pack
         private void CopyImages()
         {
             //var res = MessageBox.Show("There is no verification implemented for the images copy, would you want to overwrite them ?", "Copy images", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            var res = MB_SimpleAll.Show("There is no verification implemented for the images copy, would you want to overwrite them ?", "Copy images", buttons: Dcs_Buttons2.OverWrite | Dcs_Buttons2.Pass);
+            var res = MB_SimpleAll.Show($"{Lang.ImagesP} ?", Lang.ImagesTitle, buttons: Dcs_Buttons2.OverWrite | Dcs_Buttons2.Pass);
             //switch (res == DialogResult.Yes)
             //{
             //    case DialogResult:

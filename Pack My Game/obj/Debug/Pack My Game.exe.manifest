@@ -42,26 +42,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DlnxLocalTransfert.dll" size="111616">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DlnxLocalTransfert.dll" size="112128">
       <assemblyIdentity name="DlnxLocalTransfert" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>PD33pRfjv6HLep8kWIWTz5A91gOGzM2l42wYv9Xlrqs=</dsig:DigestValue>
+        <dsig:DigestValue>2bO5HcMhhyFe/wG0bwpeBUbO6hbkk+fTMWR842yDOqE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DlnxLocalTransfert.resources.dll" size="40960">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DlnxLocalTransfert.resources.dll" size="41472">
       <assemblyIdentity name="DlnxLocalTransfert.resources" version="1.0.0.1" language="fr" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9LPXTC/6GyLC8AmxnAqV5hLoOXa2gdaKIerwUNOg4xo=</dsig:DigestValue>
+        <dsig:DigestValue>irBb4LYhlHvVWl6cjI7GlxRKs0jwRS8Hdfe1mPV4OF4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -109,19 +109,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>jWMBnCcUXUNh8KyNm/04IA6C8jrZ+WWPuCi0AVwzs9M=</dsig:DigestValue>
+        <dsig:DigestValue>NCp1Jv9NJ9zu2e+kyj7vPavE0bSJmpAwxPpzc/Y71sk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="fr\Pack My Game.resources.dll" size="19968">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="fr\Pack My Game.resources.dll" size="18944">
       <assemblyIdentity name="Pack My Game.resources" version="0.0.0.3" language="fr" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>6ixvKByin2Tpu2TKhQm3o8ycbzjVZbmxCV/XOKVfSYk=</dsig:DigestValue>
+        <dsig:DigestValue>HO+t9ZWWMAu5jXJsB1mAe8diYR2gesGRxUDvXd0SfRI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

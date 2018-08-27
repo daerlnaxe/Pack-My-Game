@@ -88,6 +88,15 @@ namespace Pack_My_Game.IHM {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Creation of folder.
+        /// </summary>
+        internal static string CreationFolder {
+            get {
+                return ResourceManager.GetString("CreationFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à #Crédits, Thanks to:
         ///  - My little girl, waiting his dad finish his roms pack... to permit her discover my teenage.
         ///  - My ex-wife who squat my house (it&apos;s convenient) :D.
@@ -116,11 +125,38 @@ namespace Pack_My_Game.IHM {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Erase.
+        /// </summary>
+        internal static string Erase {
+            get {
+                return ResourceManager.GetString("Erase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Would you want to ERASE the temp folder.
+        /// </summary>
+        internal static string EraseTmpFolder {
+            get {
+                return ResourceManager.GetString("EraseTmpFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à from the list.
         /// </summary>
         internal static string From_List {
             get {
                 return ResourceManager.GetString("From_List", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Game selected.
+        /// </summary>
+        internal static string GameSelected {
+            get {
+                return ResourceManager.GetString("GameSelected", resourceCulture);
             }
         }
         
@@ -141,6 +177,24 @@ namespace Pack_My_Game.IHM {
         internal static string Help_Content {
             get {
                 return ResourceManager.GetString("Help_Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à There is no verification implemented for the images copy, would you want to overwrite them.
+        /// </summary>
+        internal static string ImagesP {
+            get {
+                return ResourceManager.GetString("ImagesP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Copy images.
+        /// </summary>
+        internal static string ImagesTitle {
+            get {
+                return ResourceManager.GetString("ImagesTitle", resourceCulture);
             }
         }
         
@@ -213,6 +267,15 @@ namespace Pack_My_Game.IHM {
         internal static string SelectASystem {
             get {
                 return ResourceManager.GetString("SelectASystem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Platform selected.
+        /// </summary>
+        internal static string SystemSelected {
+            get {
+                return ResourceManager.GetString("SystemSelected", resourceCulture);
             }
         }
     }

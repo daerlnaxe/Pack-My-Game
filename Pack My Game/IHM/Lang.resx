@@ -128,6 +128,10 @@
     <value>Choose the LaunchBox path</value>
     <comment>Config</comment>
   </data>
+  <data name="CreationFolder" xml:space="preserve">
+    <value>Creation of folder</value>
+    <comment>PackMe</comment>
+  </data>
   <data name="Credits_Content" xml:space="preserve">
     <value>#Crédits, Thanks to:
   - My little girl, waiting his dad finish his roms pack... to permit her discover my teenage.
@@ -145,9 +149,20 @@
   <data name="Empty" xml:space="preserve">
     <value>empty</value>
   </data>
+  <data name="Erase" xml:space="preserve">
+    <value>Erase</value>
+  </data>
+  <data name="EraseTmpFolder" xml:space="preserve">
+    <value>Would you want to ERASE the temp folder</value>
+    <comment>PackMe</comment>
+  </data>
   <data name="From_List" xml:space="preserve">
     <value>from the list</value>
     <comment>MainWindow</comment>
+  </data>
+  <data name="GameSelected" xml:space="preserve">
+    <value>Game selected</value>
+    <comment>PackMe</comment>
   </data>
   <data name="Help_Content" xml:space="preserve">
     <value>Step to the left, step to the righ, clap your hands....
@@ -170,6 +185,14 @@ directly the file, if there is update in the future i will see.
 
 #4: Next steps are intuitives, you select the machine, then you select the game... go.</value>
     <comment>HELP</comment>
+  </data>
+  <data name="ImagesP" xml:space="preserve">
+    <value>There is no verification implemented for the images copy, would you want to overwrite them</value>
+    <comment>PackMe</comment>
+  </data>
+  <data name="ImagesTitle" xml:space="preserve">
+    <value>Copy images</value>
+    <comment>PackMe</comment>
   </data>
   <data name="Invalid_Path" xml:space="preserve">
     <value>Invalid Path</value>
@@ -198,5 +221,9 @@ directly the file, if there is update in the future i will see.
   <data name="SelectASystem" xml:space="preserve">
     <value>Select a Platform</value>
     <comment>MainWindow</comment>
+  </data>
+  <data name="SystemSelected" xml:space="preserve">
+    <value>Platform selected</value>
+    <comment>PackMe</comment>
   </data>
 </root>

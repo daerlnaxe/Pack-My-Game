@@ -45,7 +45,7 @@ Téléchargez [PackMyGame-x86.zip](https://github.com/daerlnaxe/Pack-My-Game/blo
  - [ ] Filtrer les plateformes
  - [ ] Securité sur le dossier de travail sur la page principale (en plus de celle de PackMe)
  - [ ] Trouver un meilleur moyen de gérer la confirmation au niveau des images
- - [x] Finir la traduction fr
+ - [ ] Finir la traduction fr
  - [ ] Corriger la version anglaise
  - [x] Intégrer l'aide
  - [x] Intégrer les crédits

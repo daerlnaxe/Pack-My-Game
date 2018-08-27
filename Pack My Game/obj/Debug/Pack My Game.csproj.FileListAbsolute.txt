@@ -69,34 +69,7 @@ E:\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug x32\SevenZipSharp.dl
 E:\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug x32\DotNetZip.xml
 E:\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug x32\MyControls.pdb
 E:\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug x32\fr\MyControls.resources.dll
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack My Game.csprojAssemblyReference.cache
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.AboutBox.resources
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.ProgressCompFolder.resources
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.Config.resources
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.Credits.resources
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.Help.resources
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.InfoScreen.resources
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.MainWindow.resources
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.SelectFolder.resources
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.SplashScreen.resources
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.Properties.Resources.resources
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.Config.fr.resources
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.Credits.fr.resources
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.MainWindow.fr.resources
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack My Game.csproj.GenerateResource.cache
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack My Game.csproj.CoreCompileInputs.cache
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\fr\Pack My Game.resources.dll
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack My Game.exe.manifest
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack My Game.application
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack My Game.csproj.CopyComplete
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack My Game.exe
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack My Game.pdb
 E:\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug x32\en\Pack My Game.resources.dll
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.MainWindow.en.resources
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\en\Pack My Game.resources.dll
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.Lang.resources
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.Lang.fr.resources
-E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.InfoScreen.fr.resources
 E:\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug x32\DlnxLocalTransfert.dll
 E:\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug x32\DlnxLocalTransfert.pdb
 E:\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug x32\fr\DlnxLocalTransfert.resources.dll
@@ -116,3 +89,30 @@ E:\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug x86\DotNetZip.xml
 E:\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug x86\MyControls.pdb
 E:\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug x86\fr\DlnxLocalTransfert.resources.dll
 E:\Programmation\CSharp\Pack My Game\Pack My Game\bin\Debug x86\fr\MyControls.resources.dll
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack My Game.csprojAssemblyReference.cache
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.AboutBox.resources
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.ProgressCompFolder.resources
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.Config.resources
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.Credits.resources
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.Help.resources
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.InfoScreen.resources
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.MainWindow.resources
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.SelectFolder.resources
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.SplashScreen.resources
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.Lang.resources
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.Properties.Resources.resources
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.InfoScreen.fr.resources
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.MainWindow.en.resources
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.Lang.fr.resources
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.Config.fr.resources
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.IHM.Credits.fr.resources
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack_My_Game.MainWindow.fr.resources
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack My Game.csproj.GenerateResource.cache
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack My Game.csproj.CoreCompileInputs.cache
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\fr\Pack My Game.resources.dll
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\en\Pack My Game.resources.dll
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack My Game.exe.manifest
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack My Game.application
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack My Game.csproj.CopyComplete
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack My Game.exe
+E:\Programmation\CSharp\Pack My Game\Pack My Game\obj\Debug\Pack My Game.pdb
