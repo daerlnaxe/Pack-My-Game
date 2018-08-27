@@ -77,7 +77,7 @@ namespace Pack_My_Game.IHM
 
 
             var cpWindow = new FolderBrowserDialog();
-            cpWindow.Description = "Choose the LaunchBox Path";
+            cpWindow.Description = Lang.Choose_LBPath;
             cpWindow.ShowNewFolderButton = false;
             cpWindow.SelectedPath = Properties.Settings.Default.LastKPath;
 
@@ -96,7 +96,7 @@ namespace Pack_My_Game.IHM
 
 
             var cpWindow = new FolderBrowserDialog();
-            cpWindow.Description = "Choose the CheatCodes Path";
+            cpWindow.Description = Lang.Choose_CCodesPath;
             cpWindow.ShowNewFolderButton = false;
             cpWindow.SelectedPath = Properties.Settings.Default.LastKPath;
 
@@ -120,7 +120,7 @@ namespace Pack_My_Game.IHM
             // Verification empty string
             if (string.IsNullOrEmpty(tbLaunchBoxPath.Text))
             {
-                MessageBox.Show("Invalid Path: empty", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show($"{Lang.Invalid_Path}: {Lang.Empty}", Lang.Alert, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
@@ -129,7 +129,7 @@ namespace Pack_My_Game.IHM
             // Verification if there is the right file inside
             if (!File.Exists(xmlLMachines))
             {
-                MessageBox.Show("Invalid Path: This folder does not contain the file 'Platforms.xml'", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show($"{Lang.Invalid_Path}:  'Platforms.xml'", Lang.Alert, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
@@ -160,8 +160,6 @@ namespace Pack_My_Game.IHM
             KeyValuePair<string, string> selection = (KeyValuePair<string, string>)listLang.SelectedItem;
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(selection.Key);
 
-            Console.WriteLine($"Changement de la langue {selection.Key.ToString()}: {selection.Value}");
-
             Properties.Settings.Default.Language = selection.Key;
 
             this.Controls.Clear();
@@ -169,6 +167,22 @@ namespace Pack_My_Game.IHM
             LoadUI();
         }
 
+        private void Path_Validating(object sender, CancelEventArgs e)
+        {
+            TextBox cuTextBox = (TextBox)sender;
 
+            if (cuTextBox.Text == "")
+            {
+                MessageBox.Show(string.Format("Empty field {0 }", cuTextBox.Name.Substring(3)));
+                e.Cancel = true;
+            }
+            else
+
+            {
+                e.Cancel = false;
+            }
+
+
+        }
     }
 }

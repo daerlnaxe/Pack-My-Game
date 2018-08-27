@@ -164,6 +164,7 @@
             resources.ApplyResources(this.tbLaunchBoxPath, "tbLaunchBoxPath");
             this.tbLaunchBoxPath.Name = "tbLaunchBoxPath";
             this.tbLaunchBoxPath.ReadOnly = true;
+            this.tbLaunchBoxPath.Validating += new System.ComponentModel.CancelEventHandler(this.Path_Validating);
             // 
             // lbLBoxPath
             // 

@@ -26,15 +26,17 @@ namespace Pack_My_Game.IHM
         {
             var lang = Thread.CurrentThread.CurrentUICulture.TextInfo.CultureName;
 
-            switch (lang)
-            {
-                case "fr-FR":
-                    rtbHelp.Text = File.ReadAllText(@".\Credits\Credits-Fr.txt");
-                    break;
-                default:
-                    rtbHelp.Text = File.ReadAllText(@".\Credits\Credits-En.txt");
-                    break;
-            }
+            rtbHelp.Text = Lang.Help_Content;
+
+            //switch (lang)
+            //{
+            //    case "fr-FR":
+            //        rtbHelp.Text = File.ReadAllText(@".\Credits\Credits-Fr.txt");
+            //        break;
+            //    default:
+            //        rtbHelp.Text = File.ReadAllText(@".\Credits\Credits-En.txt");
+            //        break;
+            //}
         }
     }
 }

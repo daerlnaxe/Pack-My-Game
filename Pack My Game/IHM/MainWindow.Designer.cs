@@ -49,7 +49,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lbGames = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btSelectWFolder = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.tbOutPPath = new System.Windows.Forms.TextBox();
             this.butProceed = new System.Windows.Forms.Button();
@@ -66,70 +66,68 @@
             // 
             // menuStrip1
             // 
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.configToolStripMenuItem,
             this.aboutToolStripMenuItem});
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
-            this.toolTip1.SetToolTip(this.menuStrip1, resources.GetString("menuStrip1.ToolTip"));
             // 
             // configToolStripMenuItem
             // 
-            resources.ApplyResources(this.configToolStripMenuItem, "configToolStripMenuItem");
             this.configToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settingsToolStripMenuItem,
             this.testToolStripMenuItem});
             this.configToolStripMenuItem.Name = "configToolStripMenuItem";
+            resources.ApplyResources(this.configToolStripMenuItem, "configToolStripMenuItem");
             // 
             // settingsToolStripMenuItem
             // 
-            resources.ApplyResources(this.settingsToolStripMenuItem, "settingsToolStripMenuItem");
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            resources.ApplyResources(this.settingsToolStripMenuItem, "settingsToolStripMenuItem");
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // testToolStripMenuItem
             // 
-            resources.ApplyResources(this.testToolStripMenuItem, "testToolStripMenuItem");
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            resources.ApplyResources(this.testToolStripMenuItem, "testToolStripMenuItem");
             // 
             // aboutToolStripMenuItem
             // 
-            resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.helpToolStripMenuItem1,
             this.creditsToolStripMenuItem,
             this.aboutToolStripMenuItem1});
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem1
             // 
-            resources.ApplyResources(this.helpToolStripMenuItem1, "helpToolStripMenuItem1");
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
+            resources.ApplyResources(this.helpToolStripMenuItem1, "helpToolStripMenuItem1");
             this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem1_Click);
             // 
             // creditsToolStripMenuItem
             // 
-            resources.ApplyResources(this.creditsToolStripMenuItem, "creditsToolStripMenuItem");
             this.creditsToolStripMenuItem.Name = "creditsToolStripMenuItem";
+            resources.ApplyResources(this.creditsToolStripMenuItem, "creditsToolStripMenuItem");
             this.creditsToolStripMenuItem.Click += new System.EventHandler(this.creditsToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem1
             // 
-            resources.ApplyResources(this.aboutToolStripMenuItem1, "aboutToolStripMenuItem1");
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
+            resources.ApplyResources(this.aboutToolStripMenuItem1, "aboutToolStripMenuItem1");
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
             // lvGames
             // 
-            resources.ApplyResources(this.lvGames, "lvGames");
+            this.lvGames.AutoArrange = false;
             this.lvGames.CheckBoxes = true;
             this.tableLayoutPanel1.SetColumnSpan(this.lvGames, 5);
+            resources.ApplyResources(this.lvGames, "lvGames");
             this.lvGames.FullRowSelect = true;
-            this.lvGames.HoverSelection = true;
             this.lvGames.MultiSelect = false;
             this.lvGames.Name = "lvGames";
-            this.toolTip1.SetToolTip(this.lvGames, resources.GetString("lvGames.ToolTip"));
             this.lvGames.UseCompatibleStateImageBehavior = false;
             this.lvGames.View = System.Windows.Forms.View.Details;
             this.lvGames.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.GameColumn_Click);
@@ -150,10 +148,9 @@
             // 
             // lboxMachines
             // 
-            resources.ApplyResources(this.lboxMachines, "lboxMachines");
             this.lboxMachines.FormattingEnabled = true;
+            resources.ApplyResources(this.lboxMachines, "lboxMachines");
             this.lboxMachines.Name = "lboxMachines";
-            this.toolTip1.SetToolTip(this.lboxMachines, resources.GetString("lboxMachines.ToolTip"));
             this.lboxMachines.SelectedIndexChanged += new System.EventHandler(this.lboxMachines_SelectedIndexChanged);
             // 
             // lbSystems
@@ -161,14 +158,12 @@
             resources.ApplyResources(this.lbSystems, "lbSystems");
             this.lbSystems.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lbSystems.Name = "lbSystems";
-            this.toolTip1.SetToolTip(this.lbSystems, resources.GetString("lbSystems.ToolTip"));
             // 
             // lLaunchBoxPath
             // 
             resources.ApplyResources(this.lLaunchBoxPath, "lLaunchBoxPath");
             this.lLaunchBoxPath.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lLaunchBoxPath.Name = "lLaunchBoxPath";
-            this.toolTip1.SetToolTip(this.lLaunchBoxPath, resources.GetString("lLaunchBoxPath.ToolTip"));
             // 
             // label1
             // 
@@ -176,19 +171,17 @@
             this.label1.Cursor = System.Windows.Forms.Cursors.Default;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label1.Name = "label1";
-            this.toolTip1.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
             // 
             // lbGames
             // 
             resources.ApplyResources(this.lbGames, "lbGames");
             this.lbGames.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lbGames.Name = "lbGames";
-            this.toolTip1.SetToolTip(this.lbGames, resources.GetString("lbGames.ToolTip"));
             // 
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.button3, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btSelectWFolder, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.lvGames, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tbOutPPath, 1, 0);
@@ -197,23 +190,20 @@
             this.tableLayoutPanel1.Controls.Add(this.lbGames, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.butProceed, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.toolTip1.SetToolTip(this.tableLayoutPanel1, resources.GetString("tableLayoutPanel1.ToolTip"));
             // 
-            // button3
+            // btSelectWFolder
             // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.toolTip1.SetToolTip(this.button3, resources.GetString("button3.ToolTip"));
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.btChooseOutPut_Click);
+            resources.ApplyResources(this.btSelectWFolder, "btSelectWFolder");
+            this.btSelectWFolder.Name = "btSelectWFolder";
+            this.btSelectWFolder.UseVisualStyleBackColor = true;
+            this.btSelectWFolder.Click += new System.EventHandler(this.btChooseOutPut_Click);
             // 
             // label4
             // 
-            resources.ApplyResources(this.label4, "label4");
             this.label4.Cursor = System.Windows.Forms.Cursors.Default;
+            resources.ApplyResources(this.label4, "label4");
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label4.Name = "label4";
-            this.toolTip1.SetToolTip(this.label4, resources.GetString("label4.ToolTip"));
             // 
             // tbOutPPath
             // 
@@ -226,29 +216,26 @@
             // 
             resources.ApplyResources(this.butProceed, "butProceed");
             this.butProceed.Name = "butProceed";
-            this.toolTip1.SetToolTip(this.butProceed, resources.GetString("butProceed.ToolTip"));
             this.butProceed.UseVisualStyleBackColor = true;
             this.butProceed.Click += new System.EventHandler(this.Proceed_Click);
             // 
             // Infos
             // 
-            resources.ApplyResources(this.Infos, "Infos");
             this.Infos.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Infos.Controls.Add(this.lLaunchBoxPath);
             this.Infos.Controls.Add(this.label1);
+            resources.ApplyResources(this.Infos, "Infos");
             this.Infos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Infos.Name = "Infos";
             this.Infos.TabStop = false;
-            this.toolTip1.SetToolTip(this.Infos, resources.GetString("Infos.ToolTip"));
             // 
             // groupOP
             // 
-            resources.ApplyResources(this.groupOP, "groupOP");
             this.groupOP.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.groupOP.Controls.Add(this.tableLayoutPanel1);
+            resources.ApplyResources(this.groupOP, "groupOP");
             this.groupOP.Name = "groupOP";
             this.groupOP.TabStop = false;
-            this.toolTip1.SetToolTip(this.groupOP, resources.GetString("groupOP.ToolTip"));
             // 
             // tableLayoutPanel2
             // 
@@ -256,7 +243,6 @@
             this.tableLayoutPanel2.Controls.Add(this.groupOP, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.Infos, 0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.toolTip1.SetToolTip(this.tableLayoutPanel2, resources.GetString("tableLayoutPanel2.ToolTip"));
             // 
             // toolTip1
             // 
@@ -270,7 +256,6 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainWindow";
-            this.toolTip1.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -304,7 +289,7 @@
         private System.Windows.Forms.TextBox tbOutPPath;
         private System.Windows.Forms.GroupBox groupOP;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btSelectWFolder;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;

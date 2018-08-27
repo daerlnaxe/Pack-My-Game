@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Resources;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -6,7 +7,13 @@ using System.Runtime.InteropServices;
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
 [assembly: AssemblyTitle("Pack My Game")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription(@"
+- It copies then compress everything about a game contained in the db of LaunchBox app.
+- It generates a short xml file with the main information about the game
+- It takes images, pdf manual, video, music, rom file.
+- It takes also the cheatcode files if you fill the path('GameName-.')
+- It generates a tree view file.
+- 7z and zip compression ")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Pack My Game")]
@@ -32,5 +39,7 @@ using System.Runtime.InteropServices;
 // Vous pouvez spécifier toutes les valeurs ou indiquer les numéros de build et de révision par défaut
 // en utilisant '*', comme indiqué ci-dessous :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("0.0.0.3")]
+[assembly: AssemblyFileVersion("0.0.0.3")]
+[assembly: NeutralResourcesLanguage("en")]
+

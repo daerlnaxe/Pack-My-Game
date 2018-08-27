@@ -59,10 +59,10 @@ namespace Pack_My_Game.IHM
             {
                 if (_Block)
                 {
-                    btLeave.Text = "Leave";
+                    btLeave.Text = Lang.Leave;
                     break;
                 }
-                btLeave.Text = $"Leave ({i})";
+                btLeave.Text = $"{Lang.Leave} ({i})";
                 await Task.Delay(1000);
             }
 

@@ -32,5 +32,7 @@ namespace Pack_My_Game.IHM
                 this.Close();
             }
         }
+
+
     }
 }

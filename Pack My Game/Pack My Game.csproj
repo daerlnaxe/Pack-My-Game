@@ -38,7 +38,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Debug x32\</OutputPath>
+    <OutputPath>bin\Debug x86\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -50,7 +50,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\PackMyGame x32\</OutputPath>
+    <OutputPath>bin\PackMyGame x86\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -89,8 +89,9 @@
     <Optimize>true</Optimize>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DlnxLocalTransfert">
-      <HintPath>E:\Programmation\CSharp\MyCopy\MyCopy\bin\Debug\DlnxLocalTransfert.dll</HintPath>
+    <Reference Include="DlnxLocalTransfert, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DlnxLocalTransfert\DlnxLocalTransfert\bin\Debug\DlnxLocalTransfert.dll</HintPath>
     </Reference>
     <Reference Include="DotNetZip, Version=1.11.0.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
       <HintPath>..\packages\DotNetZip.1.11.0\lib\net20\DotNetZip.dll</HintPath>
@@ -139,12 +140,6 @@
     <Compile Include="IHM\AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <None Include="IHM\ZipComp_Progress.cs">
-      <SubType>Form</SubType>
-    </None>
-    <None Include="IHM\ZipComp_Progress.Designer.cs">
-      <DependentUpon>ZipComp_Progress.cs</DependentUpon>
-    </None>
     <Compile Include="IHM\ListViewSorter.cs" />
     <Compile Include="IHM\ProgressCompFolder.cs">
       <SubType>Form</SubType>
@@ -195,6 +190,11 @@
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="InfoHandler.cs" />
+    <Compile Include="IHM\Lang.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Lang.resx</DependentUpon>
+    </Compile>
     <Compile Include="Pack\FoncSchem.cs" />
     <Compile Include="Pack\PackMe.cs" />
     <Compile Include="Pack\StringOp.cs" />
@@ -204,12 +204,16 @@
     <EmbeddedResource Include="IHM\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="IHM\InfoScreen.fr.resx">
+      <DependentUpon>InfoScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IHM\MainWindow.en.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IHM\ProgressCompFolder.resx">
       <DependentUpon>ProgressCompFolder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="IHM\ZipComp_Progress.resx">
-      <DependentUpon>ZipComp_Progress.cs</DependentUpon>
-    </EmbeddedResource>
+    <EmbeddedResource Include="IHM\Lang.fr.resx" />
     <EmbeddedResource Include="IHM\Config.fr.resx">
       <DependentUpon>Config.cs</DependentUpon>
     </EmbeddedResource>
@@ -239,6 +243,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IHM\SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IHM\Lang.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Lang.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -327,20 +335,6 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Satellite</FileType>
     </PublishFile>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Txt\Credits-En.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Txt\Credits-Fr.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Txt\Help-En.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Txt\Help-Fr.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Files\" />

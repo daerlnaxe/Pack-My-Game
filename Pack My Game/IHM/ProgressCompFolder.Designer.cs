@@ -42,7 +42,7 @@
             this.dProgress.Location = new System.Drawing.Point(0, 0);
             this.dProgress.MinimumSize = new System.Drawing.Size(210, 140);
             this.dProgress.Name = "dProgress";
-            this.dProgress.Size = new System.Drawing.Size(318, 151);
+            this.dProgress.Size = new System.Drawing.Size(318, 188);
             this.dProgress.SupInfoName = "Main Info:";
             this.dProgress.TabIndex = 0;
             this.dProgress.TotalFiles = 0;
@@ -53,7 +53,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(318, 151);
+            this.ClientSize = new System.Drawing.Size(318, 188);
             this.ControlBox = false;
             this.Controls.Add(this.dProgress);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -65,6 +65,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "CompressFolder";
             this.TopMost = true;
+            
             this.ResumeLayout(false);
             this.PerformLayout();
 

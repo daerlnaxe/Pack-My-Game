@@ -117,39 +117,36 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="menuStrip1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>508, 6</value>
+  <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 20</value>
   </data>
-  <data name="button3.ToolTip" xml:space="preserve">
-    <value />
+  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>Aide</value>
   </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 24</value>
+  <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 22</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Choisissez le dossier de Travail:</value>
+  <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Paramètres</value>
   </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value />
+  <data name="testToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 22</value>
   </data>
-  <data name="tbOutPPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>258, 8</value>
+  <data name="helpToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
   </data>
-  <data name="tbOutPPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>244, 20</value>
+  <data name="helpToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Montrer l'Aide</value>
   </data>
-  <data name="lbSystems.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 21</value>
+  <data name="creditsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
   </data>
-  <data name="lbSystems.Text" xml:space="preserve">
-    <value>Choisir un Système (Consoles uniquement)</value>
+  <data name="aboutToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
   </data>
-  <data name="lbSystems.ToolTip" xml:space="preserve">
-    <value />
+  <data name="aboutToolStripMenuItem1.Text" xml:space="preserve">
+    <value>A Propos</value>
   </data>
   <data name="lboxMachines.Location" type="System.Drawing.Point, System.Drawing">
     <value>258, 36</value>
@@ -157,23 +154,11 @@
   <data name="lboxMachines.Size" type="System.Drawing.Size, System.Drawing">
     <value>244, 21</value>
   </data>
-  <data name="lboxMachines.ToolTip" xml:space="preserve">
-    <value />
+  <data name="lbSystems.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 21</value>
   </data>
-  <data name="lbGames.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 34</value>
-  </data>
-  <data name="lbGames.Text" xml:space="preserve">
-    <value>Choisir un jeu:</value>
-  </data>
-  <data name="lbGames.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="butProceed.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tableLayoutPanel1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="lbSystems.Text" xml:space="preserve">
+    <value>Choisir un Système (Consoles uniquement)</value>
   </data>
   <data name="lLaunchBoxPath.Location" type="System.Drawing.Point, System.Drawing">
     <value>149, 16</value>
@@ -184,72 +169,40 @@
   <data name="lLaunchBoxPath.Text" xml:space="preserve">
     <value>Choisir le chemin vers Launchbox ...</value>
   </data>
-  <data name="lLaunchBoxPath.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 16</value>
+    <value>147, 16</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Répertoire LaunchBox:</value>
+    <value>Chemin vers LaunchBox:</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="lbGames.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 34</value>
   </data>
-  <data name="Infos.ToolTip" xml:space="preserve">
-    <value />
+  <data name="lbGames.Text" xml:space="preserve">
+    <value>Choisir un jeu:</value>
   </data>
-  <data name="groupOP.ToolTip" xml:space="preserve">
-    <value />
+  <data name="button3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>508, 6</value>
   </data>
-  <data name="tableLayoutPanel2.ToolTip" xml:space="preserve">
-    <value />
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 24</value>
   </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
+  <data name="label4.Text" xml:space="preserve">
+    <value>Choisissez le dossier de Travail:</value>
   </data>
-  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
-    <value>Aide</value>
+  <data name="tbOutPPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>258, 8</value>
   </data>
-  <data name="aboutToolStripMenuItem1.Text" xml:space="preserve">
-    <value>A Propos</value>
-  </data>
-  <data name="butProceed.Text" xml:space="preserve">
-    <value>Procéder</value>
-  </data>
-  <data name="From_List" xml:space="preserve">
-    <value>de la liste</value>
-    <comment>Dynamique</comment>
-  </data>
-  <data name="helpToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Montrer l'Aide</value>
-  </data>
-  <data name="lvGames.ToolTip" xml:space="preserve">
-    <value>- Un Jeu: Double click
-- Plusieurs: Cochez les cases</value>
-  </data>
-  <data name="MB_Pack_Question" xml:space="preserve">
-    <value>Packer ce Jeu</value>
-    <comment>Dynamique</comment>
-  </data>
-  <data name="OutputBrowserDescription" xml:space="preserve">
-    <value>Choisissez un dossier de travail:</value>
-    <comment>Dynamique</comment>
-  </data>
-  <data name="Remove_Game" xml:space="preserve">
-    <value>Enlever ce jeu</value>
-    <comment>Dynamique</comment>
-  </data>
-  <data name="Remove_Word" xml:space="preserve">
-    <value>Enlever</value>
-    <comment>Dynamique</comment>
-  </data>
-  <data name="SelectASystem" xml:space="preserve">
-    <value>Sélectionner une Plateforme</value>
-    <comment>Dynamique</comment>
+  <data name="tbOutPPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>244, 20</value>
   </data>
   <data name="tbOutPPath.ToolTip" xml:space="preserve">
     <value>Indiquez le dossier où copier les données et compresser</value>
-    <comment>To translate</comment>
+  </data>
+  <data name="butProceed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>696, 528</value>
+  </data>
+  <data name="butProceed.Text" xml:space="preserve">
+    <value>Procéder</value>
   </data>
 </root>

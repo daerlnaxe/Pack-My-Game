@@ -33,6 +33,8 @@ namespace Pack_My_Game.IHM
         {
             var lang = Thread.CurrentThread.CurrentUICulture.TextInfo.CultureName;
 
+            rtbCredits.Text = Lang.Credits_Content;
+            /*
             switch (lang)
             {
                 case "fr-FR":
@@ -41,7 +43,7 @@ namespace Pack_My_Game.IHM
                 default:
                     rtbCredits.Text = File.ReadAllText(@".\Credits\Credits-En.txt");
                     break;
-            }
+            }*/
         }
 
         private void rtbCredits_ContentsResized(object sender, ContentsResizedEventArgs e)
