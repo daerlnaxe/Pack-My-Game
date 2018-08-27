@@ -118,29 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lbLang.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 27</value>
-  </data>
-  <data name="lbLang.Text" xml:space="preserve">
-    <value>Choisissez votre Langue</value>
-  </data>
-  <data name="lbLang.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="listLang.Location" type="System.Drawing.Point, System.Drawing">
-    <value>131, 3</value>
-  </data>
-  <data name="listLang.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>606, 427</value>
-  </data>
-  <data name="tableLayoutPanel2.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tabGen.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -149,41 +131,41 @@
   <data name="tabGen.Text" xml:space="preserve">
     <value>Général</value>
   </data>
-  <data name="tabGen.ToolTip" xml:space="preserve">
-    <value />
+  <data name="lbLang.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 27</value>
   </data>
-  <data name="btChooseLBPath.ToolTip" xml:space="preserve">
-    <value />
+  <data name="lbLang.Text" xml:space="preserve">
+    <value>Choisissez votre Langue</value>
   </data>
-  <data name="tbLaunchBoxPath.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="lbLBoxPath.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tableLayoutPanel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="richTextBox1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tbCheatCodes.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tableLayoutPanel7.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanel2.ToolTip" xml:space="preserve">
-    <value />
+  <data name="listLang.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, 3</value>
   </data>
   <data name="tabPaths.Text" xml:space="preserve">
     <value>Chemins</value>
   </data>
-  <data name="tabPaths.ToolTip" xml:space="preserve">
-    <value />
+  <data name="tbLaunchBoxPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>134, 5</value>
   </data>
-  <data name="cbZip.ToolTip" xml:space="preserve">
-    <value />
+  <data name="tbLaunchBoxPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>392, 20</value>
+  </data>
+  <data name="lbLBoxPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 23</value>
+  </data>
+  <data name="lbLBoxPath.Text" xml:space="preserve">
+    <value>Chemin vers LaunchBox:</value>
+  </data>
+  <data name="tbCheatCodes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 5</value>
+  </data>
+  <data name="tbCheatCodes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>391, 20</value>
+  </data>
+  <data name="lbCheatCodes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 23</value>
+  </data>
+  <data name="lbCheatCodes.Text" xml:space="preserve">
+    <value>Chemin des CheatCodes:</value>
   </data>
   <data name="trackZipCompLvl.MiddleName" xml:space="preserve">
     <value>Rapide</value>
@@ -191,67 +173,16 @@
   <data name="trackZipCompLvl.Title" xml:space="preserve">
     <value>Niveau de Compression</value>
   </data>
-  <data name="trackZipCompLvl.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tableLayoutPanel6.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="cb7Zip.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="track7ZipCompLvl.MiddleName" xml:space="preserve">
     <value>Rapide</value>
   </data>
   <data name="track7ZipCompLvl.Title" xml:space="preserve">
     <value>Niveau de Compression</value>
   </data>
-  <data name="track7ZipCompLvl.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tableLayoutPanel8.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanel3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanel4.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPack.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="btSave.Text" xml:space="preserve">
     <value>Sauver</value>
   </data>
-  <data name="btSave.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPanel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="btCancel.Text" xml:space="preserve">
     <value>Annuler</value>
-  </data>
-  <data name="btCancel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tableLayoutPanel3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>

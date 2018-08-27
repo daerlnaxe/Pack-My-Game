@@ -1,4 +1,7 @@
-﻿namespace Pack_My_Game.IHM
+﻿using System;
+using System.ComponentModel;
+
+namespace Pack_My_Game.IHM
 {
     partial class Config
     {
@@ -89,9 +92,10 @@
             // 
             // tabGen
             // 
-            this.tabGen.Controls.Add(this.tableLayoutPanel2);
             resources.ApplyResources(this.tabGen, "tabGen");
+            this.tabGen.Controls.Add(this.tableLayoutPanel2);
             this.tabGen.Name = "tabGen";
+            this.toolTip1.SetToolTip(this.tabGen, resources.GetString("tabGen.ToolTip"));
             this.tabGen.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
@@ -101,18 +105,20 @@
             this.tableLayoutPanel2.Controls.Add(this.listLang, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.cbClone, 0, 1);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.toolTip1.SetToolTip(this.tableLayoutPanel2, resources.GetString("tableLayoutPanel2.ToolTip"));
             // 
             // lbLang
             // 
             resources.ApplyResources(this.lbLang, "lbLang");
             this.lbLang.Name = "lbLang";
+            this.toolTip1.SetToolTip(this.lbLang, resources.GetString("lbLang.ToolTip"));
             // 
             // listLang
             // 
-            this.listLang.FormattingEnabled = true;
             resources.ApplyResources(this.listLang, "listLang");
+            this.listLang.FormattingEnabled = true;
             this.listLang.Name = "listLang";
-            this.listLang.SelectedIndexChanged += new System.EventHandler(this.listLang_SelectedIndexChanged);
+            this.toolTip1.SetToolTip(this.listLang, resources.GetString("listLang.ToolTip"));
             this.listLang.SelectionChangeCommitted += new System.EventHandler(this.listLang_SelectionChangeCommitted);
             // 
             // cbClone
@@ -124,22 +130,24 @@
             // 
             // tabPaths
             // 
-            this.tabPaths.Controls.Add(this.flowLayoutPanel2);
             resources.ApplyResources(this.tabPaths, "tabPaths");
+            this.tabPaths.Controls.Add(this.flowLayoutPanel2);
             this.tabPaths.Name = "tabPaths";
+            this.toolTip1.SetToolTip(this.tabPaths, resources.GetString("tabPaths.ToolTip"));
             this.tabPaths.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel2
             // 
+            resources.ApplyResources(this.flowLayoutPanel2, "flowLayoutPanel2");
             this.flowLayoutPanel2.Controls.Add(this.groupBox2);
             this.flowLayoutPanel2.Controls.Add(this.gpPackMyGame);
-            resources.ApplyResources(this.flowLayoutPanel2, "flowLayoutPanel2");
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.toolTip1.SetToolTip(this.flowLayoutPanel2, resources.GetString("flowLayoutPanel2.ToolTip"));
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.tableLayoutPanel1);
             resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Controls.Add(this.tableLayoutPanel1);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             this.toolTip1.SetToolTip(this.groupBox2, resources.GetString("groupBox2.ToolTip"));
@@ -151,42 +159,47 @@
             this.tableLayoutPanel1.Controls.Add(this.tbLaunchBoxPath, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.lbLBoxPath, 0, 1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.toolTip1.SetToolTip(this.tableLayoutPanel1, resources.GetString("tableLayoutPanel1.ToolTip"));
             // 
             // btChooseLBPath
             // 
             resources.ApplyResources(this.btChooseLBPath, "btChooseLBPath");
             this.btChooseLBPath.Name = "btChooseLBPath";
+            this.toolTip1.SetToolTip(this.btChooseLBPath, resources.GetString("btChooseLBPath.ToolTip"));
             this.btChooseLBPath.UseVisualStyleBackColor = true;
-            this.btChooseLBPath.Click += new System.EventHandler(this.btChoosePath_Click);
+            this.btChooseLBPath.Click += new System.EventHandler(this.btChooseLBPath_Click);
+            this.btChooseLBPath.Validating += new System.ComponentModel.CancelEventHandler(this.LBPath_Validating);
             // 
             // tbLaunchBoxPath
             // 
             resources.ApplyResources(this.tbLaunchBoxPath, "tbLaunchBoxPath");
             this.tbLaunchBoxPath.Name = "tbLaunchBoxPath";
-            this.tbLaunchBoxPath.ReadOnly = true;
-            this.tbLaunchBoxPath.Validating += new System.ComponentModel.CancelEventHandler(this.Path_Validating);
+            this.toolTip1.SetToolTip(this.tbLaunchBoxPath, resources.GetString("tbLaunchBoxPath.ToolTip"));
+            this.tbLaunchBoxPath.Validating += new System.ComponentModel.CancelEventHandler(this.LBPath_Validating);
             // 
             // lbLBoxPath
             // 
             resources.ApplyResources(this.lbLBoxPath, "lbLBoxPath");
             this.lbLBoxPath.Cursor = System.Windows.Forms.Cursors.Default;
             this.lbLBoxPath.Name = "lbLBoxPath";
+            this.toolTip1.SetToolTip(this.lbLBoxPath, resources.GetString("lbLBoxPath.ToolTip"));
             // 
             // gpPackMyGame
             // 
+            resources.ApplyResources(this.gpPackMyGame, "gpPackMyGame");
             this.gpPackMyGame.Controls.Add(this.richTextBox1);
             this.gpPackMyGame.Controls.Add(this.tableLayoutPanel7);
-            resources.ApplyResources(this.gpPackMyGame, "gpPackMyGame");
             this.gpPackMyGame.Name = "gpPackMyGame";
             this.gpPackMyGame.TabStop = false;
             this.toolTip1.SetToolTip(this.gpPackMyGame, resources.GetString("gpPackMyGame.ToolTip"));
             // 
             // richTextBox1
             // 
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.richTextBox1, "richTextBox1");
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
+            this.toolTip1.SetToolTip(this.richTextBox1, resources.GetString("richTextBox1.ToolTip"));
             // 
             // tableLayoutPanel7
             // 
@@ -195,6 +208,7 @@
             this.tableLayoutPanel7.Controls.Add(this.tbCheatCodes, 1, 1);
             this.tableLayoutPanel7.Controls.Add(this.lbCheatCodes, 0, 1);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.toolTip1.SetToolTip(this.tableLayoutPanel7, resources.GetString("tableLayoutPanel7.ToolTip"));
             // 
             // btChooseCCodes
             // 
@@ -208,7 +222,8 @@
             // 
             resources.ApplyResources(this.tbCheatCodes, "tbCheatCodes");
             this.tbCheatCodes.Name = "tbCheatCodes";
-            this.tbCheatCodes.ReadOnly = true;
+            this.toolTip1.SetToolTip(this.tbCheatCodes, resources.GetString("tbCheatCodes.ToolTip"));
+            this.tbCheatCodes.Validating += new System.ComponentModel.CancelEventHandler(this.CCodes_Validating);
             // 
             // lbCheatCodes
             // 
@@ -219,17 +234,19 @@
             // 
             // tabPack
             // 
-            this.tabPack.Controls.Add(this.flowLayoutPanel4);
             resources.ApplyResources(this.tabPack, "tabPack");
+            this.tabPack.Controls.Add(this.flowLayoutPanel4);
             this.tabPack.Name = "tabPack";
+            this.toolTip1.SetToolTip(this.tabPack, resources.GetString("tabPack.ToolTip"));
             this.tabPack.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel4
             // 
+            resources.ApplyResources(this.flowLayoutPanel4, "flowLayoutPanel4");
             this.flowLayoutPanel4.Controls.Add(this.groupBox1);
             this.flowLayoutPanel4.Controls.Add(this.groupBox3);
-            resources.ApplyResources(this.flowLayoutPanel4, "flowLayoutPanel4");
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.toolTip1.SetToolTip(this.flowLayoutPanel4, resources.GetString("flowLayoutPanel4.ToolTip"));
             // 
             // groupBox1
             // 
@@ -237,12 +254,14 @@
             this.groupBox1.Controls.Add(this.flowLayoutPanel1);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            this.toolTip1.SetToolTip(this.groupBox1, resources.GetString("groupBox1.ToolTip"));
             // 
             // flowLayoutPanel1
             // 
             resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
             this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel6);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.toolTip1.SetToolTip(this.flowLayoutPanel1, resources.GetString("flowLayoutPanel1.ToolTip"));
             // 
             // tableLayoutPanel6
             // 
@@ -250,6 +269,7 @@
             this.tableLayoutPanel6.Controls.Add(this.cbZip, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.trackZipCompLvl, 1, 1);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.toolTip1.SetToolTip(this.tableLayoutPanel6, resources.GetString("tableLayoutPanel6.ToolTip"));
             // 
             // cbZip
             // 
@@ -257,19 +277,21 @@
             this.cbZip.Checked = true;
             this.cbZip.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbZip.Name = "cbZip";
+            this.toolTip1.SetToolTip(this.cbZip, resources.GetString("cbZip.ToolTip"));
             this.cbZip.UseVisualStyleBackColor = true;
             // 
             // trackZipCompLvl
             // 
+            resources.ApplyResources(this.trackZipCompLvl, "trackZipCompLvl");
             this.trackZipCompLvl.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel6.SetColumnSpan(this.trackZipCompLvl, 3);
-            resources.ApplyResources(this.trackZipCompLvl, "trackZipCompLvl");
             this.trackZipCompLvl.Maximum = 10;
             this.trackZipCompLvl.MidSpacer = new System.Windows.Forms.Padding(20, 0, 3, 0);
             this.trackZipCompLvl.Minimum = 0;
             this.trackZipCompLvl.Name = "trackZipCompLvl";
             this.trackZipCompLvl.Position = 10;
             this.trackZipCompLvl.TitleSize = 132;
+            this.toolTip1.SetToolTip(this.trackZipCompLvl, resources.GetString("trackZipCompLvl.ToolTip"));
             // 
             // groupBox3
             // 
@@ -277,12 +299,14 @@
             this.groupBox3.Controls.Add(this.flowLayoutPanel3);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
+            this.toolTip1.SetToolTip(this.groupBox3, resources.GetString("groupBox3.ToolTip"));
             // 
             // flowLayoutPanel3
             // 
             resources.ApplyResources(this.flowLayoutPanel3, "flowLayoutPanel3");
             this.flowLayoutPanel3.Controls.Add(this.tableLayoutPanel8);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.toolTip1.SetToolTip(this.flowLayoutPanel3, resources.GetString("flowLayoutPanel3.ToolTip"));
             // 
             // tableLayoutPanel8
             // 
@@ -290,6 +314,7 @@
             this.tableLayoutPanel8.Controls.Add(this.cb7Zip, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.track7ZipCompLvl, 1, 1);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.toolTip1.SetToolTip(this.tableLayoutPanel8, resources.GetString("tableLayoutPanel8.ToolTip"));
             // 
             // cb7Zip
             // 
@@ -297,19 +322,21 @@
             this.cb7Zip.Checked = true;
             this.cb7Zip.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb7Zip.Name = "cb7Zip";
+            this.toolTip1.SetToolTip(this.cb7Zip, resources.GetString("cb7Zip.ToolTip"));
             this.cb7Zip.UseVisualStyleBackColor = true;
             // 
             // track7ZipCompLvl
             // 
+            resources.ApplyResources(this.track7ZipCompLvl, "track7ZipCompLvl");
             this.track7ZipCompLvl.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel8.SetColumnSpan(this.track7ZipCompLvl, 3);
-            resources.ApplyResources(this.track7ZipCompLvl, "track7ZipCompLvl");
             this.track7ZipCompLvl.Maximum = 6;
             this.track7ZipCompLvl.MidSpacer = new System.Windows.Forms.Padding(20, 0, 3, 0);
             this.track7ZipCompLvl.Minimum = 0;
             this.track7ZipCompLvl.Name = "track7ZipCompLvl";
             this.track7ZipCompLvl.Position = 6;
             this.track7ZipCompLvl.TitleSize = 129;
+            this.toolTip1.SetToolTip(this.track7ZipCompLvl, resources.GetString("track7ZipCompLvl.ToolTip"));
             // 
             // tableLayoutPanel3
             // 
@@ -318,30 +345,34 @@
             this.tableLayoutPanel3.Controls.Add(this.tabPanel1, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.btCancel, 1, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.toolTip1.SetToolTip(this.tableLayoutPanel3, resources.GetString("tableLayoutPanel3.ToolTip"));
             // 
             // btSave
             // 
-            this.btSave.DialogResult = System.Windows.Forms.DialogResult.OK;
             resources.ApplyResources(this.btSave, "btSave");
+            this.btSave.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btSave.Name = "btSave";
+            this.toolTip1.SetToolTip(this.btSave, resources.GetString("btSave.ToolTip"));
             this.btSave.UseVisualStyleBackColor = true;
             this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 
             // tabPanel1
             // 
+            resources.ApplyResources(this.tabPanel1, "tabPanel1");
             this.tableLayoutPanel3.SetColumnSpan(this.tabPanel1, 3);
             this.tabPanel1.Controls.Add(this.tabGen);
             this.tabPanel1.Controls.Add(this.tabPaths);
             this.tabPanel1.Controls.Add(this.tabPack);
-            resources.ApplyResources(this.tabPanel1, "tabPanel1");
             this.tabPanel1.Name = "tabPanel1";
             this.tabPanel1.SelectedIndex = 0;
+            this.toolTip1.SetToolTip(this.tabPanel1, resources.GetString("tabPanel1.ToolTip"));
             // 
             // btCancel
             // 
-            this.btCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             resources.ApplyResources(this.btCancel, "btCancel");
+            this.btCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btCancel.Name = "btCancel";
+            this.toolTip1.SetToolTip(this.btCancel, resources.GetString("btCancel.ToolTip"));
             this.btCancel.UseVisualStyleBackColor = true;
             this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
@@ -355,6 +386,7 @@
             this.MaximizeBox = false;
             this.Name = "Config";
             this.ShowInTaskbar = false;
+            this.toolTip1.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Config_Load);
             this.tabGen.ResumeLayout(false);
@@ -387,6 +419,8 @@
             this.ResumeLayout(false);
 
         }
+
+
 
         #endregion
         private System.Windows.Forms.TabPage tabPaths;
