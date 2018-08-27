@@ -51,7 +51,7 @@ silent debug...)
 - [ ] Filter supports
 - [ ] Security on work folder
 - [ ] Find a better way to handle images files
-- [ ] Finish Translation fr
+- [x] Finish Translation fr
 - [ ] Correct the english version		
 - [x] Integrate help
 - [x] Integrate crédits
