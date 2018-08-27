@@ -1,11 +1,6 @@
 # Pack-My-Game
 
-Download PackMyGame x86.zip or PackMyGame x64.zip for executable files  
-Téléchargez PackMyGame x86.zip ou PackMyGame x64.zip pour avoir les fichiers exécutables  
-
-Vous pouvez lire une version Française de ce readme dans les fichiers texte.  
-
-
+Download [PackMyGame-x86.zip](https://github.com/daerlnaxe/Pack-My-Game/blob/master/PackMyGame%20x86%20-%20A03.zip) or [PackMyGame-x86.zip](https://github.com/daerlnaxe/Pack-My-Game/blob/master/PackMyGame%20x64%20-%20A02.zip) for executable files  
 
 ## What it do:
  * It copies then compress everything about a game contained in the db of LaunchBox app.
