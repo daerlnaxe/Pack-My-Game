@@ -31,6 +31,14 @@ no image file in the the destination folder.
  * It logs everything during the game treatment in a window, and a file.
 		
 ## Version
+
+### Alpha02: 26/08/2018
+ * Box to ask for images 
+ * Externalization of method: transfers verification (possibility to evolve to "decision for all" system
+silent debug...)
+ * Loop to process on  many games (implemented but not really tested - one game works with the same method)
+ * Remove from listview the game packed
+
 ### Alpha01: 08/2018
  * 1st functionnal release
  * Trad Module Implantation: Ok
@@ -41,14 +49,8 @@ no image file in the the destination folder.
  * Method to copy cheatcodes dir
  * 7z choice
  * File Schéma
- * Add Clones
-		
-### Alpha02: 26/08/2018
- * Box to ask for images 
- * Externalization of method: transfers verification (possibility to evolve to "decision for all" system
-silent debug...)
- * Loop to process on  many games (implemented but not really tested - one game works with the same method)
- * Remove from listview the game packed
+ * Add Clones	
+
 
 ## TODO
 - [ ] Filter supports
@@ -57,6 +59,7 @@ silent debug...)
 - [ ] Finish Translation fr
 - [ ] Correct the english version		
 - [x] Integrate help
+- [x] Integrate crédits
 - [ ] Carroussel to see image files to overwrite etc... (if necessary)		
 - [ ] Add Debug Options in panel config
 - [ ] Mode silent without box prompt ? (All overwrite)
