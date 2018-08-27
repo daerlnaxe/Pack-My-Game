@@ -34,6 +34,7 @@ namespace Pack_My_Game
         string _XmlFPlatform;
         string _lbPath;
         string _OutPPath;
+        ResourceManager _RM;
 
         Dictionary<string, ShortGame> _GameList;
         int _GameSortColumn = -1;
@@ -50,6 +51,7 @@ namespace Pack_My_Game
                 Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.Language);
             }
 
+            _RM = new ResourceManager("Pack_My_Game.MainWindow", typeof(MainWindow).Assembly);
             InitializeComponent();
 
 
@@ -132,7 +134,7 @@ namespace Pack_My_Game
             var cpWindow = new FolderBrowserDialog();
             string tmpPath;
 
-            cpWindow.Description = "Choose the Path of Output";
+            cpWindow.Description = _RM.GetString("OutputBrowserDescription");
             cpWindow.SelectedPath = Properties.Settings.Default.LastKPath;
 
             if (cpWindow.ShowDialog() != DialogResult.OK) return;
@@ -227,7 +229,7 @@ namespace Pack_My_Game
 
             if (xf.ReadFile(xmlLMachines))
             {
-                List<string> lm = new List<string>() { "Choose a System" };
+                List<string> lm = new List<string>() { _RM.GetString("SelectASystem") };
                 xf.ListMachine(lm);
 
                 lboxMachines.DataSource = lm;
@@ -339,7 +341,7 @@ namespace Pack_My_Game
             foreach (ListViewItem item in lGames)
             {
                 ShortGame zeGame = (ShortGame)item.Tag;
-                var res = MessageBox.Show($"Pack This Game '{zeGame.Title}' ?", "Pack or Not Pack ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var res = MessageBox.Show($"{_RM.GetString("MB_Pack_Question")} '{zeGame.Title}' ?", "Pack or Not Pack ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (res != DialogResult.Yes) continue;
 
                 Console.WriteLine($"[Main] PackMe for '{zeGame.Title}' | '{zeGame.ID}'");
@@ -351,7 +353,7 @@ namespace Pack_My_Game
 
                 if (state == 0 && pm.Run())
                 {
-                    if (MessageBox.Show( $"Remove '{zeGame.Title}' the listView ? (Only Graphical)", "Remove this Game", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show( $"{_RM.GetString("Remove_Word")} '{zeGame.Title}' {_RM.GetString("From_List")} ?", _RM.GetString("Remove_Game"), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         Console.WriteLine($"Remove: '{zeGame.Title}' from list");
                         _GameList.Remove(zeGame.ID);
@@ -474,24 +476,6 @@ namespace Pack_My_Game
         {
 
         }
-
-
-        /// <summary>
-        /// Memo Localizatoin
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-            // LeResourceManager prend en paramètre : nom_du_namespace.nom_de_la_ressource_principale
-            var rm = new System.Resources.ResourceManager("Pack_My_Game.MainWindow", typeof(MainWindow).Assembly);
-
-            // Affecte la valeur de la ressource MainTitle à la proriété Text de la fenêtre principale
-            var odile = rm.GetString("CHOOSE_GAME");
-
-        }
-
 
 
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
