@@ -1,11 +1,6 @@
 # Pack-My-Game
 
-Download PackMyGame x86.zip or PackMyGame x64.zip for executable files  
-Téléchargez PackMyGame x86.zip ou PackMyGame x64.zip pour avoir les fichiers exécutables  
-
-Vous pouvez lire une version Française de ce readme dans les fichiers texte.  
-
-
+Download [PackMyGame-x86.zip](https://github.com/daerlnaxe/Pack-My-Game/blob/master/PackMyGame%20x86%20-%20A03.zip) or [PackMyGame-x64.zip](https://github.com/daerlnaxe/Pack-My-Game/blob/master/PackMyGame%20x64%20-%20A02.zip) for executable files  
 
 ## What it do:
  * It copies then compress everything about a game contained in the db of LaunchBox app.
@@ -31,6 +26,14 @@ no image file in the the destination folder.
  * It logs everything during the game treatment in a window, and a file.
 		
 ## Version
+
+### Alpha02: 26/08/2018
+ * Box to ask for images 
+ * Externalization of method: transfers verification (possibility to evolve to "decision for all" system
+silent debug...)
+ * Loop to process on  many games (implemented but not really tested - one game works with the same method)
+ * Remove from listview the game packed
+
 ### Alpha01: 08/2018
  * 1st functionnal release
  * Trad Module Implantation: Ok
@@ -41,14 +44,8 @@ no image file in the the destination folder.
  * Method to copy cheatcodes dir
  * 7z choice
  * File Schéma
- * Add Clones
-		
-### Alpha02: 26/08/2018
- * Box to ask for images 
- * Externalization of method: transfers verification (possibility to evolve to "decision for all" system
-silent debug...)
- * Loop to process on  many games (implemented but not really tested - one game works with the same method)
- * Remove from listview the game packed
+ * Add Clones	
+
 
 ## TODO
 - [ ] Filter supports
@@ -57,6 +54,7 @@ silent debug...)
 - [ ] Finish Translation fr
 - [ ] Correct the english version		
 - [x] Integrate help
+- [x] Integrate crédits
 - [ ] Carroussel to see image files to overwrite etc... (if necessary)		
 - [ ] Add Debug Options in panel config
 - [ ] Mode silent without box prompt ? (All overwrite)
