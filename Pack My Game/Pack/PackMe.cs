@@ -56,7 +56,11 @@ namespace Pack_My_Game.Pack
         private XML_Functions _XFunctions;
         //private Dictionary<string, Folder> _Tree;
         private Folder _Tree;
-        //  private InfoHandler IWrite;
+
+        //Loggers
+        InfoScreen iScreen;
+        InfoToFile iLog;
+
 
         /// <summary>
         /// 
@@ -83,8 +87,7 @@ namespace Pack_My_Game.Pack
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BWRunWorkerCompleted);
             bw.RunWorkerAsync();
             */
-
-
+            
             // Verif
             if (string.IsNullOrEmpty(ID)) throw new Exception("Id property: null");
             if (string.IsNullOrEmpty(_SystemName)) throw new Exception();
@@ -108,9 +111,14 @@ namespace Pack_My_Game.Pack
 
 
             // System d'affichage
-            InfoToIScreen iScreen = new InfoToIScreen();
+            iScreen = new InfoScreen();
             iScreen.Prefix = "PackMe";
+            iScreen.Show();
             ITrace.AddListener(iScreen);
+
+            iLog = new InfoToFile(logFile, true);
+            iLog.Prefix = iScreen.Prefix;
+            ITrace.AddListener(iLog);
 
             if (Debugger.IsAttached)
             {
@@ -119,9 +127,6 @@ namespace Pack_My_Game.Pack
                 ITrace.AddListener(iConsole);
             }
 
-            InfoToFile iLog = new InfoToFile(logFile, true);
-            iLog.Prefix = iScreen.Prefix;
-            ITrace.AddListener(iLog);
             //
 
 
@@ -167,8 +172,10 @@ namespace Pack_My_Game.Pack
             {
                 // todo
                 ITrace.WriteLine("[Initialize] GoodBye !");
+                iScreen.Close();
 
-                //ITrace.KillWindow();
+                ITrace.RemoveListener(iScreen);
+
                 return 200;
             }
 
@@ -296,13 +303,14 @@ namespace Pack_My_Game.Pack
             }
 
 
-            //ITrace.KillWindowAfter(10);
-            ITrace.RemoveLast();
+            iScreen.KillAfter(10);
+            ITrace.RemoveListener(iScreen);
+            ITrace.RemoveListener(iLog);
+
             if (Debugger.IsAttached)
             {
                 ITrace.RemoveLast();
             }
-            ITrace.RemoveLast();
 
             return true;
         }
