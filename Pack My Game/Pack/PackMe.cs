@@ -17,6 +17,7 @@ using System.Diagnostics;
 using DlnxLocalTransfert;
 using DlnxLocalTransfert.IHM;
 using Pack_My_Game.IHM;
+using DxTrace;
 
 namespace Pack_My_Game.Pack
 {
@@ -55,7 +56,7 @@ namespace Pack_My_Game.Pack
         private XML_Functions _XFunctions;
         //private Dictionary<string, Folder> _Tree;
         private Folder _Tree;
-        private InfoHandler IWrite;
+        //  private InfoHandler IWrite;
 
         /// <summary>
         /// 
@@ -76,8 +77,6 @@ namespace Pack_My_Game.Pack
         /// <param name="xFile">believe... xml file </param>
         internal int Initialize(string xFile)
         {
-            IWrite = new InfoHandler(window: true);
-            IWrite.Prefix = "PackMe";
             /*
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(BwWork); // PackMe.Initialize(_XmlFPlatform);
@@ -106,14 +105,36 @@ namespace Pack_My_Game.Pack
 
 
             string logFile = Path.Combine(_WFolder, $"{_SystemName} - {_OutPutFileName}.log");
-            IWrite.SetLogActive(logFile, true);
 
-            IWrite.ShowWindow();
 
-            IWrite.WriteLine("===== Report of errors: =====");
-            IWrite.WriteLine($"[Initialize] ID:\t'{ID}'");
-            IWrite.WriteLine($"[Initialize] {Lang.SystemSelected}: '{_SystemName}'");
-            IWrite.WriteLine($"[Initialize] {Lang.GameSelected}: '{_ZeGame.Title}' - Rom: '{_ZeGame.FileName}'");
+            // System d'affichage
+            InfoToIScreen iScreen = new InfoToIScreen();
+            iScreen.Prefix = "PackMe";
+            ITrace.AddListener(iScreen);
+
+            if (Debugger.IsAttached)
+            {
+                InfoToConsole iConsole = new InfoToConsole();
+                iConsole.Prefix = iScreen.Prefix;
+                ITrace.AddListener(iConsole);
+            }
+
+            InfoToFile iLog = new InfoToFile(logFile, true);
+            iLog.Prefix = iScreen.Prefix;
+            ITrace.AddListener(iLog);
+            //
+
+
+            //    IWrite = new InfoHandler(window: true);
+            //IWrite.Prefix = "PackMe";
+            //IWrite.SetLogActive(logFile, true);
+
+            //IWrite.ShowWindow();
+
+            ITrace.WriteLine("===== Report of errors: =====");
+            ITrace.WriteLine($"[Initialize] ID:\t'{ID}'");
+            ITrace.WriteLine($"[Initialize] {Lang.SystemSelected}: '{_SystemName}'");
+            ITrace.WriteLine($"[Initialize] {Lang.GameSelected}: '{_ZeGame.Title}' - Rom: '{_ZeGame.FileName}'");
 
             // Folder Verification
             //if (Directory.Exists(_GamePath))
@@ -141,16 +162,15 @@ namespace Pack_My_Game.Pack
             //}
 
 
-            var folderRes = OPFolders.SVerif(_GamePath, "Initialize", Dcs_Buttons.NoPass, (string message) => IWrite.WriteLine(message, true));
+            var folderRes = OPFolders.SVerif(_GamePath, "Initialize", Dcs_Buttons.NoPass, (string message) => ITrace.WriteLine(message, true));
             if (folderRes == OPResult.Stop)
             {
                 // todo
-                IWrite.WriteLine("[Initialize] GoodBye !");
-                IWrite.KillWindow();
+                ITrace.WriteLine("[Initialize] GoodBye !");
+
+                //ITrace.KillWindow();
                 return 200;
             }
-
-
 
             // 
 
@@ -177,7 +197,7 @@ namespace Pack_My_Game.Pack
         /// </summary>
         internal bool Run()
         {
-            IWrite.WriteLine(prefix: false);
+            ITrace.WriteLine(prefix: false);
 
             #region
             // Verifications 
@@ -190,12 +210,12 @@ namespace Pack_My_Game.Pack
             #endregion
 
             // Creation of System folder and working assign            
-            IWrite.WriteLine($"[Run] {Lang.CreationFolder}: '{_SystemName}'");
+            ITrace.WriteLine($"[Run] {Lang.CreationFolder}: '{_SystemName}'");
             Directory.CreateDirectory(_SystemName);
             Directory.SetCurrentDirectory(_SystemPath);
 
             // Creation of Game folder
-            IWrite.WriteLine($"[Run] {Lang.CreationFolder}: '{_GamePath}'");
+            ITrace.WriteLine($"[Run] {Lang.CreationFolder}: '{_GamePath}'");
             Directory.CreateDirectory(_GamePath);
             Directory.SetCurrentDirectory(_GamePath);
 
@@ -224,7 +244,7 @@ namespace Pack_My_Game.Pack
             }
             else
             {
-                IWrite.WriteLine($"[Run] Clone copy disabled");
+                ITrace.WriteLine($"[Run] Clone copy disabled");
             }
 
             // Save Struct
@@ -234,29 +254,31 @@ namespace Pack_My_Game.Pack
             string destArchive = Path.Combine(_SystemPath, _OutPutFileName);
 
             // zip
-           
+            var tamere = Properties.Settings.Default.cZipActive;
+            Console.WriteLine();
+
             if (Properties.Settings.Default.cZipActive)
             {
                 Make_Zip(destArchive);
             }
             else
             {
-                IWrite.WriteLine($"[Run] Zip Compression disabled");
+                ITrace.WriteLine($"[Run] Zip Compression disabled");
             }
 
 
             // 7-Zip
             if (Properties.Settings.Default.c7zActive)
             {
-                Make_SevenZip(destArchive);
+                SevenZipCompression.Make_SevenZip(_SystemPath, destArchive);
             }
             else
             {
-                IWrite.WriteLine($"[Run] 7z Compression disabled");
+                ITrace.WriteLine($"[Run] 7z Compression disabled");
             }
 
             // Erase the temp folder
-            if (MessageBox.Show($"{Lang.EraseTmpFolder} '{_OutPutFileName}' ?", Lang.Erase, MessageBoxButtons.YesNo, MessageBoxIcon.Question)== DialogResult.Yes)
+            if (MessageBox.Show($"{Lang.EraseTmpFolder} '{_OutPutFileName}' ?", Lang.Erase, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 try
                 {
@@ -266,15 +288,21 @@ namespace Pack_My_Game.Pack
                     Console.WriteLine($"[Run] folder {_GamePath} erased");
 
                 }
-                catch(Exception e)
+                catch (Exception exc)
                 {
-                    Console.WriteLine($"[Run] Error when Erasing temp folder {_GamePath}\n{e.Message }");
+                    Console.WriteLine($"[Run] Error when Erasing temp folder {_GamePath}\n{exc.Message }");
 
                 }
             }
 
 
-            IWrite.KillWindowAfter(10);
+            //ITrace.KillWindowAfter(10);
+            ITrace.RemoveLast();
+            if (Debugger.IsAttached)
+            {
+                ITrace.RemoveLast();
+            }
+            ITrace.RemoveLast();
 
             return true;
         }
@@ -290,18 +318,18 @@ namespace Pack_My_Game.Pack
         // todo a question box avec une loupe pour lancer les fichiers à comparer  + ecraser envoyer poubelle, non
         private bool MakeInfo()
         {
-            IWrite.WriteLine(prefix: false);
-            IWrite.WriteLine($"[MakeInfo] Creation of file 'Infos.xml'");
+            ITrace.WriteLine(prefix: false);
+            ITrace.WriteLine($"[MakeInfo] Creation of file 'Infos.xml'");
 
             string xmlDest = Path.Combine(_GamePath, "Infos.xml");
 
-            var infoRes = OPFiles.SVerif(xmlDest, "MakeInfo", log: (string message) => IWrite.WriteLine(message, true));
+            var infoRes = OPFiles.SVerif(xmlDest, "MakeInfo", log: (string message) => ITrace.WriteLine(message, true));
             switch (infoRes)
             {
                 case OPResult.Ok:
                 case OPResult.OverWrite:
                 case OPResult.Trash:
-                    IWrite.WriteLine("[MakeInfo] Serialization to xml");
+                    ITrace.WriteLine("[MakeInfo] Serialization to xml");
                     XmlSerializer xs = new XmlSerializer(typeof(Game));
                     using (StreamWriter wr = new StreamWriter(xmlDest))
                     {
@@ -344,8 +372,8 @@ namespace Pack_My_Game.Pack
         {
             Directory.SetCurrentDirectory(_GamePath);
 
-            IWrite.WriteLine(prefix: false);
-            IWrite.WriteLine("[MakeStructure] Creation of the tree");
+            ITrace.WriteLine(prefix: false);
+            ITrace.WriteLine("[MakeStructure] Creation of the tree");
 
             _Tree = new Folder("Root", _GamePath);
             //_Tree.Add("Root", root);
@@ -364,13 +392,13 @@ namespace Pack_My_Game.Pack
         /// <returns></returns>
         private bool CopySpecificFiles()
         {
-            IWrite.WriteLine(prefix: false);
+            ITrace.WriteLine(prefix: false);
             //IWrite.NewLine($"Dossier actif:{Directory.GetCurrentDirectory()}");
             Console.WriteLine(Directory.GetCurrentDirectory());
 
             OPFiles opFiles = new OPFiles();
-            opFiles.IWriteLine += (string message) => IWrite.WriteLine(message);
-            opFiles.IWrite += (string message) => IWrite.Write(message);
+            opFiles.IWriteLine += (string message) => ITrace.WriteLine(message);
+            opFiles.IWrite += (string message) => ITrace.BeginLine(message);
             opFiles.Buttons = Dcs_Buttons.NoStop;
 
             // rom            
@@ -411,7 +439,7 @@ namespace Pack_My_Game.Pack
 
             //}
 
-            IWrite.WriteLine(prefix: false);
+            ITrace.WriteLine(prefix: false);
             // Lecture du fichier platform
             XML_Functions xmlPlatform = new XML_Functions();
             xmlPlatform.ReadFile(Path.Combine(Properties.Settings.Default.LBPath, Properties.Settings.Default.fPlatforms));
@@ -426,7 +454,7 @@ namespace Pack_My_Game.Pack
 
             }
 
-            IWrite.WriteLine(prefix: false);
+            ITrace.WriteLine(prefix: false);
             Queue<PackFile> lPackFile = new Queue<PackFile>();
 
 
@@ -448,7 +476,7 @@ namespace Pack_My_Game.Pack
                 }
             }
 
-            IWrite.WriteLine(prefix: false);
+            ITrace.WriteLine(prefix: false);
             // Copy Process
             while (lPackFile.Count != 0)
             {
@@ -479,14 +507,14 @@ namespace Pack_My_Game.Pack
         private void CopyCheatCodes()
         {
             string CCodesDir = Path.Combine(Properties.Settings.Default.CCodesPath, _SystemName);
-            IWrite.Write($"[CopyCheatCodes] Search in: '{CCodesDir}' of files beginning by '{_ZeGame.Title}-': ");
+            ITrace.BeginLine($"[CopyCheatCodes] Search in: '{CCodesDir}' of files beginning by '{_ZeGame.Title}-': ");
 
             string[] fichier = Directory.GetFiles(CCodesDir, $"{_ZeGame.Title}-*.*", System.IO.SearchOption.AllDirectories);
-            IWrite.WriteLine($"{fichier.Length} found");
+            ITrace.EndlLine($"{fichier.Length} found");
 
             OPFiles opFiles = new OPFiles();
-            opFiles.IWriteLine += (string message) => IWrite.WriteLine(message);
-            opFiles.IWrite += (string message) => IWrite.Write(message);
+            opFiles.IWriteLine += (string message) => ITrace.WriteLine(message);
+            opFiles.IWrite += (string message) => ITrace.BeginLine(message);
             opFiles.Buttons = Dcs_Buttons.NoStop;
 
             foreach (string file in fichier)
@@ -501,11 +529,11 @@ namespace Pack_My_Game.Pack
         /// </summary>
         private void CopyClones()
         {
-            IWrite.WriteLine(prefix: false);
+            ITrace.WriteLine(prefix: false);
 
             OPFiles opFiles = new OPFiles();
-            opFiles.IWriteLine += (string message) => IWrite.WriteLine(message);
-            opFiles.IWrite += (string message) => IWrite.Write(message);
+            opFiles.IWriteLine += (string message) => ITrace.WriteLine(message);
+            opFiles.IWrite += (string message) => ITrace.BeginLine(message);
             opFiles.Buttons = Dcs_Buttons.NoStop;
 
             List<Clone> clones = new List<Clone>();
@@ -535,19 +563,19 @@ namespace Pack_My_Game.Pack
         private bool Make_Zip(string destArchive)
         {
             // var zipres = Destination.Verif(destArchive + ".zip");
-            var zipRes = OPFiles.SVerif(Path.Combine(_SystemPath, $"{destArchive}.zip"), "Make_Zip", log: (string message) => IWrite.WriteLine(message, true));
+            var zipRes = OPFiles.SVerif(Path.Combine(_SystemPath, $"{destArchive}.zip"), "Make_Zip", log: (string message) => ITrace.WriteLine(message, true));
 
             switch (zipRes)
             {
                 case OPResult.OverWrite:
                 case OPResult.Ok:
                 case OPResult.Trash:
-                    IWrite.WriteLine($"[Make_Zip] Zip Compression begin");
                     if (!ZipCompression.CompressFolder(_GamePath, destArchive, Properties.Settings.Default.cZipCompLvl))
                     {
-                        IWrite.WriteLine("[Make_Zip] Zip Compression canceled");
+                        ITrace.WriteLine("[Make_Zip] Zip Compression canceled");
                         return false;
                     }
+                    ITrace.WriteLine($"[Make_Zip] Zip Compression begin");
                     return true;
 
                 default:
@@ -555,33 +583,7 @@ namespace Pack_My_Game.Pack
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="destArchive"></param>
-        /// <returns></returns>
-        private bool Make_SevenZip(string destArchive)
-        {
-            // var zipres = Destination.Verif(destArchive + ".zip");
-            var sevenZRes = OPFiles.SVerif(Path.Combine(_SystemPath, $"{destArchive}.7z"), "Make_SevenZip", log: (string message) => IWrite.WriteLine(message, true));
 
-            switch (sevenZRes)
-            {
-                case OPResult.OverWrite:
-                case OPResult.Ok:
-                case OPResult.Trash:
-                    IWrite.WriteLine($"[Make_SevenZip] 7z Compression begin");
-                    if (!SevenZipCompression.CompressFolder(_GamePath, destArchive, Properties.Settings.Default.c7zCompLvl))
-                    {
-                        IWrite.WriteLine("[Make_SevenZip] 7z Compression canceled");
-                        return false;
-                    }
-                    return true;
-
-                default:
-                    return false;
-            }
-        }
         #endregion
 
 
@@ -608,7 +610,7 @@ namespace Pack_My_Game.Pack
                 pReconstruct = null;
             }
 
-            IWrite.WriteLine($"[ReformPath] {path} => {pReconstruct}");
+            ITrace.WriteLine($"[ReformPath] {path} => {pReconstruct}");
 
             Directory.SetCurrentDirectory(previousDir);
 
@@ -622,19 +624,19 @@ namespace Pack_My_Game.Pack
         /// <param name="folders"></param>
         void CreateHFolders(Folder basePath, params string[] folders)
         {
-            IWrite.WriteLine(prefix: false);
+            ITrace.WriteLine(prefix: false);
             if (!basePath.Path.Contains(_WFolder))
             {
-                IWrite.WriteLine($"[CreateFolders] Erreur la chaine {basePath} ne contient pas {_WFolder}");
+                ITrace.WriteLine($"[CreateFolders] Erreur la chaine {basePath} ne contient pas {_WFolder}");
                 return;
             }
 
             Directory.SetCurrentDirectory(basePath.Path);
-            IWrite.WriteLine($"[CreateFolders] Current Directory '{Directory.GetCurrentDirectory()}'");
+            ITrace.WriteLine($"[CreateFolders] Current Directory '{Directory.GetCurrentDirectory()}'");
 
             foreach (string name in folders)
             {
-                IWrite.WriteLine($"[CreateFolders] Creation of the folder: '{name}'");
+                ITrace.WriteLine($"[CreateFolders] Creation of the folder: '{name}'");
                 string path = Path.Combine(basePath.Path, name);
 
                 // Add to the Dictionary Tree
@@ -664,7 +666,7 @@ namespace Pack_My_Game.Pack
                     overwrite = true;
                     break;
                 case OPResult.Source_Error:
-                    IWrite.WriteLine("File missing");
+                    ITrace.WriteLine("File missing");
                     return false;
 
                 default:
@@ -673,7 +675,7 @@ namespace Pack_My_Game.Pack
 
             }
 
-            IWrite.Write($"[CopyFiles] Copy of the file '{fichier}': ");
+            ITrace.BeginLine($"[CopyFiles] Copy of the file '{fichier}': ");
 
 
             Directory.SetCurrentDirectory(dest);
@@ -683,12 +685,12 @@ namespace Pack_My_Game.Pack
             try
             {
                 File.Copy(fichier, destLink, overwrite);
-                IWrite.WriteLine("Successful");
+                ITrace.EndlLine("Successful");
             }
             catch (Exception e)
             {
-                IWrite.WriteLine("Error");
-                IWrite.WriteLine(e.Message);
+                ITrace.EndlLine("Error");
+                ITrace.WriteLine(e.Message);
             }
 
             Directory.SetCurrentDirectory(_GamePath);
@@ -702,12 +704,12 @@ namespace Pack_My_Game.Pack
         /// <param name="folders"></param>
         void CreateVFolders(Folder basePath, string tail)
         {
-            IWrite.WriteLine(prefix: false);
+            ITrace.WriteLine(prefix: false);
 
             // Double Security
             if (!basePath.Path.Contains(_WFolder))
             {
-                IWrite.WriteLine($"[CreateFolders] Erreur la chaine {basePath} ne contient pas {_WFolder}");
+                ITrace.WriteLine($"[CreateFolders] Erreur la chaine {basePath} ne contient pas {_WFolder}");
                 return;
             }
 
@@ -724,7 +726,7 @@ namespace Pack_My_Game.Pack
                 Console.WriteLine($"Rep actuel {currentDir}");
                 string path = Path.Combine(currentDir, name);
 
-                IWrite.WriteLine($"[CreateFolders] Creation of the folder: '{path}'");
+                ITrace.WriteLine($"[CreateFolders] Creation of the folder: '{path}'");
 
                 // Creation
                 Directory.CreateDirectory(name);

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.FileIO;
 using DlnxLocalTransfert;
-
+using DxTrace;
 
 namespace Pack_My_Game.Compression
 {
@@ -23,6 +23,13 @@ namespace Pack_My_Game.Compression
 
         static string _ArchiveName;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="folder">Folder</param>
+        /// <param name="archiveDest">Archive name</param>
+        /// <param name="cplLvl">Level of compression</param>
+        /// <returns></returns>
         public static bool CompressFolder(string folder, string archiveDest, int cplLvl)
         {
 
@@ -165,5 +172,34 @@ namespace Pack_My_Game.Compression
 
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="destArchive"></param>
+        /// <returns></returns>
+        public static bool Make_SevenZip(string path, string destArchive)
+        {
+            // var zipres = Destination.Verif(destArchive + ".zip");
+            var sevenZRes = OPFiles.SVerif(Path.Combine(path, $"{destArchive}.7z"), "Make_SevenZip", log: (string message) => ITrace.WriteLine(message, true));
+
+            switch (sevenZRes)
+            {
+                case OPResult.OverWrite:
+                case OPResult.Ok:
+                case OPResult.Trash:
+                    ITrace.WriteLine($"[Make_SevenZip] 7z Compression begin");
+                    if (!SevenZipCompression.CompressFolder(path, destArchive, Properties.Settings.Default.c7zCompLvl))
+                    {
+                        ITrace.WriteLine("[Make_SevenZip] 7z Compression canceled");
+                        return false;
+                    }
+                    return true;
+
+                default:
+                    return false;
+            }
+        }
     }
 }

@@ -57,11 +57,17 @@
             this.groupOP = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.ctxLVGames = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.zipItToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zipItToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.miRemoveIt = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.Infos.SuspendLayout();
             this.groupOP.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.ctxLVGames.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -132,7 +138,9 @@
             this.lvGames.View = System.Windows.Forms.View.Details;
             this.lvGames.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.GameColumn_Click);
             this.lvGames.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.lvGames_ItemCheck);
-            this.lvGames.DoubleClick += new System.EventHandler(this.lvGames_DoubleClick);
+            this.lvGames.SelectedIndexChanged += new System.EventHandler(this.lvGames_SelectedIndexChanged);
+            this.lvGames.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvGames_MouseClick);
+            this.lvGames.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvGames_MouseDoubleClick);
             // 
             // ID
             // 
@@ -248,6 +256,37 @@
             // 
             this.toolTip1.IsBalloon = true;
             // 
+            // ctxLVGames
+            // 
+            this.ctxLVGames.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.miRemoveIt,
+            this.zipItToolStripMenuItem,
+            this.zipItToolStripMenuItem1});
+            this.ctxLVGames.Name = "ctxLVGames";
+            resources.ApplyResources(this.ctxLVGames, "ctxLVGames");
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
+            // 
+            // zipItToolStripMenuItem
+            // 
+            this.zipItToolStripMenuItem.Name = "zipItToolStripMenuItem";
+            resources.ApplyResources(this.zipItToolStripMenuItem, "zipItToolStripMenuItem");
+            // 
+            // zipItToolStripMenuItem1
+            // 
+            this.zipItToolStripMenuItem1.Name = "zipItToolStripMenuItem1";
+            resources.ApplyResources(this.zipItToolStripMenuItem1, "zipItToolStripMenuItem1");
+            // 
+            // miRemoveIt
+            // 
+            this.miRemoveIt.Name = "miRemoveIt";
+            resources.ApplyResources(this.miRemoveIt, "miRemoveIt");
+            this.miRemoveIt.Click += new System.EventHandler(this.miRemoveIt_Click);
+            // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
@@ -264,6 +303,7 @@
             this.Infos.PerformLayout();
             this.groupOP.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.ctxLVGames.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,6 +337,11 @@
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
         private System.Windows.Forms.Button butProceed;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ContextMenuStrip ctxLVGames;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem zipItToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zipItToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem miRemoveIt;
     }
 }
 

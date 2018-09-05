@@ -1,0 +1,44 @@
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x86\Pack My Game.exe.config
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x86\Pack My Game.exe.manifest
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x86\Pack My Game.application
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x86\Pack My Game.exe
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x86\Pack My Game.pdb
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x86\fr\Pack My Game.resources.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x86\en\Pack My Game.resources.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x86\DlnxLocalTransfert.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x86\DotNetZip.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x86\MyControls.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x86\SevenZipSharp.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x86\DlnxLocalTransfert.pdb
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x86\DotNetZip.xml
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x86\MyControls.pdb
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x86\fr\DlnxLocalTransfert.resources.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x86\fr\MyControls.resources.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack_My_Game.IHM.AboutBox.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack_My_Game.IHM.ProgressCompFolder.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack_My_Game.IHM.Config.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack_My_Game.IHM.Credits.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack_My_Game.IHM.Help.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack_My_Game.MainWindow.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack_My_Game.IHM.SelectFolder.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack_My_Game.IHM.SplashScreen.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack_My_Game.IHM.Lang.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack_My_Game.Properties.Resources.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack_My_Game.MainWindow.en.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack_My_Game.IHM.Lang.fr.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack_My_Game.IHM.Config.fr.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack_My_Game.IHM.Credits.fr.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack_My_Game.MainWindow.fr.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack My Game.csproj.GenerateResource.cache
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack My Game.csproj.CoreCompileInputs.cache
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\fr\Pack My Game.resources.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\en\Pack My Game.resources.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack My Game.exe.manifest
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack My Game.application
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack My Game.csproj.CopyComplete
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack My Game.exe
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack My Game.pdb
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x86\DxTrace.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x86\DxTrace.pdb
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x86\fr\DxTrace.resources.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack My Game.csprojAssemblyReference.cache

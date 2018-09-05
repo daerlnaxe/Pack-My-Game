@@ -299,10 +299,7 @@ namespace Pack_My_Game
 
         private void lvGames_DoubleClick(object sender, EventArgs e)
         {
-            List<ListViewItem> gamesSelected = new List<ListViewItem>();
-            for (int i = 0; i < lvGames.SelectedItems.Count; i++) gamesSelected.Add(lvGames.SelectedItems[i]);
 
-            PackMeLauncher(gamesSelected);
         }
 
         private void Proceed_Click(object sender, EventArgs e)
@@ -368,7 +365,7 @@ namespace Pack_My_Game
             }
 
 
-
+            #region poubelle
             ////////int indexFullname = -1;
             ////////for (int i = 0; i < lvGames.Columns.Count; i++)
             ////////{
@@ -389,36 +386,37 @@ namespace Pack_My_Game
             ////// {
 
 
-                ////// string fullname = lvGames.SelectedItems[i].SubItems[indexFullname].Text.Split('.')[0]; //lève toute extension
+            ////// string fullname = lvGames.SelectedItems[i].SubItems[indexFullname].Text.Split('.')[0]; //lève toute extension
 
 
-                ////// var res = MessageBox.Show($"Pack This Game '{fullname}' ?", "Pack or Not Pack ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                ////// if (res != DialogResult.Yes) continue;
+            ////// var res = MessageBox.Show($"Pack This Game '{fullname}' ?", "Pack or Not Pack ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            ////// if (res != DialogResult.Yes) continue;
 
 
 
-                //////// var objet = lvGames.SelectedItems[i];
-                //////// string id = objet.Text;
+            //////// var objet = lvGames.SelectedItems[i];
+            //////// string id = objet.Text;
 
-                ////// Console.WriteLine($"[Main] PackMe for {id}");
+            ////// Console.WriteLine($"[Main] PackMe for {id}");
 
 
-                ////// PackMe pm = new PackMe(id, platform);
-                ////// this.Hide();
-                ////// int state = pm.Initialize(_XmlFPlatform);
+            ////// PackMe pm = new PackMe(id, platform);
+            ////// this.Hide();
+            ////// int state = pm.Initialize(_XmlFPlatform);
 
-                //////if (state == 0 && pm.Run())
-                //////{
+            //////if (state == 0 && pm.Run())
+            //////{
 
-                //////    if (MessageBox.Show("Remove this Game from the listView ? (Only Graphical)", "Remove this Game", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                //////    {
-                //////        Console.WriteLine($"Remove: {fullname} from list");
-                //////        lvGames.Items.Remove(objet);
-                //////    }
-                //////}
-                //////pm = null;
-                //////this.Show();
+            //////    if (MessageBox.Show("Remove this Game from the listView ? (Only Graphical)", "Remove this Game", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            //////    {
+            //////        Console.WriteLine($"Remove: {fullname} from list");
+            //////        lvGames.Items.Remove(objet);
+            //////    }
+            //////}
+            //////pm = null;
+            //////this.Show();
             ////////}
+            #endregion poubelle
         }
 
 
@@ -497,6 +495,51 @@ namespace Pack_My_Game
             butProceed.Visible = true;
 
         }
+
+        private void lvGames_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lvGames_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right) return;
+
+            List<ListViewItem> gamesSelected = new List<ListViewItem>();
+            for (int i = 0; i < lvGames.SelectedItems.Count; i++) gamesSelected.Add(lvGames.SelectedItems[i]);
+
+            PackMeLauncher(gamesSelected);
+        }
+
+
+
+        #region Contextual menu
+        /// <summary>
+        /// Show contextual menu - Affiche le menu contextuel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lvGames_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left) return;
+            ctxLVGames.Show(lvGames, e.Location);
+
+        }
+
+        /// <summary>
+        /// Remove  game from the list by menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void miRemoveIt_Click(object sender, EventArgs e)
+        {
+            var item  =lvGames.SelectedItems[0];
+            _GameList.Remove( ((ShortGame)item.Tag).ID );
+            lvGames.Items.Remove(item);
+        }
+
+
+        #endregion
     }
 
 }
