@@ -49,9 +49,17 @@ namespace Pack_My_Game.Pack
         private string _SystemPath;                  // Platform path
         private string _GamePath;                    // Path where the files will be copy
 
-        private Game _ZeGame { get; set; }           // Game object
+        private Game _ZeGame;               // Game object
+        private Platform _ZePlatform;       // Platform object
+
         private string _OutPutFileName { get; set; }
 
+        #region résultats
+        bool vGame;
+        bool vManual;
+        bool vMusic;
+        bool vVideo;
+        #endregion
 
         private XML_Functions _XFunctions;
         //private Dictionary<string, Folder> _Tree;
@@ -79,7 +87,8 @@ namespace Pack_My_Game.Pack
         /// 
         /// </summary>
         /// <param name="xFile">believe... xml file </param>
-        internal int Initialize(string xFile)
+        /// <param name="GameFile">Game file</param>
+        internal int Initialize(string xFile, string nameOfFile)
         {
             /*
             BackgroundWorker bw = new BackgroundWorker();
@@ -87,11 +96,30 @@ namespace Pack_My_Game.Pack
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BWRunWorkerCompleted);
             bw.RunWorkerAsync();
             */
-            
+
             // Verif
             if (string.IsNullOrEmpty(ID)) throw new Exception("Id property: null");
             if (string.IsNullOrEmpty(_SystemName)) throw new Exception();
 
+
+
+
+
+
+
+            // Lecture du fichier platform
+            XML_Functions xmlPlatform = new XML_Functions();
+            xmlPlatform.ReadFile(Path.Combine(Properties.Settings.Default.LBPath, Properties.Settings.Default.fPlatforms));
+
+            Platform platform = xmlPlatform.ScrapPlatform(_SystemName);
+
+            // Reconstruct PlatformFolder Path
+            foreach (PlatformFolder plfmFolder in _ZePlatform.PlatformFolders)
+            {
+                plfmFolder.FolderPath = ReconstructPath(plfmFolder.FolderPath);
+            }
+
+            // Lecture du fichier des jeux
             _XFunctions = new XML_Functions();
             _XFunctions.ReadFile(xFile);
 
@@ -108,7 +136,6 @@ namespace Pack_My_Game.Pack
 
 
             string logFile = Path.Combine(_WFolder, $"{_SystemName} - {_OutPutFileName}.log");
-
 
             // System d'affichage
             iScreen = new InfoScreen();
@@ -127,6 +154,7 @@ namespace Pack_My_Game.Pack
                 ITrace.AddListener(iConsole);
             }
 
+
             //
 
 
@@ -141,6 +169,7 @@ namespace Pack_My_Game.Pack
             ITrace.WriteLine($"[Initialize] {Lang.SystemSelected}: '{_SystemName}'");
             ITrace.WriteLine($"[Initialize] {Lang.GameSelected}: '{_ZeGame.Title}' - Rom: '{_ZeGame.FileName}'");
 
+            #region
             // Folder Verification
             //if (Directory.Exists(_GamePath))
             //{
@@ -165,7 +194,7 @@ namespace Pack_My_Game.Pack
             //        }
             //    }
             //}
-
+            #endregion
 
             var folderRes = OPFolders.SVerif(_GamePath, "Initialize", Dcs_Buttons.NoPass, (string message) => ITrace.WriteLine(message, true));
             if (folderRes == OPResult.Stop)
@@ -227,7 +256,8 @@ namespace Pack_My_Game.Pack
             Directory.SetCurrentDirectory(_GamePath);
 
             // Creation of the Infos.xml
-            MakeInfo();
+            //MakeInfo();
+            MakeXML.InfoGame(_GamePath, _ZeGame);
 
             // Tree root + lvl1
             MakeStructure();
@@ -266,7 +296,8 @@ namespace Pack_My_Game.Pack
 
             if (Properties.Settings.Default.cZipActive)
             {
-                Make_Zip(destArchive);
+                //     Make_Zip(destArchive);
+                ZipCompression.Make_Folder(_GamePath, _SystemPath, destArchive);
             }
             else
             {
@@ -302,6 +333,8 @@ namespace Pack_My_Game.Pack
                 }
             }
 
+            // Résultats
+            PackMeRes.ShowDialog(vGame, vManual, vMusic, vVideo);
 
             iScreen.KillAfter(10);
             ITrace.RemoveListener(iScreen);
@@ -319,48 +352,7 @@ namespace Pack_My_Game.Pack
 
 
         #region WriteData
-        /// <summary>
-        /// Création d'un fichier infos.xml
-        /// </summary>
-        /// <returns></returns>
-        // todo a question box avec une loupe pour lancer les fichiers à comparer  + ecraser envoyer poubelle, non
-        private bool MakeInfo()
-        {
-            ITrace.WriteLine(prefix: false);
-            ITrace.WriteLine($"[MakeInfo] Creation of file 'Infos.xml'");
 
-            string xmlDest = Path.Combine(_GamePath, "Infos.xml");
-
-            var infoRes = OPFiles.SVerif(xmlDest, "MakeInfo", log: (string message) => ITrace.WriteLine(message, true));
-            switch (infoRes)
-            {
-                case OPResult.Ok:
-                case OPResult.OverWrite:
-                case OPResult.Trash:
-                    ITrace.WriteLine("[MakeInfo] Serialization to xml");
-                    XmlSerializer xs = new XmlSerializer(typeof(Game));
-                    using (StreamWriter wr = new StreamWriter(xmlDest))
-                    {
-                        xs.Serialize(wr, _ZeGame);
-                    }
-                    return true;
-
-                default:
-                    return false;
-            }
-            //if (File.Exists("Infos.xml"))
-            //{
-            //    IWrite.AddText($"[CopyVerif] 'Infos.xml' existing: ");
-            //    var res = MB_Decision.Show($"MakeInfo: File exists, do you want to replace it ?", "Alert - MakeInfo", destination: Path.Combine(_GamePath, "Infos.xml"), buttons: MB_Decision.Mode.NoStop);
-
-            //    IWrite.NewLine($"{res.ToString()}", prefix: false);
-
-            //    // pass 
-            //    if (res == MB_Decision.Result.Pass) return false;
-
-            //    else if (res == MB_Decision.Result.Trash) FileSystem.DeleteFile("Infos.xml", UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
-            //}
-        }
 
         private void GetStruc()
         {
@@ -410,19 +402,21 @@ namespace Pack_My_Game.Pack
             opFiles.Buttons = Dcs_Buttons.NoStop;
 
             // rom            
-            var romRes = opFiles.Compare(_ZeGame.ApplicationPath, _Tree.Children["Roms"].Path, whocallme: "Rom");
-            CopyFile(_ZeGame.ApplicationPath, _Tree.Children["Roms"].Path, romRes);
+            //var romRes = opFiles.Compare(_ZeGame.ApplicationPath, _Tree.Children["Roms"].Path, whocallme: "Copy_Rom");
+            //CopyFile(_ZeGame.ApplicationPath, _Tree.Children["Roms"].Path, romRes);
+            CopySpecific(_ZeGame.ApplicationPath, _Tree.Children["Roms"].Path, "Copy_Rom", "Game");
+
 
             // Manual
-            var manualRes = opFiles.Compare(_ZeGame.ManualPath, _Tree.Children["Manuals"].Path, whocallme: "Manual");
+            var manualRes = opFiles.Compare(_ZeGame.ManualPath, _Tree.Children["Manuals"].Path, whocallme: "Copy_Manual");
             CopyFile(_ZeGame.ManualPath, _Tree.Children["Manuals"].Path, manualRes);
 
             // Music            
-            var musicRes = opFiles.Compare(_ZeGame.MusicPath, _Tree.Children["Musics"].Path, whocallme: "Music");
+            var musicRes = opFiles.Compare(_ZeGame.MusicPath, _Tree.Children["Musics"].Path, whocallme: "Copy_Music");
             CopyFile(_ZeGame.MusicPath, _Tree.Children["Musics"].Path, musicRes);
 
             // Video
-            var videoRes = opFiles.Compare(_ZeGame.VideoPath, _Tree.Children["Videos"].Path, whocallme: "Videos");
+            var videoRes = opFiles.Compare(_ZeGame.VideoPath, _Tree.Children["Videos"].Path, whocallme: "Copy_Videos");
             CopyFile(_ZeGame.VideoPath, _Tree.Children["Videos"].Path, videoRes);
 
             //var videores = Destination.Verif(_Tree.Children["Videos"].Path, srcFile: _ZeGame.VideoPath,  whocallme: "Video");
@@ -434,33 +428,41 @@ namespace Pack_My_Game.Pack
         }
 
         /// <summary>
+        /// Function advcanced
+        /// </summary>
+        private void CopySpecific(string dbPath, string destLocation, string whocallme, string mediatype)
+        {
+            // Normal copy
+            if (!string.IsNullOrEmpty(dbPath))
+            {
+                var romRes = OPFiles.SingleCompare(dbPath, destLocation, whocallme, Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
+                vGame = CopyFile(dbPath, destLocation, romRes);
+            }
+            else
+            {
+                foreach (var folder in )
+                {
+
+                }
+            }
+            //
+            //if (resCopy) return;
+
+            //
+        }
+
+        /// <summary>
         /// Copie les images / Copy the images
         /// </summary>      
         /// <remarks>To Add Mask see 'Where'</remarks>
         private void CopyImages()
         {
-            //var res = MessageBox.Show("There is no verification implemented for the images copy, would you want to overwrite them ?", "Copy images", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             var res = MB_SimpleAll.Show($"{Lang.ImagesP} ?", Lang.ImagesTitle, buttons: Dcs_Buttons2.OverWrite | Dcs_Buttons2.Pass);
-            //switch (res == DialogResult.Yes)
-            //{
-            //    case DialogResult:
-
-            //}
 
             ITrace.WriteLine(prefix: false);
-            // Lecture du fichier platform
-            XML_Functions xmlPlatform = new XML_Functions();
-            xmlPlatform.ReadFile(Path.Combine(Properties.Settings.Default.LBPath, Properties.Settings.Default.fPlatforms));
-
-            Platform platform = xmlPlatform.ScrapPlatform(_SystemName);
-
-            // Reconstruct PlatformFolder Path
-            foreach (PlatformFolder plfmFolder in platform.PlatformFolders)
-            {
-                plfmFolder.FolderPath = ReconstructPath(plfmFolder.FolderPath);
 
 
-            }
+
 
             ITrace.WriteLine(prefix: false);
             Queue<PackFile> lPackFile = new Queue<PackFile>();
@@ -468,14 +470,22 @@ namespace Pack_My_Game.Pack
 
             // Get All images (To Add mask see at Where)
             Console.WriteLine($"[CopyImages] Search all images for '{_ZeGame.Title}'");
-            foreach (PlatformFolder plfmFolder in platform.PlatformFolders)
+            foreach (PlatformFolder plfmFolder in _ZePlatform.PlatformFolders)
             {
+                //filtre
+                switch (plfmFolder.MediaType)
+                {
+                    case "Manual":
+                    case "Music":
+                    case "Theme Video":
+                    case "Video":
+                        continue;
+                }
                 // Liste du contenu des dossiers
                 foreach (var fichier in Directory.EnumerateFiles(plfmFolder.FolderPath, "*.*", System.IO.SearchOption.AllDirectories)
                     .Where(s => Path.GetFileName(s).StartsWith($"{_ZeGame.Title}-") || Path.GetFileName(s).StartsWith($"{_ZeGame.Title}.{_ZeGame.ID}-")))
                 {
 
-                    if (Path.GetExtension(fichier) == ".mp3") continue;
                     Console.WriteLine($"\t\t[CopyImages] Found '{fichier}' in '{plfmFolder.FolderPath}'");
 
                     PackFile tmp = new PackFile(plfmFolder.MediaType, fichier);
@@ -562,34 +572,54 @@ namespace Pack_My_Game.Pack
             }
         }
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="destArchive"></param>
-        /// <returns></returns>
-        private bool Make_Zip(string destArchive)
+        // Todo coller un trycatch
+        private bool CopyFile(string fichier, string dest, OPResult result)
         {
-            // var zipres = Destination.Verif(destArchive + ".zip");
-            var zipRes = OPFiles.SVerif(Path.Combine(_SystemPath, $"{destArchive}.zip"), "Make_Zip", log: (string message) => ITrace.WriteLine(message, true));
-
-            switch (zipRes)
+            bool overwrite;
+            switch (result)
             {
-                case OPResult.OverWrite:
+
                 case OPResult.Ok:
                 case OPResult.Trash:
-                    if (!ZipCompression.CompressFolder(_GamePath, destArchive, Properties.Settings.Default.cZipCompLvl))
-                    {
-                        ITrace.WriteLine("[Make_Zip] Zip Compression canceled");
-                        return false;
-                    }
-                    ITrace.WriteLine($"[Make_Zip] Zip Compression begin");
-                    return true;
+                case OPResult.TrashAll:
+                    overwrite = false;
+                    break;
+                case OPResult.OverWrite:
+                case OPResult.OverWriteAll:
+                    overwrite = true;
+                    break;
+                case OPResult.Source_Error:
+                    ITrace.WriteLine("File missing");
+                    return false;
 
                 default:
                     return false;
+
+
             }
+
+            ITrace.BeginLine($"[CopyFiles] Copy of the file '{fichier}': ");
+
+
+            Directory.SetCurrentDirectory(dest);
+            string filename = Path.GetFileName(fichier);
+            string destLink = Path.Combine(dest, filename);
+
+            try
+            {
+                File.Copy(fichier, destLink, overwrite);
+                ITrace.EndlLine("Successful");
+            }
+            catch (Exception e)
+            {
+                ITrace.EndlLine("Error");
+                ITrace.WriteLine(e.Message);
+            }
+
+            Directory.SetCurrentDirectory(_GamePath);
+            return true;
         }
+
 
 
         #endregion
@@ -657,53 +687,6 @@ namespace Pack_My_Game.Pack
 
         }
 
-        // Todo coller un trycatch
-        private bool CopyFile(string fichier, string dest, OPResult result)
-        {
-            bool overwrite;
-            switch (result)
-            {
-
-                case OPResult.Ok:
-                case OPResult.Trash:
-                case OPResult.TrashAll:
-                    overwrite = false;
-                    break;
-                case OPResult.OverWrite:
-                case OPResult.OverWriteAll:
-                    overwrite = true;
-                    break;
-                case OPResult.Source_Error:
-                    ITrace.WriteLine("File missing");
-                    return false;
-
-                default:
-                    return false;
-
-
-            }
-
-            ITrace.BeginLine($"[CopyFiles] Copy of the file '{fichier}': ");
-
-
-            Directory.SetCurrentDirectory(dest);
-            string filename = Path.GetFileName(fichier);
-            string destLink = Path.Combine(dest, filename);
-
-            try
-            {
-                File.Copy(fichier, destLink, overwrite);
-                ITrace.EndlLine("Successful");
-            }
-            catch (Exception e)
-            {
-                ITrace.EndlLine("Error");
-                ITrace.WriteLine(e.Message);
-            }
-
-            Directory.SetCurrentDirectory(_GamePath);
-            return true;
-        }
 
         /// <summary>
         /// Créer des dossiers à l'horizontale dans un répertoire, ajoute au dictionnaire

@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuTop = new System.Windows.Forms.MenuStrip();
             this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,23 +60,22 @@
             this.ctxLVGames = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.miRemoveIt = new System.Windows.Forms.ToolStripMenuItem();
-            this.zipItToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.zipItToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.mi7ZipIt = new System.Windows.Forms.ToolStripMenuItem();
+            this.miZipIt = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.miInfoXml = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.Infos.SuspendLayout();
             this.groupOP.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.ctxLVGames.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // menuTop
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.configToolStripMenuItem,
-            this.aboutToolStripMenuItem});
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
-            this.menuStrip1.Name = "menuStrip1";
+            resources.ApplyResources(this.menuTop, "menuTop");
+            this.menuTop.Name = "menuTop";
             // 
             // configToolStripMenuItem
             // 
@@ -105,7 +104,6 @@
             this.aboutToolStripMenuItem1});
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
-            //this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem1
             // 
@@ -138,7 +136,6 @@
             this.lvGames.View = System.Windows.Forms.View.Details;
             this.lvGames.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.GameColumn_Click);
             this.lvGames.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.lvGames_ItemCheck);
-           // this.lvGames.SelectedIndexChanged += new System.EventHandler(this.lvGames_SelectedIndexChanged);
             this.lvGames.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvGames_MouseClick);
             this.lvGames.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvGames_MouseDoubleClick);
             // 
@@ -261,8 +258,9 @@
             this.ctxLVGames.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.miRemoveIt,
-            this.zipItToolStripMenuItem,
-            this.zipItToolStripMenuItem1});
+            this.miInfoXml,
+            this.mi7ZipIt,
+            this.miZipIt});
             this.ctxLVGames.Name = "ctxLVGames";
             resources.ApplyResources(this.ctxLVGames, "ctxLVGames");
             // 
@@ -277,26 +275,40 @@
             resources.ApplyResources(this.miRemoveIt, "miRemoveIt");
             this.miRemoveIt.Click += new System.EventHandler(this.miRemoveIt_Click);
             // 
-            // zipItToolStripMenuItem
+            // mi7ZipIt
             // 
-            this.zipItToolStripMenuItem.Name = "zipItToolStripMenuItem";
-            resources.ApplyResources(this.zipItToolStripMenuItem, "zipItToolStripMenuItem");
+            this.mi7ZipIt.Name = "mi7ZipIt";
+            resources.ApplyResources(this.mi7ZipIt, "mi7ZipIt");
+            this.mi7ZipIt.Click += new System.EventHandler(this.miZip_Click);
             // 
-            // zipItToolStripMenuItem1
+            // miZipIt
             // 
-            this.zipItToolStripMenuItem1.Name = "zipItToolStripMenuItem1";
-            resources.ApplyResources(this.zipItToolStripMenuItem1, "zipItToolStripMenuItem1");
+            this.miZipIt.Name = "miZipIt";
+            resources.ApplyResources(this.miZipIt, "miZipIt");
+            this.miZipIt.Click += new System.EventHandler(this.mi7ZipIt_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.configToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
+            this.menuStrip1.Name = "menuStrip1";
+            // 
+            // miInfoXml
+            // 
+            this.miInfoXml.Name = "miInfoXml";
+            resources.ApplyResources(this.miInfoXml, "miInfoXml");
+            this.miInfoXml.Click += new System.EventHandler(this.miInfoXml_Click);
             // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel2);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.menuTop);
+            this.MainMenuStrip = this.menuTop;
             this.Name = "MainWindow";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.Infos.ResumeLayout(false);
@@ -304,6 +316,8 @@
             this.groupOP.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.ctxLVGames.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -311,7 +325,7 @@
 
         #endregion
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuTop;
         private System.Windows.Forms.ToolStripMenuItem configToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ListView lvGames;
@@ -339,9 +353,11 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ContextMenuStrip ctxLVGames;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem zipItToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem zipItToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem mi7ZipIt;
+        private System.Windows.Forms.ToolStripMenuItem miZipIt;
         private System.Windows.Forms.ToolStripMenuItem miRemoveIt;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem miInfoXml;
     }
 }
 

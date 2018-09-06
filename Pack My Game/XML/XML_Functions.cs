@@ -120,6 +120,7 @@ namespace Pack_My_Game.XML
                             case "ApplicationPath":
                                 Console.WriteLine(nodes.Current.Value);
                                 zeGame.FileName = Path.GetFileName(nodes.Current.Value);
+                                zeGame.ExploitableFileName = zeGame.FileName.Split('.')[0];
                                 break;
 
                             case "Region":

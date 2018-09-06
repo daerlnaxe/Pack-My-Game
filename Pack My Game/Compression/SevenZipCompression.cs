@@ -162,8 +162,9 @@ namespace Pack_My_Game.Compression
         /// <returns></returns>
         public static bool Make_Folder(string folder2Comp, string path, string destArchive)
         {
+            string destArchLink = Path.Combine(path, $"{destArchive}.7z");
             // var zipres = Destination.Verif(destArchive + ".zip");
-            var sevenZRes = OPFiles.SVerif(Path.Combine(path, $"{destArchive}.7z"), "Make_SevenZip", log: (string message) => ITrace.WriteLine(message, true));
+            var sevenZRes = OPFiles.SingleVerif(destArchLink, "Make_SevenZip", log: (string message) => ITrace.WriteLine(message, true));
 
             switch (sevenZRes)
             {
@@ -171,7 +172,7 @@ namespace Pack_My_Game.Compression
                 case OPResult.Ok:
                 case OPResult.Trash:
                     ITrace.WriteLine($"[Make_SevenZip] 7z Compression begin");
-                    if (!SevenZipCompression.CompressFolder(folder2Comp, destArchive, Properties.Settings.Default.c7zCompLvl))
+                    if (!SevenZipCompression.CompressFolder(folder2Comp, destArchLink, Properties.Settings.Default.c7zCompLvl))
                     {
                         ITrace.WriteLine("[Make_SevenZip] 7z Compression canceled");
                         return false;

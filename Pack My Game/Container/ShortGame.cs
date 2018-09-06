@@ -23,5 +23,8 @@ namespace Pack_My_Game.Container
         [XmlIgnore]
         public string FileName { get; set; }
 
+        [XmlIgnore]
+        public string ExploitableFileName { get; set;}
+
     }
 }

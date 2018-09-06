@@ -120,10 +120,35 @@
   <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="menuTop.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>181, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="menuTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>784, 24</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="menuTop.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="menuTop.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuTop.Name" xml:space="preserve">
+    <value>menuTop</value>
+  </data>
+  <data name="&gt;&gt;menuTop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuTop.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuTop.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 22</value>
   </data>
@@ -136,7 +161,6 @@
   <data name="testToolStripMenuItem.Text" xml:space="preserve">
     <value>test</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="testToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -169,30 +193,6 @@
   </data>
   <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
     <value>Help</value>
-  </data>
-  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>784, 24</value>
-  </data>
-  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="menuStrip1.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>6</value>
@@ -685,37 +685,64 @@
     <value>393, 17</value>
   </metadata>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>164, 22</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>PackThis ...</value>
   </data>
   <data name="miRemoveIt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>164, 22</value>
   </data>
   <data name="miRemoveIt.Text" xml:space="preserve">
     <value>Remove from list</value>
   </data>
-  <data name="zipItToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="miInfoXml.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 22</value>
   </data>
-  <data name="zipItToolStripMenuItem.Text" xml:space="preserve">
+  <data name="miInfoXml.Text" xml:space="preserve">
+    <value>Make Info.xml</value>
+  </data>
+  <data name="mi7ZipIt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 22</value>
+  </data>
+  <data name="mi7ZipIt.Text" xml:space="preserve">
     <value>Zip it...</value>
   </data>
-  <data name="zipItToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="miZipIt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 22</value>
   </data>
-  <data name="zipItToolStripMenuItem1.Text" xml:space="preserve">
+  <data name="miZipIt.Text" xml:space="preserve">
     <value>7-Zip it...</value>
   </data>
   <data name="ctxLVGames.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 114</value>
+    <value>165, 114</value>
   </data>
   <data name="&gt;&gt;ctxLVGames.Name" xml:space="preserve">
     <value>ctxLVGames</value>
   </data>
   <data name="&gt;&gt;ctxLVGames.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>181, 17</value>
+  </metadata>
+  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>784, 24</value>
+  </data>
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -816,16 +843,22 @@
   <data name="&gt;&gt;miRemoveIt.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;zipItToolStripMenuItem.Name" xml:space="preserve">
-    <value>zipItToolStripMenuItem</value>
+  <data name="&gt;&gt;mi7ZipIt.Name" xml:space="preserve">
+    <value>mi7ZipIt</value>
   </data>
-  <data name="&gt;&gt;zipItToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;mi7ZipIt.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;zipItToolStripMenuItem1.Name" xml:space="preserve">
-    <value>zipItToolStripMenuItem1</value>
+  <data name="&gt;&gt;miZipIt.Name" xml:space="preserve">
+    <value>miZipIt</value>
   </data>
-  <data name="&gt;&gt;zipItToolStripMenuItem1.Type" xml:space="preserve">
+  <data name="&gt;&gt;miZipIt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;miInfoXml.Name" xml:space="preserve">
+    <value>miInfoXml</value>
+  </data>
+  <data name="&gt;&gt;miInfoXml.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

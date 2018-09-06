@@ -10,6 +10,8 @@ using System.IO;
 using Microsoft.VisualBasic.FileIO;
 using System.Diagnostics;
 using Pack_My_Game.IHM;
+using DlnxLocalTransfert;
+using DxTrace;
 
 namespace Pack_My_Game.Compression
 {
@@ -181,6 +183,36 @@ namespace Pack_My_Game.Compression
         {
             Console.WriteLine($"ap {e.BytesTransferred} || {e.TotalBytesToTransfer}");
 
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="destArchive"></param>
+        /// <returns></returns>
+        public static bool Make_Folder(string folder2Comp, string path, string destArchive)
+        {
+            string destArchLink = Path.Combine(path, $"{destArchive}.7z");
+            var zipRes = OPFiles.SingleVerif(destArchLink, "Make_Zip", log: (string message) => ITrace.WriteLine(message, true));
+
+            switch (zipRes)
+            {
+                case OPResult.OverWrite:
+                case OPResult.Ok:
+                case OPResult.Trash:
+                    if (!ZipCompression.CompressFolder(folder2Comp, destArchLink, Properties.Settings.Default.cZipCompLvl))
+                    {
+                        ITrace.WriteLine("[Make_Zip] Zip Compression canceled");
+                        return false;
+                    }
+                    ITrace.WriteLine($"[Make_Zip] Zip Compression begin");
+                    return true;
+
+                default:
+                    return false;
+            }
         }
     }
 }

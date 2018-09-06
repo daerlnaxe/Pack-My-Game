@@ -12,6 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.FileIO;
+using Pack_My_Game.Compression;
 using Pack_My_Game.Container;
 using Pack_My_Game.IHM;
 using Pack_My_Game.Pack;
@@ -368,7 +369,7 @@ namespace Pack_My_Game
 
                 PackMe pm = new PackMe(zeGame.ID, platform);
                 this.Hide();
-                int state = pm.Initialize(_XmlFPlatform);
+                int state = pm.Initialize(_XmlFPlatform, zeGame.FileName);
 
 
                 if (state == 0 && pm.Run())
@@ -528,11 +529,14 @@ namespace Pack_My_Game
             string destArch = Path.Combine(_OutPPath, PlatformName, gameName);
             if (!Directory.Exists(destArch))
             {
-                
+                miZipIt.Enabled = false;
+                mi7ZipIt.Enabled = false;
+
             }
             else
             {
-
+                miZipIt.Enabled = true;
+                mi7ZipIt.Enabled = true;
             }
         }
 
@@ -548,8 +552,50 @@ namespace Pack_My_Game
             lvGames.Items.Remove(item);
         }
 
+        /// <summary>
+        /// Launch seven zip compression
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mi7ZipIt_Click(object sender, EventArgs e)
+        {
+            string gameName = ((ShortGame)lvGames.SelectedItems[0].Tag).FileName.Split('.')[0];
+            string folder2Comp = Path.Combine(_OutPPath, PlatformName, gameName);
+            string workFolder = Path.Combine(_OutPPath, PlatformName);
+            SevenZipCompression.Make_Folder(folder2Comp, workFolder, gameName);
+        }
 
+        /// <summary>
+        /// Launch zipCompression
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void miZip_Click(object sender, EventArgs e)
+        {
+            string gameName = ((ShortGame)lvGames.SelectedItems[0].Tag).FileName.Split('.')[0];
+            string folder2Comp = Path.Combine(_OutPPath, PlatformName, gameName);
+            string workFolder = Path.Combine(_OutPPath, PlatformName);
+            ZipCompression.Make_Folder(folder2Comp, workFolder, gameName);
+        }
+
+        /// <summary>
+        /// Make Info Xml
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void miInfoXml_Click(object sender, EventArgs e)
+        {
+            ShortGame sGame = (ShortGame)lvGames.SelectedItems[0].Tag;
+            string gameWPath = Path.Combine(_OutPPath, PlatformName, sGame.FileName.Split('.')[0]);
+
+           var fGame = _xfGames.ScrapGame(sGame.ID);
+            MakeXML.InfoGame(gameWPath, fGame);
+
+            
+        }
         #endregion
+
+
     }
 
 }

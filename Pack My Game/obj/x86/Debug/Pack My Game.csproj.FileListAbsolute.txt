@@ -42,3 +42,4 @@ E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x86\DxTrace.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x86\DxTrace.pdb
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x86\fr\DxTrace.resources.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack My Game.csprojAssemblyReference.cache
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x86\Debug\Pack_My_Game.IHM.PackMeRes.resources
