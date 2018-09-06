@@ -369,7 +369,7 @@ namespace Pack_My_Game
 
                 PackMe pm = new PackMe(zeGame.ID, platform);
                 this.Hide();
-                int state = pm.Initialize(_XmlFPlatform, zeGame.FileName);
+                int state = pm.Initialize(_XmlFPlatform, zeGame.ExploitableFileName);
 
 
                 if (state == 0 && pm.Run())

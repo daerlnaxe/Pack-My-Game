@@ -52,8 +52,6 @@ namespace Pack_My_Game.Pack
         private Game _ZeGame;               // Game object
         private Platform _ZePlatform;       // Platform object
 
-        private string _OutPutFileName { get; set; }
-
         #region résultats
         bool vGame;
         bool vManual;
@@ -87,55 +85,13 @@ namespace Pack_My_Game.Pack
         /// 
         /// </summary>
         /// <param name="xFile">believe... xml file </param>
-        /// <param name="GameFile">Game file</param>
+        /// <param name="GameFile">Game file (exploitable)</param>
         internal int Initialize(string xFile, string nameOfFile)
         {
-            /*
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(BwWork); // PackMe.Initialize(_XmlFPlatform);
-            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BWRunWorkerCompleted);
-            bw.RunWorkerAsync();
-            */
-
-            // Verif
-            if (string.IsNullOrEmpty(ID)) throw new Exception("Id property: null");
-            if (string.IsNullOrEmpty(_SystemName)) throw new Exception();
-
-
-
-
-
-
-
-            // Lecture du fichier platform
-            XML_Functions xmlPlatform = new XML_Functions();
-            xmlPlatform.ReadFile(Path.Combine(Properties.Settings.Default.LBPath, Properties.Settings.Default.fPlatforms));
-
-            Platform platform = xmlPlatform.ScrapPlatform(_SystemName);
-
-            // Reconstruct PlatformFolder Path
-            foreach (PlatformFolder plfmFolder in _ZePlatform.PlatformFolders)
-            {
-                plfmFolder.FolderPath = ReconstructPath(plfmFolder.FolderPath);
-            }
-
-            // Lecture du fichier des jeux
-            _XFunctions = new XML_Functions();
-            _XFunctions.ReadFile(xFile);
-
-            // Get Main infos
-            _ZeGame = _XFunctions.ScrapGame(ID);
-            _ZeGame.FileName = Path.GetFileName(_ZeGame.ApplicationPath);
-
-            // Elimination of all extensions x.bin.zip => x
-            _OutPutFileName = _ZeGame.FileName.Split('.')[0];
-
             _WFolder = Properties.Settings.Default.OutPPath;
             _SystemPath = Path.Combine(_WFolder, _SystemName);
-            _GamePath = Path.Combine(_SystemPath, $"{_OutPutFileName}");             // New Working Folder
-
-
-            string logFile = Path.Combine(_WFolder, $"{_SystemName} - {_OutPutFileName}.log");
+            _GamePath = Path.Combine(_SystemPath, $"{nameOfFile}");             // New Working Folder
+            string logFile = Path.Combine(_WFolder, $"{_SystemName} - {nameOfFile}.log");
 
             // System d'affichage
             iScreen = new InfoScreen();
@@ -154,15 +110,37 @@ namespace Pack_My_Game.Pack
                 ITrace.AddListener(iConsole);
             }
 
+            /*
+            BackgroundWorker bw = new BackgroundWorker();
+            bw.DoWork += new DoWorkEventHandler(BwWork); // PackMe.Initialize(_XmlFPlatform);
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BWRunWorkerCompleted);
+            bw.RunWorkerAsync();
+            */
 
-            //
+            // Verif
+            if (string.IsNullOrEmpty(ID)) throw new Exception("Id property: null");
+            if (string.IsNullOrEmpty(_SystemName)) throw new Exception();
 
+            // Lecture du fichier platform
+            XML_Functions xmlPlatform = new XML_Functions();
+            xmlPlatform.ReadFile(Path.Combine(Properties.Settings.Default.LBPath, Properties.Settings.Default.fPlatforms));
 
-            //    IWrite = new InfoHandler(window: true);
-            //IWrite.Prefix = "PackMe";
-            //IWrite.SetLogActive(logFile, true);
+            _ZePlatform = xmlPlatform.ScrapPlatform(_SystemName);
 
-            //IWrite.ShowWindow();
+            // Reconstruct PlatformFolder Path
+            foreach (PlatformFolder plfmFolder in _ZePlatform.PlatformFolders)
+            {
+                plfmFolder.FolderPath = ReconstructPath(plfmFolder.FolderPath);
+            }
+
+            // Lecture du fichier des jeux
+            _XFunctions = new XML_Functions();
+            _XFunctions.ReadFile(xFile);
+
+            // Get Main infos
+            _ZeGame = _XFunctions.ScrapGame(ID);
+            _ZeGame.FileName = Path.GetFileName(_ZeGame.ApplicationPath);
+
 
             ITrace.WriteLine("===== Report of errors: =====");
             ITrace.WriteLine($"[Initialize] ID:\t'{ID}'");
@@ -263,6 +241,8 @@ namespace Pack_My_Game.Pack
             MakeStructure();
 
             // Copy Roms, Video, Music, Manual
+            vMusic = CopySpecific(_ZeGame.MusicPath, _Tree.Children["Musics"].Path, "Copy_Music", "Music");
+
             CopySpecificFiles();
 
             // Copy images
@@ -288,7 +268,7 @@ namespace Pack_My_Game.Pack
             GetStruc();
 
             // Archive
-            string destArchive = Path.Combine(_SystemPath, _OutPutFileName);
+            string destArchive = Path.Combine(_SystemPath, _ZeGame.ExploitableFileName);
 
             // zip
             var tamere = Properties.Settings.Default.cZipActive;
@@ -316,7 +296,7 @@ namespace Pack_My_Game.Pack
             }
 
             // Erase the temp folder
-            if (MessageBox.Show($"{Lang.EraseTmpFolder} '{_OutPutFileName}' ?", Lang.Erase, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show($"{Lang.EraseTmpFolder} '{_ZeGame.ExploitableFileName}' ?", Lang.Erase, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 try
                 {
@@ -404,7 +384,7 @@ namespace Pack_My_Game.Pack
             // rom            
             //var romRes = opFiles.Compare(_ZeGame.ApplicationPath, _Tree.Children["Roms"].Path, whocallme: "Copy_Rom");
             //CopyFile(_ZeGame.ApplicationPath, _Tree.Children["Roms"].Path, romRes);
-            CopySpecific(_ZeGame.ApplicationPath, _Tree.Children["Roms"].Path, "Copy_Rom", "Game");
+            vGame = CopySpecific(_ZeGame.ApplicationPath, _Tree.Children["Roms"].Path, "Copy_Rom", "Game");
 
 
             // Manual
@@ -412,8 +392,8 @@ namespace Pack_My_Game.Pack
             CopyFile(_ZeGame.ManualPath, _Tree.Children["Manuals"].Path, manualRes);
 
             // Music            
-            var musicRes = opFiles.Compare(_ZeGame.MusicPath, _Tree.Children["Musics"].Path, whocallme: "Copy_Music");
-            CopyFile(_ZeGame.MusicPath, _Tree.Children["Musics"].Path, musicRes);
+            /*var musicRes = opFiles.Compare(_ZeGame.MusicPath, _Tree.Children["Musics"].Path, whocallme: "Copy_Music");
+            CopyFile(_ZeGame.MusicPath, _Tree.Children["Musics"].Path, musicRes);*/
 
             // Video
             var videoRes = opFiles.Compare(_ZeGame.VideoPath, _Tree.Children["Videos"].Path, whocallme: "Copy_Videos");
@@ -430,25 +410,42 @@ namespace Pack_My_Game.Pack
         /// <summary>
         /// Function advcanced
         /// </summary>
-        private void CopySpecific(string dbPath, string destLocation, string whocallme, string mediatype)
+        private bool CopySpecific(string dbPath, string destLocation, string whocallme, string mediatype)
         {
             // Normal copy
             if (!string.IsNullOrEmpty(dbPath))
             {
-                var romRes = OPFiles.SingleCompare(dbPath, destLocation, whocallme, Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
-                vGame = CopyFile(dbPath, destLocation, romRes);
+                var res = OPFiles.SingleCompare(dbPath, destLocation, whocallme, Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
+                return CopyFile(dbPath, destLocation, res);
             }
             else
             {
-                foreach (var folder in )
+                PlatformFolder zeOne = null;
+                foreach (var folder in _ZePlatform.PlatformFolders)
                 {
-
+                    if (folder.MediaType.Equals(mediatype))
+                    {
+                        zeOne = folder;
+                        break;
+                    }
                 }
+                List<string> dFiles = OPFiles.Search_Files(_ZeGame.Title, zeOne.FolderPath, System.IO.SearchOption.TopDirectoryOnly, "-", " -");
+
+                if (dFiles.Count == 0) return false;
+
+                foreach (string fichier in dFiles)
+                {
+                    var res = OPFiles.SingleCompare(fichier, destLocation, whocallme, Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
+                    CopyFile(fichier,destLocation, res);    
+                }
+                return true;
+
             }
             //
             //if (resCopy) return;
 
             //
+            return false;
         }
 
         /// <summary>

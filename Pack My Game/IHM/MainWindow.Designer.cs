@@ -60,10 +60,10 @@
             this.ctxLVGames = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.miRemoveIt = new System.Windows.Forms.ToolStripMenuItem();
+            this.miInfoXml = new System.Windows.Forms.ToolStripMenuItem();
             this.mi7ZipIt = new System.Windows.Forms.ToolStripMenuItem();
             this.miZipIt = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.miInfoXml = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.Infos.SuspendLayout();
             this.groupOP.SuspendLayout();
@@ -275,6 +275,12 @@
             resources.ApplyResources(this.miRemoveIt, "miRemoveIt");
             this.miRemoveIt.Click += new System.EventHandler(this.miRemoveIt_Click);
             // 
+            // miInfoXml
+            // 
+            this.miInfoXml.Name = "miInfoXml";
+            resources.ApplyResources(this.miInfoXml, "miInfoXml");
+            this.miInfoXml.Click += new System.EventHandler(this.miInfoXml_Click);
+            // 
             // mi7ZipIt
             // 
             this.mi7ZipIt.Name = "mi7ZipIt";
@@ -294,12 +300,6 @@
             this.aboutToolStripMenuItem});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
-            // 
-            // miInfoXml
-            // 
-            this.miInfoXml.Name = "miInfoXml";
-            resources.ApplyResources(this.miInfoXml, "miInfoXml");
-            this.miInfoXml.Click += new System.EventHandler(this.miInfoXml_Click);
             // 
             // MainWindow
             // 

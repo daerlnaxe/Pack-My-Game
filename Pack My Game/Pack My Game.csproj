@@ -150,9 +150,11 @@
   <ItemGroup>
     <Compile Include="Compression\SevenZipCompression.cs" />
     <Compile Include="Compression\ZipCompression.cs" />
+    <Compile Include="Container\BackupGame.cs" />
     <Compile Include="Container\Clone.cs" />
     <Compile Include="Container\Folder.cs" />
     <Compile Include="Container\Game.cs" />
+    <None Include="Container\LBGame.cs" />
     <Compile Include="Container\PackFile.cs" />
     <Compile Include="Container\Platform.cs" />
     <Compile Include="Container\PlatformFolder.cs" />
