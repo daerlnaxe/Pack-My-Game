@@ -524,6 +524,16 @@ namespace Pack_My_Game
             if (e.Button == MouseButtons.Left) return;
             ctxLVGames.Show(lvGames, e.Location);
 
+            string gameName = ((ShortGame)lvGames.SelectedItems[0].Tag).FileName.Split('.')[0];
+            string destArch = Path.Combine(_OutPPath, PlatformName, gameName);
+            if (!Directory.Exists(destArch))
+            {
+                
+            }
+            else
+            {
+
+            }
         }
 
         /// <summary>
