@@ -49,7 +49,7 @@ namespace Pack_My_Game.Pack
         private string _SystemPath;                  // Platform path
         private string _GamePath;                    // Path where the files will be copy
 
-        private Game _ZeGame;               // Game object
+        private GameInfo _ZeGame;               // Game object
         private Platform _ZePlatform;       // Platform object
 
         #region résultats

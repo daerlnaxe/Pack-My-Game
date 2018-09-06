@@ -195,9 +195,9 @@ namespace Pack_My_Game.XML
         /// Convert a game in object
         /// </summary>
         /// <param name="game"></param>
-        internal Game ScrapGame(string ID)
+        internal GameInfo ScrapGame(string ID)
         {
-            Game zeGame = null;
+            GameInfo zeGame = null;
 
             XPathNavigator nav = _XDoc.CreateNavigator();
             Console.WriteLine($"//LaunchBox/Game[ID='{ID}']");
@@ -209,7 +209,7 @@ namespace Pack_My_Game.XML
 
             if (nodes.Count != 0)
             {
-                zeGame = new Game();
+                zeGame = new GameInfo();
 
                 nodes.MoveNext();
 
@@ -577,7 +577,7 @@ namespace Pack_My_Game.XML
 
                         case "Portable":
                             Console.WriteLine(nodes.Current.Value);
-                            backGame.Portable = int.Parse(nodes.Current.Value);
+                            backGame.Portable = bool.Parse(nodes.Current.Value);
                             break;
 
                         case "VideoPath":

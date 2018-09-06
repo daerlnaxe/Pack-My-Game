@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pack_My_Game.Container
+namespace Pack_My_Game.BackupLB
 {
 
     ////     <Game{get; set;}
@@ -62,9 +62,8 @@ namespace Pack_My_Game.Container
     ////    <MissingBackgroundImage{get; set;}false</MissingBackgroundImage{get; set;}
     ////  </Game{get; set;}
     ///
-    class BackupGame
+    class Game:Common
     {
-        public string ApplicationPath { get; set; }             //..\..\Games\Roms\Sega Mega Drive\Pending\3 Ninjas Kick Back(1994)(Sony Imagesoft) (US).zip
         public string CommandLine { get; set; }
         public bool Completed { get; set; }                     //false
         public string ConfigurationCommandLine { get; set; }    //
@@ -108,7 +107,7 @@ namespace Pack_My_Game.Container
         public string PlayMode { get; set; }                    //Coopération; Multijoueur
         public string Region { get; set; }                      //United States
         public int PlayCount { get; set; }                      //2
-        public int Portable { get; set; }                       //false
+        public bool Portable { get; set; }                       //false
         public string VideoPath { get; set; }                   //
         public bool Hide { get; set; }                          //false
         public bool Broken { get; set; }                        //false
@@ -118,6 +117,9 @@ namespace Pack_My_Game.Container
         public bool MissingScreenshotImage { get; set; }        //false
         public bool MissingClearLogoImage { get; set; }         //false
         public bool MissingBackgroundImage { get; set; }        //false
+
+        List<Tuple<string, string>> CustomFields { get; set; } = new List<Tuple<string, string>>();
+        List<AdditionalApplication> AdditionalApplications { get; set; } = new List<AdditionalApplication>();
     }
 
 }

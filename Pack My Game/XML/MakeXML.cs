@@ -19,7 +19,7 @@ namespace Pack_My_Game.XML
         /// </summary>
         /// <returns></returns>
         // todo a question box avec une loupe pour lancer les fichiers à comparer  + ecraser envoyer poubelle, non
-        public static bool InfoGame(string path, Game zeGame )
+        public static bool InfoGame(string path, GameInfo zeGame )
         {
             ITrace.WriteLine(prefix: false);
             ITrace.WriteLine($"[MakeInfo] Creation of file 'Infos.xml'");
@@ -33,7 +33,7 @@ namespace Pack_My_Game.XML
                 case OPResult.OverWrite:
                 case OPResult.Trash:
                     ITrace.WriteLine("[MakeInfo] Serialization to xml");
-                    XmlSerializer xs = new XmlSerializer(typeof(Game));
+                    XmlSerializer xs = new XmlSerializer(typeof(GameInfo));
                     using (StreamWriter wr = new StreamWriter(xmlDest))
                     {
                         xs.Serialize(wr, zeGame);

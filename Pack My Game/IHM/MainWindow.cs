@@ -588,14 +588,18 @@ namespace Pack_My_Game
             ShortGame sGame = (ShortGame)lvGames.SelectedItems[0].Tag;
             string gameWPath = Path.Combine(_OutPPath, PlatformName, sGame.FileName.Split('.')[0]);
 
-           var fGame = _xfGames.ScrapGame(sGame.ID);
+            var fGame = _xfGames.ScrapGame(sGame.ID);
             MakeXML.InfoGame(gameWPath, fGame);
 
-            
+
         }
+
         #endregion
 
-
+        private void imBackupXMLGame_Click(object sender, EventArgs e)
+        {
+            var backup = _xfGames.ScrapBackupGame(((ShortGame)lvGames.SelectedItems[0].Tag).ID);
+        }
     }
 
 }

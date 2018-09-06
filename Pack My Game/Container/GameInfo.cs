@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 
 namespace Pack_My_Game.Container
 {
-    public class Game: ShortGame
+    public class GameInfo: ShortGame
     {
         #region infos
         [XmlElement(Order = 8)]
