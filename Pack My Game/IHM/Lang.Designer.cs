@@ -88,6 +88,15 @@ namespace Pack_My_Game.IHM {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Compress the workfolder for this game ?.
+        /// </summary>
+        internal static string Compress_Question {
+            get {
+                return ResourceManager.GetString("Compress_Question", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Creation of folder.
         /// </summary>
         internal static string CreationFolder {

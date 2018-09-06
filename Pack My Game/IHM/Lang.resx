@@ -128,6 +128,10 @@
     <value>Choose the LaunchBox path</value>
     <comment>Config</comment>
   </data>
+  <data name="Compress_Question" xml:space="preserve">
+    <value>Compress the workfolder for this game ?</value>
+    <comment>MainWindow</comment>
+  </data>
   <data name="CreationFolder" xml:space="preserve">
     <value>Creation of folder</value>
     <comment>PackMe</comment>

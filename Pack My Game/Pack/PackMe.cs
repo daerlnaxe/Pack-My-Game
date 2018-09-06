@@ -277,7 +277,7 @@ namespace Pack_My_Game.Pack
             // 7-Zip
             if (Properties.Settings.Default.c7zActive)
             {
-                SevenZipCompression.Make_SevenZip(_SystemPath, destArchive);
+                SevenZipCompression.Make_Folder(_GamePath, _SystemPath, destArchive);
             }
             else
             {

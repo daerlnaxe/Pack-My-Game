@@ -32,9 +32,15 @@ namespace Pack_My_Game
     {
         string _XmlFMachines;
         string _XmlFPlatform;
+        // LaunchBox path
         string _lbPath;
+        // Work path
         string _OutPPath;
-        ResourceManager _RT;
+
+        // PlatformName
+        string PlatformName;
+
+        //ResourceManager _RT;
 
         Dictionary<string, ShortGame> _GameList;
         int _GameSortColumn = -1;
@@ -156,25 +162,7 @@ namespace Pack_My_Game
 
         }
 
-        /// <summary>
-        /// Boite de selection des machines - ComboBox For Machines
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void lboxMachines_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lboxMachines.SelectedIndex == 0) return;
 
-            string machine = lboxMachines.SelectedItem.ToString();
-            Console.WriteLine($"\t Machine: {machine} selected");
-
-            _XmlFPlatform = Path.Combine(_lbPath, Properties.Settings.Default.dPlatforms, $"{machine}.xml");
-
-            Console.WriteLine($"\tTarget: {_XmlFPlatform}");
-
-            FillListGames();
-
-        }
 
         /// <summary>
         /// Boite de selection des jeux - Combobox for Games
@@ -211,6 +199,19 @@ namespace Pack_My_Game
             var helpWin = new IHM.Help();
             helpWin.ShowDialog();
         }
+
+
+        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AboutBox ab = new AboutBox();
+            ab.Show();
+        }
+
+        private void creditsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Credits cr = new Credits();
+            cr.Show();
+        }
         #endregion
 
         #region Machines
@@ -243,6 +244,26 @@ namespace Pack_My_Game
                 _lbPath = null;
                 // LaunchBoxPath.Text = null;
             }
+
+        }
+
+        /// <summary>
+        /// Boite de selection des machines - ComboBox For Machines
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lboxMachines_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lboxMachines.SelectedIndex == 0) return;
+
+            PlatformName = lboxMachines.SelectedItem.ToString();
+            Console.WriteLine($"\t Machine: {PlatformName} selected");
+
+            _XmlFPlatform = Path.Combine(_lbPath, Properties.Settings.Default.dPlatforms, $"{PlatformName}.xml");
+
+            Console.WriteLine($"\tTarget: {_XmlFPlatform}");
+
+            FillListGames();
 
         }
         #endregion
@@ -352,7 +373,7 @@ namespace Pack_My_Game
 
                 if (state == 0 && pm.Run())
                 {
-                    if (MessageBox.Show( $"{Lang.Remove_Word} '{zeGame.Title}' {Lang.From_List} ?",Lang.Remove_Game, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show($"{Lang.Remove_Word} '{zeGame.Title}' {Lang.From_List} ?", Lang.Remove_Game, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         Console.WriteLine($"Remove: '{zeGame.Title}' from list");
                         _GameList.Remove(zeGame.ID);
@@ -472,23 +493,6 @@ namespace Pack_My_Game
 
 
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            AboutBox ab = new AboutBox();
-            ab.Show();
-        }
-
-        private void creditsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Credits cr = new Credits();
-            cr.Show();
-        }
 
         private void lvGames_ItemCheck(object sender, ItemCheckEventArgs e)
         {
@@ -496,10 +500,6 @@ namespace Pack_My_Game
 
         }
 
-        private void lvGames_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void lvGames_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -533,8 +533,8 @@ namespace Pack_My_Game
         /// <param name="e"></param>
         private void miRemoveIt_Click(object sender, EventArgs e)
         {
-            var item  =lvGames.SelectedItems[0];
-            _GameList.Remove( ((ShortGame)item.Tag).ID );
+            var item = lvGames.SelectedItems[0];
+            _GameList.Remove(((ShortGame)item.Tag).ID);
             lvGames.Items.Remove(item);
         }
 

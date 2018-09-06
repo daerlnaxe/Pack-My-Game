@@ -59,9 +59,9 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.ctxLVGames = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.miRemoveIt = new System.Windows.Forms.ToolStripMenuItem();
             this.zipItToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zipItToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.miRemoveIt = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.Infos.SuspendLayout();
@@ -105,7 +105,7 @@
             this.aboutToolStripMenuItem1});
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            //this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem1
             // 
@@ -138,7 +138,7 @@
             this.lvGames.View = System.Windows.Forms.View.Details;
             this.lvGames.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.GameColumn_Click);
             this.lvGames.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.lvGames_ItemCheck);
-            this.lvGames.SelectedIndexChanged += new System.EventHandler(this.lvGames_SelectedIndexChanged);
+           // this.lvGames.SelectedIndexChanged += new System.EventHandler(this.lvGames_SelectedIndexChanged);
             this.lvGames.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvGames_MouseClick);
             this.lvGames.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvGames_MouseDoubleClick);
             // 
@@ -271,6 +271,12 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
             // 
+            // miRemoveIt
+            // 
+            this.miRemoveIt.Name = "miRemoveIt";
+            resources.ApplyResources(this.miRemoveIt, "miRemoveIt");
+            this.miRemoveIt.Click += new System.EventHandler(this.miRemoveIt_Click);
+            // 
             // zipItToolStripMenuItem
             // 
             this.zipItToolStripMenuItem.Name = "zipItToolStripMenuItem";
@@ -280,12 +286,6 @@
             // 
             this.zipItToolStripMenuItem1.Name = "zipItToolStripMenuItem1";
             resources.ApplyResources(this.zipItToolStripMenuItem1, "zipItToolStripMenuItem1");
-            // 
-            // miRemoveIt
-            // 
-            this.miRemoveIt.Name = "miRemoveIt";
-            resources.ApplyResources(this.miRemoveIt, "miRemoveIt");
-            this.miRemoveIt.Click += new System.EventHandler(this.miRemoveIt_Click);
             // 
             // MainWindow
             // 

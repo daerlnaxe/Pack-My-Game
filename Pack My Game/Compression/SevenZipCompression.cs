@@ -47,27 +47,6 @@ namespace Pack_My_Game.Compression
             }
 
 
-            // Verification
-            if (File.Exists(_ArchiveName))
-            {
-                //var res = MessageBox.Show(", do you want to delete it or abort ?", "ok", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                ////var res = MB_Decision.Show("7-zip File Exists for this game", "Alert", destination: _ArchiveName, buttons: MB_Decision.Mode.NoStop);
-                ////if (res == MB_Decision.Result.Pass) return false;
-                ////else if (res == MB_Decision.Result.Trash)
-                ////{
-                ////    // Move to Recycle.Bin
-                ////    try
-                ////    {
-                ////        FileSystem.DeleteDirectory(_ArchiveName, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
-                ////    }
-                ////    catch (Exception e)
-                ////    {
-                ////        Debug.WriteLine(e.Message);
-                ////    }
-                ////}
-            }
-
-
             SevenZipCompressor.SetLibraryPath(sSeventZipLink);
             //  var k = SevenZipCompressor.CurrentLibraryFeatures;
 
@@ -178,8 +157,10 @@ namespace Pack_My_Game.Compression
         /// 
         /// </summary>
         /// <param name="destArchive"></param>
+        /// <param name="path">Work folder</param>
+        /// <param name="folder2Comp"></param>
         /// <returns></returns>
-        public static bool Make_SevenZip(string path, string destArchive)
+        public static bool Make_Folder(string folder2Comp, string path, string destArchive)
         {
             // var zipres = Destination.Verif(destArchive + ".zip");
             var sevenZRes = OPFiles.SVerif(Path.Combine(path, $"{destArchive}.7z"), "Make_SevenZip", log: (string message) => ITrace.WriteLine(message, true));
@@ -190,7 +171,7 @@ namespace Pack_My_Game.Compression
                 case OPResult.Ok:
                 case OPResult.Trash:
                     ITrace.WriteLine($"[Make_SevenZip] 7z Compression begin");
-                    if (!SevenZipCompression.CompressFolder(path, destArchive, Properties.Settings.Default.c7zCompLvl))
+                    if (!SevenZipCompression.CompressFolder(folder2Comp, destArchive, Properties.Settings.Default.c7zCompLvl))
                     {
                         ITrace.WriteLine("[Make_SevenZip] 7z Compression canceled");
                         return false;
