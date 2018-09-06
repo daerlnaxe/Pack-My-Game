@@ -148,10 +148,11 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackupLB\Common.cs" />
     <Compile Include="Compression\SevenZipCompression.cs" />
     <Compile Include="Compression\ZipCompression.cs" />
-    <Compile Include="Container\AdditionalApplication.cs" />
-    <Compile Include="Container\BackupGame.cs" />
+    <Compile Include="BackupLB\AdditionalApplication.cs" />
+    <Compile Include="BackupLB\Game.cs" />
     <Compile Include="Container\Clone.cs" />
     <Compile Include="Container\CustomField.cs" />
     <Compile Include="Container\Folder.cs" />

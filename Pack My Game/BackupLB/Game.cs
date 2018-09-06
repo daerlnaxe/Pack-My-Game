@@ -64,13 +64,11 @@ namespace Pack_My_Game.BackupLB
     ///
     class Game:Common
     {
-        public string CommandLine { get; set; }
         public bool Completed { get; set; }                     //false
         public string ConfigurationCommandLine { get; set; }    //
         public string ConfigurationPath { get; set; }           //
         public string DateAdded { get; set; }                   //2018-09-05T07:16:32.4860113+02:00
         public string DateModified { get; set; }                //2018-09-05T08:37:23.3866486+02:00
-        public string Developer { get; set; }                   //Malibu Interactive
         public string DosBoxConfigurationPath { get; set; }     //
         public string Emulator { get; set; }                    //46980dd1-982d-4b30-ad3b-fda6139752c9
         public bool Favorite { get; set; }                      //false
@@ -81,10 +79,8 @@ namespace Pack_My_Game.BackupLB
         //Synopsis par ex
         public string Notes { get; set; }                       //3 Ninjas Kick Back follows 3 young ninja  brothers, Rocky, Colt and Tum-Tum as they assist an old Samurai in retrieving a prized dagger which has been stolen by his rival.The dagger, once given to the Samurai as a reward, will be passed along to younger generations once it is restored to its rightful owner.The boys learn ninjitsu and karate as they fight evil forces that are older, more powerful, and bigger than them.
         public string Platform { get; set; }                    //Sega Mega Drive
-        // Editeur
-        public string Publisher { get; set; }                   //Sony Imagesoft
+
         public string Rating { get; set; }                      //T - Teen
-        public string ReleaseDate { get; set; }                 //1994-06-01T09:00:00+02:00
         public string RootFolder { get; set; }                  //
         public bool ScummVMAspectCorrection { get; set; }       //false
         public bool ScummVMFullscreen { get; set; }             //false
@@ -96,17 +92,13 @@ namespace Pack_My_Game.BackupLB
         public int StarRating { get; set; }                     //0
         public int CommunityStarRating { get; set; }            //0</CommunityStarRating{get; set;}
         public int CommunityStarRatingTotalVotes { get; set; }  //0</CommunityStarRatingTotalVotes{get; set;}
-        public string Status { get; set; }                      //
+
         public int DatabaseID { get; set; }                     //3371
         public string WikipediaURL { get; set; }                //https://en.wikipedia.org/wiki/3_Ninjas_Kick_Back_(video_game)
         public string Title { get; set; }                       //3 Ninjas Kick Back
-        public bool UseDosBox { get; set; }                     //false
         public bool UseScummVM { get; set; }                    //false
-        public string Version { get; set; }                     //(1994)(Sony Imagesoft) (US)
         public string Series { get; set; }                      //
         public string PlayMode { get; set; }                    //Coopération; Multijoueur
-        public string Region { get; set; }                      //United States
-        public int PlayCount { get; set; }                      //2
         public bool Portable { get; set; }                       //false
         public string VideoPath { get; set; }                   //
         public bool Hide { get; set; }                          //false

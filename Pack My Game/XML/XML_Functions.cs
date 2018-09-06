@@ -10,6 +10,7 @@ using System.Xml;
 using System.Xml.XPath;
 using System.IO;
 using Pack_My_Game.Pack;
+using Pack_My_Game.BackupLB;
 
 namespace Pack_My_Game.XML
 {
@@ -336,9 +337,9 @@ namespace Pack_My_Game.XML
         /// </summary>
         /// <param name="ID"></param>
         /// <returns></returns>
-        internal BackupGame ScrapBackupGame(string ID)
+        internal Game ScrapBackupGame(string ID)
         {
-            BackupGame backGame = null;
+            Game backGame = null;
 
             XPathNavigator nav = _XDoc.CreateNavigator();
             Console.WriteLine($"//LaunchBox/Game[ID='{ID}']");
@@ -349,7 +350,7 @@ namespace Pack_My_Game.XML
 
             if (nodes.Count != 0)
             {
-                backGame = new BackupGame();
+                backGame = new Game();
 
                 nodes.MoveNext();
 
