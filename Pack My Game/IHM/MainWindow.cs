@@ -491,10 +491,7 @@ namespace Pack_My_Game
         }
         */
         #endregion
-
-
-
-
+                                 
         private void lvGames_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             butProceed.Visible = true;
@@ -594,12 +591,19 @@ namespace Pack_My_Game
 
         }
 
-        #endregion
-
         private void imBackupXMLGame_Click(object sender, EventArgs e)
         {
-            var backup = _xfGames.ScrapBackupGame(((ShortGame)lvGames.SelectedItems[0].Tag).ID);
+            ShortGame sGame = (ShortGame)lvGames.SelectedItems[0].Tag;
+            string gameWPath = Path.Combine(_OutPPath, PlatformName, sGame.FileName.Split('.')[0]);
+
+            var backupGame = _xfGames.ScrapBackupGame(sGame.ID);
+
+            MakeXML.Backup_Game(gameWPath, backupGame);
+
         }
+        #endregion
+
+
     }
 
 }

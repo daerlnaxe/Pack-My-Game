@@ -18,6 +18,7 @@ using DlnxLocalTransfert;
 using DlnxLocalTransfert.IHM;
 using Pack_My_Game.IHM;
 using DxTrace;
+using Pack_My_Game.BackupLB;
 
 namespace Pack_My_Game.Pack
 {
@@ -48,7 +49,7 @@ namespace Pack_My_Game.Pack
         private string _SystemName { get; set; }       // Name of the platform
         private string _SystemPath;                  // Platform path
         private string _GamePath;                    // Path where the files will be copy
-
+        private Game _zBackGame;
         private GameInfo _ZeGame;               // Game object
         private Platform _ZePlatform;       // Platform object
 
@@ -138,8 +139,10 @@ namespace Pack_My_Game.Pack
             _XFunctions.ReadFile(xFile);
 
             // Get Main infos
-            _ZeGame = _XFunctions.ScrapGame(ID);
-            _ZeGame.FileName = Path.GetFileName(_ZeGame.ApplicationPath);
+            _zBackGame = _XFunctions.ScrapBackupGame(ID);
+            //_ZeGame = _XFunctions.ScrapGame(ID);
+            //_ZeGame.FileName = Path.GetFileName(_ZeGame.ApplicationPath);
+            _ZeGame = (GameInfo)_zBackGame;
 
 
             ITrace.WriteLine("===== Report of errors: =====");
@@ -195,10 +198,10 @@ namespace Pack_My_Game.Pack
 
             #region Paths reconstruction
 
-            _ZeGame.ApplicationPath = ReconstructPath(_ZeGame.ApplicationPath);
-            _ZeGame.ManualPath = ReconstructPath(_ZeGame.ManualPath);
-            _ZeGame.MusicPath = ReconstructPath(_ZeGame.MusicPath);
-            _ZeGame.VideoPath = ReconstructPath(_ZeGame.VideoPath);
+            _zBackGame.ApplicationPath = ReconstructPath(_zBackGame.ApplicationPath);
+            _zBackGame.ManualPath = ReconstructPath(_zBackGame.ManualPath);
+            _zBackGame.MusicPath = ReconstructPath(_zBackGame.MusicPath);
+            _zBackGame.VideoPath = ReconstructPath(_zBackGame.VideoPath);
             #endregion
 
 
@@ -241,7 +244,7 @@ namespace Pack_My_Game.Pack
             MakeStructure();
 
             // Copy Roms, Video, Music, Manual
-            vMusic = CopySpecific(_ZeGame.MusicPath, _Tree.Children["Musics"].Path, "Copy_Music", "Music");
+            vMusic = CopySpecific(_zBackGame.MusicPath, _Tree.Children["Musics"].Path, "Music", x => _zBackGame.MusicPath = x);
 
             CopySpecificFiles();
 
@@ -384,20 +387,20 @@ namespace Pack_My_Game.Pack
             // rom            
             //var romRes = opFiles.Compare(_ZeGame.ApplicationPath, _Tree.Children["Roms"].Path, whocallme: "Copy_Rom");
             //CopyFile(_ZeGame.ApplicationPath, _Tree.Children["Roms"].Path, romRes);
-            vGame = CopySpecific(_ZeGame.ApplicationPath, _Tree.Children["Roms"].Path, "Copy_Rom", "Game");
+            vGame = CopySpecific(_zBackGame.ApplicationPath, _Tree.Children["Roms"].Path, "Game", x => _zBackGame.ApplicationPath = x);
 
 
             // Manual
-            var manualRes = opFiles.Compare(_ZeGame.ManualPath, _Tree.Children["Manuals"].Path, whocallme: "Copy_Manual");
-            CopyFile(_ZeGame.ManualPath, _Tree.Children["Manuals"].Path, manualRes);
+            var manualRes = opFiles.Compare(_zBackGame.ManualPath, _Tree.Children["Manuals"].Path, whocallme: "Copy_Manual");
+            CopyFile(_zBackGame.ManualPath, _Tree.Children["Manuals"].Path, manualRes);
 
             // Music            
             /*var musicRes = opFiles.Compare(_ZeGame.MusicPath, _Tree.Children["Musics"].Path, whocallme: "Copy_Music");
             CopyFile(_ZeGame.MusicPath, _Tree.Children["Musics"].Path, musicRes);*/
 
             // Video
-            var videoRes = opFiles.Compare(_ZeGame.VideoPath, _Tree.Children["Videos"].Path, whocallme: "Copy_Videos");
-            CopyFile(_ZeGame.VideoPath, _Tree.Children["Videos"].Path, videoRes);
+            var videoRes = opFiles.Compare(_zBackGame.VideoPath, _Tree.Children["Videos"].Path, whocallme: "Copy_Videos");
+            CopyFile(_zBackGame.VideoPath, _Tree.Children["Videos"].Path, videoRes);
 
             //var videores = Destination.Verif(_Tree.Children["Videos"].Path, srcFile: _ZeGame.VideoPath,  whocallme: "Video");
             //if (videores != Verif_Result.Pass && videores != Verif_Result.Source_Error)
@@ -410,12 +413,12 @@ namespace Pack_My_Game.Pack
         /// <summary>
         /// Function advcanced
         /// </summary>
-        private bool CopySpecific(string dbPath, string destLocation, string whocallme, string mediatype)
+        private bool CopySpecific(string dbPath, string destLocation, string mediatype, Func<string, string> Assignation)
         {
             // Normal copy
             if (!string.IsNullOrEmpty(dbPath))
             {
-                var res = OPFiles.SingleCompare(dbPath, destLocation, whocallme, Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
+                var res = OPFiles.SingleCompare(dbPath, destLocation, $"Copy_{mediatype}", Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
                 return CopyFile(dbPath, destLocation, res);
             }
             else
@@ -435,9 +438,10 @@ namespace Pack_My_Game.Pack
 
                 foreach (string fichier in dFiles)
                 {
-                    var res = OPFiles.SingleCompare(fichier, destLocation, whocallme, Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
-                    CopyFile(fichier,destLocation, res);    
+                    var res = OPFiles.SingleCompare(fichier, destLocation, $"Copy_{mediatype}", Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
+                    CopyFile(fichier, destLocation, res);
                 }
+                Assignation(dFiles[0]);
                 return true;
 
             }

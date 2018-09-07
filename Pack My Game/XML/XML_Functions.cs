@@ -294,7 +294,7 @@ namespace Pack_My_Game.XML
                             zeGame.Notes = nodes.Current.Value;
                             break;
                         #endregion
-
+/*
                         #region files
                         case "ManualPath":
                             Console.WriteLine(nodes.Current.Value);
@@ -318,7 +318,7 @@ namespace Pack_My_Game.XML
                             zeGame.ExploitableFileName = zeGame.FileName.Split('.')[0];
                             break;
                         #endregion
-
+    */
                         default:
                             Console.WriteLine();
                             break;

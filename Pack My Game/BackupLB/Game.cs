@@ -14,7 +14,7 @@ namespace Pack_My_Game.BackupLB
     // 100 les paramètres du jeu
     //
     // 200 stats
-    class Game
+    public class Game
     {
         #region info jeu
         
@@ -169,18 +169,34 @@ namespace Pack_My_Game.BackupLB
         public int StarRating { get; set; }                     //0
         #endregion
 
+        [XmlElement(Order =300)]
         public string RootFolder { get; set; }                  //
 
+        [XmlElement(Order = 301)]
         public string Source { get; set; }                      //
-                          
+
+        [XmlElement(Order = 302)]
         public bool MissingVideo { get; set; }                  //false
+
+        [XmlElement(Order = 303)]
         public bool MissingBoxFrontImage { get; set; }          //false
+
+        [XmlElement(Order = 304)]
         public bool MissingScreenshotImage { get; set; }        //false
+
+        [XmlElement(Order = 305)]
         public bool MissingClearLogoImage { get; set; }         //false
+
+        [XmlElement(Order = 306)]
         public bool MissingBackgroundImage { get; set; }        //false
 
+        [XmlElement(Order = 400)]
         public List<CustomField> CustomFields { get; set; }
+
+        [XmlElement(Order = 401)]     
         public List<AdditionalApplication> AdditionalApplications { get; set; }
+
+
     }
 
 }
