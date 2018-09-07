@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace Pack_My_Game.XML
@@ -72,23 +73,49 @@ namespace Pack_My_Game.XML
                 case OPResult.Ok:
                 case OPResult.OverWrite:
                 case OPResult.Trash:
-                    try
+                    /*try
+                    {*/
+                    ITrace.WriteLine("[Backup_Game] Serialization to xml");
+                    XmlSerializer xGame = new XmlSerializer(typeof(Game));
+                    XmlSerializer xLCFields = new XmlSerializer(typeof(CustomField));
+                    XmlSerializer xLAApp = new XmlSerializer(typeof(AdditionalApplication));
+                    //////using (StreamWriter wr = new StreamWriter(xmlDest, false))
+                    //////{
+                    //////    xGame.Serialize(wr, zeGame, null);
+                    //////    foreach (var cFields in zeGame.CustomFields) xLCFields.Serialize(wr, cFields, null);
+                    //////    foreach (var aApp in zeGame.AdditionalApplications) xLAApp.Serialize(wr, aApp, null);
+                    //////}
+
+                    XmlWriterSettings xws = new XmlWriterSettings();
+                    xws.OmitXmlDeclaration = true;                              // remove declaration
+                    xws.Indent = true;
+                    xws.ConformanceLevel = ConformanceLevel.Auto;
+                    
+
+
+                    using (XmlWriter xw = XmlWriter.Create(xmlDest, xws))
                     {
-                        ITrace.WriteLine("[Backup_Game] Serialization to xml");
-                        XmlSerializer xs = new XmlSerializer(typeof(Game));
-                        using (StreamWriter wr = new StreamWriter(xmlDest))
-                        {
-                            xs.Serialize(wr, zeGame);
-                        }
-                        return true;
+                        var xmlns = new XmlSerializerNamespaces();              // Remove xml namespaces
+                        xmlns.Add("","");
+
+                        xw.WriteStartElement("LaunchBox_Backup");
+                        xw.WriteComment("Put this between <LaunchBox> </LaunchBox> in 'platform'.xml (try to organize it)");
+                        xGame.Serialize(xw, zeGame, xmlns);
+                        foreach (var cFields in zeGame.CustomFields) xLCFields.Serialize(xw, cFields, xmlns);
+                        foreach (var aApp in zeGame.AdditionalApplications) xLAApp.Serialize(xw, aApp, xmlns);
+                        xw.WriteEndElement();
                     }
-                    catch (Exception exc)
-                    {
-                        ITrace.WriteLine(exc.ToString());
-                        //return false;
-                        ITrace.WriteLine(exc.Message);
-                        return false;
-                    }
+
+
+                    return true;
+                /*}
+                catch (Exception exc)
+                {
+                    ITrace.WriteLine(exc.ToString());
+                    //return false;
+                    ITrace.WriteLine(exc.Message);
+                    return false;
+                }*/
                 default:
                     return false;
             }

@@ -244,9 +244,11 @@ namespace Pack_My_Game.Pack
             MakeStructure();
 
             // Copy Roms, Video, Music, Manual
+            vManual = CopySpecific(_zBackGame.ApplicationPath, _Tree.Children["Roms"].Path, "Roms");
+            vManual = CopySpecific(_zBackGame.ManualPath, _Tree.Children["Manuals"].Path, "Manuals", x => _zBackGame.VideoPath = x);
             vMusic = CopySpecific(_zBackGame.MusicPath, _Tree.Children["Musics"].Path, "Music", x => _zBackGame.MusicPath = x);
-
-            CopySpecificFiles();
+            vVideo = CopySpecific(_zBackGame.VideoPath, _Tree.Children["Videos"].Path, "Video", x => _zBackGame.VideoPath = x);
+           // CopySpecificFiles() old way;
 
             // Copy images
             CopyImages();
@@ -316,6 +318,10 @@ namespace Pack_My_Game.Pack
                 }
             }
 
+            // Serialization / backup ameliorated of launchbox datas (with found medias missing) 
+            MakeXML.Backup_Game(_GamePath, _zBackGame);
+
+
             // Résultats
             PackMeRes.ShowDialog(vGame, vManual, vMusic, vVideo);
 
@@ -375,6 +381,7 @@ namespace Pack_My_Game.Pack
         /// <returns></returns>
         private bool CopySpecificFiles()
         {
+            /*
             ITrace.WriteLine(prefix: false);
             //IWrite.NewLine($"Dossier actif:{Directory.GetCurrentDirectory()}");
             Console.WriteLine(Directory.GetCurrentDirectory());
@@ -382,7 +389,7 @@ namespace Pack_My_Game.Pack
             OPFiles opFiles = new OPFiles();
             opFiles.IWriteLine += (string message) => ITrace.WriteLine(message);
             opFiles.IWrite += (string message) => ITrace.BeginLine(message);
-            opFiles.Buttons = Dcs_Buttons.NoStop;
+            opFiles.Buttons = Dcs_Buttons.NoStop;*/
 
             // rom            
             //var romRes = opFiles.Compare(_ZeGame.ApplicationPath, _Tree.Children["Roms"].Path, whocallme: "Copy_Rom");
@@ -391,16 +398,17 @@ namespace Pack_My_Game.Pack
 
 
             // Manual
+            /*
             var manualRes = opFiles.Compare(_zBackGame.ManualPath, _Tree.Children["Manuals"].Path, whocallme: "Copy_Manual");
-            CopyFile(_zBackGame.ManualPath, _Tree.Children["Manuals"].Path, manualRes);
+            CopyFile(_zBackGame.ManualPath, _Tree.Children["Manuals"].Path, manualRes);*/
 
             // Music            
             /*var musicRes = opFiles.Compare(_ZeGame.MusicPath, _Tree.Children["Musics"].Path, whocallme: "Copy_Music");
             CopyFile(_ZeGame.MusicPath, _Tree.Children["Musics"].Path, musicRes);*/
 
             // Video
-            var videoRes = opFiles.Compare(_zBackGame.VideoPath, _Tree.Children["Videos"].Path, whocallme: "Copy_Videos");
-            CopyFile(_zBackGame.VideoPath, _Tree.Children["Videos"].Path, videoRes);
+            /* var videoRes = opFiles.Compare(_zBackGame.VideoPath, _Tree.Children["Videos"].Path, whocallme: "Copy_Videos");
+             CopyFile(_zBackGame.VideoPath, _Tree.Children["Videos"].Path, videoRes);*/
 
             //var videores = Destination.Verif(_Tree.Children["Videos"].Path, srcFile: _ZeGame.VideoPath,  whocallme: "Video");
             //if (videores != Verif_Result.Pass && videores != Verif_Result.Source_Error)
@@ -413,7 +421,7 @@ namespace Pack_My_Game.Pack
         /// <summary>
         /// Function advcanced
         /// </summary>
-        private bool CopySpecific(string dbPath, string destLocation, string mediatype, Func<string, string> Assignation)
+        private bool CopySpecific(string dbPath, string destLocation, string mediatype, Func<string, string> Assignation = null)
         {
             // Normal copy
             if (!string.IsNullOrEmpty(dbPath))

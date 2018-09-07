@@ -786,7 +786,7 @@ namespace Pack_My_Game.XML
         }
 
         /// <summary>
-        /// Convert a platform in object
+        /// Convert a platform in object (partiel)
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
@@ -795,36 +795,57 @@ namespace Pack_My_Game.XML
             Platform zePlatform = new Platform();
             zePlatform.Name = Name;
 
+
             XPathNavigator nav = _XDoc.CreateNavigator();
 
-            // Get Images path
-            XPathNodeIterator nodIImages = nav.Select(nav.Compile($"//LaunchBox/PlatformFolder[Platform='{Name}']"));
+            // Infos
+            XPathNodeIterator nodInfos = nav.Select(nav.Compile($"//LaunchBox/Platform[Name='{Name}']"));
+            if (nodInfos.Count != 0)
+            {
+                nodInfos.MoveNext();
+                nodInfos.Current.MoveToFirstChild();
+                do
+                {
+                    switch (nodInfos.Current.Name)
+                    {
+                        // Correction sur le xml originel
+                        case "Folder":
+                            PlatformFolder pfFolder = new PlatformFolder();
+                            pfFolder.FolderPath = nodInfos.Current.Value;
+                            pfFolder.MediaType = "AppPath";
+                            break;
+                    }
+                } while (nodInfos.Current.MoveToNext());
+            }
 
-            if (nodIImages.Count != 0)
+            // Get path
+            XPathNodeIterator nodPaths = nav.Select(nav.Compile($"//LaunchBox/PlatformFolder[Platform='{Name}']"));
+
+            if (nodPaths.Count != 0)
             {
 
-                while (nodIImages.MoveNext())
+                while (nodPaths.MoveNext())
                 {
                     //Console.WriteLine(nodIImages.Current.Name);
-                    nodIImages.Current.MoveToFirstChild();
+                    nodPaths.Current.MoveToFirstChild();
                     PlatformFolder pfFolder = new PlatformFolder();
-
+                    
 
                     do
                     {
                         //Console.WriteLine($"\t{nodIImages.Current.Name} = {nodIImages.Current.Value}");
 
-                        switch (nodIImages.Current.Name)
+                        switch (nodPaths.Current.Name)
                         {
                             case "MediaType":
-                                pfFolder.MediaType = nodIImages.Current.Value;
+                                pfFolder.MediaType = nodPaths.Current.Value;
                                 break;
                             case "FolderPath":
-                                pfFolder.FolderPath = nodIImages.Current.Value;
+                                pfFolder.FolderPath = nodPaths.Current.Value;
                                 break;
                         }
 
-                    } while (nodIImages.Current.MoveToNext());
+                    } while (nodPaths.Current.MoveToNext());
 
                     zePlatform.PlatformFolders.Add(pfFolder);
                 }

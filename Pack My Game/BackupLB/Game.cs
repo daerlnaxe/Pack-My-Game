@@ -190,10 +190,10 @@ namespace Pack_My_Game.BackupLB
         [XmlElement(Order = 306)]
         public bool MissingBackgroundImage { get; set; }        //false
 
-        [XmlElement(Order = 400)]
+        [XmlIgnore]
         public List<CustomField> CustomFields { get; set; }
 
-        [XmlElement(Order = 401)]     
+        [XmlIgnore]     
         public List<AdditionalApplication> AdditionalApplications { get; set; }
 
 
