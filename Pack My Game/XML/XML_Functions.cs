@@ -68,14 +68,14 @@ namespace Pack_My_Game.XML
                     Console.WriteLine(nodes.Current.Name);
                     nodes.Current.MoveToFirstChild();
 
-                    while (nodes.Current.MoveToNext())
+                    do
                     {
                         if (nodes.Current.Name == "Name")
                         {
                             Console.WriteLine(nodes.Current.Value);
                             lMachines.Add(nodes.Current.Value);
                         }
-                    }
+                    } while (nodes.Current.MoveToNext());
                 }
             }
 
@@ -342,11 +342,13 @@ namespace Pack_My_Game.XML
             Game backGame = null;
 
             XPathNavigator nav = _XDoc.CreateNavigator();
-            Console.WriteLine($"//LaunchBox/Game[ID='{ID}']");
+            Debug.WriteLine($"//LaunchBox/Game[ID='{ID}']");
             // ID pour les games principaux et Id pour les secondaires
+
+            // Get main part
             XPathNodeIterator nodes = nav.Select(nav.Compile($"//LaunchBox/Game[ID='{ID}']"));
 
-            Console.WriteLine($"{nodes.Count} trouvés avec {ID}");
+            Debug.WriteLine($"{nodes.Count} trouvés avec {ID}");
 
             if (nodes.Count != 0)
             {
@@ -354,7 +356,7 @@ namespace Pack_My_Game.XML
 
                 nodes.MoveNext();
 
-                Console.WriteLine(nodes.Current.Name);
+                Debug.WriteLine(nodes.Current.Name);
                 nodes.Current.MoveToFirstChild();
 
                 backGame.ID = ID;
@@ -635,6 +637,150 @@ namespace Pack_My_Game.XML
 
             }
 
+            // Get addionnal apps
+            XPathNodeIterator aaNodes = nav.Select(nav.Compile($"//LaunchBox/AdditionalApplication[GameID='{ID}']"));
+            if (aaNodes.Count != 0)
+            {
+                backGame.AdditionalApplications = new List<AdditionalApplication>();
+
+                // Loop on additionnal apps
+                while (aaNodes.MoveNext())
+                {
+                    aaNodes.Current.MoveToFirstChild();
+                    var tmpAApp = new AdditionalApplication();
+
+                    do
+                    {
+                        Debug.WriteLine("Case " + aaNodes.Current.Name);
+                        switch (aaNodes.Current.Name)
+                        {
+                            case "Id":
+                                tmpAApp.Id = aaNodes.Current.Value;
+                                break;
+
+                            case "PlayCount":
+                                tmpAApp.PlayCount = int.Parse(aaNodes.Current.Value);
+                                break;
+
+                            case "GameID":
+                                tmpAApp.GameID = aaNodes.Current.Value;
+                                break;
+
+                            case "ApplicationPath":
+                                tmpAApp.ApplicationPath = aaNodes.Current.Value;
+                                break;
+
+                            case "AutoRunAfter":
+                                tmpAApp.AutoRunAfter = bool.Parse(aaNodes.Current.Value);
+                                break;
+
+                            case "AutoRunBefore":
+                                tmpAApp.AutoRunBefore = bool.Parse(aaNodes.Current.Value);
+                                break;
+
+                            case "CommandLine":
+                                tmpAApp.CommandLine  = aaNodes.Current.Value;
+                                break;
+
+                            case "Name":
+                                tmpAApp.Name  = aaNodes.Current.Value;
+                                break;
+
+                            case "UseDosBox":
+                                tmpAApp.UseDosBox  = bool.Parse( aaNodes.Current.Value);
+                                break;
+
+                            case "UseEmulator":
+                                tmpAApp.UseEmulator  = bool.Parse( aaNodes.Current.Value);
+                                break;
+
+                            case "WaitForExit":
+                                tmpAApp.WaitForExit  = bool.Parse( aaNodes.Current.Value);
+                                break;
+
+                            case "Developer":
+                                tmpAApp.Developer  = aaNodes.Current.Value;
+                                break;
+
+                            case "Publisher":
+                                tmpAApp.Publisher  = aaNodes.Current.Value;
+                                break;
+
+                            case "Region":
+                                tmpAApp.Region  = aaNodes.Current.Value;
+                                break;
+
+                            case "Version":
+                                tmpAApp.Version  = aaNodes.Current.Value;
+                                break;
+
+                            case "Status":
+                                tmpAApp.Status  = aaNodes.Current.Value;
+                                break;
+
+                            case "EmulatorId":
+                                tmpAApp.EmulatorId  = aaNodes.Current.Value;
+                                break;
+
+                            case "SideA":
+                                tmpAApp.SideA = bool.Parse(aaNodes.Current.Value);
+                                break;
+
+                            case "SideB":
+                                tmpAApp.SideB  = bool.Parse( aaNodes.Current.Value);
+                                break;
+
+                            case "Priority":
+                                tmpAApp.Priority  = int.Parse( aaNodes.Current.Value);
+                                break;
+                                                                
+                            default:
+                                Debug.WriteLine($"Cas non traité: {aaNodes.Current.Name}");
+                                break;
+                        }
+                        
+                    } while (aaNodes.Current.MoveToNext());
+
+                    backGame.AdditionalApplications.Add(tmpAApp);
+                }
+
+            }
+
+            // Get addionnal fields
+            XPathNodeIterator cfNodes = nav.Select(nav.Compile($"//LaunchBox/CustomField[GameID='{ID}']"));
+            if (cfNodes.Count != 0)
+            {
+                backGame.CustomFields = new List<CustomField>();
+
+                // Loop on custom fields
+                while (cfNodes.MoveNext())
+                {
+                    cfNodes.Current.MoveToFirstChild();
+                    var tmpCField = new CustomField();
+
+                    do
+                    {
+                        Debug.WriteLine("addionnal fields" + cfNodes.Current.Name);
+
+                        switch (cfNodes.Current.Name)
+                        {
+                            case "GameID":
+                                tmpCField.GameID = cfNodes.Current.Value;
+                                break;
+
+                            case "Name":
+                                tmpCField.Name = cfNodes.Current.Value;
+                                break;
+
+                            case "Value":
+                                tmpCField.Value = cfNodes.Current.Value;
+                                break;
+    }
+                    } while (cfNodes.Current.MoveToNext());
+
+                    backGame.CustomFields.Add(tmpCField);
+                }
+            }
 
             return backGame;
         }

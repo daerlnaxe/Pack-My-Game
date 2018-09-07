@@ -149,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackupLB\Common.cs" />
+    <Compile Include="BackupLB\CustomField.cs" />
     <Compile Include="Compression\SevenZipCompression.cs" />
     <Compile Include="Compression\ZipCompression.cs" />
     <Compile Include="BackupLB\AdditionalApplication.cs" />

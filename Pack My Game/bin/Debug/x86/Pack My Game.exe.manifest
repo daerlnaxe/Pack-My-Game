@@ -126,14 +126,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Pack My Game.exe" size="240592">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Pack My Game.exe" size="245200">
       <assemblyIdentity name="Pack My Game" version="1.2.0.2" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Z/Wy4TOgqQfDmmgCSLV8k5oC2PNIAJO32A6XUJbC1sw=</dsig:DigestValue>
+        <dsig:DigestValue>LJzC3FpXMV8wstR6ot8vuIKZYTdLkDWkKU2BuXuFOtc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -145,7 +145,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>X1c/MmdbZProoeuSzrwgUcuNwhu8yaZs0uGJiPa1OLc=</dsig:DigestValue>
+        <dsig:DigestValue>9emUiySOPCQwvWArbEu2eq+aWTbtWJ0/PAUglJDQ3E0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
