@@ -459,7 +459,7 @@
             this.MainMenuStrip = this.menuTop;
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "MainWindow";
-            this.Text = "Pack My Game - Alpha";
+            this.Text = "Pack My Game";
             this.menuTop.ResumeLayout(false);
             this.menuTop.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Resources;
 using System.Text;
 using System.Threading;
@@ -62,6 +63,7 @@ namespace Pack_My_Game
             //_RT = new ResourceManager("Pack_My_Game.MainWindow", typeof(MainWindow).Assembly);            
 
             InitializeComponent();
+            this.Text += $"- b{Assembly.GetAssembly(typeof(Program)).GetName().Version.ToString()}";
 
 
             LoadUI();
