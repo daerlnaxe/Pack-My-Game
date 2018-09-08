@@ -10,6 +10,10 @@ Téléchargez [PackMyGame-x86.zip](https://github.com/daerlnaxe/Pack-My-Game/blo
  * Copie aussi les fichiers de code de triche si vous spécifiez le chemin (le nom doit être ainsi 'GameName-*.*')
  * Génère un fichier montrant l'arborescence
  * 7z et zip compression
+ * Sauvegarde les données à propos d'un jeu de LaunchBox xml
+ * Quand PackMe run,  crée un fichier xml amélioré, ajoutant les chemins manquants, en plus de faire une sauvegarde des données originelles.
+ * Permet de choisir manuellement des fichiers video, music, manuel si la base de données ne mentionne pas les chemins
+ * Le nouveau menu contextuel Contextual permet de construire petit à petit le dossier de travail pour le compresser plus tard.
 	
 ## Pourquoi ?
  * En tant que joueur Français je voulais sauver toutes mes modifications et les conserver pour plus tard, au cas où.
@@ -63,6 +67,7 @@ Téléchargez [PackMyGame-x86.zip](https://github.com/daerlnaxe/Pack-My-Game/blo
 
 		
 ### TODO
+ - [ ] Work in progress: Eliminate duplicates images files function in contextual menu (md5 calcul)
  - [ ] Filtrer les plateformes
  - [ ] Securité sur le dossier de travail sur la page principale (en plus de celle de PackMe)
  - [ ] Trouver un meilleur moyen de gérer la confirmation au niveau des images
