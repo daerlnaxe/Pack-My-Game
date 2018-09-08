@@ -19,6 +19,7 @@ using DlnxLocalTransfert.IHM;
 using Pack_My_Game.IHM;
 using DxTrace;
 using Pack_My_Game.BackupLB;
+using Pack_My_Game.Properties;
 
 namespace Pack_My_Game.Pack
 {
@@ -236,9 +237,27 @@ namespace Pack_My_Game.Pack
             Directory.CreateDirectory(_GamePath);
             Directory.SetCurrentDirectory(_GamePath);
 
-            // Creation of the Infos.xml
-            //MakeInfo();
-            MakeXML.InfoGame(_GamePath, _ZeGame);
+            #region Original Backup Game
+            if (Settings.Default.opOBGame)
+            {
+                MakeXML.Backup_Game(_GamePath, _zBackGame, "TBGame");
+            }
+            else
+            {
+                ITrace.WriteLine("[Run] Original Backup Game disabled");
+            }
+            #endregion
+
+            #region Creation of the Infos.xml
+            if (Settings.Default.opInfos)
+            {
+                MakeXML.InfoGame(_GamePath, _ZeGame);
+            }
+            else
+            {
+                ITrace.WriteLine("[Run] Make info disabled");
+            }
+            #endregion
 
             // Tree root + lvl1
             MakeStructure();
@@ -248,19 +267,24 @@ namespace Pack_My_Game.Pack
             vManual = CopySpecific(_zBackGame.ManualPath, _Tree.Children["Manuals"].Path, "Manuals", x => _zBackGame.VideoPath = x);
             vMusic = CopySpecific(_zBackGame.MusicPath, _Tree.Children["Musics"].Path, "Music", x => _zBackGame.MusicPath = x);
             vVideo = CopySpecific(_zBackGame.VideoPath, _Tree.Children["Videos"].Path, "Video", x => _zBackGame.VideoPath = x);
-           // CopySpecificFiles() old way;
+            // CopySpecificFiles() old way;
 
             // Copy images
             CopyImages();
 
-            // CheatCodes
-            if (!string.IsNullOrEmpty(Properties.Settings.Default.CCodesPath))
+            #region Copy CheatCodes
+            if (Settings.Default.opCheatCodes && !string.IsNullOrEmpty(Settings.Default.CCodesPath))
             {
                 CopyCheatCodes();
             }
+            else
+            {
+                ITrace.WriteLine("[Run] Copy Cheat Codes disabled");
+            }
+            #endregion
 
-            // Copy Clones
-            if (Properties.Settings.Default.cloneActive)
+            #region Copy Clones
+            if (Settings.Default.opClones)
             {
                 CopyClones();
             }
@@ -268,18 +292,37 @@ namespace Pack_My_Game.Pack
             {
                 ITrace.WriteLine($"[Run] Clone copy disabled");
             }
+            #endregion
+            
+            #region Serialization / backup ameliorated of launchbox datas (with found medias missing) 
+            if (Settings.Default.opEBGame)
+            {
+                MakeXML.Backup_Game(_GamePath, _zBackGame, "EBGame");
+            }
+            else
+            {
+                ITrace.WriteLine($"[Run] Enhanced Backup Game disabled");
+            }
 
-            // Save Struct
-            GetStruc();
+            #endregion
+
+            #region Save Struct
+            if (Settings.Default.opTreeV)
+            {
+                GetStruc();
+            }
+            else
+            {
+                ITrace.WriteLine($"[Run] Save Struct disabled");
+            }
+            #endregion
 
             // Archive
             string destArchive = Path.Combine(_SystemPath, _ZeGame.ExploitableFileName);
 
-            // zip
-            var tamere = Properties.Settings.Default.cZipActive;
-            Console.WriteLine();
-
-            if (Properties.Settings.Default.cZipActive)
+            #region Compressions
+            // Zip
+            if (Properties.Settings.Default.opZip)
             {
                 //     Make_Zip(destArchive);
                 ZipCompression.Make_Folder(_GamePath, _SystemPath, destArchive);
@@ -291,7 +334,7 @@ namespace Pack_My_Game.Pack
 
 
             // 7-Zip
-            if (Properties.Settings.Default.c7zActive)
+            if (Properties.Settings.Default.op7Zip)
             {
                 SevenZipCompression.Make_Folder(_GamePath, _SystemPath, destArchive);
             }
@@ -299,6 +342,7 @@ namespace Pack_My_Game.Pack
             {
                 ITrace.WriteLine($"[Run] 7z Compression disabled");
             }
+            #endregion
 
             // Erase the temp folder
             if (MessageBox.Show($"{Lang.EraseTmpFolder} '{_ZeGame.ExploitableFileName}' ?", Lang.Erase, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -317,11 +361,7 @@ namespace Pack_My_Game.Pack
 
                 }
             }
-
-            // Serialization / backup ameliorated of launchbox datas (with found medias missing) 
-            MakeXML.Backup_Game(_GamePath, _zBackGame, "EBGame");
-
-
+                                 
             // Résultats
             PackMeRes.ShowDialog(vGame, vManual, vMusic, vVideo);
 
@@ -337,15 +377,12 @@ namespace Pack_My_Game.Pack
             return true;
         }
 
-
-
-
         #region WriteData
 
 
         private void GetStruc()
         {
-            string path = Path.Combine(_GamePath, "Stuct.info");
+            string path = Path.Combine(_GamePath, "Struct.info");
             using (StreamWriter fs = new StreamWriter(path, false))
             {
                 fs.WriteLine(FoncSchem.TraitListFolder(_Tree, 0));

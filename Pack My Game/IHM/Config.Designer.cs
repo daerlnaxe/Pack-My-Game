@@ -63,22 +63,24 @@ namespace Pack_My_Game.IHM
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btSave = new System.Windows.Forms.Button();
             this.tabConfig = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.gbLog = new System.Windows.Forms.GroupBox();
+            this.cbLogWindow = new System.Windows.Forms.CheckBox();
+            this.cbLogFile = new System.Windows.Forms.CheckBox();
+            this.gbCompress = new System.Windows.Forms.GroupBox();
+            this.cbZip = new System.Windows.Forms.CheckBox();
+            this.cb7Zip = new System.Windows.Forms.CheckBox();
+            this.gbProcess = new System.Windows.Forms.GroupBox();
+            this.cbInfos = new System.Windows.Forms.CheckBox();
+            this.cbEBGame = new System.Windows.Forms.CheckBox();
+            this.cbCCC = new System.Windows.Forms.CheckBox();
+            this.cbOBGame = new System.Windows.Forms.CheckBox();
+            this.cbClone = new System.Windows.Forms.CheckBox();
             this.btCancel = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.gbProcess = new System.Windows.Forms.GroupBox();
-            this.cbZip = new System.Windows.Forms.CheckBox();
-            this.cb7Zip = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.cbClone = new System.Windows.Forms.CheckBox();
-            this.gbCompress = new System.Windows.Forms.GroupBox();
-            this.gbLog = new System.Windows.Forms.GroupBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.cbTreeV = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tabGen.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tabPaths.SuspendLayout();
@@ -97,11 +99,12 @@ namespace Pack_My_Game.IHM
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tabConfig.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.tabPage1.SuspendLayout();
-            this.gbProcess.SuspendLayout();
-            this.gbCompress.SuspendLayout();
             this.gbLog.SuspendLayout();
+            this.gbCompress.SuspendLayout();
+            this.gbProcess.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabGen
@@ -328,83 +331,32 @@ namespace Pack_My_Game.IHM
             this.tabConfig.Name = "tabConfig";
             this.tabConfig.SelectedIndex = 0;
             // 
-            // btCancel
-            // 
-            this.btCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            resources.ApplyResources(this.btCancel, "btCancel");
-            this.btCancel.Name = "btCancel";
-            this.btCancel.UseVisualStyleBackColor = true;
-            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
-            // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.gbLog);
-            this.tabPage1.Controls.Add(this.gbCompress);
-            this.tabPage1.Controls.Add(this.gbProcess);
+            this.tabPage1.Controls.Add(this.tableLayoutPanel4);
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // gbProcess
+            // gbLog
             // 
-            this.gbProcess.Controls.Add(this.checkBox4);
-            this.gbProcess.Controls.Add(this.checkBox3);
-            this.gbProcess.Controls.Add(this.checkBox2);
-            this.gbProcess.Controls.Add(this.checkBox1);
-            this.gbProcess.Controls.Add(this.cbClone);
-            resources.ApplyResources(this.gbProcess, "gbProcess");
-            this.gbProcess.Name = "gbProcess";
-            this.gbProcess.TabStop = false;
+            this.gbLog.Controls.Add(this.cbLogWindow);
+            this.gbLog.Controls.Add(this.cbLogFile);
+            resources.ApplyResources(this.gbLog, "gbLog");
+            this.gbLog.Name = "gbLog";
+            this.gbLog.TabStop = false;
             // 
-            // cbZip
+            // cbLogWindow
             // 
-            resources.ApplyResources(this.cbZip, "cbZip");
-            this.cbZip.Checked = true;
-            this.cbZip.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbZip.Name = "cbZip";
-            this.cbZip.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.cbLogWindow, "cbLogWindow");
+            this.cbLogWindow.Name = "cbLogWindow";
+            this.cbLogWindow.UseVisualStyleBackColor = true;
             // 
-            // cb7Zip
+            // cbLogFile
             // 
-            resources.ApplyResources(this.cb7Zip, "cb7Zip");
-            this.cb7Zip.Checked = true;
-            this.cb7Zip.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb7Zip.Name = "cb7Zip";
-            this.cb7Zip.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            resources.ApplyResources(this.checkBox4, "checkBox4");
-            this.checkBox4.Name = "checkBox4";
-            this.toolTip1.SetToolTip(this.checkBox4, resources.GetString("checkBox4.ToolTip"));
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            resources.ApplyResources(this.checkBox3, "checkBox3");
-            this.checkBox3.Name = "checkBox3";
-            this.toolTip1.SetToolTip(this.checkBox3, resources.GetString("checkBox3.ToolTip"));
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            resources.ApplyResources(this.checkBox2, "checkBox2");
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            resources.ApplyResources(this.checkBox1, "checkBox1");
-            this.checkBox1.Name = "checkBox1";
-            this.toolTip1.SetToolTip(this.checkBox1, resources.GetString("checkBox1.ToolTip"));
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // cbClone
-            // 
-            resources.ApplyResources(this.cbClone, "cbClone");
-            this.cbClone.Name = "cbClone";
-            this.toolTip1.SetToolTip(this.cbClone, resources.GetString("cbClone.ToolTip"));
-            this.cbClone.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.cbLogFile, "cbLogFile");
+            this.cbLogFile.Name = "cbLogFile";
+            this.cbLogFile.UseVisualStyleBackColor = true;
             // 
             // gbCompress
             // 
@@ -414,25 +366,93 @@ namespace Pack_My_Game.IHM
             this.gbCompress.Name = "gbCompress";
             this.gbCompress.TabStop = false;
             // 
-            // gbLog
+            // cbZip
             // 
-            this.gbLog.Controls.Add(this.checkBox6);
-            this.gbLog.Controls.Add(this.checkBox5);
-            resources.ApplyResources(this.gbLog, "gbLog");
-            this.gbLog.Name = "gbLog";
-            this.gbLog.TabStop = false;
+            resources.ApplyResources(this.cbZip, "cbZip");
+            this.cbZip.Checked = true;
+            this.cbZip.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbZip.Name = "cbZip";
+            this.toolTip1.SetToolTip(this.cbZip, resources.GetString("cbZip.ToolTip"));
+            this.cbZip.UseVisualStyleBackColor = true;
             // 
-            // checkBox5
+            // cb7Zip
             // 
-            resources.ApplyResources(this.checkBox5, "checkBox5");
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.cb7Zip, "cb7Zip");
+            this.cb7Zip.Checked = true;
+            this.cb7Zip.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb7Zip.Name = "cb7Zip";
+            this.toolTip1.SetToolTip(this.cb7Zip, resources.GetString("cb7Zip.ToolTip"));
+            this.cb7Zip.UseVisualStyleBackColor = true;
             // 
-            // checkBox6
+            // gbProcess
             // 
-            resources.ApplyResources(this.checkBox6, "checkBox6");
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.gbProcess.Controls.Add(this.cbTreeV);
+            this.gbProcess.Controls.Add(this.cbInfos);
+            this.gbProcess.Controls.Add(this.cbEBGame);
+            this.gbProcess.Controls.Add(this.cbCCC);
+            this.gbProcess.Controls.Add(this.cbOBGame);
+            this.gbProcess.Controls.Add(this.cbClone);
+            resources.ApplyResources(this.gbProcess, "gbProcess");
+            this.gbProcess.Name = "gbProcess";
+            this.gbProcess.TabStop = false;
+            // 
+            // cbInfos
+            // 
+            resources.ApplyResources(this.cbInfos, "cbInfos");
+            this.cbInfos.Name = "cbInfos";
+            this.toolTip1.SetToolTip(this.cbInfos, resources.GetString("cbInfos.ToolTip"));
+            this.cbInfos.UseVisualStyleBackColor = true;
+            // 
+            // cbEBGame
+            // 
+            resources.ApplyResources(this.cbEBGame, "cbEBGame");
+            this.cbEBGame.Name = "cbEBGame";
+            this.toolTip1.SetToolTip(this.cbEBGame, resources.GetString("cbEBGame.ToolTip"));
+            this.cbEBGame.UseVisualStyleBackColor = true;
+            // 
+            // cbCCC
+            // 
+            resources.ApplyResources(this.cbCCC, "cbCCC");
+            this.cbCCC.Name = "cbCCC";
+            this.toolTip1.SetToolTip(this.cbCCC, resources.GetString("cbCCC.ToolTip"));
+            this.cbCCC.UseVisualStyleBackColor = true;
+            // 
+            // cbOBGame
+            // 
+            resources.ApplyResources(this.cbOBGame, "cbOBGame");
+            this.cbOBGame.Name = "cbOBGame";
+            this.toolTip1.SetToolTip(this.cbOBGame, resources.GetString("cbOBGame.ToolTip"));
+            this.cbOBGame.UseVisualStyleBackColor = true;
+            // 
+            // cbClone
+            // 
+            resources.ApplyResources(this.cbClone, "cbClone");
+            this.cbClone.Name = "cbClone";
+            this.toolTip1.SetToolTip(this.cbClone, resources.GetString("cbClone.ToolTip"));
+            this.cbClone.UseVisualStyleBackColor = true;
+            // 
+            // btCancel
+            // 
+            this.btCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.btCancel, "btCancel");
+            this.btCancel.Name = "btCancel";
+            this.btCancel.UseVisualStyleBackColor = true;
+            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
+            // 
+            // cbTreeV
+            // 
+            resources.ApplyResources(this.cbTreeV, "cbTreeV");
+            this.cbTreeV.Name = "cbTreeV";
+            this.toolTip1.SetToolTip(this.cbTreeV, resources.GetString("cbTreeV.ToolTip"));
+            this.cbTreeV.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel4
+            // 
+            resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
+            this.tableLayoutPanel4.Controls.Add(this.gbProcess, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.gbLog, 0, 2);
+            this.tableLayoutPanel4.Controls.Add(this.gbCompress, 0, 1);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             // 
             // Config
             // 
@@ -470,14 +490,16 @@ namespace Pack_My_Game.IHM
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tabConfig.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.tabPage1.ResumeLayout(false);
-            this.gbProcess.ResumeLayout(false);
-            this.gbProcess.PerformLayout();
-            this.gbCompress.ResumeLayout(false);
-            this.gbCompress.PerformLayout();
+            this.tabPage1.PerformLayout();
             this.gbLog.ResumeLayout(false);
             this.gbLog.PerformLayout();
+            this.gbCompress.ResumeLayout(false);
+            this.gbCompress.PerformLayout();
+            this.gbProcess.ResumeLayout(false);
+            this.gbProcess.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            this.tableLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -523,14 +545,16 @@ namespace Pack_My_Game.IHM
         private System.Windows.Forms.GroupBox gbProcess;
         private System.Windows.Forms.CheckBox cbZip;
         private System.Windows.Forms.CheckBox cb7Zip;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cbInfos;
+        private System.Windows.Forms.CheckBox cbEBGame;
+        private System.Windows.Forms.CheckBox cbCCC;
+        private System.Windows.Forms.CheckBox cbOBGame;
         private System.Windows.Forms.CheckBox cbClone;
         private System.Windows.Forms.GroupBox gbCompress;
         private System.Windows.Forms.GroupBox gbLog;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox cbLogWindow;
+        private System.Windows.Forms.CheckBox cbLogFile;
+        private System.Windows.Forms.CheckBox cbTreeV;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
     }
 }

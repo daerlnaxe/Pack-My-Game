@@ -988,65 +988,296 @@ Note: As much archive as you want.
   <data name="&gt;&gt;btSave.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="checkBox6.AutoSize" type="System.Boolean, mscorlib">
+  <data name="tableLayoutPanel4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="checkBox6.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tableLayoutPanel4.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="cbTreeV.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbTreeV.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 97</value>
+  </data>
+  <data name="cbTreeV.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 17</value>
+  </data>
+  <data name="cbTreeV.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="cbTreeV.Text" xml:space="preserve">
+    <value>TreeView File</value>
+  </data>
+  <data name="cbTreeV.ToolTip" xml:space="preserve">
+    <value>Filte that represents tree of the folder, used to have a quick view.</value>
+  </data>
+  <data name="&gt;&gt;cbTreeV.Name" xml:space="preserve">
+    <value>cbTreeV</value>
+  </data>
+  <data name="&gt;&gt;cbTreeV.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbTreeV.Parent" xml:space="preserve">
+    <value>gbProcess</value>
+  </data>
+  <data name="&gt;&gt;cbTreeV.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cbInfos.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbInfos.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbInfos.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 28</value>
+  </data>
+  <data name="cbInfos.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 17</value>
+  </data>
+  <data name="cbInfos.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="cbInfos.Text" xml:space="preserve">
+    <value>Infos game</value>
+  </data>
+  <data name="cbInfos.ToolTip" xml:space="preserve">
+    <value>It's an xml file wit informations about the game, it uses notes field as sinopsys</value>
+  </data>
+  <data name="&gt;&gt;cbInfos.Name" xml:space="preserve">
+    <value>cbInfos</value>
+  </data>
+  <data name="&gt;&gt;cbInfos.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbInfos.Parent" xml:space="preserve">
+    <value>gbProcess</value>
+  </data>
+  <data name="&gt;&gt;cbInfos.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbEBGame.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbEBGame.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbEBGame.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 74</value>
+  </data>
+  <data name="cbEBGame.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 17</value>
+  </data>
+  <data name="cbEBGame.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="cbEBGame.Text" xml:space="preserve">
+    <value>Enhanced xml backup</value>
+  </data>
+  <data name="cbEBGame.ToolTip" xml:space="preserve">
+    <value>It try to backup exact informations from the platform xml file of LaunchBox, AND modify it with things found during process like, music file path, video file path ...</value>
+  </data>
+  <data name="&gt;&gt;cbEBGame.Name" xml:space="preserve">
+    <value>cbEBGame</value>
+  </data>
+  <data name="&gt;&gt;cbEBGame.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbEBGame.Parent" xml:space="preserve">
+    <value>gbProcess</value>
+  </data>
+  <data name="&gt;&gt;cbEBGame.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cbCCC.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbCCC.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbCCC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>215, 51</value>
+  </data>
+  <data name="cbCCC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 17</value>
+  </data>
+  <data name="cbCCC.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="cbCCC.Text" xml:space="preserve">
+    <value>Cheat Codes copy</value>
+  </data>
+  <data name="cbCCC.ToolTip" xml:space="preserve">
+    <value>Copy all files from Cheat Codes path you entered in 'paths' tab</value>
+  </data>
+  <data name="&gt;&gt;cbCCC.Name" xml:space="preserve">
+    <value>cbCCC</value>
+  </data>
+  <data name="&gt;&gt;cbCCC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbCCC.Parent" xml:space="preserve">
+    <value>gbProcess</value>
+  </data>
+  <data name="&gt;&gt;cbCCC.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cbOBGame.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbOBGame.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbOBGame.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 51</value>
+  </data>
+  <data name="cbOBGame.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 17</value>
+  </data>
+  <data name="cbOBGame.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="cbOBGame.Text" xml:space="preserve">
+    <value>Original xml backup</value>
+  </data>
+  <data name="cbOBGame.ToolTip" xml:space="preserve">
+    <value>It try to backup exact informations from the platform xml file of LaunchBox.s</value>
+  </data>
+  <data name="&gt;&gt;cbOBGame.Name" xml:space="preserve">
+    <value>cbOBGame</value>
+  </data>
+  <data name="&gt;&gt;cbOBGame.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbOBGame.Parent" xml:space="preserve">
+    <value>gbProcess</value>
+  </data>
+  <data name="&gt;&gt;cbOBGame.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cbClone.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbClone.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbClone.Location" type="System.Drawing.Point, System.Drawing">
+    <value>215, 28</value>
+  </data>
+  <data name="cbClone.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 17</value>
+  </data>
+  <data name="cbClone.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="cbClone.Text" xml:space="preserve">
+    <value>Clones copy</value>
+  </data>
+  <data name="cbClone.ToolTip" xml:space="preserve">
+    <value>Copy all games you combined in LaunchBox with a main game</value>
+  </data>
+  <data name="&gt;&gt;cbClone.Name" xml:space="preserve">
+    <value>cbClone</value>
+  </data>
+  <data name="&gt;&gt;cbClone.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbClone.Parent" xml:space="preserve">
+    <value>gbProcess</value>
+  </data>
+  <data name="&gt;&gt;cbClone.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="gbProcess.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="gbProcess.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="gbProcess.Size" type="System.Drawing.Size, System.Drawing">
+    <value>595, 126</value>
+  </data>
+  <data name="gbProcess.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="gbProcess.Text" xml:space="preserve">
+    <value>Process</value>
+  </data>
+  <data name="&gt;&gt;gbProcess.Name" xml:space="preserve">
+    <value>gbProcess</value>
+  </data>
+  <data name="&gt;&gt;gbProcess.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbProcess.Parent" xml:space="preserve">
+    <value>tableLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;gbProcess.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cbLogWindow.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbLogWindow.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 53</value>
   </data>
-  <data name="checkBox6.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="cbLogWindow.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 17</value>
   </data>
-  <data name="checkBox6.TabIndex" type="System.Int32, mscorlib">
+  <data name="cbLogWindow.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="checkBox6.Text" xml:space="preserve">
+  <data name="cbLogWindow.Text" xml:space="preserve">
     <value>Window</value>
   </data>
-  <data name="&gt;&gt;checkBox6.Name" xml:space="preserve">
-    <value>checkBox6</value>
+  <data name="&gt;&gt;cbLogWindow.Name" xml:space="preserve">
+    <value>cbLogWindow</value>
   </data>
-  <data name="&gt;&gt;checkBox6.Type" xml:space="preserve">
+  <data name="&gt;&gt;cbLogWindow.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBox6.Parent" xml:space="preserve">
+  <data name="&gt;&gt;cbLogWindow.Parent" xml:space="preserve">
     <value>gbLog</value>
   </data>
-  <data name="&gt;&gt;checkBox6.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;cbLogWindow.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="checkBox5.AutoSize" type="System.Boolean, mscorlib">
+  <data name="cbLogFile.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="checkBox5.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="cbLogFile.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 30</value>
   </data>
-  <data name="checkBox5.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="cbLogFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 17</value>
   </data>
-  <data name="checkBox5.TabIndex" type="System.Int32, mscorlib">
+  <data name="cbLogFile.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="checkBox5.Text" xml:space="preserve">
+  <data name="cbLogFile.Text" xml:space="preserve">
     <value>File</value>
   </data>
-  <data name="&gt;&gt;checkBox5.Name" xml:space="preserve">
-    <value>checkBox5</value>
+  <data name="&gt;&gt;cbLogFile.Name" xml:space="preserve">
+    <value>cbLogFile</value>
   </data>
-  <data name="&gt;&gt;checkBox5.Type" xml:space="preserve">
+  <data name="&gt;&gt;cbLogFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBox5.Parent" xml:space="preserve">
+  <data name="&gt;&gt;cbLogFile.Parent" xml:space="preserve">
     <value>gbLog</value>
   </data>
-  <data name="&gt;&gt;checkBox5.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;cbLogFile.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="gbLog.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
   <data name="gbLog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 275</value>
+    <value>3, 241</value>
   </data>
   <data name="gbLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>600, 100</value>
+    <value>595, 100</value>
   </data>
   <data name="gbLog.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -1061,10 +1292,10 @@ Note: As much archive as you want.
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;gbLog.Parent" xml:space="preserve">
-    <value>tabPage1</value>
+    <value>tableLayoutPanel4</value>
   </data>
   <data name="&gt;&gt;gbLog.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="cbZip.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1083,6 +1314,9 @@ Note: As much archive as you want.
   </data>
   <data name="cbZip.Text" xml:space="preserve">
     <value>Zip compression</value>
+  </data>
+  <data name="cbZip.ToolTip" xml:space="preserve">
+    <value>Compress pack with zip algorithm</value>
   </data>
   <data name="&gt;&gt;cbZip.Name" xml:space="preserve">
     <value>cbZip</value>
@@ -1114,6 +1348,9 @@ Note: As much archive as you want.
   <data name="cb7Zip.Text" xml:space="preserve">
     <value>7-Zip compression</value>
   </data>
+  <data name="cb7Zip.ToolTip" xml:space="preserve">
+    <value>Compress pack with 7-zip algorithm</value>
+  </data>
   <data name="&gt;&gt;cb7Zip.Name" xml:space="preserve">
     <value>cb7Zip</value>
   </data>
@@ -1126,11 +1363,14 @@ Note: As much archive as you want.
   <data name="&gt;&gt;cb7Zip.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="gbCompress.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
   <data name="gbCompress.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 169</value>
+    <value>3, 135</value>
   </data>
   <data name="gbCompress.Size" type="System.Drawing.Size, System.Drawing">
-    <value>600, 100</value>
+    <value>595, 100</value>
   </data>
   <data name="gbCompress.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -1145,196 +1385,37 @@ Note: As much archive as you want.
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;gbCompress.Parent" xml:space="preserve">
-    <value>tabPage1</value>
+    <value>tableLayoutPanel4</value>
   </data>
   <data name="&gt;&gt;gbCompress.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="checkBox4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBox4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 56</value>
-  </data>
-  <data name="checkBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 17</value>
-  </data>
-  <data name="checkBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="checkBox4.Text" xml:space="preserve">
-    <value>Infos game</value>
-  </data>
-  <data name="checkBox4.ToolTip" xml:space="preserve">
-    <value>It's an xml file wit informations about the game, it uses notes field as sinopsys</value>
-  </data>
-  <data name="&gt;&gt;checkBox4.Name" xml:space="preserve">
-    <value>checkBox4</value>
-  </data>
-  <data name="&gt;&gt;checkBox4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox4.Parent" xml:space="preserve">
-    <value>gbProcess</value>
-  </data>
-  <data name="&gt;&gt;checkBox4.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="checkBox3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBox3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 125</value>
-  </data>
-  <data name="checkBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 17</value>
-  </data>
-  <data name="checkBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="checkBox3.Text" xml:space="preserve">
-    <value>Enhanced xml backup</value>
-  </data>
-  <data name="checkBox3.ToolTip" xml:space="preserve">
-    <value>It try to backup exact informations from the platform xml file of LaunchBox, AND modify it with things found during process like, music file path, video file path ...</value>
-  </data>
-  <data name="&gt;&gt;checkBox3.Name" xml:space="preserve">
-    <value>checkBox3</value>
-  </data>
-  <data name="&gt;&gt;checkBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox3.Parent" xml:space="preserve">
-    <value>gbProcess</value>
-  </data>
-  <data name="&gt;&gt;checkBox3.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="checkBox2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBox2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 102</value>
-  </data>
-  <data name="checkBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 17</value>
-  </data>
-  <data name="checkBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="checkBox2.Text" xml:space="preserve">
-    <value>Cheat Codes copy</value>
-  </data>
-  <data name="&gt;&gt;checkBox2.Name" xml:space="preserve">
-    <value>checkBox2</value>
-  </data>
-  <data name="&gt;&gt;checkBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox2.Parent" xml:space="preserve">
-    <value>gbProcess</value>
-  </data>
-  <data name="&gt;&gt;checkBox2.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="checkBox1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 33</value>
-  </data>
-  <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 17</value>
-  </data>
-  <data name="checkBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="checkBox1.Text" xml:space="preserve">
-    <value>True xml backup</value>
-  </data>
-  <data name="checkBox1.ToolTip" xml:space="preserve">
-    <value>It try to backup exact informations from the platform xml file of LaunchBox.s</value>
-  </data>
-  <data name="&gt;&gt;checkBox1.Name" xml:space="preserve">
-    <value>checkBox1</value>
-  </data>
-  <data name="&gt;&gt;checkBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox1.Parent" xml:space="preserve">
-    <value>gbProcess</value>
-  </data>
-  <data name="&gt;&gt;checkBox1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="cbClone.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cbClone.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cbClone.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 79</value>
-  </data>
-  <data name="cbClone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 17</value>
-  </data>
-  <data name="cbClone.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="cbClone.Text" xml:space="preserve">
-    <value>Clones copy</value>
-  </data>
-  <data name="cbClone.ToolTip" xml:space="preserve">
-    <value>Active the colones copy function to copy them with the main rom</value>
-  </data>
-  <data name="&gt;&gt;cbClone.Name" xml:space="preserve">
-    <value>cbClone</value>
-  </data>
-  <data name="&gt;&gt;cbClone.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbClone.Parent" xml:space="preserve">
-    <value>gbProcess</value>
-  </data>
-  <data name="&gt;&gt;cbClone.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="gbProcess.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tableLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 6</value>
   </data>
-  <data name="gbProcess.Size" type="System.Drawing.Size, System.Drawing">
-    <value>600, 157</value>
+  <data name="tableLayoutPanel4.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="gbProcess.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+  <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>601, 344</value>
   </data>
-  <data name="gbProcess.Text" xml:space="preserve">
-    <value>Process</value>
+  <data name="tableLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
   </data>
-  <data name="&gt;&gt;gbProcess.Name" xml:space="preserve">
-    <value>gbProcess</value>
+  <data name="&gt;&gt;tableLayoutPanel4.Name" xml:space="preserve">
+    <value>tableLayoutPanel4</value>
   </data>
-  <data name="&gt;&gt;gbProcess.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;tableLayoutPanel4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;gbProcess.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tableLayoutPanel4.Parent" xml:space="preserve">
     <value>tabPage1</value>
   </data>
-  <data name="&gt;&gt;gbProcess.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;tableLayoutPanel4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel4.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="gbProcess" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="gbLog" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="gbCompress" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>

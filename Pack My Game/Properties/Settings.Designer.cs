@@ -116,12 +116,12 @@ namespace Pack_My_Game.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool cZipActive {
+        public bool opZip {
             get {
-                return ((bool)(this["cZipActive"]));
+                return ((bool)(this["opZip"]));
             }
             set {
-                this["cZipActive"] = value;
+                this["opZip"] = value;
             }
         }
         
@@ -140,12 +140,12 @@ namespace Pack_My_Game.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool c7zActive {
+        public bool op7Zip {
             get {
-                return ((bool)(this["c7zActive"]));
+                return ((bool)(this["op7Zip"]));
             }
             set {
-                this["c7zActive"] = value;
+                this["op7Zip"] = value;
             }
         }
         
@@ -164,24 +164,105 @@ namespace Pack_My_Game.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool cloneActive {
+        public bool opClones {
             get {
-                return ((bool)(this["cloneActive"]));
+                return ((bool)(this["opClones"]));
             }
             set {
-                this["cloneActive"] = value;
+                this["opClones"] = value;
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool UpgradeRequired {
             get {
                 return ((bool)(this["UpgradeRequired"]));
             }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool opOBGame {
+            get {
+                return ((bool)(this["opOBGame"]));
+            }
             set {
-                this["UpgradeRequired"] = value;
+                this["opOBGame"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool opEBGame {
+            get {
+                return ((bool)(this["opEBGame"]));
+            }
+            set {
+                this["opEBGame"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool opInfos {
+            get {
+                return ((bool)(this["opInfos"]));
+            }
+            set {
+                this["opInfos"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool opCheatCodes {
+            get {
+                return ((bool)(this["opCheatCodes"]));
+            }
+            set {
+                this["opCheatCodes"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool opLogFile {
+            get {
+                return ((bool)(this["opLogFile"]));
+            }
+            set {
+                this["opLogFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool opLogWindow {
+            get {
+                return ((bool)(this["opLogWindow"]));
+            }
+            set {
+                this["opLogWindow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool opTreeV {
+            get {
+                return ((bool)(this["opTreeV"]));
+            }
+            set {
+                this["opTreeV"] = value;
             }
         }
     }

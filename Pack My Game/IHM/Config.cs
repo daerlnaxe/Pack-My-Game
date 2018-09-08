@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Pack_My_Game.Properties;
 
 namespace Pack_My_Game.IHM
 {
@@ -52,23 +53,34 @@ namespace Pack_My_Game.IHM
             listLang.DataSource = new BindingSource(Languages, null);
             listLang.DisplayMember = "Value";
             listLang.ValueMember = "Key";
-            listLang.SelectedValue = Properties.Settings.Default.Language;
+            listLang.SelectedValue = Settings.Default.Language;
             //listLang.SelectedValue = _PreviousCulture.TextInfo.CultureName;
-
-            // General
-            cbClone.Checked = Properties.Settings.Default.cloneActive;
-
             // Paths
-            this.tbLaunchBoxPath.Text = Properties.Settings.Default.LBPath;
-            this.tbCheatCodes.Text = Properties.Settings.Default.CCodesPath;
+            this.tbLaunchBoxPath.Text = Settings.Default.LBPath;
+            this.tbCheatCodes.Text = Settings.Default.CCodesPath;
 
             //zip
-            this.trackZipCompLvl.Position = Properties.Settings.Default.cZipCompLvl;
-            this.cbZip.Checked = Properties.Settings.Default.cZipActive;
+            this.trackZipCompLvl.Position = Settings.Default.cZipCompLvl;
+            this.cbZip.Checked = Settings.Default.opZip;
 
             // 7-Zip
-            this.track7ZipCompLvl.Position = Properties.Settings.Default.c7zCompLvl;
-            this.cb7Zip.Checked = Properties.Settings.Default.c7zActive;
+            this.track7ZipCompLvl.Position = Settings.Default.c7zCompLvl;
+            this.cb7Zip.Checked = Settings.Default.op7Zip;
+
+            // Progress
+            cbInfos.Checked = Settings.Default.opInfos;
+            cbOBGame.Checked = Settings.Default.opOBGame;
+            cbEBGame.Checked = Settings.Default.opEBGame;
+            cbTreeV.Checked = Settings.Default.opTreeV;
+
+            cbClone.Checked = Settings.Default.opClones;
+            cbCCC.Checked = Settings.Default.opCheatCodes;
+
+            cbZip.Checked = Settings.Default.opZip;
+            cbZip.Checked = Settings.Default.op7Zip;
+
+            cbLogFile.Checked = Settings.Default.opLogFile;
+            cbLogWindow.Checked = Settings.Default.opLogWindow;
 
         }
 
@@ -82,14 +94,14 @@ namespace Pack_My_Game.IHM
             var cpWindow = new FolderBrowserDialog();
             cpWindow.Description = Lang.Choose_LBPath;
             cpWindow.ShowNewFolderButton = false;
-            cpWindow.SelectedPath = Properties.Settings.Default.LastKPath;
+            cpWindow.SelectedPath = Settings.Default.LastKPath;
 
             if (cpWindow.ShowDialog() == DialogResult.OK && Verif_LaunchBoxPath(cpWindow.SelectedPath))
             {
                 this.tbLaunchBoxPath.Text = cpWindow.SelectedPath;
                 Verif_LaunchBoxPath(tbLaunchBoxPath.Text);
 
-                Properties.Settings.Default.LastKSystem = cpWindow.SelectedPath;
+                Settings.Default.LastKSystem = cpWindow.SelectedPath;
             }
 
         }
@@ -111,13 +123,13 @@ namespace Pack_My_Game.IHM
         /// <returns></returns>
         private bool Verif_LaunchBoxPath(string path)
         {
-            string xmlLMachines = Path.Combine(path, Properties.Settings.Default.fPlatforms);
+            string xmlLMachines = Path.Combine(path, Settings.Default.fPlatforms);
 
             // Verification if there is the right file inside
             if (xmlLMachines != "" && !File.Exists(xmlLMachines))
             {
                 MessageBox.Show($"{Lang.Invalid_Path}: 'Platforms.xml'", Lang.Alert, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                tbLaunchBoxPath.Text = Properties.Settings.Default.LBPath;
+                tbLaunchBoxPath.Text = Settings.Default.LBPath;
                 return false;
             }
             return true;
@@ -131,19 +143,19 @@ namespace Pack_My_Game.IHM
             var cpWindow = new FolderBrowserDialog();
             cpWindow.Description = Lang.Choose_CCodesPath;
             cpWindow.ShowNewFolderButton = false;
-            cpWindow.SelectedPath = Properties.Settings.Default.LastKPath;
-           
+            cpWindow.SelectedPath = Settings.Default.LastKPath;
+
             if (cpWindow.ShowDialog() == DialogResult.OK)
             {
                 this.tbCheatCodes.Text = cpWindow.SelectedPath;
 
-                Properties.Settings.Default.LastKPath = cpWindow.SelectedPath;
+                Settings.Default.LastKPath = cpWindow.SelectedPath;
             }
         }
-        
+
         private void CCodes_Validating(object sender, CancelEventArgs e)
         {
-            Verif_Path(tbCheatCodes.Text, tbCheatCodes, Properties.Settings.Default.CCodesPath);
+            Verif_Path(tbCheatCodes.Text, tbCheatCodes, Settings.Default.CCodesPath);
         }
         /// <summary>
         /// Generic function to verif folder
@@ -166,8 +178,8 @@ namespace Pack_My_Game.IHM
 
         private void btCancel_Click(object sender, EventArgs e)
         {
-            Thread.CurrentThread.CurrentUICulture =_PreviousCulture;
-            Properties.Settings.Default.Language = _PreviousCulture.TextInfo.CultureName;
+            Thread.CurrentThread.CurrentUICulture = _PreviousCulture;
+            Settings.Default.Language = _PreviousCulture.TextInfo.CultureName;
             this.Close();
         }
 
@@ -180,32 +192,44 @@ namespace Pack_My_Game.IHM
                 return;
             }
 
-            string xmlLMachines = Path.Combine(this.tbLaunchBoxPath.Text, Properties.Settings.Default.fPlatforms);
+            string xmlLMachines = Path.Combine(this.tbLaunchBoxPath.Text, Settings.Default.fPlatforms);
 
             // Verification if there is the right file inside
             //if (!File.Exists(xmlLMachines))
             //{
             //    MessageBox.Show($"{Lang.Invalid_Path}:  'Platforms.xml'", Lang.Alert, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //    Console.WriteLine("bizarre " + Properties.Settings.Default.LBPath);
+            //    Console.WriteLine("bizarre " + Settings.Default.LBPath);
             //    return;
             //}
 
             // General            
-            Properties.Settings.Default.cloneActive = cbClone.Checked;            
+
 
             // Paths
-            Properties.Settings.Default.LBPath = tbLaunchBoxPath.Text;
+            Settings.Default.LBPath = tbLaunchBoxPath.Text;
 
             // Zip
-            Properties.Settings.Default.cZipCompLvl = trackZipCompLvl.Position;
-            Properties.Settings.Default.cZipActive = cbZip.Checked;
+            Settings.Default.cZipCompLvl = trackZipCompLvl.Position;
 
             // 7-Zip
-            Properties.Settings.Default.c7zCompLvl = this.track7ZipCompLvl.Position;
-            Properties.Settings.Default.c7zActive = this.cb7Zip.Checked;
+            Settings.Default.c7zCompLvl = this.track7ZipCompLvl.Position;
+
+            // Progress
+            Settings.Default.opInfos = cbInfos.Checked;
+            Settings.Default.opOBGame = cbOBGame.Checked;
+            Settings.Default.opEBGame = cbEBGame.Checked;
+            Settings.Default.opTreeV = cbTreeV.Checked;
+            Settings.Default.opClones = cbClone.Checked;
+            Settings.Default.opCheatCodes = cbCCC.Checked;
+
+            Settings.Default.opZip = cbZip.Checked;
+            Settings.Default.op7Zip = cbZip.Checked;
+
+            Settings.Default.opLogFile = cbLogFile.Checked;
+            Settings.Default.opLogWindow = cbLogWindow.Checked;
 
             // Save
-            Properties.Settings.Default.Save();
+            Settings.Default.Save();
             this.Close();
         }
 
@@ -215,7 +239,7 @@ namespace Pack_My_Game.IHM
             KeyValuePair<string, string> selection = (KeyValuePair<string, string>)listLang.SelectedItem;
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(selection.Key);
 
-            Properties.Settings.Default.Language = selection.Key;
+            Settings.Default.Language = selection.Key;
 
             this.Controls.Clear();
             this.InitializeComponent();
