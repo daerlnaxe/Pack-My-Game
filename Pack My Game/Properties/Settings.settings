@@ -41,7 +41,7 @@
     <Setting Name="opClones" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="UpgradeRequired" Type="System.Boolean" Scope="Application">
+    <Setting Name="UpgradeRequired" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="opOBGame" Type="System.Boolean" Scope="User">

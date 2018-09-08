@@ -830,7 +830,6 @@ namespace Pack_My_Game.XML
                     nodPaths.Current.MoveToFirstChild();
                     PlatformFolder pfFolder = new PlatformFolder();
                     
-
                     do
                     {
                         //Console.WriteLine($"\t{nodIImages.Current.Name} = {nodIImages.Current.Value}");

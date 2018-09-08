@@ -17,7 +17,7 @@ namespace Pack_My_Game.BackupLB
     public class Game
     {
         #region info jeu
-        
+
         [XmlElement(Order = 1)]
         public string ID { get; set; }                          //bedf7c05-999f-43fd-a788-9199c08e603e
 
@@ -52,6 +52,9 @@ namespace Pack_My_Game.BackupLB
         [XmlElement(Order = 11)]
         public string Notes { get; set; }                       //3 Ninjas Kick Back follows 3 young ninja  brothers, Rocky, Colt and Tum-Tum as they assist an old Samurai in retrieving a prized dagger which has been stolen by his rival.The dagger, once given to the Samurai as a reward, will be passed along to younger generations once it is restored to its rightful owner.The boys learn ninjitsu and karate as they fight evil forces that are older, more powerful, and bigger than them.
 
+        // Concerne le PEGI
+        [XmlElement(Order = 12)]
+        public string Rating { get; set; }                      //T - Teen
         #endregion
 
         #region complément jeu (fini, status...)
@@ -70,8 +73,7 @@ namespace Pack_My_Game.BackupLB
         [XmlElement(Order = 34)]
         public bool Favorite { get; set; }                      //false
 
-        [XmlElement(Order = 35)]
-        public string Rating { get; set; }                      //T - Teen
+
 
         [XmlElement(Order = 36)]
         public string WikipediaURL { get; set; }                //https://en.wikipedia.org/wiki/3_Ninjas_Kick_Back_(video_game)
@@ -82,19 +84,19 @@ namespace Pack_My_Game.BackupLB
 
         #region chemins
         [XmlElement(Order = 50)]
-        public string ApplicationPath { get; set; }             //..\..\Games\Roms\Sega Mega Drive\Pending\3 Ninjas Kick Back(1994)(Sony Imagesoft) (US).zip
+        public string ApplicationPath { get; set; } = "";            //..\..\Games\Roms\Sega Mega Drive\Pending\3 Ninjas Kick Back(1994)(Sony Imagesoft) (US).zip
 
         [XmlElement(Order = 51)]
-        public string ManualPath { get; set; }                  //..\..\Games\Manuels\Sega Mega Drive\3_Ninjas_Kick_Back_1994_Sony_Imagesoft_US.pdf
+        public string ManualPath { get; set; } = "";               //..\..\Games\Manuels\Sega Mega Drive\3_Ninjas_Kick_Back_1994_Sony_Imagesoft_US.pdf
 
         [XmlElement(Order = 52)]
-        public string MusicPath { get; set; }                   //
+        public string MusicPath { get; set; } = "";                 //
 
         [XmlElement(Order = 53)]
-        public string VideoPath { get; set; }                   //
+        public string VideoPath { get; set; } = "";                 //
 
         [XmlElement(Order = 54)]
-        public string DosBoxConfigurationPath { get; set; }     //
+        public string DosBoxConfigurationPath { get; set; } = "";    //
 
         #endregion
 
@@ -130,7 +132,7 @@ namespace Pack_My_Game.BackupLB
         public bool UseScummVM { get; set; }                    //false
 
         #endregion
-               
+
 
         #region params de lancement
         [XmlElement(Order = 100)]
@@ -169,7 +171,7 @@ namespace Pack_My_Game.BackupLB
         public int StarRating { get; set; }                     //0
         #endregion
 
-        [XmlElement(Order =300)]
+        [XmlElement(Order = 300)]
         public string RootFolder { get; set; }                  //
 
         [XmlElement(Order = 301)]
@@ -193,7 +195,7 @@ namespace Pack_My_Game.BackupLB
         [XmlIgnore]
         public List<CustomField> CustomFields { get; set; }
 
-        [XmlIgnore]     
+        [XmlIgnore]
         public List<AdditionalApplication> AdditionalApplications { get; set; }
 
 

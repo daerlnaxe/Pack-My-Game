@@ -20,6 +20,7 @@ using Pack_My_Game.IHM;
 using DxTrace;
 using Pack_My_Game.BackupLB;
 using Pack_My_Game.Properties;
+using DxPaths;
 
 namespace Pack_My_Game.Pack
 {
@@ -66,9 +67,8 @@ namespace Pack_My_Game.Pack
         private Folder _Tree;
 
         //Loggers
-        InfoScreen iScreen;
-        InfoToFile iLog;
-
+        List<IMessage> _Loggers { get; set; } = new List<IMessage>();
+        InfoScreen _IScreen;
 
         /// <summary>
         /// 
@@ -88,40 +88,73 @@ namespace Pack_My_Game.Pack
         /// </summary>
         /// <param name="xFile">believe... xml file </param>
         /// <param name="GameFile">Game file (exploitable)</param>
-        internal int Initialize(string xFile, string nameOfFile)
+        internal int Initialize(string xFile, ShortGame sGame)
         {
+            // Verif
+            if (string.IsNullOrEmpty(ID)) throw new Exception("Id property: null");
+            if (string.IsNullOrEmpty(_SystemName)) throw new Exception();
+
             _WFolder = Properties.Settings.Default.OutPPath;
             _SystemPath = Path.Combine(_WFolder, _SystemName);
-            _GamePath = Path.Combine(_SystemPath, $"{nameOfFile}");             // New Working Folder
-            string logFile = Path.Combine(_WFolder, $"{_SystemName} - {nameOfFile}.log");
+            _GamePath = Path.Combine(_SystemPath, $"{sGame.ExploitableFileName}");             // New Working Folder
+            string logFile = Path.Combine(_WFolder, $"{_SystemName} - {sGame.ExploitableFileName}.log");
 
-            // System d'affichage
-            iScreen = new InfoScreen();
-            iScreen.Prefix = "PackMe";
-            iScreen.Show();
-            ITrace.AddListener(iScreen);
 
-            iLog = new InfoToFile(logFile, true);
-            iLog.Prefix = iScreen.Prefix;
-            ITrace.AddListener(iLog);
+            var folderRes = OPFolders.SVerif(_GamePath, "Initialize", Dcs_Buttons.NoPass, (string message) => ITrace.WriteLine(message, true));
+            if (folderRes == OPResult.Stop)
+            {
+                // todo
+                ITrace.WriteLine("[Initialize] GoodBye !");
+                _IScreen.Close();
 
+                ITrace.RemoveListener(_IScreen);
+
+                return 200;
+            }
+
+            #region System d'affichage
+            string prefix = "PackMe";
+            //window
+            if (Settings.Default.opLogWindow)
+            {
+                _IScreen = new InfoScreen();
+                _IScreen.Prefix = prefix;
+                _IScreen.Show();
+                _Loggers.Add(_IScreen);
+            }
+
+            // file
+            if (Settings.Default.opLogFile)
+            {
+                InfoToFile iLog = new InfoToFile(logFile, true);
+                iLog.Prefix = prefix;
+                _Loggers.Add(iLog);
+            }
+
+            // debug
             if (Debugger.IsAttached)
             {
                 InfoToConsole iConsole = new InfoToConsole();
-                iConsole.Prefix = iScreen.Prefix;
-                ITrace.AddListener(iConsole);
+                iConsole.Prefix = prefix;
+                _Loggers.Add(iConsole);
             }
 
+            ITrace.AddListeners(_Loggers);
+
+
+            ITrace.WriteLine("===== Report of errors: =====");
+            ITrace.WriteLine($"[Initialize] ID:\t'{ID}'");
+            ITrace.WriteLine($"[Initialize] {Lang.SystemSelected}: '{_SystemName}'");
+            ITrace.WriteLine($"[Initialize] {Lang.GameSelected}: '{sGame.Title}' - Rom: '{sGame.ExploitableFileName}'");
+
+
+            #endregion
             /*
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(BwWork); // PackMe.Initialize(_XmlFPlatform);
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BWRunWorkerCompleted);
             bw.RunWorkerAsync();
             */
-
-            // Verif
-            if (string.IsNullOrEmpty(ID)) throw new Exception("Id property: null");
-            if (string.IsNullOrEmpty(_SystemName)) throw new Exception();
 
             // Lecture du fichier platform
             XML_Functions xmlPlatform = new XML_Functions();
@@ -141,58 +174,20 @@ namespace Pack_My_Game.Pack
 
             // Get Main infos
             _zBackGame = _XFunctions.ScrapBackupGame(ID);
-            //_ZeGame = _XFunctions.ScrapGame(ID);
-            //_ZeGame.FileName = Path.GetFileName(_ZeGame.ApplicationPath);
             _ZeGame = (GameInfo)_zBackGame;
 
-
-            ITrace.WriteLine("===== Report of errors: =====");
-            ITrace.WriteLine($"[Initialize] ID:\t'{ID}'");
-            ITrace.WriteLine($"[Initialize] {Lang.SystemSelected}: '{_SystemName}'");
-            ITrace.WriteLine($"[Initialize] {Lang.GameSelected}: '{_ZeGame.Title}' - Rom: '{_ZeGame.FileName}'");
-
-            #region
-            // Folder Verification
-            //if (Directory.Exists(_GamePath))
-            //{
-            //    //var res = MessageBox.Show("Folder  existing ! Click Confirm delete or abort", "Alert", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
-            //    var res = MB_Decision.Show("Destination Folder exists !", "Alert - Destination Folder", destination: _GamePath, buttons: MB_Decision.Mode.NoPass);
-            //    if (res == MB_Decision.Result.Stop)
-            //    {
-            //        // todo
-            //        IWrite.KillWindow();
-            //        return 200;
-            //    }
-            //    else if (res == MB_Decision.Result.Trash)
-            //    {
-            //        // Move to Recycle.Bin
-            //        try
-            //        {
-            //            FileSystem.DeleteDirectory(_GamePath, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
-            //        }
-            //        catch (Exception e)
-            //        {
-            //            Debug.WriteLine(e.Message);
-            //        }
-            //    }
-            //}
+            #region Original Backup Game
+            if (Settings.Default.opOBGame)
+            {
+                MakeXML.Backup_Game(_GamePath, _zBackGame, "TBGame");
+            }
+            else
+            {
+                ITrace.WriteLine("[Run] Original Backup Game disabled");
+            }
             #endregion
 
-            var folderRes = OPFolders.SVerif(_GamePath, "Initialize", Dcs_Buttons.NoPass, (string message) => ITrace.WriteLine(message, true));
-            if (folderRes == OPResult.Stop)
-            {
-                // todo
-                ITrace.WriteLine("[Initialize] GoodBye !");
-                iScreen.Close();
-
-                ITrace.RemoveListener(iScreen);
-
-                return 200;
-            }
-
-            // 
-
-            _LBoxDI = new DirectoryInfo(Properties.Settings.Default.LBPath);
+            _LBoxDI = new DirectoryInfo(Settings.Default.LBPath);
 
             // Set active Directory to Root
             Directory.SetCurrentDirectory(_WFolder);
@@ -237,16 +232,7 @@ namespace Pack_My_Game.Pack
             Directory.CreateDirectory(_GamePath);
             Directory.SetCurrentDirectory(_GamePath);
 
-            #region Original Backup Game
-            if (Settings.Default.opOBGame)
-            {
-                MakeXML.Backup_Game(_GamePath, _zBackGame, "TBGame");
-            }
-            else
-            {
-                ITrace.WriteLine("[Run] Original Backup Game disabled");
-            }
-            #endregion
+
 
             #region Creation of the Infos.xml
             if (Settings.Default.opInfos)
@@ -263,8 +249,8 @@ namespace Pack_My_Game.Pack
             MakeStructure();
 
             // Copy Roms, Video, Music, Manual
-            vManual = CopySpecific(_zBackGame.ApplicationPath, _Tree.Children["Roms"].Path, "Roms");
-            vManual = CopySpecific(_zBackGame.ManualPath, _Tree.Children["Manuals"].Path, "Manuals", x => _zBackGame.VideoPath = x);
+            vManual = CopySpecific(_zBackGame.ApplicationPath, _Tree.Children["Roms"].Path, "Roms", x => _zBackGame.ApplicationPath = x);
+            vManual = CopySpecific(_zBackGame.ManualPath, _Tree.Children["Manuals"].Path, "Manuals", x => _zBackGame.ManualPath = x);
             vMusic = CopySpecific(_zBackGame.MusicPath, _Tree.Children["Musics"].Path, "Music", x => _zBackGame.MusicPath = x);
             vVideo = CopySpecific(_zBackGame.VideoPath, _Tree.Children["Videos"].Path, "Video", x => _zBackGame.VideoPath = x);
             // CopySpecificFiles() old way;
@@ -293,7 +279,7 @@ namespace Pack_My_Game.Pack
                 ITrace.WriteLine($"[Run] Clone copy disabled");
             }
             #endregion
-            
+
             #region Serialization / backup ameliorated of launchbox datas (with found medias missing) 
             if (Settings.Default.opEBGame)
             {
@@ -361,18 +347,14 @@ namespace Pack_My_Game.Pack
 
                 }
             }
-                                 
+
             // Résultats
             PackMeRes.ShowDialog(vGame, vManual, vMusic, vVideo);
 
-            iScreen.KillAfter(10);
-            ITrace.RemoveListener(iScreen);
-            ITrace.RemoveListener(iLog);
+            // Stop loggers
+            if (_IScreen != null) _IScreen.KillAfter(10);
 
-            if (Debugger.IsAttached)
-            {
-                ITrace.RemoveLast();
-            }
+            ITrace.RemoveListerners(_Loggers);
 
             return true;
         }
@@ -458,12 +440,13 @@ namespace Pack_My_Game.Pack
         /// <summary>
         /// Function advcanced
         /// </summary>
-        private bool CopySpecific(string dbPath, string destLocation, string mediatype, Func<string, string> Assignation = null)
+        private bool CopySpecific(string dbPath, string destLocation, string mediatype, Func<string, string> Assignation)
         {
             // Normal copy
             if (!string.IsNullOrEmpty(dbPath))
             {
                 var res = OPFiles.SingleCompare(dbPath, destLocation, $"Copy_{mediatype}", Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
+                Assignation(DxPaths.Windows.DxPath.ToRelative(Settings.Default.LBPath, dbPath));
                 return CopyFile(dbPath, destLocation, res);
             }
             else
@@ -486,7 +469,7 @@ namespace Pack_My_Game.Pack
                     var res = OPFiles.SingleCompare(fichier, destLocation, $"Copy_{mediatype}", Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
                     CopyFile(fichier, destLocation, res);
                 }
-                Assignation(dFiles[0]);
+                Assignation(DxPaths.Windows.DxPath.ToRelative(Settings.Default.LBPath, dFiles[0]));
                 return true;
 
             }
@@ -506,14 +489,10 @@ namespace Pack_My_Game.Pack
             var res = MB_SimpleAll.Show($"{Lang.ImagesP} ?", Lang.ImagesTitle, buttons: Dcs_Buttons2.OverWrite | Dcs_Buttons2.Pass);
 
             ITrace.WriteLine(prefix: false);
-
-
-
-
+                                 
             ITrace.WriteLine(prefix: false);
             Queue<PackFile> lPackFile = new Queue<PackFile>();
-
-
+            
             // Get All images (To Add mask see at Where)
             Console.WriteLine($"[CopyImages] Search all images for '{_ZeGame.Title}'");
             foreach (PlatformFolder plfmFolder in _ZePlatform.PlatformFolders)
@@ -527,6 +506,7 @@ namespace Pack_My_Game.Pack
                     case "Video":
                         continue;
                 }
+
                 // Liste du contenu des dossiers
                 foreach (var fichier in Directory.EnumerateFiles(plfmFolder.FolderPath, "*.*", System.IO.SearchOption.AllDirectories)
                     .Where(s => Path.GetFileName(s).StartsWith($"{_ZeGame.Title}-") || Path.GetFileName(s).StartsWith($"{_ZeGame.Title}.{_ZeGame.ID}-")))
@@ -561,8 +541,6 @@ namespace Pack_My_Game.Pack
                 CopyFile(pkFile.LinkToThePath, dest, res);
 
             }
-
-
         }
 
         /// <summary>
@@ -603,16 +581,13 @@ namespace Pack_My_Game.Pack
             List<Clone> clones = new List<Clone>();
             _XFunctions.ListClones(clones, _ZeGame.ID);
 
-            foreach (Clone zeClone in clones)
+            // tri des doublons / filter duplicates
+            var fClones = clones.Distinct().ToList();
+
+            foreach (Clone zeClone in fClones)
             {
                 zeClone.ApplicationPath = ReconstructPath(zeClone.ApplicationPath);
-
-                //var cloneres = Destination.Verif(_Tree.Children["Roms"].Path, srcFile: zeClone.ApplicationPath, whocallme: "Clone");
-                //if (cloneres != Verif_Result.Pass || cloneres != Verif_Result.Source_Error)
-                //{
-                //    CopyFile(zeClone.ApplicationPath, _Tree.Children["Roms"].Path);
-                //}
-                // rom            
+      
                 var cloneRes = opFiles.Compare(zeClone.ApplicationPath, _Tree.Children["Roms"].Path, whocallme: "Clone");
                 CopyFile(zeClone.ApplicationPath, _Tree.Children["Roms"].Path, cloneRes);
             }

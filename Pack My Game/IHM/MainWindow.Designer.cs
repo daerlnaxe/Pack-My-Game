@@ -59,12 +59,12 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.ctxLVGames = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.miPackThis = new System.Windows.Forms.ToolStripMenuItem();
             this.miRemoveIt = new System.Windows.Forms.ToolStripMenuItem();
             this.miInfoXml = new System.Windows.Forms.ToolStripMenuItem();
+            this.imBackupXMLGame = new System.Windows.Forms.ToolStripMenuItem();
             this.mi7ZipIt = new System.Windows.Forms.ToolStripMenuItem();
             this.miZipIt = new System.Windows.Forms.ToolStripMenuItem();
-            this.imBackupXMLGame = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuTop.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -386,56 +386,57 @@
             // ctxLVGames
             // 
             this.ctxLVGames.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
+            this.miPackThis,
             this.miRemoveIt,
             this.miInfoXml,
+            this.imBackupXMLGame,
             this.mi7ZipIt,
-            this.miZipIt,
-            this.imBackupXMLGame});
+            this.miZipIt});
             this.ctxLVGames.Name = "ctxLVGames";
-            this.ctxLVGames.Size = new System.Drawing.Size(167, 136);
+            this.ctxLVGames.Size = new System.Drawing.Size(188, 136);
             this.toolTip1.SetToolTip(this.ctxLVGames, "Backup all informations from launchbox xml file");
             // 
-            // toolStripMenuItem1
+            // miPackThis
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
-            this.toolStripMenuItem1.Text = "PackThis ...";
+            this.miPackThis.Name = "miPackThis";
+            this.miPackThis.Size = new System.Drawing.Size(187, 22);
+            this.miPackThis.Text = "PackThis ...";
+            this.miPackThis.Click += new System.EventHandler(this.miPackThis_Click);
             // 
             // miRemoveIt
             // 
             this.miRemoveIt.Name = "miRemoveIt";
-            this.miRemoveIt.Size = new System.Drawing.Size(166, 22);
+            this.miRemoveIt.Size = new System.Drawing.Size(187, 22);
             this.miRemoveIt.Text = "Remove from list";
             this.miRemoveIt.Click += new System.EventHandler(this.miRemoveIt_Click);
             // 
             // miInfoXml
             // 
             this.miInfoXml.Name = "miInfoXml";
-            this.miInfoXml.Size = new System.Drawing.Size(166, 22);
+            this.miInfoXml.Size = new System.Drawing.Size(187, 22);
             this.miInfoXml.Text = "Make Info.xml";
             this.miInfoXml.Click += new System.EventHandler(this.miInfoXml_Click);
+            // 
+            // imBackupXMLGame
+            // 
+            this.imBackupXMLGame.Name = "imBackupXMLGame";
+            this.imBackupXMLGame.Size = new System.Drawing.Size(187, 22);
+            this.imBackupXMLGame.Text = "Backup original datas";
+            this.imBackupXMLGame.Click += new System.EventHandler(this.miBackupXMLGame_Click);
             // 
             // mi7ZipIt
             // 
             this.mi7ZipIt.Name = "mi7ZipIt";
-            this.mi7ZipIt.Size = new System.Drawing.Size(166, 22);
+            this.mi7ZipIt.Size = new System.Drawing.Size(187, 22);
             this.mi7ZipIt.Text = "Zip it...";
             this.mi7ZipIt.Click += new System.EventHandler(this.miZip_Click);
             // 
             // miZipIt
             // 
             this.miZipIt.Name = "miZipIt";
-            this.miZipIt.Size = new System.Drawing.Size(166, 22);
+            this.miZipIt.Size = new System.Drawing.Size(187, 22);
             this.miZipIt.Text = "7-Zip it...";
             this.miZipIt.Click += new System.EventHandler(this.mi7ZipIt_Click);
-            // 
-            // imBackupXMLGame
-            // 
-            this.imBackupXMLGame.Name = "imBackupXMLGame";
-            this.imBackupXMLGame.Size = new System.Drawing.Size(166, 22);
-            this.imBackupXMLGame.Text = "Backup XML data";
-            this.imBackupXMLGame.Click += new System.EventHandler(this.imBackupXMLGame_Click);
             // 
             // menuStrip1
             // 
@@ -504,7 +505,7 @@
         private System.Windows.Forms.Button butProceed;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ContextMenuStrip ctxLVGames;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem miPackThis;
         private System.Windows.Forms.ToolStripMenuItem mi7ZipIt;
         private System.Windows.Forms.ToolStripMenuItem miZipIt;
         private System.Windows.Forms.ToolStripMenuItem miRemoveIt;

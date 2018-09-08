@@ -369,7 +369,7 @@ namespace Pack_My_Game
 
                 PackMe pm = new PackMe(zeGame.ID, platform);
                 this.Hide();
-                int state = pm.Initialize(_XmlFPlatform, zeGame.ExploitableFileName);
+                int state = pm.Initialize(_XmlFPlatform, zeGame);
 
 
                 if (state == 0 && pm.Run())
@@ -591,7 +591,7 @@ namespace Pack_My_Game
 
         }
 
-        private void imBackupXMLGame_Click(object sender, EventArgs e)
+        private void miBackupXMLGame_Click(object sender, EventArgs e)
         {
             ShortGame sGame = (ShortGame)lvGames.SelectedItems[0].Tag;
             string gameWPath = Path.Combine(_OutPPath, PlatformName, sGame.FileName.Split('.')[0]);
@@ -602,7 +602,16 @@ namespace Pack_My_Game
 
         }
 
+
         #endregion
+
+        private void miPackThis_Click(object sender, EventArgs e)
+        {
+            List<ListViewItem> gamesSelected = new List<ListViewItem>();
+            for (int i = 0; i < lvGames.SelectedItems.Count; i++) gamesSelected.Add(lvGames.SelectedItems[i]);
+
+            PackMeLauncher(gamesSelected);
+        }
 
 
     }
