@@ -74,6 +74,7 @@ silent debug...)
 
 
 ## TODO
+- [ ] Work in progress: Eliminate duplicates images files function in contextual menu (md5 calcul)
 - [ ] Filter supports
 - [ ] Security on work folder
 - [ ] Find a better way to handle images files
