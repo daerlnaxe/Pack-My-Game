@@ -34,6 +34,9 @@
             this.menuTop = new System.Windows.Forms.MenuStrip();
             this.configToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpTSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.creditsTSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,8 +95,30 @@
             // 
             // helpToolStripMenuItem
             // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.helpTSMI,
+            this.creditsTSMI,
+            this.aboutTSMI});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
+            // 
+            // helpTSMI
+            // 
+            this.helpTSMI.Name = "helpTSMI";
+            resources.ApplyResources(this.helpTSMI, "helpTSMI");
+            this.helpTSMI.Click += new System.EventHandler(this.helpToolStripMenuItem1_Click);
+            // 
+            // creditsTSMI
+            // 
+            this.creditsTSMI.Name = "creditsTSMI";
+            resources.ApplyResources(this.creditsTSMI, "creditsTSMI");
+            this.creditsTSMI.Click += new System.EventHandler(this.creditsToolStripMenuItem_Click);
+            // 
+            // aboutTSMI
+            // 
+            this.aboutTSMI.Name = "aboutTSMI";
+            resources.ApplyResources(this.aboutTSMI, "aboutTSMI");
+            this.aboutTSMI.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
             // configToolStripMenuItem
             // 
@@ -390,6 +415,9 @@
         private System.Windows.Forms.ToolStripMenuItem imBackupXMLGame;
         private System.Windows.Forms.ToolStripMenuItem configToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpTSMI;
+        private System.Windows.Forms.ToolStripMenuItem creditsTSMI;
+        private System.Windows.Forms.ToolStripMenuItem aboutTSMI;
     }
 }
 

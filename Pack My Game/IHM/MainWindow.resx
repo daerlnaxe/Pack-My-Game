@@ -130,11 +130,29 @@
   <data name="configToolStripMenuItem1.Text" xml:space="preserve">
     <value>Config</value>
   </data>
+  <data name="helpTSMI.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 22</value>
+  </data>
+  <data name="helpTSMI.Text" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="creditsTSMI.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 22</value>
+  </data>
+  <data name="creditsTSMI.Text" xml:space="preserve">
+    <value>Credits</value>
+  </data>
+  <data name="aboutTSMI.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 22</value>
+  </data>
+  <data name="aboutTSMI.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
   <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
+    <value>24, 20</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Help</value>
+    <value>?</value>
   </data>
   <data name="menuTop.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -796,6 +814,24 @@
     <value>helpToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;helpToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;helpTSMI.Name" xml:space="preserve">
+    <value>helpTSMI</value>
+  </data>
+  <data name="&gt;&gt;helpTSMI.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;creditsTSMI.Name" xml:space="preserve">
+    <value>creditsTSMI</value>
+  </data>
+  <data name="&gt;&gt;creditsTSMI.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;aboutTSMI.Name" xml:space="preserve">
+    <value>aboutTSMI</value>
+  </data>
+  <data name="&gt;&gt;aboutTSMI.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;configToolStripMenuItem.Name" xml:space="preserve">

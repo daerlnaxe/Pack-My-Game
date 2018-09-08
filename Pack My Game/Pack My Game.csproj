@@ -238,6 +238,9 @@
     <EmbeddedResource Include="IHM\MainWindow.en.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="IHM\MainWindow.fr-DZ.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IHM\PackMeRes.resx">
       <DependentUpon>PackMeRes.cs</DependentUpon>
     </EmbeddedResource>

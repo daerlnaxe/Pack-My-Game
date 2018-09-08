@@ -77,3 +77,6 @@ E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\Dx
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\fr\DxTrace.resources.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.PackMeRes.resources
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack My Game.csprojAssemblyReference.cache
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\fr-DZ\Pack My Game.resources.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.MainWindow.fr-DZ.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\fr-DZ\Pack My Game.resources.dll
