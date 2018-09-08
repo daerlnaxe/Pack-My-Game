@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.menuTop = new System.Windows.Forms.MenuStrip();
+            this.configToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,6 +66,7 @@
             this.miZipIt = new System.Windows.Forms.ToolStripMenuItem();
             this.imBackupXMLGame = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuTop.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.Infos.SuspendLayout();
             this.groupOP.SuspendLayout();
@@ -74,11 +77,27 @@
             // 
             // menuTop
             // 
+            this.menuTop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.configToolStripMenuItem1,
+            this.helpToolStripMenuItem});
             this.menuTop.Location = new System.Drawing.Point(0, 0);
             this.menuTop.Name = "menuTop";
             this.menuTop.Size = new System.Drawing.Size(784, 24);
             this.menuTop.TabIndex = 3;
             this.menuTop.Text = "menuStrip1";
+            // 
+            // configToolStripMenuItem1
+            // 
+            this.configToolStripMenuItem1.Name = "configToolStripMenuItem1";
+            this.configToolStripMenuItem1.Size = new System.Drawing.Size(55, 20);
+            this.configToolStripMenuItem1.Text = "Config";
+            this.configToolStripMenuItem1.Click += new System.EventHandler(this.settingsTSMI_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
             // 
             // configToolStripMenuItem
             // 
@@ -94,7 +113,7 @@
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
-            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsTSMI_Click);
             // 
             // testToolStripMenuItem
             // 
@@ -440,6 +459,8 @@
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "MainWindow";
             this.Text = "Pack My Game - Alpha";
+            this.menuTop.ResumeLayout(false);
+            this.menuTop.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.Infos.ResumeLayout(false);
@@ -490,6 +511,8 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem miInfoXml;
         private System.Windows.Forms.ToolStripMenuItem imBackupXMLGame;
+        private System.Windows.Forms.ToolStripMenuItem configToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
     }
 }
 

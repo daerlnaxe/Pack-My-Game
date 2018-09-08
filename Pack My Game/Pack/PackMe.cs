@@ -319,7 +319,7 @@ namespace Pack_My_Game.Pack
             }
 
             // Serialization / backup ameliorated of launchbox datas (with found medias missing) 
-            MakeXML.Backup_Game(_GamePath, _zBackGame);
+            MakeXML.Backup_Game(_GamePath, _zBackGame, "EBGame");
 
 
             // Résultats

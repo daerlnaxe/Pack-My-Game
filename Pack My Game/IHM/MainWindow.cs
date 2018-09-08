@@ -176,7 +176,7 @@ namespace Pack_My_Game
         #endregion
 
         #region menu
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void settingsTSMI_Click(object sender, EventArgs e)
         {
             IHM.Config cfg = new IHM.Config();
             var res = cfg.ShowDialog();
@@ -598,9 +598,10 @@ namespace Pack_My_Game
 
             var backupGame = _xfGames.ScrapBackupGame(sGame.ID);
 
-            MakeXML.Backup_Game(gameWPath, backupGame);
+            MakeXML.Backup_Game(gameWPath, backupGame, "TBGame");
 
         }
+
         #endregion
 
 
