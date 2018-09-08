@@ -32,7 +32,7 @@
     <Setting Name="CCodesPath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="op7Zip" Type="System.Boolean" Scope="User">
+    <Setting Name="op7_Zip" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="c7zCompLvl" Type="System.Int32" Scope="User">

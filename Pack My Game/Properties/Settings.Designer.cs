@@ -140,12 +140,12 @@ namespace Pack_My_Game.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool op7Zip {
+        public bool op7_Zip {
             get {
-                return ((bool)(this["op7Zip"]));
+                return ((bool)(this["op7_Zip"]));
             }
             set {
-                this["op7Zip"] = value;
+                this["op7_Zip"] = value;
             }
         }
         

@@ -1330,37 +1330,37 @@ Note: As much archive as you want.
   <data name="&gt;&gt;cbZip.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="cb7Zip.AutoSize" type="System.Boolean, mscorlib">
+  <data name="cb7_Zip.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="cb7Zip.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="cb7_Zip.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="cb7Zip.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="cb7_Zip.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 60</value>
   </data>
-  <data name="cb7Zip.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="cb7_Zip.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 17</value>
   </data>
-  <data name="cb7Zip.TabIndex" type="System.Int32, mscorlib">
+  <data name="cb7_Zip.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
-  <data name="cb7Zip.Text" xml:space="preserve">
+  <data name="cb7_Zip.Text" xml:space="preserve">
     <value>7-Zip compression</value>
   </data>
-  <data name="cb7Zip.ToolTip" xml:space="preserve">
+  <data name="cb7_Zip.ToolTip" xml:space="preserve">
     <value>Compress pack with 7-zip algorithm</value>
   </data>
-  <data name="&gt;&gt;cb7Zip.Name" xml:space="preserve">
-    <value>cb7Zip</value>
+  <data name="&gt;&gt;cb7_Zip.Name" xml:space="preserve">
+    <value>cb7_Zip</value>
   </data>
-  <data name="&gt;&gt;cb7Zip.Type" xml:space="preserve">
+  <data name="&gt;&gt;cb7_Zip.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cb7Zip.Parent" xml:space="preserve">
+  <data name="&gt;&gt;cb7_Zip.Parent" xml:space="preserve">
     <value>gbCompress</value>
   </data>
-  <data name="&gt;&gt;cb7Zip.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;cb7_Zip.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="gbCompress.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">

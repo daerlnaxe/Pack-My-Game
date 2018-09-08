@@ -61,11 +61,9 @@ namespace Pack_My_Game.IHM
 
             //zip
             this.trackZipCompLvl.Position = Settings.Default.cZipCompLvl;
-            this.cbZip.Checked = Settings.Default.opZip;
 
             // 7-Zip
             this.track7ZipCompLvl.Position = Settings.Default.c7zCompLvl;
-            this.cb7Zip.Checked = Settings.Default.op7Zip;
 
             // Progress
             cbInfos.Checked = Settings.Default.opInfos;
@@ -77,7 +75,7 @@ namespace Pack_My_Game.IHM
             cbCCC.Checked = Settings.Default.opCheatCodes;
 
             cbZip.Checked = Settings.Default.opZip;
-            cbZip.Checked = Settings.Default.op7Zip;
+            cb7_Zip.Checked = Settings.Default.op7_Zip;
 
             cbLogFile.Checked = Settings.Default.opLogFile;
             cbLogWindow.Checked = Settings.Default.opLogWindow;
@@ -223,7 +221,7 @@ namespace Pack_My_Game.IHM
             Settings.Default.opCheatCodes = cbCCC.Checked;
 
             Settings.Default.opZip = cbZip.Checked;
-            Settings.Default.op7Zip = cbZip.Checked;
+            Settings.Default.op7_Zip = cb7_Zip.Checked;
 
             Settings.Default.opLogFile = cbLogFile.Checked;
             Settings.Default.opLogWindow = cbLogWindow.Checked;
