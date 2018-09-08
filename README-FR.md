@@ -20,7 +20,20 @@ Téléchargez [PackMyGame-x86.zip](https://github.com/daerlnaxe/Pack-My-Game/blo
  * Actuellement le programme demande une permission globale avant d'écraser les fichiers images en cas d'éventuel conflit qu'il y ait ou non des fichiers images dans le répertoire de travail.
  * Les clones ajoutés ne le sont qu'à condition d'être groupés dans LaunchBox
 		
-## Versions
+## Versions:
+
+### Beta 1.3.0.4: 08/09/2018
+
+ * Visual studio m'a fait un énorme bug sur la fenêtre principale, j'espère avoir tout réparé.
+ * Packme: Filtre les clones pour réduire les "prompts".
+ * Menu contextuel
+ * Plusieurs opérations depuis le menu contextuel (comme zip, 7zip, faire l'info.xml, backup etc...)
+ * PackMe: 'Bug' fixé, le fichier xml originel peut ne pas contenir le chemin pour la video, musique, car LaunchBox doit probablement utiliser un algorithme en plus de la base de donnée, maintenant PackMyGame recherchera dans les dossiers dédiés
+ et proposera des occurences de fichier. Si c'est déjà checké ça signifie que ça suit le systeme normal de nom. Cochez ou décochez en fonction de vos besoins.
+ * Game devient GameInfo, Game est maintenant (je l'espère) la copie de ce que l'on trouve dans le xml de LaunchBox. GameInfo ne contient plus aucun chemin.
+ * PackMe: Dans le menu de configuration, un système de checkbox permet de controler le déroulement de PackMe selon vos besoins.
+ * PackMe: Crée un fichier contenant les données originelels (OBGame)
+ * PackMe: Crée un fichier qui contient les données améliorées, en cas de problèmes (EBGame). ex: en modifiant videopath avec ce que vous avez trouvé manuellement.
 
 ### Alpha10: 27/08/2018
 * Mise en place d'un système d'upgrade du fichier configuration pour suivre les builds.
