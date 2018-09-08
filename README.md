@@ -37,7 +37,7 @@ no image file in the the destination folder.
  * Contextual menu
  * Several manual operations from contextual menu (as zip, 7zip, make info, backup etc...)
  * PackMe: 'Bug' fixed: original xml can don't contain path for video, music, because it probably use
- an algorithm additionnaly to the db, bow PackMyGame will search in dedicated folders and purpose you some
+ an algorithm additionnaly to the db, now PackMyGame will search in dedicated folders and purpose you some
  occurences. If they are checked, it means they match to the habitual name system. Check or Uncheck according to your needs.
  * Game become GameInfo, Game is now (i hope) the copy of what you find in LaunchBox. GameInfo don't contain paths anymore.
  * PackMe: In config menu, a checkbox system to controle the PackMe process according to your needs.
