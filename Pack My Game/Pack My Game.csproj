@@ -8,13 +8,14 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Pack_My_Game</RootNamespace>
     <AssemblyName>Pack My Game</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -57,11 +58,10 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>7CDF1CA75BAB8843A4518856F27032D87FCAAB08</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>6CD6A1F162E9EE01629618D4DA2AB980623EEB29</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>
-    </ManifestKeyFile>
+    <ManifestKeyFile>Pack My Game_3_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -120,12 +120,11 @@
       <HintPath>..\packages\DotNetZip.1.11.0\lib\net20\DotNetZip.dll</HintPath>
     </Reference>
     <Reference Include="DxPaths">
-      <HintPath>..\..\..\CSharp\DxPaths\bin\Debug\DxPaths.dll</HintPath>
+      <HintPath>..\..\..\..\Clouds\GDrive - Dx\Programmation\CSharp\DxPaths\bin\Release\DxPaths.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="MyControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\Gdrive DX\Programmation\CSharp\MyControls\MyControls\bin\Debug\MyControls.dll</HintPath>
+    <Reference Include="MyControls">
+      <HintPath>..\..\..\..\Clouds\GDrive - Dx\Programmation\CSharp\MyControls\MyControls\bin\Release\MyControls.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -290,6 +289,8 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Pack My Game_1_TemporaryKey.pfx" />
+    <None Include="Pack My Game_2_TemporaryKey.pfx" />
+    <None Include="Pack My Game_3_TemporaryKey.pfx" />
     <None Include="Pack My Game_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

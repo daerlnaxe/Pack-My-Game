@@ -460,6 +460,7 @@ namespace Pack_My_Game.Pack
                         break;
                     }
                 }
+                MessageBox.Show(_ZeGame.Title +"  "+ zeOne.FolderPath);
                 List<string> dFiles = OPFiles.Search_Files(_ZeGame.Title, zeOne.FolderPath, System.IO.SearchOption.TopDirectoryOnly, "-", " -");
 
                 if (dFiles.Count == 0) return false;
