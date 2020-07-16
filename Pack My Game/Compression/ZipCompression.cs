@@ -194,7 +194,9 @@ namespace Pack_My_Game.Compression
         /// <returns></returns>
         public static bool Make_Folder(string folder2Comp, string path, string destArchive)
         {
-            string destArchLink = Path.Combine(path, $"{destArchive}.7z");
+            //string destArchLink = Path.Combine(path, $"{destArchive}.7z");
+            //string destArchLink = Path.Combine(path, $"{destArchive}.zip");
+            string destArchLink = Path.Combine(path, $"{destArchive}");
             var zipRes = OPFiles.SingleVerif(destArchLink, "Make_Zip", log: (string message) => ITrace.WriteLine(message, true));
 
             switch (zipRes)

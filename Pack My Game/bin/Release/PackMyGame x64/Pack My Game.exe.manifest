@@ -3,7 +3,7 @@
   <asmv1:assemblyIdentity name="Pack My Game.exe" version="0.0.1.1" publicKeyToken="0000000000000000" language="fr" processorArchitecture="amd64" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Pack My Game" version="1.3.0.5" language="neutral" processorArchitecture="amd64" />
+    <assemblyIdentity name="Pack My Game" version="1.3.0.6" language="neutral" processorArchitecture="amd64" />
     <commandLine file="Pack My Game.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -109,7 +109,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>0HinYtR5UWMZl3tgBTZ5/VJ6OJ0StQhhTL2rBozkCRA=</dsig:DigestValue>
+        <dsig:DigestValue>q/6J+We63+HCPDr0Al8bXOBfg+ZlSKrR4IW6w69WbdI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -139,25 +139,25 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Pack My Game.exe" size="258024">
-      <assemblyIdentity name="Pack My Game" version="1.3.0.5" language="neutral" processorArchitecture="amd64" />
+      <assemblyIdentity name="Pack My Game" version="1.3.0.6" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>UPAzeOvkSpMRwyD+BedOMg6reIwSSUoLI1pS73sNZXY=</dsig:DigestValue>
+        <dsig:DigestValue>2UOusBwFjqFUCbdZit1FRObEsMd84lcRa/0edzx4p8E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="fr\Pack My Game.resources.dll" size="18432">
-      <assemblyIdentity name="Pack My Game.resources" version="1.3.0.5" language="fr" processorArchitecture="amd64" />
+      <assemblyIdentity name="Pack My Game.resources" version="1.3.0.6" language="fr" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>U8QJ8iouoINykCrPUH6Kj9e2vrPND2iqTkiPwn/1Zo0=</dsig:DigestValue>
+        <dsig:DigestValue>pS4/0cewnBHzMUq5aLqtgCsunHrxg3kjcvL/YLrwnvQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

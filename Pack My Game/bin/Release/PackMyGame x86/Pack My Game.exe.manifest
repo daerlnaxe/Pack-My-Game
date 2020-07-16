@@ -3,7 +3,7 @@
   <asmv1:assemblyIdentity name="Pack My Game.exe" version="0.0.1.1" publicKeyToken="0000000000000000" language="fr" processorArchitecture="x86" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Pack My Game" version="1.3.0.4" language="neutral" processorArchitecture="x86" />
+    <assemblyIdentity name="Pack My Game" version="1.3.0.6" language="neutral" processorArchitecture="x86" />
     <commandLine file="Pack My Game.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -14,16 +14,16 @@
       </applicationRequestMinimum>
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
         <!--
-          Options du manifeste de contrôle de compte d’utilisateur (UAC)
-          Si vous voulez changer le niveau de contrôle de compte d’utilisateur Windows, remplacez le 
-          nœud requestedExecutionLevel par l’un des nœuds suivants.
+          Options de manifeste UAC
+          Pour changer le niveau du contrôle de compte d'utilisateur Windows, remplacez le
+          nœud requestedExecutionLevel par l'une des propositions suivantes.
 
         <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
         <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
         <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
 
-         Si vous voulez utiliser la virtualisation de fichiers système et du Registre pour la 
-         compatibilité descendante, supprimez le nœud requestedExecutionLevel.
+         Pour utiliser la virtualisation des fichiers et du Registre afin d'assurer
+         une compatibilité ascendante, supprimez le nœud requestedExecutionLevel.
     -->
         <requestedExecutionLevel level="asInvoker" uiAccess="false" />
       </requestedPrivileges>
@@ -43,25 +43,25 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DlnxLocalTransfert.dll" size="116224">
-      <assemblyIdentity name="DlnxLocalTransfert" version="1.1.0.1" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="DlnxLocalTransfert" version="1.1.0.2" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Nw0hrPNl6zs0p0M6tmGZ1Qv9VtyIeBNtNmC67/cQDlQ=</dsig:DigestValue>
+        <dsig:DigestValue>bqELJZHae0Heft2i+RZWLplMIQ8lA6ko+i2ZDvXQnZ4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DlnxLocalTransfert.resources.dll" size="40960">
-      <assemblyIdentity name="DlnxLocalTransfert.resources" version="1.1.0.1" language="fr" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="fr\DlnxLocalTransfert.resources.dll" size="40960">
+      <assemblyIdentity name="DlnxLocalTransfert.resources" version="1.1.0.2" language="fr" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>kpVqpl4EOxa507OhOzwk1X9tq/t9iDTZapJCj1bxVMY=</dsig:DigestValue>
+        <dsig:DigestValue>+U8l7kD3La0wKdxxUbs8aiBm/3eH89OxdkomLmh3BtA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -85,7 +85,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>K5c3DArTXdcBSnmDcDAy3GX/4tKqfLTzqsVy2/wsFhY=</dsig:DigestValue>
+        <dsig:DigestValue>ylfy0bInqzCtQ8Vr9qZxYOUi28C7RMTDw6XfJ/QrMjs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -97,67 +97,67 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>aSPSGDVVZgHfKZ/VOyKd1BkjoGQCOOBQXomfDRnjiZs=</dsig:DigestValue>
+        <dsig:DigestValue>UZukHwPUFmMRE6LcvRhPsaysD1EBQR/djlwYf3THRao=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DxTrace.resources.dll" size="3584">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="fr\DxTrace.resources.dll" size="3584">
       <assemblyIdentity name="DxTrace.resources" version="1.0.0.2" language="fr" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Q/OXpMu/MNaqqmWwHhz8Sxlr01WJpnBG1MV0PHYBz7Q=</dsig:DigestValue>
+        <dsig:DigestValue>q/6J+We63+HCPDr0Al8bXOBfg+ZlSKrR4IW6w69WbdI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MyControls.dll" size="47616">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MyControls.dll" size="47104">
       <assemblyIdentity name="MyControls" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Eicyk1J8MYqiEtss9R8/+Oc+PhsNHALe0dbdoHSx/iQ=</dsig:DigestValue>
+        <dsig:DigestValue>Y74sdzarf7TGXaX/aG/RKF5VgP5Ku4aGJAuwrIvegos=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MyControls.resources.dll" size="5120">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="fr\MyControls.resources.dll" size="5120">
       <assemblyIdentity name="MyControls.resources" version="1.0.0.0" language="fr" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ApIL2ArpthArheiyTbhmaLIPYhCnfn8dvWyukoXL0Jw=</dsig:DigestValue>
+        <dsig:DigestValue>WKMqYUB5IRvM4McIlXD53q9ogsUhJjcnc7X2PI8gLHE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Pack My Game.exe" size="258512">
-      <assemblyIdentity name="Pack My Game" version="1.3.0.4" language="neutral" processorArchitecture="x86" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Pack My Game.exe" size="258536">
+      <assemblyIdentity name="Pack My Game" version="1.3.0.6" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>a7P/dcZa7YCM7RujJJfmuqR438bduc7bB5IPczygMZI=</dsig:DigestValue>
+        <dsig:DigestValue>kAfWi2Cp/Dy5RE+XGj28jXLPuqTjo6sz4cMWqr+d2pg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="fr\Pack My Game.resources.dll" size="18944">
-      <assemblyIdentity name="Pack My Game.resources" version="1.3.0.4" language="fr" processorArchitecture="x86" />
+      <assemblyIdentity name="Pack My Game.resources" version="1.3.0.6" language="fr" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>UWyrDd2sVCZA11H+pnJg5oya2XEW4Kjd3p7N01th0E4=</dsig:DigestValue>
+        <dsig:DigestValue>rUGFTjo823pT6vR4j+kHye316uUUrSneym8IjwTAUy0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -173,13 +173,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Pack My Game.exe.config" size="3900">
+  <file name="Pack My Game.exe.config" size="3887">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>MOHjpVcQqNDIdqH5A3TlcZRkRy18HGSYtIrwNQ5aF5w=</dsig:DigestValue>
+      <dsig:DigestValue>fwj+ChvX3z7+qFYNMcsZSjMgsREIYlRyfvi1iKTVIyc=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

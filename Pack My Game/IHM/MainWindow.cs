@@ -329,7 +329,9 @@ namespace Pack_My_Game
         private void Proceed_Click(object sender, EventArgs e)
         {
             List<ListViewItem> gamesSelected = new List<ListViewItem>();
-            for (int i = 0; i < lvGames.CheckedItems.Count; i++) gamesSelected.Add(lvGames.CheckedItems[i]);
+            for (int i = 0; i < lvGames.CheckedItems.Count; i++)
+                gamesSelected.Add(lvGames.CheckedItems[i]);
+
 
             PackMeLauncher(gamesSelected);
         }
@@ -370,9 +372,10 @@ namespace Pack_My_Game
                 Console.WriteLine($"[Main] PackMe for '{zeGame.Title}' | '{zeGame.ID}'");
 
                 PackMe pm = new PackMe(zeGame.ID, platform);
+
+                // On cache la fenêtre durant le traitement
                 this.Hide();
                 int state = pm.Initialize(_XmlFPlatform, zeGame);
-
 
                 if (state == 0 && pm.Run())
                 {
@@ -385,6 +388,7 @@ namespace Pack_My_Game
                 }
                 pm = null;
                 this.butProceed.Visible = false;
+                // Réaffichage de la fenêtre après traitement
                 this.Show();
             }
 

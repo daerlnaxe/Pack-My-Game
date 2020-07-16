@@ -233,7 +233,6 @@ namespace Pack_My_Game.Pack
             Directory.SetCurrentDirectory(_GamePath);
 
 
-
             #region Creation of the Infos.xml
             if (Settings.Default.opInfos)
             {
@@ -249,7 +248,7 @@ namespace Pack_My_Game.Pack
             MakeStructure();
 
             // Copy Roms, Video, Music, Manual
-            vManual = CopySpecific(_zBackGame.ApplicationPath, _Tree.Children["Roms"].Path, "Roms", x => _zBackGame.ApplicationPath = x);
+            vGame = CopySpecific(_zBackGame.ApplicationPath, _Tree.Children["Roms"].Path, "Roms", x => _zBackGame.ApplicationPath = x);
             vManual = CopySpecific(_zBackGame.ManualPath, _Tree.Children["Manuals"].Path, "Manuals", x => _zBackGame.ManualPath = x);
             vMusic = CopySpecific(_zBackGame.MusicPath, _Tree.Children["Musics"].Path, "Music", x => _zBackGame.MusicPath = x);
             vVideo = CopySpecific(_zBackGame.VideoPath, _Tree.Children["Videos"].Path, "Video", x => _zBackGame.VideoPath = x);
@@ -310,6 +309,8 @@ namespace Pack_My_Game.Pack
             // Zip
             if (Properties.Settings.Default.opZip)
             {
+
+              //  MessageBox.Show("test "+ destArchive);
                 //     Make_Zip(destArchive);
                 ZipCompression.Make_Folder(_GamePath, _SystemPath, destArchive);
             }
@@ -318,10 +319,11 @@ namespace Pack_My_Game.Pack
                 ITrace.WriteLine($"[Run] Zip Compression disabled");
             }
 
-
             // 7-Zip
             if (Properties.Settings.Default.op7_Zip)
             {
+                //MessageBox.Show("test " + destArchive);
+
                 SevenZipCompression.Make_Folder(_GamePath, _SystemPath, destArchive);
             }
             else
@@ -445,7 +447,7 @@ namespace Pack_My_Game.Pack
             // Normal copy
             if (!string.IsNullOrEmpty(dbPath))
             {
-                var res = OPFiles.SingleCompare(dbPath, destLocation, $"Copy_{mediatype}", Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
+                OPResult res = OPFiles.SingleCompare(dbPath, destLocation, $"Copy_{mediatype}", Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
                 Assignation(DxPaths.Windows.DxPath.ToRelative(Settings.Default.LBPath, dbPath));
                 return CopyFile(dbPath, destLocation, res);
             }
@@ -460,7 +462,7 @@ namespace Pack_My_Game.Pack
                         break;
                     }
                 }
-                MessageBox.Show(_ZeGame.Title +"  "+ zeOne.FolderPath);
+                //MessageBox.Show(_ZeGame.Title +"  "+ zeOne.FolderPath);
                 List<string> dFiles = OPFiles.Search_Files(_ZeGame.Title, zeOne.FolderPath, System.IO.SearchOption.TopDirectoryOnly, "-", " -");
 
                 if (dFiles.Count == 0) return false;

@@ -173,6 +173,7 @@
             this.tableLayoutPanel1.SetColumnSpan(this.lvGames, 5);
             resources.ApplyResources(this.lvGames, "lvGames");
             this.lvGames.FullRowSelect = true;
+            this.lvGames.HideSelection = false;
             this.lvGames.MultiSelect = false;
             this.lvGames.Name = "lvGames";
             this.lvGames.UseCompatibleStateImageBehavior = false;
