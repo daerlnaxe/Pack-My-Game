@@ -194,7 +194,7 @@ namespace Pack_My_Game.BackupLB
         public bool MissingBackgroundImage { get; set; }        //false
 
         [XmlIgnore]
-        public List<CustomField> CustomFields { get; set; }
+        public List<CustomField> CustomFields { get; set; } = new List<CustomField>(); // 2020 initialization here
 
         [XmlIgnore]
         public List<AdditionalApplication> AdditionalApplications { get; set; } = new List<AdditionalApplication>(); //2020 initialization here

@@ -762,7 +762,7 @@ namespace Pack_My_Game.XML
             XPathNodeIterator cfNodes = nav.Select(nav.Compile($"//LaunchBox/CustomField[GameID='{ID}']"));
             if (cfNodes.Count != 0)
             {
-                backGame.CustomFields = new List<CustomField>();
+                //backGame.CustomFields = new List<CustomField>();
 
                 // Loop on custom fields
                 while (cfNodes.MoveNext())
