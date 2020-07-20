@@ -57,6 +57,7 @@ namespace Pack_My_Game.Pack
 
         #region résultats
         bool vGame;
+        bool vApps;
         bool vManual;
         bool vMusic;
         bool vVideo;
@@ -248,7 +249,7 @@ namespace Pack_My_Game.Pack
             MakeStructure();
 
             // Copy Roms, Video, Music, Manual
-            vGame = CopySpecific(_zBackGame.ApplicationPath, _Tree.Children["Roms"].Path, "Roms", x => _zBackGame.ApplicationPath = x);
+            vApps = CopySpecific(_zBackGame.ApplicationPath, _Tree.Children["Roms"].Path, "Roms", x => _zBackGame.ApplicationPath = x);
             vManual = CopySpecific(_zBackGame.ManualPath, _Tree.Children["Manuals"].Path, "Manuals", x => _zBackGame.ManualPath = x);
             vMusic = CopySpecific(_zBackGame.MusicPath, _Tree.Children["Musics"].Path, "Music", x => _zBackGame.MusicPath = x);
             vVideo = CopySpecific(_zBackGame.VideoPath, _Tree.Children["Videos"].Path, "Video", x => _zBackGame.VideoPath = x);

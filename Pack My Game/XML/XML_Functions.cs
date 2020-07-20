@@ -11,6 +11,7 @@ using System.Xml.XPath;
 using System.IO;
 using Pack_My_Game.Pack;
 using Pack_My_Game.BackupLB;
+using System.Globalization;
 
 namespace Pack_My_Game.XML
 {
@@ -294,31 +295,31 @@ namespace Pack_My_Game.XML
                             zeGame.Notes = nodes.Current.Value;
                             break;
                         #endregion
-/*
-                        #region files
-                        case "ManualPath":
-                            Console.WriteLine(nodes.Current.Value);
-                            zeGame.ManualPath = nodes.Current.Value;
-                            break;
+                        /*
+                                                #region files
+                                                case "ManualPath":
+                                                    Console.WriteLine(nodes.Current.Value);
+                                                    zeGame.ManualPath = nodes.Current.Value;
+                                                    break;
 
-                        case "MusicPath":
-                            Console.WriteLine(nodes.Current.Value);
-                            zeGame.MusicPath = nodes.Current.Value;
-                            break;
+                                                case "MusicPath":
+                                                    Console.WriteLine(nodes.Current.Value);
+                                                    zeGame.MusicPath = nodes.Current.Value;
+                                                    break;
 
-                        case "VideoPath":
-                            Console.WriteLine(nodes.Current.Value);
-                            zeGame.VideoPath = nodes.Current.Value;
-                            break;
+                                                case "VideoPath":
+                                                    Console.WriteLine(nodes.Current.Value);
+                                                    zeGame.VideoPath = nodes.Current.Value;
+                                                    break;
 
-                        case "ApplicationPath":
-                            Console.WriteLine(nodes.Current.Value);
-                            zeGame.ApplicationPath = nodes.Current.Value;
-                            zeGame.FileName = Path.GetFileName(nodes.Current.Value);
-                            zeGame.ExploitableFileName = zeGame.FileName.Split('.')[0];
-                            break;
-                        #endregion
-    */
+                                                case "ApplicationPath":
+                                                    Console.WriteLine(nodes.Current.Value);
+                                                    zeGame.ApplicationPath = nodes.Current.Value;
+                                                    zeGame.FileName = Path.GetFileName(nodes.Current.Value);
+                                                    zeGame.ExploitableFileName = zeGame.FileName.Split('.')[0];
+                                                    break;
+                                                #endregion
+                            */
                         default:
                             Console.WriteLine();
                             break;
@@ -514,8 +515,19 @@ namespace Pack_My_Game.XML
                             break;
 
                         case "CommunityStarRating":
-                            Console.WriteLine(nodes.Current.Value);
-                            backGame.CommunityStarRating = int.Parse(nodes.Current.Value);
+                            try
+                            {
+                                string raoul = nodes.Current.Value;
+                                
+                                // float.Parse(nodes.Current.Value, CultureInfo.InvariantCulture.NumberFormat);
+                                string valeur = raoul.Replace('.', ',');
+                                backGame.CommunityStarRating = float.Parse(valeur);
+                                
+                            }
+                            catch (Exception exc)
+                            {
+                                MessageBox.Show($"{nodes.Current.Value} \r\n" + exc.ToString());
+                            }
                             break;
 
                         case "CommunityStarRatingTotalVotes":
@@ -641,7 +653,7 @@ namespace Pack_My_Game.XML
             XPathNodeIterator aaNodes = nav.Select(nav.Compile($"//LaunchBox/AdditionalApplication[GameID='{ID}']"));
             if (aaNodes.Count != 0)
             {
-                backGame.AdditionalApplications = new List<AdditionalApplication>();
+                //2020 --- modification initialisation dès le début backGame.AdditionalApplications = new List<AdditionalApplication>();
 
                 // Loop on additionnal apps
                 while (aaNodes.MoveNext())
@@ -651,7 +663,7 @@ namespace Pack_My_Game.XML
 
                     do
                     {
-                        Debug.WriteLine("Case " + aaNodes.Current.Name);
+                        Console.WriteLine("Case " + aaNodes.Current.Name);
                         switch (aaNodes.Current.Name)
                         {
                             case "Id":
@@ -679,47 +691,47 @@ namespace Pack_My_Game.XML
                                 break;
 
                             case "CommandLine":
-                                tmpAApp.CommandLine  = aaNodes.Current.Value;
+                                tmpAApp.CommandLine = aaNodes.Current.Value;
                                 break;
 
                             case "Name":
-                                tmpAApp.Name  = aaNodes.Current.Value;
+                                tmpAApp.Name = aaNodes.Current.Value;
                                 break;
 
                             case "UseDosBox":
-                                tmpAApp.UseDosBox  = bool.Parse( aaNodes.Current.Value);
+                                tmpAApp.UseDosBox = bool.Parse(aaNodes.Current.Value);
                                 break;
 
                             case "UseEmulator":
-                                tmpAApp.UseEmulator  = bool.Parse( aaNodes.Current.Value);
+                                tmpAApp.UseEmulator = bool.Parse(aaNodes.Current.Value);
                                 break;
 
                             case "WaitForExit":
-                                tmpAApp.WaitForExit  = bool.Parse( aaNodes.Current.Value);
+                                tmpAApp.WaitForExit = bool.Parse(aaNodes.Current.Value);
                                 break;
 
                             case "Developer":
-                                tmpAApp.Developer  = aaNodes.Current.Value;
+                                tmpAApp.Developer = aaNodes.Current.Value;
                                 break;
 
                             case "Publisher":
-                                tmpAApp.Publisher  = aaNodes.Current.Value;
+                                tmpAApp.Publisher = aaNodes.Current.Value;
                                 break;
 
                             case "Region":
-                                tmpAApp.Region  = aaNodes.Current.Value;
+                                tmpAApp.Region = aaNodes.Current.Value;
                                 break;
 
                             case "Version":
-                                tmpAApp.Version  = aaNodes.Current.Value;
+                                tmpAApp.Version = aaNodes.Current.Value;
                                 break;
 
                             case "Status":
-                                tmpAApp.Status  = aaNodes.Current.Value;
+                                tmpAApp.Status = aaNodes.Current.Value;
                                 break;
 
                             case "EmulatorId":
-                                tmpAApp.EmulatorId  = aaNodes.Current.Value;
+                                tmpAApp.EmulatorId = aaNodes.Current.Value;
                                 break;
 
                             case "SideA":
@@ -727,18 +739,18 @@ namespace Pack_My_Game.XML
                                 break;
 
                             case "SideB":
-                                tmpAApp.SideB  = bool.Parse( aaNodes.Current.Value);
+                                tmpAApp.SideB = bool.Parse(aaNodes.Current.Value);
                                 break;
 
                             case "Priority":
-                                tmpAApp.Priority  = int.Parse( aaNodes.Current.Value);
+                                tmpAApp.Priority = int.Parse(aaNodes.Current.Value);
                                 break;
-                                                                
+
                             default:
-                                Debug.WriteLine($"Cas non traité: {aaNodes.Current.Name}");
+                                Console.WriteLine($"Cas non traité: {aaNodes.Current.Name}");
                                 break;
                         }
-                        
+
                     } while (aaNodes.Current.MoveToNext());
 
                     backGame.AdditionalApplications.Add(tmpAApp);
@@ -775,7 +787,7 @@ namespace Pack_My_Game.XML
                             case "Value":
                                 tmpCField.Value = cfNodes.Current.Value;
                                 break;
-    }
+                        }
                     } while (cfNodes.Current.MoveToNext());
 
                     backGame.CustomFields.Add(tmpCField);
@@ -829,7 +841,7 @@ namespace Pack_My_Game.XML
                     //Console.WriteLine(nodIImages.Current.Name);
                     nodPaths.Current.MoveToFirstChild();
                     PlatformFolder pfFolder = new PlatformFolder();
-                    
+
                     do
                     {
                         //Console.WriteLine($"\t{nodIImages.Current.Name} = {nodIImages.Current.Value}");

@@ -26,7 +26,8 @@ namespace Pack_My_Game.XML
             ITrace.WriteLine(prefix: false);
             ITrace.WriteLine($"[MakeInfo] Creation of file 'Infos.xml'");
 
-            if (!Directory.Exists(path)) { Directory.CreateDirectory(path); }
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path); 
 
             string xmlDest = Path.Combine(path, "Infos.xml");
 
@@ -58,12 +59,20 @@ namespace Pack_My_Game.XML
 
         }
 
+        /// <summary>
+        /// Conversion des données du jeu en xml tb/eb
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="zeGame"></param>
+        /// <param name="title"></param>
+        /// <returns></returns>
         public static bool Backup_Game(string path, Game zeGame, string title)
         {
             ITrace.WriteLine(prefix: false);
             ITrace.WriteLine($"[MakeInfo] Creation of file '{title}.xml'");
 
-            if (!Directory.Exists(path)) { Directory.CreateDirectory(path); }
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path); 
 
             string xmlDest = Path.Combine(path, $"{title}.xml");
 
@@ -102,9 +111,13 @@ namespace Pack_My_Game.XML
                         xw.WriteComment("Put this between <LaunchBox> </LaunchBox> in 'platform'.xml (try to organize it)");
                         xGame.Serialize(xw, zeGame, xmlns);
                         xw.WriteComment("For the roms files it represents clones, trainers...");
-                        foreach (var aApp in zeGame.AdditionalApplications) xLAApp.Serialize(xw, aApp, xmlns);
+                        
+                        foreach (var aApp in zeGame.AdditionalApplications)
+                            xLAApp.Serialize(xw, aApp, xmlns);
+                        
                         xw.WriteComment("It's the custom fields that you can create in Launchbox)");
-                        foreach (var cFields in zeGame.CustomFields) xLCFields.Serialize(xw, cFields, xmlns);
+                        foreach (var cFields in zeGame.CustomFields)
+                            xLCFields.Serialize(xw, cFields, xmlns);
                         xw.WriteEndElement();
                     }
 

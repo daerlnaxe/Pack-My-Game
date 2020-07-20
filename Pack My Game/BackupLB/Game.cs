@@ -159,7 +159,8 @@ namespace Pack_My_Game.BackupLB
         public string LastPlayedDate { get; set; }              //2018-09-05T07:22:32.9731108+02:00
 
         [XmlElement(Order = 202)]
-        public int CommunityStarRating { get; set; }            //0</CommunityStarRating{get; set;}
+        // - Modifié le 18/07/2020 car la notation est en float dans le xml
+        public float CommunityStarRating { get; set; }            //0</CommunityStarRating{get; set;}
 
         [XmlElement(Order = 203)]
         public int CommunityStarRatingTotalVotes { get; set; }  //0</CommunityStarRatingTotalVotes{get; set;}
@@ -196,7 +197,7 @@ namespace Pack_My_Game.BackupLB
         public List<CustomField> CustomFields { get; set; }
 
         [XmlIgnore]
-        public List<AdditionalApplication> AdditionalApplications { get; set; }
+        public List<AdditionalApplication> AdditionalApplications { get; set; } = new List<AdditionalApplication>(); //2020 initialization here
 
 
     }
