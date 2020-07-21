@@ -38,7 +38,8 @@ namespace Pack_My_Game.Compression
         public static bool CompressFolder(string folder, string archiveDest, int cplLvl)
         {
 
-            if (!Directory.Exists(folder)) return false;
+            if (!Directory.Exists(folder))
+                return false;
 
             string zipName = archiveDest + ".zip";
 

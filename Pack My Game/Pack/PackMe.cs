@@ -464,7 +464,11 @@ namespace Pack_My_Game.Pack
                     }
                 }
                 //MessageBox.Show(_ZeGame.Title +"  "+ zeOne.FolderPath);
-                List<string> dFiles = OPFiles.Search_Files(_ZeGame.Title, zeOne.FolderPath, System.IO.SearchOption.TopDirectoryOnly, "-", " -");
+
+                // 2020 - Formatage de la chaine pour éviter les erreurs
+                string tosearch = _ZeGame.Title.Replace(':', '_');
+
+                List<string> dFiles = OPFiles.Search_Files(tosearch, zeOne.FolderPath, System.IO.SearchOption.TopDirectoryOnly, "-", " -");
 
                 if (dFiles.Count == 0) return false;
 
@@ -511,9 +515,12 @@ namespace Pack_My_Game.Pack
                         continue;
                 }
 
+                // 2020 - on modify pour certains titres, la recherche
+                string toSearch = _ZeGame.Title.Replace(':', '_');
+
                 // Liste du contenu des dossiers
                 foreach (var fichier in Directory.EnumerateFiles(plfmFolder.FolderPath, "*.*", System.IO.SearchOption.AllDirectories)
-                    .Where(s => Path.GetFileName(s).StartsWith($"{_ZeGame.Title}-") || Path.GetFileName(s).StartsWith($"{_ZeGame.Title}.{_ZeGame.ID}-")))
+                    .Where(s => Path.GetFileName(s).StartsWith($"{toSearch}-") || Path.GetFileName(s).StartsWith($"{_ZeGame.Title}.{_ZeGame.ID}-")))
                 {
 
                     Console.WriteLine($"\t\t[CopyImages] Found '{fichier}' in '{plfmFolder.FolderPath}'");
