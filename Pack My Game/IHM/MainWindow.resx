@@ -124,6 +124,36 @@
     <value>181, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="configToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 20</value>
+  </data>
+  <data name="configToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Config</value>
+  </data>
+  <data name="helpTSMI.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 22</value>
+  </data>
+  <data name="helpTSMI.Text" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="creditsTSMI.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 22</value>
+  </data>
+  <data name="creditsTSMI.Text" xml:space="preserve">
+    <value>Credits</value>
+  </data>
+  <data name="aboutTSMI.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 22</value>
+  </data>
+  <data name="aboutTSMI.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 20</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>?</value>
+  </data>
   <data name="menuTop.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -149,42 +179,6 @@
   <data name="&gt;&gt;menuTop.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="configToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 20</value>
-  </data>
-  <data name="configToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Config</value>
-  </data>
-  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 20</value>
-  </data>
-  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>?</value>
-  </data>
-  <data name="helpTSMI.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 22</value>
-  </data>
-  <data name="helpTSMI.Text" xml:space="preserve">
-    <value>Help</value>
-  </data>
-  <data name="creditsTSMI.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 22</value>
-  </data>
-  <data name="creditsTSMI.Text" xml:space="preserve">
-    <value>Credits</value>
-  </data>
-  <data name="aboutTSMI.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 22</value>
-  </data>
-  <data name="aboutTSMI.Text" xml:space="preserve">
-    <value>About</value>
-  </data>
-  <data name="configToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 20</value>
-  </data>
-  <data name="configToolStripMenuItem.Text" xml:space="preserve">
-    <value>Options</value>
-  </data>
   <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 22</value>
   </data>
@@ -200,11 +194,11 @@
   <data name="testToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
+  <data name="configToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
   </data>
-  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
-    <value>Help</value>
+  <data name="configToolStripMenuItem.Text" xml:space="preserve">
+    <value>Options</value>
   </data>
   <data name="helpToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>131, 22</value>
@@ -223,6 +217,12 @@
   </data>
   <data name="aboutToolStripMenuItem1.Text" xml:space="preserve">
     <value>About</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 20</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>Help</value>
   </data>
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>6</value>
@@ -714,18 +714,6 @@
   <metadata name="ctxLVGames.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>393, 17</value>
   </metadata>
-  <data name="ctxLVGames.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 136</value>
-  </data>
-  <data name="ctxLVGames.ToolTip" xml:space="preserve">
-    <value>Backup all informations from launchbox xml file</value>
-  </data>
-  <data name="&gt;&gt;ctxLVGames.Name" xml:space="preserve">
-    <value>ctxLVGames</value>
-  </data>
-  <data name="&gt;&gt;ctxLVGames.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="miPackThis.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 22</value>
   </data>
@@ -761,6 +749,18 @@
   </data>
   <data name="miZipIt.Text" xml:space="preserve">
     <value>7-Zip it...</value>
+  </data>
+  <data name="ctxLVGames.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 136</value>
+  </data>
+  <data name="ctxLVGames.ToolTip" xml:space="preserve">
+    <value>Backup all informations from launchbox xml file</value>
+  </data>
+  <data name="&gt;&gt;ctxLVGames.Name" xml:space="preserve">
+    <value>ctxLVGames</value>
+  </data>
+  <data name="&gt;&gt;ctxLVGames.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>181, 17</value>

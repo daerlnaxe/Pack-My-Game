@@ -112,10 +112,6 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DlnxLocalTransfert, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DlnxLocalTransfert\DlnxLocalTransfert\bin\Debug\DlnxLocalTransfert.dll</HintPath>
-    </Reference>
     <Reference Include="DotNetZip, Version=1.11.0.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
       <HintPath>..\packages\DotNetZip.1.11.0\lib\net20\DotNetZip.dll</HintPath>
     </Reference>
@@ -164,6 +160,7 @@
     <Compile Include="Container\Platform.cs" />
     <Compile Include="Container\PlatformFolder.cs" />
     <Compile Include="Container\ShortGame.cs" />
+    <None Include="Enum\MediaType.cs" />
     <Compile Include="IHM\AboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -373,6 +370,10 @@
     <Folder Include="Logs\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\DlnxLocalTransfert\DlnxLocalTransfert\DlnxLocalTransfert.csproj">
+      <Project>{6ca6b818-33fa-42b0-96e8-5e1f584084b2}</Project>
+      <Name>DlnxLocalTransfert</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\DxTrace\DxTrace\DxTrace.csproj">
       <Project>{3bafed69-c3da-4366-aa4d-95d829139175}</Project>
       <Name>DxTrace</Name>

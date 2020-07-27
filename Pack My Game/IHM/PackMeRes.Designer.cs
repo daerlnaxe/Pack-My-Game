@@ -35,15 +35,17 @@
             // 
             // clb1
             // 
+            this.clb1.Enabled = false;
             this.clb1.FormattingEnabled = true;
             this.clb1.Items.AddRange(new object[] {
             "Game",
             "Manual",
             "Music",
-            "Video"});
+            "Video",
+            "Applications"});
             this.clb1.Location = new System.Drawing.Point(15, 25);
             this.clb1.Name = "clb1";
-            this.clb1.Size = new System.Drawing.Size(120, 64);
+            this.clb1.Size = new System.Drawing.Size(120, 94);
             this.clb1.TabIndex = 0;
             // 
             // label1
@@ -57,7 +59,8 @@
             // 
             // btOk
             // 
-            this.btOk.Location = new System.Drawing.Point(38, 99);
+            this.btOk.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btOk.Location = new System.Drawing.Point(41, 125);
             this.btOk.Name = "btOk";
             this.btOk.Size = new System.Drawing.Size(75, 23);
             this.btOk.TabIndex = 2;
@@ -68,7 +71,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(171, 134);
+            this.ClientSize = new System.Drawing.Size(174, 160);
             this.Controls.Add(this.btOk);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.clb1);

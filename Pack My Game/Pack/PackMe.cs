@@ -53,10 +53,18 @@ namespace Pack_My_Game.Pack
         private string _GamePath;                    // Path where the files will be copy
         private Game _zBackGame;
         private GameInfo _ZeGame;               // Game object
+        /// <summary>
+        /// 
+        /// </summary>
         private Platform _ZePlatform;       // Platform object
 
         #region résultats
+
+        /// <summary>
+        /// Résultat de la copie du jeu
+        /// </summary>
         bool vGame;
+
         bool vApps;
         bool vManual;
         bool vMusic;
@@ -250,9 +258,11 @@ namespace Pack_My_Game.Pack
 
             // Copy Roms, Video, Music, Manual
             vApps = CopySpecific(_zBackGame.ApplicationPath, _Tree.Children["Roms"].Path, "Roms", x => _zBackGame.ApplicationPath = x);
-            vManual = CopySpecific(_zBackGame.ManualPath, _Tree.Children["Manuals"].Path, "Manuals", x => _zBackGame.ManualPath = x);
+            vManual = CopySpecific(_zBackGame.ManualPath, _Tree.Children["Manuals"].Path, "Manual", x => _zBackGame.ManualPath = x);
             vMusic = CopySpecific(_zBackGame.MusicPath, _Tree.Children["Musics"].Path, "Music", x => _zBackGame.MusicPath = x);
             vVideo = CopySpecific(_zBackGame.VideoPath, _Tree.Children["Videos"].Path, "Video", x => _zBackGame.VideoPath = x);
+
+
             // CopySpecificFiles() old way;
 
             // Copy images
@@ -341,21 +351,22 @@ namespace Pack_My_Game.Pack
                     Directory.SetCurrentDirectory(_WFolder);
 
                     Directory.Delete(_GamePath, true);
+                    
                     Console.WriteLine($"[Run] folder {_GamePath} erased");
 
                 }
                 catch (Exception exc)
                 {
                     Console.WriteLine($"[Run] Error when Erasing temp folder {_GamePath}\n{exc.Message }");
-
                 }
             }
 
             // Résultats
-            PackMeRes.ShowDialog(vGame, vManual, vMusic, vVideo);
+            PackMeRes.ShowDialog(vGame, vManual, vMusic, vVideo, vApps);
 
             // Stop loggers
-            if (_IScreen != null) _IScreen.KillAfter(10);
+            if (_IScreen != null)
+                _IScreen.KillAfter(10);
 
             ITrace.RemoveListerners(_Loggers);
 
@@ -401,6 +412,7 @@ namespace Pack_My_Game.Pack
         /// Copy files (Roms, Manuals, Videos, Music)
         /// </summary>
         /// <returns></returns>
+        [Obsolete]
         private bool CopySpecificFiles()
         {
             /*
@@ -443,6 +455,9 @@ namespace Pack_My_Game.Pack
         /// <summary>
         /// Function advcanced
         /// </summary>
+        /// <param name="mediatype">Type de media, fourni par le fichier xml
+        ///     <remarks>(Manual, Music, Video...)</remarks>
+        /// </param>
         private bool CopySpecific(string dbPath, string destLocation, string mediatype, Func<string, string> Assignation)
         {
             // Normal copy
@@ -454,23 +469,26 @@ namespace Pack_My_Game.Pack
             }
             else
             {
-                PlatformFolder zeOne = null;
-                foreach (var folder in _ZePlatform.PlatformFolders)
+                PlatformFolder plafFolder = null;
+                foreach (PlatformFolder pFormfolder in _ZePlatform.PlatformFolders)
                 {
-                    if (folder.MediaType.Equals(mediatype))
+                    if (pFormfolder.MediaType.Equals(mediatype))
                     {
-                        zeOne = folder;
+                        plafFolder = pFormfolder;
                         break;
                     }
                 }
                 //MessageBox.Show(_ZeGame.Title +"  "+ zeOne.FolderPath);
 
                 // 2020 - Formatage de la chaine pour éviter les erreurs
-                string tosearch = _ZeGame.Title.Replace(':', '_');
+                string tosearch = _ZeGame.Title.Replace(':', '_').Replace('\'','_');
+                tosearch = tosearch.Replace("__", "_");
 
-                List<string> dFiles = OPFiles.Search_Files(tosearch, zeOne.FolderPath, System.IO.SearchOption.TopDirectoryOnly, "-", " -");
+                List<string> dFiles = OPFiles.Search_Files(tosearch, plafFolder.FolderPath, System.IO.SearchOption.TopDirectoryOnly, "-", " -");
 
-                if (dFiles.Count == 0) return false;
+                // En cas d'abandon ou de fichier non trouvé on renvoie false
+                if (dFiles == null || dFiles.Count == 0)
+                    return false;
 
                 foreach (string fichier in dFiles)
                 {
@@ -516,7 +534,8 @@ namespace Pack_My_Game.Pack
                 }
 
                 // 2020 - on modify pour certains titres, la recherche
-                string toSearch = _ZeGame.Title.Replace(':', '_');
+                string toSearch = _ZeGame.Title.Replace(':', '_').Replace('\'', '_');
+                toSearch = toSearch.Replace("__", "_");
 
                 // Liste du contenu des dossiers
                 foreach (var fichier in Directory.EnumerateFiles(plfmFolder.FolderPath, "*.*", System.IO.SearchOption.AllDirectories)
