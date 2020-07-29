@@ -167,6 +167,12 @@
     <Compile Include="IHM\AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="IHM\GameName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IHM\GameName.Designer.cs">
+      <DependentUpon>GameName.cs</DependentUpon>
+    </Compile>
     <Compile Include="IHM\ListViewSorter.cs" />
     <Compile Include="IHM\PackMeRes.cs">
       <SubType>Form</SubType>
@@ -231,6 +237,9 @@
     <EmbeddedResource Include="IHM\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="IHM\GameName.resx">
+      <DependentUpon>GameName.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IHM\MainWindow.en.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -274,6 +283,7 @@
     <EmbeddedResource Include="IHM\Lang.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

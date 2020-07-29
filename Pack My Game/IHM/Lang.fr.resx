@@ -140,6 +140,7 @@
     <value>#Crédits, Merci à:
   - Ma petite puce qui patiente pendant que papa fait des packs de rom... Afin de lui faire découvrir mon adolescence.
   - Mon ex-femme (qui se tape l'incruste, mais c'est pratique) :D.
+  - Mes chachats, ceux qui sont là, ceux qui sont partis trop tôt...
 
   - Le créateur de DotNetZip, très bon job, vraiment balaise !
 
@@ -149,6 +150,10 @@
 
 				 A.Codoul aka Daerlnaxe/Axenn</value>
     <comment>Credits</comment>
+  </data>
+  <data name="CustomGameName" xml:space="preserve">
+    <value>Nom du Jeu Choisi</value>
+    <comment>GameName</comment>
   </data>
   <data name="Empty" xml:space="preserve">
     <value>vide</value>
@@ -194,6 +199,10 @@ ne pouvez pas sélectionner directement le fichier, en cas d'update j'aviserai.
 #4: Les étapes suivantes sont intuitives, vous sélectionez la machine, puis le jeu... go.</value>
     <comment>HELP</comment>
   </data>
+  <data name="IhmGameName" xml:space="preserve">
+    <value>Choisisser un nom différent pour le jeu, ou appuyez sur Annuler pour le conserver</value>
+    <comment>GameName</comment>
+  </data>
   <data name="ImagesP" xml:space="preserve">
     <value>Il n'y a pas de vérification implémentée pour la copie d'images, voulez vous les écraser</value>
     <comment>PackMe</comment>
@@ -233,5 +242,9 @@ ne pouvez pas sélectionner directement le fichier, en cas d'update j'aviserai.
   <data name="SystemSelected" xml:space="preserve">
     <value>Plateforme sélectionnée</value>
     <comment>PackMe</comment>
+  </data>
+  <data name="_GameName" xml:space="preserve">
+    <value>Nom du Jeu Actuel</value>
+    <comment>GameName</comment>
   </data>
 </root>

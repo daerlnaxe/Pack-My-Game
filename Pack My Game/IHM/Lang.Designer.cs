@@ -61,6 +61,15 @@ namespace Pack_My_Game.IHM {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Current Game Name.
+        /// </summary>
+        internal static string _GameName {
+            get {
+                return ResourceManager.GetString("_GameName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Alert.
         /// </summary>
         internal static string Alert {
@@ -121,6 +130,15 @@ namespace Pack_My_Game.IHM {
         internal static string Credits_Content {
             get {
                 return ResourceManager.GetString("Credits_Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Choosen Game Name.
+        /// </summary>
+        internal static string CustomGameName {
+            get {
+                return ResourceManager.GetString("CustomGameName", resourceCulture);
             }
         }
         
@@ -186,6 +204,15 @@ namespace Pack_My_Game.IHM {
         internal static string Help_Content {
             get {
                 return ResourceManager.GetString("Help_Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Choose an alternative Name for the Game or Cancel to keep it..
+        /// </summary>
+        internal static string IhmGameName {
+            get {
+                return ResourceManager.GetString("IhmGameName", resourceCulture);
             }
         }
         
