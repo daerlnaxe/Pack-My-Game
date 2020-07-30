@@ -191,15 +191,15 @@ namespace Pack_My_Game.Compression
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="destArchive"></param>
+        /// <param name="gameName">Lien vers </param>
         /// <returns></returns>
-        public static bool Make_Folder(string folder2Comp, string path, string destArchive)
+        public static bool Make_Folder(string folder2Comp, string path, string gameName)
         {
 
             #region 2020 choix du nom
 
             GameName gnWindows = new GameName();
-            gnWindows.SuggestedGameName = destArchive;
+            gnWindows.SuggestedGameName = gameName;
             gnWindows.ShowDialog();
 
             //string destArchLink = Path.Combine(path, $"{destArchive}");

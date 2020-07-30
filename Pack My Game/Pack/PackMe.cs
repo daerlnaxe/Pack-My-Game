@@ -317,7 +317,7 @@ namespace Pack_My_Game.Pack
 
 
             // Archive
-            string destArchive = Path.Combine(_SystemPath, _ZeGame.ExploitableFileName);
+            //string destArchive = Path.Combine(_SystemPath, _ZeGame.ExploitableFileName);
 
             #region Compressions
             // Zip
@@ -326,7 +326,8 @@ namespace Pack_My_Game.Pack
 
               //  MessageBox.Show("test "+ destArchive);
                 //     Make_Zip(destArchive);
-                ZipCompression.Make_Folder(_GamePath, _SystemPath, destArchive);
+               // ZipCompression.Make_Folder(_GamePath, _SystemPath, destArchive);
+               ZipCompression.Make_Folder(_GamePath, _SystemPath, _ZeGame.ExploitableFileName);
             }
             else
             {
@@ -338,7 +339,8 @@ namespace Pack_My_Game.Pack
             {
                 //MessageBox.Show("test " + destArchive);
 
-                SevenZipCompression.Make_Folder(_GamePath, _SystemPath, destArchive);
+                // SevenZipCompression.Make_Folder(_GamePath, _SystemPath, destArchive);
+                SevenZipCompression.Make_Folder(_GamePath, _SystemPath,  _ZeGame.ExploitableFileName);
             }
             else
             {

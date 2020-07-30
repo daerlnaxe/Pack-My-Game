@@ -162,7 +162,17 @@ namespace Pack_My_Game.Compression
         /// <returns></returns>
         public static bool Make_Folder(string folder2Comp, string path, string destArchive)
         {
-            string destArchLink = Path.Combine(path, $"{destArchive}");
+            #region 2020 choix du nom
+
+            GameName gnWindows = new GameName();
+            gnWindows.SuggestedGameName = destArchive;
+            gnWindows.ShowDialog();
+
+            //string destArchLink = Path.Combine(path, $"{destArchive}");
+            string destArchLink = Path.Combine(path, gnWindows.ChoosenGameName);
+
+            #endregion
+
             // var zipres = Destination.Verif(destArchive + ".zip");
             var sevenZRes = OPFiles.SingleVerif(destArchLink, "Make_SevenZip", log: (string message) => ITrace.WriteLine(message, true));
 
