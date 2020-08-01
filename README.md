@@ -31,7 +31,7 @@ no image file in the the destination folder.
 		
 ## Version
 
-### Beta 1.3.0.7! 01/08/2020
+### Beta 1.3.0.7 01/08/2020
  * Correction of many bugs.
  * Can pack game with a name containing some special chars (can't add some files before)
  * Added the ability to let you choose file name for the compression.
