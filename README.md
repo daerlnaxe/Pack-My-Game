@@ -2,7 +2,7 @@
 
 Download [PackMyGame-x86.zip](https://github.com/daerlnaxe/Pack-My-Game/blob/master/PackMyGame%20x86%20-%20A03.zip) or [PackMyGame-x64.zip](https://github.com/daerlnaxe/Pack-My-Game/blob/master/PackMyGame%20x64%20-%20A02.zip) for executable files  
 
-## What it do:
+## What it does:
  * It copies then compress everything about a game contained in the db of LaunchBox app.
  * It generates a short xml file with the main information about the game
  * It takes images, pdf manual, video, music, rom file.
@@ -30,6 +30,12 @@ no image file in the the destination folder.
  * It logs everything during the game treatment in a window, and a file.
 		
 ## Version
+
+### Beta 1.3.0.7! 01/08/2020
+ * Correction of many bugs.
+ * Can pack game with a name containing some special chars (can't add some files before)
+ * Added the ability to let you choose file name for the compression.
+ * Tested on more than 50 games.
 
 ### Beta 1.3.0.4: 08/09/2018
  * Visual studio made a big bug on the main window, i hope i repared all the problems
