@@ -25,6 +25,12 @@ Téléchargez [PackMyGame-x86.zip](https://github.com/daerlnaxe/Pack-My-Game/blo
  * Les clones ajoutés ne le sont qu'à condition d'être groupés dans LaunchBox
 		
 ## Versions:
+### Beta 1.3.0.7 01/02/2020
+ * Correction de plusieurs bugs.
+ * Peut packer un jeu dont le titre contient des charactères spéciaux (certains fichiers n'étaient pas pris en compte avant)
+ * Fonction permettant de choisir le nom de l'archive compressée
+ * Testé sur plus de 50 jeux (rien que sur cette version)
+ * Il reste un bug en cas d'abandon, rien de méchant.
 
 ### Beta 1.3.0.4: 08/09/2018
 
