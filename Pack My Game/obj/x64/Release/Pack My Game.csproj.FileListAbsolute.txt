@@ -80,3 +80,4 @@ E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack My Game.
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\fr-DZ\Pack My Game.resources.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.MainWindow.fr-DZ.resources
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\fr-DZ\Pack My Game.resources.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.GameName.resources
