@@ -1,6 +1,6 @@
 # Pack-My-Game
 
-Download [PackMyGame-x86.zip](https://github.com/daerlnaxe/Pack-My-Game/blob/master/PackMyGame%20x86%20-%20A03.zip) or [PackMyGame-x64.zip](https://github.com/daerlnaxe/Pack-My-Game/blob/master/PackMyGame%20x64%20-%20A02.zip) for executable files  
+Download folder: https://github.com/daerlnaxe/Pack-My-Game/tree/master/Releases  
 
 ## What it does:
  * It copies then compress everything about a game contained in the db of LaunchBox app.
