@@ -84,7 +84,11 @@ namespace Pack_My_Game.BackupLB
 
         #region chemins
         [XmlElement(Order = 50)]
-        public string ApplicationPath { get; set; } = "";            //..\..\Games\Roms\Sega Mega Drive\Pending\3 Ninjas Kick Back(1994)(Sony Imagesoft) (US).zip
+        public string ApplicationPath 
+        {
+            get;
+            set;
+        } = "";            //..\..\Games\Roms\Sega Mega Drive\Pending\3 Ninjas Kick Back(1994)(Sony Imagesoft) (US).zip
 
         [XmlElement(Order = 51)]
         public string ManualPath { get; set; } = "";               //..\..\Games\Manuels\Sega Mega Drive\3_Ninjas_Kick_Back_1994_Sony_Imagesoft_US.pdf

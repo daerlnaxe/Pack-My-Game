@@ -161,6 +161,7 @@
     <Compile Include="Container\PlatformFolder.cs" />
     <Compile Include="Container\ShortGame.cs" />
     <None Include="Enum\MediaType.cs" />
+    <Compile Include="CueScrapper.cs" />
     <Compile Include="IHM\AboutBox.cs">
       <SubType>Form</SubType>
     </Compile>

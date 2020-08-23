@@ -851,6 +851,7 @@ namespace Pack_My_Game.XML
                             case "MediaType":
                                 pfFolder.MediaType = nodPaths.Current.Value;
                                 break;
+
                             case "FolderPath":
                                 pfFolder.FolderPath = nodPaths.Current.Value;
                                 break;
@@ -860,6 +861,7 @@ namespace Pack_My_Game.XML
 
                     zePlatform.PlatformFolders.Add(pfFolder);
                 }
+
 
                 //nodIImages.MoveNext();
 

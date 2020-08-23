@@ -3,7 +3,7 @@
   <asmv1:assemblyIdentity name="Pack My Game.exe" version="0.0.1.1" publicKeyToken="0000000000000000" language="fr" processorArchitecture="amd64" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Pack My Game" version="1.3.0.7" language="neutral" processorArchitecture="amd64" />
+    <assemblyIdentity name="Pack My Game" version="1.4.0.0" language="neutral" processorArchitecture="amd64" />
     <commandLine file="Pack My Game.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -49,7 +49,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ECBt3xG5d1EO1NNakUX8w3azsVAZOJhmKdZrHIvj9Bo=</dsig:DigestValue>
+        <dsig:DigestValue>bFz2nUYtiU/Ei0iQWwF/WS7EOAsI2KVKqv3fzgavDao=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -61,7 +61,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>CkEeDN+T0eHoovj8SWCZl+wxFLuRNIOWC26wPwCzWLQ=</dsig:DigestValue>
+        <dsig:DigestValue>vxmRhK1qMQ9sSYyhCrQA+RMtmDTkWvIMlEtOd5uka84=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -97,7 +97,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>rZl7TSJ5y1rzaAiPkq7F+nKDQRyD40WoGneV029Ob5g=</dsig:DigestValue>
+        <dsig:DigestValue>cFSLbuMryHgsl+pxS5tFhEbswDogYw0UJRWcjrlmcRo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -109,7 +109,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>by4Zh4QQ/y2kiD/FzFve6shrO9r/UfoXtEptIZB2+fM=</dsig:DigestValue>
+        <dsig:DigestValue>UDEsgJ2eOYkxobFyDC9w85QQQWydNkC02UgH2IWbe5w=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -138,26 +138,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Pack My Game.exe" size="268264">
-      <assemblyIdentity name="Pack My Game" version="1.3.0.7" language="neutral" processorArchitecture="amd64" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Pack My Game.exe" size="269288">
+      <assemblyIdentity name="Pack My Game" version="1.4.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>/SR7tt89eQD2ywYqlpsWmYLwlYMaO41I+myuDNAZowo=</dsig:DigestValue>
+        <dsig:DigestValue>W4dNodD0rwx/mV2jKctp/1VPUAI3C+Iiw/z32k71sIY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="fr\Pack My Game.resources.dll" size="18432">
-      <assemblyIdentity name="Pack My Game.resources" version="1.3.0.7" language="fr" processorArchitecture="amd64" />
+      <assemblyIdentity name="Pack My Game.resources" version="1.4.0.0" language="fr" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>NZ/ueqLKTAbG95fqlIc0rDivcmRyV9hkF+IczFgN2+Y=</dsig:DigestValue>
+        <dsig:DigestValue>2aYr6vYNgPjmLQ7C3+Uux2sPhOpr36jdUX9Sg9ifO68=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

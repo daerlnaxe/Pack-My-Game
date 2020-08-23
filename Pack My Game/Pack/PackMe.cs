@@ -21,6 +21,7 @@ using DxTrace;
 using Pack_My_Game.BackupLB;
 using Pack_My_Game.Properties;
 using DxPaths;
+using System.Security.AccessControl;
 
 namespace Pack_My_Game.Pack
 {
@@ -256,8 +257,17 @@ namespace Pack_My_Game.Pack
             // Tree root + lvl1
             MakeStructure();
 
-            // Copy Roms, Video, Music, Manual
-            vApps = CopySpecific(_zBackGame.ApplicationPath, _Tree.Children["Roms"].Path, "Roms", x => _zBackGame.ApplicationPath = x);
+            // Copy Roms
+            #region 22/08/2020 new rom management
+            vApps = CopyRoms(_zBackGame.ApplicationPath, _Tree.Children["Roms"].Path);
+
+
+
+            //vApps = CopySpecific(_zBackGame.ApplicationPath, _Tree.Children["Roms"].Path, "Roms", x => _zBackGame.ApplicationPath = x);
+            #endregion
+
+
+            // Video, Music, Manual
             vManual = CopySpecific(_zBackGame.ManualPath, _Tree.Children["Manuals"].Path, "Manual", x => _zBackGame.ManualPath = x);
             vMusic = CopySpecific(_zBackGame.MusicPath, _Tree.Children["Musics"].Path, "Music", x => _zBackGame.MusicPath = x);
             vVideo = CopySpecific(_zBackGame.VideoPath, _Tree.Children["Videos"].Path, "Video", x => _zBackGame.VideoPath = x);
@@ -324,10 +334,10 @@ namespace Pack_My_Game.Pack
             if (Properties.Settings.Default.opZip)
             {
 
-              //  MessageBox.Show("test "+ destArchive);
+                //  MessageBox.Show("test "+ destArchive);
                 //     Make_Zip(destArchive);
-               // ZipCompression.Make_Folder(_GamePath, _SystemPath, destArchive);
-               ZipCompression.Make_Folder(_GamePath, _SystemPath, _ZeGame.ExploitableFileName);
+                // ZipCompression.Make_Folder(_GamePath, _SystemPath, destArchive);
+                ZipCompression.Make_Folder(_GamePath, _SystemPath, _ZeGame.ExploitableFileName);
             }
             else
             {
@@ -340,7 +350,7 @@ namespace Pack_My_Game.Pack
                 //MessageBox.Show("test " + destArchive);
 
                 // SevenZipCompression.Make_Folder(_GamePath, _SystemPath, destArchive);
-                SevenZipCompression.Make_Folder(_GamePath, _SystemPath,  _ZeGame.ExploitableFileName);
+                SevenZipCompression.Make_Folder(_GamePath, _SystemPath, _ZeGame.ExploitableFileName);
             }
             else
             {
@@ -356,7 +366,7 @@ namespace Pack_My_Game.Pack
                     Directory.SetCurrentDirectory(_WFolder);
 
                     Directory.Delete(_GamePath, true);
-                    
+
                     Console.WriteLine($"[Run] folder {_GamePath} erased");
 
                 }
@@ -458,18 +468,91 @@ namespace Pack_My_Game.Pack
         }
 
         /// <summary>
-        /// Function advcanced
+        /// Copie les roms, regroupe les fichiers sur les images 
+        /// </summary>
+        /// <param name="dbPath"></param>
+        /// <param name="destlocation"></param>
+        /// <returns></returns>
+        private bool CopyRoms(string dbPath, string destLocation)
+        {
+            /*
+            * On part du principe que le dossier rom DOIT être rempli
+            */
+            if (_zBackGame.ApplicationPath.Length <= 0)
+                return false;
+
+
+            string extRom = Path.GetExtension(_zBackGame.ApplicationPath);
+            // si aucune extension on ne pack pas le fichier
+            if (extRom.Length <= 0)
+                return false;
+            try
+            {
+                // résultat pour définir si on copie ou pas
+                OPResult res;
+
+                // Traitement dans le cas d'un fichier cue
+                if (extRom.Equals(".cue", StringComparison.OrdinalIgnoreCase))
+                {
+                    //Lecture du fichier cue
+                    Cue_Scrapper cuecont = new Cue_Scrapper(_zBackGame.ApplicationPath);
+
+                    //Folder containing files
+                    string sourceFold = Path.GetDirectoryName(_zBackGame.ApplicationPath);
+
+                    // Copie de tous les fichiers
+   
+
+
+                    foreach (string fileName in cuecont.Files)
+                    {
+                        // Hardlink
+                        string source = Path.Combine(sourceFold, fileName);
+                        // string destination = Path.Combine(destLocation, fileName);
+
+                        // Test if already copied
+                        res = OPFiles.SingleCompare(source, destLocation, $"Copy_Rom", Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
+
+                        // Copy
+                        CopyFile(source, destLocation, res);
+                    }
+
+                    //        return true;
+                }
+
+                // Traitement dans tous les cas (si c'est un cue on en a aussi besoin)
+                /*else
+                /*{*/
+                res = OPFiles.SingleCompare(dbPath, destLocation, $"Copy_Rom", Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
+                _zBackGame.ApplicationPath = DxPaths.Windows.DxPath.ToRelative(Settings.Default.LBPath, dbPath);
+                return CopyFile(dbPath, destLocation, res);
+                //return true;
+                // }
+            }
+            catch (Exception exc)
+            {
+                return false;
+            }
+
+        }
+
+        /// <summary>
+        /// Function advanced
         /// </summary>
         /// <param name="mediatype">Type de media, fourni par le fichier xml
-        ///     <remarks>(Manual, Music, Video...)</remarks>
+        ///   <remarks>(Manual, Music, Video...)</remarks>
         /// </param>
+        /// <param name="Assignation">Définit à quelle variable on va assigner le chemin relatif calculé</param>
         private bool CopySpecific(string dbPath, string destLocation, string mediatype, Func<string, string> Assignation)
         {
             // Normal copy
             if (!string.IsNullOrEmpty(dbPath))
             {
                 OPResult res = OPFiles.SingleCompare(dbPath, destLocation, $"Copy_{mediatype}", Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
+
+                // assignation du chemin relatif à la variable
                 Assignation(DxPaths.Windows.DxPath.ToRelative(Settings.Default.LBPath, dbPath));
+
                 return CopyFile(dbPath, destLocation, res);
             }
             else
@@ -486,7 +569,7 @@ namespace Pack_My_Game.Pack
                 //MessageBox.Show(_ZeGame.Title +"  "+ zeOne.FolderPath);
 
                 // 2020 - Formatage de la chaine pour éviter les erreurs
-                string tosearch = _ZeGame.Title.Replace(':', '_').Replace('\'','_');
+                string tosearch = _ZeGame.Title.Replace(':', '_').Replace('\'', '_');
                 tosearch = tosearch.Replace("__", "_");
 
                 List<string> dFiles = OPFiles.Search_Files(tosearch, plafFolder.FolderPath, System.IO.SearchOption.TopDirectoryOnly, "-", " -");
@@ -520,10 +603,10 @@ namespace Pack_My_Game.Pack
             var res = MB_SimpleAll.Show($"{Lang.ImagesP} ?", Lang.ImagesTitle, buttons: Dcs_Buttons2.OverWrite | Dcs_Buttons2.Pass);
 
             ITrace.WriteLine(prefix: false);
-                                 
+
             ITrace.WriteLine(prefix: false);
             Queue<PackFile> lPackFile = new Queue<PackFile>();
-            
+
             // Get All images (To Add mask see at Where)
             Console.WriteLine($"[CopyImages] Search all images for '{_ZeGame.Title}'");
             foreach (PlatformFolder plfmFolder in _ZePlatform.PlatformFolders)
@@ -622,7 +705,7 @@ namespace Pack_My_Game.Pack
             foreach (Clone zeClone in fClones)
             {
                 zeClone.ApplicationPath = ReconstructPath(zeClone.ApplicationPath);
-      
+
                 var cloneRes = opFiles.Compare(zeClone.ApplicationPath, _Tree.Children["Roms"].Path, whocallme: "Clone");
                 CopyFile(zeClone.ApplicationPath, _Tree.Children["Roms"].Path, cloneRes);
             }
