@@ -8,7 +8,7 @@ Download folder: https://github.com/daerlnaxe/Pack-My-Game/tree/master/Releases
  * It takes images, pdf manual, video, music, rom file.
  * It takes also the cheatcode files if you fill the path ('GameName-*.*')
  * It generates a tree view file.
- * Support Cue files
+ * Support Cue files (1.4+ versions)
  * 7z and zip compression
  * Backup datas about a game from LaunchBox xml
  * When PackMe run,  creates an enhanced xml file, adding missing paths, additionally to the original backup
