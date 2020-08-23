@@ -8,6 +8,7 @@ Download folder: https://github.com/daerlnaxe/Pack-My-Game/tree/master/Releases
  * It takes images, pdf manual, video, music, rom file.
  * It takes also the cheatcode files if you fill the path ('GameName-*.*')
  * It generates a tree view file.
+ * Support Cue files
  * 7z and zip compression
  * Backup datas about a game from LaunchBox xml
  * When PackMe run,  creates an enhanced xml file, adding missing paths, additionally to the original backup
@@ -19,7 +20,7 @@ Download folder: https://github.com/daerlnaxe/Pack-My-Game/tree/master/Releases
 for later, just in case there was a problem. 
 
 ## Note
- * Use it only with roms.
+ * Use it only with roms and cue files since 23/08/2020
  * Don't move or delete files from the source (never)
  * It asks before to overwrite roms, manuals, music, video that are in the working directory meanwhile
  the copy (the target directory)
@@ -31,6 +32,9 @@ no image file in the the destination folder.
 		
 ## Version
 
+### Beta 1.4 23/08/2020
+ * Cue file supporting added, read the file and copy files mentionned to the rom directory.
+ 
 ### Beta 1.3.0.7 01/08/2020
  * Correction of many bugs.
  * Can pack game with a name containing some special chars (can't add some files before)
