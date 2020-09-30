@@ -343,7 +343,6 @@ namespace Pack_My_Game.Pack
             {
                 ITrace.WriteLine($"[Run] Zip Compression disabled");
             }
-
             // 7-Zip
             if (Properties.Settings.Default.op7_Zip)
             {
@@ -545,7 +544,7 @@ namespace Pack_My_Game.Pack
         /// <param name="Assignation">Définit à quelle variable on va assigner le chemin relatif calculé</param>
         private bool CopySpecific(string dbPath, string destLocation, string mediatype, Func<string, string> Assignation)
         {
-            // Normal copy
+            // Normal copy, if path is not empty
             if (!string.IsNullOrEmpty(dbPath))
             {
                 OPResult res = OPFiles.SingleCompare(dbPath, destLocation, $"Copy_{mediatype}", Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
@@ -572,12 +571,65 @@ namespace Pack_My_Game.Pack
                 string tosearch = _ZeGame.Title.Replace(':', '_').Replace('\'', '_');
                 tosearch = tosearch.Replace("__", "_");
 
-                List<string> dFiles = OPFiles.Search_Files(tosearch, plafFolder.FolderPath, System.IO.SearchOption.TopDirectoryOnly, "-", " -");
+                // array of files with a part of the name
+                string[] files = Directory.GetFiles(plafFolder.FolderPath, $"{tosearch}*.*", System.IO.SearchOption.TopDirectoryOnly);
+
+                // case array is empty
+                if(files.Length<=0)
+                {
+                    MessageBox.Show($"Searching for {mediatype} returned 0 results", $"Searching for {mediatype}", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
+                }
+
+                #region processing found files
+
+                MB_ListFiles mbL = new MB_ListFiles();
+                mbL.Message = $"Select {mediatype} matching.\rNote: There is an automatic preselection ";
+
+                // bypass 
+                string[] bypass = new string [] { "-", " -" };
+
+                foreach(string fichier in files)
+                {
+                    string filename = Path.GetFileNameWithoutExtension(fichier);
+                    // Test if total match
+                    if (filename.Equals(tosearch))
+                    {
+                        // On ajoute à la liste des checkbox
+                        mbL.AddItem(fichier, true);
+                    }
+                    //Test if match with bypass
+                    else
+                    {
+                        // On test avec chaque bypass
+                        foreach (var b in bypass)
+                        {
+                            if (filename.StartsWith(tosearch + b))
+                            {
+                                // On ajoute à la liste des checkbox
+                                mbL.AddItem(fichier, true);
+                                break;
+                            }
+                        }
+                    }
+                }
+                #endregion
+
+
+                // Affichage de la boite de selection;
+                List<string> dFiles = null;
+                if (mbL.ShowDialog() == DialogResult.Yes)
+                {
+                    dFiles = mbL.CheckedFiles;
+                }
+                
+                // old List<string> dFiles = OPFiles.Search_Files(tosearch, plafFolder.FolderPath, System.IO.SearchOption.TopDirectoryOnly, "-", " -");
 
                 // En cas d'abandon ou de fichier non trouvé on renvoie false
                 if (dFiles == null || dFiles.Count == 0)
                     return false;
 
+                //
                 foreach (string fichier in dFiles)
                 {
                     var res = OPFiles.SingleCompare(fichier, destLocation, $"Copy_{mediatype}", Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
