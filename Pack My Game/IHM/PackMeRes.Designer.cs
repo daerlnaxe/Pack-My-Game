@@ -28,25 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.clb1 = new System.Windows.Forms.CheckedListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btOk = new System.Windows.Forms.Button();
+            this.clb1 = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
-            // 
-            // clb1
-            // 
-            this.clb1.Enabled = false;
-            this.clb1.FormattingEnabled = true;
-            this.clb1.Items.AddRange(new object[] {
-            "Game",
-            "Manual",
-            "Music",
-            "Video",
-            "Applications"});
-            this.clb1.Location = new System.Drawing.Point(15, 25);
-            this.clb1.Name = "clb1";
-            this.clb1.Size = new System.Drawing.Size(120, 94);
-            this.clb1.TabIndex = 0;
             // 
             // label1
             // 
@@ -66,6 +51,21 @@
             this.btOk.TabIndex = 2;
             this.btOk.Text = "Ok";
             this.btOk.UseVisualStyleBackColor = true;
+            // 
+            // clb1
+            // 
+            this.clb1.Enabled = false;
+            this.clb1.FormattingEnabled = true;
+            this.clb1.Items.AddRange(new object[] {
+            "Game",
+            "Manual",
+            "Music",
+            "Video",
+            "Applications"});
+            this.clb1.Location = new System.Drawing.Point(15, 25);
+            this.clb1.Name = "clb1";
+            this.clb1.Size = new System.Drawing.Size(120, 94);
+            this.clb1.TabIndex = 0;
             // 
             // PackMeRes
             // 

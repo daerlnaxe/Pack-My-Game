@@ -88,7 +88,6 @@ namespace Pack_My_Game.Compression
                         BoxProgress = new ProgressCompFolder();
                         BoxProgress.Text = "Compression Zip";
 
-
                         Task.Run(() => zipFile.Save(zipName));
                         BoxProgress.ShowDialog();
                     }
@@ -191,11 +190,13 @@ namespace Pack_My_Game.Compression
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="folder2Comp">Dossier à compresser</param>
+        /// <param name="path">Chemin de stockage de l'archive</param>
         /// <param name="gameName">Lien vers </param>
         /// <returns></returns>
         public static bool Make_Folder(string folder2Comp, string path, string gameName)
         {
-
+/*
             #region 2020 choix du nom
 
             GameName gnWindows = new GameName();
@@ -206,9 +207,12 @@ namespace Pack_My_Game.Compression
             string destArchLink = Path.Combine(path, gnWindows.ChoosenGameName);
 
             #endregion
+*/
+            string destArchLink = Path.Combine(path, gameName);
 
             //string destArchLink = Path.Combine(path, $"{destArchive}.7z");
             //string destArchLink = Path.Combine(path, $"{destArchive}.zip");
+
             var zipRes = OPFiles.SingleVerif(destArchLink, "Make_Zip", log: (string message) => ITrace.WriteLine(message, true));
 
             switch (zipRes)

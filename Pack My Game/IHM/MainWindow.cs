@@ -367,7 +367,13 @@ namespace Pack_My_Game
             {
                 ShortGame zeGame = (ShortGame)item.Tag;
                 var res = MessageBox.Show($"{Lang.MB_Pack_Question}: '{zeGame.Title}' ?", "Pack or Not Pack ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (res != DialogResult.Yes) continue;
+                
+                // On passe si la réponse est négative
+                if (res != DialogResult.Yes)
+                {
+                    item.Checked = false;
+                    continue;
+                }
 
                 Console.WriteLine($"[Main] PackMe for '{zeGame.Title}' | '{zeGame.ID}'");
 
@@ -375,6 +381,7 @@ namespace Pack_My_Game
 
                 // On cache la fenêtre durant le traitement
                 this.Hide();
+
                 int state = pm.Initialize(_XmlFPlatform, zeGame);
 
                 if (state == 0 && pm.Run())

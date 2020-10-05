@@ -822,9 +822,11 @@ namespace Pack_My_Game.XML
                     {
                         // Correction sur le xml originel
                         case "Folder":
+                            /*2020 n'était jamais utilisé, une erreur en prime car pas ajouté à la liste
                             PlatformFolder pfFolder = new PlatformFolder();
                             pfFolder.FolderPath = nodInfos.Current.Value;
-                            pfFolder.MediaType = "AppPath";
+                            pfFolder.MediaType = "AppPath";*/
+                            zePlatform.FolderPath = nodInfos.Current.Value;
                             break;
                     }
                 } while (nodInfos.Current.MoveToNext());

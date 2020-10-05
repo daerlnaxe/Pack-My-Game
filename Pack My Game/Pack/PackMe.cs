@@ -22,6 +22,8 @@ using Pack_My_Game.BackupLB;
 using Pack_My_Game.Properties;
 using DxPaths;
 using System.Security.AccessControl;
+using System.Threading;
+using Pack_My_Game.Enum;
 
 namespace Pack_My_Game.Pack
 {
@@ -48,11 +50,23 @@ namespace Pack_My_Game.Pack
         private string ID { get; set; }               // Id of the game
 
         private DirectoryInfo _LBoxDI;               // DirectoryInfo of Launchbox (useful ?)
-        private string _WFolder;                     // working folder (the output folder)
+
+        /// <summary>
+        /// Work file / Dossier de travail
+        /// </summary>
+        private string _WFolder;
         private string _SystemName { get; set; }       // Name of the platform
         private string _SystemPath;                  // Platform path
         private string _GamePath;                    // Path where the files will be copy
+        
+        /// <summary>
+        /// 
+        /// </summary>
         private Game _zBackGame;
+
+        /// <summary>
+        /// 
+        /// </summary>
         private GameInfo _ZeGame;               // Game object
         /// <summary>
         /// 
@@ -74,6 +88,9 @@ namespace Pack_My_Game.Pack
 
         private XML_Functions _XFunctions;
         //private Dictionary<string, Folder> _Tree;
+        /// <summary>
+        /// Arborescence de 
+        /// </summary>
         private Folder _Tree;
 
         //Loggers
@@ -94,17 +111,23 @@ namespace Pack_My_Game.Pack
         }
 
         /// <summary>
-        /// 
+        /// ...
+        /// Créer un fichier xml après collection des données dans le fichier xml de launchbox si activé
         /// </summary>
         /// <param name="xFile">believe... xml file </param>
         /// <param name="GameFile">Game file (exploitable)</param>
         internal int Initialize(string xFile, ShortGame sGame)
         {
             // Verif
-            if (string.IsNullOrEmpty(ID)) throw new Exception("Id property: null");
-            if (string.IsNullOrEmpty(_SystemName)) throw new Exception();
+            if (string.IsNullOrEmpty(ID))
+                throw new Exception("Id property: null");
+
+            if (string.IsNullOrEmpty(_SystemName))
+                throw new Exception();
 
             _WFolder = Properties.Settings.Default.OutPPath;
+
+            // Chemin du dossier temporaire du system
             _SystemPath = Path.Combine(_WFolder, _SystemName);
             _GamePath = Path.Combine(_SystemPath, $"{sGame.ExploitableFileName}");             // New Working Folder
             string logFile = Path.Combine(_WFolder, $"{_SystemName} - {sGame.ExploitableFileName}.log");
@@ -186,6 +209,19 @@ namespace Pack_My_Game.Pack
             _zBackGame = _XFunctions.ScrapBackupGame(ID);
             _ZeGame = (GameInfo)_zBackGame;
 
+            #region 2020
+
+            // Creation of System folder and working assign            
+            ITrace.WriteLine($"[Run] {Lang.CreationFolder}: '{_SystemName}'");
+            Directory.CreateDirectory(_SystemName);
+            Directory.SetCurrentDirectory(_SystemPath);
+
+            // Creation of Game folder
+            ITrace.WriteLine($"[Run] {Lang.CreationFolder}: '{_GamePath}'");
+            Directory.CreateDirectory(_GamePath);
+            #endregion
+
+
             #region Original Backup Game
             if (Settings.Default.opOBGame)
             {
@@ -232,6 +268,7 @@ namespace Pack_My_Game.Pack
             //}
             #endregion
 
+            /* Déplacé 2020
             // Creation of System folder and working assign            
             ITrace.WriteLine($"[Run] {Lang.CreationFolder}: '{_SystemName}'");
             Directory.CreateDirectory(_SystemName);
@@ -240,7 +277,8 @@ namespace Pack_My_Game.Pack
             // Creation of Game folder
             ITrace.WriteLine($"[Run] {Lang.CreationFolder}: '{_GamePath}'");
             Directory.CreateDirectory(_GamePath);
-            Directory.SetCurrentDirectory(_GamePath);
+            */
+            //2020 Directory.SetCurrentDirectory(_GamePath);
 
 
             #region Creation of the Infos.xml
@@ -257,20 +295,20 @@ namespace Pack_My_Game.Pack
             // Tree root + lvl1
             MakeStructure();
 
+
+
             // Copy Roms
             #region 22/08/2020 new rom management
-            vApps = CopyRoms(_zBackGame.ApplicationPath, _Tree.Children["Roms"].Path);
-
-
+            vApps = CopyRoms(_zBackGame.ApplicationPath, _Tree.Children[nameof(SubFolder.Roms)].Path);
 
             //vApps = CopySpecific(_zBackGame.ApplicationPath, _Tree.Children["Roms"].Path, "Roms", x => _zBackGame.ApplicationPath = x);
             #endregion
 
 
             // Video, Music, Manual
-            vManual = CopySpecific(_zBackGame.ManualPath, _Tree.Children["Manuals"].Path, "Manual", x => _zBackGame.ManualPath = x);
-            vMusic = CopySpecific(_zBackGame.MusicPath, _Tree.Children["Musics"].Path, "Music", x => _zBackGame.MusicPath = x);
-            vVideo = CopySpecific(_zBackGame.VideoPath, _Tree.Children["Videos"].Path, "Video", x => _zBackGame.VideoPath = x);
+            vManual = CopySpecific(_zBackGame.ManualPath, _Tree.Children[nameof(SubFolder.Manuals)].Path, "Manual", x => _zBackGame.ManualPath = x);
+            vMusic = CopySpecific(_zBackGame.MusicPath, _Tree.Children[nameof(SubFolder.Musics)].Path, "Music", x => _zBackGame.MusicPath = x);
+            vVideo = CopySpecific(_zBackGame.VideoPath, _Tree.Children[nameof(SubFolder.Videos)].Path, "Video", x => _zBackGame.VideoPath = x);
 
 
             // CopySpecificFiles() old way;
@@ -324,12 +362,82 @@ namespace Pack_My_Game.Pack
             #endregion
 
 
+            #region 2020 Résultats 
+            // au lieu de mettre à true le bool au moment de la copie,
+            //on fait un recheck au cas où l'utilisateur a modifié le contenu)
+            //PackMeRes.ShowDialog(vGame, vManual, vMusic, vVideo, vApps);
 
+            
+            PackMeRes2 pmr2 = new PackMeRes2()
+            {
+                GameName = _zBackGame.Title,
+                // Destinations
+                CheatPath = _Tree.Children[nameof(SubFolder.CheatCodes)].Path,
+                ManualPath = _Tree.Children[nameof(SubFolder.Manuals)].Path,
+                MusicPath = _Tree.Children[nameof(SubFolder.Musics)].Path,
+                RomPath = _Tree.Children[nameof(SubFolder.Roms)].Path,
+                VideoPath = _Tree.Children[nameof(SubFolder.Videos)].Path,
+                // Sources
+                SourceRomPath = _ZePlatform.FolderPath,
+                SourceManuelPath = _ZePlatform.PlatformFolders.FirstOrDefault(x => x.MediaType == "Manual"),
+                SourceMusicPath = _ZePlatform.PlatformFolders.FirstOrDefault(x => x.MediaType == "Music"),
+                SourceVideoPath = _ZePlatform.PlatformFolders.FirstOrDefault(x => x.MediaType == "Video"),
+
+            };
+
+            // Liste des manuels
+
+            //pmr2.Musics = Directory.GetFiles(_Tree.Children["Musics"].Path, "*.*", System.IO.SearchOption.TopDirectoryOnly);
+
+            pmr2.LoadDatas();
+            pmr2.ShowDialog();
+
+
+            //pmr2.AddManual();
+            #endregion
+
+            #region 2020 choix du nom
+            // Fenêtre pour le choix du nom
+            GameName gnWindows = new GameName();
+            gnWindows.SuggestedGameName = _ZeGame.ExploitableFileName;
+            gnWindows.ShowDialog();
+
+            // Changement de nom du dossier
+            ushort i = 0;
+
+            string destFolder = Path.Combine(_SystemPath, gnWindows.ChoosenGameName);
+
+            if (!_GamePath.Equals(destFolder))
+                while (i < 10)
+                    try
+                    {
+                        Directory.Move(_GamePath, destFolder);
+                        ITrace.WriteLine("Folder successfully renamed");
+
+                        // Attribution du résultat
+                        _GamePath = destFolder;
+
+                        // Sortie
+                        break;
+                    }                    
+                    catch (IOException ioe)
+                    {
+                        ITrace.WriteLine($"Try {i}: {ioe}");
+                        Thread.Sleep(10);
+                        i++;
+                    }
+
+            //string destArchLink = Path.Combine(path, $"{destArchive}");
+            //string destArchLink = Path.Combine(path, gnWindows.ChoosenGameName);
+
+            // On verra si on dissocie un jour 
+            _ZeGame.ExploitableFileName = gnWindows.ChoosenGameName;
+            #endregion
 
             // Archive
             //string destArchive = Path.Combine(_SystemPath, _ZeGame.ExploitableFileName);
 
-            #region Compressions
+            #region Compression
             // Zip
             if (Properties.Settings.Default.opZip)
             {
@@ -363,9 +471,7 @@ namespace Pack_My_Game.Pack
                 try
                 {
                     Directory.SetCurrentDirectory(_WFolder);
-
                     Directory.Delete(_GamePath, true);
-
                     Console.WriteLine($"[Run] folder {_GamePath} erased");
 
                 }
@@ -375,8 +481,6 @@ namespace Pack_My_Game.Pack
                 }
             }
 
-            // Résultats
-            PackMeRes.ShowDialog(vGame, vManual, vMusic, vVideo, vApps);
 
             // Stop loggers
             if (_IScreen != null)
@@ -415,7 +519,16 @@ namespace Pack_My_Game.Pack
             //_Tree.Add("Root", root);
 
             // Creation lvl 1
-            CreateHFolders(_Tree, "CheatCodes", "Images", "Manuals", "Musics", "Videos", "Roms");
+            CreateHFolders(_Tree,
+                            nameof(SubFolder.CheatCodes),
+                            nameof(SubFolder.Images),
+                            nameof(SubFolder.Manuals),
+                            nameof(SubFolder.Musics),
+                            nameof(SubFolder.Videos),
+                            nameof(SubFolder.Roms));
+
+            // Back to system menu to unlock game folder.
+            Directory.SetCurrentDirectory(_SystemPath);
 
             // Disc ?
             return true;
@@ -442,7 +555,7 @@ namespace Pack_My_Game.Pack
             // rom            
             //var romRes = opFiles.Compare(_ZeGame.ApplicationPath, _Tree.Children["Roms"].Path, whocallme: "Copy_Rom");
             //CopyFile(_ZeGame.ApplicationPath, _Tree.Children["Roms"].Path, romRes);
-            vGame = CopySpecific(_zBackGame.ApplicationPath, _Tree.Children["Roms"].Path, "Game", x => _zBackGame.ApplicationPath = x);
+            vGame = CopySpecific(_zBackGame.ApplicationPath, _Tree.Children[nameof(SubFolder.Roms)].Path, "Game", x => _zBackGame.ApplicationPath = x);
 
 
             // Manual
@@ -500,7 +613,7 @@ namespace Pack_My_Game.Pack
                     string sourceFold = Path.GetDirectoryName(_zBackGame.ApplicationPath);
 
                     // Copie de tous les fichiers
-   
+
 
 
                     foreach (string fileName in cuecont.Files)
@@ -538,6 +651,8 @@ namespace Pack_My_Game.Pack
         /// <summary>
         /// Function advanced
         /// </summary>
+        /// <param name="dbPath">Chemin déjà stocké en db</param>
+        /// <param name="destLocation">Emplacement de destination</param>
         /// <param name="mediatype">Type de media, fourni par le fichier xml
         ///   <remarks>(Manual, Music, Video...)</remarks>
         /// </param>
@@ -574,12 +689,13 @@ namespace Pack_My_Game.Pack
                 // array of files with a part of the name
                 string[] files = Directory.GetFiles(plafFolder.FolderPath, $"{tosearch}*.*", System.IO.SearchOption.TopDirectoryOnly);
 
+                /*
                 // case array is empty
-                if(files.Length<=0)
+                if (files.Length <= 0)
                 {
                     MessageBox.Show($"Searching for {mediatype} returned 0 results", $"Searching for {mediatype}", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return false;
-                }
+                }*/
 
                 #region processing found files
 
@@ -587,9 +703,10 @@ namespace Pack_My_Game.Pack
                 mbL.Message = $"Select {mediatype} matching.\rNote: There is an automatic preselection ";
 
                 // bypass 
-                string[] bypass = new string [] { "-", " -" };
+                string[] bypass = new string[] { "-", " -" };
 
-                foreach(string fichier in files)
+                ushort numberF = 0;
+                foreach (string fichier in files)
                 {
                     string filename = Path.GetFileNameWithoutExtension(fichier);
                     // Test if total match
@@ -597,6 +714,7 @@ namespace Pack_My_Game.Pack
                     {
                         // On ajoute à la liste des checkbox
                         mbL.AddItem(fichier, true);
+                        numberF++;
                     }
                     //Test if match with bypass
                     else
@@ -608,21 +726,34 @@ namespace Pack_My_Game.Pack
                             {
                                 // On ajoute à la liste des checkbox
                                 mbL.AddItem(fichier, true);
+                                numberF++;
                                 break;
                             }
                         }
                     }
                 }
+
+                //if(mbL.Menu.MenuItems.Count)
                 #endregion
 
-
-                // Affichage de la boite de selection;
-                List<string> dFiles = null;
+                // 2020
+                // case array is empty or no corresponding file even with bypass
+                //if (files.Length <= 0 || mbL.Menu == null)
+                if(numberF <= 0)
+                {
+                    MessageBox.Show($"Searching for {mediatype} returned {numberF} results", $"Searching for {mediatype}", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
+                }
+                // 2020
+                
+               // Affichage de la boite de selection;
+               List<string> dFiles = null;
                 if (mbL.ShowDialog() == DialogResult.Yes)
                 {
                     dFiles = mbL.CheckedFiles;
                 }
-                
+
+
                 // old List<string> dFiles = OPFiles.Search_Files(tosearch, plafFolder.FolderPath, System.IO.SearchOption.TopDirectoryOnly, "-", " -");
 
                 // En cas d'abandon ou de fichier non trouvé on renvoie false
@@ -697,15 +828,18 @@ namespace Pack_My_Game.Pack
                 var pkFile = lPackFile.Dequeue();
                 int pos = pkFile.LinkToThePath.IndexOf(pkFile.Categorie);
                 string tail1 = Path.GetDirectoryName(pkFile.LinkToThePath).Substring(pos);
-                string dest = Path.Combine(_Tree.Children["Images"].Path, tail1);
+                string dest = Path.Combine(_Tree.Children[nameof(SubFolder.Images)].Path, tail1);
 
                 // Création des dossiers
                 Console.WriteLine(dest);
                 if (!Directory.Exists(dest))
                 {
-                    CreateVFolders(_Tree.Children["Images"], tail1);
+                    //2020 CreateVFolders(_Tree.Children["Images"], tail1);
+                    CreateVFolders(_Tree.Children[nameof(SubFolder.Images)], tail1);
+
                 }
-                FoncSchem.MakeListFolder(_Tree.Children["Images"]);
+                //2020 FoncSchem.MakeListFolder(_Tree.Children["Images"]);
+                FoncSchem.MakeListFolder(_Tree.Children[nameof(SubFolder.Images)]);
 
                 // copy
                 CopyFile(pkFile.LinkToThePath, dest, res);
@@ -731,8 +865,8 @@ namespace Pack_My_Game.Pack
 
             foreach (string file in fichier)
             {
-                var cheatCodeRes = opFiles.Compare(file, _Tree.Children["CheatCodes"].Path, whocallme: "CheatCodes");
-                CopyFile(file, _Tree.Children["CheatCodes"].Path, cheatCodeRes);
+                var cheatCodeRes = opFiles.Compare(file, _Tree.Children[nameof(SubFolder.CheatCodes)].Path, whocallme: "CheatCodes");
+                CopyFile(file, _Tree.Children[nameof(SubFolder.CheatCodes)].Path, cheatCodeRes);
             }
         }
 
@@ -758,8 +892,8 @@ namespace Pack_My_Game.Pack
             {
                 zeClone.ApplicationPath = ReconstructPath(zeClone.ApplicationPath);
 
-                var cloneRes = opFiles.Compare(zeClone.ApplicationPath, _Tree.Children["Roms"].Path, whocallme: "Clone");
-                CopyFile(zeClone.ApplicationPath, _Tree.Children["Roms"].Path, cloneRes);
+                var cloneRes = opFiles.Compare(zeClone.ApplicationPath, _Tree.Children[nameof(SubFolder.Roms)].Path, whocallme: "Clone");
+                CopyFile(zeClone.ApplicationPath, _Tree.Children[nameof(SubFolder.Roms)].Path, cloneRes);
             }
         }
 
@@ -792,7 +926,7 @@ namespace Pack_My_Game.Pack
             ITrace.BeginLine($"[CopyFiles] Copy of the file '{fichier}': ");
 
 
-            Directory.SetCurrentDirectory(dest);
+            // 2020 enlevé Directory.SetCurrentDirectory(dest);
             string filename = Path.GetFileName(fichier);
             string destLink = Path.Combine(dest, filename);
 
@@ -807,7 +941,7 @@ namespace Pack_My_Game.Pack
                 ITrace.WriteLine(e.Message);
             }
 
-            Directory.SetCurrentDirectory(_GamePath);
+            // 2020 enlevé Directory.SetCurrentDirectory(_GamePath);
             return true;
         }
 
@@ -897,22 +1031,22 @@ namespace Pack_My_Game.Pack
 
             string[] arrTail = tail.Split('\\');
 
-            Directory.SetCurrentDirectory(basePath.Path);
+            //2020 Directory.SetCurrentDirectory(basePath.Path);
 
-            Folder currentFolder = basePath;
+            //2020 Folder currentFolder = basePath;
             foreach (string name in arrTail)
             {
-                string currentDir = Directory.GetCurrentDirectory();
-
-
-                Console.WriteLine($"Rep actuel {currentDir}");
-                string path = Path.Combine(currentDir, name);
+                //2020 string currentDir = Directory.GetCurrentDirectory();
+                //2020 Console.WriteLine($"Rep actuel {currentDir}");
+                //2020 modif
+                string path = Path.Combine(basePath.Path, name);
+                //2020 modif
 
                 ITrace.WriteLine($"[CreateFolders] Creation of the folder: '{path}'");
 
                 // Creation
-                Directory.CreateDirectory(name);
-                Directory.SetCurrentDirectory(name);
+                Directory.CreateDirectory(path);
+                //2020 Directory.SetCurrentDirectory(name);
 
                 //// Add to the Dictionary Tree
                 //Folder tmp = new Folder(name, path);
