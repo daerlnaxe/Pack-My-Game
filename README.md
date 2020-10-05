@@ -32,6 +32,13 @@ no image file in the the destination folder.
 		
 ## Version
 
+### Beta 1.5.0.1 05/10/2020
+ * Check for files is now repositioned just before compression.
+ * New window indicating wich files have been copied, instead of old that only shows a checkbox.
+ * This window can permit to add video/roms/cheats/musics/manuals files.
+ * This window can permit to add a new file of cheats by a richtextbox, tabulation is allowed.
+ * Based on Framework 4.8
+
 ### Beta 1.4 23/08/2020
  * Cue file supporting added, read the file and copy files mentionned to the rom directory.
  
