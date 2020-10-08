@@ -20,8 +20,6 @@ E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Debug\Pack_My_Game.Ma
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Debug\Pack My Game.csproj.GenerateResource.cache
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Debug\Pack My Game.csproj.CoreCompileInputs.cache
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x64\Pack My Game.exe.config
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x64\Pack My Game.exe.manifest
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x64\Pack My Game.application
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x64\Pack My Game.exe
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x64\Pack My Game.pdb
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x64\en\Pack My Game.resources.dll
@@ -44,8 +42,6 @@ E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x64\fr\MyControls.r
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Debug\en\Pack My Game.resources.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Debug\fr-DZ\Pack My Game.resources.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Debug\fr\Pack My Game.resources.dll
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Debug\Pack My Game.exe.manifest
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Debug\Pack My Game.application
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Debug\Pack My Game.csproj.CopyComplete
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Debug\Pack My Game.exe
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Debug\Pack My Game.pdb

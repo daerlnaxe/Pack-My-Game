@@ -230,6 +230,7 @@ namespace Pack_My_Game.IHM
             CheatForm cf = new CheatForm(GameName, CheatPath);
             cf.ShowDialog();
             this.Show();
+            LoadCheats();
         }
 
 

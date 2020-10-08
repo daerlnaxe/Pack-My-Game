@@ -14,30 +14,6 @@ E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\x64\Release\DotNetZip.xml
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\x64\Release\MyControls.pdb
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\x64\Release\fr\DlnxLocalTransfert.resources.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\x64\Release\fr\MyControls.resources.dll
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.AboutBox.resources
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.ProgressCompFolder.resources
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.Config.resources
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.Credits.resources
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.Help.resources
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.MainWindow.resources
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.SelectFolder.resources
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.SplashScreen.resources
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.Lang.resources
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.Properties.Resources.resources
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.MainWindow.en.resources
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.Lang.fr.resources
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.Config.fr.resources
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.Credits.fr.resources
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.MainWindow.fr.resources
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack My Game.csproj.GenerateResource.cache
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack My Game.csproj.CoreCompileInputs.cache
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\fr\Pack My Game.resources.dll
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\en\Pack My Game.resources.dll
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack My Game.exe.manifest
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack My Game.application
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack My Game.csproj.CopyComplete
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack My Game.exe
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack My Game.pdb
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\x64\Release\PackMyGame\Pack My Game.exe.config
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\x64\Release\PackMyGame\Pack My Game.exe.manifest
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\x64\Release\PackMyGame\Pack My Game.application
@@ -55,29 +31,51 @@ E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\x64\Release\PackMyGame\My
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\x64\Release\PackMyGame\fr\DlnxLocalTransfert.resources.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\x64\Release\PackMyGame\fr\MyControls.resources.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\Pack My Game.exe.config
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\Pack My Game.exe.manifest
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\Pack My Game.application
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\Pack My Game.exe
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\Pack My Game.pdb
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\fr\Pack My Game.resources.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\en\Pack My Game.resources.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\fr-DZ\Pack My Game.resources.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\fr\Pack My Game.resources.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\DlnxLocalTransfert.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\DotNetZip.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\DxPaths.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\DxTrace.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\MyControls.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\SevenZipSharp.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\DlnxLocalTransfert.pdb
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\DxTrace.pdb
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\DotNetZip.xml
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\DxPaths.pdb
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\MyControls.pdb
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\fr\DlnxLocalTransfert.resources.dll
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\fr\MyControls.resources.dll
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\DxPaths.dll
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\DxTrace.dll
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\DxTrace.pdb
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\DxPaths.pdb
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\fr\DxTrace.resources.dll
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.PackMeRes.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\fr\MyControls.resources.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack My Game.csprojAssemblyReference.cache
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Release\PackMyGame x64\fr-DZ\Pack My Game.resources.dll
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.MainWindow.fr-DZ.resources
-E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\fr-DZ\Pack My Game.resources.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.CheatForm.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.AboutBox.resources
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.GameName.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.PackMeRes.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.PackMeRes2.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.ProgressCompFolder.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.Config.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.Credits.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.Help.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.MainWindow.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.SelectFolder.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.SplashScreen.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.Lang.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.Properties.Resources.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.MainWindow.en.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.MainWindow.fr-DZ.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.Lang.fr.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.Config.fr.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.IHM.Credits.fr.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack_My_Game.MainWindow.fr.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack My Game.csproj.GenerateResource.cache
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack My Game.csproj.CoreCompileInputs.cache
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\en\Pack My Game.resources.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\fr-DZ\Pack My Game.resources.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\fr\Pack My Game.resources.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack My Game.csproj.CopyComplete
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack My Game.exe
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Release\Pack My Game.pdb
