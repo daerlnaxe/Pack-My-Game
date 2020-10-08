@@ -31,7 +31,9 @@ no image file in the the destination folder.
  * It logs everything during the game treatment in a window, and a file.
 		
 ## Version
-
+### Beta 1.5.0.2 08/10/2020
+ * - Added an automatic limit length of text for the cheats codes.
+ 
 ### Beta 1.5.0.1 05/10/2020
  * Check for files is now repositioned just before compression.
  * New window indicating wich files have been copied, instead of old that only shows a checkbox.
