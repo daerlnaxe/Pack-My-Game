@@ -130,4 +130,4 @@ silent debug...)
 - [ ] Make a system to have possibility to add new site for research (perhaps plugin, or config files)
 - [ ] Make a system (not for now) to have the possibility to scrap to txt files, from a website (by plugin)
 - [ ] See to count images in subfolder fo the master folder images and have something like x in the folder / total y for subfolders
-- [ ] Find somebody that wants hire me... :/
+- [ ] Find somebody that wants hire me... on CDI :/
