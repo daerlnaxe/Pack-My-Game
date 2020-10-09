@@ -1,15 +1,11 @@
-﻿using Pack_My_Game.Container;
+﻿
+using DlnxLocalTransfert;
+using Pack_My_Game.Container;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Media;
 
 namespace Pack_My_Game.IHM
 {
@@ -109,6 +105,77 @@ namespace Pack_My_Game.IHM
         }
         #endregion
 
+        #region Loads
+
+        /// <summary>
+        /// Charge les Applications
+        /// </summary>
+        private void LoadApplis()
+        {
+            lisbApp.Items.Clear();
+            
+
+            string[] applications = Directory.GetFiles(RomPath, "*.*", SearchOption.TopDirectoryOnly);
+            foreach (string p in applications)
+            {
+                lisbApp.Items.Add(Path.GetFileName(p));
+            }
+        }
+
+        /// <summary>
+        /// Charger les Cheats
+        /// </summary>
+        private void LoadCheats()
+        {
+            lisbCheats.Items.Clear();
+            string[] cheats = Directory.GetFiles(CheatPath, "*.*", SearchOption.TopDirectoryOnly);
+            foreach (string c in cheats)
+            {
+                lisbCheats.Items.Add(Path.GetFileName(c));
+            }
+        }
+
+        /// <summary>
+        /// Charger les manuels
+        /// </summary>
+        /// <param name="manuals"></param>
+        private void LoadManuals()
+        {
+            lisbManuels.Items.Clear();
+            string[] manuals = Directory.GetFiles(ManualPath, "*.*", SearchOption.TopDirectoryOnly);
+            foreach (string m in manuals)
+            {
+                lisbManuels.Items.Add(Path.GetFileName(m));
+            }
+        }
+
+        /// <summary>
+        /// Load Musics
+        /// </summary>
+        public void LoadMusics()
+        {
+            lisbMusics.Items.Clear();
+            string[] musics = Directory.GetFiles(MusicPath, "*.*", SearchOption.TopDirectoryOnly);
+            foreach (string v in musics)
+            {
+                lisbMusics.Items.Add(Path.GetFileName(v));
+            }
+        }
+
+        /// <summary>
+        /// Charger les Videos
+        /// </summary>
+        private void LoadVideos()
+        {
+            lisbVideos.Items.Clear();
+            string[] videos = Directory.GetFiles(VideoPath, "*.*", SearchOption.TopDirectoryOnly);
+            foreach (string v in videos)
+            {
+                lisbVideos.Items.Add(Path.GetFileName(v));
+            }
+        }
+        #endregion
+
 
 
         /// <summary>
@@ -122,82 +189,10 @@ namespace Pack_My_Game.IHM
 
 
 
-
-        /// <summary>
-        /// Charge les Applications
-        /// </summary>
-        private void LoadApplis()
-        {
-            lbApp.Items.Clear();
-            string[] applications = Directory.GetFiles(RomPath, "*.*", SearchOption.TopDirectoryOnly);
-            foreach (string p in applications)
-            {
-                lbApp.Items.Add(Path.GetFileName(p));
-            }
-        }
-
-        /// <summary>
-        /// Charger les Cheats
-        /// </summary>
-        private void LoadCheats()
-        {
-            lbCheats.Items.Clear();
-            string[] cheats = Directory.GetFiles(CheatPath, "*.*", SearchOption.TopDirectoryOnly);
-            foreach (string c in cheats)
-            {
-                lbCheats.Items.Add(Path.GetFileName(c));
-            }
-        }
-
-        /// <summary>
-        /// Charger les manuels
-        /// </summary>
-        /// <param name="manuals"></param>
-        private void LoadManuals()
-        {
-            lbManuels.Items.Clear();
-            string[] manuals = Directory.GetFiles(ManualPath, "*.*", SearchOption.TopDirectoryOnly);
-            foreach (string m in manuals)
-            {
-                lbManuels.Items.Add(Path.GetFileName(m));
-            }
-        }
-
-        /// <summary>
-        /// Load Musics
-        /// </summary>
-        public void LoadMusics()
-        {
-            lbMusics.Items.Clear();
-            string[] musics = Directory.GetFiles(MusicPath, "*.*", SearchOption.TopDirectoryOnly);
-            foreach (string v in musics)
-            {
-                lbMusics.Items.Add(Path.GetFileName(v));
-            }
-        }
-
-        /// <summary>
-        /// Charger les Videos
-        /// </summary>
-        private void LoadVideos()
-        {
-            lbVideos.Items.Clear();
-            string[] videos = Directory.GetFiles(VideoPath, "*.*", SearchOption.TopDirectoryOnly);
-            foreach (string v in videos)
-            {
-                lbVideos.Items.Add(Path.GetFileName(v));
-            }
-        }
-
-
-
         public void AddManual(string manual)
         {
-            lbManuels.Items.Add(manual);
+            lisbManuels.Items.Add(manual);
         }
-
-
-
 
         public PackMeRes2()
         {
@@ -223,9 +218,36 @@ namespace Pack_My_Game.IHM
             LoadDatas();
         }
 
-        private void btCreateCheat_Click(object sender, EventArgs e)
+
+        #region Menus
+
+        #endregion
+
+        #region Cheat Menu Strip
+        /// <summary>
+        /// Mouson button pressed on ListBox Cheats
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void libCheats_MouseDown(object sender, MouseEventArgs e)
         {
-            //CheatForm.Showdialog(GameName);
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                    {
+                        cheatsMenuStrip.Show(Cursor.Position);//places the menu at the pointer position
+                    }
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// MenuItem new Cheat File
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void newCheatFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             this.Hide();
             CheatForm cf = new CheatForm(GameName, CheatPath);
             cf.ShowDialog();
@@ -233,28 +255,112 @@ namespace Pack_My_Game.IHM
             LoadCheats();
         }
 
-
-        #region copies
         /// <summary>
-        /// Copie de cheats
+        /// Open a file Cheat
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btCopCheat_Click(object sender, EventArgs e)
+        private void openCheatFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CheatForm.Open(Path.Combine(CheatPath, (string)lisbCheats.SelectedItem));
+            //   cf._CheatFilePath = "dd";
+        }
+
+        /// <summary>
+        /// MenuItem Copy Cheat File
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void copyCheatFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CopyFile(SourceCheatPath, CheatPath);
             LoadCheats();
         }
 
         /// <summary>
-        /// Copie de roms
+        /// Delete Cheat File
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btCopRom_Click(object sender, EventArgs e)
+        private void deleteCheatFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CopyFile(SourceRomPath, RomPath);
-            LoadApplis();
+            DeleteFiles(lisbCheats.SelectedItems, CheatPath);
+            LoadCheats();
+        }
+
+        /// <summary>
+        /// Vérifier qu'un fichier est sélectionné
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cheatsMenuStrip_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (lisbCheats.SelectedIndex == -1)
+            {
+                openCheatFileToolStripMenuItem.Enabled = false;
+                deleteCheatFileToolStripMenuItem.Enabled = false;                
+            }
+            else
+            {
+                openCheatFileToolStripMenuItem.Enabled = true;
+                deleteCheatFileToolStripMenuItem.Enabled = true;
+            }
+        }
+        #endregion
+
+        // ------------------------
+
+        #region Manual Menu Strip
+        /// <summary>
+        /// Vérifier qu'un fichier est sélectionné
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>    
+        private void manuelsMenuStrip_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (lisbManuels.SelectedIndex == -1)
+            {
+                openManuelToolStripMenuItem.Enabled = false;
+                deleteManuelToolStripMenuItem.Enabled = false;
+
+            }
+            else
+            {
+                openManuelToolStripMenuItem.Enabled = true;
+                deleteManuelToolStripMenuItem.Enabled = true;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lisbManuels_MouseDown(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                    {
+                        //places the menu at the pointer position
+                        manuelsMenuStrip.Show(Cursor.Position);
+                    }
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void openManuelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string path = Path.Combine(ManualPath, (string)lisbManuels.SelectedItems[0]);
+            if (File.Exists(path))
+            {
+                Process.Start(path);
+            }
         }
 
         /// <summary>
@@ -262,7 +368,7 @@ namespace Pack_My_Game.IHM
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btCopMan_Click(object sender, EventArgs e)
+        private void copyManuelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string defaultPath = string.Empty;
 
@@ -274,7 +380,79 @@ namespace Pack_My_Game.IHM
             LoadManuals();
         }
 
-        private void btCopMusik_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Effacer des manuels
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void deleteManuelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteFiles(lisbManuels.SelectedItems, ManualPath);
+            LoadManuals();
+        }
+        #endregion
+
+        // ------------------------
+
+        #region Music Menu Strip
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void musicsMenuStrip_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (lisbMusics.SelectedIndex == -1)
+            {
+                openMusicToolStripMenuItem.Enabled = false;
+                deleteMusicToolStripMenuItem.Enabled = false;
+
+            }
+            else 
+            { 
+                openMusicToolStripMenuItem.Enabled = true;
+                deleteMusicToolStripMenuItem.Enabled = true;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lisbMusics_MouseDown(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                    {
+                        //places the menu at the pointer position
+                        musicsMenuStrip.Show(Cursor.Position);
+                    }
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void openMusicToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string path = Path.Combine(MusicPath, (string)lisbMusics.SelectedItems[0]);
+            if (File.Exists(path))
+            {
+                Process.Start(path);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void copyMusicToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string defaultPath = string.Empty;
 
@@ -285,13 +463,139 @@ namespace Pack_My_Game.IHM
             LoadMusics();
         }
 
-
         /// <summary>
-        /// Copie de video
+        /// 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btCopVid_Click(object sender, EventArgs e)
+        private void deleteMusicToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteFiles(lisbMusics.SelectedItems, MusicPath);
+            LoadMusics();
+        }
+        #endregion
+
+        // ------------------------
+
+        #region Roms Menu Strip     
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lisbbApp_MouseDown(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                    {
+                        //places the menu at the pointer position
+                        //romsMenuStrip.Show(this, new Point(e.X, e.Y));
+                        romsMenuStrip.Show(Cursor.Position);
+                    }
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void romsMenuStrip_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //if (lisbApp.Items.Count < 1)
+            if (lisbApp.SelectedIndex == -1)
+                deleteRomToolStripMenuItem.Enabled = false;
+            else
+                deleteRomToolStripMenuItem.Enabled = true;                
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void copyRomToolStripMenuItem_Click(object sender, EventArgs e)
+        {   
+            CopyFile(SourceRomPath, RomPath);
+            LoadApplis();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteFiles(lisbApp.SelectedItems, RomPath);
+            LoadApplis();
+        }
+        #endregion
+
+        // ------------------------
+
+        #region Videos Menu Strip
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void videosMenuStrip_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (lisbVideos.SelectedIndex == -1)
+            {
+                openVideoToolStripMenuItem.Enabled = false;
+                deleteVideoToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                openVideoToolStripMenuItem.Enabled = true;
+                deleteVideoToolStripMenuItem.Enabled = true;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lisbVideos_MouseDown(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                    {
+                        //places the menu at the pointer position
+                        videosMenuStrip.Show(Cursor.Position);
+                    }
+                    break;
+
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void openVideoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string path = Path.Combine(VideoPath, (string)lisbVideos.SelectedItems[0]);
+            if (File.Exists(path))
+            {
+                Process.Start(path);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void copyVideoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string defaultPath = string.Empty;
 
@@ -302,9 +606,24 @@ namespace Pack_My_Game.IHM
             LoadVideos();
         }
 
-
         /// <summary>
         /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void deleteVideoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteFiles(lisbVideos.SelectedItems, VideoPath);           
+            LoadVideos();
+        }
+
+        #endregion
+
+
+        #region Opération communes
+
+        /// <summary>
+        /// Fonction de copie des fichiers
         /// </summary>
         /// <param name="sourceDirectory">Répertoire source</param>
         /// <param name="targetDirectory">Répertoire cible</param>
@@ -340,6 +659,24 @@ namespace Pack_My_Game.IHM
             }
         }
 
+        /// <summary>
+        /// Fonction d'effacement des fichiers
+        /// </summary>
+        /// <param name="selectedItems"></param>
+        /// <param name="basePath"></param>
+        private void DeleteFiles(ListBox.SelectedObjectCollection selectedItems, string basePath)
+        {
+            foreach (string file in selectedItems)
+            {
+                if (OPFiles.SendTo_Recycle(file, Path.Combine(basePath, file)))
+                    MessageBox.Show($"File: '{file}' deleted.");
+                else
+                    MessageBox.Show($"Error, File: '{file}' not deleted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         #endregion
+
+
     }
 }

@@ -28,29 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.btCopRom = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.lbManuels = new System.Windows.Forms.ListBox();
+            this.lisbManuels = new System.Windows.Forms.ListBox();
             this.labVideos = new System.Windows.Forms.Label();
-            this.lbVideos = new System.Windows.Forms.ListBox();
+            this.lisbVideos = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lbMusics = new System.Windows.Forms.ListBox();
-            this.lbApp = new System.Windows.Forms.ListBox();
-            this.lbCheats = new System.Windows.Forms.ListBox();
+            this.lisbMusics = new System.Windows.Forms.ListBox();
+            this.lisbApp = new System.Windows.Forms.ListBox();
+            this.lisbCheats = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.btReload = new System.Windows.Forms.Button();
-            this.btAddCheat = new System.Windows.Forms.Button();
-            this.btCopRom = new System.Windows.Forms.Button();
-            this.btCopMan = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btCopCheat = new System.Windows.Forms.Button();
-            this.btCopMusik = new System.Windows.Forms.Button();
-            this.btCopVid = new System.Windows.Forms.Button();
+            this.romsMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyRomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteRomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manuelsMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openManuelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyManuelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteManuelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.videosMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openVideoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyVideoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteVideoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.musicsMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openMusicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyMusicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteMusicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cheatsMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.newCheatFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openCheatFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyCheatFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteCheatFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.romsMenuStrip.SuspendLayout();
+            this.manuelsMenuStrip.SuspendLayout();
+            this.videosMenuStrip.SuspendLayout();
+            this.musicsMenuStrip.SuspendLayout();
+            this.cheatsMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -62,85 +81,92 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.btCopMan, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.btCopRom, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lbManuels, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.labVideos, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.lbVideos, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lisbManuels, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.labVideos, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lisbVideos, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lbMusics, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.lbApp, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lbCheats, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 2, 4);
-            this.tableLayoutPanel1.Controls.Add(this.btCopMusik, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.btCopVid, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lisbMusics, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.lisbApp, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lisbCheats, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 8);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 54);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowCount = 9;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(568, 346);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // label5
+            // btCopRom
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 276);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 13);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Cheats";
+            this.btCopRom.AutoSize = true;
+            this.btCopRom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btCopRom.Location = new System.Drawing.Point(468, 27);
+            this.btCopRom.Name = "btCopRom";
+            this.btCopRom.Size = new System.Drawing.Size(97, 23);
+            this.btCopRom.TabIndex = 5;
+            this.btCopRom.Text = "Copy Rom";
+            this.btCopRom.UseVisualStyleBackColor = true;
+            this.btCopRom.Visible = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 69);
+            this.label1.Location = new System.Drawing.Point(3, 73);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 4;
             this.label1.Text = "Manuels";
             // 
-            // lbManuels
+            // lisbManuels
             // 
-            this.lbManuels.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbManuels.FormattingEnabled = true;
-            this.lbManuels.Location = new System.Drawing.Point(73, 72);
-            this.lbManuels.Name = "lbManuels";
-            this.lbManuels.Size = new System.Drawing.Size(389, 63);
-            this.lbManuels.TabIndex = 1;
+            this.lisbManuels.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lisbManuels.FormattingEnabled = true;
+            this.lisbManuels.Location = new System.Drawing.Point(73, 76);
+            this.lisbManuels.Name = "lisbManuels";
+            this.lisbManuels.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lisbManuels.Size = new System.Drawing.Size(389, 47);
+            this.lisbManuels.TabIndex = 5;
+            this.lisbManuels.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lisbManuels_MouseDown);
             // 
             // labVideos
             // 
             this.labVideos.AutoSize = true;
             this.labVideos.Dock = System.Windows.Forms.DockStyle.Left;
-            this.labVideos.Location = new System.Drawing.Point(3, 138);
+            this.labVideos.Location = new System.Drawing.Point(3, 146);
             this.labVideos.Name = "labVideos";
-            this.labVideos.Size = new System.Drawing.Size(39, 69);
-            this.labVideos.TabIndex = 2;
+            this.labVideos.Size = new System.Drawing.Size(39, 53);
+            this.labVideos.TabIndex = 6;
             this.labVideos.Text = "Videos";
             // 
-            // lbVideos
+            // lisbVideos
             // 
-            this.lbVideos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbVideos.FormattingEnabled = true;
-            this.lbVideos.Location = new System.Drawing.Point(73, 141);
-            this.lbVideos.Name = "lbVideos";
-            this.lbVideos.Size = new System.Drawing.Size(389, 63);
-            this.lbVideos.TabIndex = 3;
+            this.lisbVideos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lisbVideos.FormattingEnabled = true;
+            this.lisbVideos.Location = new System.Drawing.Point(73, 149);
+            this.lisbVideos.Name = "lisbVideos";
+            this.lisbVideos.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lisbVideos.Size = new System.Drawing.Size(389, 47);
+            this.lisbVideos.TabIndex = 7;
+            this.lisbVideos.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lisbVideos_MouseDown);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 207);
+            this.label2.Location = new System.Drawing.Point(3, 219);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
-            this.label2.TabIndex = 4;
+            this.label2.TabIndex = 8;
             this.label2.Text = "Musics";
             // 
             // label3
@@ -149,33 +175,48 @@
             this.label3.Location = new System.Drawing.Point(3, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 13);
-            this.label3.TabIndex = 6;
+            this.label3.TabIndex = 2;
             this.label3.Text = "Applications";
             // 
-            // lbMusics
+            // lisbMusics
             // 
-            this.lbMusics.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbMusics.Location = new System.Drawing.Point(73, 210);
-            this.lbMusics.Name = "lbMusics";
-            this.lbMusics.Size = new System.Drawing.Size(389, 63);
-            this.lbMusics.TabIndex = 8;
+            this.lisbMusics.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lisbMusics.Location = new System.Drawing.Point(73, 222);
+            this.lisbMusics.Name = "lisbMusics";
+            this.lisbMusics.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lisbMusics.Size = new System.Drawing.Size(389, 47);
+            this.lisbMusics.TabIndex = 9;
+            this.lisbMusics.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lisbMusics_MouseDown);
             // 
-            // lbApp
+            // lisbApp
             // 
-            this.lbApp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbApp.FormattingEnabled = true;
-            this.lbApp.Location = new System.Drawing.Point(73, 3);
-            this.lbApp.Name = "lbApp";
-            this.lbApp.Size = new System.Drawing.Size(389, 63);
-            this.lbApp.TabIndex = 9;
+            this.lisbApp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lisbApp.FormattingEnabled = true;
+            this.lisbApp.Location = new System.Drawing.Point(73, 3);
+            this.lisbApp.Name = "lisbApp";
+            this.lisbApp.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lisbApp.Size = new System.Drawing.Size(389, 47);
+            this.lisbApp.TabIndex = 3;
+            this.lisbApp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lisbbApp_MouseDown);
             // 
-            // lbCheats
+            // lisbCheats
             // 
-            this.lbCheats.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbCheats.Location = new System.Drawing.Point(73, 279);
-            this.lbCheats.Name = "lbCheats";
-            this.lbCheats.Size = new System.Drawing.Size(389, 64);
-            this.lbCheats.TabIndex = 11;
+            this.lisbCheats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lisbCheats.Location = new System.Drawing.Point(73, 295);
+            this.lisbCheats.Name = "lisbCheats";
+            this.lisbCheats.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lisbCheats.Size = new System.Drawing.Size(389, 48);
+            this.lisbCheats.TabIndex = 11;
+            this.lisbCheats.MouseDown += new System.Windows.Forms.MouseEventHandler(this.libCheats_MouseDown);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 292);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(40, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Cheats";
             // 
             // button1
             // 
@@ -184,7 +225,7 @@
             this.button1.Location = new System.Drawing.Point(630, 426);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
+            this.button1.TabIndex = 12;
             this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
             // 
@@ -194,7 +235,7 @@
             this.label4.Location = new System.Drawing.Point(12, 28);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 13);
-            this.label4.TabIndex = 2;
+            this.label4.TabIndex = 0;
             this.label4.Text = "Main files found";
             // 
             // btReload
@@ -203,88 +244,167 @@
             this.btReload.Location = new System.Drawing.Point(629, 28);
             this.btReload.Name = "btReload";
             this.btReload.Size = new System.Drawing.Size(75, 23);
-            this.btReload.TabIndex = 3;
+            this.btReload.TabIndex = 1;
             this.btReload.Text = "Reload";
             this.btReload.UseVisualStyleBackColor = true;
             this.btReload.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btReload_MouseClick);
             // 
-            // btAddCheat
+            // romsMenuStrip
             // 
-            this.btAddCheat.AutoSize = true;
-            this.btAddCheat.Location = new System.Drawing.Point(3, 9);
-            this.btAddCheat.Name = "btAddCheat";
-            this.btAddCheat.Size = new System.Drawing.Size(91, 23);
-            this.btAddCheat.TabIndex = 4;
-            this.btAddCheat.Text = "New Cheat File";
-            this.btAddCheat.UseVisualStyleBackColor = true;
-            this.btAddCheat.Click += new System.EventHandler(this.btCreateCheat_Click);
+            this.romsMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyRomToolStripMenuItem,
+            this.deleteRomToolStripMenuItem});
+            this.romsMenuStrip.Name = "contextMenuStrip_Roms";
+            this.romsMenuStrip.Size = new System.Drawing.Size(136, 48);
+            this.romsMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.romsMenuStrip_Opening);
             // 
-            // btCopRom
+            // copyRomToolStripMenuItem
             // 
-            this.btCopRom.AutoSize = true;
-            this.btCopRom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btCopRom.Location = new System.Drawing.Point(468, 43);
-            this.btCopRom.Name = "btCopRom";
-            this.btCopRom.Size = new System.Drawing.Size(97, 23);
-            this.btCopRom.TabIndex = 5;
-            this.btCopRom.Text = "Copy Rom";
-            this.btCopRom.UseVisualStyleBackColor = true;
-            this.btCopRom.Click += new System.EventHandler(this.btCopRom_Click);
+            this.copyRomToolStripMenuItem.Name = "copyRomToolStripMenuItem";
+            this.copyRomToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.copyRomToolStripMenuItem.Text = "Copy Rom";
+            this.copyRomToolStripMenuItem.Click += new System.EventHandler(this.copyRomToolStripMenuItem_Click);
             // 
-            // btCopMan
+            // deleteRomToolStripMenuItem
             // 
-            this.btCopMan.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btCopMan.Location = new System.Drawing.Point(468, 112);
-            this.btCopMan.Name = "btCopMan";
-            this.btCopMan.Size = new System.Drawing.Size(97, 23);
-            this.btCopMan.TabIndex = 6;
-            this.btCopMan.Text = "Copy Manuel";
-            this.btCopMan.UseVisualStyleBackColor = true;
-            this.btCopMan.Click += new System.EventHandler(this.btCopMan_Click);
+            this.deleteRomToolStripMenuItem.Enabled = false;
+            this.deleteRomToolStripMenuItem.Name = "deleteRomToolStripMenuItem";
+            this.deleteRomToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.deleteRomToolStripMenuItem.Text = "Delete Rom";
+            this.deleteRomToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
-            // flowLayoutPanel1
+            // manuelsMenuStrip
             // 
-            this.flowLayoutPanel1.Controls.Add(this.btCopCheat);
-            this.flowLayoutPanel1.Controls.Add(this.btAddCheat);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(468, 279);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(97, 64);
-            this.flowLayoutPanel1.TabIndex = 12;
+            this.manuelsMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openManuelToolStripMenuItem,
+            this.copyManuelToolStripMenuItem,
+            this.deleteManuelToolStripMenuItem});
+            this.manuelsMenuStrip.Name = "contextMenuStrip_Manuels";
+            this.manuelsMenuStrip.Size = new System.Drawing.Size(151, 70);
+            this.manuelsMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.manuelsMenuStrip_Opening);
             // 
-            // btCopCheat
+            // openManuelToolStripMenuItem
             // 
-            this.btCopCheat.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btCopCheat.Location = new System.Drawing.Point(3, 38);
-            this.btCopCheat.Name = "btCopCheat";
-            this.btCopCheat.Size = new System.Drawing.Size(91, 23);
-            this.btCopCheat.TabIndex = 5;
-            this.btCopCheat.Text = "Copy Cheat";
-            this.btCopCheat.UseVisualStyleBackColor = true;
-            this.btCopCheat.Click += new System.EventHandler(this.btCopCheat_Click);
+            this.openManuelToolStripMenuItem.Name = "openManuelToolStripMenuItem";
+            this.openManuelToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.openManuelToolStripMenuItem.Text = "Open Manuel";
+            this.openManuelToolStripMenuItem.Click += new System.EventHandler(this.openManuelToolStripMenuItem_Click);
             // 
-            // btCopMusik
+            // copyManuelToolStripMenuItem
             // 
-            this.btCopMusik.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btCopMusik.Location = new System.Drawing.Point(468, 250);
-            this.btCopMusik.Name = "btCopMusik";
-            this.btCopMusik.Size = new System.Drawing.Size(97, 23);
-            this.btCopMusik.TabIndex = 13;
-            this.btCopMusik.Text = "Copy Music";
-            this.btCopMusik.UseVisualStyleBackColor = true;
-            this.btCopMusik.Click += new System.EventHandler(this.btCopMusik_Click);
+            this.copyManuelToolStripMenuItem.Name = "copyManuelToolStripMenuItem";
+            this.copyManuelToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.copyManuelToolStripMenuItem.Text = "Copy Manuel";
+            this.copyManuelToolStripMenuItem.Click += new System.EventHandler(this.copyManuelToolStripMenuItem_Click);
             // 
-            // btCopVid
+            // deleteManuelToolStripMenuItem
             // 
-            this.btCopVid.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btCopVid.Location = new System.Drawing.Point(468, 181);
-            this.btCopVid.Name = "btCopVid";
-            this.btCopVid.Size = new System.Drawing.Size(97, 23);
-            this.btCopVid.TabIndex = 14;
-            this.btCopVid.Text = "Copy Video";
-            this.btCopVid.UseVisualStyleBackColor = true;
-            this.btCopVid.Click += new System.EventHandler(this.btCopVid_Click);
+            this.deleteManuelToolStripMenuItem.Name = "deleteManuelToolStripMenuItem";
+            this.deleteManuelToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.deleteManuelToolStripMenuItem.Text = "Delete Manuel";
+            this.deleteManuelToolStripMenuItem.Click += new System.EventHandler(this.deleteManuelToolStripMenuItem_Click);
+            // 
+            // videosMenuStrip
+            // 
+            this.videosMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openVideoToolStripMenuItem,
+            this.copyVideoToolStripMenuItem,
+            this.deleteVideoToolStripMenuItem});
+            this.videosMenuStrip.Name = "contextMenuStrip_Videos";
+            this.videosMenuStrip.Size = new System.Drawing.Size(141, 70);
+            this.videosMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.videosMenuStrip_Opening);
+            // 
+            // openVideoToolStripMenuItem
+            // 
+            this.openVideoToolStripMenuItem.Name = "openVideoToolStripMenuItem";
+            this.openVideoToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.openVideoToolStripMenuItem.Text = "Open Video";
+            this.openVideoToolStripMenuItem.Click += new System.EventHandler(this.openVideoToolStripMenuItem_Click);
+            // 
+            // copyVideoToolStripMenuItem
+            // 
+            this.copyVideoToolStripMenuItem.Name = "copyVideoToolStripMenuItem";
+            this.copyVideoToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.copyVideoToolStripMenuItem.Text = "Copy Video";
+            this.copyVideoToolStripMenuItem.Click += new System.EventHandler(this.copyVideoToolStripMenuItem_Click);
+            // 
+            // deleteVideoToolStripMenuItem
+            // 
+            this.deleteVideoToolStripMenuItem.Name = "deleteVideoToolStripMenuItem";
+            this.deleteVideoToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.deleteVideoToolStripMenuItem.Text = "Delete Video";
+            this.deleteVideoToolStripMenuItem.Click += new System.EventHandler(this.deleteVideoToolStripMenuItem_Click);
+            // 
+            // musicsMenuStrip
+            // 
+            this.musicsMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openMusicToolStripMenuItem,
+            this.copyMusicToolStripMenuItem,
+            this.deleteMusicToolStripMenuItem});
+            this.musicsMenuStrip.Name = "contextMenuStrip_Musics";
+            this.musicsMenuStrip.Size = new System.Drawing.Size(143, 70);
+            this.musicsMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.musicsMenuStrip_Opening);
+            // 
+            // openMusicToolStripMenuItem
+            // 
+            this.openMusicToolStripMenuItem.Name = "openMusicToolStripMenuItem";
+            this.openMusicToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.openMusicToolStripMenuItem.Text = "Open Music";
+            this.openMusicToolStripMenuItem.Click += new System.EventHandler(this.openMusicToolStripMenuItem_Click);
+            // 
+            // copyMusicToolStripMenuItem
+            // 
+            this.copyMusicToolStripMenuItem.Name = "copyMusicToolStripMenuItem";
+            this.copyMusicToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.copyMusicToolStripMenuItem.Text = "Copy Music";
+            this.copyMusicToolStripMenuItem.Click += new System.EventHandler(this.copyMusicToolStripMenuItem_Click);
+            // 
+            // deleteMusicToolStripMenuItem
+            // 
+            this.deleteMusicToolStripMenuItem.Name = "deleteMusicToolStripMenuItem";
+            this.deleteMusicToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.deleteMusicToolStripMenuItem.Text = "Delete Music";
+            this.deleteMusicToolStripMenuItem.Click += new System.EventHandler(this.deleteMusicToolStripMenuItem_Click);
+            // 
+            // cheatsMenuStrip
+            // 
+            this.cheatsMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newCheatFileToolStripMenuItem,
+            this.openCheatFileToolStripMenuItem,
+            this.copyCheatFileToolStripMenuItem,
+            this.deleteCheatFileToolStripMenuItem});
+            this.cheatsMenuStrip.Name = "contextMenuStrip_Cheats";
+            this.cheatsMenuStrip.Size = new System.Drawing.Size(181, 114);
+            this.cheatsMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.cheatsMenuStrip_Opening);
+            // 
+            // newCheatFileToolStripMenuItem
+            // 
+            this.newCheatFileToolStripMenuItem.Name = "newCheatFileToolStripMenuItem";
+            this.newCheatFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newCheatFileToolStripMenuItem.Text = "New Cheat File";
+            this.newCheatFileToolStripMenuItem.Click += new System.EventHandler(this.newCheatFileToolStripMenuItem_Click);
+            // 
+            // openCheatFileToolStripMenuItem
+            // 
+            this.openCheatFileToolStripMenuItem.Enabled = false;
+            this.openCheatFileToolStripMenuItem.Name = "openCheatFileToolStripMenuItem";
+            this.openCheatFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openCheatFileToolStripMenuItem.Text = "Open Cheat File";
+            this.openCheatFileToolStripMenuItem.Click += new System.EventHandler(this.openCheatFileToolStripMenuItem_Click);
+            // 
+            // copyCheatFileToolStripMenuItem
+            // 
+            this.copyCheatFileToolStripMenuItem.Name = "copyCheatFileToolStripMenuItem";
+            this.copyCheatFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copyCheatFileToolStripMenuItem.Text = "Copy Cheat File";
+            this.copyCheatFileToolStripMenuItem.Click += new System.EventHandler(this.copyCheatFileToolStripMenuItem_Click);
+            // 
+            // deleteCheatFileToolStripMenuItem
+            // 
+            this.deleteCheatFileToolStripMenuItem.Name = "deleteCheatFileToolStripMenuItem";
+            this.deleteCheatFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteCheatFileToolStripMenuItem.Text = "Delete Cheat File";
+            this.deleteCheatFileToolStripMenuItem.Click += new System.EventHandler(this.deleteCheatFileToolStripMenuItem_Click);
             // 
             // PackMeRes2
             // 
@@ -301,8 +421,11 @@
             this.Load += new System.EventHandler(this.PackMeRes2_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.romsMenuStrip.ResumeLayout(false);
+            this.manuelsMenuStrip.ResumeLayout(false);
+            this.videosMenuStrip.ResumeLayout(false);
+            this.musicsMenuStrip.ResumeLayout(false);
+            this.cheatsMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,24 +435,38 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox lbManuels;
+        private System.Windows.Forms.ListBox lisbManuels;
         private System.Windows.Forms.Label labVideos;
-        private System.Windows.Forms.ListBox lbVideos;
+        private System.Windows.Forms.ListBox lisbVideos;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListBox lbMusics;
-        private System.Windows.Forms.ListBox lbApp;
+        private System.Windows.Forms.ListBox lisbMusics;
+        private System.Windows.Forms.ListBox lisbApp;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ListBox lbCheats;
+        private System.Windows.Forms.ListBox lisbCheats;
         private System.Windows.Forms.Button btReload;
-        private System.Windows.Forms.Button btAddCheat;
+        private System.Windows.Forms.ContextMenuStrip romsMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem copyRomToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteRomToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip manuelsMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem openManuelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyManuelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteManuelToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip videosMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem openVideoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyVideoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteVideoToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip musicsMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem openMusicToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyMusicToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteMusicToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip cheatsMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem newCheatFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openCheatFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyCheatFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteCheatFileToolStripMenuItem;
         private System.Windows.Forms.Button btCopRom;
-        private System.Windows.Forms.Button btCopMan;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button btCopCheat;
-        private System.Windows.Forms.Button btCopMusik;
-        private System.Windows.Forms.Button btCopVid;
     }
 }

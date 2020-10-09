@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -33,15 +34,41 @@ namespace Pack_My_Game.IHM
         /// </summary>
         string _CheatDirectory;
 
+        private bool _ConvertSpaces = true;
+
         public CheatForm()
         {
             InitializeComponent();
 
         }
 
+        /// <summary>
+        /// Ouvre un fichier Cheat
+        /// </summary>
+        /// <param name="CFilePath"></param>
+        public static void Open(string CFilePath)
+        {
+            if (!File.Exists(CFilePath))
+                return;
+
+            CheatForm cf = new CheatForm();
+            cf._CheatFilePath = CFilePath;
+
+            try
+            {
+                cf.rtBOX1.Text = File.ReadAllText(CFilePath);
+                cf.ShowDialog();
+
+            }
+            catch
+            {
+                MessageBox.Show("Error");
+            }
+        }
+
         public CheatForm(string gameName, string folderPath)
         {
-            _GameName = gameName;
+            _GameName = gameName.Replace(":", " - ");
             _CheatDirectory = folderPath;
 
             InitializeComponent();
@@ -96,7 +123,8 @@ namespace Pack_My_Game.IHM
             {
                 while (true)
                 {
-                    string testFile = $"{_RootPath}-{version}.txt";
+                    string _RootPath1 = _RootPath;
+                    string testFile = $"{_RootPath1}-{version}.txt";
 
                     if (!File.Exists(testFile))
                     {
@@ -145,7 +173,8 @@ namespace Pack_My_Game.IHM
 
         private void CheatForm_Load(object sender, EventArgs e)
         {
-
+            // Changement de l'espacement de tabulation
+            rtBOX1.SelectionTabs = new int[] { 50, 100, 150, 200 };
         }
 
         private void tbCrop_Click(object sender, EventArgs e)
@@ -183,6 +212,10 @@ namespace Pack_My_Game.IHM
         private void rtBOX1_TextChanged(object sender, EventArgs e)
         {
             int position = rtBOX1.SelectionStart;
+            
+            if (_ConvertSpaces)
+                rtBOX1.Text = rtBOX1.Text.Replace("    ", "\t");            
+
             if (!string.IsNullOrEmpty(tbCrop.Text) && cbCropActive.Checked)
             {
                 var whenToCrop = Convert.ToUInt16(tbCrop.Text);
@@ -306,7 +339,7 @@ namespace Pack_My_Game.IHM
                         i = 0;
                     }
                 }*/
-                if(i +word.Length >= maxLength)
+                if (i + word.Length >= maxLength)
                 {
                     formatedLine += '\n';
                     i = 0;
@@ -339,6 +372,100 @@ namespace Pack_My_Game.IHM
                 MessageBox.Show("Width is null, enter a value", "Null value", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+        }
+
+        #region Menu
+
+        /// <summary>
+        /// Copier une partie dans le presse papier / Copy a part to Clipboard
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(rtBOX1.SelectedText))
+                Clipboard.SetText(rtBOX1.SelectedText);
+        }
+
+        /// <summary>
+        /// Tout copier dans le presse papier / Copy All to ClipBoard
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void copyAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(rtBOX1.Text))
+                Clipboard.SetText(rtBOX1.Text);
+        }
+
+        /// <summary>
+        /// Copier dans la box / Copy to RichTextBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string tmp = Clipboard.GetText();
+            if (_ConvertSpaces)
+                tmp = tmp.Replace("    ", "\t");
+            rtBOX1.Text = tmp;
+        }
+
+        /// <summary>
+        /// Select All
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rtBOX1.SelectAll();
+        }
+        #endregion
+
+        /// <summary>
+        /// Bouton abaissé
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void rtBOX1_MouseDown(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                    {
+                        contextMSText.Show(this, new Point(e.X, e.Y));//places the menu at the pointer position
+                    }
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Recherche sur Gamefaq
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gameFaqToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            Process.Start($"https://gamefaqs.gamespot.com/search?game={GetSearchName()}");
+        }
+
+        /// <summary>
+        /// Recherche sur JeuxVideo.com
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void jeuxVideoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            Process.Start($"https://www.jeuxvideo.com/recherche.php?q={GetSearchName()}");
+        }
+
+        private string GetSearchName()
+        {
+            string toSearch = _GameName.Replace(' ', '+');
+            toSearch = toSearch.Replace(":", "");
+            return toSearch;
         }
     }
 }

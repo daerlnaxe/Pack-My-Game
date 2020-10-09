@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.rtBOX1 = new System.Windows.Forms.RichTextBox();
             this.btSave = new System.Windows.Forms.Button();
             this.btOK = new System.Windows.Forms.Button();
@@ -38,7 +39,20 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btCrop = new System.Windows.Forms.Button();
             this.cbCropActive = new System.Windows.Forms.CheckBox();
+            this.contextMSText = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.searchOnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gameFaqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.jeuxVideoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flowLayoutPanel1.SuspendLayout();
+            this.contextMSText.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // rtBOX1
@@ -55,6 +69,7 @@
             this.rtBOX1.Text = "";
             this.rtBOX1.WordWrap = false;
             this.rtBOX1.TextChanged += new System.EventHandler(this.rtBOX1_TextChanged);
+            this.rtBOX1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.rtBOX1_MouseDown);
             // 
             // btSave
             // 
@@ -81,6 +96,8 @@
             // 
             // btCancel
             // 
+            this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btCancel.Location = new System.Drawing.Point(628, 409);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(67, 27);
@@ -155,22 +172,110 @@
             this.cbCropActive.UseVisualStyleBackColor = true;
             this.cbCropActive.CheckedChanged += new System.EventHandler(this.cbCropActive_CheckedChanged);
             // 
+            // contextMSText
+            // 
+            this.contextMSText.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.selectAllToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.copyToolStripMenuItem,
+            this.copyAllToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.pasteToolStripMenuItem});
+            this.contextMSText.Name = "contextMSText";
+            this.contextMSText.Size = new System.Drawing.Size(123, 104);
+            // 
+            // selectAllToolStripMenuItem
+            // 
+            this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.selectAllToolStripMenuItem.Text = "Select All";
+            this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            // 
+            // copyAllToolStripMenuItem
+            // 
+            this.copyAllToolStripMenuItem.Name = "copyAllToolStripMenuItem";
+            this.copyAllToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.copyAllToolStripMenuItem.Text = "Copy All";
+            this.copyAllToolStripMenuItem.Click += new System.EventHandler(this.copyAllToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(119, 6);
+            // 
+            // pasteToolStripMenuItem
+            // 
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.pasteToolStripMenuItem.Text = "Paste";
+            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(119, 6);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.searchOnToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 8;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // searchOnToolStripMenuItem
+            // 
+            this.searchOnToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gameFaqToolStripMenuItem,
+            this.jeuxVideoToolStripMenuItem});
+            this.searchOnToolStripMenuItem.Name = "searchOnToolStripMenuItem";
+            this.searchOnToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.searchOnToolStripMenuItem.Text = "Search on";
+            // 
+            // gameFaqToolStripMenuItem
+            // 
+            this.gameFaqToolStripMenuItem.Name = "gameFaqToolStripMenuItem";
+            this.gameFaqToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gameFaqToolStripMenuItem.Text = "GameFaq";
+            this.gameFaqToolStripMenuItem.Click += new System.EventHandler(this.gameFaqToolStripMenuItem_Click);
+            // 
+            // jeuxVideoToolStripMenuItem
+            // 
+            this.jeuxVideoToolStripMenuItem.Name = "jeuxVideoToolStripMenuItem";
+            this.jeuxVideoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.jeuxVideoToolStripMenuItem.Text = "JeuxVideo";
+            this.jeuxVideoToolStripMenuItem.Click += new System.EventHandler(this.jeuxVideoToolStripMenuItem_Click);
+            // 
             // CheatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btOK);
             this.Controls.Add(this.btSave);
             this.Controls.Add(this.rtBOX1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "CheatForm";
             this.Text = "CheatForm";
             this.Load += new System.EventHandler(this.CheatForm_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            this.contextMSText.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,5 +293,16 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btCrop;
         private System.Windows.Forms.CheckBox cbCropActive;
+        private System.Windows.Forms.ContextMenuStrip contextMSText;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem searchOnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gameFaqToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem jeuxVideoToolStripMenuItem;
     }
 }
