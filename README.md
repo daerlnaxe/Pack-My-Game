@@ -31,8 +31,24 @@ no image file in the the destination folder.
  * It logs everything during the game treatment in a window, and a file.
 		
 ## Version
+### Beta 1.5.0.3 09/10/2020
+ * Bug: correction on cancel button in the "Cheat" box. Error when you enlarged window + uneffective.
+ * Bug: correction name suggested for a new cheat file comported a ":" characters as for the game name.
+ * Bug: Detected, sometimes an unwanted space when you format text on "Cheat" box
+ * Bug: Detected, if you erase system name then you pack a game => error. Must change in all case the way it's managed
+ * New features on "files" box:
+ 	- removed button for copy files, now you have several options by contextual menus on each list box
+	- You can open with external program musics/manuals/videos.
+	- You can edit cheats codes.
+	- You can delete by one/batch files for each section. 
+ * New feature on "Cheat" box:
+ 	- A menu for search on two websites for cheats (see todo).
+	- New contextual menu on textbox with select all/copy part/copy all/paste
+	- On copy 4 spaces are converted to tabulation
+	- Settings for tabulation have been modified.
+ 
 ### Beta 1.5.0.2 08/10/2020
- * - Added an automatic limit length of text for the cheats codes.
+ * Added an automatic limit length of text for the cheats codes.
  
 ### Beta 1.5.0.1 05/10/2020
  * Check for files is now repositioned just before compression.
@@ -108,3 +124,10 @@ silent debug...)
 - [ ] Ameliorate config with own browser system  and box path editable
 - [ ] md5 Compareason ?
 - [ ] Move VFolder, HFolder, copyfile, reconstruct path (set a security basic path option)
+- [ ] md5/sha Calculation of the package
+- [ ] bug for system to correct
+- [ ] bug of unwanted space in "cheat" box
+- [ ] Make a system to have possibility to add new site for research (perhaps plugin, or config files)
+- [ ] Make a system (not for now) to have the possibility to scrap to txt files, from a website (by plugin)
+- [ ] See to count images in subfolder fo the master folder images and have something like x in the folder / total y for subfolders
+- [ ] Find somebody that wants hire me... :/
