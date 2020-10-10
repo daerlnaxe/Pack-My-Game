@@ -89,6 +89,7 @@ namespace Pack_My_Game.Compression
                         BoxProgress.Text = "Compression Zip";
 
                         Task.Run(() => zipFile.Save(zipName));
+
                         BoxProgress.ShowDialog();
                     }
 
@@ -96,6 +97,7 @@ namespace Pack_My_Game.Compression
                 }
                 catch (Exception e)
                 {
+                    Debug.WriteLine($"Erreur de compression {e.Message}");
                     var res = MessageBox.Show($"Erreur lors de la compression zip, merci de régler le problème et decliquer sur retry:\n{e}", "Erreur", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Exclamation);
 
                     // Exit if abort
@@ -125,7 +127,7 @@ namespace Pack_My_Game.Compression
             // Note: on ne peut pas avoir le nombre total
             if (e.EventType == ZipProgressEventType.Saving_Started)
             {
-                Console.WriteLine($"Début de la compression vers: {e.ArchiveName}");
+                Debug.WriteLine($"Début de la compression vers: {e.ArchiveName}");
 
                 BoxProgress.dProgress.InfoSup = e.ArchiveName;
             }
@@ -134,7 +136,7 @@ namespace Pack_My_Game.Compression
             else if (e.EventType == ZipProgressEventType.Saving_BeforeWriteEntry && e.CurrentEntry.IsDirectory)
             {
                 string txt = $"Folder Creation: { e.CurrentEntry.FileName}";
-                Console.WriteLine($"\tspA {txt}");
+                Debug.WriteLine($"\tspA {txt}");
 
                 BoxProgress.dProgress.EntryInit();
                 BoxProgress.dProgress.CurrentInfo =e.CurrentEntry.FileName;
@@ -145,7 +147,7 @@ namespace Pack_My_Game.Compression
             {
                 string txt = $"File to Compression: { e.CurrentEntry.FileName}";
 
-                Console.WriteLine($"\tspA {txt}");
+                Debug.WriteLine($"\tspA {txt}");
 
                 BoxProgress.dProgress.EntryInit();
                 BoxProgress.dProgress.CurrentInfo = e.CurrentEntry.FileName;
@@ -154,28 +156,28 @@ namespace Pack_My_Game.Compression
             // Progress: Envoie de X>0 jusqu'au 100% => Only progress EntryBar
             else if (e.EventType == ZipProgressEventType.Saving_EntryBytesRead)
             {
-                Console.WriteLine($"\t\tspP Transfert saved {e.BytesTransferred} / {e.TotalBytesToTransfer}");
+                Debug.WriteLine($"\t\tspP Transfert saved {e.BytesTransferred} / {e.TotalBytesToTransfer}");
                 BoxProgress.dProgress.EntryCalcUpdate(e.BytesTransferred, e.TotalBytesToTransfer);
             }
 
             // Intervient à la fin de la compression du fichier ou des dossiers => on update le global
             else if (e.EventType == ZipProgressEventType.Saving_AfterWriteEntry)
             {
+                Debug.WriteLine($"\t\tspE Entries saved {e.EntriesSaved} / {e.EntriesTotal}");
                 BoxProgress.dProgress.GlobalProgress(e.EntriesSaved, e.EntriesTotal);
-                Console.WriteLine($"\t\tspE Entries saved {e.EntriesSaved} / {e.EntriesTotal}");
             }
 
             // End of Compression
             else if (e.EventType == ZipProgressEventType.Saving_Completed)
             {
+                Debug.WriteLine("Done");
                 BoxProgress.dProgress.CurrentInfo= "Done";
-                Console.WriteLine("Done");
                 BoxProgress.StopIt();
 
             }
             else
             {
-                Console.WriteLine($"======> Non géré {e.EventType} ");
+                Debug.WriteLine($"======> Non géré {e.EventType} ");
             }
         }
 

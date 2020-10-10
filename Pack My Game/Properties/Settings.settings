@@ -65,5 +65,8 @@
     <Setting Name="opTreeV" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="test" Type="System.String" Scope="User">
+      <Value Profile="(Default)">aaaaaa</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

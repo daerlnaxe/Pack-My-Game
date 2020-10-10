@@ -112,6 +112,10 @@ namespace Pack_My_Game.IHM
     }*/
         }
 
+        /// <summary>
+        /// Sauvegarde vers un fichier
+        /// </summary>
+        /// <returns></returns>
         private bool SaveToFile()
         {
             //ushort limit = 100;
@@ -170,12 +174,17 @@ namespace Pack_My_Game.IHM
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CheatForm_Load(object sender, EventArgs e)
         {
             // Changement de l'espacement de tabulation
             rtBOX1.SelectionTabs = new int[] { 50, 100, 150, 200 };
         }
+
 
         private void tbCrop_Click(object sender, EventArgs e)
         {
@@ -212,9 +221,9 @@ namespace Pack_My_Game.IHM
         private void rtBOX1_TextChanged(object sender, EventArgs e)
         {
             int position = rtBOX1.SelectionStart;
-            
+
             if (_ConvertSpaces)
-                rtBOX1.Text = rtBOX1.Text.Replace("    ", "\t");            
+                rtBOX1.Text = rtBOX1.Text.Replace("    ", "\t");
 
             if (!string.IsNullOrEmpty(tbCrop.Text) && cbCropActive.Checked)
             {
@@ -239,21 +248,29 @@ namespace Pack_My_Game.IHM
         {
             String[] lines = rtBOX1.Text.Split('\n');
             string formatedString = null;
-            // Examen de  chaque ligne
+
+            int i = 1;
+            // Examen de  chaque ligne            
             foreach (string line in lines)
             {
                 // Si la ligne fait moins que la taille max
                 if (line.Length <= maxLength)
-                    formatedString += line + '\n';
+                {
+                    formatedString += line;// + '\n';
+                }
                 else
                 {
-                    formatedString += FormatLine(maxLength, line) + '\n';
+                    formatedString += FormatLine(maxLength, line);// + '\n';
                 }
 
+                if (i < lines.Length)
+                    formatedString += '\n';            
+
+                i++;
             }
+
             rtBOX1.Text = formatedString;
-
-
+            return;
 
             /* exemple avec les chars fonctionne mais pas top
             string chaine = rtBOX1.Text;
@@ -316,6 +333,12 @@ namespace Pack_My_Game.IHM
             //  rtBOX1.Text = formatTxt.ToString();
         }
 
+        /// <summary>
+        /// Formatte une ligne
+        /// </summary>
+        /// <param name="maxLength"></param>
+        /// <param name="line"></param>
+        /// <returns></returns>
         private string FormatLine(ushort maxLength, string line)
         {
             // Calcul des fourchettes
@@ -343,13 +366,22 @@ namespace Pack_My_Game.IHM
                 {
                     formatedLine += '\n';
                     i = 0;
-
                 }
 
-                formatedLine += $"{word} ";
+                formatedLine += $"{word}";
                 i += word.Length + 1;
 
+                // On ajoute un espace sauf pour le dernier mot
+                    formatedLine += " ";
+                if (i < words.Length)
+                {
 
+                }
+                else
+                {
+                    formatedLine += "|";
+                    Debug.WriteLine($"Last Word {word}");
+                }
                 //i += word.Length + 1; // On calcule 
             }
 

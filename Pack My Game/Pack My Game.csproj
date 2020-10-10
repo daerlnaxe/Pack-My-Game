@@ -125,9 +125,6 @@
       <HintPath>..\..\..\..\Clouds\GDrive - Dx\Programmation\CSharp\DxPaths\bin\Release\DxPaths.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="MyControls">
-      <HintPath>..\..\..\..\Clouds\GDrive - Dx\Programmation\CSharp\MyControls\MyControls\bin\Release\MyControls.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="SevenZipSharp, Version=0.64.3890.29348, Culture=neutral, PublicKeyToken=20de82c62b055c88, processorArchitecture=MSIL">
@@ -407,6 +404,10 @@
     <Folder Include="Logs\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Clouds\GDrive - Dx\Programmation\CSharp\MyControls\MyControls\MyControls.csproj">
+      <Project>{c097f528-81f2-40e4-9d93-f49422d20b35}</Project>
+      <Name>MyControls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\DlnxLocalTransfert\DlnxLocalTransfert\DlnxLocalTransfert.csproj">
       <Project>{6ca6b818-33fa-42b0-96e8-5e1f584084b2}</Project>
       <Name>DlnxLocalTransfert</Name>

@@ -1,6 +1,7 @@
 ﻿
 using DlnxLocalTransfert;
 using Pack_My_Game.Container;
+using Pack_My_Game.Enum;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -10,8 +11,14 @@ using System.Windows.Forms;
 namespace Pack_My_Game.IHM
 {
     public partial class PackMeRes2 : Form
-    {
+    {        
         #region Destination
+        private string _Root
+        {
+            get; set;
+        }
+
+
         /// <summary>
         /// Path of roms
         /// </summary>
@@ -187,18 +194,31 @@ namespace Pack_My_Game.IHM
             internal set;
         }
 
-
-
         public void AddManual(string manual)
         {
             lisbManuels.Items.Add(manual);
         }
 
-        public PackMeRes2()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="root"></param>
+        public PackMeRes2(string root)
         {
+            _Root = root;
+            CheatPath = Path.Combine(_Root, nameof(SubFolder.CheatCodes));
+            ManualPath = Path.Combine(_Root, nameof(SubFolder.Manuals));
+            MusicPath = Path.Combine(_Root, nameof(SubFolder.Musics));
+            RomPath = Path.Combine(_Root, nameof(SubFolder.Roms));
+            VideoPath = Path.Combine(_Root, nameof(SubFolder.Videos));
+
+
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void LoadDatas()
         {
             LoadApplis();
@@ -675,8 +695,17 @@ namespace Pack_My_Game.IHM
             }
         }
 
+
         #endregion
 
-
+        /// <summary>
+        /// Ouvre le dossier du jeu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btOpenFolder_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", _Root);
+        }
     }
 }

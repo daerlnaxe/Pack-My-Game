@@ -41,11 +41,11 @@
             this.cbCropActive = new System.Windows.Forms.CheckBox();
             this.contextMSText = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.searchOnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gameFaqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,7 +64,7 @@
             this.rtBOX1.BulletIndent = 5;
             this.rtBOX1.Location = new System.Drawing.Point(23, 57);
             this.rtBOX1.Name = "rtBOX1";
-            this.rtBOX1.Size = new System.Drawing.Size(753, 317);
+            this.rtBOX1.Size = new System.Drawing.Size(890, 401);
             this.rtBOX1.TabIndex = 0;
             this.rtBOX1.Text = "";
             this.rtBOX1.WordWrap = false;
@@ -74,7 +74,7 @@
             // btSave
             // 
             this.btSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btSave.Location = new System.Drawing.Point(23, 409);
+            this.btSave.Location = new System.Drawing.Point(23, 493);
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(99, 27);
             this.btSave.TabIndex = 1;
@@ -87,7 +87,7 @@
             this.btOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btOK.Enabled = false;
-            this.btOK.Location = new System.Drawing.Point(701, 409);
+            this.btOK.Location = new System.Drawing.Point(838, 493);
             this.btOK.Name = "btOK";
             this.btOK.Size = new System.Drawing.Size(75, 27);
             this.btOK.TabIndex = 2;
@@ -98,7 +98,7 @@
             // 
             this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btCancel.Location = new System.Drawing.Point(628, 409);
+            this.btCancel.Location = new System.Drawing.Point(765, 493);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(67, 27);
             this.btCancel.TabIndex = 3;
@@ -164,6 +164,8 @@
             // cbCropActive
             // 
             this.cbCropActive.AutoSize = true;
+            this.cbCropActive.Checked = true;
+            this.cbCropActive.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbCropActive.Location = new System.Drawing.Point(146, 3);
             this.cbCropActive.Name = "cbCropActive";
             this.cbCropActive.Size = new System.Drawing.Size(56, 17);
@@ -191,6 +193,11 @@
             this.selectAllToolStripMenuItem.Text = "Select All";
             this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(119, 6);
+            // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
@@ -217,18 +224,13 @@
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(119, 6);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.searchOnToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(937, 24);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -244,14 +246,14 @@
             // gameFaqToolStripMenuItem
             // 
             this.gameFaqToolStripMenuItem.Name = "gameFaqToolStripMenuItem";
-            this.gameFaqToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gameFaqToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.gameFaqToolStripMenuItem.Text = "GameFaq";
             this.gameFaqToolStripMenuItem.Click += new System.EventHandler(this.gameFaqToolStripMenuItem_Click);
             // 
             // jeuxVideoToolStripMenuItem
             // 
             this.jeuxVideoToolStripMenuItem.Name = "jeuxVideoToolStripMenuItem";
-            this.jeuxVideoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.jeuxVideoToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.jeuxVideoToolStripMenuItem.Text = "JeuxVideo";
             this.jeuxVideoToolStripMenuItem.Click += new System.EventHandler(this.jeuxVideoToolStripMenuItem_Click);
             // 
@@ -259,7 +261,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(937, 534);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label1);

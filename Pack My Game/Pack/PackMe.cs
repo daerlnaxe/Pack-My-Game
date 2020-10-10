@@ -368,15 +368,15 @@ namespace Pack_My_Game.Pack
             //PackMeRes.ShowDialog(vGame, vManual, vMusic, vVideo, vApps);
 
             
-            PackMeRes2 pmr2 = new PackMeRes2()
+            PackMeRes2 pmr2 = new PackMeRes2(_Tree.Path)
             {
                 GameName = _zBackGame.Title,
                 // Destinations
-                CheatPath = _Tree.Children[nameof(SubFolder.CheatCodes)].Path,
+                /*CheatPath = _Tree.Children[nameof(SubFolder.CheatCodes)].Path,
                 ManualPath = _Tree.Children[nameof(SubFolder.Manuals)].Path,
                 MusicPath = _Tree.Children[nameof(SubFolder.Musics)].Path,
                 RomPath = _Tree.Children[nameof(SubFolder.Roms)].Path,
-                VideoPath = _Tree.Children[nameof(SubFolder.Videos)].Path,
+                VideoPath = _Tree.Children[nameof(SubFolder.Videos)].Path,*/
                 // Sources
                 SourceRomPath = _ZePlatform.FolderPath,
                 SourceManuelPath = _ZePlatform.PlatformFolders.FirstOrDefault(x => x.MediaType == "Manual"),

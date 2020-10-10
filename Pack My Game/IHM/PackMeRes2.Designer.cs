@@ -64,6 +64,7 @@
             this.openCheatFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyCheatFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteCheatFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btOpenFolder = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.romsMenuStrip.SuspendLayout();
             this.manuelsMenuStrip.SuspendLayout();
@@ -374,13 +375,13 @@
             this.copyCheatFileToolStripMenuItem,
             this.deleteCheatFileToolStripMenuItem});
             this.cheatsMenuStrip.Name = "contextMenuStrip_Cheats";
-            this.cheatsMenuStrip.Size = new System.Drawing.Size(181, 114);
+            this.cheatsMenuStrip.Size = new System.Drawing.Size(163, 92);
             this.cheatsMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.cheatsMenuStrip_Opening);
             // 
             // newCheatFileToolStripMenuItem
             // 
             this.newCheatFileToolStripMenuItem.Name = "newCheatFileToolStripMenuItem";
-            this.newCheatFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newCheatFileToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.newCheatFileToolStripMenuItem.Text = "New Cheat File";
             this.newCheatFileToolStripMenuItem.Click += new System.EventHandler(this.newCheatFileToolStripMenuItem_Click);
             // 
@@ -388,29 +389,40 @@
             // 
             this.openCheatFileToolStripMenuItem.Enabled = false;
             this.openCheatFileToolStripMenuItem.Name = "openCheatFileToolStripMenuItem";
-            this.openCheatFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openCheatFileToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.openCheatFileToolStripMenuItem.Text = "Open Cheat File";
             this.openCheatFileToolStripMenuItem.Click += new System.EventHandler(this.openCheatFileToolStripMenuItem_Click);
             // 
             // copyCheatFileToolStripMenuItem
             // 
             this.copyCheatFileToolStripMenuItem.Name = "copyCheatFileToolStripMenuItem";
-            this.copyCheatFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copyCheatFileToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.copyCheatFileToolStripMenuItem.Text = "Copy Cheat File";
             this.copyCheatFileToolStripMenuItem.Click += new System.EventHandler(this.copyCheatFileToolStripMenuItem_Click);
             // 
             // deleteCheatFileToolStripMenuItem
             // 
             this.deleteCheatFileToolStripMenuItem.Name = "deleteCheatFileToolStripMenuItem";
-            this.deleteCheatFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteCheatFileToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.deleteCheatFileToolStripMenuItem.Text = "Delete Cheat File";
             this.deleteCheatFileToolStripMenuItem.Click += new System.EventHandler(this.deleteCheatFileToolStripMenuItem_Click);
+            // 
+            // btOpenFolder
+            // 
+            this.btOpenFolder.Location = new System.Drawing.Point(629, 57);
+            this.btOpenFolder.Name = "btOpenFolder";
+            this.btOpenFolder.Size = new System.Drawing.Size(75, 26);
+            this.btOpenFolder.TabIndex = 13;
+            this.btOpenFolder.Text = "Open Folder";
+            this.btOpenFolder.UseVisualStyleBackColor = true;
+            this.btOpenFolder.Click += new System.EventHandler(this.btOpenFolder_Click);
             // 
             // PackMeRes2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(717, 461);
+            this.Controls.Add(this.btOpenFolder);
             this.Controls.Add(this.btReload);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
@@ -468,5 +480,6 @@
         private System.Windows.Forms.ToolStripMenuItem copyCheatFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteCheatFileToolStripMenuItem;
         private System.Windows.Forms.Button btCopRom;
+        private System.Windows.Forms.Button btOpenFolder;
     }
 }

@@ -39,7 +39,9 @@ namespace Pack_My_Game
         // Work path
         string _OutPPath;
 
-        // PlatformName
+        /// <summary>
+        /// PlatformName
+        /// </summary>
         string PlatformName;
 
         //ResourceManager _RT;
@@ -361,13 +363,13 @@ namespace Pack_My_Game
             if (res != DialogResult.Yes) return;
             */
             // lvGames.
-            string platform = lboxMachines.SelectedItem.ToString();
+            //2020 string platform = lboxMachines.SelectedItem.ToString();
 
             foreach (ListViewItem item in lGames)
             {
                 ShortGame zeGame = (ShortGame)item.Tag;
                 var res = MessageBox.Show($"{Lang.MB_Pack_Question}: '{zeGame.Title}' ?", "Pack or Not Pack ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                
+
                 // On passe si la réponse est négative
                 if (res != DialogResult.Yes)
                 {
@@ -377,7 +379,8 @@ namespace Pack_My_Game
 
                 Console.WriteLine($"[Main] PackMe for '{zeGame.Title}' | '{zeGame.ID}'");
 
-                PackMe pm = new PackMe(zeGame.ID, platform);
+                //2020 PackMe pm = new PackMe(zeGame.ID, platform);
+                PackMe pm = new PackMe(zeGame.ID, PlatformName);
 
                 // On cache la fenêtre durant le traitement
                 this.Hide();
@@ -504,7 +507,7 @@ namespace Pack_My_Game
         }
         */
         #endregion
-                                 
+
         private void lvGames_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             butProceed.Visible = true;
