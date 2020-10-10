@@ -30,7 +30,19 @@ no image file in the the destination folder.
  * Compression 7z and zip
  * It logs everything during the game treatment in a window, and a file.
 		
-## Version
+## Versions
+### Beta 1.5.0.4 10/10/2020
+ * Bug Correction of unwanted space in "Cheats" Windows
+ * Bug Correction of unwanted lines in "Cheats" Windows
+ * Bug Correction when you erase system name
+ * Bug Correction: Temporary solution. Currently sometimes there is a problem during compression, it's due to the
+ access of the UI by another task. There is a call to avoid it in theory, but it seems sometimes there is a problem
+ dispite of it. Then for the while this access are balised by a try/catch. It's not important because it's just very
+ rare visual problem. I will try to resolve it because it's caused by another of my libraries, but i must use a bench
+ protocol to reproduce the same condition.
+ * Feature: open temp folder in explorer
+ 
+ 
 ### Beta 1.5.0.3 09/10/2020
  * Bug: correction on cancel button in the "Cheat" box. Error when you enlarged window + uneffective.
  * Bug: correction name suggested for a new cheat file comported a ":" characters as for the game name.
@@ -111,7 +123,6 @@ silent debug...)
 ## TODO
 - [ ] Work in progress: Eliminate duplicates images files function in contextual menu (md5 calcul)
 - [ ] Filter supports
-- [ ] Security on work folder
 - [ ] Find a better way to handle images files
 - [ ] Correct the english version		
 - [ ] Carroussel to see image files to overwrite etc... (if necessary)		
@@ -125,8 +136,8 @@ silent debug...)
 - [ ] md5 Compareason ?
 - [ ] Move VFolder, HFolder, copyfile, reconstruct path (set a security basic path option)
 - [ ] md5/sha Calculation of the package
-- [ ] bug for system to correct
-- [ ] bug of unwanted space in "cheat" box
+- [x] bug for system to correct
+- [x] bug of unwanted space in "cheat" box
 - [ ] Make a system to have possibility to add new site for research (perhaps plugin, or config files)
 - [ ] Make a system (not for now) to have the possibility to scrap to txt files, from a website (by plugin)
 - [ ] See to count images in subfolder fo the master folder images and have something like x in the folder / total y for subfolders
