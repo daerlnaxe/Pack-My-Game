@@ -33,7 +33,7 @@ no image file in the the destination folder.
 ## Versions
 ### Beta 1.6.0.0 22/20/2020 Work In Progress
  * BugFix: Path Creation (images)
- * First implementation of new system to compare files.
+ * First implementation of new system to compare files (md5 support).
 
 ### Beta 1.5.0.4 10/10/2020
  * Bug Correction of unwanted space in "Cheats" Windows
