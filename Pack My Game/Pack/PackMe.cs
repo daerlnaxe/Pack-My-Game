@@ -1019,7 +1019,7 @@ namespace Pack_My_Game.Pack
 
 
                 if (File.Exists(destFile))
-                    Handle_Copy(pkFile.LinkToThePath, destFile, res);
+                    rezDec = Handle_Copy(pkFile.LinkToThePath, destFile, res);
 
                 if (rezDec == null)
                     continue;
