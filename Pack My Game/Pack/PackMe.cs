@@ -24,6 +24,9 @@ using DxPaths;
 using System.Security.AccessControl;
 using System.Threading;
 using Pack_My_Game.Enum;
+using Pack_My_Game.Files;
+using System.Security.Cryptography;
+using System.Runtime.CompilerServices;
 
 namespace Pack_My_Game.Pack
 {
@@ -58,7 +61,7 @@ namespace Pack_My_Game.Pack
         private string _SystemName { get; set; }       // Name of the platform
         private string _SystemPath;                  // Platform path
         private string _GamePath;                    // Path where the files will be copy
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -133,12 +136,14 @@ namespace Pack_My_Game.Pack
             string logFile = Path.Combine(_WFolder, $"{_SystemName} - {sGame.ExploitableFileName}.log");
 
 
+            // Todo peut être déclencher un event sur le stop pour couper net ?
             var folderRes = OPFolders.SVerif(_GamePath, "Initialize", Dcs_Buttons.NoPass, (string message) => ITrace.WriteLine(message, true));
-            if (folderRes == OPResult.Stop)
+            if (folderRes == EDestDecision.Stop)
             {
-                // todo
+                // 
                 ITrace.WriteLine("[Initialize] GoodBye !");
-                _IScreen.Close();
+                if (_IScreen != null)
+                    _IScreen.Close();
 
                 ITrace.RemoveListener(_IScreen);
 
@@ -367,7 +372,7 @@ namespace Pack_My_Game.Pack
             //on fait un recheck au cas où l'utilisateur a modifié le contenu)
             //PackMeRes.ShowDialog(vGame, vManual, vMusic, vVideo, vApps);
 
-            
+
             PackMeRes2 pmr2 = new PackMeRes2(_Tree.Path)
             {
                 GameName = _zBackGame.Title,
@@ -382,7 +387,6 @@ namespace Pack_My_Game.Pack
                 SourceManuelPath = _ZePlatform.PlatformFolders.FirstOrDefault(x => x.MediaType == "Manual"),
                 SourceMusicPath = _ZePlatform.PlatformFolders.FirstOrDefault(x => x.MediaType == "Music"),
                 SourceVideoPath = _ZePlatform.PlatformFolders.FirstOrDefault(x => x.MediaType == "Video"),
-
             };
 
             // Liste des manuels
@@ -419,7 +423,7 @@ namespace Pack_My_Game.Pack
 
                         // Sortie
                         break;
-                    }                    
+                    }
                     catch (IOException ioe)
                     {
                         ITrace.WriteLine($"Try {i}: {ioe}");
@@ -535,55 +539,12 @@ namespace Pack_My_Game.Pack
         }
 
         #region Copy functions
-        /// <summary>
-        /// Copy files (Roms, Manuals, Videos, Music)
-        /// </summary>
-        /// <returns></returns>
-        [Obsolete]
-        private bool CopySpecificFiles()
-        {
-            /*
-            ITrace.WriteLine(prefix: false);
-            //IWrite.NewLine($"Dossier actif:{Directory.GetCurrentDirectory()}");
-            Console.WriteLine(Directory.GetCurrentDirectory());
-
-            OPFiles opFiles = new OPFiles();
-            opFiles.IWriteLine += (string message) => ITrace.WriteLine(message);
-            opFiles.IWrite += (string message) => ITrace.BeginLine(message);
-            opFiles.Buttons = Dcs_Buttons.NoStop;*/
-
-            // rom            
-            //var romRes = opFiles.Compare(_ZeGame.ApplicationPath, _Tree.Children["Roms"].Path, whocallme: "Copy_Rom");
-            //CopyFile(_ZeGame.ApplicationPath, _Tree.Children["Roms"].Path, romRes);
-            vGame = CopySpecific(_zBackGame.ApplicationPath, _Tree.Children[nameof(SubFolder.Roms)].Path, "Game", x => _zBackGame.ApplicationPath = x);
-
-
-            // Manual
-            /*
-            var manualRes = opFiles.Compare(_zBackGame.ManualPath, _Tree.Children["Manuals"].Path, whocallme: "Copy_Manual");
-            CopyFile(_zBackGame.ManualPath, _Tree.Children["Manuals"].Path, manualRes);*/
-
-            // Music            
-            /*var musicRes = opFiles.Compare(_ZeGame.MusicPath, _Tree.Children["Musics"].Path, whocallme: "Copy_Music");
-            CopyFile(_ZeGame.MusicPath, _Tree.Children["Musics"].Path, musicRes);*/
-
-            // Video
-            /* var videoRes = opFiles.Compare(_zBackGame.VideoPath, _Tree.Children["Videos"].Path, whocallme: "Copy_Videos");
-             CopyFile(_zBackGame.VideoPath, _Tree.Children["Videos"].Path, videoRes);*/
-
-            //var videores = Destination.Verif(_Tree.Children["Videos"].Path, srcFile: _ZeGame.VideoPath,  whocallme: "Video");
-            //if (videores != Verif_Result.Pass && videores != Verif_Result.Source_Error)
-            //{
-            //    CopyFile(_ZeGame.VideoPath, _Tree.Children["Videos"].Path);
-            //}
-            return true;
-        }
 
         /// <summary>
         /// Copie les roms, regroupe les fichiers sur les images 
         /// </summary>
         /// <param name="dbPath"></param>
-        /// <param name="destlocation"></param>
+        /// <param name="destLocation"></param>
         /// <returns></returns>
         private bool CopyRoms(string dbPath, string destLocation)
         {
@@ -601,7 +562,7 @@ namespace Pack_My_Game.Pack
             try
             {
                 // résultat pour définir si on copie ou pas
-                OPResult res;
+                EOPResult res;
 
                 // Traitement dans le cas d'un fichier cue
                 if (extRom.Equals(".cue", StringComparison.OrdinalIgnoreCase))
@@ -615,29 +576,107 @@ namespace Pack_My_Game.Pack
                     // Copie de tous les fichiers
 
 
-
+                    // Fonctionne avec le nom du fichier
                     foreach (string fileName in cuecont.Files)
                     {
-                        // Hardlink
+                        // Donne le lien complet vers le fichier
                         string source = Path.Combine(sourceFold, fileName);
+
+                        /*18/10/2020
+                        // Hardlink
                         // string destination = Path.Combine(destLocation, fileName);
 
+
+                        // 2020 Todo
                         // Test if already copied
-                        res = OPFiles.SingleCompare(source, destLocation, $"Copy_Rom", Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
+                        
+
+                        res = OPFiles.FileNameCompare(source, destLocation, $"Copy_Rom", Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
 
                         // Copy
+                        // 2020
+                        /*
                         CopyFile(source, destLocation, res);
-                    }
+                        */
 
+                        /*18 / 10 / 2020
+                        FilesFunc.Copy(source, Path.Combine(des, res);
+                        */
+                        // 18/10/2020
+
+
+                        // 2020 remplacement
+                        string destFile = Path.Combine(destLocation, fileName);
+
+                        // On fait un prétest pour limiter - Le but est d'évaluer si le fichier de destination existe déjà                    
+                        if (File.Exists(destFile))
+                        //if(fichier.Equals(fichier1))
+                        {
+
+
+                            /* 
+
+
+                                 /*
+                                  * On teste les fichiers pour voir s'ils sont les mêmes en plus d'avoir le même nom
+                                  * - Si c'est le cas on va passer, on va passer, puisque l'intégrite est vérifiée
+                                  * - S'ils sont différents, on va proposer de renommer, passer.                          
+                                  *                          
+                                  */
+
+                            // 2020-10-16
+                            //Normalement copy handler doit tout gérer
+                            /*    Copy_Handler(fichier, destLocation, mediatype);
+
+
+
+                                /*
+                                OPFiles opF = new OPFiles()
+                                {
+
+                                };
+                                opF.IWriteLine += new RetourMessage(x => ITrace.WriteLine(x));
+
+                                // Vérification totale
+                                var res = opF.DeepVerif(fichier, destFile, () => MD5.Create());
+
+                                */
+                            //Demande s'il n'y a pas correspondance mais fichiers similaires.
+                            //if(res == EFileResult.NoMatch)
+
+
+                            // test similarity
+                            //var res = OPFiles.DeepCompare(fichier, destFile, $"Copy_{mediatype}", () => MD5.Create(), Dcs_Buttons.All, x=> ITrace.WriteLine(x));
+                        }
+                        else
+                        {
+                            FilesFunc.Copy(source, destFile, false);
+                        }
+                        //2020
+
+                    }
                     //        return true;
                 }
 
                 // Traitement dans tous les cas (si c'est un cue on en a aussi besoin)
                 /*else
                 /*{*/
-                res = OPFiles.SingleCompare(dbPath, destLocation, $"Copy_Rom", Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
+                //2020/18/10 res = OPFiles.FileNameCompare(dbPath, destLocation, $"Copy_Rom", Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
                 _zBackGame.ApplicationPath = DxPaths.Windows.DxPath.ToRelative(Settings.Default.LBPath, dbPath);
+
+
+                //TODO voir peut être si présence avant de copier ? 
+                // On copie le fichier donné dans la base
+                // Copy handler ne peut fonctionner que si on lui file un fichier source et un ficher destination à analyser
+
+
+                return Copy_Handler(dbPath, destLocation, "Rom");
+
+                /*
                 return CopyFile(dbPath, destLocation, res);
+                */
+
+
                 //return true;
                 // }
             }
@@ -659,18 +698,18 @@ namespace Pack_My_Game.Pack
         /// <param name="Assignation">Définit à quelle variable on va assigner le chemin relatif calculé</param>
         private bool CopySpecific(string dbPath, string destLocation, string mediatype, Func<string, string> Assignation)
         {
-            // Normal copy, if path is not empty
-            if (!string.IsNullOrEmpty(dbPath))
+
+            // Normal copy, if path exists
+            if (File.Exists(dbPath))
             {
-                OPResult res = OPFiles.SingleCompare(dbPath, destLocation, $"Copy_{mediatype}", Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
+                Copy_Handler(dbPath, destLocation, mediatype);
 
-                // assignation du chemin relatif à la variable
+                // L'assignation permet de transmettre le résultat d'une fonction à une variable
                 Assignation(DxPaths.Windows.DxPath.ToRelative(Settings.Default.LBPath, dbPath));
-
-                return CopyFile(dbPath, destLocation, res);
             }
             else
             {
+                // On récupère le dossier concerné par le média
                 PlatformFolder plafFolder = null;
                 foreach (PlatformFolder pFormfolder in _ZePlatform.PlatformFolders)
                 {
@@ -687,7 +726,7 @@ namespace Pack_My_Game.Pack
                 tosearch = tosearch.Replace("__", "_");
 
                 // array of files with a part of the name
-                string[] files = Directory.GetFiles(plafFolder.FolderPath, $"{tosearch}*.*", System.IO.SearchOption.TopDirectoryOnly);
+                string[] files = Directory.GetFiles(plafFolder.FolderPath, $"{tosearch}*.*", System.IO.SearchOption.AllDirectories);
 
                 /*
                 // case array is empty
@@ -697,7 +736,8 @@ namespace Pack_My_Game.Pack
                     return false;
                 }*/
 
-                #region processing found files
+
+                #region processing on files founded
 
                 MB_ListFiles mbL = new MB_ListFiles();
                 mbL.Message = $"Select {mediatype} matching.\rNote: There is an automatic preselection ";
@@ -739,36 +779,83 @@ namespace Pack_My_Game.Pack
                 // 2020
                 // case array is empty or no corresponding file even with bypass
                 //if (files.Length <= 0 || mbL.Menu == null)
-                if(numberF <= 0)
+                if (numberF <= 0)
                 {
                     MessageBox.Show($"Searching for {mediatype} returned {numberF} results", $"Searching for {mediatype}", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return false;
                 }
                 // 2020
-                
-               // Affichage de la boite de selection;
-               List<string> dFiles = null;
+
+                // Affichage de la boite de selection;
+                List<string> dFiles = null;
                 if (mbL.ShowDialog() == DialogResult.Yes)
                 {
                     dFiles = mbL.CheckedFiles;
                 }
-
-
                 // old List<string> dFiles = OPFiles.Search_Files(tosearch, plafFolder.FolderPath, System.IO.SearchOption.TopDirectoryOnly, "-", " -");
+
 
                 // En cas d'abandon ou de fichier non trouvé on renvoie false
                 if (dFiles == null || dFiles.Count == 0)
                     return false;
 
-                //
+                #region
+                // Traitement des fichiers pour la copie
                 foreach (string fichier in dFiles)
                 {
-                    var res = OPFiles.SingleCompare(fichier, destLocation, $"Copy_{mediatype}", Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
-                    CopyFile(fichier, destLocation, res);
+                    // 2020
+                    // Analyses du fichier
+                    //if()
+                    // 2020
+
+                    //Recherche de fichiers déjà présents
+                    string destFile = Path.Combine(destLocation, Path.GetFileName(fichier));
+
+                    // On fait un prétest pour limiter - Le but est d'évaluer si le fichier de destination existe déjà                    
+                    if (File.Exists(destFile))
+                    //if(fichier.Equals(fichier1))
+                    {
+                        /*
+                         * On teste les fichiers pour voir s'ils sont les mêmes en plus d'avoir le même nom
+                         * - Si c'est le cas on va passer, on va passer, puisque l'intégrite est vérifiée
+                         * - S'ils sont différents, on va proposer de renommer, passer.                          
+                         *                          
+                         */
+
+                        // 2020-10-16
+                        //Normalement copy handler doit tout gérer
+                        Copy_Handler(fichier, destLocation, mediatype);
+
+
+
+                        /*
+                        OPFiles opF = new OPFiles()
+                        {
+
+                        };
+                        opF.IWriteLine += new RetourMessage(x => ITrace.WriteLine(x));
+
+                        // Vérification totale
+                        var res = opF.DeepVerif(fichier, destFile, () => MD5.Create());
+
+                        */
+                        //Demande s'il n'y a pas correspondance mais fichiers similaires.
+                        //if(res == EFileResult.NoMatch)
+
+
+                        // test similarity
+                        //var res = OPFiles.DeepCompare(fichier, destFile, $"Copy_{mediatype}", () => MD5.Create(), Dcs_Buttons.All, x=> ITrace.WriteLine(x));
+                    }
+                    else
+                    {
+                        FilesFunc.Copy(fichier, destFile, false);
+                    }
+                    //var res = OPFiles.FileNameCompare(fichier, destLocation, $"Copy_{mediatype}", Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
+                    //  CopyFile(fichier, destLocation, res);
                 }
                 Assignation(DxPaths.Windows.DxPath.ToRelative(Settings.Default.LBPath, dFiles[0]));
                 return true;
-
+                #endregion
             }
             //
             //if (resCopy) return;
@@ -776,6 +863,84 @@ namespace Pack_My_Game.Pack
             //
             return false;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="srcFile"></param>
+        /// <param name="destLocation"></param>
+        /// <param name="mediatype"></param>
+        private bool Copy_Handler(string srcFile, string destLocation, string mediatype)
+        {
+            // 2020
+            // Test de la similitude en profondeur
+            //FilesFunc.Check4Crash();
+            OPFiles neoOPF = new OPFiles()
+            {
+
+            };
+            neoOPF.IWrite += new RetourMessage((x) => ITrace.BeginLine(x));
+            neoOPF.IWriteLine += new RetourMessage((x) => ITrace.WriteLine(x));
+
+            // Booleen pour déterminer si l'on écrase ou pas
+            bool overW = false;
+
+            // Vérification en profondeur
+            // Annulé EOPResult res = OPFiles.Copy_DeepVMode(dbPath, destLocation, $"Copy_{mediatype}", () => MD5.Create(), Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
+            string destFile = Path.Combine(destLocation, Path.GetFileName(srcFile));
+            EFileResult verif = neoOPF.DeepVerif(srcFile, destFile, () => MD5.Create());
+
+            bool copyRes = false;                   // Stocke le résultat de la copie
+            switch (verif)
+            {
+
+                // Check selon les résultats de ce qu'il faut faire
+                case EFileResult.Existing:              // S'il y a concordance
+
+
+                    // Demande à l'utilisateur
+                    EDestDecision res = MB_Decision.Show($"Copy_Handler: {Lang.Dest_File_Exists}, { Lang.Replace_Question} ?", $"{Lang.Alert} - Copy_Handler", destination: destLocation, buttons: Dcs_Buttons.All);
+
+
+                    // On passe si l'utilisateur ne veut pas écraser ou renommer
+                    /*if (res == EDestDecision.Pass || res == EDestDecision.PassAll)
+                        return;
+                    */
+
+
+                    // On utilise une fonction de traitement sur le fichier de destination (renommer, envoyer à la poubelle)
+                    neoOPF.DestFileAction(res, destFile);
+
+                    // Selon le résultat de la boite on copie ou non le fichier
+                    bool? overwrite = Handle_Copy(srcFile, destFile, res);
+                    if (overwrite != null)
+                        copyRes = FilesFunc.Copy(srcFile, destFile, (bool)overwrite);
+
+                    break;
+
+                // logiquement impossible
+                case EFileResult.Source_Error:
+                    break;
+
+                case EFileResult.Destination_Error:
+                case EFileResult.NoMatch:
+                    copyRes = FilesFunc.Copy(srcFile, destFile, false);
+                    break;
+            }
+
+
+            return copyRes;
+            // 2020
+
+
+            //2020 EOPResult res = OPFiles.FileNameCompare(dbPath, destLocation, $"Copy_{mediatype}", Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
+
+            // assignation du chemin relatif à la variable
+
+
+            // return CopyFile(dbPath, destLocation, res);
+        }
+
 
         /// <summary>
         /// Copie les images / Copy the images
@@ -828,11 +993,15 @@ namespace Pack_My_Game.Pack
                 var pkFile = lPackFile.Dequeue();
                 int pos = pkFile.LinkToThePath.IndexOf(pkFile.Categorie);
                 string tail1 = Path.GetDirectoryName(pkFile.LinkToThePath).Substring(pos);
-                string dest = Path.Combine(_Tree.Children[nameof(SubFolder.Images)].Path, tail1);
+
+                // Dossier de destination
+                string destFolder = Path.Combine(_Tree.Children[nameof(SubFolder.Images)].Path, tail1);
+                // Fichier de destination
+                string destFile = Path.Combine(destFolder, Path.GetFileName(pkFile.LinkToThePath));
 
                 // Création des dossiers
-                Console.WriteLine(dest);
-                if (!Directory.Exists(dest))
+                Console.WriteLine(destFolder);
+                if (!Directory.Exists(destFolder))
                 {
                     //2020 CreateVFolders(_Tree.Children["Images"], tail1);
                     CreateVFolders(_Tree.Children[nameof(SubFolder.Images)], tail1);
@@ -842,8 +1011,22 @@ namespace Pack_My_Game.Pack
                 FoncSchem.MakeListFolder(_Tree.Children[nameof(SubFolder.Images)]);
 
                 // copy
-                CopyFile(pkFile.LinkToThePath, dest, res);
+                // TODO
+                // 21/10/2020
+                // CopyFile(pkFile.LinkToThePath, dest, res);
+                bool? rezDec = false;
 
+
+
+                if (File.Exists(destFile))
+                    Handle_Copy(pkFile.LinkToThePath, destFile, res);
+
+                if (rezDec == null)
+                    continue;
+
+
+                File.Copy(pkFile.LinkToThePath, destFile, (bool)rezDec);
+                //21/10/2020
             }
         }
 
@@ -855,18 +1038,27 @@ namespace Pack_My_Game.Pack
             string CCodesDir = Path.Combine(Properties.Settings.Default.CCodesPath, _SystemName);
             ITrace.BeginLine($"[CopyCheatCodes] Search in: '{CCodesDir}' of files beginning by '{_ZeGame.Title}-': ");
 
-            string[] fichier = Directory.GetFiles(CCodesDir, $"{_ZeGame.Title}-*.*", System.IO.SearchOption.AllDirectories);
-            ITrace.EndlLine($"{fichier.Length} found");
+            string[] fichiers = Directory.GetFiles(CCodesDir, $"{_ZeGame.Title}*.*", System.IO.SearchOption.AllDirectories);
+            ITrace.EndlLine($"{fichiers.Length} found");
 
-            OPFiles opFiles = new OPFiles();
-            opFiles.IWriteLine += (string message) => ITrace.WriteLine(message);
-            opFiles.IWrite += (string message) => ITrace.BeginLine(message);
-            opFiles.Buttons = Dcs_Buttons.NoStop;
-
-            foreach (string file in fichier)
+            OPFiles opF = new OPFiles()
             {
-                var cheatCodeRes = opFiles.Compare(file, _Tree.Children[nameof(SubFolder.CheatCodes)].Path, whocallme: "CheatCodes");
-                CopyFile(file, _Tree.Children[nameof(SubFolder.CheatCodes)].Path, cheatCodeRes);
+                WhoCallMe = "CheatCodes",
+                Buttons = Dcs_Buttons.NoStop,
+            };
+
+            opF.IWriteLine += (string message) => ITrace.WriteLine(message);
+            opF.IWrite += (string message) => ITrace.BeginLine(message);
+
+
+            //
+            foreach (string file in fichiers)
+            {
+                var cheatCodeRes = opF.FileNameCompare(file, _Tree.Children[nameof(SubFolder.CheatCodes)].Path);
+                //21/10/2020
+                //CopyFile(file, _Tree.Children[nameof(SubFolder.CheatCodes)].Path, cheatCodeRes);
+                Copy_Handler(file, _Tree.Children[nameof(SubFolder.CheatCodes)].Path, "Cheats");
+                //21/10/2020
             }
         }
 
@@ -877,69 +1069,95 @@ namespace Pack_My_Game.Pack
         {
             ITrace.WriteLine(prefix: false);
 
-            OPFiles opFiles = new OPFiles();
-            opFiles.IWriteLine += (string message) => ITrace.WriteLine(message);
-            opFiles.IWrite += (string message) => ITrace.BeginLine(message);
-            opFiles.Buttons = Dcs_Buttons.NoStop;
+            OPFiles opF = new OPFiles()
+            {
+                Buttons = Dcs_Buttons.NoStop,
+                WhoCallMe = "Clone"
+            };
+            opF.IWriteLine += (string message) => ITrace.WriteLine(message);
+            opF.IWrite += (string message) => ITrace.BeginLine(message);
 
             List<Clone> clones = new List<Clone>();
             _XFunctions.ListClones(clones, _ZeGame.ID);
 
             // tri des doublons / filter duplicates
-            var fClones = clones.Distinct().ToList();
 
+            List<Clone> fClones;
+            //fClones= clones.Distinct().ToList();
+            fClones = FilesFunc.DistinctClones(clones, _ZeGame.FileName);
+
+            // On va vérifier que chaque clone n'est pas déjà présent et selon déjà copier
             foreach (Clone zeClone in fClones)
             {
                 zeClone.ApplicationPath = ReconstructPath(zeClone.ApplicationPath);
 
-                var cloneRes = opFiles.Compare(zeClone.ApplicationPath, _Tree.Children[nameof(SubFolder.Roms)].Path, whocallme: "Clone");
-                CopyFile(zeClone.ApplicationPath, _Tree.Children[nameof(SubFolder.Roms)].Path, cloneRes);
+                /* 20/10/2020
+                 var cloneRes = opF.FileNameCompare(zeClone.ApplicationPath, _Tree.Children[nameof(SubFolder.Roms)].Path);
+                 CopyFile(zeClone.ApplicationPath, _Tree.Children[nameof(SubFolder.Roms)].Path, cloneRes);
+                */
+                Copy_Handler(zeClone.ApplicationPath, _Tree.Children[nameof(SubFolder.Roms)].Path, "Roms");
             }
         }
 
+        // Todo une fenêtre de copie ? 
+        // Todo créer une fonctoin de copie dans OpFile avec progression
         // Todo coller un trycatch
-        private bool CopyFile(string fichier, string dest, OPResult result)
+        /// <summary>
+        /// Décide s'il doit y avoir copier ou non, s'il faut écraser ou non
+        /// </summary>
+        /// <param name="fichier"></param>
+        /// <param name="dest"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        private bool? Handle_Copy(string fichier, string dest, EDestDecision result)
         {
             bool overwrite;
             switch (result)
             {
+                case EDestDecision.Stop:
+                    // TODO
+                    return null;
 
-                case OPResult.Ok:
-                case OPResult.Trash:
-                case OPResult.TrashAll:
-                    overwrite = false;
-                    break;
-                case OPResult.OverWrite:
-                case OPResult.OverWriteAll:
-                    overwrite = true;
-                    break;
-                case OPResult.Source_Error:
-                    ITrace.WriteLine("File missing");
+                // Passer
+                case EDestDecision.Pass:
+                case EDestDecision.PassAll:
+                    Debug.WriteLine("Pass");
+                    return null;
+
+                case EDestDecision.Trash:
+                case EDestDecision.TrashAll:
+                    Debug.WriteLine("Trash");
                     return false;
+
+                case EDestDecision.OverWrite:
+                case EDestDecision.OverWriteAll:
+                    Debug.WriteLine("Overwrite");
+
+                    return true;
 
                 default:
-                    return false;
+                    Debug.WriteLine("Default");
 
+                    return false;
+                    /*2020
+
+                    -------- plus la peine car automatiquement on vérifie si le fichier existe et non plus seulement
+                    si la variable est nulle;
+
+                    case EOPResult.Source_Error:
+                        ITrace.WriteLine("File missing");
+                        return false;
+
+
+                    */
 
             }
-
-            ITrace.BeginLine($"[CopyFiles] Copy of the file '{fichier}': ");
-
 
             // 2020 enlevé Directory.SetCurrentDirectory(dest);
-            string filename = Path.GetFileName(fichier);
-            string destLink = Path.Combine(dest, filename);
+            /* string filename = Path.GetFileName(fichier);
+             string destLink = Path.Combine(dest, filename);
+            */
 
-            try
-            {
-                File.Copy(fichier, destLink, overwrite);
-                ITrace.EndlLine("Successful");
-            }
-            catch (Exception e)
-            {
-                ITrace.EndlLine("Error");
-                ITrace.WriteLine(e.Message);
-            }
 
             // 2020 enlevé Directory.SetCurrentDirectory(_GamePath);
             return true;
@@ -1014,7 +1232,7 @@ namespace Pack_My_Game.Pack
 
 
         /// <summary>
-        /// Créer des dossiers à l'horizontale dans un répertoire, ajoute au dictionnaire
+        /// Créer des dossiers à la verticale dans un répertoire, ajoute au dictionnaire
         /// </summary>
         /// <param name="basePath">Starting Directory</param>
         /// <param name="folders"></param>
@@ -1034,12 +1252,14 @@ namespace Pack_My_Game.Pack
             //2020 Directory.SetCurrentDirectory(basePath.Path);
 
             //2020 Folder currentFolder = basePath;
+            string path = basePath.Path; // 22/10/2020
             foreach (string name in arrTail)
             {
                 //2020 string currentDir = Directory.GetCurrentDirectory();
                 //2020 Console.WriteLine($"Rep actuel {currentDir}");
                 //2020 modif
-                string path = Path.Combine(basePath.Path, name);
+                // 2020 10 22 string path = Path.Combine(basePath.Path, name); 
+                path = Path.Combine(path, name);
                 //2020 modif
 
                 ITrace.WriteLine($"[CreateFolders] Creation of the folder: '{path}'");

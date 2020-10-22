@@ -155,6 +155,9 @@
     <value>Nom du Jeu Choisi</value>
     <comment>GameName</comment>
   </data>
+  <data name="Dest_File_Exists" xml:space="preserve">
+    <value>Le Fichier de destination existe</value>
+  </data>
   <data name="Empty" xml:space="preserve">
     <value>vide</value>
   </data>
@@ -234,6 +237,9 @@ ne pouvez pas sélectionner directement le fichier, en cas d'update j'aviserai.
   </data>
   <data name="Remove_Word" xml:space="preserve">
     <value>Enlever</value>
+  </data>
+  <data name="Replace_Question" xml:space="preserve">
+    <value>voulez vous le remplacer</value>
   </data>
   <data name="SelectASystem" xml:space="preserve">
     <value>Selectionner une Plateforme</value>

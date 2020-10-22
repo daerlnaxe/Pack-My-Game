@@ -82,7 +82,9 @@ namespace Pack_My_Game.Container
             };
 
             tmpGInfo.FileName = Path.GetFileName(zGame.ApplicationPath);
-            tmpGInfo.ExploitableFileName = tmpGInfo.FileName.Split('.')[0];
+            // 2020 tmpGInfo.ExploitableFileName = tmpGInfo.FileName.Split('.')[0];
+            tmpGInfo.ExploitableFileName = Path.GetFileNameWithoutExtension( tmpGInfo.FileName);
+
 
             return tmpGInfo;
         }

@@ -180,9 +180,10 @@ namespace Pack_My_Game.Compression
 
             switch (sevenZRes)
             {
-                case OPResult.OverWrite:
-                case OPResult.Ok:
-                case OPResult.Trash:
+                case EOPResult.OverWrite:
+                // 2020
+                case EOPResult.NotExisting:
+                case EOPResult.Trashed:
                     ITrace.WriteLine($"[Make_SevenZip] 7z Compression begin");
                     if (!SevenZipCompression.CompressFolder(folder2Comp, destArchLink, Properties.Settings.Default.c7zCompLvl))
                     {

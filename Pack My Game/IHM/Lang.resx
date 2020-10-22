@@ -154,6 +154,9 @@
     <value>Choosen Game Name</value>
     <comment>GameName</comment>
   </data>
+  <data name="Dest_File_Exists" xml:space="preserve">
+    <value>Destination file exists</value>
+  </data>
   <data name="Empty" xml:space="preserve">
     <value>empty</value>
   </data>
@@ -229,6 +232,9 @@ directly the file, if there is update in the future i will see.
   </data>
   <data name="Remove_Word" xml:space="preserve">
     <value>Remove</value>
+  </data>
+  <data name="Replace_Question" xml:space="preserve">
+    <value>do you want to replace it</value>
   </data>
   <data name="SelectASystem" xml:space="preserve">
     <value>Select a Platform</value>

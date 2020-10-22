@@ -47,3 +47,5 @@ E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Debug\Pack My Game.ex
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Debug\Pack My Game.pdb
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Debug\Pack_My_Game.IHM.PackMeRes2.resources
 E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\obj\x64\Debug\Pack_My_Game.IHM.CheatForm.resources
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x64\HashCalc.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Pack My Game\bin\Debug\x64\HashCalc.pdb

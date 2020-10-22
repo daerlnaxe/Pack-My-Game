@@ -219,9 +219,9 @@ namespace Pack_My_Game.Compression
 
             switch (zipRes)
             {
-                case OPResult.OverWrite:
-                case OPResult.Ok:
-                case OPResult.Trash:
+                case EOPResult.OverWrite:
+                case EOPResult.NotExisting:
+                case EOPResult.Trashed:
                     if (!ZipCompression.CompressFolder(folder2Comp, destArchLink, Properties.Settings.Default.cZipCompLvl))
                     {
                         ITrace.WriteLine("[Make_Zip] Zip Compression canceled");

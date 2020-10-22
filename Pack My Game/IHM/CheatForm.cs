@@ -348,6 +348,7 @@ namespace Pack_My_Game.IHM
             string[] words = line.Split(' ');
             string formatedLine = string.Empty;
             int i = 0;
+            int j = 1;
 
             //
             foreach (string word in words)
@@ -369,19 +370,20 @@ namespace Pack_My_Game.IHM
                 }
 
                 formatedLine += $"{word}";
-                i += word.Length + 1;
 
                 // On ajoute un espace sauf pour le dernier mot
-                    formatedLine += " ";
-                if (i < words.Length)
+                if (j < words.Length)
                 {
-
+                    formatedLine += " ";
                 }
                 else
                 {
-                    formatedLine += "|";
-                    Debug.WriteLine($"Last Word {word}");
+                   // formatedLine += "----";
+                   // Debug.WriteLine($"Last Word {word}");
                 }
+
+                i += word.Length + 1;
+                j++;
                 //i += word.Length + 1; // On calcule 
             }
 

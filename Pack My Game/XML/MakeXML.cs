@@ -34,9 +34,9 @@ namespace Pack_My_Game.XML
             var infoRes = OPFiles.SingleVerif(xmlDest, "InfoGame", log: (string message) => ITrace.WriteLine(message, true));
             switch (infoRes)
             {
-                case OPResult.Ok:
-                case OPResult.OverWrite:
-                case OPResult.Trash:
+                case EOPResult.NotExisting:
+                case EOPResult.OverWrite:
+                case EOPResult.Trashed:
                     ITrace.WriteLine("[InfoGame] Serialization to xml");
 
                     try
@@ -79,9 +79,9 @@ namespace Pack_My_Game.XML
             var infoRes = OPFiles.SingleVerif(xmlDest, "Backup_Game", log: (string message) => ITrace.WriteLine(message, true));
             switch (infoRes)
             {
-                case OPResult.Ok:
-                case OPResult.OverWrite:
-                case OPResult.Trash:
+                case EOPResult.NotExisting:
+                case EOPResult.OverWrite:
+                case EOPResult.Trashed:
                     /*try
                     {*/
                     ITrace.WriteLine("[Backup_Game] Serialization to xml");

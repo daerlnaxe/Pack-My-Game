@@ -205,6 +205,7 @@ namespace Pack_My_Game.IHM
 
             // Paths
             Settings.Default.LBPath = tbLaunchBoxPath.Text;
+            Settings.Default.CCodesPath = tbCheatCodes.Text;
 
             // Zip
             Settings.Default.cZipCompLvl = trackZipCompLvl.Position;

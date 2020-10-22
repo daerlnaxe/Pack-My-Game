@@ -150,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackupLB\CustomField.cs" />
+    <Compile Include="Files\FilesFunc.cs" />
     <Compile Include="IHM\CheatForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -400,7 +401,6 @@
     </PublishFile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Files\" />
     <Folder Include="Logs\" />
   </ItemGroup>
   <ItemGroup>

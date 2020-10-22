@@ -143,6 +143,15 @@ namespace Pack_My_Game.IHM {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Destination file exists.
+        /// </summary>
+        internal static string Dest_File_Exists {
+            get {
+                return ResourceManager.GetString("Dest_File_Exists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à empty.
         /// </summary>
         internal static string Empty {
@@ -294,6 +303,15 @@ namespace Pack_My_Game.IHM {
         internal static string Remove_Word {
             get {
                 return ResourceManager.GetString("Remove_Word", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à do you want to replace it.
+        /// </summary>
+        internal static string Replace_Question {
+            get {
+                return ResourceManager.GetString("Replace_Question", resourceCulture);
             }
         }
         
