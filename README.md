@@ -31,6 +31,10 @@ no image file in the the destination folder.
  * It logs everything during the game treatment in a window, and a file.
 		
 ## Versions
+### Beta 1.6.0.0 22/20/2020 Work In Progress
+ * BugFix: Path Creation (images)
+ * First implementation of new system to compare files.
+
 ### Beta 1.5.0.4 10/10/2020
  * Bug Correction of unwanted space in "Cheats" Windows
  * Bug Correction of unwanted lines in "Cheats" Windows
@@ -133,7 +137,7 @@ silent debug...)
 - [ ] Edit info in short list ? => it means to load total information of the game.
 - [ ] Splashscreen on loading
 - [ ] Ameliorate config with own browser system  and box path editable
-- [ ] md5 Compareason ?
+- [x] md5 Compareason ?
 - [ ] Move VFolder, HFolder, copyfile, reconstruct path (set a security basic path option)
 - [ ] md5/sha Calculation of the package
 - [x] bug for system to correct
