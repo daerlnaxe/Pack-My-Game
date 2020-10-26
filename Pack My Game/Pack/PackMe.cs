@@ -137,7 +137,7 @@ namespace Pack_My_Game.Pack
 
 
             // Todo peut être déclencher un event sur le stop pour couper net ?
-            var folderRes = OPFolders.SVerif(_GamePath, "Initialize", Dcs_Buttons.NoPass, (string message) => ITrace.WriteLine(message, true));
+            var folderRes = OPFolders.SVerif(_GamePath, "Initialize", Dcs_Buttons.NoPass | Dcs_Buttons.NoRename, (string message) => ITrace.WriteLine(message, true));
             if (folderRes == EDestDecision.Stop)
             {
                 // 
@@ -865,7 +865,7 @@ namespace Pack_My_Game.Pack
         }
 
         /// <summary>
-        /// 
+        /// Gère la copie en examinant la totale similitude des fichiers
         /// </summary>
         /// <param name="srcFile"></param>
         /// <param name="destLocation"></param>
@@ -887,15 +887,20 @@ namespace Pack_My_Game.Pack
 
             // Vérification en profondeur
             // Annulé EOPResult res = OPFiles.Copy_DeepVMode(dbPath, destLocation, $"Copy_{mediatype}", () => MD5.Create(), Dcs_Buttons.NoStop, x => ITrace.WriteLine(x));
-            string destFile = Path.Combine(destLocation, Path.GetFileName(srcFile));
+            string fileName = Path.GetFileName(srcFile);
+            string destFile = Path.Combine(destLocation, fileName);
             EFileResult verif = neoOPF.DeepVerif(srcFile, destFile, () => MD5.Create());
 
             bool copyRes = false;                   // Stocke le résultat de la copie
+
+  
             switch (verif)
             {
+                case EFileResult.DifferentSize:
+                case EFileResult.DifferentHash:
+
 
                 // Check selon les résultats de ce qu'il faut faire
-                case EFileResult.Existing:              // S'il y a concordance
 
 
                     // Demande à l'utilisateur
@@ -918,13 +923,19 @@ namespace Pack_My_Game.Pack
 
                     break;
 
-                // logiquement impossible
+                // Gère si la source a une taille 0 (entre autre)
                 case EFileResult.Source_Error:
                     break;
 
                 case EFileResult.Destination_Error:
                 case EFileResult.NoMatch:
+                    ITrace.WriteLine($"PackMe: Copy of '{fileName}'");
                     copyRes = FilesFunc.Copy(srcFile, destFile, false);
+
+                    break;
+
+                default:
+                    ITrace.WriteLine($"PackMe: Copy of '{fileName}' avoided");
                     break;
             }
 
@@ -1038,7 +1049,12 @@ namespace Pack_My_Game.Pack
             string CCodesDir = Path.Combine(Properties.Settings.Default.CCodesPath, _SystemName);
             ITrace.BeginLine($"[CopyCheatCodes] Search in: '{CCodesDir}' of files beginning by '{_ZeGame.Title}-': ");
 
-            string[] fichiers = Directory.GetFiles(CCodesDir, $"{_ZeGame.Title}*.*", System.IO.SearchOption.AllDirectories);
+            if (!Directory.Exists(CCodesDir))
+                return;
+
+            string usableT = _ZeGame.Title.Replace(":","-");
+
+            string[] fichiers = Directory.GetFiles(CCodesDir, usableT, System.IO.SearchOption.AllDirectories);
             ITrace.EndlLine($"{fichiers.Length} found");
 
             OPFiles opF = new OPFiles()
@@ -1054,8 +1070,10 @@ namespace Pack_My_Game.Pack
             //
             foreach (string file in fichiers)
             {
-                var cheatCodeRes = opF.FileNameCompare(file, _Tree.Children[nameof(SubFolder.CheatCodes)].Path);
+
+                // TODO URGENCE
                 //21/10/2020
+                //var cheatCodeRes = opF.FileNameCompare(file, _Tree.Children[nameof(SubFolder.CheatCodes)].Path);
                 //CopyFile(file, _Tree.Children[nameof(SubFolder.CheatCodes)].Path, cheatCodeRes);
                 Copy_Handler(file, _Tree.Children[nameof(SubFolder.CheatCodes)].Path, "Cheats");
                 //21/10/2020
@@ -1127,6 +1145,13 @@ namespace Pack_My_Game.Pack
                 case EDestDecision.Trash:
                 case EDestDecision.TrashAll:
                     Debug.WriteLine("Trash");
+                    return false;
+
+
+                // --- En cas de renommage
+                case EDestDecision.Rename:
+                    // Le fichier cible devra être renommé.
+                    dest = FilesFunc.Choose_AName(dest);
                     return false;
 
                 case EDestDecision.OverWrite:

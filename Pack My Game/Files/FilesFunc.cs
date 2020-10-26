@@ -1,4 +1,5 @@
 ﻿using DxTrace;
+using Microsoft.Win32;
 using Pack_My_Game.Container;
 using System;
 using System.CodeDom;
@@ -64,7 +65,7 @@ namespace Pack_My_Game.Files
         {
             List<Clone> clonestmp = new List<Clone>();
 
-            foreach(Clone c in clones)
+            foreach (Clone c in clones)
             {
 
                 /*
@@ -73,15 +74,38 @@ namespace Pack_My_Game.Files
 
                 // On cherche si c'est pas déjà présent dans clonestmp
                 var kk = clonestmp.FirstOrDefault(x => c.ApplicationPath.Equals(x.ApplicationPath));
-                if (clonestmp.FirstOrDefault(x => c.ApplicationPath.Equals(x.ApplicationPath))!=null)
+                if (clonestmp.FirstOrDefault(x => c.ApplicationPath.Equals(x.ApplicationPath)) != null)
                     continue;
 
                 clonestmp.Add(c);
-                
+
             }
 
             return clonestmp;
 
+        }
+
+        /// <summary>
+        /// Choisir un nom pour un fichier.
+        /// </summary>
+        internal static string Choose_AName(string destFile)
+        {
+            string destFolder = Path.GetDirectoryName(destFile);
+
+            SaveFileDialog sfd = new SaveFileDialog()
+            {
+                InitialDirectory = destFolder
+            };
+
+            while (true)
+            {
+                sfd.ShowDialog();
+
+                if (!File.Exists(sfd.FileName))
+                    break;
+            }
+
+            return sfd.FileName;
         }
     }
 

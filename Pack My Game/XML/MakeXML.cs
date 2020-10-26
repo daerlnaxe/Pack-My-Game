@@ -31,7 +31,7 @@ namespace Pack_My_Game.XML
 
             string xmlDest = Path.Combine(path, "Infos.xml");
 
-            var infoRes = OPFiles.SingleVerif(xmlDest, "InfoGame", log: (string message) => ITrace.WriteLine(message, true));
+            var infoRes = OPFiles.SingleVerif(xmlDest, "InfoGame", Dcs_Buttons.NoRename, log: (string message) => ITrace.WriteLine(message, true));
             switch (infoRes)
             {
                 case EOPResult.NotExisting:
@@ -76,7 +76,7 @@ namespace Pack_My_Game.XML
 
             string xmlDest = Path.Combine(path, $"{title}.xml");
 
-            var infoRes = OPFiles.SingleVerif(xmlDest, "Backup_Game", log: (string message) => ITrace.WriteLine(message, true));
+            var infoRes = OPFiles.SingleVerif(xmlDest, "Backup_Game", Dcs_Buttons.NoRename, log: (string message) => ITrace.WriteLine(message, true));
             switch (infoRes)
             {
                 case EOPResult.NotExisting:
