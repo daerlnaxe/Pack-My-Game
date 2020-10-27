@@ -31,6 +31,12 @@ no image file in the the destination folder.
  * It logs everything during the game treatment in a window, and a file.
 		
 ## Versions
+### Beta 1.6.0.2 27/10/2020
+ * BugFix: don't copy several time the same roms (it  happened before when xml files had many occurs of a same file).
+ * New Feature: System compare files by md5 sum, and ask nothing if sum are same, you have less windows to validate now.
+   To add this new system, all algorithm have been modified.
+ * New feature: A Window appears during compareason to indicate progression (it can be very quick for small size files).
+ * New feature: Implementation for cheatcodes path when copying..
 ### Beta 1.6.0.0 22/20/2020 Work In Progress
  * BugFix: Path Creation (images)
  * First implementation of new system to compare files (md5 support).
