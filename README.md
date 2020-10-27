@@ -31,6 +31,9 @@ no image file in the the destination folder.
  * It logs everything during the game treatment in a window, and a file.
 		
 ## Versions
+### Beta 1.6.0.2 Work In Progress
+ * Give a name when you want to choose to rename.
+ * Correction for a windows, when you want to extend size to view files to get.
 ### Beta 1.6.0.1 27/10/2020
  * BugFix: don't copy several time the same roms (it  happened before when xml files had many occurs of a same file).
  * New Feature: System compare files by md5 sum, and ask nothing if sum are same, you have less windows to validate now.
