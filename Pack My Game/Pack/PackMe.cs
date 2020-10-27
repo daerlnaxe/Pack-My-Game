@@ -904,7 +904,8 @@ namespace Pack_My_Game.Pack
 
 
                     // Demande à l'utilisateur
-                    EDestDecision res = MB_Decision.Show($"Copy_Handler: {Lang.Dest_File_Exists}, { Lang.Replace_Question} ?", $"{Lang.Alert} - Copy_Handler", destination: destLocation, buttons: Dcs_Buttons.All);
+                   // EDestDecision res = MB_Decision.Show($"Copy_Handler: {Lang.Dest_File_Exists}, { Lang.Replace_Question} ?", $"{Lang.Alert} - Copy_Handler", destination: destLocation, buttons: Dcs_Buttons.All);
+                    EDestDecision res = MB_Decision.Show($"Copy_Handler: {Lang.Dest_File_Exists}, { Lang.Replace_Question} ?", $"{Lang.Alert} - Copy_Handler", source: srcFile, destination: destFile, buttons: Dcs_Buttons.All);
 
 
                     // On passe si l'utilisateur ne veut pas écraser ou renommer
@@ -917,7 +918,7 @@ namespace Pack_My_Game.Pack
                     neoOPF.DestFileAction(res, destFile);
 
                     // Selon le résultat de la boite on copie ou non le fichier
-                    bool? overwrite = Handle_Copy(srcFile, destFile, res);
+                    bool? overwrite = Handle_Copy(srcFile,ref destFile, res);
                     if (overwrite != null)
                         copyRes = FilesFunc.Copy(srcFile, destFile, (bool)overwrite);
 
@@ -1030,7 +1031,7 @@ namespace Pack_My_Game.Pack
 
 
                 if (File.Exists(destFile))
-                    rezDec = Handle_Copy(pkFile.LinkToThePath, destFile, res);
+                    rezDec = Handle_Copy(pkFile.LinkToThePath,ref destFile, res);
 
                 if (rezDec == null)
                     continue;
@@ -1127,7 +1128,7 @@ namespace Pack_My_Game.Pack
         /// <param name="dest"></param>
         /// <param name="result"></param>
         /// <returns></returns>
-        private bool? Handle_Copy(string fichier, string dest, EDestDecision result)
+        private bool? Handle_Copy(string fichier, ref string dest, EDestDecision result)
         {
             bool overwrite;
             switch (result)
