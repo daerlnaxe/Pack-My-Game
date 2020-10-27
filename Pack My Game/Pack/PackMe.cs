@@ -916,6 +916,7 @@ namespace Pack_My_Game.Pack
 
                     // On utilise une fonction de traitement sur le fichier de destination (renommer, envoyer à la poubelle)
                     neoOPF.DestFileAction(res, destFile);
+                    
 
                     // Selon le résultat de la boite on copie ou non le fichier
                     bool? overwrite = Handle_Copy(srcFile,ref destFile, res);
@@ -1152,7 +1153,7 @@ namespace Pack_My_Game.Pack
                 // --- En cas de renommage
                 case EDestDecision.Rename:
                     // Le fichier cible devra être renommé.
-                    dest = FilesFunc.Choose_AName(dest);
+                    dest = FilesFunc.Choose_AName(dest, "_ZeGame.ExploitableFileName-");
                     return false;
 
                 case EDestDecision.OverWrite:

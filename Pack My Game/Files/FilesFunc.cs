@@ -88,13 +88,16 @@ namespace Pack_My_Game.Files
         /// <summary>
         /// Choisir un nom pour un fichier.
         /// </summary>
-        internal static string Choose_AName(string destFile)
+        /// <param name="destFile">Fichier de destination</param>
+        /// <param name="defFile">Nom de Fichier proposé</param>
+        internal static string Choose_AName(string destFile, string defFile = null)
         {
             string destFolder = Path.GetDirectoryName(destFile);
 
             SaveFileDialog sfd = new SaveFileDialog()
             {
-                InitialDirectory = destFolder
+                InitialDirectory = destFolder,
+                FileName = Path.GetFileName(defFile)
             };
 
             while (true)
