@@ -44,7 +44,7 @@ no image file in the the destination folder. (28/10/2020 to Modify)
  * New feature: Implementation for cheatcodes path when copying..
  * New feature: Renaming file for target in case of conflict and files are different, you can't overwrite it if you choose to rename. Each time, you try
    a window will ask you to give a filename that don't exist. It's a protection to avoid overwrite.
-### Beta 1.6.0.0 22/20/2020 Work In Progress
+### Beta 1.6.0.x 22/20/2020
  * BugFix: Path Creation (images)
  * First implementation of new system to compare files (md5 support).
 
