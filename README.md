@@ -20,12 +20,12 @@ Download folder: https://github.com/daerlnaxe/Pack-My-Game/tree/master/Releases
 for later, just in case there was a problem. 
 
 ## Note
- * Use it only with roms and cue files since 23/08/2020
+ * Use it only with roms and cue files (cue since 23/08/2020)
  * Don't move or delete files from the source (never)
  * It asks before to overwrite roms, manuals, music, video that are in the working directory meanwhile
  the copy (the target directory)
  * Currently it asks a global permission to overwrite for the image/pictures files, even if there is
-no image file in the the destination folder.
+no image file in the the destination folder. (28/10/2020 to Modify)
  * The clones are added only if they are grouped with a main in LaunchBox
  * Compression 7z and zip
  * It logs everything during the game treatment in a window, and a file.
@@ -34,6 +34,10 @@ no image file in the the destination folder.
 ### Beta 1.6.0.2 Work In Progress
  * Give a name when you want to choose to rename.
  * Correction for a windows, when you want to extend size to view files to get.
+ * Modification for images: if there is one conflict, a box appears to ask what to do but only once (before it, you had to say before treatment what you would to do       "in case of")
+ * New Feature: possibility to search a game directly on PackMeRes window 
+ * Modification: Handles differently when the LaunchBox path is incorrect, at starting user is warned and the config file is no longer modified to remove the wrong path.
+ * Modification: Handles differently when the Output path is incorrect, at starting  user is warned.
 ### Beta 1.6.0.1 27/10/2020
  * BugFix: don't copy several time the same roms (it  happened before when xml files had many occurs of a same file).
  * New Feature: System compare files by md5 sum, and ask nothing if sum are same, you have less windows to validate now.
@@ -42,7 +46,7 @@ no image file in the the destination folder.
  * New feature: Implementation for cheatcodes path when copying..
  * New feature: Renaming file for target in case of conflict and files are different, you can't overwrite it if you choose to rename. Each time, you try
    a window will ask you to give a filename that don't exist. It's a protection to avoid overwrite.
-### Beta 1.6.0.0 22/20/2020 Work In Progress
+### Beta 1.6.0.x 22/20/2020
  * BugFix: Path Creation (images)
  * First implementation of new system to compare files (md5 support).
 
@@ -136,13 +140,13 @@ silent debug...)
 
 
 ## TODO
-- [ ] Work in progress: Eliminate duplicates images files function in contextual menu (md5 calcul)
+- [ ] <del>Work in progress: Eliminate duplicates images files function in contextual menu (md5 calcul)</del>
 - [ ] Filter supports
-- [ ] Find a better way to handle images files
+- [x] Find a better way to handle images files
 - [ ] Correct the english version		
 - [ ] Carroussel to see image files to overwrite etc... (if necessary)		
 - [x] Add Debug Options in panel config
-- [ ] Mode silent without box prompt ? (All overwrite)
+- [ ] <del>Mode silent without box prompt ? (All overwrite)</del>
 - [ ] Mode silent without log window
 - [x] Contextual menu with 7zip only, ziponly ?
 - [ ] Edit info in short list ? => it means to load total information of the game.
@@ -155,5 +159,5 @@ silent debug...)
 - [x] bug of unwanted space in "cheat" box
 - [ ] Make a system to have possibility to add new site for research (perhaps plugin, or config files)
 - [ ] Make a system (not for now) to have the possibility to scrap to txt files, from a website (by plugin)
-- [ ] See to count images in subfolder fo the master folder images and have something like x in the folder / total y for subfolders
+- [ ] <del>See to count images in subfolder fo the master folder images and have something like x in the folder / total y for subfolders</del>
 - [ ] Find somebody that wants hire me... in CDI :/
