@@ -35,7 +35,9 @@ no image file in the the destination folder. (28/10/2020 to Modify)
  * Give a name when you want to choose to rename.
  * Correction for a windows, when you want to extend size to view files to get.
  * Modification for images: if there is one conflict, a box appears to ask what to do but only once (before it, you had to say before treatment what you would to do       "in case of")
- * Add possibility to search a game directly on PackMeRes window 
+ * New Feature: possibility to search a game directly on PackMeRes window 
+ * Modification: Handles differently when the LaunchBox path is incorrect, at starting user is warned and the config file is no longer modified to remove the wrong path.
+ * Modification: Handles differently when the Output path is incorrect, at starting  user is warned.
 ### Beta 1.6.0.1 27/10/2020
  * BugFix: don't copy several time the same roms (it  happened before when xml files had many occurs of a same file).
  * New Feature: System compare files by md5 sum, and ask nothing if sum are same, you have less windows to validate now.
