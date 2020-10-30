@@ -35,7 +35,7 @@ no image file in the the destination folder. (28/10/2020 to Modify)
  * Give a name when you want to choose to rename.
  * Correction for a windows, when you want to extend size to view files to get.
  * Modification for images: if there is one conflict, a box appears to ask what to do but only once (before it, you had to say before treatment what you would to do       "in case of")
- 
+ * Add possibility to search a game directly on PackMeRes window 
 ### Beta 1.6.0.1 27/10/2020
  * BugFix: don't copy several time the same roms (it  happened before when xml files had many occurs of a same file).
  * New Feature: System compare files by md5 sum, and ask nothing if sum are same, you have less windows to validate now.
@@ -138,13 +138,13 @@ silent debug...)
 
 
 ## TODO
-- [ ] Work in progress: Eliminate duplicates images files function in contextual menu (md5 calcul)
+- [ ] <del>Work in progress: Eliminate duplicates images files function in contextual menu (md5 calcul)</del>
 - [ ] Filter supports
-- [ ] Find a better way to handle images files
+- [x] Find a better way to handle images files
 - [ ] Correct the english version		
 - [ ] Carroussel to see image files to overwrite etc... (if necessary)		
 - [x] Add Debug Options in panel config
-- [ ] Mode silent without box prompt ? (All overwrite)
+- [ ] <del>Mode silent without box prompt ? (All overwrite)</del>
 - [ ] Mode silent without log window
 - [x] Contextual menu with 7zip only, ziponly ?
 - [ ] Edit info in short list ? => it means to load total information of the game.
@@ -157,5 +157,5 @@ silent debug...)
 - [x] bug of unwanted space in "cheat" box
 - [ ] Make a system to have possibility to add new site for research (perhaps plugin, or config files)
 - [ ] Make a system (not for now) to have the possibility to scrap to txt files, from a website (by plugin)
-- [ ] See to count images in subfolder fo the master folder images and have something like x in the folder / total y for subfolders
+- [ ] <del>See to count images in subfolder fo the master folder images and have something like x in the folder / total y for subfolders</del>
 - [ ] Find somebody that wants hire me... in CDI :/
