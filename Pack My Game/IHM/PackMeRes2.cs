@@ -707,5 +707,29 @@ namespace Pack_My_Game.IHM
         {
             Process.Start("explorer.exe", _Root);
         }
+
+        #region
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void jvcComToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start($"https://www.jeuxvideo.com/recherche.php?q={GameName}");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gfToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            Process.Start($"https://gamefaqs.gamespot.com/search?game={GameName}");
+
+        }
+        #endregion
     }
 }

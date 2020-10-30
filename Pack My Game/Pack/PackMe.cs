@@ -961,8 +961,8 @@ namespace Pack_My_Game.Pack
         /// <remarks>To Add Mask see 'Where'</remarks>
         private void CopyImages()
         {
-            var res = MB_SimpleAll.Show($"{Lang.ImagesP} ?", Lang.ImagesTitle, buttons: Dcs_Buttons2.OverWrite | Dcs_Buttons2.Pass);
-
+            //2020/10/28 déplacé var res = MB_SimpleAll.Show($"{Lang.ImagesP} ?", Lang.ImagesTitle, buttons: Dcs_Buttons2.OverWrite | Dcs_Buttons2.Pass);
+            
             ITrace.WriteLine(prefix: false);
 
             ITrace.WriteLine(prefix: false);
@@ -1000,6 +1000,7 @@ namespace Pack_My_Game.Pack
             }
 
             ITrace.WriteLine(prefix: false);
+            EDestDecision res = EDestDecision.None;
             // Copy Process
             while (lPackFile.Count != 0)
             {
@@ -1030,9 +1031,16 @@ namespace Pack_My_Game.Pack
                 bool? rezDec = false;
 
 
-
+                // On déclenche en cas de conflit un handle copy + une demande avant
                 if (File.Exists(destFile))
+                {
+                    // On va demander une fois que faire en cas de conflit.
+                    if(res == EDestDecision.None)
+                        res = MB_SimpleAll.Show($"{Lang.ImagesP} ?", Lang.ImagesTitle, buttons: Dcs_Buttons2.OverWrite | Dcs_Buttons2.Pass);
+                    //
                     rezDec = Handle_Copy(pkFile.LinkToThePath,ref destFile, res);
+
+                }
 
                 if (rezDec == null)
                     continue;
@@ -1153,7 +1161,7 @@ namespace Pack_My_Game.Pack
                 // --- En cas de renommage
                 case EDestDecision.Rename:
                     // Le fichier cible devra être renommé.
-                    dest = FilesFunc.Choose_AName(dest, "_ZeGame.ExploitableFileName-");
+                    dest = FilesFunc.Choose_AName(dest, $"{_ZeGame.ExploitableFileName}-");
                     return false;
 
                 case EDestDecision.OverWrite:

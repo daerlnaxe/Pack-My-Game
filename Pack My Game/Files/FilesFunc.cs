@@ -90,6 +90,7 @@ namespace Pack_My_Game.Files
         /// </summary>
         /// <param name="destFile">Fichier de destination</param>
         /// <param name="defFile">Nom de Fichier proposé</param>
+        /// <remarks>Ne permet pas de stopper si on clot la fenêtre</remarks>
         internal static string Choose_AName(string destFile, string defFile = null)
         {
             string destFolder = Path.GetDirectoryName(destFile);
@@ -97,18 +98,28 @@ namespace Pack_My_Game.Files
             SaveFileDialog sfd = new SaveFileDialog()
             {
                 InitialDirectory = destFolder,
-                FileName = Path.GetFileName(defFile)
+                FileName = Path.GetFileName($"{defFile}{Path.GetExtension(destFile)}")
             };
 
+            string newDestFile = null;
             while (true)
             {
-                sfd.ShowDialog();
+                bool? res = sfd.ShowDialog();
 
-                if (!File.Exists(sfd.FileName))
+                /* Cas où l'on ferme la fenêtre res = false
+                 * On ne peut pas ne rien rentrer comme chaine de caractère, ça ne valide pas.
+                */
+                /*if (sfd.FileName == null)
+                    continue;*/
+                newDestFile = Path.Combine(destFolder, sfd.FileName);
+
+                if (!File.Exists(newDestFile))
                     break;
+
+
             }
 
-            return sfd.FileName;
+            return newDestFile;
         }
     }
 
