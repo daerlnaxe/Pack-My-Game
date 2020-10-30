@@ -81,6 +81,9 @@ namespace Pack_My_Game
              cp.Show();*/
 
             //.Except(CultureInfo.GetCultures(CultureTypes.SpecificCultures));
+            
+
+
             _lbPath = Settings.Default.LBPath;
             _OutPPath = Settings.Default.OutPPath;
 
@@ -102,7 +105,9 @@ namespace Pack_My_Game
 
             // Chargement des paramètres - Load settings
             // Launchbox Path
-            if (!string.IsNullOrEmpty(_lbPath))
+            /*2020/10/30
+            if (!string.IsNullOrEmpty(_lbPath))*/
+            if(Directory.Exists(_lbPath))
             {
                 this.lLaunchBoxPath.Text = _lbPath;
                 this.lLaunchBoxPath.AutoSize = true;
@@ -110,12 +115,27 @@ namespace Pack_My_Game
 
                 this.groupOP.Visible = true;
             }
+            //2020/10/30
+            else if(!string.IsNullOrEmpty(_lbPath))
+            {
+                MessageBox.Show("Problem on LaunchBox path", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _lbPath = null;
+            }
+            //2020/10/30
 
+            /* 2020/10/30
             if (!string.IsNullOrEmpty(_OutPPath))
+            */
+            if(Directory.Exists(_OutPPath))
             {
                 this.tbOutPPath.Text = _OutPPath;
 
                 Console.WriteLine($"Init: Output folder = '{_OutPPath}'");
+            }
+            else if (!string.IsNullOrEmpty(_OutPPath))
+            {
+                MessageBox.Show("Problem on Output Folder path", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _OutPPath = null;
             }
 
             if (!string.IsNullOrEmpty(_OutPPath) && !string.IsNullOrEmpty(_lbPath))
@@ -243,9 +263,12 @@ namespace Pack_My_Game
                 lboxMachines.DataSource = lm;
             }
             else
-            {
+            {                
+                //30/10/2020
+                /*
                 Properties.Settings.Default.LBPath = null;
-                Properties.Settings.Default.Save();
+                Properties.Settings.Default.Save();*/
+                //30/10/2020
                 _lbPath = null;
                 // LaunchBoxPath.Text = null;
             }
