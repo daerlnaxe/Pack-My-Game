@@ -27,6 +27,7 @@ using Pack_My_Game.Enum;
 using Pack_My_Game.Files;
 using System.Security.Cryptography;
 using System.Runtime.CompilerServices;
+using DxTrace.Messengers;
 
 namespace Pack_My_Game.Pack
 {

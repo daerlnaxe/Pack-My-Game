@@ -161,3 +161,11 @@ silent debug...)
 - [ ] Make a system (not for now) to have the possibility to scrap to txt files, from a website (by plugin)
 - [ ] <del>See to count images in subfolder fo the master folder images and have something like x in the folder / total y for subfolders</del>
 - [ ] Find somebody that wants hire me... in CDI :/
+- [ ] Unpack My Game:
+  * Search Folders in xml from LaunchBox
+  * In Pack My Game: Modify to manage files according to the type to have a constant folders
+  * Extracter
+  * Backup data into unpack my game
+  * Modify xml data file.
+  
+  
