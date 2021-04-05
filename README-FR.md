@@ -18,6 +18,7 @@ Téléchargez [PackMyGame-x86.zip](https://github.com/daerlnaxe/Pack-My-Game/blo
  * Calcul d'un fichier somme à la fin de la compression
  * Extraction des données concernant la plateforme
  * Les données extraites (TBGame & TBPlatform) sont certifiées verbatim, les données sont directement extraites des balises sans passer par une classe container.
+ * Toute copie de fichier est vérifiée, vous pouvez le voir dans le traçage
  
 	
 	
@@ -34,6 +35,19 @@ Téléchargez [PackMyGame-x86.zip](https://github.com/daerlnaxe/Pack-My-Game/blo
 ## Versions:
 
 ### Alpha 2.0.0.0
+ * Gros changements, l'application migre au système wpf plutôt que forms.
+ * .Net Core + .Net standard pour les librairies externes
+ * Unpack-My-Game terminé, pour réinjecter vos jeux dans LaunchBox (plusieurs modes)
+ * Calcule des fichiers md5 après la compression (permet de vérifier l'intégrité pour plus tard)
+ * extracte les données d'une plateforme pour conserver ça pour plus tard (mode à venir pour l'utiliser dans unpack-my-game)
+ * Les données extraitent nommées 'True Backup' n'utilisent pas de class, pour suivre l'évolution de LaunchBox sans gestion. S'il n'y a pas de gros changement à propos des fichiers xml ça devrait suivre les updates sans modification nécessaire.
+  * Grosses modifications au sujet du comportement des fenêtres demandant quoi faire  en cas de conflit de fichiers (séparation entre les fichiers images, du reste des fichiers au niveau de la mémorisation des choix) 
+ * Quelques bugs mineurs sont connus, référez vous à la section avant d'utiliser.
+ * Sépare une grosse partie du travail sur les fichiers xml afin que ça soit réutilisable (vous pouvez vous en servir mais il y a du nettoyage à faire)
+ * Nouveau système de traduction pour Pack-My-Game (utilise des fichiers xml, vous avez juste à reprendre le fichier us, traduire et si possible nommer comme j'ai fait)
+ * Il y a encore des modifications à faire.
+ * Nouveau système de limitation de caractères dans la fenêtre pour ajouter des cheats codes (l'ancien est toujours disponible via le bouton, utilisez la checkbox pour le nouveau).
+ * Il n'y a plus de vérification avant de demander à l'utilisateur que faire, il y a une vérification en cas de copie uniquement.
 
 ### Beta 1.3.0.7 01/02/2020
  * Correction de plusieurs bugs.
@@ -83,18 +97,4 @@ Téléchargez [PackMyGame-x86.zip](https://github.com/daerlnaxe/Pack-My-Game/blo
 
 		
 ### TODO
- - [ ] Work in progress: Eliminate duplicates images files function in contextual menu (md5 calcul)
- - [ ] Filtrer les plateformes
- - [ ] Securité sur le dossier de travail sur la page principale (en plus de celle de PackMe)
- - [ ] Trouver un meilleur moyen de gérer la confirmation au niveau des images
- - [ ] Corriger la version anglaise
- - [ ] Ajouter miniature pour les photos sur la box de collision (voir si nécessaire)
- - [ ] Ajout d'un mode debug silencieux
- - [ ] Mode silent sans box ? (All overwrite)
- - [ ] Mode silent sans fenêtre window
- - [ ] Fenetre contextuelle clic droit list view, avec justZip & just7Z + faire infoxml seul, tree seul.
- - [ ] Editer les infos dans la short list ? => signifie de charger la totalité du jeu
- - [ ] Splashscreen au loading
- - [ ] Ameliorate config with own browser system  and box path editable (personel: voir dans Gesum, probablement déjà présent)
- - [ ] md5 Compareason md5 (Upgrader le projet dlnxLocalTransfert) ?
- - [ ] Bouger VFolder, HFolder, copyfile, reconstruct path (mettre une option basique de sécurité sur le chemin)
+See english version

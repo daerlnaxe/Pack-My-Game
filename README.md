@@ -1,5 +1,4 @@
 # Pack-My-Game
-
 Download folder: https://github.com/daerlnaxe/Pack-My-Game/tree/master/Releases  
 
 ## What it does:
@@ -18,6 +17,7 @@ Download folder: https://github.com/daerlnaxe/Pack-My-Game/tree/master/Releases
  * Calculate a sum file at the end of compression 
  * Extract datas abouts platform selected
  * Datas extracted (TBGame & TBPlatform) are verbatim, datas are direcly extacted from balises without using a container class. 
+ * All copy of file is verified you can see it in logs.
 	
 ## Why ?
  * Because as a french gamer i wanted to save everything i fill about my games and keep it
@@ -35,6 +35,23 @@ no image file in the the destination folder. (28/10/2020 to Modify)
  * It logs everything during the game treatment in a window, and a file.
 		
 ## Versions
+### Alpha 2.0.0.0
+ * Big changes, the application migrates to wpf system instead of forms.
+ * .Net Core + .Net standard for external libraries.
+ * Unpack released to reinject game into LaunchBox (several modes)
+ * Calculates a md5 files after compression
+ * extract datas about platform to keep it somewhere (a new mode will come to exploit this)
+ * Datas extracted named True Backup doesn't use a class, to follow evolution of LaunchBox without managing. If there is no big update about xml files it must follow without problem all updates.
+ * Big modifications about behavior for windows asking what to do in case of file conflict (split about memorized choices between images files and others).
+ * Some minor bugs are know, refer to this section before to use it.
+ * Split a big part of xml works to be reusable (you can use it but there is a lot of cleaning to do).
+ * New system for localization for Pack-My-Game (uses xml files, you just need to copy us file, translate and if possible name like i did)
+ * Still to have some localization to finish.
+ * New system of limitation for characters in cheat code windows, old exists for the while by the button, use the checkbox for the newest)
+ * There is no more verification before asking to user what to do, there is a verification only in case of copy.
+
+
+
 ### Beta 1.6.0.2 Work In Progress
  * Give a name when you want to choose to rename.
  * Correction for a windows, when you want to extend size to view files to get.
@@ -144,38 +161,27 @@ silent debug...)
 
 
 ## TODO
-- [ ] <del>Work in progress: Eliminate duplicates images files function in contextual menu (md5 calcul)</del>
-- [ ] Filter supports
 - [x] Find a better way to handle images files
+- [x] md5/sha Calculation of the package
+- [x] Unpack My Game
+- [x] <del>See to count images in subfolder fo the master folder images and have something like x in the folder / total y for subfolders</del>
 - [ ] Correct the english version		
-- [ ] Carroussel to see image files to overwrite etc... (if necessary)		
-- [x] Add Debug Options in panel config
-- [ ] <del>Mode silent without box prompt ? (All overwrite)</del>
-- [ ] Mode silent without log window
-- [x] Contextual menu with 7zip only, ziponly ?
-- [ ] Edit info in short list ? => it means to load total information of the game.
-- [ ] Splashscreen on loading
-- [ ] Ameliorate config with own browser system  and box path editable
-- [x] md5 Compareason ?
-- [ ] Move VFolder, HFolder, copyfile, reconstruct path (set a security basic path option)
-- [ ] md5/sha Calculation of the package
-- [x] bug for system to correct
-- [x] bug of unwanted space in "cheat" box
+- [ ] <del>Work in progress: Eliminate duplicates images files function in contextual menu (md5 calcul)</del>
+- [ ] Stop compression don't stop task in background, compression continue.
+- [ ] Do a wiki
+- [ ] Splashscreen on loading or cursor waiting.
+- [ ] Finish translation
+- [ ] new mode for unpack using the platform xml file
 - [ ] Make a system to have possibility to add new site for research (perhaps plugin, or config files)
 - [ ] Make a system (not for now) to have the possibility to scrap to txt files, from a website (by plugin)
-- [ ] <del>See to count images in subfolder fo the master folder images and have something like x in the folder / total y for subfolders</del>
-- [ ] Find somebody that wants hire me... in CDI :/
-- [ ] Unpack My Game:
-  * Search Folders in xml from LaunchBox
-  * In Pack My Game: Modify to manage files according to the type to have a constant folders
-  * Extracter
-  * Backup data into unpack my game
-  * Modify xml data file.
-  [ ] Change SevenZip library 
-  [ ] Mieux remercier les créateurs de dotnet.zip / sevenzip
-  [ ] Changer le système de paramétrage (JSon + Nomade)
+- [ ] Find somebody that wants hire me... real contract  :/
+
+useful ?
+- [ ] Filter supports
+- [ ] <del>Mode silent without box prompt ? (All overwrite)</del>
+- [ ] Edit info in short list ? => it means to load total information of the game.
+- [x] md5 Compareason ?  
+- [ ] Changer le système de paramétrage (JSon + Nomade)
   
-  Notes:
-   - a vérifier TBGame copie exacte, EBGame enhanced
   
   
