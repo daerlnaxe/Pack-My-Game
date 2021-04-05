@@ -13,7 +13,7 @@ Téléchargez [PackMyGame-x86.zip](https://github.com/daerlnaxe/Pack-My-Game/blo
  * Sauvegarde les données à propos d'un jeu de LaunchBox xml
  * Quand PackMe run,  crée un fichier xml amélioré, ajoutant les chemins manquants, en plus de faire une sauvegarde des données originelles.
  * Permet de choisir manuellement des fichiers video, music, manuel si la base de données ne mentionne pas les chemins
- * ~~~Le nouveau menu contextuel Contextual permet de construire petit à petit le dossier de travail pour le compresser plus tard.
+ * ~~~Le nouveau menu contextuel Contextual permet de construire petit à petit le dossier de travail pour le compresser plus tard.~~~~
  * Unpack permet de réinjecter dans LaunchBox
  * Calcul d'un fichier somme à la fin de la compression
  * Extraction des données concernant la plateforme
