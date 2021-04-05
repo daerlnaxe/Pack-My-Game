@@ -13,18 +13,28 @@ Téléchargez [PackMyGame-x86.zip](https://github.com/daerlnaxe/Pack-My-Game/blo
  * Sauvegarde les données à propos d'un jeu de LaunchBox xml
  * Quand PackMe run,  crée un fichier xml amélioré, ajoutant les chemins manquants, en plus de faire une sauvegarde des données originelles.
  * Permet de choisir manuellement des fichiers video, music, manuel si la base de données ne mentionne pas les chemins
- * Le nouveau menu contextuel Contextual permet de construire petit à petit le dossier de travail pour le compresser plus tard.
+ * (Retiré)Le nouveau menu contextuel Contextual permet de construire petit à petit le dossier de travail pour le compresser plus tard.
+ * Unpack permet de réinjecter dans LaunchBox
+ * Calcul d'un fichier somme à la fin de la compression
+ * Extraction des données concernant la plateforme
+ * Les données extraites (TBGame & TBPlatform) sont certifiées verbatim, les données sont directement extraites des balises sans passer par une classe container.
+ 
+	
 	
 ## Pourquoi ?
  * En tant que joueur Français je voulais sauver toutes mes modifications et les conserver pour plus tard, au cas où.
 
 ## Note
  * Ne déplace ni n'efface JAMAIS aucune fichier source.
- * Demande avant d'écraser les roms, manuels, musiques, vidéos qui sont déjà dans le dossier de TRAVAIL au cours de la copie
+ * Unpack fait une backup du fichier de la plateforme avant de modifier.
+ * Demande avant d'écraser les roms, manuels, musiques, vidéos qui sont déjà dans le dossier de TRAVAIL au cours de la copie 
  * Actuellement le programme demande une permission globale avant d'écraser les fichiers images en cas d'éventuel conflit qu'il y ait ou non des fichiers images dans le répertoire de travail.
  * Les clones ajoutés ne le sont qu'à condition d'être groupés dans LaunchBox
 		
 ## Versions:
+
+### Alpha 2.0.0.0
+
 ### Beta 1.3.0.7 01/02/2020
  * Correction de plusieurs bugs.
  * Peut packer un jeu dont le titre contient des charactères spéciaux (certains fichiers n'étaient pas pris en compte avant)

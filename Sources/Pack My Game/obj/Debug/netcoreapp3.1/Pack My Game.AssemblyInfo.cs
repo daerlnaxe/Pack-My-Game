@@ -20,11 +20,11 @@ using System.Reflection;
 - It takes also the cheatcode files if you fill the path('GameName-.')
 - It generates a tree view file.
 - 7z and zip compression """)]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.8.0.0")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("2.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("Pack My Game")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Pack My Game")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.8.0.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("2.0.0.0")]
 
 // Généré par la classe MSBuild WriteCodeFragment.
 
