@@ -1,0 +1,61 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+21:40:10 Work on: Aladdin.zip
+21:40:10 Zip Decompression
+21:40:10 	ZipExtraction: EBGame.xml
+21:40:11 	ZipExtraction: Infos.xml
+21:40:12 	ZipExtraction: Struct.info
+21:40:12 	ZipExtraction: TBGame.xml
+21:40:12 	ZipExtraction: CheatCodes/
+21:40:12 	ZipExtraction: Images/
+21:40:12 	ZipExtraction: Images/Arcade - Marquee/
+21:40:12 	ZipExtraction: Images/Arcade - Marquee/Aladdin-01.png
+21:40:12 	ZipExtraction: Images/Banner/
+21:40:12 	ZipExtraction: Images/Banner/Aladdin-01.jpg
+21:40:12 	ZipExtraction: Images/Banner/Aladdin-02.jpg
+21:40:12 	ZipExtraction: Images/Box - 3D/
+21:40:12 	ZipExtraction: Images/Box - 3D/Europe/
+21:40:12 	ZipExtraction: Images/Box - 3D/Europe/Aladdin-01.png
+21:40:12 	ZipExtraction: Images/Box - Back/
+21:40:12 	ZipExtraction: Images/Box - Back/Europe/
+21:40:12 	ZipExtraction: Images/Box - Back/Europe/Aladdin-01.jpg
+21:40:12 	ZipExtraction: Images/Box - Front/
+21:40:12 	ZipExtraction: Images/Box - Front/Europe/
+21:40:12 	ZipExtraction: Images/Box - Front/Europe/Aladdin-01.png
+21:40:12 	ZipExtraction: Images/Cart - Front/
+21:40:12 	ZipExtraction: Images/Cart - Front/Europe/
+21:40:12 	ZipExtraction: Images/Cart - Front/Europe/Aladdin-01.png
+21:40:12 	ZipExtraction: Images/Clear Logo/
+21:40:12 	ZipExtraction: Images/Clear Logo/Europe/
+21:40:12 	ZipExtraction: Images/Clear Logo/Europe/Aladdin-01.png
+21:40:12 	ZipExtraction: Images/Fanart - Background/
+21:40:12 	ZipExtraction: Images/Fanart - Background/Aladdin-01.jpg
+21:40:12 	ZipExtraction: Images/Screenshot - Gameplay/
+21:40:12 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-01.jpg
+21:40:12 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-02.jpg
+21:40:12 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-03.jpg
+21:40:12 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-04.jpg
+21:40:12 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-05.jpg
+21:40:12 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-06.jpg
+21:40:12 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-07.jpg
+21:40:12 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-08.jpg
+21:40:12 	ZipExtraction: Manuals/
+21:40:12 	ZipExtraction: Musics/
+21:40:12 	ZipExtraction: Musics/Aladdin.mp3
+21:40:12 	ZipExtraction: Roms/
+21:40:12 	ZipExtraction: Roms/Aladdin (Europe).md
+21:40:13 	ZipExtraction: Videos/
+21:40:13 	ZipExtraction: Videos/Aladdin-01.mp4
+21:40:13 	ZipExtraction: Manuals/Disney's_Aladdin_MD_FR_Manual.pdf
+21:40:13 	ZipExtraction: Roms/Disney's Aladdin (E) [f1].md
+21:40:13 	ZipExtraction: 800px-Aladdin_MD_EU_Box.jpg
+21:40:13 	ZipExtraction: 800px-Aladdin_MD_EU_Cart.jpg
+21:40:13 	ZipExtraction: Roms/Aladdin (USA).md
+21:40:13 	ZipExtraction: Roms/Disney's Aladdin (U) [f1].md
+21:40:13 	ZipExtraction: Roms/Disney's Aladdin (U) [h1C].md
+21:40:13 	ZipExtraction: Roms/Disney's Aladdin (U) [T+Fre0.99Beta_Macrotrads].md
+21:40:13 	ZipExtraction: CheatCodes/Aladdin.txt
+21:40:13 Game info xml loaded: Aladdin
+21:40:13 Target Game path: ..\..\Plateformes\Games\Sega Mega Drive
+21:40:13 Target Manuals  path: ..\..\Plateformes\Manuals\Sega Mega Drive
+21:40:13 Target Musics path: ..\..\Plateformes\Music\Sega Mega Drive
+21:40:13 Target Videos path: ..\..\Plateformes\Videos\Sega Mega Drive

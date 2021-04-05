@@ -1,0 +1,169 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+20:04:21 Language fr-FR - 1.0.0.4, loading...
+20:05:02 Language fr-FR - 1.0.0.4, loading...
+20:06:47 [Main] PackMe for 'Ecco the Dolphin' | '2c00a91f-9f5d-4331-869c-cb23bbdeec53'
+20:06:47 [MakeStructure] Creation of the tree
+20:06:47 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Games'
+20:06:47 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\CheatCodes'
+20:06:47 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Images'
+20:06:47 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Manuals'
+20:06:47 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Musics'
+20:06:47 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Videos'
+20:06:47 Not managed: GogAppId
+20:06:47 Not managed: OriginAppId
+20:06:47 Not managed: OriginInstallPath
+20:08:09 Not managed: MissingBox3dImage
+20:08:21 Not managed: MissingCartImage
+20:08:24 Not managed: MissingCart3dImage
+20:08:27 Not managed: MissingManual
+20:08:30 Not managed: MissingBannerImage
+20:08:34 Not managed: MissingMusic
+20:08:37 Not managed: UsePauseScreen
+20:08:41 Not managed: PauseAutoHotkeyScript
+20:08:52 Not managed: ResumeAutoHotkeyScript
+20:08:56 Not managed: OverrideDefaultPauseScreenSettings
+20:09:00 Not managed: SuspendProcessOnPause
+20:09:02 Not managed: ForcefulPauseScreenActivation
+20:09:06 Not managed: LoadStateAutoHotkeyScript
+20:09:11 Not managed: SaveStateAutoHotkeyScript
+20:09:15 Not managed: ResetAutoHotkeyScript
+20:09:17 Not managed: SwapDiscsAutoHotkeyScript
+20:09:18 Not managed: AndroidBoxFrontThumbPath
+20:09:20 Not managed: AndroidBoxFrontFullPath
+20:09:21 Not managed: AndroidBackgroundPath
+20:09:22 [CopyFiles] Copy of the file 'Ecco the Dolphin (1993)(Sega)(PAL)(Track 01 of 16)[!][MK-4408P-00135 1].iso': Error
+20:09:23 Could not find a part of the path 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Games\Ecco the Dolphin (1993)(Sega)(PAL)(Track 01 of 16)[!][MK-4408P-00135 1].iso\Ecco the Dolphin (1993)(Sega)(PAL)(Track 01 of 16)[!][MK-4408P-00135 1].iso'.
+20:09:47 Could not find a part of the path 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Games\Ecco the Dolphin (1993)(Sega)(PAL)(Track 01 of 16)[!][MK-4408P-00135 1].iso\Ecco the Dolphin (1993)(Sega)(PAL)(Track 01 of 16)[!][MK-4408P-00135 1].iso'.
+20:09:53 [Main] PackMe for 'Ecco the Dolphin' | '2c00a91f-9f5d-4331-869c-cb23bbdeec53'
+20:09:53 Directory Exists 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]'
+20:09:56 Trash existing folder: 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]'
+20:09:57 [MakeStructure] Creation of the tree
+20:09:57 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Games'
+20:09:57 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\CheatCodes'
+20:09:57 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Images'
+20:09:57 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Manuals'
+20:09:57 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Musics'
+20:09:57 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Videos'
+20:09:57 Not managed: GogAppId
+20:09:57 Not managed: GogAppId
+20:10:01 Not managed: OriginAppId
+20:10:01 Not managed: OriginAppId
+20:10:01 Not managed: OriginInstallPath
+20:10:01 Not managed: OriginInstallPath
+20:10:01 Not managed: MissingBox3dImage
+20:10:01 Not managed: MissingBox3dImage
+20:10:01 Not managed: MissingCartImage
+20:10:01 Not managed: MissingCartImage
+20:10:01 Not managed: MissingCart3dImage
+20:10:01 Not managed: MissingCart3dImage
+20:10:01 Not managed: MissingManual
+20:10:01 Not managed: MissingManual
+20:10:01 Not managed: MissingBannerImage
+20:10:01 Not managed: MissingBannerImage
+20:10:01 Not managed: MissingMusic
+20:10:01 Not managed: MissingMusic
+20:10:01 Not managed: UsePauseScreen
+20:10:01 Not managed: UsePauseScreen
+20:10:01 Not managed: PauseAutoHotkeyScript
+20:10:01 Not managed: PauseAutoHotkeyScript
+20:10:01 Not managed: ResumeAutoHotkeyScript
+20:10:01 Not managed: ResumeAutoHotkeyScript
+20:10:01 Not managed: OverrideDefaultPauseScreenSettings
+20:10:01 Not managed: OverrideDefaultPauseScreenSettings
+20:10:01 Not managed: SuspendProcessOnPause
+20:10:01 Not managed: SuspendProcessOnPause
+20:10:01 Not managed: ForcefulPauseScreenActivation
+20:10:01 Not managed: ForcefulPauseScreenActivation
+20:10:01 Not managed: LoadStateAutoHotkeyScript
+20:10:01 Not managed: LoadStateAutoHotkeyScript
+20:10:01 Not managed: SaveStateAutoHotkeyScript
+20:10:01 Not managed: SaveStateAutoHotkeyScript
+20:10:01 Not managed: ResetAutoHotkeyScript
+20:10:01 Not managed: ResetAutoHotkeyScript
+20:10:01 Not managed: SwapDiscsAutoHotkeyScript
+20:10:01 Not managed: SwapDiscsAutoHotkeyScript
+20:10:01 Not managed: AndroidBoxFrontThumbPath
+20:10:01 Not managed: AndroidBoxFrontThumbPath
+20:10:01 Not managed: AndroidBoxFrontFullPath
+20:10:01 Not managed: AndroidBoxFrontFullPath
+20:10:01 Not managed: AndroidBackgroundPath
+20:10:01 Not managed: AndroidBackgroundPath
+20:10:57 [CopyFiles] Copy of the file 'Ecco the Dolphin (1993)(Sega)(PAL)(Track 01 of 16)[!][MK-4408P-00135 1].iso': Error
+20:10:57 Could not find a part of the path 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Games\Ecco the Dolphin (1993)(Sega)(PAL)(Track 01 of 16)[!][MK-4408P-00135 1].iso\Ecco the Dolphin (1993)(Sega)(PAL)(Track 01 of 16)[!][MK-4408P-00135 1].iso'.
+20:11:02 Could not find a part of the path 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Games\Ecco the Dolphin (1993)(Sega)(PAL)(Track 01 of 16)[!][MK-4408P-00135 1].iso\Ecco the Dolphin (1993)(Sega)(PAL)(Track 01 of 16)[!][MK-4408P-00135 1].iso'.
+20:11:12 [Main] PackMe for 'Ecco the Dolphin' | '2c00a91f-9f5d-4331-869c-cb23bbdeec53'
+20:11:12 Directory Exists 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]'
+20:11:15 Trash existing folder: 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]'
+20:11:15 [MakeStructure] Creation of the tree
+20:11:15 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Games'
+20:11:15 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\CheatCodes'
+20:11:15 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Images'
+20:11:15 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Manuals'
+20:11:15 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Musics'
+20:11:15 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Videos'
+20:11:15 Not managed: GogAppId
+20:11:15 Not managed: GogAppId
+20:11:15 Not managed: GogAppId
+20:11:15 Not managed: OriginAppId
+20:11:15 Not managed: OriginAppId
+20:11:15 Not managed: OriginAppId
+20:11:15 Not managed: OriginInstallPath
+20:11:15 Not managed: OriginInstallPath
+20:11:15 Not managed: OriginInstallPath
+20:11:15 Not managed: MissingBox3dImage
+20:11:15 Not managed: MissingBox3dImage
+20:11:15 Not managed: MissingBox3dImage
+20:11:15 Not managed: MissingCartImage
+20:11:15 Not managed: MissingCartImage
+20:11:16 Not managed: MissingCartImage
+20:11:16 Not managed: MissingCart3dImage
+20:11:16 Not managed: MissingCart3dImage
+20:11:16 Not managed: MissingCart3dImage
+20:11:16 Not managed: MissingManual
+20:11:16 Not managed: MissingManual
+20:11:16 Not managed: MissingManual
+20:11:16 Not managed: MissingBannerImage
+20:11:16 Not managed: MissingBannerImage
+20:11:16 Not managed: MissingBannerImage
+20:11:16 Not managed: MissingMusic
+20:11:16 Not managed: MissingMusic
+20:11:16 Not managed: MissingMusic
+20:11:16 Not managed: UsePauseScreen
+20:11:16 Not managed: UsePauseScreen
+20:11:16 Not managed: UsePauseScreen
+20:11:16 Not managed: PauseAutoHotkeyScript
+20:11:16 Not managed: PauseAutoHotkeyScript
+20:11:16 Not managed: PauseAutoHotkeyScript
+20:11:16 Not managed: ResumeAutoHotkeyScript
+20:11:16 Not managed: ResumeAutoHotkeyScript
+20:11:16 Not managed: ResumeAutoHotkeyScript
+20:11:16 Not managed: OverrideDefaultPauseScreenSettings
+20:11:16 Not managed: OverrideDefaultPauseScreenSettings
+20:11:16 Not managed: OverrideDefaultPauseScreenSettings
+20:11:16 Not managed: SuspendProcessOnPause
+20:11:16 Not managed: SuspendProcessOnPause
+20:11:16 Not managed: SuspendProcessOnPause
+20:11:16 Not managed: ForcefulPauseScreenActivation
+20:11:16 Not managed: ForcefulPauseScreenActivation
+20:11:16 Not managed: ForcefulPauseScreenActivation
+20:11:16 Not managed: LoadStateAutoHotkeyScript
+20:11:16 Not managed: LoadStateAutoHotkeyScript
+20:11:16 Not managed: LoadStateAutoHotkeyScript
+20:11:16 Not managed: SaveStateAutoHotkeyScript
+20:11:16 Not managed: SaveStateAutoHotkeyScript
+20:11:16 Not managed: SaveStateAutoHotkeyScript
+20:11:16 Not managed: ResetAutoHotkeyScript
+20:11:16 Not managed: ResetAutoHotkeyScript
+20:11:16 Not managed: ResetAutoHotkeyScript
+20:11:16 Not managed: SwapDiscsAutoHotkeyScript
+20:11:16 Not managed: SwapDiscsAutoHotkeyScript
+20:11:16 Not managed: SwapDiscsAutoHotkeyScript
+20:11:16 Not managed: AndroidBoxFrontThumbPath
+20:11:16 Not managed: AndroidBoxFrontThumbPath
+20:11:16 Not managed: AndroidBoxFrontThumbPath
+20:11:16 Not managed: AndroidBoxFrontFullPath
+20:11:16 Not managed: AndroidBoxFrontFullPath
+20:11:16 Not managed: AndroidBoxFrontFullPath
+20:11:16 Not managed: AndroidBackgroundPath
+20:11:16 Not managed: AndroidBackgroundPath
+20:11:16 Not managed: AndroidBackgroundPath

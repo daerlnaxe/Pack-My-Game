@@ -1,0 +1,11 @@
+E:\Programmation\Git-Hub\Pack-My-Game\LaunchBox XML\bin\Debug\netstandard2.1\LaunchBox XML.deps.json
+E:\Programmation\Git-Hub\Pack-My-Game\LaunchBox XML\bin\Debug\netstandard2.1\LaunchBox XML.dll
+E:\Programmation\Git-Hub\Pack-My-Game\LaunchBox XML\bin\Debug\netstandard2.1\LaunchBox XML.pdb
+E:\Programmation\Git-Hub\Pack-My-Game\LaunchBox XML\obj\Debug\netstandard2.1\LaunchBox XML.AssemblyInfoInputs.cache
+E:\Programmation\Git-Hub\Pack-My-Game\LaunchBox XML\obj\Debug\netstandard2.1\LaunchBox XML.AssemblyInfo.cs
+E:\Programmation\Git-Hub\Pack-My-Game\LaunchBox XML\obj\Debug\netstandard2.1\LaunchBox XML.csproj.CoreCompileInputs.cache
+E:\Programmation\Git-Hub\Pack-My-Game\LaunchBox XML\obj\Debug\netstandard2.1\LaunchBox XML.dll
+E:\Programmation\Git-Hub\Pack-My-Game\LaunchBox XML\obj\Debug\netstandard2.1\LaunchBox XML.pdb
+E:\Programmation\Git-Hub\Pack-My-Game\LaunchBox XML\obj\Debug\netstandard2.1\LaunchBox XML.csprojAssemblyReference.cache
+E:\Programmation\Git-Hub\Pack-My-Game\LaunchBox XML\bin\Debug\netstandard2.1\Unbroken.LaunchBox.Plugins.dll
+E:\Programmation\Git-Hub\Pack-My-Game\LaunchBox XML\obj\Debug\netstandard2.1\LaunchBox XML.csproj.CopyComplete

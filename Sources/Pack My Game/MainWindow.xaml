@@ -1,0 +1,194 @@
+﻿<Window x:Class="Pack_My_Game.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pack_My_Game"
+        xmlns:conv="clr-namespace:Pack_My_Game.IHM.Converters"
+        xmlns:root="clr-namespace:Pack_My_Game"
+        xmlns:l="clr-namespace:Pack_My_Game.Resources"
+        xmlns:l2="clr-namespace:DxTBoxCore.Languages;assembly=DxTBoxCore"
+        mc:Ignorable="d"
+        Title="{Binding WindowTitle, 
+                RelativeSource={RelativeSource Mode=Self},
+                Mode=OneWay}"
+        Height="600" Width="800"
+        >
+    <Window.CommandBindings>
+        <CommandBinding Command="local:MainWindow.ExtractPlatformCmd" CanExecute="Can_ExtractPlatform" Executed="Exec_ExtractPlatform"/>
+        <CommandBinding Command="local:Common.ProcessCommand" CanExecute="Can_Process" Executed="Exec_Process"/>
+    </Window.CommandBindings>
+    <Window.Resources>
+        <root:Common x:Key="Slang"/>
+        <!--
+        -->
+        <conv:ChFolderNullConverter x:Key="Fallb" />
+        <conv:DataToVisibilityConv x:Key="DataToV" />
+        <x:Array x:Key="testArray" Type="sys:String"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:sys="clr-namespace:System;assembly=mscorlib">
+            <sys:String>Bear</sys:String>
+            <sys:String>Bird</sys:String>
+            <sys:String>Cat</sys:String>
+        </x:Array>
+        <!-- Groupbox -->
+        <Style TargetType="GroupBox">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+        <!-- Label -->
+        <Style TargetType="Label" x:Key="Mini">
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border BorderThickness="1" BorderBrush="LightBlue" CornerRadius="2" Background="WhiteSmoke" Padding="2">
+                            <ContentPresenter Content="{Binding}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Label" BasedOn="{StaticResource lblStyle}">
+        </Style>
+        <!-- TextBlock -->
+        <Style TargetType="TextBlock" BasedOn="{StaticResource tbStyle}" x:Key="tblockS">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <!-- Combobox-->
+        <Style TargetType="ComboBox" BasedOn="{StaticResource cbStyle }">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="MinWidth" Value="100"/>
+        </Style>
+        <!-- Button -->
+        <Style TargetType="Button" BasedOn="{StaticResource btStyle}">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+
+    <DockPanel>
+        <!-- Menu -->
+        <Menu DockPanel.Dock="Top" Height="20" >
+            <MenuItem Header="{Binding Lang.ConfigExp, FallbackValue='Configuration'}" Click="Config_Click" />
+            <MenuItem Header="?">
+                <MenuItem Header="Credits" Click="Credits_Click" />
+                <MenuItem Header="Help" Click="Help_Click" />
+            </MenuItem>
+        </Menu>
+        <!--Buttons -->
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="{Binding Lang.ProcessExp, FallbackValue=ProcessExp}" Command="local:Common.ProcessCommand"/>
+        </StackPanel>
+        <!-- Center -->
+        <Grid Margin="0,5,0,5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <!-- Informations -->
+            <GroupBox Grid.Row="0" Header="{Binding Lang.InfExp, FallbackValue=Informations}" HeaderStringFormat="{}{0}:">
+                <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="484,0,0,0" Click="button_Click"/>
+            </GroupBox>
+            <!-- Options -->
+            <GroupBox Grid.Row="1" Header="{Binding Lang.OptionsExp, FallbackValue=Options}">
+                <ItemsControl ItemsSource="{Binding Options, FallbackValue={StaticResource testArray}}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding}" Style="{StaticResource Mini}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </GroupBox>
+            <!-- parameters -->
+            <GroupBox Grid.Row="2" Header="{Binding Lang.ParamsExp,FallbackValue=Parameters}"
+                      Visibility="{Binding ShowParameters, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"
+                      >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Choose system -->
+                    <Label Content="{Binding Lang.Ch_System, FallbackValue=Ch_System}" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="cbPlatforms" Grid.Column="1" 
+                              ItemsSource="{Binding Platforms, NotifyOnValidationError=True}" DisplayMemberPath="Name"
+                              SelectedItem="{Binding SelectedPlatform}"
+                              SelectionChanged="Platform_Selected"
+                              />
+
+                    <TextBlock Text="{Binding Lang.Select, FallbackValue=Select}" IsHitTestVisible="False" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Visibility" Value="Hidden"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=cbPlatforms,Path=SelectedItem}" Value="{x:Null}">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+                    <Button Grid.Column="3" Content="Extract" Command="local:MainWindow.ExtractPlatformCmd"/>
+                    <!-- Choose a game -->
+                    <Label Grid.Row="1" Grid.ColumnSpan="2"
+                           Content="{Binding Lang.Ch_Games, FallbackValue='Choose Game(s)'}"/>
+                    <ScrollViewer x:Name="sv"  Grid.Row="2" Grid.ColumnSpan="4" VerticalScrollBarVisibility="Auto" 
+                                  IsEnabled="{Binding NoGame, NotifyOnValidationError=True}">
+                        <ListView ItemsSource="{Binding AvailableGames}"  PreviewMouseWheel="Game_WheelMouse">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <EventSetter Event="PreviewMouseDoubleClick" Handler="ListGame_DblClick"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.View>                                
+                                <GridView>
+                                    <GridViewColumn >
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <CheckBox IsChecked="{Binding IsSelected}" Checked="Game_Checked" Unchecked="Game_Unchecked" Tag="{Binding}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>                                            
+                                    </GridViewColumn>
+                                    <GridViewColumn Header="{Binding Lang.TitleExp, FallbackValue=TitleExp}" DisplayMemberBinding="{Binding Title}" />
+                                    <GridViewColumn Header="{Binding Lang.VersionExp, FallbackValue=VersionExp}" DisplayMemberBinding="{Binding Version}" />
+                                    <GridViewColumn Header="{Binding Lang.RegionExp, FallbackValue=RegionExp}" DisplayMemberBinding="{Binding Region}" />
+                                </GridView>
+                            </ListView.View>
+                            <!--
+                            <DataGrid.Columns>
+                                <DataGridCheckBoxColumn />
+                                <DataGridTextColumn 
+                                    Header="{Binding Source={StaticResource Slang}, Path=ObjectLang.TitleExp, FallbackValue=TitleExp}"
+                                    Binding="{Binding Title}"
+                                                    />
+                                <DataGridTextColumn
+                                    Header="{Binding Source={StaticResource Slang}, Path=ObjectLang.VersionExp, FallbackValue=VersionExp}"
+                                    Binding="{Binding Version}" 
+                                                    />
+                            </DataGrid.Columns>
+                            -->
+                        </ListView>
+                    </ScrollViewer>
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </DockPanel>
+</Window>

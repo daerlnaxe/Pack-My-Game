@@ -1,0 +1,14 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+15:20:13 Language fr-FR - 1.0.0.4, loading...
+15:20:31 [Main] PackMe for 'Contra III: The Alien Wars' | 'f59be3bb-a09a-41d5-a77f-4fa10b51e770'
+15:22:10 Not managed: MissingBox3dImage
+15:22:10 Not managed: MissingCartImage
+15:22:10 Not managed: MissingCart3dImage
+15:22:10 Not managed: MissingManual
+15:22:10 Not managed: MissingBannerImage
+15:22:10 Not managed: MissingMusic
+15:22:44 Not managed: UsePauseScreen
+15:22:44 Not managed: OverrideDefaultPauseScreenSettings
+15:22:44 Not managed: SuspendProcessOnPause
+15:22:44 Not managed: ForcefulPauseScreenActivation
+15:22:44 Not managed: ReleaseType

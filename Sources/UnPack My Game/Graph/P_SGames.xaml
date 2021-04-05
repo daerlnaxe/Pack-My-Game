@@ -1,0 +1,51 @@
+﻿<Page x:Class="UnPack_My_Game.Graph.P_SGames"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UnPack_My_Game.Graph"
+      xmlns:l="clr-namespace:UnPack_My_Game.Resources"
+      xmlns:lc="clr-namespace:DxTBoxCore.Languages;assembly=DxTBoxCore"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="P_LaunchBoxS">
+    <Page.CommandBindings>
+        <CommandBinding Command="local:P_SGames.SelectAllCommand" CanExecute="Can_Command" Executed="Exec_SelectAll" />
+        <CommandBinding Command="local:P_SGames.DeselectAllCommand" CanExecute="Can_Command" Executed="Exec_DeselectAll"/>
+        <!--
+        -->      
+
+    </Page.CommandBindings>
+    <Page.Resources>
+        <Style TargetType="Label" BasedOn="{StaticResource lbStyle}"/>
+        <Style TargetType="TextBlock" BasedOn="{StaticResource tblockStyle}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="Button" BasedOn="{StaticResource btStyle}"/>
+    </Page.Resources>
+
+    <DockPanel>
+        <!-- Chemin -->
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+            <Button Content="{x:Static lc:DxTBLang.Browse}" Click="Button_Click"/>
+            <TextBlock Text="{Binding SelectedFolder, FallbackValue={x:Static l:Lang.I_SevG}}"/>
+        </StackPanel>
+        <!-- Buttons -->
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+            <Button Command="local:P_SGames.DeselectAllCommand" Content="{x:Static l:Lang.DeSelect_all}"/>
+            <Button Command="local:P_SGames.SelectAllCommand" Content="{x:Static l:Lang.Select_All}"/>
+        </StackPanel>
+        <!-- Liste of games -->
+        <ScrollViewer Height="400">
+            <ListBox ItemsSource="{Binding AvailableGames}" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox IsChecked="{Binding Selected}" Content="{Binding Nom}"
+                                  Tag="{Binding}"
+                                  Checked="Game_Checked" Unchecked="Game_Unchecked"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+    </DockPanel>
+</Page>

@@ -1,0 +1,126 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+20:22:33 Language fr-FR - 1.0.0.4, loading...
+20:23:03 [Main] PackMe for 'Donkey Kong Country' | 'fc1ac9d2-d88a-4851-8939-cea8ddeb74bb'
+20:23:03 Directory Exists 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]'
+20:23:06 [MakeStructure] Creation of the tree
+20:23:06 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Games'
+20:23:06 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\CheatCodes'
+20:23:06 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Images'
+20:23:06 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Manuals'
+20:23:06 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Musics'
+20:23:06 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Videos'
+20:23:06 Not managed: GogAppId
+20:23:06 Not managed: OriginAppId
+20:23:06 Not managed: OriginInstallPath
+20:23:06 Not managed: MissingBox3dImage
+20:23:06 Not managed: MissingCartImage
+20:23:06 Not managed: MissingCart3dImage
+20:23:06 Not managed: MissingManual
+20:23:06 Not managed: MissingBannerImage
+20:23:06 Not managed: MissingMusic
+20:23:06 Not managed: UsePauseScreen
+20:23:06 Not managed: PauseAutoHotkeyScript
+20:23:07 Not managed: ResumeAutoHotkeyScript
+20:23:07 Not managed: OverrideDefaultPauseScreenSettings
+20:23:07 Not managed: SuspendProcessOnPause
+20:23:07 Not managed: ForcefulPauseScreenActivation
+20:23:07 Not managed: LoadStateAutoHotkeyScript
+20:23:07 Not managed: SaveStateAutoHotkeyScript
+20:23:07 Not managed: ResetAutoHotkeyScript
+20:23:07 Not managed: SwapDiscsAutoHotkeyScript
+20:23:07 [CopyHandler] Destination file exists... 20:23:12 PassAll
+20:23:14 [CopyHandler] Destination file exists... 20:23:14 PassAll
+20:23:16 [CopyHandler] Destination file exists... 20:23:16 PassAll
+20:23:17 [CopyHandler] Destination file exists... 20:23:17 PassAll
+20:23:17 [CopyHandler] Destination file exists... 20:23:17 PassAll
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Box - Front\Donkey Kong Country-01.png' in 'G:\Plateformes\Images\Nintendo - SNES\Box - Front'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Box - Front\France\Donkey Kong Country-01.png' in 'G:\Plateformes\Images\Nintendo - SNES\Box - Front'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Box - Back\North America\Donkey Kong Country-01.jpg' in 'G:\Plateformes\Images\Nintendo - SNES\Box - Back'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Box - 3D\Donkey Kong Country-01.png' in 'G:\Plateformes\Images\Nintendo - SNES\Box - 3D'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Box - 3D\Donkey Kong Country-02.png' in 'G:\Plateformes\Images\Nintendo - SNES\Box - 3D'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Box - 3D\Europe\Donkey Kong Country-01.png' in 'G:\Plateformes\Images\Nintendo - SNES\Box - 3D'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Arcade - Marquee\Donkey Kong Country-01.png' in 'G:\Plateformes\Images\Nintendo - SNES\Arcade - Marquee'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Banner\Donkey Kong Country-01.jpg' in 'G:\Plateformes\Images\Nintendo - SNES\Banner'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Banner\Donkey Kong Country-01.png' in 'G:\Plateformes\Images\Nintendo - SNES\Banner'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Banner\Donkey Kong Country-02.jpg' in 'G:\Plateformes\Images\Nintendo - SNES\Banner'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Banner\Donkey Kong Country-02.png' in 'G:\Plateformes\Images\Nintendo - SNES\Banner'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Banner\Donkey Kong Country-03.png' in 'G:\Plateformes\Images\Nintendo - SNES\Banner'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Cart - Front\Donkey Kong Country-01.png' in 'G:\Plateformes\Images\Nintendo - SNES\Cart - Front'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Cart - Front\Japan\Donkey Kong Country-01.jpg' in 'G:\Plateformes\Images\Nintendo - SNES\Cart - Front'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Cart - 3D\Donkey Kong Country-01.png' in 'G:\Plateformes\Images\Nintendo - SNES\Cart - 3D'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Cart - 3D\North America\Donkey Kong Country-01.png' in 'G:\Plateformes\Images\Nintendo - SNES\Cart - 3D'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Clear Logo\Donkey Kong Country-01.png' in 'G:\Plateformes\Images\Nintendo - SNES\Clear Logo'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Clear Logo\North America\Donkey Kong Country-01.png' in 'G:\Plateformes\Images\Nintendo - SNES\Clear Logo'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Box - Back\North America\Donkey Kong Country-01.jpg' in 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Box - Back'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Cart - Front\Europe\Donkey Kong Country-01.png' in 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Cart - Front'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background\Donkey Kong Country-01.jpg' in 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background\Donkey Kong Country-01.png' in 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background\Donkey Kong Country-02.jpg' in 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background\Donkey Kong Country-03.jpg' in 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background\Donkey Kong Country-04.jpg' in 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background\Donkey Kong Country-05.jpg' in 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background\Donkey Kong Country-06.jpg' in 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background\Donkey Kong Country-07.jpg' in 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background\Donkey Kong Country-08.jpg' in 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background\Donkey Kong Country-09.jpg' in 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background\Donkey Kong Country-10.jpg' in 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background\Donkey Kong Country-11.jpg' in 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background\Donkey Kong Country-12.jpg' in 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background\Donkey Kong Country-13.jpg' in 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background\Donkey Kong Country-14.jpg' in 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background\Donkey Kong Country-15.jpg' in 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background\Donkey Kong Country-16.jpg' in 'G:\Plateformes\Images\Nintendo - SNES\Fanart - Background'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Screenshot - Gameplay\Europe\Donkey Kong Country-01.png' in 'G:\Plateformes\Images\Nintendo - SNES\Screenshot - Gameplay'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Screenshot - Game Title\Europe\Donkey Kong Country-01.png' in 'G:\Plateformes\Images\Nintendo - SNES\Screenshot - Game Title'
+20:23:17 		[CopyImages] Found 'G:\Plateformes\Images\Nintendo - SNES\Screenshot - Game Over\Donkey Kong Country-01.png' in 'G:\Plateformes\Images\Nintendo - SNES\Screenshot - Game Over'
+20:23:17 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:22 [CopyHandler] Destination file exists... 20:23:22 PassAll
+20:23:24 [CopyHandler] Destination file exists... 20:23:24 PassAll
+20:23:24 [CopyHandler] Destination file exists... 20:23:24 PassAll
+20:23:24 [CopyHandler] Destination file exists... 20:23:24 PassAll
+20:23:24 [CopyHandler] Destination file exists... 20:23:24 PassAll
+20:23:24 [CopyHandler] Destination file exists... 20:23:24 PassAll
+20:23:24 [CopyHandler] Destination file exists... 20:23:24 PassAll
+20:23:24 [CopyHandler] Destination file exists... 20:23:24 PassAll
+20:23:24 [CopyHandler] Destination file exists... 20:23:24 PassAll
+20:23:24 [CopyHandler] Destination file exists... 20:23:24 PassAll
+20:23:24 [CopyHandler] Destination file exists... 20:23:24 PassAll
+20:23:24 [CopyHandler] Destination file exists... 20:23:24 PassAll

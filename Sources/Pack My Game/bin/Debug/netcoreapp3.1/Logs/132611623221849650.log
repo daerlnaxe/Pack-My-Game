@@ -1,0 +1,62 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+17:12:02 Language fr-FR - 1.0.0.4, loading...
+17:12:16 [Main] PackMe for 'Donkey Kong Country' | 'fc1ac9d2-d88a-4851-8939-cea8ddeb74bb'
+17:12:16 Directory Exists 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]'
+17:12:20 [MakeStructure] Creation of the tree
+17:12:24 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Games'
+17:12:24 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\CheatCodes'
+17:12:24 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Images'
+17:12:24 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Manuals'
+17:12:24 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Musics'
+17:12:24 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Videos'
+17:12:24 Not managed: MissingBox3dImage
+17:12:24 Not managed: MissingCartImage
+17:12:24 Not managed: MissingCart3dImage
+17:12:24 Not managed: MissingManual
+17:12:24 Not managed: MissingBannerImage
+17:12:24 Not managed: MissingMusic
+17:12:24 Not managed: UsePauseScreen
+17:12:24 Not managed: OverrideDefaultPauseScreenSettings
+17:12:24 Not managed: SuspendProcessOnPause
+17:12:24 Not managed: ForcefulPauseScreenActivation
+17:12:28 [CopyHandler] Destination file exists... 17:12:37 PassAll
+17:12:42 [CopyHandler] Destination file exists... 17:12:42 PassAll
+17:12:44 [CopyHandler] Destination file exists... 17:12:44 PassAll
+17:12:47 [CopyHandler] Destination file exists... 17:12:47 PassAll
+17:12:47 [CopyHandler] Destination file exists... 17:12:47 PassAll
+17:12:47 Could not find a part of the path 'G:\Temp\Plateformes\Images\Nintendo - SNES\Box - Front'.
+17:13:53 [Main] PackMe for 'Donkey Kong Country' | 'fc1ac9d2-d88a-4851-8939-cea8ddeb74bb'
+17:13:53 Directory Exists 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]'
+17:13:55 [MakeStructure] Creation of the tree
+17:13:55 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Games'
+17:13:55 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\CheatCodes'
+17:13:55 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Images'
+17:13:55 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Manuals'
+17:13:55 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Musics'
+17:13:55 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Videos'
+17:13:55 Not managed: MissingBox3dImage
+17:13:55 Not managed: MissingBox3dImage
+17:13:55 Not managed: MissingCartImage
+17:13:55 Not managed: MissingCartImage
+17:13:55 Not managed: MissingCart3dImage
+17:13:55 Not managed: MissingCart3dImage
+17:13:55 Not managed: MissingManual
+17:13:55 Not managed: MissingManual
+17:13:55 Not managed: MissingBannerImage
+17:13:55 Not managed: MissingBannerImage
+17:13:55 Not managed: MissingMusic
+17:13:55 Not managed: MissingMusic
+17:13:55 Not managed: UsePauseScreen
+17:13:55 Not managed: UsePauseScreen
+17:13:55 Not managed: OverrideDefaultPauseScreenSettings
+17:13:55 Not managed: OverrideDefaultPauseScreenSettings
+17:13:55 Not managed: SuspendProcessOnPause
+17:13:55 Not managed: SuspendProcessOnPause
+17:13:55 Not managed: ForcefulPauseScreenActivation
+17:13:55 Not managed: ForcefulPauseScreenActivation
+17:13:57 [CopyHandler] Destination file exists... 17:14:04 PassAll
+17:14:06 [CopyHandler] Destination file exists... 17:14:06 PassAll
+17:14:07 [CopyHandler] Destination file exists... 17:14:07 PassAll
+17:14:08 [CopyHandler] Destination file exists... 17:14:08 PassAll
+17:14:08 [CopyHandler] Destination file exists... 17:14:08 PassAll
+17:14:53 Could not find a part of the path 'G:\Temp\Plateformes\Images\Nintendo - SNES\Box - Front'.

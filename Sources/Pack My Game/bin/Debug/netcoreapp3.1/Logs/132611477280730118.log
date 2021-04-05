@@ -1,0 +1,22 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+13:08:48 Language fr-FR - 1.0.0.4, loading...
+13:13:40 [Main] PackMe for 'Donkey Kong Country' | 'fc1ac9d2-d88a-4851-8939-cea8ddeb74bb'
+13:13:40 Directory Exists 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]'
+13:13:43 [MakeStructure] Creation of the tree
+13:13:43 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Games'
+13:13:43 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\CheatCodes'
+13:13:43 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Images'
+13:13:43 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Manuals'
+13:13:43 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Musics'
+13:13:43 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Videos'
+13:13:43 Not managed: MissingBox3dImage
+13:13:43 Not managed: MissingCartImage
+13:13:43 Not managed: MissingCart3dImage
+13:13:43 Not managed: MissingManual
+13:13:43 Not managed: MissingBannerImage
+13:13:43 Not managed: MissingMusic
+13:13:43 Not managed: UsePauseScreen
+13:13:43 Not managed: OverrideDefaultPauseScreenSettings
+13:13:43 Not managed: SuspendProcessOnPause
+13:13:43 Not managed: ForcefulPauseScreenActivation
+13:13:45 [CopyHandler] Destination file exists... 13:13:45 

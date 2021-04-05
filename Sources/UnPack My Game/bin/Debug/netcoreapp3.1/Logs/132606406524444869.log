@@ -1,0 +1,448 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+16:17:46 Work on: EA Hockey (Europe).zip
+16:17:46 Zip Decompression
+16:17:46 	ZipExtraction: EBGame.xml
+16:17:46 	ZipExtraction: Infos.xml
+16:17:47 	ZipExtraction: Struct.info
+16:17:47 	ZipExtraction: TBGame.xml
+16:17:47 	ZipExtraction: CheatCodes/
+16:17:47 	ZipExtraction: Images/
+16:17:47 	ZipExtraction: Images/Box - 3D/
+16:17:47 	ZipExtraction: Images/Box - 3D/NHL Hockey-01.png
+16:17:47 	ZipExtraction: Images/Box - 3D/Europe/
+16:17:47 	ZipExtraction: Images/Box - 3D/Europe/NHL Hockey-01.png
+16:17:47 	ZipExtraction: Images/Box - Back/
+16:17:47 	ZipExtraction: Images/Box - Back/Europe/
+16:17:47 	ZipExtraction: Images/Box - Back/Europe/NHL Hockey-01.jpg
+16:17:47 	ZipExtraction: Images/Box - Front/
+16:17:47 	ZipExtraction: Images/Box - Front/NHL Hockey-01.png
+16:17:47 	ZipExtraction: Images/Box - Front/Europe/
+16:17:47 	ZipExtraction: Images/Box - Front/Europe/NHL Hockey-01.jpg
+16:17:47 	ZipExtraction: Images/Box - Front - Reconstructed/
+16:17:47 	ZipExtraction: Images/Box - Front - Reconstructed/North America/
+16:17:47 	ZipExtraction: Images/Box - Front - Reconstructed/North America/NHL Hockey-01.jpg
+16:17:47 	ZipExtraction: Images/Cart - Front/
+16:17:47 	ZipExtraction: Images/Cart - Front/NHL Hockey-01.png
+16:17:47 	ZipExtraction: Images/Cart - Front/Europe/
+16:17:47 	ZipExtraction: Images/Cart - Front/Europe/NHL Hockey-01.png
+16:17:47 	ZipExtraction: Images/Clear Logo/
+16:17:47 	ZipExtraction: Images/Clear Logo/NHL Hockey-01.png
+16:17:47 	ZipExtraction: Images/Clear Logo/Europe/
+16:17:47 	ZipExtraction: Images/Clear Logo/Europe/NHL Hockey-01.png
+16:17:47 	ZipExtraction: Images/Screenshot - Game Title/
+16:17:47 	ZipExtraction: Images/Screenshot - Game Title/NHL Hockey-01.png
+16:17:47 	ZipExtraction: Images/Screenshot - Gameplay/
+16:17:47 	ZipExtraction: Images/Screenshot - Gameplay/NHL Hockey-01.png
+16:17:47 	ZipExtraction: Images/Screenshot - Gameplay/NHL Hockey-02.png
+16:17:47 	ZipExtraction: Manuals/
+16:17:47 	ZipExtraction: Manuals/NHL_Hockey_MD_US_Manual.pdf
+16:17:47 	ZipExtraction: Musics/
+16:17:47 	ZipExtraction: Roms/
+16:17:47 	ZipExtraction: Roms/EA Hockey (Europe).md
+16:17:47 	ZipExtraction: Videos/
+16:17:47 	ZipExtraction: Videos/NHL Hockey-01.mp4
+16:17:47 	ZipExtraction: Videos/NHL Hockey-02.mp4
+16:17:47 	ZipExtraction: page15-439px-MegaForce_FR_08.pdf.jpg
+16:17:47 	ZipExtraction: page14-437px-MegaForce_FR_08.pdf.jpg
+16:17:47 Game info xml loaded: NHL Hockey
+16:17:47 Creation of xml file: 'G:\Frontend\LaunchBox - Test\Data\Platforms\Sega Mega Drive.xml'
+16:17:50 Target Game path: ..\..\Plateformes\Games\Sega Mega Drive
+16:17:50 Target Manuals  path: ..\..\Plateformes\Manuals\Sega Mega Drive
+16:17:50 Target Musics path: 
+16:17:50 Target Videos path: ..\..\Plateformes\Videos\Sega Mega Drive
+16:18:42 Zip Decompression
+16:18:42 	ZipExtraction: EBGame.xml
+16:18:42 	ZipExtraction: Infos.xml
+16:18:42 	ZipExtraction: Struct.info
+16:18:42 	ZipExtraction: TBGame.xml
+16:18:42 	ZipExtraction: CheatCodes/
+16:18:42 	ZipExtraction: Images/
+16:18:42 	ZipExtraction: Images/Box - 3D/
+16:18:42 	ZipExtraction: Images/Box - 3D/NHL Hockey-01.png
+16:18:42 	ZipExtraction: Images/Box - 3D/Europe/
+16:18:42 	ZipExtraction: Images/Box - 3D/Europe/NHL Hockey-01.png
+16:18:42 	ZipExtraction: Images/Box - Back/
+16:18:42 	ZipExtraction: Images/Box - Back/Europe/
+16:18:42 	ZipExtraction: Images/Box - Back/Europe/NHL Hockey-01.jpg
+16:18:42 	ZipExtraction: Images/Box - Front/
+16:18:42 	ZipExtraction: Images/Box - Front/NHL Hockey-01.png
+16:18:42 	ZipExtraction: Images/Box - Front/Europe/
+16:18:42 	ZipExtraction: Images/Box - Front/Europe/NHL Hockey-01.jpg
+16:18:42 	ZipExtraction: Images/Box - Front - Reconstructed/
+16:18:42 	ZipExtraction: Images/Box - Front - Reconstructed/North America/
+16:18:42 	ZipExtraction: Images/Box - Front - Reconstructed/North America/NHL Hockey-01.jpg
+16:18:42 	ZipExtraction: Images/Cart - Front/
+16:18:42 	ZipExtraction: Images/Cart - Front/NHL Hockey-01.png
+16:18:42 	ZipExtraction: Images/Cart - Front/Europe/
+16:18:42 	ZipExtraction: Images/Cart - Front/Europe/NHL Hockey-01.png
+16:18:42 	ZipExtraction: Images/Clear Logo/
+16:18:42 	ZipExtraction: Images/Clear Logo/NHL Hockey-01.png
+16:18:42 	ZipExtraction: Images/Clear Logo/Europe/
+16:18:42 	ZipExtraction: Images/Clear Logo/Europe/NHL Hockey-01.png
+16:18:42 	ZipExtraction: Images/Screenshot - Game Title/
+16:18:42 	ZipExtraction: Images/Screenshot - Game Title/NHL Hockey-01.png
+16:18:42 	ZipExtraction: Images/Screenshot - Gameplay/
+16:18:42 	ZipExtraction: Images/Screenshot - Gameplay/NHL Hockey-01.png
+16:18:42 	ZipExtraction: Images/Screenshot - Gameplay/NHL Hockey-02.png
+16:18:42 	ZipExtraction: Manuals/
+16:18:42 	ZipExtraction: Manuals/NHL_Hockey_MD_US_Manual.pdf
+16:18:43 	ZipExtraction: Musics/
+16:18:43 	ZipExtraction: Roms/
+16:18:43 	ZipExtraction: Roms/EA Hockey (Europe).md
+16:18:43 	ZipExtraction: Videos/
+16:18:43 	ZipExtraction: Videos/NHL Hockey-01.mp4
+16:18:43 	ZipExtraction: Videos/NHL Hockey-02.mp4
+16:18:43 	ZipExtraction: page15-439px-MegaForce_FR_08.pdf.jpg
+16:18:43 	ZipExtraction: page14-437px-MegaForce_FR_08.pdf.jpg
+16:19:41 Zip Decompression
+16:19:41 	ZipExtraction: EBGame.xml
+16:19:41 	ZipExtraction: Infos.xml
+16:19:41 	ZipExtraction: Struct.info
+16:19:41 	ZipExtraction: TBGame.xml
+16:19:41 	ZipExtraction: CheatCodes/
+16:19:41 	ZipExtraction: Images/
+16:19:41 	ZipExtraction: Images/Box - 3D/
+16:19:41 	ZipExtraction: Images/Box - 3D/NHL Hockey-01.png
+16:19:41 	ZipExtraction: Images/Box - 3D/Europe/
+16:19:41 	ZipExtraction: Images/Box - 3D/Europe/NHL Hockey-01.png
+16:19:42 	ZipExtraction: Images/Box - Back/
+16:19:42 	ZipExtraction: Images/Box - Back/Europe/
+16:19:42 	ZipExtraction: Images/Box - Back/Europe/NHL Hockey-01.jpg
+16:19:42 	ZipExtraction: Images/Box - Front/
+16:19:42 	ZipExtraction: Images/Box - Front/NHL Hockey-01.png
+16:19:42 	ZipExtraction: Images/Box - Front/Europe/
+16:19:42 	ZipExtraction: Images/Box - Front/Europe/NHL Hockey-01.jpg
+16:19:42 	ZipExtraction: Images/Box - Front - Reconstructed/
+16:19:42 	ZipExtraction: Images/Box - Front - Reconstructed/North America/
+16:19:42 	ZipExtraction: Images/Box - Front - Reconstructed/North America/NHL Hockey-01.jpg
+16:19:43 	ZipExtraction: Images/Cart - Front/
+16:19:43 	ZipExtraction: Images/Cart - Front/NHL Hockey-01.png
+16:19:43 	ZipExtraction: Images/Cart - Front/Europe/
+16:19:43 	ZipExtraction: Images/Cart - Front/Europe/NHL Hockey-01.png
+16:19:43 	ZipExtraction: Images/Clear Logo/
+16:19:43 	ZipExtraction: Images/Clear Logo/NHL Hockey-01.png
+16:19:43 	ZipExtraction: Images/Clear Logo/Europe/
+16:19:43 	ZipExtraction: Images/Clear Logo/Europe/NHL Hockey-01.png
+16:19:43 	ZipExtraction: Images/Screenshot - Game Title/
+16:19:43 	ZipExtraction: Images/Screenshot - Game Title/NHL Hockey-01.png
+16:19:43 	ZipExtraction: Images/Screenshot - Gameplay/
+16:19:43 	ZipExtraction: Images/Screenshot - Gameplay/NHL Hockey-01.png
+16:19:43 	ZipExtraction: Images/Screenshot - Gameplay/NHL Hockey-02.png
+16:19:43 	ZipExtraction: Manuals/
+16:19:43 	ZipExtraction: Manuals/NHL_Hockey_MD_US_Manual.pdf
+16:19:44 	ZipExtraction: Musics/
+16:19:44 	ZipExtraction: Roms/
+16:19:44 	ZipExtraction: Roms/EA Hockey (Europe).md
+16:19:44 	ZipExtraction: Videos/
+16:19:44 	ZipExtraction: Videos/NHL Hockey-01.mp4
+16:19:44 	ZipExtraction: Videos/NHL Hockey-02.mp4
+16:19:44 	ZipExtraction: page15-439px-MegaForce_FR_08.pdf.jpg
+16:19:44 	ZipExtraction: page14-437px-MegaForce_FR_08.pdf.jpg
+16:28:25 Zip Decompression
+16:28:25 	ZipExtraction: EBGame.xml
+16:28:25 	ZipExtraction: Infos.xml
+16:28:25 	ZipExtraction: Struct.info
+16:28:25 	ZipExtraction: TBGame.xml
+16:28:25 	ZipExtraction: CheatCodes/
+16:28:25 	ZipExtraction: Images/
+16:28:25 	ZipExtraction: Images/Box - 3D/
+16:28:25 	ZipExtraction: Images/Box - 3D/NHL Hockey-01.png
+16:28:25 	ZipExtraction: Images/Box - 3D/Europe/
+16:28:25 	ZipExtraction: Images/Box - 3D/Europe/NHL Hockey-01.png
+16:28:25 	ZipExtraction: Images/Box - Back/
+16:28:25 	ZipExtraction: Images/Box - Back/Europe/
+16:28:25 	ZipExtraction: Images/Box - Back/Europe/NHL Hockey-01.jpg
+16:28:25 	ZipExtraction: Images/Box - Front/
+16:28:25 	ZipExtraction: Images/Box - Front/NHL Hockey-01.png
+16:28:25 	ZipExtraction: Images/Box - Front/Europe/
+16:28:25 	ZipExtraction: Images/Box - Front/Europe/NHL Hockey-01.jpg
+16:28:25 	ZipExtraction: Images/Box - Front - Reconstructed/
+16:28:25 	ZipExtraction: Images/Box - Front - Reconstructed/North America/
+16:28:25 	ZipExtraction: Images/Box - Front - Reconstructed/North America/NHL Hockey-01.jpg
+16:28:25 	ZipExtraction: Images/Cart - Front/
+16:28:25 	ZipExtraction: Images/Cart - Front/NHL Hockey-01.png
+16:28:26 	ZipExtraction: Images/Cart - Front/Europe/
+16:28:26 	ZipExtraction: Images/Cart - Front/Europe/NHL Hockey-01.png
+16:28:26 	ZipExtraction: Images/Clear Logo/
+16:28:26 	ZipExtraction: Images/Clear Logo/NHL Hockey-01.png
+16:28:26 	ZipExtraction: Images/Clear Logo/Europe/
+16:28:26 	ZipExtraction: Images/Clear Logo/Europe/NHL Hockey-01.png
+16:28:26 	ZipExtraction: Images/Screenshot - Game Title/
+16:28:26 	ZipExtraction: Images/Screenshot - Game Title/NHL Hockey-01.png
+16:28:26 	ZipExtraction: Images/Screenshot - Gameplay/
+16:28:26 	ZipExtraction: Images/Screenshot - Gameplay/NHL Hockey-01.png
+16:28:26 	ZipExtraction: Images/Screenshot - Gameplay/NHL Hockey-02.png
+16:28:26 	ZipExtraction: Manuals/
+16:28:26 	ZipExtraction: Manuals/NHL_Hockey_MD_US_Manual.pdf
+16:28:26 	ZipExtraction: Musics/
+16:28:26 	ZipExtraction: Roms/
+16:28:26 	ZipExtraction: Roms/EA Hockey (Europe).md
+16:28:26 	ZipExtraction: Videos/
+16:28:26 	ZipExtraction: Videos/NHL Hockey-01.mp4
+16:28:26 	ZipExtraction: Videos/NHL Hockey-02.mp4
+16:28:26 	ZipExtraction: page15-439px-MegaForce_FR_08.pdf.jpg
+16:28:26 	ZipExtraction: page14-437px-MegaForce_FR_08.pdf.jpg
+16:29:05 Zip Decompression
+16:29:05 	ZipExtraction: EBGame.xml
+16:29:05 	ZipExtraction: Infos.xml
+16:29:05 	ZipExtraction: Struct.info
+16:29:05 	ZipExtraction: TBGame.xml
+16:29:05 	ZipExtraction: CheatCodes/
+16:29:05 	ZipExtraction: Images/
+16:29:05 	ZipExtraction: Images/Box - 3D/
+16:29:05 	ZipExtraction: Images/Box - 3D/NHL Hockey-01.png
+16:29:05 	ZipExtraction: Images/Box - 3D/Europe/
+16:29:05 	ZipExtraction: Images/Box - 3D/Europe/NHL Hockey-01.png
+16:29:05 	ZipExtraction: Images/Box - Back/
+16:29:05 	ZipExtraction: Images/Box - Back/Europe/
+16:29:05 	ZipExtraction: Images/Box - Back/Europe/NHL Hockey-01.jpg
+16:29:05 	ZipExtraction: Images/Box - Front/
+16:29:05 	ZipExtraction: Images/Box - Front/NHL Hockey-01.png
+16:29:05 	ZipExtraction: Images/Box - Front/Europe/
+16:29:05 	ZipExtraction: Images/Box - Front/Europe/NHL Hockey-01.jpg
+16:29:05 	ZipExtraction: Images/Box - Front - Reconstructed/
+16:29:05 	ZipExtraction: Images/Box - Front - Reconstructed/North America/
+16:29:05 	ZipExtraction: Images/Box - Front - Reconstructed/North America/NHL Hockey-01.jpg
+16:29:05 	ZipExtraction: Images/Cart - Front/
+16:29:05 	ZipExtraction: Images/Cart - Front/NHL Hockey-01.png
+16:29:05 	ZipExtraction: Images/Cart - Front/Europe/
+16:29:05 	ZipExtraction: Images/Cart - Front/Europe/NHL Hockey-01.png
+16:29:05 	ZipExtraction: Images/Clear Logo/
+16:29:05 	ZipExtraction: Images/Clear Logo/NHL Hockey-01.png
+16:29:05 	ZipExtraction: Images/Clear Logo/Europe/
+16:29:05 	ZipExtraction: Images/Clear Logo/Europe/NHL Hockey-01.png
+16:29:05 	ZipExtraction: Images/Screenshot - Game Title/
+16:29:05 	ZipExtraction: Images/Screenshot - Game Title/NHL Hockey-01.png
+16:29:05 	ZipExtraction: Images/Screenshot - Gameplay/
+16:29:05 	ZipExtraction: Images/Screenshot - Gameplay/NHL Hockey-01.png
+16:29:05 	ZipExtraction: Images/Screenshot - Gameplay/NHL Hockey-02.png
+16:29:05 	ZipExtraction: Manuals/
+16:29:05 	ZipExtraction: Manuals/NHL_Hockey_MD_US_Manual.pdf
+16:29:06 	ZipExtraction: Musics/
+16:29:06 	ZipExtraction: Roms/
+16:29:06 	ZipExtraction: Roms/EA Hockey (Europe).md
+16:29:06 	ZipExtraction: Videos/
+16:29:06 	ZipExtraction: Videos/NHL Hockey-01.mp4
+16:29:06 	ZipExtraction: Videos/NHL Hockey-02.mp4
+16:29:06 	ZipExtraction: page15-439px-MegaForce_FR_08.pdf.jpg
+16:29:06 	ZipExtraction: page14-437px-MegaForce_FR_08.pdf.jpg
+16:32:11 Zip Decompression
+16:32:11 	ZipExtraction: EBGame.xml
+16:32:11 	ZipExtraction: Infos.xml
+16:32:11 	ZipExtraction: Struct.info
+16:32:11 	ZipExtraction: TBGame.xml
+16:32:11 	ZipExtraction: CheatCodes/
+16:32:11 	ZipExtraction: Images/
+16:32:11 	ZipExtraction: Images/Box - 3D/
+16:32:11 	ZipExtraction: Images/Box - 3D/NHL Hockey-01.png
+16:32:11 	ZipExtraction: Images/Box - 3D/Europe/
+16:32:11 	ZipExtraction: Images/Box - 3D/Europe/NHL Hockey-01.png
+16:32:11 	ZipExtraction: Images/Box - Back/
+16:32:11 	ZipExtraction: Images/Box - Back/Europe/
+16:32:11 	ZipExtraction: Images/Box - Back/Europe/NHL Hockey-01.jpg
+16:32:11 	ZipExtraction: Images/Box - Front/
+16:32:11 	ZipExtraction: Images/Box - Front/NHL Hockey-01.png
+16:32:11 	ZipExtraction: Images/Box - Front/Europe/
+16:32:11 	ZipExtraction: Images/Box - Front/Europe/NHL Hockey-01.jpg
+16:32:11 	ZipExtraction: Images/Box - Front - Reconstructed/
+16:32:11 	ZipExtraction: Images/Box - Front - Reconstructed/North America/
+16:32:11 	ZipExtraction: Images/Box - Front - Reconstructed/North America/NHL Hockey-01.jpg
+16:32:11 	ZipExtraction: Images/Cart - Front/
+16:32:11 	ZipExtraction: Images/Cart - Front/NHL Hockey-01.png
+16:32:11 	ZipExtraction: Images/Cart - Front/Europe/
+16:32:11 	ZipExtraction: Images/Cart - Front/Europe/NHL Hockey-01.png
+16:32:11 	ZipExtraction: Images/Clear Logo/
+16:32:11 	ZipExtraction: Images/Clear Logo/NHL Hockey-01.png
+16:32:11 	ZipExtraction: Images/Clear Logo/Europe/
+16:32:11 	ZipExtraction: Images/Clear Logo/Europe/NHL Hockey-01.png
+16:32:11 	ZipExtraction: Images/Screenshot - Game Title/
+16:32:11 	ZipExtraction: Images/Screenshot - Game Title/NHL Hockey-01.png
+16:32:11 	ZipExtraction: Images/Screenshot - Gameplay/
+16:32:11 	ZipExtraction: Images/Screenshot - Gameplay/NHL Hockey-01.png
+16:32:11 	ZipExtraction: Images/Screenshot - Gameplay/NHL Hockey-02.png
+16:32:11 	ZipExtraction: Manuals/
+16:32:11 	ZipExtraction: Manuals/NHL_Hockey_MD_US_Manual.pdf
+16:32:11 	ZipExtraction: Musics/
+16:32:11 	ZipExtraction: Roms/
+16:32:11 	ZipExtraction: Roms/EA Hockey (Europe).md
+16:32:11 	ZipExtraction: Videos/
+16:32:11 	ZipExtraction: Videos/NHL Hockey-01.mp4
+16:32:11 	ZipExtraction: Videos/NHL Hockey-02.mp4
+16:32:11 	ZipExtraction: page15-439px-MegaForce_FR_08.pdf.jpg
+16:32:11 	ZipExtraction: page14-437px-MegaForce_FR_08.pdf.jpg
+16:33:48 Zip Decompression
+16:33:48 	ZipExtraction: EBGame.xml
+16:33:48 	ZipExtraction: Infos.xml
+16:33:49 	ZipExtraction: Struct.info
+16:33:49 	ZipExtraction: TBGame.xml
+16:33:49 	ZipExtraction: CheatCodes/
+16:33:49 	ZipExtraction: Images/
+16:33:49 	ZipExtraction: Images/Box - 3D/
+16:33:49 	ZipExtraction: Images/Box - 3D/NHL Hockey-01.png
+16:33:49 	ZipExtraction: Images/Box - 3D/Europe/
+16:33:49 	ZipExtraction: Images/Box - 3D/Europe/NHL Hockey-01.png
+16:33:49 	ZipExtraction: Images/Box - Back/
+16:33:49 	ZipExtraction: Images/Box - Back/Europe/
+16:33:49 	ZipExtraction: Images/Box - Back/Europe/NHL Hockey-01.jpg
+16:33:49 	ZipExtraction: Images/Box - Front/
+16:33:49 	ZipExtraction: Images/Box - Front/NHL Hockey-01.png
+16:33:49 	ZipExtraction: Images/Box - Front/Europe/
+16:33:49 	ZipExtraction: Images/Box - Front/Europe/NHL Hockey-01.jpg
+16:33:49 	ZipExtraction: Images/Box - Front - Reconstructed/
+16:33:49 	ZipExtraction: Images/Box - Front - Reconstructed/North America/
+16:33:49 	ZipExtraction: Images/Box - Front - Reconstructed/North America/NHL Hockey-01.jpg
+16:33:49 	ZipExtraction: Images/Cart - Front/
+16:33:49 	ZipExtraction: Images/Cart - Front/NHL Hockey-01.png
+16:33:49 	ZipExtraction: Images/Cart - Front/Europe/
+16:33:49 	ZipExtraction: Images/Cart - Front/Europe/NHL Hockey-01.png
+16:33:49 	ZipExtraction: Images/Clear Logo/
+16:33:49 	ZipExtraction: Images/Clear Logo/NHL Hockey-01.png
+16:33:49 	ZipExtraction: Images/Clear Logo/Europe/
+16:33:49 	ZipExtraction: Images/Clear Logo/Europe/NHL Hockey-01.png
+16:33:49 	ZipExtraction: Images/Screenshot - Game Title/
+16:33:49 	ZipExtraction: Images/Screenshot - Game Title/NHL Hockey-01.png
+16:33:49 	ZipExtraction: Images/Screenshot - Gameplay/
+16:33:49 	ZipExtraction: Images/Screenshot - Gameplay/NHL Hockey-01.png
+16:33:49 	ZipExtraction: Images/Screenshot - Gameplay/NHL Hockey-02.png
+16:33:49 	ZipExtraction: Manuals/
+16:33:49 	ZipExtraction: Manuals/NHL_Hockey_MD_US_Manual.pdf
+16:33:50 	ZipExtraction: Musics/
+16:33:50 	ZipExtraction: Roms/
+16:33:50 	ZipExtraction: Roms/EA Hockey (Europe).md
+16:33:50 	ZipExtraction: Videos/
+16:33:50 	ZipExtraction: Videos/NHL Hockey-01.mp4
+16:33:50 	ZipExtraction: Videos/NHL Hockey-02.mp4
+16:33:50 	ZipExtraction: page15-439px-MegaForce_FR_08.pdf.jpg
+16:33:50 	ZipExtraction: page14-437px-MegaForce_FR_08.pdf.jpg
+16:36:54 Zip Decompression
+16:36:54 	ZipExtraction: EBGame.xml
+16:36:54 	ZipExtraction: Infos.xml
+16:36:54 	ZipExtraction: Struct.info
+16:36:54 	ZipExtraction: TBGame.xml
+16:36:54 	ZipExtraction: CheatCodes/
+16:36:54 	ZipExtraction: Images/
+16:36:54 	ZipExtraction: Images/Box - 3D/
+16:36:54 	ZipExtraction: Images/Box - 3D/NHL Hockey-01.png
+16:36:54 	ZipExtraction: Images/Box - 3D/Europe/
+16:36:54 	ZipExtraction: Images/Box - 3D/Europe/NHL Hockey-01.png
+16:36:54 	ZipExtraction: Images/Box - Back/
+16:36:54 	ZipExtraction: Images/Box - Back/Europe/
+16:36:54 	ZipExtraction: Images/Box - Back/Europe/NHL Hockey-01.jpg
+16:36:54 	ZipExtraction: Images/Box - Front/
+16:36:54 	ZipExtraction: Images/Box - Front/NHL Hockey-01.png
+16:36:54 	ZipExtraction: Images/Box - Front/Europe/
+16:36:54 	ZipExtraction: Images/Box - Front/Europe/NHL Hockey-01.jpg
+16:36:54 	ZipExtraction: Images/Box - Front - Reconstructed/
+16:36:54 	ZipExtraction: Images/Box - Front - Reconstructed/North America/
+16:36:54 	ZipExtraction: Images/Box - Front - Reconstructed/North America/NHL Hockey-01.jpg
+16:36:54 	ZipExtraction: Images/Cart - Front/
+16:36:54 	ZipExtraction: Images/Cart - Front/NHL Hockey-01.png
+16:36:54 	ZipExtraction: Images/Cart - Front/Europe/
+16:36:54 	ZipExtraction: Images/Cart - Front/Europe/NHL Hockey-01.png
+16:36:54 	ZipExtraction: Images/Clear Logo/
+16:36:54 	ZipExtraction: Images/Clear Logo/NHL Hockey-01.png
+16:36:54 	ZipExtraction: Images/Clear Logo/Europe/
+16:36:54 	ZipExtraction: Images/Clear Logo/Europe/NHL Hockey-01.png
+16:36:55 	ZipExtraction: Images/Screenshot - Game Title/
+16:36:55 	ZipExtraction: Images/Screenshot - Game Title/NHL Hockey-01.png
+16:36:55 	ZipExtraction: Images/Screenshot - Gameplay/
+16:36:55 	ZipExtraction: Images/Screenshot - Gameplay/NHL Hockey-01.png
+16:36:55 	ZipExtraction: Images/Screenshot - Gameplay/NHL Hockey-02.png
+16:36:55 	ZipExtraction: Manuals/
+16:36:55 	ZipExtraction: Manuals/NHL_Hockey_MD_US_Manual.pdf
+16:36:55 	ZipExtraction: Musics/
+16:36:55 	ZipExtraction: Roms/
+16:36:55 	ZipExtraction: Roms/EA Hockey (Europe).md
+16:36:55 	ZipExtraction: Videos/
+16:36:55 	ZipExtraction: Videos/NHL Hockey-01.mp4
+16:36:55 	ZipExtraction: Videos/NHL Hockey-02.mp4
+16:36:55 	ZipExtraction: page15-439px-MegaForce_FR_08.pdf.jpg
+16:36:55 	ZipExtraction: page14-437px-MegaForce_FR_08.pdf.jpg
+16:37:25 Zip Decompression
+16:37:25 	ZipExtraction: EBGame.xml
+16:37:25 	ZipExtraction: Infos.xml
+16:37:25 	ZipExtraction: Struct.info
+16:37:25 	ZipExtraction: TBGame.xml
+16:37:25 	ZipExtraction: CheatCodes/
+16:37:25 	ZipExtraction: Images/
+16:37:25 	ZipExtraction: Images/Box - 3D/
+16:37:25 	ZipExtraction: Images/Box - 3D/NHL Hockey-01.png
+16:37:25 	ZipExtraction: Images/Box - 3D/Europe/
+16:37:25 	ZipExtraction: Images/Box - 3D/Europe/NHL Hockey-01.png
+16:37:25 	ZipExtraction: Images/Box - Back/
+16:37:25 	ZipExtraction: Images/Box - Back/Europe/
+16:37:25 	ZipExtraction: Images/Box - Back/Europe/NHL Hockey-01.jpg
+16:37:25 	ZipExtraction: Images/Box - Front/
+16:37:25 	ZipExtraction: Images/Box - Front/NHL Hockey-01.png
+16:37:25 	ZipExtraction: Images/Box - Front/Europe/
+16:37:25 	ZipExtraction: Images/Box - Front/Europe/NHL Hockey-01.jpg
+16:37:25 	ZipExtraction: Images/Box - Front - Reconstructed/
+16:37:25 	ZipExtraction: Images/Box - Front - Reconstructed/North America/
+16:37:25 	ZipExtraction: Images/Box - Front - Reconstructed/North America/NHL Hockey-01.jpg
+16:37:26 	ZipExtraction: Images/Cart - Front/
+16:37:26 	ZipExtraction: Images/Cart - Front/NHL Hockey-01.png
+16:37:26 	ZipExtraction: Images/Cart - Front/Europe/
+16:37:26 	ZipExtraction: Images/Cart - Front/Europe/NHL Hockey-01.png
+16:37:26 	ZipExtraction: Images/Clear Logo/
+16:37:26 	ZipExtraction: Images/Clear Logo/NHL Hockey-01.png
+16:37:26 	ZipExtraction: Images/Clear Logo/Europe/
+16:37:26 	ZipExtraction: Images/Clear Logo/Europe/NHL Hockey-01.png
+16:37:26 	ZipExtraction: Images/Screenshot - Game Title/
+16:37:26 	ZipExtraction: Images/Screenshot - Game Title/NHL Hockey-01.png
+16:37:26 	ZipExtraction: Images/Screenshot - Gameplay/
+16:37:26 	ZipExtraction: Images/Screenshot - Gameplay/NHL Hockey-01.png
+16:37:26 	ZipExtraction: Images/Screenshot - Gameplay/NHL Hockey-02.png
+16:37:26 	ZipExtraction: Manuals/
+16:37:26 	ZipExtraction: Manuals/NHL_Hockey_MD_US_Manual.pdf
+16:37:26 	ZipExtraction: Musics/
+16:37:26 	ZipExtraction: Roms/
+16:37:26 	ZipExtraction: Roms/EA Hockey (Europe).md
+16:37:26 	ZipExtraction: Videos/
+16:37:26 	ZipExtraction: Videos/NHL Hockey-01.mp4
+16:37:26 	ZipExtraction: Videos/NHL Hockey-02.mp4
+16:37:26 	ZipExtraction: page15-439px-MegaForce_FR_08.pdf.jpg
+16:37:26 	ZipExtraction: page14-437px-MegaForce_FR_08.pdf.jpg
+16:38:28 Zip Decompression
+16:38:28 	ZipExtraction: EBGame.xml
+16:38:28 	ZipExtraction: Infos.xml
+16:38:28 	ZipExtraction: Struct.info
+16:38:28 	ZipExtraction: TBGame.xml
+16:38:28 	ZipExtraction: CheatCodes/
+16:38:28 	ZipExtraction: Images/
+16:38:28 	ZipExtraction: Images/Box - 3D/
+16:38:28 	ZipExtraction: Images/Box - 3D/NHL Hockey-01.png
+16:38:28 	ZipExtraction: Images/Box - 3D/Europe/
+16:38:28 	ZipExtraction: Images/Box - 3D/Europe/NHL Hockey-01.png
+16:38:28 	ZipExtraction: Images/Box - Back/
+16:38:28 	ZipExtraction: Images/Box - Back/Europe/
+16:38:28 	ZipExtraction: Images/Box - Back/Europe/NHL Hockey-01.jpg
+16:38:28 	ZipExtraction: Images/Box - Front/
+16:38:28 	ZipExtraction: Images/Box - Front/NHL Hockey-01.png
+16:38:28 	ZipExtraction: Images/Box - Front/Europe/
+16:38:28 	ZipExtraction: Images/Box - Front/Europe/NHL Hockey-01.jpg
+16:38:28 	ZipExtraction: Images/Box - Front - Reconstructed/
+16:38:28 	ZipExtraction: Images/Box - Front - Reconstructed/North America/
+16:38:28 	ZipExtraction: Images/Box - Front - Reconstructed/North America/NHL Hockey-01.jpg
+16:38:28 	ZipExtraction: Images/Cart - Front/
+16:38:28 	ZipExtraction: Images/Cart - Front/NHL Hockey-01.png
+16:38:28 	ZipExtraction: Images/Cart - Front/Europe/
+16:38:28 	ZipExtraction: Images/Cart - Front/Europe/NHL Hockey-01.png
+16:38:28 	ZipExtraction: Images/Clear Logo/
+16:38:28 	ZipExtraction: Images/Clear Logo/NHL Hockey-01.png
+16:38:28 	ZipExtraction: Images/Clear Logo/Europe/
+16:38:28 	ZipExtraction: Images/Clear Logo/Europe/NHL Hockey-01.png
+16:38:28 	ZipExtraction: Images/Screenshot - Game Title/
+16:38:28 	ZipExtraction: Images/Screenshot - Game Title/NHL Hockey-01.png
+16:38:28 	ZipExtraction: Images/Screenshot - Gameplay/
+16:38:28 	ZipExtraction: Images/Screenshot - Gameplay/NHL Hockey-01.png
+16:38:28 	ZipExtraction: Images/Screenshot - Gameplay/NHL Hockey-02.png
+16:38:28 	ZipExtraction: Manuals/
+16:38:28 	ZipExtraction: Manuals/NHL_Hockey_MD_US_Manual.pdf
+16:38:29 	ZipExtraction: Musics/
+16:38:29 	ZipExtraction: Roms/
+16:38:29 	ZipExtraction: Roms/EA Hockey (Europe).md
+16:38:29 	ZipExtraction: Videos/
+16:38:29 	ZipExtraction: Videos/NHL Hockey-01.mp4
+16:38:29 	ZipExtraction: Videos/NHL Hockey-02.mp4
+16:38:29 	ZipExtraction: page15-439px-MegaForce_FR_08.pdf.jpg
+16:38:29 	ZipExtraction: page14-437px-MegaForce_FR_08.pdf.jpg

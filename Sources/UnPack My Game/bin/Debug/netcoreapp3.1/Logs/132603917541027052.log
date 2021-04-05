@@ -1,0 +1,78 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+19:09:14 Get infos from platform
+19:09:14 Backup of 'G:\Frontend\LaunchBox - Test\Data\Platforms\Sega Genesis.xml'
+19:09:14 Target Game path: ..\..\fauxgames\Games\Sega Genesis
+19:09:14 Target Cheats path: ..\..\fauxgames\Cheat Codes\Sega Genesis
+19:09:14 Target Images path: ..\..\fauxgames\Images\Sega Genesis
+19:09:14 Target Manuals  path: ..\..\fauxgames\Manuals\Sega Genesis
+19:09:14 Target Musics path: ..\..\fauxgames\Musics\Sega Genesis
+19:09:14 Target Videos path: ..\..\fauxgames\Videos\Sega Genesis
+19:09:14 Work on: Aladdin.zip
+19:09:14 Zip Decompression
+19:09:14 	ZipExtraction: EBGame.xml
+19:09:14 	ZipExtraction: Infos.xml
+19:09:14 	ZipExtraction: Struct.info
+19:09:14 	ZipExtraction: TBGame.xml
+19:09:14 	ZipExtraction: CheatCodes/
+19:09:14 	ZipExtraction: Images/
+19:09:14 	ZipExtraction: Images/Arcade - Marquee/
+19:09:14 	ZipExtraction: Images/Arcade - Marquee/Aladdin-01.png
+19:09:14 	ZipExtraction: Images/Banner/
+19:09:14 	ZipExtraction: Images/Banner/Aladdin-01.jpg
+19:09:14 	ZipExtraction: Images/Banner/Aladdin-02.jpg
+19:09:14 	ZipExtraction: Images/Box - 3D/
+19:09:14 	ZipExtraction: Images/Box - 3D/Europe/
+19:09:14 	ZipExtraction: Images/Box - 3D/Europe/Aladdin-01.png
+19:09:14 	ZipExtraction: Images/Box - Back/
+19:09:14 	ZipExtraction: Images/Box - Back/Europe/
+19:09:14 	ZipExtraction: Images/Box - Back/Europe/Aladdin-01.jpg
+19:09:14 	ZipExtraction: Images/Box - Front/
+19:09:14 	ZipExtraction: Images/Box - Front/Europe/
+19:09:14 	ZipExtraction: Images/Box - Front/Europe/Aladdin-01.png
+19:09:14 	ZipExtraction: Images/Cart - Front/
+19:09:14 	ZipExtraction: Images/Cart - Front/Europe/
+19:09:14 	ZipExtraction: Images/Cart - Front/Europe/Aladdin-01.png
+19:09:14 	ZipExtraction: Images/Clear Logo/
+19:09:14 	ZipExtraction: Images/Clear Logo/Europe/
+19:09:14 	ZipExtraction: Images/Clear Logo/Europe/Aladdin-01.png
+19:09:14 	ZipExtraction: Images/Fanart - Background/
+19:09:14 	ZipExtraction: Images/Fanart - Background/Aladdin-01.jpg
+19:09:14 	ZipExtraction: Images/Screenshot - Gameplay/
+19:09:14 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-01.jpg
+19:09:14 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-02.jpg
+19:09:14 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-03.jpg
+19:09:15 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-04.jpg
+19:09:15 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-05.jpg
+19:09:15 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-06.jpg
+19:09:15 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-07.jpg
+19:09:15 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-08.jpg
+19:09:15 	ZipExtraction: Manuals/
+19:09:15 	ZipExtraction: Musics/
+19:09:15 	ZipExtraction: Musics/Aladdin.mp3
+19:09:15 	ZipExtraction: Roms/
+19:09:15 	ZipExtraction: Roms/Aladdin (Europe).md
+19:09:15 	ZipExtraction: Videos/
+19:09:15 	ZipExtraction: Videos/Aladdin-01.mp4
+19:09:15 	ZipExtraction: Manuals/Disney's_Aladdin_MD_FR_Manual.pdf
+19:09:15 	ZipExtraction: Roms/Disney's Aladdin (E) [f1].md
+19:09:15 	ZipExtraction: 800px-Aladdin_MD_EU_Box.jpg
+19:09:15 	ZipExtraction: 800px-Aladdin_MD_EU_Cart.jpg
+19:09:15 	ZipExtraction: Roms/Aladdin (USA).md
+19:09:15 	ZipExtraction: Roms/Disney's Aladdin (U) [f1].md
+19:09:15 	ZipExtraction: Roms/Disney's Aladdin (U) [h1C].md
+19:09:16 	ZipExtraction: Roms/Disney's Aladdin (U) [T+Fre0.99Beta_Macrotrads].md
+19:09:16 	ZipExtraction: CheatCodes/Aladdin.txt
+19:09:16 Game info xml loaded: Aladdin
+19:09:18 Altération of platform Sega Mega Drive => Sega Genesis
+19:09:18 Copy files
+19:09:18 	Copy de: Cheat Codes => '..\..\fauxgames\Cheat Codes\Sega Genesis'
+19:09:18 	Copy de: Images => '..\..\fauxgames\Images\Sega Genesis'
+19:09:18 	Copy de: Manuels => (..\..\fauxgames\Manuals\Sega Genesis'
+19:09:18 	Copy de: Musiques => '..\..\fauxgames\Musics\Sega Genesis'
+19:09:18 	Copy de: Games => '..\..\fauxgames\Games\Sega Genesis'
+19:09:18 	Copy de: Videos => '..\..\fauxgames\Videos\Sega Genesis'
+19:09:18 Injection in xml Launchbox's files
+19:09:18 Finished
+
+Fermeture du Log
+

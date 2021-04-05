@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="IHM\AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="IHM\CheatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="IHM\Config.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="IHM\Credits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="IHM\GameName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="IHM\Help.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="IHM\MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="IHM\PackMeRes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="IHM\PackMeRes2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="IHM\ProgressCompFolder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="IHM\SelectFolder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="IHM\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

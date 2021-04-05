@@ -1,0 +1,30 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+19:40:44 Language fr-FR - 1.0.0.4, loading...
+19:51:59 [Main] PackMe for 'Donkey Kong Country' | 'fc1ac9d2-d88a-4851-8939-cea8ddeb74bb'
+19:51:59 Directory Exists 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]'
+19:52:57 [MakeStructure] Creation of the tree
+19:52:57 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Games'
+19:52:57 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\CheatCodes'
+19:52:57 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Images'
+19:52:57 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Manuals'
+19:52:57 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Musics'
+19:52:57 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Videos'
+19:52:57 Not managed: GogAppId
+19:52:57 Not managed: OriginAppId
+19:52:57 Not managed: OriginInstallPath
+19:52:57 Not managed: MissingBox3dImage
+19:52:57 Not managed: MissingCartImage
+19:52:57 Not managed: MissingCart3dImage
+19:52:57 Not managed: MissingManual
+19:52:57 Not managed: MissingBannerImage
+19:52:57 Not managed: MissingMusic
+19:52:57 Not managed: UsePauseScreen
+19:52:57 Not managed: PauseAutoHotkeyScript
+19:52:57 Not managed: ResumeAutoHotkeyScript
+19:52:57 Not managed: OverrideDefaultPauseScreenSettings
+19:52:57 Not managed: SuspendProcessOnPause
+19:52:57 Not managed: ForcefulPauseScreenActivation
+19:52:57 Not managed: LoadStateAutoHotkeyScript
+19:52:57 Not managed: SaveStateAutoHotkeyScript
+19:52:57 Not managed: ResetAutoHotkeyScript
+19:52:57 Not managed: SwapDiscsAutoHotkeyScript

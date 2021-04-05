@@ -167,5 +167,11 @@ silent debug...)
   * Extracter
   * Backup data into unpack my game
   * Modify xml data file.
+  [ ] Change SevenZip library 
+  [ ] Mieux remercier les créateurs de dotnet.zip / sevenzip
+  [ ] Changer le système de paramétrage (JSon + Nomade)
+  
+  Notes:
+   - a vérifier TBGame copie exacte, EBGame enhanced
   
   

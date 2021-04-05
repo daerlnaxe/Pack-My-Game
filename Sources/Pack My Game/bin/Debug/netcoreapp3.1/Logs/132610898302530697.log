@@ -1,0 +1,39 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+21:03:50 Language fr-FR - 1.0.0.4, loading...
+21:04:57 [Main] PackMe for 'Ecco the Dolphin' | '2c00a91f-9f5d-4331-869c-cb23bbdeec53'
+21:04:57 Directory Exists 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]'
+21:04:59 [MakeStructure] Creation of the tree
+21:04:59 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Games'
+21:04:59 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\CheatCodes'
+21:04:59 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Images'
+21:04:59 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Manuals'
+21:04:59 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Musics'
+21:04:59 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Videos'
+21:04:59 Not managed: GogAppId
+21:04:59 Not managed: OriginAppId
+21:04:59 Not managed: OriginInstallPath
+21:04:59 Not managed: MissingBox3dImage
+21:04:59 Not managed: MissingCartImage
+21:04:59 Not managed: MissingCart3dImage
+21:04:59 Not managed: MissingManual
+21:04:59 Not managed: MissingBannerImage
+21:04:59 Not managed: MissingMusic
+21:04:59 Not managed: UsePauseScreen
+21:04:59 Not managed: PauseAutoHotkeyScript
+21:04:59 Not managed: ResumeAutoHotkeyScript
+21:04:59 Not managed: OverrideDefaultPauseScreenSettings
+21:04:59 Not managed: SuspendProcessOnPause
+21:04:59 Not managed: ForcefulPauseScreenActivation
+21:04:59 Not managed: LoadStateAutoHotkeyScript
+21:04:59 Not managed: SaveStateAutoHotkeyScript
+21:04:59 Not managed: ResetAutoHotkeyScript
+21:04:59 Not managed: SwapDiscsAutoHotkeyScript
+21:04:59 Not managed: AndroidBoxFrontThumbPath
+21:04:59 Not managed: AndroidBoxFrontFullPath
+21:04:59 Not managed: AndroidBackgroundPath
+21:05:05 [CopyHandler] Destination file exists, abort
+21:05:05 [CopyHandler] Destination file exists, abort
+21:05:05 [CopyHandler] Destination file exists, abort
+21:05:05 [CopyHandler] Destination file exists, abort
+21:05:05 [CopyHandler] Destination file exists, abort
+21:05:05 [CopyFiles] Copy of the file 'Ecco the Dolphin (1993)(Sega)(PAL)(Track 06 of 16)[!][MK-4408P-00135 1].wav': Successful

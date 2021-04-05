@@ -1,0 +1,36 @@
+﻿<Window x:Class="Pack_My_Game.IHM.W_Info"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pack_My_Game.IHM"
+        mc:Ignorable="d"
+        Title="W_Info" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="Label" BasedOn="{StaticResource lblStyle}"/>
+        <Style TargetType="TextBox" />
+        <Style TargetType="TextBlock" BasedOn="{StaticResource tbStyle}" />
+        <Style TargetType="Button" BasedOn="{StaticResource btStyle}">
+        </Style>
+    </Window.Resources>
+    <Grid Margin="10">
+        <Grid.RowDefinitions >
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>            
+        </Grid.RowDefinitions>
+        <Label Content="{Binding Message, FallbackValue=Message}"/> 
+        <!-- Texte -->
+        <ScrollViewer Grid.Row="1">
+            <TextBlock  Text="{Binding Texteuh, FallbackValue=Texteuh}" TextWrapping="Wrap" Margin="0,10,0,10" Padding="5"/>            
+        </ScrollViewer>
+        <!-- Signature -->
+        <TextBlock Grid.Row="2" Text="A.CODOUL aka Daerlnaxe/Axenn" HorizontalAlignment="Right" Height="50"/>
+        <!-- Buttons -->
+        <Button Grid.Row="3" Content="{Binding Lang.OkExp, FallbackValue=OkExp}" HorizontalAlignment="Right" IsDefault="True" IsCancel="True" /> 
+            
+        
+        
+    </Grid>
+</Window>

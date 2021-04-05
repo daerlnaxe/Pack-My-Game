@@ -1,0 +1,23 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+19:04:13 Language fr-FR - 1.0.0.4, loading...
+19:04:26 [Main] PackMe for 'Contra III: The Alien Wars' | 'f59be3bb-a09a-41d5-a77f-4fa10b51e770'
+19:04:26 Directory Exists 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)'
+19:04:28 [MakeStructure] Creation of the tree
+19:04:28 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Games'
+19:04:28 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\CheatCodes'
+19:04:28 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Images'
+19:04:28 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Manuals'
+19:04:28 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Musics'
+19:04:28 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Videos'
+19:04:28 Not managed: MissingBox3dImage
+19:04:28 Not managed: MissingCartImage
+19:04:28 Not managed: MissingCart3dImage
+19:04:28 Not managed: MissingManual
+19:04:28 Not managed: MissingBannerImage
+19:04:28 Not managed: MissingMusic
+19:04:28 Not managed: UsePauseScreen
+19:04:28 Not managed: OverrideDefaultPauseScreenSettings
+19:04:28 Not managed: SuspendProcessOnPause
+19:04:28 Not managed: ForcefulPauseScreenActivation
+19:04:30 [CopyFiles] Copy of the file 'Contra III - The Alien Wars (USA).sfc': Error
+19:04:30 Could not find a part of the path 'G:\Temp\fauxgames\Games\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA).sfc'.

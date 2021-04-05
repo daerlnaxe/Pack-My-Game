@@ -1,0 +1,116 @@
+﻿System.IO.IOException: The process cannot access the file 'G:\Temp\pmg - temp\Sega Genesis - 3 Ninjas Kick Back (1994)(Sony Imagesoft)(US).log' because it is being used by another process.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.IO.File.Open(String path, FileMode mode, FileAccess access, FileShare share)
+   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 58
+FinSystem.IO.IOException: The process cannot access the file 'G:\Temp\pmg - temp\Sega Genesis - 3 Ninjas Kick Back (1994)(Sony Imagesoft)(US).log' because it is being used by another process.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.IO.File.Open(String path, FileMode mode, FileAccess access, FileShare share)
+   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 58
+FinSystem.IO.IOException: The process cannot access the file 'G:\Temp\pmg - temp\Sega Genesis - 3 Ninjas Kick Back (1994)(Sony Imagesoft)(US).log' because it is being used by another process.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.IO.File.Open(String path, FileMode mode, FileAccess access, FileShare share)
+   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 58
+FinSystem.IO.IOException: The process cannot access the file 'G:\Temp\pmg - temp\Sega Genesis - 3 Ninjas Kick Back (1994)(Sony Imagesoft)(US).log' because it is being used by another process.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.IO.File.Open(String path, FileMode mode, FileAccess access, FileShare share)
+   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 58
+FinSystem.IO.IOException: The process cannot access the file 'G:\Temp\pmg - temp\Super Nintendo Entertainment System - Contra III - The Alien Wars (USA).log' because it is being used by another process.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.IO.File.Open(String path, FileMode mode, FileAccess access, FileShare share)
+   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 58
+FinSystem.IO.IOException: The process cannot access the file 'G:\Temp\pmg - temp\Super Nintendo Entertainment System - Contra III - The Alien Wars (USA).log' because it is being used by another process.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.IO.File.Open(String path, FileMode mode, FileAccess access, FileShare share)
+   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 58
+FinSystem.IO.IOException: The process cannot access the file 'G:\Temp\pmg - temp\Super Nintendo Entertainment System - Contra III - The Alien Wars (USA).log' because it is being used by another process.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.IO.File.Open(String path, FileMode mode, FileAccess access, FileShare share)
+   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 58
+FinSystem.IO.IOException: The process cannot access the file 'G:\Temp\pmg - temp\Super Nintendo Entertainment System - Contra III - The Alien Wars (USA).log' because it is being used by another process.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.IO.File.Open(String path, FileMode mode, FileAccess access, FileShare share)
+   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 58
+FinSystem.IO.IOException: The process cannot access the file 'G:\Temp\pmg - temp\Super Nintendo Entertainment System - Contra III - The Alien Wars (USA).log' because it is being used by another process.
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.IO.File.Open(String path, FileMode mode, FileAccess access, FileShare share)
+   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 58
+FinSystem.IO.IOException: La syntaxe du nom de fichier, de répertoire ou de volume est incorrecte. : 'G:\Temp\pmg - temp\Super Nintendo Entertainment System - G:\Temp\pmg - temp\Super Nintendo Entertainment System'
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 52
+FinSystem.IO.IOException: La syntaxe du nom de fichier, de répertoire ou de volume est incorrecte. : 'G:\Temp\pmg - temp\Super Nintendo Entertainment System - G:\Temp\pmg - temp\Super Nintendo Entertainment System'
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 52
+FinSystem.IO.IOException: La syntaxe du nom de fichier, de répertoire ou de volume est incorrecte. : 'G:\Temp\pmg - temp\Super Nintendo Entertainment System - G:\Temp\pmg - temp\Super Nintendo Entertainment System'
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 52
+FinSystem.IO.IOException: La syntaxe du nom de fichier, de répertoire ou de volume est incorrecte. : 'G:\Temp\pmg - temp\Super Nintendo Entertainment System - G:\Temp\pmg - temp\Super Nintendo Entertainment System'
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 52
+FinSystem.IO.IOException: La syntaxe du nom de fichier, de répertoire ou de volume est incorrecte. : 'G:\Temp\pmg - temp\Super Nintendo Entertainment System - G:\Temp\pmg - temp\Super Nintendo Entertainment System'
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 52
+FinSystem.IO.IOException: La syntaxe du nom de fichier, de répertoire ou de volume est incorrecte. : 'G:\Temp\pmg - temp\Super Nintendo Entertainment System - G:\Temp\pmg - temp\Super Nintendo Entertainment System'
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 52
+FinSystem.IO.IOException: La syntaxe du nom de fichier, de répertoire ou de volume est incorrecte. : 'G:\Temp\pmg - temp\Super Nintendo Entertainment System - G:\Temp\pmg - temp\Super Nintendo Entertainment System'
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 52
+FinSystem.IO.IOException: La syntaxe du nom de fichier, de répertoire ou de volume est incorrecte. : 'G:\Temp\pmg - temp\Super Nintendo Entertainment System - G:\Temp\pmg - temp\Super Nintendo Entertainment System'
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 52
+FinSystem.IO.IOException: La syntaxe du nom de fichier, de répertoire ou de volume est incorrecte. : 'G:\Temp\pmg - temp\Super Nintendo Entertainment System - G:\Temp\pmg - temp\Super Nintendo Entertainment System'
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 52
+FinSystem.IO.IOException: La syntaxe du nom de fichier, de répertoire ou de volume est incorrecte. : 'G:\Temp\pmg - temp\Super Nintendo Entertainment System - G:\Temp\pmg - temp\Super Nintendo Entertainment System'
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 52
+FinSystem.IO.IOException: La syntaxe du nom de fichier, de répertoire ou de volume est incorrecte. : 'G:\Temp\pmg - temp\Super Nintendo Entertainment System - G:\Temp\pmg - temp\Super Nintendo Entertainment System'
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 52
+FinSystem.IO.IOException: La syntaxe du nom de fichier, de répertoire ou de volume est incorrecte. : 'G:\Temp\pmg - temp\Super Nintendo Entertainment System - G:\Temp\pmg - temp\Super Nintendo Entertainment System'
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 52
+FinSystem.IO.IOException: La syntaxe du nom de fichier, de répertoire ou de volume est incorrecte. : 'G:\Temp\pmg - temp\Super Nintendo Entertainment System - G:\Temp\pmg - temp\Super Nintendo Entertainment System'
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 52
+Fin

@@ -1,0 +1,52 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+19:15:21 Language fr-FR - 1.0.0.4, loading...
+19:15:36 [Main] PackMe for 'Contra III: The Alien Wars' | 'f59be3bb-a09a-41d5-a77f-4fa10b51e770'
+19:15:36 Directory Exists 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)'
+19:15:38 [MakeStructure] Creation of the tree
+19:15:38 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Games'
+19:15:38 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\CheatCodes'
+19:15:38 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Images'
+19:15:38 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Manuals'
+19:15:38 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Musics'
+19:15:38 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Videos'
+19:15:38 Not managed: MissingBox3dImage
+19:15:38 Not managed: MissingCartImage
+19:15:38 Not managed: MissingCart3dImage
+19:15:38 Not managed: MissingManual
+19:15:38 Not managed: MissingBannerImage
+19:15:38 Not managed: MissingMusic
+19:15:38 Not managed: UsePauseScreen
+19:15:38 Not managed: OverrideDefaultPauseScreenSettings
+19:15:38 Not managed: SuspendProcessOnPause
+19:15:38 Not managed: ForcefulPauseScreenActivation
+19:17:02 [CopyFiles] Copy of the file 'Contra III - The Alien Wars (USA).sfc': Successful
+19:17:40 [Main] PackMe for 'Contra III: The Alien Wars' | 'f59be3bb-a09a-41d5-a77f-4fa10b51e770'
+19:17:40 Directory Exists 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)'
+19:17:41 [MakeStructure] Creation of the tree
+19:17:41 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Games'
+19:17:41 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\CheatCodes'
+19:17:41 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Images'
+19:17:41 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Manuals'
+19:17:41 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Musics'
+19:17:41 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Videos'
+19:17:41 Not managed: MissingBox3dImage
+19:17:41 Not managed: MissingBox3dImage
+19:17:41 Not managed: MissingCartImage
+19:17:41 Not managed: MissingCartImage
+19:17:41 Not managed: MissingCart3dImage
+19:17:41 Not managed: MissingCart3dImage
+19:17:41 Not managed: MissingManual
+19:17:41 Not managed: MissingManual
+19:17:41 Not managed: MissingBannerImage
+19:17:41 Not managed: MissingBannerImage
+19:17:41 Not managed: MissingMusic
+19:17:41 Not managed: MissingMusic
+19:17:41 Not managed: UsePauseScreen
+19:17:41 Not managed: UsePauseScreen
+19:17:41 Not managed: OverrideDefaultPauseScreenSettings
+19:17:41 Not managed: OverrideDefaultPauseScreenSettings
+19:17:41 Not managed: SuspendProcessOnPause
+19:17:41 Not managed: SuspendProcessOnPause
+19:17:41 Not managed: ForcefulPauseScreenActivation
+19:17:41 Not managed: ForcefulPauseScreenActivation
+19:17:54 [CopyHandler] Destination file exists, abort

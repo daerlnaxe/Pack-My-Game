@@ -1,0 +1,72 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Pack_My_Game</RootNamespace>
+    <UseWPF>true</UseWPF>
+    <Authors>Alexandre CODOUL aka Daerlnaxe</Authors>
+    <Description>- It copies then compress everything about a game contained in the db of LaunchBox app.
+- It generates a short xml file with the main information about the game
+- It takes images, pdf manual, video, music, rom file.
+- It takes also the cheatcode files if you fill the path('GameName-.')
+- It generates a tree view file.
+- 7z and zip compression "</Description>
+    <Copyright>Copyright ©  2018-2021 Daerlnaxe Software</Copyright>
+    <Company>Daerlnaxe Software</Company>
+    <AssemblyVersion>1.8.0.0</AssemblyVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Compression\ZipCompress.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Lang.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Lang.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Clouds\GDrive - Dx\Programmation\CSharp\DxPaths\DxPaths.csproj" />
+    <ProjectReference Include="..\..\..\DxTBoxCore\Sources\DxTBoxCore.csproj" />
+    <ProjectReference Include="..\..\..\HashCalc\Source\HashCalc.csproj" />
+    <ProjectReference Include="..\..\..\Hermes\Sources\Hermes.csproj" />
+    <ProjectReference Include="..\..\..\SeverZipSharp\SevenZip\SevenZip.csproj" />
+    <ProjectReference Include="..\..\LaunchBox XML\LaunchBox XML.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Lang.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Lang.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="IHM\Config\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetZip" Version="1.15.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Compression\ZipCompress.cs" />
+  </ItemGroup>
+
+</Project>

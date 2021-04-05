@@ -1,0 +1,22 @@
+﻿<Window x:Class="UnPack_My_Game.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UnPack_My_Game"
+        xmlns:l="clr-namespace:UnPack_My_Game.Resources"        
+        Width="Auto" Height="Auto"        
+        mc:Ignorable="d"
+        Title="{Binding Title, Mode=OneWay ,FallbackValue=Title}" WindowStartupLocation="CenterScreen"
+        >
+    <Window.Resources>
+        <Style TargetType="Button" BasedOn="{StaticResource btStyle}"/>
+    </Window.Resources>
+    <StackPanel Margin="10">
+        <TextBlock Text="{x:Static l:Lang.Intro}" Margin="10"/>
+        <StackPanel HorizontalAlignment="Center">
+            <Button Content="{x:Static l:Lang.Launchbox}" Click="LaunchBox_Click"/>
+
+        </StackPanel>
+    </StackPanel>
+</Window>

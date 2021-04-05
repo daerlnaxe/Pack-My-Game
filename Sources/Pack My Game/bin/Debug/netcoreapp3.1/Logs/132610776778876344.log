@@ -1,0 +1,31 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+17:41:18 Language fr-FR - 1.0.0.4, loading...
+17:41:28 [Main] PackMe for 'Contra III: The Alien Wars' | 'f59be3bb-a09a-41d5-a77f-4fa10b51e770'
+17:41:28 Directory Exists 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)'
+17:41:29 [MakeStructure] Creation of the tree
+17:41:29 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Games'
+17:41:29 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\CheatCodes'
+17:41:29 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Images'
+17:41:29 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Manuals'
+17:41:29 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Musics'
+17:41:29 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Videos'
+17:41:36 Unable to cast object of type 'LaunchBox_XML.Container.Game.MedGame' to type 'LaunchBox_XML.Container.Game.GameInfo'.
+17:42:08 [Main] PackMe for 'Contra III: The Alien Wars' | 'f59be3bb-a09a-41d5-a77f-4fa10b51e770'
+17:42:08 Directory Exists 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)'
+17:42:11 [MakeStructure] Creation of the tree
+17:42:11 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Games'
+17:42:11 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\CheatCodes'
+17:42:11 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Images'
+17:42:11 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Manuals'
+17:42:11 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Musics'
+17:42:11 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Videos'
+17:42:26 Unable to cast object of type 'LaunchBox_XML.Container.Game.MedGame' to type 'LaunchBox_XML.Container.Game.GameInfo'.
+17:42:59 [Main] PackMe for 'Contra III: The Alien Wars' | 'f59be3bb-a09a-41d5-a77f-4fa10b51e770'
+17:42:59 Directory Exists 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)'
+17:43:01 [MakeStructure] Creation of the tree
+17:43:01 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Games'
+17:43:01 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\CheatCodes'
+17:43:01 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Images'
+17:43:01 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Manuals'
+17:43:01 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Musics'
+17:43:01 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Videos'

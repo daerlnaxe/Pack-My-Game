@@ -1,0 +1,33 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+22:48:41 Language fr-FR - 1.0.0.4, loading...
+22:49:14 [Main] PackMe for 'Aladdin' | 'abb077c5-21ca-4eb5-8589-185f9477018b'
+22:49:14 [MakeStructure] Creation of the tree
+22:49:14 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega Mega Drive\Aladdin (Europe)\Games'
+22:49:14 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega Mega Drive\Aladdin (Europe)\CheatCodes'
+22:49:14 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega Mega Drive\Aladdin (Europe)\Images'
+22:49:14 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega Mega Drive\Aladdin (Europe)\Manuals'
+22:49:14 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega Mega Drive\Aladdin (Europe)\Musics'
+22:49:14 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega Mega Drive\Aladdin (Europe)\Videos'
+22:49:14 Not managed: GogAppId
+22:49:14 Not managed: OriginAppId
+22:49:14 Not managed: OriginInstallPath
+22:49:20 Not managed: MissingBox3dImage
+22:49:20 Not managed: MissingCartImage
+22:49:20 Not managed: MissingCart3dImage
+22:49:20 Not managed: MissingManual
+22:49:20 Not managed: MissingBannerImage
+22:49:20 Not managed: MissingMusic
+22:49:20 Not managed: UsePauseScreen
+22:49:20 Not managed: PauseAutoHotkeyScript
+22:49:20 Not managed: ResumeAutoHotkeyScript
+22:49:20 Not managed: OverrideDefaultPauseScreenSettings
+22:49:20 Not managed: SuspendProcessOnPause
+22:49:20 Not managed: ForcefulPauseScreenActivation
+22:49:20 Not managed: LoadStateAutoHotkeyScript
+22:49:20 Not managed: SaveStateAutoHotkeyScript
+22:49:20 Not managed: ResetAutoHotkeyScript
+22:49:20 Not managed: SwapDiscsAutoHotkeyScript
+22:49:20 Not managed: AndroidBoxFrontThumbPath
+22:49:20 Not managed: AndroidBoxFrontFullPath
+22:49:20 Not managed: AndroidBackgroundPath
+22:49:23 [CopyFiles] Copy of the file 'Aladdin (Europe).md': Successful

@@ -1,0 +1,30 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+10:51:08 Language fr-FR - 1.0.0.4, loading...
+10:51:26 [Main] PackMe for 'Donkey Kong Country' | 'fc1ac9d2-d88a-4851-8939-cea8ddeb74bb'
+10:51:26 [MakeStructure] Creation of the tree
+10:51:26 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Games'
+10:51:35 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\CheatCodes'
+10:51:35 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Images'
+10:51:35 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Manuals'
+10:51:35 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Musics'
+10:51:35 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Videos'
+10:51:35 Not managed: GogAppId
+10:51:35 Not managed: OriginAppId
+10:51:35 Not managed: OriginInstallPath
+10:51:35 Not managed: MissingBox3dImage
+10:51:35 Not managed: MissingCartImage
+10:51:35 Not managed: MissingCart3dImage
+10:51:35 Not managed: MissingManual
+10:51:35 Not managed: MissingBannerImage
+10:51:35 Not managed: MissingMusic
+10:51:35 Not managed: UsePauseScreen
+10:51:35 Not managed: PauseAutoHotkeyScript
+10:51:35 Not managed: ResumeAutoHotkeyScript
+10:51:35 Not managed: OverrideDefaultPauseScreenSettings
+10:51:35 Not managed: SuspendProcessOnPause
+10:51:35 Not managed: ForcefulPauseScreenActivation
+10:51:35 Not managed: LoadStateAutoHotkeyScript
+10:51:35 Not managed: SaveStateAutoHotkeyScript
+10:51:35 Not managed: ResetAutoHotkeyScript
+10:51:35 Not managed: SwapDiscsAutoHotkeyScript
+10:51:36 Operation stopped

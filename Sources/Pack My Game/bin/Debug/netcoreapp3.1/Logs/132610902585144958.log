@@ -1,0 +1,51 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+21:10:58 Language fr-FR - 1.0.0.4, loading...
+21:11:18 [Main] PackMe for 'Ecco the Dolphin' | '2c00a91f-9f5d-4331-869c-cb23bbdeec53'
+21:11:18 Directory Exists 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]'
+21:11:21 Trash existing folder: 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]'
+21:11:22 [MakeStructure] Creation of the tree
+21:11:22 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Games'
+21:11:22 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\CheatCodes'
+21:11:22 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Images'
+21:11:22 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Manuals'
+21:11:22 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Musics'
+21:11:22 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Sega CD\Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1]\Videos'
+21:11:22 Not managed: GogAppId
+21:11:22 Not managed: OriginAppId
+21:11:22 Not managed: OriginInstallPath
+21:11:22 Not managed: MissingBox3dImage
+21:11:22 Not managed: MissingCartImage
+21:11:22 Not managed: MissingCart3dImage
+21:11:22 Not managed: MissingManual
+21:11:22 Not managed: MissingBannerImage
+21:11:22 Not managed: MissingMusic
+21:11:22 Not managed: UsePauseScreen
+21:11:22 Not managed: PauseAutoHotkeyScript
+21:11:22 Not managed: ResumeAutoHotkeyScript
+21:11:22 Not managed: OverrideDefaultPauseScreenSettings
+21:11:22 Not managed: SuspendProcessOnPause
+21:11:22 Not managed: ForcefulPauseScreenActivation
+21:11:22 Not managed: LoadStateAutoHotkeyScript
+21:11:22 Not managed: SaveStateAutoHotkeyScript
+21:11:22 Not managed: ResetAutoHotkeyScript
+21:11:22 Not managed: SwapDiscsAutoHotkeyScript
+21:11:22 Not managed: AndroidBoxFrontThumbPath
+21:11:22 Not managed: AndroidBoxFrontFullPath
+21:11:22 Not managed: AndroidBackgroundPath
+21:11:25 [CopyFiles] Copy of the file 'Ecco the Dolphin (1993)(Sega)(PAL)(Track 01 of 16)[!][MK-4408P-00135 1].iso': Successful
+21:11:54 [CopyFiles] Copy of the file 'Ecco the Dolphin (1993)(Sega)(PAL)(Track 02 of 16)[!][MK-4408P-00135 1].wav': Successful
+21:11:56 [CopyFiles] Copy of the file 'Ecco the Dolphin (1993)(Sega)(PAL)(Track 03 of 16)[!][MK-4408P-00135 1].wav': Successful
+21:11:57 [CopyFiles] Copy of the file 'Ecco the Dolphin (1993)(Sega)(PAL)(Track 04 of 16)[!][MK-4408P-00135 1].wav': Successful
+21:11:59 [CopyFiles] Copy of the file 'Ecco the Dolphin (1993)(Sega)(PAL)(Track 05 of 16)[!][MK-4408P-00135 1].wav': Successful
+21:12:01 [CopyFiles] Copy of the file 'Ecco the Dolphin (1993)(Sega)(PAL)(Track 06 of 16)[!][MK-4408P-00135 1].wav': Successful
+21:12:03 [CopyFiles] Copy of the file 'Ecco the Dolphin (1993)(Sega)(PAL)(Track 07 of 16)[!][MK-4408P-00135 1].wav': Successful
+21:12:06 [CopyFiles] Copy of the file 'Ecco the Dolphin (1993)(Sega)(PAL)(Track 08 of 16)[!][MK-4408P-00135 1].wav': Successful
+21:12:07 [CopyFiles] Copy of the file 'Ecco the Dolphin (1993)(Sega)(PAL)(Track 09 of 16)[!][MK-4408P-00135 1].wav': Successful
+21:12:07 [CopyFiles] Copy of the file 'Ecco the Dolphin (1993)(Sega)(PAL)(Track 10 of 16)[!][MK-4408P-00135 1].wav': Successful
+21:12:08 [CopyFiles] Copy of the file 'Ecco the Dolphin (1993)(Sega)(PAL)(Track 11 of 16)[!][MK-4408P-00135 1].wav': Successful
+21:12:09 [CopyFiles] Copy of the file 'Ecco the Dolphin (1993)(Sega)(PAL)(Track 12 of 16)[!][MK-4408P-00135 1].wav': Successful
+21:12:10 [CopyFiles] Copy of the file 'Ecco the Dolphin (1993)(Sega)(PAL)(Track 13 of 16)[!][MK-4408P-00135 1].wav': Successful
+21:12:11 [CopyFiles] Copy of the file 'Ecco the Dolphin (1993)(Sega)(PAL)(Track 14 of 16)[!][MK-4408P-00135 1].wav': Successful
+21:12:13 [CopyFiles] Copy of the file 'Ecco the Dolphin (1993)(Sega)(PAL)(Track 15 of 16)[!][MK-4408P-00135 1].wav': Successful
+21:12:15 [CopyFiles] Copy of the file 'Ecco the Dolphin (1993)(Sega)(PAL)(Track 16 of 16)[!][MK-4408P-00135 1].wav': Successful
+21:12:16 [CopyFiles] Copy of the file 'Ecco the Dolphin (1993)(Sega)(PAL)[!][MK-4408P-00135 1].cue': Successful

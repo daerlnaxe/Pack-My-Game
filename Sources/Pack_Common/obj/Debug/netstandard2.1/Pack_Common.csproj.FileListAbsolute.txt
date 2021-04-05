@@ -1,0 +1,9 @@
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack_Common\bin\Debug\netstandard2.1\Pack_Common.deps.json
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack_Common\bin\Debug\netstandard2.1\Pack_Common.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack_Common\bin\Debug\netstandard2.1\Pack_Common.pdb
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack_Common\obj\Debug\netstandard2.1\Pack_Common.csprojAssemblyReference.cache
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack_Common\obj\Debug\netstandard2.1\Pack_Common.AssemblyInfoInputs.cache
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack_Common\obj\Debug\netstandard2.1\Pack_Common.AssemblyInfo.cs
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack_Common\obj\Debug\netstandard2.1\Pack_Common.csproj.CoreCompileInputs.cache
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack_Common\obj\Debug\netstandard2.1\Pack_Common.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack_Common\obj\Debug\netstandard2.1\Pack_Common.pdb

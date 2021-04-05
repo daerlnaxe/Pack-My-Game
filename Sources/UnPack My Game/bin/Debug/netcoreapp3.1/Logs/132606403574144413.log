@@ -1,0 +1,112 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+16:12:38 Work on: Aladdin.zip
+16:12:39 Zip Decompression
+16:12:39 	ZipExtraction: EBGame.xml
+16:12:46 	ZipExtraction: Infos.xml
+16:12:46 	ZipExtraction: Struct.info
+16:12:46 	ZipExtraction: TBGame.xml
+16:12:46 	ZipExtraction: CheatCodes/
+16:12:46 	ZipExtraction: Images/
+16:12:46 	ZipExtraction: Images/Arcade - Marquee/
+16:12:47 	ZipExtraction: Images/Arcade - Marquee/Aladdin-01.png
+16:12:47 	ZipExtraction: Images/Banner/
+16:12:47 	ZipExtraction: Images/Banner/Aladdin-01.jpg
+16:12:47 	ZipExtraction: Images/Banner/Aladdin-02.jpg
+16:12:47 	ZipExtraction: Images/Box - 3D/
+16:12:47 	ZipExtraction: Images/Box - 3D/Europe/
+16:12:47 	ZipExtraction: Images/Box - 3D/Europe/Aladdin-01.png
+16:12:47 	ZipExtraction: Images/Box - Back/
+16:12:47 	ZipExtraction: Images/Box - Back/Europe/
+16:12:47 	ZipExtraction: Images/Box - Back/Europe/Aladdin-01.jpg
+16:12:48 	ZipExtraction: Images/Box - Front/
+16:12:48 	ZipExtraction: Images/Box - Front/Europe/
+16:12:48 	ZipExtraction: Images/Box - Front/Europe/Aladdin-01.png
+16:12:48 	ZipExtraction: Images/Cart - Front/
+16:12:48 	ZipExtraction: Images/Cart - Front/Europe/
+16:12:48 	ZipExtraction: Images/Cart - Front/Europe/Aladdin-01.png
+16:12:48 	ZipExtraction: Images/Clear Logo/
+16:12:48 	ZipExtraction: Images/Clear Logo/Europe/
+16:12:48 	ZipExtraction: Images/Clear Logo/Europe/Aladdin-01.png
+16:12:48 	ZipExtraction: Images/Fanart - Background/
+16:12:48 	ZipExtraction: Images/Fanart - Background/Aladdin-01.jpg
+16:12:48 	ZipExtraction: Images/Screenshot - Gameplay/
+16:12:48 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-01.jpg
+16:12:48 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-02.jpg
+16:12:49 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-03.jpg
+16:12:49 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-04.jpg
+16:12:49 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-05.jpg
+16:12:49 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-06.jpg
+16:12:49 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-07.jpg
+16:12:49 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-08.jpg
+16:12:49 	ZipExtraction: Manuals/
+16:12:49 	ZipExtraction: Musics/
+16:12:49 	ZipExtraction: Musics/Aladdin.mp3
+16:12:49 	ZipExtraction: Roms/
+16:12:49 	ZipExtraction: Roms/Aladdin (Europe).md
+16:12:49 	ZipExtraction: Videos/
+16:12:49 	ZipExtraction: Videos/Aladdin-01.mp4
+16:12:49 	ZipExtraction: Manuals/Disney's_Aladdin_MD_FR_Manual.pdf
+16:12:49 	ZipExtraction: Roms/Disney's Aladdin (E) [f1].md
+16:12:49 	ZipExtraction: 800px-Aladdin_MD_EU_Box.jpg
+16:12:49 	ZipExtraction: 800px-Aladdin_MD_EU_Cart.jpg
+16:12:49 	ZipExtraction: Roms/Aladdin (USA).md
+16:12:49 	ZipExtraction: Roms/Disney's Aladdin (U) [f1].md
+16:12:50 	ZipExtraction: Roms/Disney's Aladdin (U) [h1C].md
+16:12:50 	ZipExtraction: Roms/Disney's Aladdin (U) [T+Fre0.99Beta_Macrotrads].md
+16:12:50 	ZipExtraction: CheatCodes/Aladdin.txt
+16:12:50 Game info xml loaded: Aladdin
+16:12:50 Target Game path: ..\..\Plateformes\Games\Sega Mega Drive
+16:12:50 Target Manuals  path: ..\..\Plateformes\Manuals\Sega Mega Drive
+16:12:50 Target Musics path: ..\..\Plateformes\Music\Sega Mega Drive
+16:12:50 Target Videos path: ..\..\Plateformes\Videos\Sega Mega Drive
+16:13:41 Injection in xml Launchbox's files
+16:13:41 Finished
+16:13:42 Work on: Bubsy in - Claws Encounters of the Furred Kind (USA, Europe).zip
+16:13:43 Zip Decompression
+16:13:43 	ZipExtraction: EBGame.xml
+16:13:43 	ZipExtraction: Infos.xml
+16:13:43 	ZipExtraction: Struct.info
+16:13:43 	ZipExtraction: TBGame.xml
+16:13:43 	ZipExtraction: CheatCodes/
+16:13:43 	ZipExtraction: Images/
+16:13:43 	ZipExtraction: Images/Arcade - Marquee/
+16:13:43 	ZipExtraction: Images/Arcade - Marquee/Bubsy in_ Claws Encounters of the Furred Kind-01.png
+16:13:43 	ZipExtraction: Images/Box - 3D/
+16:13:43 	ZipExtraction: Images/Box - 3D/Bubsy in_ Claws Encounters of the Furred Kind-01.png
+16:13:43 	ZipExtraction: Images/Box - 3D/Bubsy in_ Claws Encounters of the Furred Kind-02.png
+16:13:43 	ZipExtraction: Images/Box - Back/
+16:13:43 	ZipExtraction: Images/Box - Back/Europe/
+16:13:43 	ZipExtraction: Images/Box - Back/Europe/Bubsy in_ Claws Encounters of the Furred Kind-01.jpg
+16:13:43 	ZipExtraction: Images/Box - Front/
+16:13:43 	ZipExtraction: Images/Box - Front/Bubsy in_ Claws Encounters of the Furred Kind-01.png
+16:13:43 	ZipExtraction: Images/Box - Front/Europe/
+16:13:43 	ZipExtraction: Images/Box - Front/Europe/Bubsy in_ Claws Encounters of the Furred Kind-01.jpg
+16:13:43 	ZipExtraction: Images/Cart - Front/
+16:13:43 	ZipExtraction: Images/Cart - Front/Bubsy in_ Claws Encounters of the Furred Kind-01.png
+16:13:43 	ZipExtraction: Images/Cart - Front/Bubsy in_ Claws Encounters of the Furred Kind-02.png
+16:13:43 	ZipExtraction: Images/Cart - Front/Europe/
+16:13:43 	ZipExtraction: Images/Cart - Front/Europe/Bubsy in_ Claws Encounters of the Furred Kind-01.png
+16:13:43 	ZipExtraction: Images/Clear Logo/
+16:13:43 	ZipExtraction: Images/Clear Logo/World/
+16:13:43 	ZipExtraction: Images/Clear Logo/World/Bubsy in_ Claws Encounters of the Furred Kind-01.png
+16:13:43 	ZipExtraction: Images/Screenshot - Game Title/
+16:13:43 	ZipExtraction: Images/Screenshot - Game Title/Bubsy in_ Claws Encounters of the Furred Kind-01.png
+16:13:43 	ZipExtraction: Images/Screenshot - Gameplay/
+16:13:43 	ZipExtraction: Images/Screenshot - Gameplay/Bubsy in_ Claws Encounters of the Furred Kind-01.png
+16:13:43 	ZipExtraction: Images/Screenshot - Gameplay/Bubsy in_ Claws Encounters of the Furred Kind-02.png
+16:13:43 	ZipExtraction: Manuals/
+16:13:43 	ZipExtraction: Manuals/Bubsy in_ Claws Encounters of the Furred Kind.pdf
+16:13:43 	ZipExtraction: Musics/
+16:13:43 	ZipExtraction: Musics/Bubsy.mp3
+16:13:44 	ZipExtraction: Roms/
+16:13:44 	ZipExtraction: Roms/Bubsy in - Claws Encounters of the Furred Kind (USA, Europe).md
+16:13:44 	ZipExtraction: Videos/
+16:13:44 	ZipExtraction: Videos/Bubsy in_ Claws Encounters of the Furred Kind-01.mp4
+16:13:44 	ZipExtraction: Manuals/Bubsy_MD_FR_Manual.pdf
+16:13:44 	ZipExtraction: 660px-Bubsy_MD_EU_Cart.jpg
+16:13:44 	ZipExtraction: 800px-Bubsy_MD_EU_Box.jpg
+16:13:44 Game info xml loaded: Bubsy in: Claws Encounters of the Furred Kind
+16:13:44 Target Game path: ..\..\Plateformes\Games\Sega Mega Drive
+16:13:44 Target Manuals  path: ..\..\Plateformes\Manuals\Sega Mega Drive
+16:13:44 Target Musics path: ..\..\Plateformes\Musics\Sega Mega Drive
+16:13:44 Target Videos path: ..\..\Plateformes\Videos\Sega Mega Drive

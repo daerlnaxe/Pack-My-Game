@@ -1,0 +1,12 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+17:31:39 Language fr-FR - 1.0.0.4, loading...
+17:31:52 [Main] PackMe for 'Contra III: The Alien Wars' | 'f59be3bb-a09a-41d5-a77f-4fa10b51e770'
+17:31:52 Directory Exists 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)'
+17:31:53 Trash existing folder: 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)'
+17:31:54 [MakeStructure] Creation of the tree
+17:31:54 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Games'
+17:31:54 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\CheatCodes'
+17:31:54 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Images'
+17:31:54 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Manuals'
+17:31:54 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Musics'
+17:31:54 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Contra III - The Alien Wars (USA)\Videos'

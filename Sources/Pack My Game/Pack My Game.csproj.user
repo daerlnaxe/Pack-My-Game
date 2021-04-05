@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="IHM\BoxProgress.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="IHM\W_Cheat.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="IHM\W_ChooseName.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="IHM\W_Config.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="IHM\W_Games.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="IHM\W_Info.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="IHM\W_PackMeRes.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="IHM\BoxProgress.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="IHM\W_Cheat.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="IHM\W_ChooseName.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="IHM\W_Config.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="IHM\W_Games.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="IHM\W_Info.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="IHM\W_PackMeRes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Style.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

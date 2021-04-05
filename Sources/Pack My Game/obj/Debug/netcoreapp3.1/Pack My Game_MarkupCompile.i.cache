@@ -1,0 +1,20 @@
+﻿Pack My Game
+1.8.0.0
+
+winexe
+C#
+.cs
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\obj\Debug\netcoreapp3.1\
+Pack_My_Game
+none
+false
+TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\App.xaml
+91522769124
+
+38326294770
+222-372010299
+IHM\BoxProgress.xaml;IHM\W_Cheat.xaml;IHM\W_ChooseName.xaml;IHM\W_Config.xaml;IHM\W_Games.xaml;IHM\W_Info.xaml;IHM\W_PackMeRes.xaml;MainWindow.xaml;Resources\Style.xaml;
+
+True
+

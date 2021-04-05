@@ -1,0 +1,77 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+18:00:41 Get infos from platform
+18:00:41 Backup of 'G:\Frontend\LaunchBox - Test\Data\Platforms\Sega Genesis.xml'
+18:00:41 Target Game path: ..\..\fauxgames\Games\Sega Genesis
+18:00:41 Target Cheats path: ..\..\fauxgames\Cheat Codes\Sega Genesis
+18:00:41 Target Images path: ..\..\fauxgames\Images\Sega Genesis
+18:00:41 Target Manuals  path: ..\..\fauxgames\Manuals\Sega Genesis
+18:00:41 Target Musics path: ..\..\fauxgames\Musics\Sega Genesis
+18:00:41 Target Videos path: ..\..\fauxgames\Videos\Sega Genesis
+18:00:41 Work on: Aladdin.zip
+18:00:41 Zip Decompression
+18:00:41 	ZipExtraction: EBGame.xml
+18:00:41 	ZipExtraction: Infos.xml
+18:00:41 	ZipExtraction: Struct.info
+18:00:41 	ZipExtraction: TBGame.xml
+18:00:41 	ZipExtraction: CheatCodes/
+18:00:41 	ZipExtraction: Images/
+18:00:41 	ZipExtraction: Images/Arcade - Marquee/
+18:00:41 	ZipExtraction: Images/Arcade - Marquee/Aladdin-01.png
+18:00:41 	ZipExtraction: Images/Banner/
+18:00:41 	ZipExtraction: Images/Banner/Aladdin-01.jpg
+18:00:41 	ZipExtraction: Images/Banner/Aladdin-02.jpg
+18:00:41 	ZipExtraction: Images/Box - 3D/
+18:00:41 	ZipExtraction: Images/Box - 3D/Europe/
+18:00:41 	ZipExtraction: Images/Box - 3D/Europe/Aladdin-01.png
+18:00:41 	ZipExtraction: Images/Box - Back/
+18:00:41 	ZipExtraction: Images/Box - Back/Europe/
+18:00:41 	ZipExtraction: Images/Box - Back/Europe/Aladdin-01.jpg
+18:00:41 	ZipExtraction: Images/Box - Front/
+18:00:41 	ZipExtraction: Images/Box - Front/Europe/
+18:00:41 	ZipExtraction: Images/Box - Front/Europe/Aladdin-01.png
+18:00:41 	ZipExtraction: Images/Cart - Front/
+18:00:41 	ZipExtraction: Images/Cart - Front/Europe/
+18:00:41 	ZipExtraction: Images/Cart - Front/Europe/Aladdin-01.png
+18:00:41 	ZipExtraction: Images/Clear Logo/
+18:00:41 	ZipExtraction: Images/Clear Logo/Europe/
+18:00:41 	ZipExtraction: Images/Clear Logo/Europe/Aladdin-01.png
+18:00:41 	ZipExtraction: Images/Fanart - Background/
+18:00:41 	ZipExtraction: Images/Fanart - Background/Aladdin-01.jpg
+18:00:41 	ZipExtraction: Images/Screenshot - Gameplay/
+18:00:41 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-01.jpg
+18:00:42 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-02.jpg
+18:00:42 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-03.jpg
+18:00:42 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-04.jpg
+18:00:42 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-05.jpg
+18:00:42 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-06.jpg
+18:00:42 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-07.jpg
+18:00:42 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-08.jpg
+18:00:42 	ZipExtraction: Manuals/
+18:00:42 	ZipExtraction: Musics/
+18:00:42 	ZipExtraction: Musics/Aladdin.mp3
+18:00:42 	ZipExtraction: Roms/
+18:00:42 	ZipExtraction: Roms/Aladdin (Europe).md
+18:00:42 	ZipExtraction: Videos/
+18:00:42 	ZipExtraction: Videos/Aladdin-01.mp4
+18:00:42 	ZipExtraction: Manuals/Disney's_Aladdin_MD_FR_Manual.pdf
+18:00:42 	ZipExtraction: Roms/Disney's Aladdin (E) [f1].md
+18:00:42 	ZipExtraction: 800px-Aladdin_MD_EU_Box.jpg
+18:00:42 	ZipExtraction: 800px-Aladdin_MD_EU_Cart.jpg
+18:00:42 	ZipExtraction: Roms/Aladdin (USA).md
+18:00:42 	ZipExtraction: Roms/Disney's Aladdin (U) [f1].md
+18:00:42 	ZipExtraction: Roms/Disney's Aladdin (U) [h1C].md
+18:00:42 	ZipExtraction: Roms/Disney's Aladdin (U) [T+Fre0.99Beta_Macrotrads].md
+18:00:42 	ZipExtraction: CheatCodes/Aladdin.txt
+18:00:42 Game info xml loaded: Aladdin
+18:00:44 Altération of platform Sega Mega Drive => Sega Genesis
+18:00:44 Copy de: Cheat Codes
+18:00:44 Copy de: Images
+18:00:45 Copy de: Manuels
+18:00:45 Copy de: Musiques
+18:00:45 Copy de: Games
+18:00:45 Copy de: Videos
+18:00:45 Injection in xml Launchbox's files
+18:00:45 Finished
+
+Fermeture du Log
+

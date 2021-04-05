@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Pack_My_Game.Resources">
+    <!-- Label -->
+    <Style TargetType="Label" x:Key="lblStyle">
+        <Setter Property="ContentStringFormat" Value="{}{0}:"/>
+    </Style>
+    <!-- TextBox -->
+    <Style TargetType="TextBlock" x:Key="tbStyle">
+        
+    </Style>
+    <!-- Combobox -->
+    <Style TargetType="ComboBox" x:Key="cbStyle">
+        
+    </Style>
+    <!-- Button -->
+    <Style TargetType="Button" x:Key="btStyle">
+        <Setter Property="Padding" Value="5"/>
+    </Style>
+    
+</ResourceDictionary>

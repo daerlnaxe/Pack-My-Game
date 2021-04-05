@@ -1,0 +1,119 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+09:43:03 Work on: Aladdin.zip
+09:43:03 Zip Decompression
+09:43:03 	ZipExtraction: EBGame.xml
+09:43:03 	ZipExtraction: Infos.xml
+09:43:03 	ZipExtraction: Struct.info
+09:43:03 	ZipExtraction: TBGame.xml
+09:43:03 	ZipExtraction: CheatCodes/
+09:43:03 	ZipExtraction: Images/
+09:43:03 	ZipExtraction: Images/Arcade - Marquee/
+09:43:03 	ZipExtraction: Images/Arcade - Marquee/Aladdin-01.png
+09:43:03 	ZipExtraction: Images/Banner/
+09:43:03 	ZipExtraction: Images/Banner/Aladdin-01.jpg
+09:43:03 	ZipExtraction: Images/Banner/Aladdin-02.jpg
+09:43:03 	ZipExtraction: Images/Box - 3D/
+09:43:03 	ZipExtraction: Images/Box - 3D/Europe/
+09:43:03 	ZipExtraction: Images/Box - 3D/Europe/Aladdin-01.png
+09:43:03 	ZipExtraction: Images/Box - Back/
+09:43:03 	ZipExtraction: Images/Box - Back/Europe/
+09:43:03 	ZipExtraction: Images/Box - Back/Europe/Aladdin-01.jpg
+09:43:03 	ZipExtraction: Images/Box - Front/
+09:43:03 	ZipExtraction: Images/Box - Front/Europe/
+09:43:03 	ZipExtraction: Images/Box - Front/Europe/Aladdin-01.png
+09:43:03 	ZipExtraction: Images/Cart - Front/
+09:43:03 	ZipExtraction: Images/Cart - Front/Europe/
+09:43:03 	ZipExtraction: Images/Cart - Front/Europe/Aladdin-01.png
+09:43:03 	ZipExtraction: Images/Clear Logo/
+09:43:03 	ZipExtraction: Images/Clear Logo/Europe/
+09:43:03 	ZipExtraction: Images/Clear Logo/Europe/Aladdin-01.png
+09:43:03 	ZipExtraction: Images/Fanart - Background/
+09:43:03 	ZipExtraction: Images/Fanart - Background/Aladdin-01.jpg
+09:43:03 	ZipExtraction: Images/Screenshot - Gameplay/
+09:43:03 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-01.jpg
+09:43:03 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-02.jpg
+09:43:03 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-03.jpg
+09:43:03 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-04.jpg
+09:43:03 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-05.jpg
+09:43:03 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-06.jpg
+09:43:03 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-07.jpg
+09:43:03 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-08.jpg
+09:43:03 	ZipExtraction: Manuals/
+09:43:03 	ZipExtraction: Musics/
+09:43:03 	ZipExtraction: Musics/Aladdin.mp3
+09:43:03 	ZipExtraction: Roms/
+09:43:03 	ZipExtraction: Roms/Aladdin (Europe).md
+09:43:03 	ZipExtraction: Videos/
+09:43:03 	ZipExtraction: Videos/Aladdin-01.mp4
+09:43:03 	ZipExtraction: Manuals/Disney's_Aladdin_MD_FR_Manual.pdf
+09:43:03 	ZipExtraction: Roms/Disney's Aladdin (E) [f1].md
+09:43:04 	ZipExtraction: 800px-Aladdin_MD_EU_Box.jpg
+09:43:04 	ZipExtraction: 800px-Aladdin_MD_EU_Cart.jpg
+09:43:04 	ZipExtraction: Roms/Aladdin (USA).md
+09:43:04 	ZipExtraction: Roms/Disney's Aladdin (U) [f1].md
+09:43:04 	ZipExtraction: Roms/Disney's Aladdin (U) [h1C].md
+09:43:04 	ZipExtraction: Roms/Disney's Aladdin (U) [T+Fre0.99Beta_Macrotrads].md
+09:43:04 	ZipExtraction: CheatCodes/Aladdin.txt
+09:43:04 Game info xml loaded: Aladdin
+09:44:44 Target Game path: ..\..\Plateformes\Games\Sega Mega Drive
+09:44:44 Target Manuals  path: ..\..\Plateformes\Manuals\Sega Mega Drive
+09:44:44 Target Musics path: ..\..\Plateformes\Music\Sega Mega Drive
+09:44:44 Target Videos path: ..\..\Plateformes\Videos\Sega Mega Drive
+09:45:10 Injection in xml Launchbox's files
+09:45:10 Game Finished
+09:45:11 Work on: EA Hockey (Europe).zip
+09:45:12 Zip Decompression
+09:45:13 	ZipExtraction: EBGame.xml
+09:45:13 	ZipExtraction: Infos.xml
+09:45:13 	ZipExtraction: Struct.info
+09:45:13 	ZipExtraction: TBGame.xml
+09:45:13 	ZipExtraction: CheatCodes/
+09:45:13 	ZipExtraction: Images/
+09:45:13 	ZipExtraction: Images/Box - 3D/
+09:45:13 	ZipExtraction: Images/Box - 3D/NHL Hockey-01.png
+09:45:13 	ZipExtraction: Images/Box - 3D/Europe/
+09:45:13 	ZipExtraction: Images/Box - 3D/Europe/NHL Hockey-01.png
+09:45:13 	ZipExtraction: Images/Box - Back/
+09:45:13 	ZipExtraction: Images/Box - Back/Europe/
+09:45:13 	ZipExtraction: Images/Box - Back/Europe/NHL Hockey-01.jpg
+09:45:13 	ZipExtraction: Images/Box - Front/
+09:45:13 	ZipExtraction: Images/Box - Front/NHL Hockey-01.png
+09:45:13 	ZipExtraction: Images/Box - Front/Europe/
+09:45:13 	ZipExtraction: Images/Box - Front/Europe/NHL Hockey-01.jpg
+09:45:13 	ZipExtraction: Images/Box - Front - Reconstructed/
+09:45:13 	ZipExtraction: Images/Box - Front - Reconstructed/North America/
+09:45:13 	ZipExtraction: Images/Box - Front - Reconstructed/North America/NHL Hockey-01.jpg
+09:45:13 	ZipExtraction: Images/Cart - Front/
+09:45:13 	ZipExtraction: Images/Cart - Front/NHL Hockey-01.png
+09:45:13 	ZipExtraction: Images/Cart - Front/Europe/
+09:45:13 	ZipExtraction: Images/Cart - Front/Europe/NHL Hockey-01.png
+09:45:13 	ZipExtraction: Images/Clear Logo/
+09:45:13 	ZipExtraction: Images/Clear Logo/NHL Hockey-01.png
+09:45:13 	ZipExtraction: Images/Clear Logo/Europe/
+09:45:13 	ZipExtraction: Images/Clear Logo/Europe/NHL Hockey-01.png
+09:45:13 	ZipExtraction: Images/Screenshot - Game Title/
+09:45:13 	ZipExtraction: Images/Screenshot - Game Title/NHL Hockey-01.png
+09:45:13 	ZipExtraction: Images/Screenshot - Gameplay/
+09:45:13 	ZipExtraction: Images/Screenshot - Gameplay/NHL Hockey-01.png
+09:45:13 	ZipExtraction: Images/Screenshot - Gameplay/NHL Hockey-02.png
+09:45:13 	ZipExtraction: Manuals/
+09:45:13 	ZipExtraction: Manuals/NHL_Hockey_MD_US_Manual.pdf
+09:45:14 	ZipExtraction: Musics/
+09:45:14 	ZipExtraction: Roms/
+09:45:14 	ZipExtraction: Roms/EA Hockey (Europe).md
+09:45:14 	ZipExtraction: Videos/
+09:45:14 	ZipExtraction: Videos/NHL Hockey-01.mp4
+09:45:14 	ZipExtraction: Videos/NHL Hockey-02.mp4
+09:45:14 	ZipExtraction: page15-439px-MegaForce_FR_08.pdf.jpg
+09:45:14 	ZipExtraction: page14-437px-MegaForce_FR_08.pdf.jpg
+09:45:14 Game info xml loaded: NHL Hockey
+09:45:16 Target Game path: ..\..\Plateformes\Games\Sega Mega Drive
+09:45:16 Target Manuals  path: ..\..\Plateformes\Manuals\Sega Mega Drive
+09:45:16 Target Musics path: 
+09:45:16 Target Videos path: ..\..\Plateformes\Videos\Sega Mega Drive
+09:45:22 Injection in xml Launchbox's files
+09:45:22 Game Finished
+09:45:22 Task Finished
+
+Fermeture du Log
+

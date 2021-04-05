@@ -1,0 +1,135 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+10:50:38 Work on: Aladdin.zip
+10:50:38 Zip Decompression
+10:50:38 	ZipExtraction: EBGame.xml
+10:50:38 	ZipExtraction: Infos.xml
+10:50:38 	ZipExtraction: Struct.info
+10:50:38 	ZipExtraction: TBGame.xml
+10:50:38 	ZipExtraction: CheatCodes/
+10:50:38 	ZipExtraction: Images/
+10:50:38 	ZipExtraction: Images/Arcade - Marquee/
+10:50:38 	ZipExtraction: Images/Arcade - Marquee/Aladdin-01.png
+10:50:38 	ZipExtraction: Images/Banner/
+10:50:38 	ZipExtraction: Images/Banner/Aladdin-01.jpg
+10:50:38 	ZipExtraction: Images/Banner/Aladdin-02.jpg
+10:50:38 	ZipExtraction: Images/Box - 3D/
+10:50:38 	ZipExtraction: Images/Box - 3D/Europe/
+10:50:38 	ZipExtraction: Images/Box - 3D/Europe/Aladdin-01.png
+10:50:38 	ZipExtraction: Images/Box - Back/
+10:50:38 	ZipExtraction: Images/Box - Back/Europe/
+10:50:38 	ZipExtraction: Images/Box - Back/Europe/Aladdin-01.jpg
+10:50:38 	ZipExtraction: Images/Box - Front/
+10:50:38 	ZipExtraction: Images/Box - Front/Europe/
+10:50:38 	ZipExtraction: Images/Box - Front/Europe/Aladdin-01.png
+10:50:38 	ZipExtraction: Images/Cart - Front/
+10:50:38 	ZipExtraction: Images/Cart - Front/Europe/
+10:50:39 	ZipExtraction: Images/Cart - Front/Europe/Aladdin-01.png
+10:50:39 	ZipExtraction: Images/Clear Logo/
+10:50:39 	ZipExtraction: Images/Clear Logo/Europe/
+10:50:39 	ZipExtraction: Images/Clear Logo/Europe/Aladdin-01.png
+10:50:39 	ZipExtraction: Images/Fanart - Background/
+10:50:39 	ZipExtraction: Images/Fanart - Background/Aladdin-01.jpg
+10:50:39 	ZipExtraction: Images/Screenshot - Gameplay/
+10:50:39 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-01.jpg
+10:50:39 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-02.jpg
+10:50:39 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-03.jpg
+10:50:39 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-04.jpg
+10:50:39 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-05.jpg
+10:50:39 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-06.jpg
+10:50:39 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-07.jpg
+10:50:39 	ZipExtraction: Images/Screenshot - Gameplay/Aladdin-08.jpg
+10:50:39 	ZipExtraction: Manuals/
+10:50:39 	ZipExtraction: Musics/
+10:50:39 	ZipExtraction: Musics/Aladdin.mp3
+10:50:39 	ZipExtraction: Roms/
+10:50:39 	ZipExtraction: Roms/Aladdin (Europe).md
+10:50:39 	ZipExtraction: Videos/
+10:50:39 	ZipExtraction: Videos/Aladdin-01.mp4
+10:50:43 	ZipExtraction: Manuals/Disney's_Aladdin_MD_FR_Manual.pdf
+10:50:43 	ZipExtraction: Roms/Disney's Aladdin (E) [f1].md
+10:50:43 	ZipExtraction: 800px-Aladdin_MD_EU_Box.jpg
+10:50:43 	ZipExtraction: 800px-Aladdin_MD_EU_Cart.jpg
+10:50:43 	ZipExtraction: Roms/Aladdin (USA).md
+10:50:43 	ZipExtraction: Roms/Disney's Aladdin (U) [f1].md
+10:50:43 	ZipExtraction: Roms/Disney's Aladdin (U) [h1C].md
+10:50:43 	ZipExtraction: Roms/Disney's Aladdin (U) [T+Fre0.99Beta_Macrotrads].md
+10:50:43 	ZipExtraction: CheatCodes/Aladdin.txt
+10:50:43 Game info xml loaded: Aladdin
+10:50:43 Target Game path: ..\..\Plateformes\Games\Sega Mega Drive
+10:50:43 Target Manuals  path: ..\..\Plateformes\Manuals\Sega Mega Drive
+10:50:43 Target Musics path: ..\..\Plateformes\Music\Sega Mega Drive
+10:50:43 Target Videos path: ..\..\Plateformes\Videos\Sega Mega Drive
+10:50:47 Injection in xml Launchbox's files
+10:50:47 Game Finished
+10:50:47 Work on: DUNE.zip
+10:50:47 Zip Decompression
+10:50:47 	ZipExtraction: EBGame.xml
+10:50:47 	ZipExtraction: Infos.xml
+10:50:47 	ZipExtraction: Struct.info
+10:50:47 	ZipExtraction: TBGame.xml
+10:50:47 	ZipExtraction: CheatCodes/
+10:50:47 	ZipExtraction: Images/
+10:50:47 	ZipExtraction: Images/Arcade - Marquee/
+10:50:47 	ZipExtraction: Images/Arcade - Marquee/Dune-01.png
+10:50:47 	ZipExtraction: Images/Box - 3D/
+10:50:47 	ZipExtraction: Images/Box - 3D/Dune-01.png
+10:50:47 	ZipExtraction: Images/Box - 3D/Europe/
+10:50:47 	ZipExtraction: Images/Box - 3D/Europe/Dune-01.png
+10:50:47 	ZipExtraction: Images/Box - Back/
+10:50:47 	ZipExtraction: Images/Box - Back/Dune-01.png
+10:50:47 	ZipExtraction: Images/Box - Back/Europe/
+10:50:47 	ZipExtraction: Images/Box - Back/Europe/Dune-01.jpg
+10:50:47 	ZipExtraction: Images/Box - Back - Reconstructed/
+10:50:47 	ZipExtraction: Images/Box - Back - Reconstructed/North America/
+10:50:47 	ZipExtraction: Images/Box - Back - Reconstructed/North America/Dune-01.jpg
+10:50:48 	ZipExtraction: Images/Box - Front/
+10:50:48 	ZipExtraction: Images/Box - Front/Dune-01.png
+10:50:48 	ZipExtraction: Images/Box - Front/Europe/
+10:50:48 	ZipExtraction: Images/Box - Front/Europe/Dune-01.jpg
+10:50:48 	ZipExtraction: Images/Box - Front - Reconstructed/
+10:50:48 	ZipExtraction: Images/Box - Front - Reconstructed/North America/
+10:50:48 	ZipExtraction: Images/Box - Front - Reconstructed/North America/Dune-01.jpg
+10:50:48 	ZipExtraction: Images/Clear Logo/
+10:50:48 	ZipExtraction: Images/Clear Logo/Dune-01.png
+10:50:48 	ZipExtraction: Images/Clear Logo/Europe/
+10:50:48 	ZipExtraction: Images/Clear Logo/Europe/Dune-01.png
+10:50:48 	ZipExtraction: Images/Disc/
+10:50:48 	ZipExtraction: Images/Disc/Dune-01.png
+10:50:48 	ZipExtraction: Images/Disc/Europe/
+10:50:48 	ZipExtraction: Images/Disc/Europe/Dune-01.png
+10:50:48 	ZipExtraction: Images/Fanart - Background/
+10:50:48 	ZipExtraction: Images/Fanart - Background/Dune-01.jpg
+10:50:48 	ZipExtraction: Images/Fanart - Background/Dune-02.jpg
+10:50:48 	ZipExtraction: Images/Fanart - Box - Back/
+10:50:48 	ZipExtraction: Images/Fanart - Box - Back/North America/
+10:50:48 	ZipExtraction: Images/Fanart - Box - Back/North America/Dune-01.jpg
+10:50:48 	ZipExtraction: Images/Fanart - Box - Front/
+10:50:48 	ZipExtraction: Images/Fanart - Box - Front/North America/
+10:50:48 	ZipExtraction: Images/Fanart - Box - Front/North America/Dune-01.jpg
+10:50:48 	ZipExtraction: Images/Screenshot - Game Select/
+10:50:48 	ZipExtraction: Images/Screenshot - Game Select/North America/
+10:50:48 	ZipExtraction: Images/Screenshot - Game Select/North America/Dune-01.png
+10:50:48 	ZipExtraction: Images/Screenshot - Game Title/
+10:50:48 	ZipExtraction: Images/Screenshot - Game Title/Dune-01.png
+10:50:48 	ZipExtraction: Images/Screenshot - Game Title/North America/
+10:50:48 	ZipExtraction: Images/Screenshot - Game Title/North America/Dune-01.png
+10:50:48 	ZipExtraction: Images/Screenshot - Gameplay/
+10:50:48 	ZipExtraction: Images/Screenshot - Gameplay/Dune-01.png
+10:50:48 	ZipExtraction: Images/Screenshot - Gameplay/North America/
+10:50:48 	ZipExtraction: Images/Screenshot - Gameplay/North America/Dune-01.png
+10:50:48 	ZipExtraction: Images/Screenshot - Gameplay/North America/Dune-02.png
+10:50:48 	ZipExtraction: Images/Screenshot - Gameplay/North America/Dune-03.png
+10:50:48 	ZipExtraction: Images/Screenshot - Gameplay/North America/Dune-04.png
+10:50:48 	ZipExtraction: Images/Screenshot - Gameplay/North America/Dune-05.png
+10:50:48 	ZipExtraction: Manuals/
+10:50:48 	ZipExtraction: Manuals/Dune.pdf
+10:50:48 	ZipExtraction: Musics/
+10:50:48 	ZipExtraction: Musics/Dune - Too.mp3
+10:50:48 	ZipExtraction: Roms/
+10:50:48 	ZipExtraction: Roms/DUNE.cue
+10:50:48 	ZipExtraction: Roms/Track01.iso
+10:50:55 	ZipExtraction: Roms/Track02.wav
+10:50:55 	ZipExtraction: Videos/
+10:50:56 	ZipExtraction: Videos/Dune-01.mp4
+10:50:56 Game info xml loaded: Dune
+10:50:56 Creation of xml file: 'G:\Frontend\LaunchBox - Test\Data\Platforms\Sega CD.xml'

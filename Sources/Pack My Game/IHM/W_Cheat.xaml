@@ -1,0 +1,74 @@
+﻿<Window x:Class="Pack_My_Game.IHM.W_Cheat"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pack_My_Game.IHM"
+        mc:Ignorable="d"
+        Title="W_Cheat" Height="450" Width="800">
+    <Window.CommandBindings>
+        <CommandBinding Command="local:W_Cheat.SaveCmd" CanExecute="Can_Save" Executed="Exec_Save"/>
+        <CommandBinding Command="local:W_Cheat.OkCmd" CanExecute="Can_Ok" Executed="Exec_Ok"/>
+    </Window.CommandBindings>
+    <Window.Resources>
+        <Style TargetType="Label" BasedOn="{StaticResource lblStyle}">
+            
+        </Style>
+        <Style TargetType="Button" BasedOn="{StaticResource btStyle}">
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+    </Window.Resources>
+    <DockPanel>
+        <!-- Menu -->
+        <Menu DockPanel.Dock="Top">
+
+        </Menu>
+        <!--  -->
+        <DockPanel Margin="5">
+            <!-- haut -->
+            <Grid DockPanel.Dock="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <!--  -->
+                <Label Content="Enter your cheat codes" VerticalContentAlignment="Bottom"/>
+                <!-- Options -->
+                <GroupBox Header="Options" Grid.Column="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Width limit" VerticalContentAlignment="Center"/>
+                        <TextBox Width="100" Text="{Binding MaxLength}" Grid.Column="1" Margin="5"/>
+                        <CheckBox Content="Active" Grid.Column="2"  IsChecked="{Binding FormatActive}" Checked="Active_Checked"/>
+                        <Button Content="Crop" Grid.Column="3" Click="Crop_Click"/>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+            <!-- Boutons -->
+            <Grid DockPanel.Dock="Bottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button Content="Save" Command="local:W_Cheat.SaveCmd"/>
+                <Button Content="Cancel" Grid.Column="2"/>
+                <Button Content="Ok" Grid.Column="3" Command="local:W_Cheat.OkCmd"/>
+            </Grid>
+            <!-- Texte -->
+            <TextBox x:Name="tbMain"  Margin="0,5,0,5"
+                        AcceptsReturn="True" AcceptsTab="True" 
+                        Text="{Binding CheatsCode, UpdateSourceTrigger=PropertyChanged}"
+                        KeyDown="TextBox_PreviewKeyDown" >
+
+            </TextBox>
+        </DockPanel>
+    </DockPanel>
+</Window>

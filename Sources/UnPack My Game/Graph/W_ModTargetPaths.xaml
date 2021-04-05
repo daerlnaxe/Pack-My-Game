@@ -1,0 +1,135 @@
+﻿<Window x:Class="UnPack_My_Game.Graph.W_ModTargetPaths"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UnPack_My_Game.Graph"
+        xmlns:l="clr-namespace:UnPack_My_Game.Resources"
+        mc:Ignorable="d"
+        Title="W_ModTargetPathsaml" Height="450" Width="800"
+        Loaded="Window_Loaded" WindowStartupLocation="CenterOwner"
+        >
+    <Window.CommandBindings>
+        <CommandBinding Command="local:W_ModTargetPaths.ValidateCommand" CanExecute="Validate_CanEx" Executed="Validate_Exec"/>
+    </Window.CommandBindings>
+    <Window.Resources>
+        <Style TargetType="Label" BasedOn="{StaticResource lbStyle}">
+            <Setter Property="ContentStringFormat" Value="{}{0}:"/>
+        </Style>
+        <Style TargetType="Button" BasedOn="{StaticResource btStyle}"/>
+        <Style TargetType="TextBox" BasedOn="{StaticResource tboxStyle}"/>
+        <Style TargetType="TextBlock" BasedOn="{StaticResource tblockStyle}">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+    </Window.Resources>
+    <DockPanel Margin="10">
+        <!-- Tools -->
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <!-- Pivot -->
+            <Label Content="{x:Static l:Lang.Pivot}" Grid.RowSpan="4" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Text="{Binding Pivot, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="4"/>
+            <!-- AppName option -->
+            <CheckBox Content="avé le nom du jeu" Grid.Row="5" Grid.ColumnSpan="2" IsChecked="{Binding OptNameChecked}"/>
+            <!-- Game -->
+            <Label Grid.Column="3" Content="{x:Static l:Lang.Game}"/>
+            <TextBox Grid.Column="4" Text="{Binding ToReplaceGame, FallbackValue=ToReplaceGame, UpdateSourceTrigger=PropertyChanged}"/>
+            <!-- Manuel -->
+            <Label Grid.Column="3" Grid.Row="2" Content="{x:Static l:Lang.Manual}"/>
+            <TextBox Grid.Column="4" Grid.Row="2" Text="{Binding ToReplaceManual, FallbackValue=ToReplaceManual, UpdateSourceTrigger=PropertyChanged}"/>
+            <!-- Music -->
+            <Label Grid.Column="3" Grid.Row="3" Content="{x:Static l:Lang.Music}"/>
+            <TextBox Grid.Column="4" Grid.Row="3" Text="{Binding ToReplaceMusics, FallbackValue=ToReplaceMusics, UpdateSourceTrigger=PropertyChanged}"/>
+            <!-- Video -->
+            <Label Grid.Column="3" Grid.Row="4" Content="{x:Static l:Lang.Video}"/>
+            <TextBox Grid.Column="4" Grid.Row="4" Text="{Binding ToReplaceVideos, FallbackValue=ToReplaceVideos, UpdateSourceTrigger=PropertyChanged}"/>
+            
+        </Grid>
+        <!-- Button -->
+        <Button DockPanel.Dock="Bottom" HorizontalAlignment="Right"
+                Content="{x:Static l:Lang.Validate}"
+                Command="local:W_ModTargetPaths.ValidateCommand"/>
+
+        <!-- Infos -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition MinWidth="300"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition MinWidth="300"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!-- Game -->
+            <Label Content="{x:Static l:Lang.Game}"/>
+            <TextBlock Grid.Column="1"
+                   Text="{Binding Game.ApplicationPath, FallbackValue='Game.ApplicationPath'}"
+                   ToolTip="{Binding Game.ApplicationPath}"
+                   TextTrimming="WordEllipsis"/>
+            <TextBlock Grid.Column="2" Text="=>"/>
+            <TextBlock Grid.Column="3" 
+                   Text="{Binding OGameP, FallbackValue=OGameP}"
+                   ToolTip="{Binding OGameP}"
+                   TextTrimming="WordEllipsis"/>
+            <!-- Manual -->
+            <Label Grid.Row="2" Content="{x:Static l:Lang.Manual}"/>
+            <TextBlock Grid.Row="2" Grid.Column="1"
+                   Text="{Binding Game.ManualPath, FallbackValue=Game.ManualPath}"
+                   ToolTip="{Binding Game.ManualPath}"
+                   TextTrimming="WordEllipsis"/>
+            <TextBlock Grid.Row="2" Grid.Column="2" Text="=>"/>
+            <TextBlock Grid.Row="2" Grid.Column="3"
+                   Text="{Binding OManualP, FallbackValue=OManualP}"
+                   ToolTip="{Binding OManualP}"
+                   TextTrimming="WordEllipsis"
+                   />
+            <!-- Music -->
+            <Label Grid.Row="3" Content="{x:Static l:Lang.Musics}"/>
+            <TextBlock Grid.Row="3" Grid.Column="1"
+                   Text="{Binding Game.MusicPath, FallbackValue=Game.MusicPath}"
+                   ToolTip="{Binding Game.MusicPath}"
+                   TextTrimming="WordEllipsis"/>
+            <TextBlock Grid.Row="3" Grid.Column="2" Text="=>"/>
+            <TextBlock Grid.Row="3" Grid.Column="3"
+                   Text="{Binding OMusicsP, FallbackValue=OMusicsP}"
+                   ToolTip="{Binding OMusicsP}"
+                   TextTrimming="WordEllipsis"
+                   />
+            <!-- Videos -->
+            <Label Grid.Row="4" Content="{x:Static l:Lang.Videos}"/>
+            <TextBlock Grid.Row="4" Grid.Column="1"
+                   Text="{Binding Game.VideoPath, FallbackValue=Game.VideoPath}"
+                   ToolTip="{Binding Game.VideoPath}"
+                   TextTrimming="WordEllipsis"/>
+            <TextBlock Grid.Row="4" Grid.Column="2" Text="=>"/>
+            <TextBlock Grid.Row="4" Grid.Column="3"
+                   Text="{Binding OVideosP, FallbackValue=OVideosP}"
+                   ToolTip="{Binding OVideosP}"
+                   TextTrimming="WordEllipsis"
+                   />
+
+
+        </Grid>
+    </DockPanel>
+</Window>

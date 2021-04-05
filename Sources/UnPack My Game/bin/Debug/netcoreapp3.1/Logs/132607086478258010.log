@@ -1,0 +1,76 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+11:10:47 Work on: DUNE.zip
+11:10:47 Zip Decompression
+11:10:47 	ZipExtraction: EBGame.xml
+11:10:47 	ZipExtraction: Infos.xml
+11:10:47 	ZipExtraction: Struct.info
+11:10:47 	ZipExtraction: TBGame.xml
+11:10:47 	ZipExtraction: CheatCodes/
+11:10:47 	ZipExtraction: Images/
+11:10:47 	ZipExtraction: Images/Arcade - Marquee/
+11:10:47 	ZipExtraction: Images/Arcade - Marquee/Dune-01.png
+11:10:47 	ZipExtraction: Images/Box - 3D/
+11:10:47 	ZipExtraction: Images/Box - 3D/Dune-01.png
+11:10:47 	ZipExtraction: Images/Box - 3D/Europe/
+11:10:47 	ZipExtraction: Images/Box - 3D/Europe/Dune-01.png
+11:10:47 	ZipExtraction: Images/Box - Back/
+11:10:47 	ZipExtraction: Images/Box - Back/Dune-01.png
+11:10:47 	ZipExtraction: Images/Box - Back/Europe/
+11:10:47 	ZipExtraction: Images/Box - Back/Europe/Dune-01.jpg
+11:10:47 	ZipExtraction: Images/Box - Back - Reconstructed/
+11:10:47 	ZipExtraction: Images/Box - Back - Reconstructed/North America/
+11:10:47 	ZipExtraction: Images/Box - Back - Reconstructed/North America/Dune-01.jpg
+11:10:47 	ZipExtraction: Images/Box - Front/
+11:10:48 	ZipExtraction: Images/Box - Front/Dune-01.png
+11:10:48 	ZipExtraction: Images/Box - Front/Europe/
+11:10:48 	ZipExtraction: Images/Box - Front/Europe/Dune-01.jpg
+11:10:48 	ZipExtraction: Images/Box - Front - Reconstructed/
+11:10:48 	ZipExtraction: Images/Box - Front - Reconstructed/North America/
+11:10:48 	ZipExtraction: Images/Box - Front - Reconstructed/North America/Dune-01.jpg
+11:10:48 	ZipExtraction: Images/Clear Logo/
+11:10:48 	ZipExtraction: Images/Clear Logo/Dune-01.png
+11:10:48 	ZipExtraction: Images/Clear Logo/Europe/
+11:10:48 	ZipExtraction: Images/Clear Logo/Europe/Dune-01.png
+11:10:48 	ZipExtraction: Images/Disc/
+11:10:48 	ZipExtraction: Images/Disc/Dune-01.png
+11:10:48 	ZipExtraction: Images/Disc/Europe/
+11:10:48 	ZipExtraction: Images/Disc/Europe/Dune-01.png
+11:10:48 	ZipExtraction: Images/Fanart - Background/
+11:10:48 	ZipExtraction: Images/Fanart - Background/Dune-01.jpg
+11:10:48 	ZipExtraction: Images/Fanart - Background/Dune-02.jpg
+11:10:48 	ZipExtraction: Images/Fanart - Box - Back/
+11:10:48 	ZipExtraction: Images/Fanart - Box - Back/North America/
+11:10:48 	ZipExtraction: Images/Fanart - Box - Back/North America/Dune-01.jpg
+11:10:48 	ZipExtraction: Images/Fanart - Box - Front/
+11:10:48 	ZipExtraction: Images/Fanart - Box - Front/North America/
+11:10:48 	ZipExtraction: Images/Fanart - Box - Front/North America/Dune-01.jpg
+11:10:48 	ZipExtraction: Images/Screenshot - Game Select/
+11:10:48 	ZipExtraction: Images/Screenshot - Game Select/North America/
+11:10:48 	ZipExtraction: Images/Screenshot - Game Select/North America/Dune-01.png
+11:10:48 	ZipExtraction: Images/Screenshot - Game Title/
+11:10:48 	ZipExtraction: Images/Screenshot - Game Title/Dune-01.png
+11:10:48 	ZipExtraction: Images/Screenshot - Game Title/North America/
+11:10:48 	ZipExtraction: Images/Screenshot - Game Title/North America/Dune-01.png
+11:10:48 	ZipExtraction: Images/Screenshot - Gameplay/
+11:10:48 	ZipExtraction: Images/Screenshot - Gameplay/Dune-01.png
+11:10:48 	ZipExtraction: Images/Screenshot - Gameplay/North America/
+11:10:48 	ZipExtraction: Images/Screenshot - Gameplay/North America/Dune-01.png
+11:10:48 	ZipExtraction: Images/Screenshot - Gameplay/North America/Dune-02.png
+11:10:48 	ZipExtraction: Images/Screenshot - Gameplay/North America/Dune-03.png
+11:10:48 	ZipExtraction: Images/Screenshot - Gameplay/North America/Dune-04.png
+11:10:48 	ZipExtraction: Images/Screenshot - Gameplay/North America/Dune-05.png
+11:10:48 	ZipExtraction: Manuals/
+11:10:48 	ZipExtraction: Manuals/Dune.pdf
+11:10:48 	ZipExtraction: Musics/
+11:10:48 	ZipExtraction: Musics/Dune - Too.mp3
+11:10:48 	ZipExtraction: Roms/
+11:10:48 	ZipExtraction: Roms/DUNE.cue
+11:10:48 	ZipExtraction: Roms/Track01.iso
+11:10:59 	ZipExtraction: Roms/Track02.wav
+11:10:59 	ZipExtraction: Videos/
+11:10:59 	ZipExtraction: Videos/Dune-01.mp4
+11:10:59 Game info xml loaded: Dune
+11:10:59 Target Game path: ..\..\Plateformes\Games\Sega CD\Dune
+11:10:59 Target Manuals  path: ..\..\Plateformes\Manuals\Sega CD
+11:10:59 Target Musics path: ..\..\Plateformes\Musics\Sega CD
+11:10:59 Target Videos path: ..\..\Plateformes\Videos\Sega CD

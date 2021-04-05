@@ -1,0 +1,40 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.1/",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.1": {},
+    ".NETStandard,Version=v2.1/": {
+      "LaunchBox XML/1.0.0": {
+        "dependencies": {
+          "Unbroken.LaunchBox.Plugins": "11.9.0.0"
+        },
+        "runtime": {
+          "LaunchBox XML.dll": {}
+        }
+      },
+      "Unbroken.LaunchBox.Plugins/11.9.0.0": {
+        "runtime": {
+          "Unbroken.LaunchBox.Plugins.dll": {
+            "assemblyVersion": "11.9.0.0",
+            "fileVersion": "11.9.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LaunchBox XML/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Unbroken.LaunchBox.Plugins/11.9.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

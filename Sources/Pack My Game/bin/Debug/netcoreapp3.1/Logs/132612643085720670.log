@@ -1,0 +1,31 @@
+﻿****** Initialisation Logger - niveau: 0 ******
+21:31:48 Language fr-FR - 1.0.0.4, loading...
+21:33:28 [Main] PackMe for 'Donkey Kong Country' | 'fc1ac9d2-d88a-4851-8939-cea8ddeb74bb'
+21:33:28 Directory Exists 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]'
+21:38:54 [MakeStructure] Creation of the tree
+21:38:54 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Games'
+21:38:54 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\CheatCodes'
+21:38:54 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Images'
+21:38:54 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Manuals'
+21:38:54 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Musics'
+21:38:54 [CreateHFolders] Creation of 'G:\Temp\pmg - temp\Super Nintendo Entertainment System\Donkey Kong Country (E) (M3) (V1.0) [f1]\Videos'
+21:38:55 Not managed: GogAppId
+21:38:55 Not managed: OriginAppId
+21:38:55 Not managed: OriginInstallPath
+21:38:55 Not managed: MissingBox3dImage
+21:38:55 Not managed: MissingCartImage
+21:38:55 Not managed: MissingCart3dImage
+21:38:55 Not managed: MissingManual
+21:38:55 Not managed: MissingBannerImage
+21:38:55 Not managed: MissingMusic
+21:38:55 Not managed: UsePauseScreen
+21:38:55 Not managed: PauseAutoHotkeyScript
+21:38:55 Not managed: ResumeAutoHotkeyScript
+21:38:55 Not managed: OverrideDefaultPauseScreenSettings
+21:38:55 Not managed: SuspendProcessOnPause
+21:38:55 Not managed: ForcefulPauseScreenActivation
+21:38:55 Not managed: LoadStateAutoHotkeyScript
+21:38:55 Not managed: SaveStateAutoHotkeyScript
+21:38:55 Not managed: ResetAutoHotkeyScript
+21:38:55 Not managed: SwapDiscsAutoHotkeyScript
+21:41:28 [CopyHandler] Destination file exists... 

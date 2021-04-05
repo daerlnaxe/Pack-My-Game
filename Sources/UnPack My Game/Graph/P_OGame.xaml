@@ -1,0 +1,34 @@
+﻿<Page x:Class="UnPack_My_Game.Graph.P_OGame"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UnPack_My_Game.Graph.LaunchBox"
+      xmlns:l="clr-namespace:UnPack_My_Game.Resources"
+      xmlns:lc="clr-namespace:DxTBoxCore.Languages;assembly=DxTBoxCore"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      
+      Title="P_LaunchBoxO">
+    <Page.Resources>
+        <Style TargetType="Button" BasedOn="{StaticResource btStyle}"/>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Grid.Column="0" Content="{x:Static lc:DxTBLang.Browse}" Click="Button_Click"/>
+        <TextBlock Grid.Column="1" VerticalAlignment="Center"
+                   Text="{Binding SelectedGame, NotifyOnValidationError=True, 
+                        FallbackValue={x:Static l:Lang.I_OneG}, TargetNullValue={x:Static l:Lang.I_OneG}}"
+                   ToolTip="{Binding Games[0].Path, TargetNullValue={x:Static l:Lang.I_OneG}}"
+                    />
+    </Grid>
+</Page>
