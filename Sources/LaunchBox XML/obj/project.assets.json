@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\Pack_Common\\Pack_Common.csproj",
-      "projectName": "Pack_Common",
-      "projectPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\Pack_Common\\Pack_Common.csproj",
+      "projectUniqueName": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\LaunchBox XML\\LaunchBox XML.csproj",
+      "projectName": "LaunchBox XML",
+      "projectPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\LaunchBox XML\\LaunchBox XML.csproj",
       "packagesPath": "C:\\Users\\daerlnaxe\\.nuget\\packages\\",
-      "outputPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\Pack_Common\\obj\\",
+      "outputPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\LaunchBox XML\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

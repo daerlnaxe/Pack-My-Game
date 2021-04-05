@@ -3220,8 +3220,8 @@
     },
     "LaunchBox XML/1.0.0": {
       "type": "project",
-      "path": "../../LaunchBox XML/LaunchBox XML.csproj",
-      "msbuildProject": "../../LaunchBox XML/LaunchBox XML.csproj"
+      "path": "../LaunchBox XML/LaunchBox XML.csproj",
+      "msbuildProject": "../LaunchBox XML/LaunchBox XML.csproj"
     },
     "SevenZip/1.0.0": {
       "type": "project",
@@ -3286,8 +3286,8 @@
             "E:\\Programmation\\Git-Hub\\Hermes\\Sources\\Hermes.csproj": {
               "projectPath": "E:\\Programmation\\Git-Hub\\Hermes\\Sources\\Hermes.csproj"
             },
-            "E:\\Programmation\\Git-Hub\\Pack-My-Game\\LaunchBox XML\\LaunchBox XML.csproj": {
-              "projectPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\LaunchBox XML\\LaunchBox XML.csproj"
+            "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\LaunchBox XML\\LaunchBox XML.csproj": {
+              "projectPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\LaunchBox XML\\LaunchBox XML.csproj"
             },
             "E:\\Programmation\\Git-Hub\\SeverZipSharp\\SevenZip\\SevenZip.csproj": {
               "projectPath": "E:\\Programmation\\Git-Hub\\SeverZipSharp\\SevenZip\\SevenZip.csproj"

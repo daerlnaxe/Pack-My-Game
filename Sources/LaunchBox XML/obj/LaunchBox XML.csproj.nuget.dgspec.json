@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Programmation\\Git-Hub\\Pack-My-Game\\LaunchBox XML\\LaunchBox XML.csproj": {}
+    "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\LaunchBox XML\\LaunchBox XML.csproj": {}
   },
   "projects": {
-    "E:\\Programmation\\Git-Hub\\Pack-My-Game\\LaunchBox XML\\LaunchBox XML.csproj": {
+    "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\LaunchBox XML\\LaunchBox XML.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\LaunchBox XML\\LaunchBox XML.csproj",
+        "projectUniqueName": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\LaunchBox XML\\LaunchBox XML.csproj",
         "projectName": "LaunchBox XML",
-        "projectPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\LaunchBox XML\\LaunchBox XML.csproj",
+        "projectPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\LaunchBox XML\\LaunchBox XML.csproj",
         "packagesPath": "C:\\Users\\daerlnaxe\\.nuget\\packages\\",
-        "outputPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\LaunchBox XML\\obj\\",
+        "outputPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\LaunchBox XML\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
