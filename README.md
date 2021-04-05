@@ -12,7 +12,7 @@ Download folder: https://github.com/daerlnaxe/Pack-My-Game/tree/master/Releases
  * Backup datas about a game from LaunchBox xml
  * When PackMe run,  creates an enhanced xml file, adding missing paths, additionally to the original backup
  * Permits to choose manually video, music, manual if db don't mention paths.
- * (Removed) Contextual menu permits now to make some operations to construct the workfolder, to compress it later.  
+ * ~~Contextual menu permits now to make some operations to construct the workfolder, to compress it later.  ~~
  * Unpack permits to reinject your game into LaunchBox
  * Calculate a sum file at the end of compression 
  * Extract datas abouts platform selected
