@@ -1,6 +1,7 @@
 ﻿using LaunchBox_XML.BackupLB;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -59,7 +60,7 @@ namespace LaunchBox_XML.Container.Game
         /// <summary>
         /// Nombre de joueurs maximum
         /// </summary>
-        [XmlElement(Order =12)]
+        [XmlElement(Order =12), DefaultValue(1)]
         public int? MaxPlayers { get; set; }
 
         /// <summary>

@@ -25,6 +25,7 @@
         <!-- Plateforme -->
         <Label Grid.Row="1" Content="{x:Static l:Lang.Platform}"/>
         <ComboBox Grid.Row="1" Width="200" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="1"
-                          ItemsSource="{Binding Machines}" SelectedValue="{Binding SelectPlatform, NotifyOnValidationError=True}" />
+                          ItemsSource="{Binding Machines}" DisplayMemberPath="Name"
+                          SelectedValue="{Binding SelectPlatform, NotifyOnValidationError=True}" />
     </Grid>
 </Page>

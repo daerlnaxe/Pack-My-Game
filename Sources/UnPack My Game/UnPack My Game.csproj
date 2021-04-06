@@ -19,7 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\DxTBoxCore\Sources\DxTBoxCore.csproj" />
     <ProjectReference Include="..\..\..\Hermes\Sources\Hermes.csproj" />
-    <ProjectReference Include="..\..\LaunchBox XML\LaunchBox XML.csproj" />
+    <ProjectReference Include="..\LaunchBox XML\LaunchBox XML.csproj" />
   </ItemGroup>
 
   <ItemGroup>

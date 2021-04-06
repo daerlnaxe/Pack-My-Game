@@ -149,9 +149,36 @@ namespace UnPack_My_Game.Graph.LaunchBox
 
             // Sauvegarde du chemin
             //Properties.Settings.Default.LastLBpath = LaunchBoxPath;
-            PS.Default.Save();
+            
 
             //Load_Platforms();
+        }
+
+        internal bool Save()
+        {
+            Test_NullValue(LaunchBoxPath, nameof(LaunchBoxPath));
+            Test_NullValue(Games, nameof(Games));
+            Test_NullValue(CheatCodes, nameof(CheatCodes));
+            Test_NullValue(Images, nameof(Images));
+            Test_NullValue(Manuals, nameof(Manuals));
+            Test_NullValue(Musics, nameof(Musics));
+            Test_NullValue(Videos, nameof(Videos));
+
+            if (HasErrors)
+                return false;
+
+            PS.Default.LastLBpath = LaunchBoxPath;
+            PS.Default.Games = Games;
+            PS.Default.CheatCodes = CheatCodes;
+            PS.Default.Images = Images;
+            PS.Default.Manuals = Manuals;
+            PS.Default.Musics = Musics;
+            PS.Default.Videos = Videos;
+            PS.Default.wCustomFields = WithCustomFields;
+            PS.Default.Save();
+
+            return true;
+
         }
     }
 }

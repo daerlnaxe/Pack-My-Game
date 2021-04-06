@@ -6,687 +6,21 @@
     <OriginInstallPath />
     <VideoPath />
     <ThemeVideoPath />
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\Aaahh!!! Real Monsters (1995-11)(Viacom New Media)(EU).zip</ApplicationPath>
-    <CommandLine />
-    <Completed>false</Completed>
-    <ConfigurationCommandLine />
-    <ConfigurationPath />
-    <DateAdded>2018-08-17T19:44:55.9210595+02:00</DateAdded>
-    <DateModified>2020-07-09T22:22:19.6502599+02:00</DateModified>
-    <Developer>Realtime Associates</Developer>
-    <DosBoxConfigurationPath />
-    <Emulator>46980dd1-982d-4b30-ad3b-fda6139752c9</Emulator>
-    <Favorite>false</Favorite>
-    <ID>088e2bbb-abd3-4157-9da2-bc62c38a83bc</ID>
-    <LastPlayedDate>2018-08-18T15:05:49.679196+02:00</LastPlayedDate>
-    <ManualPath>..\..\fauxgames\Manuals\Sega Mega Drive\AaahhRealMonsters_MD_US_manual.pdf</ManualPath>
-    <MusicPath />
-    <Notes>In this game, based on popular Nickelodeon comics, you control three monsters: Ickis, Oblina, and Krumm. The Gromble, a headmaster in monster school, needs you to perform the final test - monster Midterm Exam - in order to prove yourselves to be real monsters. You should collect trash, throw it on people, and scare them!
-
-This is a platform game, where you control three characters. Each one of them has a special move that is often used to solve puzzles and overcome obstacles: Ickis can fly for a short time, Oblina can reach high ledges, and Krumm can scan off-screen areas. They can also collect monster books, that will teach them to scare people. Help the three monsters to graduate!</Notes>
-    <Platform>Sega Genesis</Platform>
-    <Publisher>Viacom</Publisher>
-    <Rating>E - Everyone</Rating>
-    <ReleaseDate>1995-09-15T09:00:00+02:00</ReleaseDate>
-    <RootFolder />
-    <ScummVMAspectCorrection>true</ScummVMAspectCorrection>
-    <ScummVMFullscreen>true</ScummVMFullscreen>
-    <ScummVMGameDataFolderPath />
-    <ScummVMGameType />
-    <SortTitle />
-    <Source />
-    <StarRatingFloat>0</StarRatingFloat>
-    <StarRating>0</StarRating>
-    <CommunityStarRating>0</CommunityStarRating>
-    <CommunityStarRatingTotalVotes>0</CommunityStarRatingTotalVotes>
-    <Status>Pending</Status>
-    <DatabaseID>4184</DatabaseID>
-    <WikipediaURL>https://en.wikipedia.org/wiki/Aaahh!!!_Real_Monsters_(video_game)</WikipediaURL>
-    <Title>AAAHH!!! Real Monsters</Title>
-    <UseDosBox>false</UseDosBox>
-    <UseScummVM>false</UseScummVM>
-    <Version>(1995-11)(Viacom New Media)(EU)</Version>
-    <Series />
-    <PlayMode>Un joueur</PlayMode>
-    <Region>Europe</Region>
-    <PlayCount>1</PlayCount>
-    <Portable>false</Portable>
-    <Hide>false</Hide>
-    <Broken>false</Broken>
-    <Genre>Platform</Genre>
-    <MissingVideo>true</MissingVideo>
-    <MissingBoxFrontImage>true</MissingBoxFrontImage>
-    <MissingScreenshotImage>true</MissingScreenshotImage>
-    <MissingClearLogoImage>true</MissingClearLogoImage>
-    <MissingBackgroundImage>true</MissingBackgroundImage>
-    <MissingBox3dImage>true</MissingBox3dImage>
-    <MissingCartImage>true</MissingCartImage>
-    <MissingCart3dImage>true</MissingCart3dImage>
-    <MissingManual>true</MissingManual>
-    <MissingBannerImage>false</MissingBannerImage>
-    <MissingMusic>false</MissingMusic>
-    <UseStartupScreen>false</UseStartupScreen>
-    <HideAllNonExclusiveFullscreenWindows>false</HideAllNonExclusiveFullscreenWindows>
-    <StartupLoadDelay>0</StartupLoadDelay>
-    <HideMouseCursorInGame>false</HideMouseCursorInGame>
-    <DisableShutdownScreen>false</DisableShutdownScreen>
-    <AggressiveWindowHiding>false</AggressiveWindowHiding>
-    <OverrideDefaultStartupScreenSettings>false</OverrideDefaultStartupScreenSettings>
-    <UsePauseScreen>false</UsePauseScreen>
-    <PauseAutoHotkeyScript />
-    <ResumeAutoHotkeyScript />
-    <OverrideDefaultPauseScreenSettings>false</OverrideDefaultPauseScreenSettings>
-    <SuspendProcessOnPause>false</SuspendProcessOnPause>
-    <ForcefulPauseScreenActivation>false</ForcefulPauseScreenActivation>
-    <LoadStateAutoHotkeyScript />
-    <SaveStateAutoHotkeyScript />
-    <ResetAutoHotkeyScript />
-    <SwapDiscsAutoHotkeyScript />
-    <CustomDosBoxVersionPath />
-    <ReleaseType />
-    <VideoUrl />
-  </Game>
-  <Game>
-    <GogAppId />
-    <OriginAppId />
-    <OriginInstallPath />
-    <VideoPath />
-    <ThemeVideoPath />
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\World of Illusion Starring Mickey Mouse &amp; Donald Duck (E) [T+Fre0.98beta_Generation IX].zip</ApplicationPath>
-    <CommandLine />
-    <Completed>false</Completed>
-    <ConfigurationCommandLine />
-    <ConfigurationPath />
-    <DateAdded>2018-08-18T14:59:17.5369572+02:00</DateAdded>
-    <DateModified>2018-08-18T14:59:17.5369572+02:00</DateModified>
-    <Developer />
-    <DosBoxConfigurationPath />
-    <Emulator />
-    <Favorite>false</Favorite>
-    <ID>56629d28-64aa-41e0-bbad-cba5b443299b</ID>
-    <ManualPath />
-    <MusicPath />
-    <Notes />
-    <Platform>Sega Genesis</Platform>
-    <Publisher />
-    <Rating />
-    <RootFolder />
-    <ScummVMAspectCorrection>false</ScummVMAspectCorrection>
-    <ScummVMFullscreen>false</ScummVMFullscreen>
-    <ScummVMGameDataFolderPath />
-    <ScummVMGameType />
-    <SortTitle />
-    <Source />
-    <StarRatingFloat>0</StarRatingFloat>
-    <StarRating>0</StarRating>
-    <CommunityStarRating>0</CommunityStarRating>
-    <CommunityStarRatingTotalVotes>0</CommunityStarRatingTotalVotes>
-    <Status />
-    <WikipediaURL />
-    <Title>World of Illusion Starring Mickey Mouse &amp; Donald Duck</Title>
-    <UseDosBox>false</UseDosBox>
-    <UseScummVM>false</UseScummVM>
-    <Version>(E) [T+Fre0.98beta_Generation IX]</Version>
-    <Series />
-    <PlayMode />
-    <Region>Europe</Region>
-    <PlayCount>0</PlayCount>
-    <Portable>false</Portable>
-    <Hide>false</Hide>
-    <Broken>false</Broken>
-    <Genre />
-    <MissingVideo>true</MissingVideo>
-    <MissingBoxFrontImage>true</MissingBoxFrontImage>
-    <MissingScreenshotImage>true</MissingScreenshotImage>
-    <MissingClearLogoImage>true</MissingClearLogoImage>
-    <MissingBackgroundImage>true</MissingBackgroundImage>
-    <MissingBox3dImage>true</MissingBox3dImage>
-    <MissingCartImage>true</MissingCartImage>
-    <MissingCart3dImage>true</MissingCart3dImage>
-    <MissingManual>false</MissingManual>
-    <MissingBannerImage>false</MissingBannerImage>
-    <MissingMusic>false</MissingMusic>
-    <UseStartupScreen>false</UseStartupScreen>
-    <HideAllNonExclusiveFullscreenWindows>false</HideAllNonExclusiveFullscreenWindows>
-    <StartupLoadDelay>0</StartupLoadDelay>
-    <HideMouseCursorInGame>false</HideMouseCursorInGame>
-    <DisableShutdownScreen>false</DisableShutdownScreen>
-    <AggressiveWindowHiding>false</AggressiveWindowHiding>
-    <OverrideDefaultStartupScreenSettings>false</OverrideDefaultStartupScreenSettings>
-    <UsePauseScreen>false</UsePauseScreen>
-    <PauseAutoHotkeyScript />
-    <ResumeAutoHotkeyScript />
-    <OverrideDefaultPauseScreenSettings>false</OverrideDefaultPauseScreenSettings>
-    <SuspendProcessOnPause>false</SuspendProcessOnPause>
-    <ForcefulPauseScreenActivation>false</ForcefulPauseScreenActivation>
-    <LoadStateAutoHotkeyScript />
-    <SaveStateAutoHotkeyScript />
-    <ResetAutoHotkeyScript />
-    <SwapDiscsAutoHotkeyScript />
-    <CustomDosBoxVersionPath />
-    <ReleaseType />
-    <VideoUrl />
-  </Game>
-  <Game>
-    <GogAppId />
-    <OriginAppId />
-    <OriginInstallPath />
-    <VideoPath />
-    <ThemeVideoPath />
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\ToeJam &amp; Earl (1991-10)(Sega)(US).zip</ApplicationPath>
-    <CommandLine />
-    <Completed>false</Completed>
-    <ConfigurationCommandLine />
-    <ConfigurationPath />
-    <DateAdded>0001-01-01T00:00:00+01:00</DateAdded>
-    <DateModified>0001-01-01T00:00:00+01:00</DateModified>
-    <Developer>HumaNature Studios</Developer>
-    <DosBoxConfigurationPath />
-    <Emulator>46980dd1-982d-4b30-ad3b-fda6139752c9</Emulator>
-    <Favorite>false</Favorite>
-    <ID>457b7a43-0c8a-4c95-a075-485e3afb6099</ID>
-    <LastPlayedDate>2018-08-18T01:31:35.3522418+02:00</LastPlayedDate>
-    <ManualPath />
-    <MusicPath />
-    <Notes />
-    <Platform>Sega Genesis</Platform>
-    <Publisher>HumaNature Studios</Publisher>
-    <Rating />
-    <ReleaseDate>1991-01-01T09:00:00+01:00</ReleaseDate>
-    <RootFolder />
-    <ScummVMAspectCorrection>false</ScummVMAspectCorrection>
-    <ScummVMFullscreen>false</ScummVMFullscreen>
-    <ScummVMGameDataFolderPath />
-    <ScummVMGameType />
-    <SortTitle />
-    <Source />
-    <StarRatingFloat>0</StarRatingFloat>
-    <StarRating>0</StarRating>
-    <CommunityStarRating>0</CommunityStarRating>
-    <CommunityStarRatingTotalVotes>0</CommunityStarRatingTotalVotes>
-    <Status>ROM importée</Status>
-    <WikipediaURL />
-    <Title>ToeJam &amp; Earl</Title>
-    <UseDosBox>false</UseDosBox>
-    <UseScummVM>false</UseScummVM>
-    <Version>(1991-10)(Sega)(US)</Version>
-    <Series />
-    <PlayMode />
-    <Region>United States</Region>
-    <PlayCount>5</PlayCount>
-    <Portable>false</Portable>
-    <Hide>false</Hide>
-    <Broken>false</Broken>
-    <Genre />
-    <MissingVideo>false</MissingVideo>
-    <MissingBoxFrontImage>true</MissingBoxFrontImage>
-    <MissingScreenshotImage>true</MissingScreenshotImage>
-    <MissingClearLogoImage>true</MissingClearLogoImage>
-    <MissingBackgroundImage>true</MissingBackgroundImage>
-    <MissingBox3dImage>true</MissingBox3dImage>
-    <MissingCartImage>true</MissingCartImage>
-    <MissingCart3dImage>true</MissingCart3dImage>
-    <MissingManual>false</MissingManual>
-    <MissingBannerImage>false</MissingBannerImage>
-    <MissingMusic>false</MissingMusic>
-    <UseStartupScreen>false</UseStartupScreen>
-    <HideAllNonExclusiveFullscreenWindows>false</HideAllNonExclusiveFullscreenWindows>
-    <StartupLoadDelay>0</StartupLoadDelay>
-    <HideMouseCursorInGame>false</HideMouseCursorInGame>
-    <DisableShutdownScreen>false</DisableShutdownScreen>
-    <AggressiveWindowHiding>false</AggressiveWindowHiding>
-    <OverrideDefaultStartupScreenSettings>false</OverrideDefaultStartupScreenSettings>
-    <UsePauseScreen>false</UsePauseScreen>
-    <PauseAutoHotkeyScript />
-    <ResumeAutoHotkeyScript />
-    <OverrideDefaultPauseScreenSettings>false</OverrideDefaultPauseScreenSettings>
-    <SuspendProcessOnPause>false</SuspendProcessOnPause>
-    <ForcefulPauseScreenActivation>false</ForcefulPauseScreenActivation>
-    <LoadStateAutoHotkeyScript />
-    <SaveStateAutoHotkeyScript />
-    <ResetAutoHotkeyScript />
-    <SwapDiscsAutoHotkeyScript />
-    <CustomDosBoxVersionPath />
-    <ReleaseType />
-    <VideoUrl />
-  </Game>
-  <Game>
-    <GogAppId />
-    <OriginAppId />
-    <OriginInstallPath />
-    <VideoPath />
-    <ThemeVideoPath />
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\ToeJam &amp; Earl (1991-10)(Sega)(US).zip</ApplicationPath>
-    <CommandLine />
-    <Completed>false</Completed>
-    <ConfigurationCommandLine />
-    <ConfigurationPath />
-    <DateAdded>0001-01-01T00:00:00+01:00</DateAdded>
-    <DateModified>0001-01-01T00:00:00+01:00</DateModified>
-    <Developer>Johnson Voorsanger Productions</Developer>
-    <DosBoxConfigurationPath />
-    <Emulator>46980dd1-982d-4b30-ad3b-fda6139752c9</Emulator>
-    <Favorite>false</Favorite>
-    <ID>3467500e-9c43-44de-9917-aeb9223f5e50</ID>
-    <LastPlayedDate>2018-08-18T01:31:35.3512426+02:00</LastPlayedDate>
-    <ManualPath />
-    <MusicPath />
-    <Notes />
-    <Platform>Sega Genesis</Platform>
-    <Publisher>Sega</Publisher>
-    <Rating />
-    <ReleaseDate>1991-01-01T09:00:00+01:00</ReleaseDate>
-    <RootFolder />
-    <ScummVMAspectCorrection>false</ScummVMAspectCorrection>
-    <ScummVMFullscreen>false</ScummVMFullscreen>
-    <ScummVMGameDataFolderPath />
-    <ScummVMGameType />
-    <SortTitle />
-    <Source />
-    <StarRatingFloat>0</StarRatingFloat>
-    <StarRating>0</StarRating>
-    <CommunityStarRating>0</CommunityStarRating>
-    <CommunityStarRatingTotalVotes>0</CommunityStarRatingTotalVotes>
-    <Status>ROM importée</Status>
-    <WikipediaURL />
-    <Title>ToeJam &amp; Earl</Title>
-    <UseDosBox>false</UseDosBox>
-    <UseScummVM>false</UseScummVM>
-    <Version>(1991-10)(Sega)(US)</Version>
-    <Series />
-    <PlayMode />
-    <Region>United States</Region>
-    <PlayCount>5</PlayCount>
-    <Portable>false</Portable>
-    <Hide>false</Hide>
-    <Broken>false</Broken>
-    <Genre />
-    <MissingVideo>false</MissingVideo>
-    <MissingBoxFrontImage>true</MissingBoxFrontImage>
-    <MissingScreenshotImage>true</MissingScreenshotImage>
-    <MissingClearLogoImage>true</MissingClearLogoImage>
-    <MissingBackgroundImage>true</MissingBackgroundImage>
-    <MissingBox3dImage>true</MissingBox3dImage>
-    <MissingCartImage>true</MissingCartImage>
-    <MissingCart3dImage>true</MissingCart3dImage>
-    <MissingManual>false</MissingManual>
-    <MissingBannerImage>false</MissingBannerImage>
-    <MissingMusic>false</MissingMusic>
-    <UseStartupScreen>false</UseStartupScreen>
-    <HideAllNonExclusiveFullscreenWindows>false</HideAllNonExclusiveFullscreenWindows>
-    <StartupLoadDelay>0</StartupLoadDelay>
-    <HideMouseCursorInGame>false</HideMouseCursorInGame>
-    <DisableShutdownScreen>false</DisableShutdownScreen>
-    <AggressiveWindowHiding>false</AggressiveWindowHiding>
-    <OverrideDefaultStartupScreenSettings>false</OverrideDefaultStartupScreenSettings>
-    <UsePauseScreen>false</UsePauseScreen>
-    <PauseAutoHotkeyScript />
-    <ResumeAutoHotkeyScript />
-    <OverrideDefaultPauseScreenSettings>false</OverrideDefaultPauseScreenSettings>
-    <SuspendProcessOnPause>false</SuspendProcessOnPause>
-    <ForcefulPauseScreenActivation>false</ForcefulPauseScreenActivation>
-    <LoadStateAutoHotkeyScript />
-    <SaveStateAutoHotkeyScript />
-    <ResetAutoHotkeyScript />
-    <SwapDiscsAutoHotkeyScript />
-    <CustomDosBoxVersionPath />
-    <ReleaseType />
-    <VideoUrl />
-  </Game>
-  <Game>
-    <GogAppId />
-    <OriginAppId />
-    <OriginInstallPath />
-    <VideoPath />
-    <ThemeVideoPath />
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\Alex Kidd in the Enchanted Castle (E) (REV02) [!].bin.zip</ApplicationPath>
-    <CommandLine />
-    <Completed>false</Completed>
-    <ConfigurationCommandLine />
-    <ConfigurationPath />
-    <DateAdded>2018-08-17T19:44:55.9240476+02:00</DateAdded>
-    <DateModified>2020-07-09T09:53:34.0344608+02:00</DateModified>
-    <Developer>Sega</Developer>
-    <DosBoxConfigurationPath />
-    <Emulator>46980dd1-982d-4b30-ad3b-fda6139752c9</Emulator>
-    <Favorite>false</Favorite>
-    <ID>83897c14-b2c7-4703-bd00-b28ad5584e53</ID>
-    <LastPlayedDate>2018-08-18T11:43:41.67386+02:00</LastPlayedDate>
-    <ManualPath>..\..\fauxgames\Manuals\Sega Mega Drive\Alex_Kidd_in_the_Enchanted_Castle_MD_US_Manual.pdf</ManualPath>
-    <MusicPath />
-    <Notes>Dans The Enchanted Castle sur Megadrive, Alex Kidd donne des coups de poing, des coups de pied et saute à travers la planète Papiéroche pour sauver son père, le roi Thor, de l'emprise d'Ashra aux 6 bras. Il en voit de toutes les couleurs tout au long de 11 niveaux. PAPIER ! CISEAUX ! PIERRE ! Alex est entraîné dans un jeu infernal !</Notes>
-    <Platform>Sega Genesis</Platform>
-    <Publisher>Sega</Publisher>
-    <Rating>E - Everyone</Rating>
-    <ReleaseDate>1989-08-20T09:00:00+02:00</ReleaseDate>
-    <RootFolder />
-    <ScummVMAspectCorrection>true</ScummVMAspectCorrection>
-    <ScummVMFullscreen>true</ScummVMFullscreen>
-    <ScummVMGameDataFolderPath />
-    <ScummVMGameType />
-    <SortTitle />
-    <Source />
-    <StarRatingFloat>0</StarRatingFloat>
-    <StarRating>0</StarRating>
-    <CommunityStarRating>0</CommunityStarRating>
-    <CommunityStarRatingTotalVotes>0</CommunityStarRatingTotalVotes>
-    <Status>Pending</Status>
-    <DatabaseID>2271</DatabaseID>
-    <WikipediaURL>https://en.wikipedia.org/wiki/Alex_Kidd_in_the_Enchanted_Castle</WikipediaURL>
-    <Title>Alex Kidd in the Enchanted Castle</Title>
-    <UseDosBox>false</UseDosBox>
-    <UseScummVM>false</UseScummVM>
-    <Version>REV02</Version>
-    <Series>Alex Kidd</Series>
-    <PlayMode>Un joueur</PlayMode>
-    <Region>Europe</Region>
-    <PlayCount>3</PlayCount>
-    <Portable>false</Portable>
-    <Hide>false</Hide>
-    <Broken>false</Broken>
-    <Genre>Action;Platform</Genre>
-    <MissingVideo>true</MissingVideo>
-    <MissingBoxFrontImage>true</MissingBoxFrontImage>
-    <MissingScreenshotImage>true</MissingScreenshotImage>
-    <MissingClearLogoImage>true</MissingClearLogoImage>
-    <MissingBackgroundImage>true</MissingBackgroundImage>
-    <MissingBox3dImage>true</MissingBox3dImage>
-    <MissingCartImage>true</MissingCartImage>
-    <MissingCart3dImage>true</MissingCart3dImage>
-    <MissingManual>false</MissingManual>
-    <MissingBannerImage>false</MissingBannerImage>
-    <MissingMusic>false</MissingMusic>
-    <UseStartupScreen>false</UseStartupScreen>
-    <HideAllNonExclusiveFullscreenWindows>false</HideAllNonExclusiveFullscreenWindows>
-    <StartupLoadDelay>0</StartupLoadDelay>
-    <HideMouseCursorInGame>false</HideMouseCursorInGame>
-    <DisableShutdownScreen>false</DisableShutdownScreen>
-    <AggressiveWindowHiding>false</AggressiveWindowHiding>
-    <OverrideDefaultStartupScreenSettings>false</OverrideDefaultStartupScreenSettings>
-    <UsePauseScreen>false</UsePauseScreen>
-    <PauseAutoHotkeyScript />
-    <ResumeAutoHotkeyScript />
-    <OverrideDefaultPauseScreenSettings>false</OverrideDefaultPauseScreenSettings>
-    <SuspendProcessOnPause>false</SuspendProcessOnPause>
-    <ForcefulPauseScreenActivation>false</ForcefulPauseScreenActivation>
-    <LoadStateAutoHotkeyScript />
-    <SaveStateAutoHotkeyScript />
-    <ResetAutoHotkeyScript />
-    <SwapDiscsAutoHotkeyScript />
-    <CustomDosBoxVersionPath />
-    <ReleaseType />
-    <VideoUrl />
-  </Game>
-  <Game>
-    <GogAppId />
-    <OriginAppId />
-    <OriginInstallPath />
-    <VideoPath />
-    <ThemeVideoPath />
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\3 Ninjas Kick Back (1994)(Sony Imagesoft)(US).zip</ApplicationPath>
-    <CommandLine />
-    <Completed>false</Completed>
-    <ConfigurationCommandLine />
-    <ConfigurationPath />
-    <DateAdded>2018-08-17T19:44:55.9190591+02:00</DateAdded>
-    <DateModified>2018-08-18T15:08:32.8841111+02:00</DateModified>
-    <Developer>Malibu Interactive</Developer>
-    <DosBoxConfigurationPath />
-    <Emulator>46980dd1-982d-4b30-ad3b-fda6139752c9</Emulator>
-    <Favorite>false</Favorite>
-    <ID>645f5ec1-2eea-4aac-8569-d40636ff8827</ID>
-    <ManualPath>..\..\fauxgames\Manuals\Sega Mega Drive\3_Ninjas_Kick_Back_1994_Sony_Imagesoft_US.pdf</ManualPath>
-    <MusicPath />
-    <Notes>3 Ninjas Kick Back follows 3 young ninja  brothers, Rocky, Colt and Tum-Tum as they assist an old Samurai in retrieving a prized dagger which has been stolen by his rival. The dagger, once given to the Samurai as a reward, will be passed along to younger generations once it is restored to its rightful owner. The boys learn ninjitsu and karate as they fight evil forces that are older, more powerful, and bigger than them.</Notes>
-    <Platform>Sega Genesis</Platform>
-    <Publisher>Sony Imagesoft</Publisher>
-    <Rating>T - Teen</Rating>
-    <ReleaseDate>1994-06-01T09:00:00+02:00</ReleaseDate>
-    <RootFolder />
-    <ScummVMAspectCorrection>false</ScummVMAspectCorrection>
-    <ScummVMFullscreen>false</ScummVMFullscreen>
-    <ScummVMGameDataFolderPath />
-    <ScummVMGameType />
-    <SortTitle />
-    <Source />
-    <StarRatingFloat>0</StarRatingFloat>
-    <StarRating>0</StarRating>
-    <CommunityStarRating>0</CommunityStarRating>
-    <CommunityStarRatingTotalVotes>0</CommunityStarRatingTotalVotes>
-    <Status>Pending</Status>
-    <DatabaseID>3371</DatabaseID>
-    <WikipediaURL>https://en.wikipedia.org/wiki/3_Ninjas_Kick_Back_(video_game)</WikipediaURL>
-    <Title>3 Ninjas Kick Back</Title>
-    <UseDosBox>false</UseDosBox>
-    <UseScummVM>false</UseScummVM>
-    <Version>(1994)(Sony Imagesoft)(US)</Version>
-    <Series />
-    <PlayMode>Coopération; Multijoueur</PlayMode>
-    <Region>United States</Region>
-    <PlayCount>0</PlayCount>
-    <Portable>false</Portable>
-    <Hide>false</Hide>
-    <Broken>false</Broken>
-    <Genre>Action;Platform</Genre>
-    <MissingVideo>false</MissingVideo>
-    <MissingBoxFrontImage>true</MissingBoxFrontImage>
-    <MissingScreenshotImage>true</MissingScreenshotImage>
-    <MissingClearLogoImage>true</MissingClearLogoImage>
-    <MissingBackgroundImage>true</MissingBackgroundImage>
-    <MissingBox3dImage>true</MissingBox3dImage>
-    <MissingCartImage>true</MissingCartImage>
-    <MissingCart3dImage>true</MissingCart3dImage>
-    <MissingManual>false</MissingManual>
-    <MissingBannerImage>false</MissingBannerImage>
-    <MissingMusic>false</MissingMusic>
-    <UseStartupScreen>false</UseStartupScreen>
-    <HideAllNonExclusiveFullscreenWindows>false</HideAllNonExclusiveFullscreenWindows>
-    <StartupLoadDelay>0</StartupLoadDelay>
-    <HideMouseCursorInGame>false</HideMouseCursorInGame>
-    <DisableShutdownScreen>false</DisableShutdownScreen>
-    <AggressiveWindowHiding>false</AggressiveWindowHiding>
-    <OverrideDefaultStartupScreenSettings>false</OverrideDefaultStartupScreenSettings>
-    <UsePauseScreen>false</UsePauseScreen>
-    <PauseAutoHotkeyScript />
-    <ResumeAutoHotkeyScript />
-    <OverrideDefaultPauseScreenSettings>false</OverrideDefaultPauseScreenSettings>
-    <SuspendProcessOnPause>false</SuspendProcessOnPause>
-    <ForcefulPauseScreenActivation>false</ForcefulPauseScreenActivation>
-    <LoadStateAutoHotkeyScript />
-    <SaveStateAutoHotkeyScript />
-    <ResetAutoHotkeyScript />
-    <SwapDiscsAutoHotkeyScript />
-    <CustomDosBoxVersionPath />
-    <ReleaseType />
-    <VideoUrl />
-  </Game>
-  <Game>
-    <GogAppId />
-    <OriginAppId />
-    <OriginInstallPath />
-    <VideoPath />
-    <ThemeVideoPath />
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\Zombies (1994-01-27)(Konami)(EU).zip</ApplicationPath>
-    <CommandLine />
-    <Completed>true</Completed>
-    <ConfigurationCommandLine />
-    <ConfigurationPath />
-    <DateAdded>2018-08-17T19:44:55.9180527+02:00</DateAdded>
-    <DateModified>2018-08-18T14:43:16.8136828+02:00</DateModified>
-    <Developer>Babaroga</Developer>
-    <DosBoxConfigurationPath />
-    <Emulator>46980dd1-982d-4b30-ad3b-fda6139752c9</Emulator>
-    <Favorite>false</Favorite>
-    <ID>2bb06c97-9be6-45c5-aec7-324c8186f9b8</ID>
-    <LastPlayedDate>2018-08-18T07:11:01.157468+02:00</LastPlayedDate>
-    <ManualPath>..\..\fauxgames\Manuals\Sega Mega Drive\Zombies_Ate_My_Neighbors_MD_US_Manual.pdf</ManualPath>
-    <MusicPath>..\..\fauxgames\Music\Sega Mega Drive\Zombies - Weird Kids.mp3</MusicPath>
-    <Notes>Zombies Ate My Neighbors est un jeu d'action où il est possible d'incarner un garçon (Zeke) ou une fille (Julia). Il faut sauver un maximum de gens au cours de la cinquantaine de niveaux du jeu tout en combattant les vampires, momies et autres zombies. Plusieurs armes sont disponibles dont un pistolet à eau et un bazooka. Un mode coopératif permet de faire l'intégralité du jeu avec un ami.</Notes>
-    <Platform>Sega Genesis</Platform>
-    <Publisher>Twilight Creations Inc.</Publisher>
-    <Rating>T - Teen</Rating>
-    <ReleaseDate>2011-01-12T00:00:00+01:00</ReleaseDate>
-    <RootFolder />
-    <ScummVMAspectCorrection>false</ScummVMAspectCorrection>
-    <ScummVMFullscreen>false</ScummVMFullscreen>
-    <ScummVMGameDataFolderPath />
-    <ScummVMGameType />
-    <SortTitle />
-    <Source />
-    <StarRatingFloat>4</StarRatingFloat>
-    <StarRating>4</StarRating>
-    <CommunityStarRating>0</CommunityStarRating>
-    <CommunityStarRatingTotalVotes>0</CommunityStarRatingTotalVotes>
-    <Status />
-    <WikipediaID>2199644</WikipediaID>
-    <WikipediaURL>https://en.wikipedia.org/wiki/Zombies_(video_game)</WikipediaURL>
-    <Title>Zombies Ate My Neighbors</Title>
-    <UseDosBox>false</UseDosBox>
-    <UseScummVM>false</UseScummVM>
-    <Version>(1994-01-27)(Konami)(EU)</Version>
-    <Series />
-    <PlayMode>Coopération; Multijoueur; Un joueur</PlayMode>
-    <Region>Europe</Region>
-    <PlayCount>2</PlayCount>
-    <Portable>false</Portable>
-    <Hide>false</Hide>
-    <Broken>false</Broken>
-    <Genre>Turn-Based Strategy</Genre>
-    <MissingVideo>false</MissingVideo>
-    <MissingBoxFrontImage>true</MissingBoxFrontImage>
-    <MissingScreenshotImage>true</MissingScreenshotImage>
-    <MissingClearLogoImage>true</MissingClearLogoImage>
-    <MissingBackgroundImage>true</MissingBackgroundImage>
-    <MissingBox3dImage>true</MissingBox3dImage>
-    <MissingCartImage>true</MissingCartImage>
-    <MissingCart3dImage>true</MissingCart3dImage>
-    <MissingManual>false</MissingManual>
-    <MissingBannerImage>false</MissingBannerImage>
-    <MissingMusic>false</MissingMusic>
-    <UseStartupScreen>false</UseStartupScreen>
-    <HideAllNonExclusiveFullscreenWindows>false</HideAllNonExclusiveFullscreenWindows>
-    <StartupLoadDelay>0</StartupLoadDelay>
-    <HideMouseCursorInGame>false</HideMouseCursorInGame>
-    <DisableShutdownScreen>false</DisableShutdownScreen>
-    <AggressiveWindowHiding>false</AggressiveWindowHiding>
-    <OverrideDefaultStartupScreenSettings>false</OverrideDefaultStartupScreenSettings>
-    <UsePauseScreen>false</UsePauseScreen>
-    <PauseAutoHotkeyScript />
-    <ResumeAutoHotkeyScript />
-    <OverrideDefaultPauseScreenSettings>false</OverrideDefaultPauseScreenSettings>
-    <SuspendProcessOnPause>false</SuspendProcessOnPause>
-    <ForcefulPauseScreenActivation>false</ForcefulPauseScreenActivation>
-    <LoadStateAutoHotkeyScript />
-    <SaveStateAutoHotkeyScript />
-    <ResetAutoHotkeyScript />
-    <SwapDiscsAutoHotkeyScript />
-    <CustomDosBoxVersionPath />
-    <ReleaseType />
-    <VideoUrl />
-  </Game>
-  <Game>
-    <GogAppId />
-    <OriginAppId />
-    <OriginInstallPath />
-    <VideoPath />
-    <ThemeVideoPath />
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\Altered Beast Rev 2 (1989-08-14)(Sega)(EU-US).zip</ApplicationPath>
-    <CommandLine />
-    <Completed>true</Completed>
-    <ConfigurationCommandLine />
-    <ConfigurationPath />
-    <DateAdded>2018-08-17T19:44:55.9250511+02:00</DateAdded>
-    <DateModified>2018-08-18T15:09:26.8679503+02:00</DateModified>
-    <Developer>Sega</Developer>
-    <DosBoxConfigurationPath />
-    <Emulator>46980dd1-982d-4b30-ad3b-fda6139752c9</Emulator>
-    <Favorite>false</Favorite>
-    <ID>4bcb25e8-1399-411a-bf1f-d3914dd765bb</ID>
-    <ManualPath>..\..\fauxgames\Manuals\Sega Mega Drive\Altered Beast Pal.pdf</ManualPath>
-    <MusicPath>..\..\fauxgames\Music\Sega Mega Drive\Altered Beast - Rise from Your Grave.mp3</MusicPath>
-    <Notes>Entrez dans une époque où les guerriers et les dieux dirigeaient le monde. Un temps d'opposition entre le bien et le mal, un lieu de danger. Appelé par Zeus pour secourir Athéna, vous allez vous infiltrer dans le monde des enfers avec le pouvoir de vous transformer en créatures mythiques douées d'une force surnaturelle.</Notes>
-    <Platform>Sega Genesis</Platform>
-    <Publisher>Sega</Publisher>
-    <Rating>T - Teen</Rating>
-    <ReleaseDate>1988-11-27T09:00:00+01:00</ReleaseDate>
-    <RootFolder />
-    <ScummVMAspectCorrection>false</ScummVMAspectCorrection>
-    <ScummVMFullscreen>false</ScummVMFullscreen>
-    <ScummVMGameDataFolderPath />
-    <ScummVMGameType />
-    <SortTitle />
-    <Source />
-    <StarRatingFloat>3</StarRatingFloat>
-    <StarRating>3</StarRating>
-    <CommunityStarRating>0</CommunityStarRating>
-    <CommunityStarRatingTotalVotes>0</CommunityStarRatingTotalVotes>
-    <Status>Ok</Status>
-    <WikipediaURL>https://segaretro.org/Altered_Beast</WikipediaURL>
-    <Title>Altered Beast</Title>
-    <UseDosBox>false</UseDosBox>
-    <UseScummVM>false</UseScummVM>
-    <Version>(1989-08-14)(Sega)(EU-US)</Version>
-    <Series />
-    <PlayMode>Coopération; Multijoueur</PlayMode>
-    <Region>Europe</Region>
-    <PlayCount>0</PlayCount>
-    <Portable>false</Portable>
-    <Hide>false</Hide>
-    <Broken>false</Broken>
-    <Genre>Action;Beat 'em Up</Genre>
-    <MissingVideo>false</MissingVideo>
-    <MissingBoxFrontImage>true</MissingBoxFrontImage>
-    <MissingScreenshotImage>true</MissingScreenshotImage>
-    <MissingClearLogoImage>true</MissingClearLogoImage>
-    <MissingBackgroundImage>true</MissingBackgroundImage>
-    <MissingBox3dImage>true</MissingBox3dImage>
-    <MissingCartImage>true</MissingCartImage>
-    <MissingCart3dImage>true</MissingCart3dImage>
-    <MissingManual>false</MissingManual>
-    <MissingBannerImage>false</MissingBannerImage>
-    <MissingMusic>false</MissingMusic>
-    <UseStartupScreen>false</UseStartupScreen>
-    <HideAllNonExclusiveFullscreenWindows>false</HideAllNonExclusiveFullscreenWindows>
-    <StartupLoadDelay>0</StartupLoadDelay>
-    <HideMouseCursorInGame>false</HideMouseCursorInGame>
-    <DisableShutdownScreen>false</DisableShutdownScreen>
-    <AggressiveWindowHiding>false</AggressiveWindowHiding>
-    <OverrideDefaultStartupScreenSettings>false</OverrideDefaultStartupScreenSettings>
-    <UsePauseScreen>false</UsePauseScreen>
-    <PauseAutoHotkeyScript />
-    <ResumeAutoHotkeyScript />
-    <OverrideDefaultPauseScreenSettings>false</OverrideDefaultPauseScreenSettings>
-    <SuspendProcessOnPause>false</SuspendProcessOnPause>
-    <ForcefulPauseScreenActivation>false</ForcefulPauseScreenActivation>
-    <LoadStateAutoHotkeyScript />
-    <SaveStateAutoHotkeyScript />
-    <ResetAutoHotkeyScript />
-    <SwapDiscsAutoHotkeyScript />
-    <CustomDosBoxVersionPath />
-    <ReleaseType />
-    <VideoUrl />
-  </Game>
-  <Game>
-    <GogAppId />
-    <OriginAppId />
-    <OriginInstallPath />
-    <VideoPath />
-    <ThemeVideoPath />
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\Disney's Aladdin (1993-11-11)(Sega)(EU).zip</ApplicationPath>
+    <ApplicationPath>..\..\fauxgames\Games\Sega Genesis\Aladdin\Aladdin (Europe).md</ApplicationPath>
     <CommandLine />
     <Completed>true</Completed>
     <ConfigurationCommandLine />
     <ConfigurationPath />
     <DateAdded>2018-08-17T19:44:55.9120563+02:00</DateAdded>
-    <DateModified>2020-07-09T09:49:05.1210757+02:00</DateModified>
+    <DateModified>2021-03-15T00:09:30.6592799+01:00</DateModified>
     <Developer>Virgin Interactive</Developer>
     <DosBoxConfigurationPath />
-    <Emulator>46980dd1-982d-4b30-ad3b-fda6139752c9</Emulator>
+    <Emulator>00018dc0-4953-4715-8e71-cb5d64a35db3</Emulator>
     <Favorite>false</Favorite>
     <ID>abb077c5-21ca-4eb5-8589-185f9477018b</ID>
-    <LastPlayedDate>2018-08-17T21:35:49.7965124+02:00</LastPlayedDate>
-    <ManualPath>..\..\fauxgames\Manuals\Sega Mega Drive\Disney's_Aladdin_MD_FR_Manual.pdf</ManualPath>
-    <MusicPath />
+    <LastPlayedDate>2021-03-15T00:09:32.1983347+01:00</LastPlayedDate>
+    <ManualPath>..\..\fauxgames\Manuals\Sega Genesis\Disney's_Aladdin_MD_FR_Manual.pdf</ManualPath>
+    <MusicPath>..\..\fauxgames\Musics\Sega Genesis\Aladdin.mp3</MusicPath>
     <Notes>SEGA, Disney Software et Virgin Games présentent le jeu Aladdin de Disney. Accrochez-vous à votre tapis magique : l'aventure commence! Aladdin manie son cimeterre étincelant pour traverser Agrabah, échapper aux prisons du Sultan, survivre à l'épreuve des flammes de la Grotte des Merveilles, s'emparer de la lampe du Génie et sauver la Princesse Jasmine du diabolique Jafar.</Notes>
     <Platform>Sega Genesis</Platform>
     <Publisher>Virgin Interactive</Publisher>
@@ -713,345 +47,18 @@ This is a platform game, where you control three characters. Each one of them ha
     <Series />
     <PlayMode>Un joueur</PlayMode>
     <Region>Europe</Region>
-    <PlayCount>3</PlayCount>
-    <Portable>false</Portable>
-    <Hide>false</Hide>
-    <Broken>false</Broken>
-    <Genre>Action;Plateforme</Genre>
-    <MissingVideo>true</MissingVideo>
-    <MissingBoxFrontImage>true</MissingBoxFrontImage>
-    <MissingScreenshotImage>true</MissingScreenshotImage>
-    <MissingClearLogoImage>true</MissingClearLogoImage>
-    <MissingBackgroundImage>true</MissingBackgroundImage>
-    <MissingBox3dImage>true</MissingBox3dImage>
-    <MissingCartImage>true</MissingCartImage>
-    <MissingCart3dImage>true</MissingCart3dImage>
-    <MissingManual>false</MissingManual>
-    <MissingBannerImage>false</MissingBannerImage>
-    <MissingMusic>false</MissingMusic>
-    <UseStartupScreen>false</UseStartupScreen>
-    <HideAllNonExclusiveFullscreenWindows>false</HideAllNonExclusiveFullscreenWindows>
-    <StartupLoadDelay>0</StartupLoadDelay>
-    <HideMouseCursorInGame>false</HideMouseCursorInGame>
-    <DisableShutdownScreen>false</DisableShutdownScreen>
-    <AggressiveWindowHiding>false</AggressiveWindowHiding>
-    <OverrideDefaultStartupScreenSettings>false</OverrideDefaultStartupScreenSettings>
-    <UsePauseScreen>false</UsePauseScreen>
-    <PauseAutoHotkeyScript />
-    <ResumeAutoHotkeyScript />
-    <OverrideDefaultPauseScreenSettings>false</OverrideDefaultPauseScreenSettings>
-    <SuspendProcessOnPause>false</SuspendProcessOnPause>
-    <ForcefulPauseScreenActivation>false</ForcefulPauseScreenActivation>
-    <LoadStateAutoHotkeyScript />
-    <SaveStateAutoHotkeyScript />
-    <ResetAutoHotkeyScript />
-    <SwapDiscsAutoHotkeyScript />
-    <CustomDosBoxVersionPath />
-    <ReleaseType />
-    <VideoUrl />
-  </Game>
-  <Game>
-    <GogAppId />
-    <OriginAppId />
-    <OriginInstallPath />
-    <VideoPath />
-    <ThemeVideoPath />
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\ToeJam &amp; Earl Rev 2 (1991)(Sega)(JP)(en).zip</ApplicationPath>
-    <CommandLine />
-    <Completed>false</Completed>
-    <ConfigurationCommandLine />
-    <ConfigurationPath />
-    <DateAdded>0001-01-01T00:00:00+01:00</DateAdded>
-    <DateModified>0001-01-01T00:00:00+01:00</DateModified>
-    <Developer />
-    <DosBoxConfigurationPath />
-    <Emulator>46980dd1-982d-4b30-ad3b-fda6139752c9</Emulator>
-    <Favorite>false</Favorite>
-    <ID>28cd7ed9-1cd2-4ed8-9d8c-ef3178772147</ID>
-    <ManualPath />
-    <MusicPath />
-    <Notes />
-    <Platform>Sega Genesis</Platform>
-    <Publisher />
-    <Rating />
-    <RootFolder />
-    <ScummVMAspectCorrection>false</ScummVMAspectCorrection>
-    <ScummVMFullscreen>false</ScummVMFullscreen>
-    <ScummVMGameDataFolderPath />
-    <ScummVMGameType />
-    <SortTitle />
-    <Source />
-    <StarRatingFloat>0</StarRatingFloat>
-    <StarRating>0</StarRating>
-    <CommunityStarRating>0</CommunityStarRating>
-    <CommunityStarRatingTotalVotes>0</CommunityStarRatingTotalVotes>
-    <Status />
-    <WikipediaURL />
-    <Title>ToeJam &amp; Earl Rev 2</Title>
-    <UseDosBox>false</UseDosBox>
-    <UseScummVM>false</UseScummVM>
-    <Version>(1991)(Sega)(JP)(en)</Version>
-    <Series />
-    <PlayMode />
-    <Region />
-    <PlayCount>0</PlayCount>
-    <Portable>false</Portable>
-    <Hide>false</Hide>
-    <Broken>false</Broken>
-    <Genre />
-    <MissingVideo>true</MissingVideo>
-    <MissingBoxFrontImage>true</MissingBoxFrontImage>
-    <MissingScreenshotImage>true</MissingScreenshotImage>
-    <MissingClearLogoImage>true</MissingClearLogoImage>
-    <MissingBackgroundImage>true</MissingBackgroundImage>
-    <MissingBox3dImage>true</MissingBox3dImage>
-    <MissingCartImage>true</MissingCartImage>
-    <MissingCart3dImage>true</MissingCart3dImage>
-    <MissingManual>false</MissingManual>
-    <MissingBannerImage>false</MissingBannerImage>
-    <MissingMusic>false</MissingMusic>
-    <UseStartupScreen>false</UseStartupScreen>
-    <HideAllNonExclusiveFullscreenWindows>false</HideAllNonExclusiveFullscreenWindows>
-    <StartupLoadDelay>0</StartupLoadDelay>
-    <HideMouseCursorInGame>false</HideMouseCursorInGame>
-    <DisableShutdownScreen>false</DisableShutdownScreen>
-    <AggressiveWindowHiding>false</AggressiveWindowHiding>
-    <OverrideDefaultStartupScreenSettings>false</OverrideDefaultStartupScreenSettings>
-    <UsePauseScreen>false</UsePauseScreen>
-    <PauseAutoHotkeyScript />
-    <ResumeAutoHotkeyScript />
-    <OverrideDefaultPauseScreenSettings>false</OverrideDefaultPauseScreenSettings>
-    <SuspendProcessOnPause>false</SuspendProcessOnPause>
-    <ForcefulPauseScreenActivation>false</ForcefulPauseScreenActivation>
-    <LoadStateAutoHotkeyScript />
-    <SaveStateAutoHotkeyScript />
-    <ResetAutoHotkeyScript />
-    <SwapDiscsAutoHotkeyScript />
-    <CustomDosBoxVersionPath />
-    <ReleaseType />
-    <VideoUrl />
-  </Game>
-  <Game>
-    <GogAppId />
-    <OriginAppId />
-    <OriginInstallPath />
-    <VideoPath />
-    <ThemeVideoPath />
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\Toejam &amp; Earl (UE) (REV00) [T+Fre0.90_sky2048].zip</ApplicationPath>
-    <CommandLine />
-    <Completed>false</Completed>
-    <ConfigurationCommandLine />
-    <ConfigurationPath />
-    <DateAdded>2018-08-18T14:59:17.533889+02:00</DateAdded>
-    <DateModified>2020-07-09T09:59:36.5222743+02:00</DateModified>
-    <Developer />
-    <DosBoxConfigurationPath />
-    <Emulator />
-    <Favorite>false</Favorite>
-    <ID>50ec26f1-56b1-4073-b959-34e409d872e9</ID>
-    <ManualPath />
-    <MusicPath />
-    <Notes />
-    <Platform>Sega Genesis</Platform>
-    <Publisher />
-    <Rating />
-    <RootFolder />
-    <ScummVMAspectCorrection>true</ScummVMAspectCorrection>
-    <ScummVMFullscreen>true</ScummVMFullscreen>
-    <ScummVMGameDataFolderPath />
-    <ScummVMGameType />
-    <SortTitle />
-    <Source />
-    <StarRatingFloat>0</StarRatingFloat>
-    <StarRating>0</StarRating>
-    <CommunityStarRating>0</CommunityStarRating>
-    <CommunityStarRatingTotalVotes>0</CommunityStarRatingTotalVotes>
-    <Status />
-    <WikipediaURL />
-    <Title>Toejam &amp; Earl</Title>
-    <UseDosBox>false</UseDosBox>
-    <UseScummVM>false</UseScummVM>
-    <Version>(UE) (REV00) [T+Fre0.90_sky2048]</Version>
-    <Series />
-    <PlayMode />
-    <Region>United States, Europe</Region>
-    <PlayCount>0</PlayCount>
-    <Portable>false</Portable>
-    <Hide>false</Hide>
-    <Broken>false</Broken>
-    <Genre />
-    <MissingVideo>true</MissingVideo>
-    <MissingBoxFrontImage>true</MissingBoxFrontImage>
-    <MissingScreenshotImage>true</MissingScreenshotImage>
-    <MissingClearLogoImage>true</MissingClearLogoImage>
-    <MissingBackgroundImage>true</MissingBackgroundImage>
-    <MissingBox3dImage>true</MissingBox3dImage>
-    <MissingCartImage>true</MissingCartImage>
-    <MissingCart3dImage>true</MissingCart3dImage>
-    <MissingManual>true</MissingManual>
-    <MissingBannerImage>false</MissingBannerImage>
-    <MissingMusic>false</MissingMusic>
-    <UseStartupScreen>false</UseStartupScreen>
-    <HideAllNonExclusiveFullscreenWindows>false</HideAllNonExclusiveFullscreenWindows>
-    <StartupLoadDelay>0</StartupLoadDelay>
-    <HideMouseCursorInGame>false</HideMouseCursorInGame>
-    <DisableShutdownScreen>false</DisableShutdownScreen>
-    <AggressiveWindowHiding>false</AggressiveWindowHiding>
-    <OverrideDefaultStartupScreenSettings>false</OverrideDefaultStartupScreenSettings>
-    <UsePauseScreen>false</UsePauseScreen>
-    <PauseAutoHotkeyScript />
-    <ResumeAutoHotkeyScript />
-    <OverrideDefaultPauseScreenSettings>false</OverrideDefaultPauseScreenSettings>
-    <SuspendProcessOnPause>false</SuspendProcessOnPause>
-    <ForcefulPauseScreenActivation>false</ForcefulPauseScreenActivation>
-    <LoadStateAutoHotkeyScript />
-    <SaveStateAutoHotkeyScript />
-    <ResetAutoHotkeyScript />
-    <SwapDiscsAutoHotkeyScript />
-    <CustomDosBoxVersionPath />
-    <ReleaseType />
-    <VideoUrl />
-  </Game>
-  <Game>
-    <GogAppId />
-    <OriginAppId />
-    <OriginInstallPath />
-    <VideoPath />
-    <ThemeVideoPath />
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\World of Illusion Starring Mickey Mouse &amp; Donald Duck (1992-12-14)(Sega)(EU).zip</ApplicationPath>
-    <CommandLine />
-    <Completed>true</Completed>
-    <ConfigurationCommandLine />
-    <ConfigurationPath />
-    <DateAdded>2018-08-17T23:26:54.3846462+02:00</DateAdded>
-    <DateModified>2020-07-09T10:05:21.9764018+02:00</DateModified>
-    <Developer>Sega</Developer>
-    <DosBoxConfigurationPath />
-    <Emulator>46980dd1-982d-4b30-ad3b-fda6139752c9</Emulator>
-    <Favorite>true</Favorite>
-    <ID>c382f459-9a74-426b-8ddc-5f379bc9b127</ID>
-    <LastPlayedDate>2018-08-18T07:21:13.0128562+02:00</LastPlayedDate>
-    <ManualPath>..\..\fauxgames\Manuals\Sega Mega Drive\Mickey - World of Illusion - Fr.pdf</ManualPath>
-    <MusicPath>..\..\fauxgames\Music\Sega Mega Drive\Mickey - World Of Illusion - Level 1-1.mp3</MusicPath>
-    <Notes>Attiré par une boite étrange qu'il vient de découvrir, Donald disparait mystérieusement, rapidement suivi par Mickey venu l’aider. Enfermés à l'intérieur de la boite, ils découvrent un monde d’illusion créé par un méchant magicien. Au fil des niveaux ils devront éviter les pièges et vaincre le magicien.</Notes>
-    <Platform>Sega Genesis</Platform>
-    <Publisher>Sega</Publisher>
-    <Rating>E - Everyone</Rating>
-    <ReleaseDate>1992-12-18T09:00:00+01:00</ReleaseDate>
-    <RootFolder />
-    <ScummVMAspectCorrection>true</ScummVMAspectCorrection>
-    <ScummVMFullscreen>true</ScummVMFullscreen>
-    <ScummVMGameDataFolderPath />
-    <ScummVMGameType />
-    <SortTitle />
-    <Source />
-    <StarRatingFloat>3.5</StarRatingFloat>
-    <StarRating>3</StarRating>
-    <CommunityStarRating>3.935484</CommunityStarRating>
-    <CommunityStarRatingTotalVotes>31</CommunityStarRatingTotalVotes>
-    <Status />
-    <DatabaseID>139</DatabaseID>
-    <WikipediaURL>https://en.wikipedia.org/wiki/World_of_Illusion_Starring_Mickey_Mouse_and_Donald_Duck</WikipediaURL>
-    <Title>World of Illusion Starring Mickey Mouse and Donald Duck</Title>
-    <UseDosBox>false</UseDosBox>
-    <UseScummVM>false</UseScummVM>
-    <Version>(1992-12-14)(Sega)(EU)</Version>
-    <Series />
-    <PlayMode>Coopération; Multijoueur; Un joueur</PlayMode>
-    <Region>Europe</Region>
     <PlayCount>5</PlayCount>
     <Portable>false</Portable>
     <Hide>false</Hide>
     <Broken>false</Broken>
-    <Genre>Adventure</Genre>
-    <MissingVideo>true</MissingVideo>
-    <MissingBoxFrontImage>true</MissingBoxFrontImage>
-    <MissingScreenshotImage>true</MissingScreenshotImage>
-    <MissingClearLogoImage>true</MissingClearLogoImage>
-    <MissingBackgroundImage>true</MissingBackgroundImage>
-    <MissingBox3dImage>true</MissingBox3dImage>
-    <MissingCartImage>true</MissingCartImage>
-    <MissingCart3dImage>true</MissingCart3dImage>
-    <MissingManual>false</MissingManual>
-    <MissingBannerImage>false</MissingBannerImage>
-    <MissingMusic>false</MissingMusic>
-    <UseStartupScreen>false</UseStartupScreen>
-    <HideAllNonExclusiveFullscreenWindows>false</HideAllNonExclusiveFullscreenWindows>
-    <StartupLoadDelay>0</StartupLoadDelay>
-    <HideMouseCursorInGame>false</HideMouseCursorInGame>
-    <DisableShutdownScreen>false</DisableShutdownScreen>
-    <AggressiveWindowHiding>false</AggressiveWindowHiding>
-    <OverrideDefaultStartupScreenSettings>false</OverrideDefaultStartupScreenSettings>
-    <UsePauseScreen>false</UsePauseScreen>
-    <PauseAutoHotkeyScript />
-    <ResumeAutoHotkeyScript />
-    <OverrideDefaultPauseScreenSettings>false</OverrideDefaultPauseScreenSettings>
-    <SuspendProcessOnPause>false</SuspendProcessOnPause>
-    <ForcefulPauseScreenActivation>false</ForcefulPauseScreenActivation>
-    <LoadStateAutoHotkeyScript />
-    <SaveStateAutoHotkeyScript />
-    <ResetAutoHotkeyScript />
-    <SwapDiscsAutoHotkeyScript />
-    <CustomDosBoxVersionPath />
-    <ReleaseType />
-    <VideoUrl />
-  </Game>
-  <Game>
-    <GogAppId />
-    <OriginAppId />
-    <OriginInstallPath />
-    <VideoPath />
-    <ThemeVideoPath />
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\Toejam &amp; Earl (UE) (REV00) [T+Fre0.90_sky2048].zip</ApplicationPath>
-    <CommandLine />
-    <Completed>false</Completed>
-    <ConfigurationCommandLine />
-    <ConfigurationPath />
-    <DateAdded>0001-01-01T00:00:00+01:00</DateAdded>
-    <DateModified>0001-01-01T00:00:00+01:00</DateModified>
-    <Developer />
-    <DosBoxConfigurationPath />
-    <Emulator>46980dd1-982d-4b30-ad3b-fda6139752c9</Emulator>
-    <Favorite>false</Favorite>
-    <ID>645f0d9f-d008-4535-ab5e-abc18fe6cb28</ID>
-    <ManualPath />
-    <MusicPath />
-    <Notes />
-    <Platform>Sega Genesis</Platform>
-    <Publisher />
-    <Rating />
-    <RootFolder />
-    <ScummVMAspectCorrection>false</ScummVMAspectCorrection>
-    <ScummVMFullscreen>false</ScummVMFullscreen>
-    <ScummVMGameDataFolderPath />
-    <ScummVMGameType />
-    <SortTitle />
-    <Source />
-    <StarRatingFloat>0</StarRatingFloat>
-    <StarRating>0</StarRating>
-    <CommunityStarRating>0</CommunityStarRating>
-    <CommunityStarRatingTotalVotes>0</CommunityStarRatingTotalVotes>
-    <Status />
-    <WikipediaURL />
-    <Title>Toejam &amp; Earl</Title>
-    <UseDosBox>false</UseDosBox>
-    <UseScummVM>false</UseScummVM>
-    <Version>(UE) (REV00) [T+Fre0.90_sky2048]</Version>
-    <Series />
-    <PlayMode />
-    <Region>United States, Europe</Region>
-    <PlayCount>0</PlayCount>
-    <Portable>false</Portable>
-    <Hide>false</Hide>
-    <Broken>false</Broken>
-    <Genre />
+    <Genre>Action;Plateforme</Genre>
     <MissingVideo>false</MissingVideo>
-    <MissingBoxFrontImage>true</MissingBoxFrontImage>
-    <MissingScreenshotImage>true</MissingScreenshotImage>
-    <MissingClearLogoImage>true</MissingClearLogoImage>
-    <MissingBackgroundImage>true</MissingBackgroundImage>
-    <MissingBox3dImage>true</MissingBox3dImage>
-    <MissingCartImage>true</MissingCartImage>
+    <MissingBoxFrontImage>false</MissingBoxFrontImage>
+    <MissingScreenshotImage>false</MissingScreenshotImage>
+    <MissingClearLogoImage>false</MissingClearLogoImage>
+    <MissingBackgroundImage>false</MissingBackgroundImage>
+    <MissingBox3dImage>false</MissingBox3dImage>
+    <MissingCartImage>false</MissingCartImage>
     <MissingCart3dImage>true</MissingCart3dImage>
     <MissingManual>false</MissingManual>
     <MissingBannerImage>false</MissingBannerImage>
@@ -1081,144 +88,62 @@ This is a platform game, where you control three characters. Each one of them ha
     <GogAppId />
     <OriginAppId />
     <OriginInstallPath />
-    <VideoPath />
+    <VideoPath>..\..\fauxgames\Videos\Sega Genesis\Cool Spot-01.mp4</VideoPath>
     <ThemeVideoPath />
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\World of Illusion Starring Mickey Mouse &amp; Donald Duck (1993-03)(Sega)(US).zip</ApplicationPath>
+    <ApplicationPath>..\..\fauxgames\Games\Sega Genesis\Cool Spot (Europe).md</ApplicationPath>
     <CommandLine />
     <Completed>false</Completed>
     <ConfigurationCommandLine />
     <ConfigurationPath />
-    <DateAdded>2018-08-18T14:59:17.5149034+02:00</DateAdded>
-    <DateModified>2018-08-18T14:59:17.5149034+02:00</DateModified>
-    <Developer />
+    <DateAdded>2020-07-22T10:44:23.2682422+02:00</DateAdded>
+    <DateModified>2020-07-22T11:08:42.015079+02:00</DateModified>
+    <Developer>Virgin Games, Ltd.</Developer>
     <DosBoxConfigurationPath />
     <Emulator />
     <Favorite>false</Favorite>
-    <ID>0570d5ea-2f22-4bfe-89d4-7bb85169af60</ID>
-    <ManualPath />
-    <MusicPath />
-    <Notes />
+    <ID>e816f293-75e4-42fa-b94a-8edbd225f87f</ID>
+    <ManualPath>..\..\fauxgames\Manuals\Sega Genesis\Cool_Spot_MD_US_Manual.pdf</ManualPath>
+    <MusicPath>..\..\fauxgames\Musics\Sega Genesis\Cool Spot Intro genesis.mp3</MusicPath>
+    <Notes> OH NON ! Le potes de COOL SPOT sont en prison ! TENEZ BON ! Cool SPOT va sauver la situation ! c'est pas le moment d'admirer la beauté du paysage, de l'animation et du son ! Vas-y, joue ! En route pour un délire béton... </Notes>
     <Platform>Sega Genesis</Platform>
-    <Publisher />
-    <Rating />
-    <RootFolder />
-    <ScummVMAspectCorrection>false</ScummVMAspectCorrection>
-    <ScummVMFullscreen>false</ScummVMFullscreen>
-    <ScummVMGameDataFolderPath />
-    <ScummVMGameType />
-    <SortTitle />
-    <Source />
-    <StarRatingFloat>0</StarRatingFloat>
-    <StarRating>0</StarRating>
-    <CommunityStarRating>0</CommunityStarRating>
-    <CommunityStarRatingTotalVotes>0</CommunityStarRatingTotalVotes>
-    <Status />
-    <WikipediaURL />
-    <Title>World of Illusion Starring Mickey Mouse &amp; Donald Duck</Title>
-    <UseDosBox>false</UseDosBox>
-    <UseScummVM>false</UseScummVM>
-    <Version>(1993-03)(Sega)(US)</Version>
-    <Series />
-    <PlayMode />
-    <Region />
-    <PlayCount>0</PlayCount>
-    <Portable>false</Portable>
-    <Hide>false</Hide>
-    <Broken>false</Broken>
-    <Genre />
-    <MissingVideo>false</MissingVideo>
-    <MissingBoxFrontImage>true</MissingBoxFrontImage>
-    <MissingScreenshotImage>true</MissingScreenshotImage>
-    <MissingClearLogoImage>true</MissingClearLogoImage>
-    <MissingBackgroundImage>true</MissingBackgroundImage>
-    <MissingBox3dImage>true</MissingBox3dImage>
-    <MissingCartImage>true</MissingCartImage>
-    <MissingCart3dImage>true</MissingCart3dImage>
-    <MissingManual>false</MissingManual>
-    <MissingBannerImage>false</MissingBannerImage>
-    <MissingMusic>false</MissingMusic>
-    <UseStartupScreen>false</UseStartupScreen>
-    <HideAllNonExclusiveFullscreenWindows>false</HideAllNonExclusiveFullscreenWindows>
-    <StartupLoadDelay>0</StartupLoadDelay>
-    <HideMouseCursorInGame>false</HideMouseCursorInGame>
-    <DisableShutdownScreen>false</DisableShutdownScreen>
-    <AggressiveWindowHiding>false</AggressiveWindowHiding>
-    <OverrideDefaultStartupScreenSettings>false</OverrideDefaultStartupScreenSettings>
-    <UsePauseScreen>false</UsePauseScreen>
-    <PauseAutoHotkeyScript />
-    <ResumeAutoHotkeyScript />
-    <OverrideDefaultPauseScreenSettings>false</OverrideDefaultPauseScreenSettings>
-    <SuspendProcessOnPause>false</SuspendProcessOnPause>
-    <ForcefulPauseScreenActivation>false</ForcefulPauseScreenActivation>
-    <LoadStateAutoHotkeyScript />
-    <SaveStateAutoHotkeyScript />
-    <ResetAutoHotkeyScript />
-    <SwapDiscsAutoHotkeyScript />
-    <CustomDosBoxVersionPath />
-    <ReleaseType />
-    <VideoUrl />
-  </Game>
-  <Game>
-    <GogAppId />
-    <OriginAppId />
-    <OriginInstallPath />
-    <VideoPath />
-    <ThemeVideoPath />
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\Sonic the Hedgehog Rev 0 (1991-06-23)(Sega)(EU-US).zip</ApplicationPath>
-    <CommandLine />
-    <Completed>true</Completed>
-    <ConfigurationCommandLine />
-    <ConfigurationPath />
-    <DateAdded>2018-08-17T19:05:35.291613+02:00</DateAdded>
-    <DateModified>2020-07-09T09:58:58.923612+02:00</DateModified>
-    <Developer>Sonic Team</Developer>
-    <DosBoxConfigurationPath />
-    <Emulator>46980dd1-982d-4b30-ad3b-fda6139752c9</Emulator>
-    <Favorite>false</Favorite>
-    <ID>d99692c7-51c3-4e50-8592-7fab98295f5b</ID>
-    <LastPlayedDate>2018-08-18T00:06:20.0433589+02:00</LastPlayedDate>
-    <ManualPath />
-    <MusicPath />
-    <Notes>Dr Ivo Robotnik, le scientifique fou, capture d'innocents animaux et en fait de maléfiques robots. Seul un héros tenace pourra mettre fin au dessein diabolique du dément scientifique. C'est Sonic, un hérisson bleu capable de courir à la vitesse du son, qui tentera de l'arrêter dans sa base secrète et sauvera tous les animaux de l'île de South Island.</Notes>
-    <Platform>Sega Genesis</Platform>
-    <Publisher>Sega</Publisher>
+    <Publisher>Virgin Games, Inc.</Publisher>
     <Rating>Not Rated</Rating>
-    <ReleaseDate>1991-06-23T00:00:00+02:00</ReleaseDate>
-    <RootFolder />
+    <ReleaseDate>1993-04-01T10:00:00+02:00</ReleaseDate>
+    <RootFolder>..\..\Plateformes\Games\Sega Mega Drive</RootFolder>
     <ScummVMAspectCorrection>true</ScummVMAspectCorrection>
     <ScummVMFullscreen>true</ScummVMFullscreen>
     <ScummVMGameDataFolderPath />
     <ScummVMGameType />
     <SortTitle />
     <Source />
-    <StarRatingFloat>5</StarRatingFloat>
-    <StarRating>5</StarRating>
-    <CommunityStarRating>0</CommunityStarRating>
-    <CommunityStarRatingTotalVotes>0</CommunityStarRatingTotalVotes>
-    <Status>ROM importée</Status>
-    <DatabaseID>108428</DatabaseID>
-    <WikipediaURL>https://en.wikipedia.org/wiki/Sonic_the_Hedgehog_(1991_video_game)</WikipediaURL>
-    <Title>Sonic the Hedgehog</Title>
+    <StarRatingFloat>0</StarRatingFloat>
+    <StarRating>0</StarRating>
+    <CommunityStarRating>3.9</CommunityStarRating>
+    <CommunityStarRatingTotalVotes>35</CommunityStarRatingTotalVotes>
+    <Status />
+    <DatabaseID>735</DatabaseID>
+    <WikipediaURL>https://en.wikipedia.org/wiki/Cool_Spot</WikipediaURL>
+    <Title>Cool Spot</Title>
     <UseDosBox>false</UseDosBox>
     <UseScummVM>false</UseScummVM>
-    <Version>(1991-04)(Sega)[Sonic Mega Collection]</Version>
-    <Series>Sonic the Hedgehog</Series>
-    <PlayMode />
+    <Version>(Europe)</Version>
+    <Series />
+    <PlayMode>Un joueur</PlayMode>
     <Region>Europe</Region>
-    <PlayCount>20</PlayCount>
+    <PlayCount>0</PlayCount>
     <Portable>false</Portable>
     <Hide>false</Hide>
     <Broken>false</Broken>
-    <Genre>Platform</Genre>
-    <MissingVideo>true</MissingVideo>
-    <MissingBoxFrontImage>true</MissingBoxFrontImage>
-    <MissingScreenshotImage>true</MissingScreenshotImage>
-    <MissingClearLogoImage>true</MissingClearLogoImage>
-    <MissingBackgroundImage>true</MissingBackgroundImage>
-    <MissingBox3dImage>true</MissingBox3dImage>
-    <MissingCartImage>true</MissingCartImage>
-    <MissingCart3dImage>true</MissingCart3dImage>
-    <MissingManual>true</MissingManual>
+    <Genre>Action;Platform</Genre>
+    <MissingVideo>false</MissingVideo>
+    <MissingBoxFrontImage>false</MissingBoxFrontImage>
+    <MissingScreenshotImage>false</MissingScreenshotImage>
+    <MissingClearLogoImage>false</MissingClearLogoImage>
+    <MissingBackgroundImage>false</MissingBackgroundImage>
+    <MissingBox3dImage>false</MissingBox3dImage>
+    <MissingCartImage>false</MissingCartImage>
+    <MissingCart3dImage>false</MissingCart3dImage>
+    <MissingManual>false</MissingManual>
     <MissingBannerImage>false</MissingBannerImage>
     <MissingMusic>false</MissingMusic>
     <UseStartupScreen>false</UseStartupScreen>
@@ -1243,117 +168,10 @@ This is a platform game, where you control three characters. Each one of them ha
     <VideoUrl />
   </Game>
   <AdditionalApplication>
-    <Id>b07d68e1-33f6-4496-90fa-f986f3717ee9</Id>
-    <PlayCount>1</PlayCount>
-    <GameID>088e2bbb-abd3-4157-9da2-bc62c38a83bc</GameID>
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\BLABLA&amp;</ApplicationPath>
-    <AutoRunAfter>false</AutoRunAfter>
-    <AutoRunBefore>false</AutoRunBefore>
-    <CommandLine />
-    <Name>Jouer la version Viacom New Media...</Name>
-    <UseDosBox>false</UseDosBox>
-    <UseEmulator>false</UseEmulator>
-    <WaitForExit>false</WaitForExit>
-    <Developer />
-    <Publisher />
-    <Region />
-    <Version>Viacom New Media</Version>
-    <Status />
-    <LastPlayed>2018-08-18T15:05:49.679196+02:00</LastPlayed>
-    <SideA>false</SideA>
-    <SideB>false</SideB>
-    <Priority>1</Priority>
-  </AdditionalApplication>
-  <AdditionalApplication>
-    <Id>1dde9457-71c3-4eaa-b25a-ce400399f3e7</Id>
-    <PlayCount>0</PlayCount>
-    <GameID>088e2bbb-abd3-4157-9da2-bc62c38a83bc</GameID>
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\BLABLA5</ApplicationPath>
-    <AutoRunAfter>false</AutoRunAfter>
-    <AutoRunBefore>false</AutoRunBefore>
-    <CommandLine />
-    <Name>Jouer la version Viacom New Media...</Name>
-    <UseDosBox>false</UseDosBox>
-    <UseEmulator>true</UseEmulator>
-    <WaitForExit>false</WaitForExit>
-    <ReleaseDate>1995-09-15T09:00:00+02:00</ReleaseDate>
-    <Developer>Realtime Associates</Developer>
-    <Publisher>Viacom</Publisher>
-    <Region />
-    <Version>Viacom New Media</Version>
-    <Status />
-    <EmulatorId>46980dd1-982d-4b30-ad3b-fda6139752c9</EmulatorId>
-    <SideA>false</SideA>
-    <SideB>false</SideB>
-    <Priority>2</Priority>
-  </AdditionalApplication>
-  <AdditionalApplication>
-    <Id>ecfefdc6-ee53-48fb-88ff-b55cf167957e</Id>
-    <PlayCount>0</PlayCount>
-    <GameID>83897c14-b2c7-4703-bd00-b28ad5584e53</GameID>
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\En attente...</ApplicationPath>
-    <AutoRunAfter>false</AutoRunAfter>
-    <AutoRunBefore>false</AutoRunBefore>
-    <Name>Jouer la version REV02...</Name>
-    <UseDosBox>false</UseDosBox>
-    <UseEmulator>false</UseEmulator>
-    <WaitForExit>false</WaitForExit>
-    <Region>United States, Europe</Region>
-    <Version>REV02</Version>
-    <Status />
-    <EmulatorId />
-    <SideA>false</SideA>
-    <SideB>false</SideB>
-    <Priority>3</Priority>
-  </AdditionalApplication>
-  <AdditionalApplication>
-    <Id>381ed948-fd32-4c8c-bf5c-dc49c09896dd</Id>
-    <PlayCount>0</PlayCount>
-    <GameID>83897c14-b2c7-4703-bd00-b28ad5584e53</GameID>
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\En attente...</ApplicationPath>
-    <AutoRunAfter>false</AutoRunAfter>
-    <AutoRunBefore>false</AutoRunBefore>
-    <Name>Jouer la version REV02...</Name>
-    <UseDosBox>false</UseDosBox>
-    <UseEmulator>false</UseEmulator>
-    <WaitForExit>false</WaitForExit>
-    <Region>Europe</Region>
-    <Version>REV02</Version>
-    <Status />
-    <EmulatorId />
-    <SideA>false</SideA>
-    <SideB>false</SideB>
-    <Priority>2</Priority>
-  </AdditionalApplication>
-  <AdditionalApplication>
-    <Id>102bfa2d-f2fc-45fe-b74e-c948a0b79823</Id>
-    <PlayCount>3</PlayCount>
-    <GameID>83897c14-b2c7-4703-bd00-b28ad5584e53</GameID>
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\En attente...</ApplicationPath>
-    <AutoRunAfter>false</AutoRunAfter>
-    <AutoRunBefore>false</AutoRunBefore>
-    <CommandLine />
-    <Name>Jouer la version (1990-09)(Sega)(EU)[a different header]...</Name>
-    <UseDosBox>false</UseDosBox>
-    <UseEmulator>true</UseEmulator>
-    <WaitForExit>false</WaitForExit>
-    <ReleaseDate>1989-08-20T09:00:00+02:00</ReleaseDate>
-    <Developer>Sega</Developer>
-    <Publisher>Sega</Publisher>
-    <Region>Europe</Region>
-    <Version>(1990-09)(Sega)(EU)[a different header]</Version>
-    <Status />
-    <LastPlayed>2018-08-18T11:43:41.67386+02:00</LastPlayed>
-    <EmulatorId>46980dd1-982d-4b30-ad3b-fda6139752c9</EmulatorId>
-    <SideA>false</SideA>
-    <SideB>false</SideB>
-    <Priority>1</Priority>
-  </AdditionalApplication>
-  <AdditionalApplication>
     <Id>a158cfaa-3b3a-453c-ae96-1f499d1b7594</Id>
     <PlayCount>0</PlayCount>
     <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\En attente...</ApplicationPath>
+    <ApplicationPath>..\..\Plateformes\Games\Sega Mega Drive\Hits\Disney's Aladdin (1993-10)(Sega)(US).zip</ApplicationPath>
     <AutoRunAfter>false</AutoRunAfter>
     <AutoRunBefore>false</AutoRunBefore>
     <Name>Jouer la version (1993-10)(Sega)(US)...</Name>
@@ -1368,41 +186,17 @@ This is a platform game, where you control three characters. Each one of them ha
     <Priority>1</Priority>
   </AdditionalApplication>
   <AdditionalApplication>
-    <Id>397310b5-15a9-4ed4-9326-6aa1a5c937b3</Id>
-    <PlayCount>3</PlayCount>
-    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\En attente...</ApplicationPath>
-    <AutoRunAfter>false</AutoRunAfter>
-    <AutoRunBefore>false</AutoRunBefore>
-    <CommandLine />
-    <Name>Jouer la version (1993-11-11)(Sega)(EU)...</Name>
-    <UseDosBox>false</UseDosBox>
-    <UseEmulator>true</UseEmulator>
-    <WaitForExit>false</WaitForExit>
-    <ReleaseDate>1993-11-26T09:00:00+01:00</ReleaseDate>
-    <Developer>Virgin Interactive</Developer>
-    <Publisher>Virgin Interactive</Publisher>
-    <Region>Europe</Region>
-    <Version>(1993-11-11)(Sega)(EU)</Version>
-    <Status />
-    <LastPlayed>2018-08-17T21:35:49.7965124+02:00</LastPlayed>
-    <EmulatorId>46980dd1-982d-4b30-ad3b-fda6139752c9</EmulatorId>
-    <SideA>false</SideA>
-    <SideB>false</SideB>
-    <Priority>1</Priority>
-  </AdditionalApplication>
-  <AdditionalApplication>
-    <Id>5951b620-ed15-4be5-9454-efeaf6cd1909</Id>
+    <Id>a158cfaa-3b3a-453c-ae96-1f499d1b7594</Id>
     <PlayCount>0</PlayCount>
-    <GameID>50ec26f1-56b1-4073-b959-34e409d872e9</GameID>
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\En attente...</ApplicationPath>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <ApplicationPath>..\..\fauxgames\Games\Sega Genesis\Aladdin\Hits\Disney's Aladdin (1993-10)(Sega)(US).zip</ApplicationPath>
     <AutoRunAfter>false</AutoRunAfter>
     <AutoRunBefore>false</AutoRunBefore>
-    <Name>Jouer la version (1991)(Sega)(JP)(en)...</Name>
+    <Name>Jouer la version (1993-10)(Sega)(US)...</Name>
     <UseDosBox>false</UseDosBox>
     <UseEmulator>false</UseEmulator>
     <WaitForExit>false</WaitForExit>
-    <Version>(1991)(Sega)(JP)(en)</Version>
+    <Version>(1993-10)(Sega)(US)</Version>
     <Status />
     <EmulatorId />
     <SideA>false</SideA>
@@ -1410,138 +204,1479 @@ This is a platform game, where you control three characters. Each one of them ha
     <Priority>1</Priority>
   </AdditionalApplication>
   <AdditionalApplication>
-    <Id>96ee4b8b-68b2-42d6-88b4-3a15a96dd2b1</Id>
-    <PlayCount>5</PlayCount>
-    <GameID>c382f459-9a74-426b-8ddc-5f379bc9b127</GameID>
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\En attente...</ApplicationPath>
+    <Id>a158cfaa-3b3a-453c-ae96-1f499d1b7594</Id>
+    <PlayCount>0</PlayCount>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <ApplicationPath>..\..\fauxgames\Games\Sega Genesis\Aladdin\Hits\Disney's Aladdin (1993-10)(Sega)(US).zip</ApplicationPath>
     <AutoRunAfter>false</AutoRunAfter>
     <AutoRunBefore>false</AutoRunBefore>
-    <CommandLine />
-    <Name>Jouer la version (1992-12-14)(Sega)(EU)...</Name>
+    <Name>Jouer la version (1993-10)(Sega)(US)...</Name>
     <UseDosBox>false</UseDosBox>
-    <UseEmulator>true</UseEmulator>
+    <UseEmulator>false</UseEmulator>
     <WaitForExit>false</WaitForExit>
-    <ReleaseDate>1992-12-18T09:00:00+01:00</ReleaseDate>
-    <Developer>Sega</Developer>
-    <Publisher>Sega</Publisher>
-    <Region>Europe</Region>
-    <Version>(1992-12-14)(Sega)(EU)</Version>
+    <Version>(1993-10)(Sega)(US)</Version>
     <Status />
-    <LastPlayed>2018-08-18T07:21:13.0128562+02:00</LastPlayed>
-    <EmulatorId>46980dd1-982d-4b30-ad3b-fda6139752c9</EmulatorId>
+    <EmulatorId />
     <SideA>false</SideA>
     <SideB>false</SideB>
     <Priority>1</Priority>
   </AdditionalApplication>
   <AdditionalApplication>
-    <Id>11d887bb-6ad1-4962-ab1a-7c94e34eef3e</Id>
+    <Id>a158cfaa-3b3a-453c-ae96-1f499d1b7594</Id>
     <PlayCount>0</PlayCount>
-    <GameID>c382f459-9a74-426b-8ddc-5f379bc9b127</GameID>
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\En attente...</ApplicationPath>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <ApplicationPath>..\..\fauxgames\Games\Sega Genesis\Aladdin\Hits\Disney's Aladdin (1993-10)(Sega)(US).zip</ApplicationPath>
     <AutoRunAfter>false</AutoRunAfter>
     <AutoRunBefore>false</AutoRunBefore>
-    <CommandLine />
-    <Name>Jouer la version (E) [T+Fre0.98beta_Generation IX]...</Name>
+    <Name>Jouer la version (1993-10)(Sega)(US)...</Name>
     <UseDosBox>false</UseDosBox>
-    <UseEmulator>true</UseEmulator>
+    <UseEmulator>false</UseEmulator>
     <WaitForExit>false</WaitForExit>
-    <ReleaseDate>1992-12-18T09:00:00+01:00</ReleaseDate>
-    <Developer>Sega</Developer>
-    <Publisher>Sega</Publisher>
-    <Region>Europe</Region>
-    <Version>(E) [T+Fre0.98beta_Generation IX]</Version>
+    <Version>(1993-10)(Sega)(US)</Version>
     <Status />
-    <EmulatorId>46980dd1-982d-4b30-ad3b-fda6139752c9</EmulatorId>
+    <EmulatorId />
+    <SideA>false</SideA>
+    <SideB>false</SideB>
+    <Priority>1</Priority>
+  </AdditionalApplication>
+  <AdditionalApplication>
+    <Id>a158cfaa-3b3a-453c-ae96-1f499d1b7594</Id>
+    <PlayCount>0</PlayCount>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <ApplicationPath>..\..\fauxgames\Games\Sega Genesis\Hits\Disney's Aladdin (1993-10)(Sega)(US).zip</ApplicationPath>
+    <AutoRunAfter>false</AutoRunAfter>
+    <AutoRunBefore>false</AutoRunBefore>
+    <Name>Jouer la version (1993-10)(Sega)(US)...</Name>
+    <UseDosBox>false</UseDosBox>
+    <UseEmulator>false</UseEmulator>
+    <WaitForExit>false</WaitForExit>
+    <Version>(1993-10)(Sega)(US)</Version>
+    <Status />
+    <EmulatorId />
+    <SideA>false</SideA>
+    <SideB>false</SideB>
+    <Priority>1</Priority>
+  </AdditionalApplication>
+  <AdditionalApplication>
+    <Id>a158cfaa-3b3a-453c-ae96-1f499d1b7594</Id>
+    <PlayCount>0</PlayCount>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <ApplicationPath>..\..\fauxgames\Games\Sega Genesis\Hits\Disney's Aladdin (1993-10)(Sega)(US).zip</ApplicationPath>
+    <AutoRunAfter>false</AutoRunAfter>
+    <AutoRunBefore>false</AutoRunBefore>
+    <Name>Jouer la version (1993-10)(Sega)(US)...</Name>
+    <UseDosBox>false</UseDosBox>
+    <UseEmulator>false</UseEmulator>
+    <WaitForExit>false</WaitForExit>
+    <Version>(1993-10)(Sega)(US)</Version>
+    <Status />
+    <EmulatorId />
+    <SideA>false</SideA>
+    <SideB>false</SideB>
+    <Priority>1</Priority>
+  </AdditionalApplication>
+  <AdditionalApplication>
+    <Id>a158cfaa-3b3a-453c-ae96-1f499d1b7594</Id>
+    <PlayCount>0</PlayCount>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <ApplicationPath>..\..\fauxgames\Games\Sega Genesis\Hits\Disney's Aladdin (1993-10)(Sega)(US).zip</ApplicationPath>
+    <AutoRunAfter>false</AutoRunAfter>
+    <AutoRunBefore>false</AutoRunBefore>
+    <Name>Jouer la version (1993-10)(Sega)(US)...</Name>
+    <UseDosBox>false</UseDosBox>
+    <UseEmulator>false</UseEmulator>
+    <WaitForExit>false</WaitForExit>
+    <Version>(1993-10)(Sega)(US)</Version>
+    <Status />
+    <EmulatorId />
+    <SideA>false</SideA>
+    <SideB>false</SideB>
+    <Priority>1</Priority>
+  </AdditionalApplication>
+  <AdditionalApplication>
+    <Id>a158cfaa-3b3a-453c-ae96-1f499d1b7594</Id>
+    <PlayCount>0</PlayCount>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <ApplicationPath>..\..\fauxgames\Games\Sega Genesis\Hits\Disney's Aladdin (1993-10)(Sega)(US).zip</ApplicationPath>
+    <AutoRunAfter>false</AutoRunAfter>
+    <AutoRunBefore>false</AutoRunBefore>
+    <Name>Jouer la version (1993-10)(Sega)(US)...</Name>
+    <UseDosBox>false</UseDosBox>
+    <UseEmulator>false</UseEmulator>
+    <WaitForExit>false</WaitForExit>
+    <Version>(1993-10)(Sega)(US)</Version>
+    <Status />
+    <EmulatorId />
+    <SideA>false</SideA>
+    <SideB>false</SideB>
+    <Priority>1</Priority>
+  </AdditionalApplication>
+  <AdditionalApplication>
+    <Id>a158cfaa-3b3a-453c-ae96-1f499d1b7594</Id>
+    <PlayCount>0</PlayCount>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <ApplicationPath>..\..\fauxgames\Games\Sega Genesis\Hits\Disney's Aladdin (1993-10)(Sega)(US).zip</ApplicationPath>
+    <AutoRunAfter>false</AutoRunAfter>
+    <AutoRunBefore>false</AutoRunBefore>
+    <Name>Jouer la version (1993-10)(Sega)(US)...</Name>
+    <UseDosBox>false</UseDosBox>
+    <UseEmulator>false</UseEmulator>
+    <WaitForExit>false</WaitForExit>
+    <Version>(1993-10)(Sega)(US)</Version>
+    <Status />
+    <EmulatorId />
+    <SideA>false</SideA>
+    <SideB>false</SideB>
+    <Priority>1</Priority>
+  </AdditionalApplication>
+  <AdditionalApplication>
+    <Id>a158cfaa-3b3a-453c-ae96-1f499d1b7594</Id>
+    <PlayCount>0</PlayCount>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <ApplicationPath>..\..\Plateformes\Games\Sega Mega Drive\Hits\Disney's Aladdin (1993-10)(Sega)(US).zip</ApplicationPath>
+    <AutoRunAfter>false</AutoRunAfter>
+    <AutoRunBefore>false</AutoRunBefore>
+    <Name>Jouer la version (1993-10)(Sega)(US)...</Name>
+    <UseDosBox>false</UseDosBox>
+    <UseEmulator>false</UseEmulator>
+    <WaitForExit>false</WaitForExit>
+    <Version>(1993-10)(Sega)(US)</Version>
+    <Status />
+    <EmulatorId />
+    <SideA>false</SideA>
+    <SideB>false</SideB>
+    <Priority>1</Priority>
+  </AdditionalApplication>
+  <AdditionalApplication>
+    <Id>a158cfaa-3b3a-453c-ae96-1f499d1b7594</Id>
+    <PlayCount>0</PlayCount>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <ApplicationPath>..\..\fauxgames\Games\Sega Genesis\Hits\Disney's Aladdin (1993-10)(Sega)(US).zip</ApplicationPath>
+    <AutoRunAfter>false</AutoRunAfter>
+    <AutoRunBefore>false</AutoRunBefore>
+    <Name>Jouer la version (1993-10)(Sega)(US)...</Name>
+    <UseDosBox>false</UseDosBox>
+    <UseEmulator>false</UseEmulator>
+    <WaitForExit>false</WaitForExit>
+    <Version>(1993-10)(Sega)(US)</Version>
+    <Status />
+    <EmulatorId />
+    <SideA>false</SideA>
+    <SideB>false</SideB>
+    <Priority>1</Priority>
+  </AdditionalApplication>
+  <AdditionalApplication>
+    <Id>a158cfaa-3b3a-453c-ae96-1f499d1b7594</Id>
+    <PlayCount>0</PlayCount>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <ApplicationPath>..\..\fauxgames\Games\Sega Genesis\Hits\Disney's Aladdin (1993-10)(Sega)(US).zip</ApplicationPath>
+    <AutoRunAfter>false</AutoRunAfter>
+    <AutoRunBefore>false</AutoRunBefore>
+    <Name>Jouer la version (1993-10)(Sega)(US)...</Name>
+    <UseDosBox>false</UseDosBox>
+    <UseEmulator>false</UseEmulator>
+    <WaitForExit>false</WaitForExit>
+    <Version>(1993-10)(Sega)(US)</Version>
+    <Status />
+    <EmulatorId />
+    <SideA>false</SideA>
+    <SideB>false</SideB>
+    <Priority>1</Priority>
+  </AdditionalApplication>
+  <AdditionalApplication>
+    <Id>a158cfaa-3b3a-453c-ae96-1f499d1b7594</Id>
+    <PlayCount>0</PlayCount>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <ApplicationPath>..\..\fauxgames\Games\Sega Genesis\Hits\Disney's Aladdin (1993-10)(Sega)(US).zip</ApplicationPath>
+    <AutoRunAfter>false</AutoRunAfter>
+    <AutoRunBefore>false</AutoRunBefore>
+    <Name>Jouer la version (1993-10)(Sega)(US)...</Name>
+    <UseDosBox>false</UseDosBox>
+    <UseEmulator>false</UseEmulator>
+    <WaitForExit>false</WaitForExit>
+    <Version>(1993-10)(Sega)(US)</Version>
+    <Status />
+    <EmulatorId />
+    <SideA>false</SideA>
+    <SideB>false</SideB>
+    <Priority>1</Priority>
+  </AdditionalApplication>
+  <AdditionalApplication>
+    <Id>a158cfaa-3b3a-453c-ae96-1f499d1b7594</Id>
+    <PlayCount>0</PlayCount>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <ApplicationPath>..\..\fauxgames\Games\Sega Genesis\Hits\Disney's Aladdin (1993-10)(Sega)(US).zip</ApplicationPath>
+    <AutoRunAfter>false</AutoRunAfter>
+    <AutoRunBefore>false</AutoRunBefore>
+    <Name>Jouer la version (1993-10)(Sega)(US)...</Name>
+    <UseDosBox>false</UseDosBox>
+    <UseEmulator>false</UseEmulator>
+    <WaitForExit>false</WaitForExit>
+    <Version>(1993-10)(Sega)(US)</Version>
+    <Status />
+    <EmulatorId />
+    <SideA>false</SideA>
+    <SideB>false</SideB>
+    <Priority>1</Priority>
+  </AdditionalApplication>
+  <AdditionalApplication>
+    <Id>a158cfaa-3b3a-453c-ae96-1f499d1b7594</Id>
+    <PlayCount>0</PlayCount>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <ApplicationPath>..\..\Plateformes\Games\Sega Mega Drive\Hits\Disney's Aladdin (1993-10)(Sega)(US).zip</ApplicationPath>
+    <AutoRunAfter>false</AutoRunAfter>
+    <AutoRunBefore>false</AutoRunBefore>
+    <Name>Jouer la version (1993-10)(Sega)(US)...</Name>
+    <UseDosBox>false</UseDosBox>
+    <UseEmulator>false</UseEmulator>
+    <WaitForExit>false</WaitForExit>
+    <Version>(1993-10)(Sega)(US)</Version>
+    <Status />
+    <EmulatorId />
+    <SideA>false</SideA>
+    <SideB>false</SideB>
+    <Priority>1</Priority>
+  </AdditionalApplication>
+  <AdditionalApplication>
+    <Id>a158cfaa-3b3a-453c-ae96-1f499d1b7594</Id>
+    <PlayCount>0</PlayCount>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <ApplicationPath>..\..\fauxgames\Games\Sega Genesis\Hits\Disney's Aladdin (1993-10)(Sega)(US).zip</ApplicationPath>
+    <AutoRunAfter>false</AutoRunAfter>
+    <AutoRunBefore>false</AutoRunBefore>
+    <Name>Jouer la version (1993-10)(Sega)(US)...</Name>
+    <UseDosBox>false</UseDosBox>
+    <UseEmulator>false</UseEmulator>
+    <WaitForExit>false</WaitForExit>
+    <Version>(1993-10)(Sega)(US)</Version>
+    <Status />
+    <EmulatorId />
+    <SideA>false</SideA>
+    <SideB>false</SideB>
+    <Priority>1</Priority>
+  </AdditionalApplication>
+  <AdditionalApplication>
+    <Id>a158cfaa-3b3a-453c-ae96-1f499d1b7594</Id>
+    <PlayCount>0</PlayCount>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <ApplicationPath>..\..\fauxgames\Games\Sega Genesis\Hits\Disney's Aladdin (1993-10)(Sega)(US).zip</ApplicationPath>
+    <AutoRunAfter>false</AutoRunAfter>
+    <AutoRunBefore>false</AutoRunBefore>
+    <Name>Jouer la version (1993-10)(Sega)(US)...</Name>
+    <UseDosBox>false</UseDosBox>
+    <UseEmulator>false</UseEmulator>
+    <WaitForExit>false</WaitForExit>
+    <Version>(1993-10)(Sega)(US)</Version>
+    <Status />
+    <EmulatorId />
+    <SideA>false</SideA>
+    <SideB>false</SideB>
+    <Priority>1</Priority>
+  </AdditionalApplication>
+  <AdditionalApplication>
+    <Id>a158cfaa-3b3a-453c-ae96-1f499d1b7594</Id>
+    <PlayCount>0</PlayCount>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <ApplicationPath>..\..\fauxgames\Games\Sega Genesis\Hits\Disney's Aladdin (1993-10)(Sega)(US).zip</ApplicationPath>
+    <AutoRunAfter>false</AutoRunAfter>
+    <AutoRunBefore>false</AutoRunBefore>
+    <Name>Jouer la version (1993-10)(Sega)(US)...</Name>
+    <UseDosBox>false</UseDosBox>
+    <UseEmulator>false</UseEmulator>
+    <WaitForExit>false</WaitForExit>
+    <Version>(1993-10)(Sega)(US)</Version>
+    <Status />
+    <EmulatorId />
+    <SideA>false</SideA>
+    <SideB>false</SideB>
+    <Priority>1</Priority>
+  </AdditionalApplication>
+  <AdditionalApplication>
+    <Id>a158cfaa-3b3a-453c-ae96-1f499d1b7594</Id>
+    <PlayCount>0</PlayCount>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <ApplicationPath>..\..\fauxgames\Games\Sega Genesis\Hits\Disney's Aladdin (1993-10)(Sega)(US).zip</ApplicationPath>
+    <AutoRunAfter>false</AutoRunAfter>
+    <AutoRunBefore>false</AutoRunBefore>
+    <Name>Jouer la version (1993-10)(Sega)(US)...</Name>
+    <UseDosBox>false</UseDosBox>
+    <UseEmulator>false</UseEmulator>
+    <WaitForExit>false</WaitForExit>
+    <Version>(1993-10)(Sega)(US)</Version>
+    <Status />
+    <EmulatorId />
+    <SideA>false</SideA>
+    <SideB>false</SideB>
+    <Priority>1</Priority>
+  </AdditionalApplication>
+  <AdditionalApplication>
+    <Id>a158cfaa-3b3a-453c-ae96-1f499d1b7594</Id>
+    <PlayCount>0</PlayCount>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <ApplicationPath>..\..\fauxgames\Games\Sega Genesis\Hits\Disney's Aladdin (1993-10)(Sega)(US).zip</ApplicationPath>
+    <AutoRunAfter>false</AutoRunAfter>
+    <AutoRunBefore>false</AutoRunBefore>
+    <Name>Jouer la version (1993-10)(Sega)(US)...</Name>
+    <UseDosBox>false</UseDosBox>
+    <UseEmulator>false</UseEmulator>
+    <WaitForExit>false</WaitForExit>
+    <Version>(1993-10)(Sega)(US)</Version>
+    <Status />
+    <EmulatorId />
+    <SideA>false</SideA>
+    <SideB>false</SideB>
+    <Priority>1</Priority>
+  </AdditionalApplication>
+  <AdditionalApplication>
+    <Id>4a16bc9f-5e0e-49ac-a562-86cc1b9e73a5</Id>
+    <PlayCount>0</PlayCount>
+    <GameID>e816f293-75e4-42fa-b94a-8edbd225f87f</GameID>
+    <ApplicationPath>..\..\fauxgames\Games\Sega Genesis\Cool Spot (Europe).md</ApplicationPath>
+    <AutoRunAfter>false</AutoRunAfter>
+    <AutoRunBefore>false</AutoRunBefore>
+    <Name>Jouer la version (Europe)...</Name>
+    <UseDosBox>false</UseDosBox>
+    <UseEmulator>false</UseEmulator>
+    <WaitForExit>false</WaitForExit>
+    <Developer>Virgin Games, Ltd.</Developer>
+    <Publisher>Virgin Games, Inc.</Publisher>
+    <Region>Europe</Region>
+    <Version>(Europe)</Version>
+    <Status />
+    <EmulatorId />
+    <SideA>false</SideA>
+    <SideB>false</SideB>
+    <Priority>1</Priority>
+  </AdditionalApplication>
+  <AdditionalApplication>
+    <Id>da9aadbe-237d-4680-8dcb-cd0cbabd06d2</Id>
+    <PlayCount>0</PlayCount>
+    <GameID>e816f293-75e4-42fa-b94a-8edbd225f87f</GameID>
+    <ApplicationPath>..\..\fauxgames\Games\Sega Genesis\Cool Spot (USA).md</ApplicationPath>
+    <AutoRunAfter>false</AutoRunAfter>
+    <AutoRunBefore>false</AutoRunBefore>
+    <Name>Jouer la version (USA)...</Name>
+    <UseDosBox>false</UseDosBox>
+    <UseEmulator>false</UseEmulator>
+    <WaitForExit>false</WaitForExit>
+    <Developer>Virgin Games, Ltd.</Developer>
+    <Publisher>Virgin Games, Inc.</Publisher>
+    <Region>North America</Region>
+    <Version>(USA)</Version>
+    <Status />
+    <EmulatorId />
     <SideA>false</SideA>
     <SideB>false</SideB>
     <Priority>2</Priority>
   </AdditionalApplication>
-  <AdditionalApplication>
-    <Id>7b779c60-eb35-4ada-a07a-685fe79c2a63</Id>
-    <PlayCount>2</PlayCount>
-    <GameID>c382f459-9a74-426b-8ddc-5f379bc9b127</GameID>
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\En attente...</ApplicationPath>
-    <AutoRunAfter>false</AutoRunAfter>
-    <AutoRunBefore>false</AutoRunBefore>
-    <CommandLine />
-    <Name>Jouer la version (1993-03)(Sega)(US)...</Name>
-    <UseDosBox>false</UseDosBox>
-    <UseEmulator>true</UseEmulator>
-    <WaitForExit>false</WaitForExit>
-    <ReleaseDate>1992-12-18T09:00:00+01:00</ReleaseDate>
-    <Developer>Sega</Developer>
-    <Publisher>Sega</Publisher>
-    <Region />
-    <Version>(1993-03)(Sega)(US)</Version>
-    <Status />
-    <LastPlayed>2018-08-18T00:23:09.5222038+02:00</LastPlayed>
-    <EmulatorId>46980dd1-982d-4b30-ad3b-fda6139752c9</EmulatorId>
-    <SideA>false</SideA>
-    <SideB>false</SideB>
-    <Priority>1</Priority>
-  </AdditionalApplication>
-  <AdditionalApplication>
-    <Id>22dfd169-f99d-4929-acc1-039e6df37129</Id>
-    <PlayCount>20</PlayCount>
-    <GameID>d99692c7-51c3-4e50-8592-7fab98295f5b</GameID>
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\En attente...</ApplicationPath>
-    <AutoRunAfter>false</AutoRunAfter>
-    <AutoRunBefore>false</AutoRunBefore>
-    <CommandLine />
-    <Name>Jouer la version (1991-04)(Sega)[Sonic Mega Collection]...</Name>
-    <UseDosBox>false</UseDosBox>
-    <UseEmulator>true</UseEmulator>
-    <WaitForExit>false</WaitForExit>
-    <ReleaseDate>1991-06-23T00:00:00+02:00</ReleaseDate>
-    <Developer>Sonic Team</Developer>
-    <Publisher>Sega</Publisher>
-    <Region>Europe</Region>
-    <Version>(1991-04)(Sega)[Sonic Mega Collection]</Version>
-    <Status>ROM importée</Status>
-    <LastPlayed>2018-08-18T00:06:20.0433589+02:00</LastPlayed>
-    <EmulatorId>46980dd1-982d-4b30-ad3b-fda6139752c9</EmulatorId>
-    <SideA>false</SideA>
-    <SideB>false</SideB>
-    <Priority>1</Priority>
-  </AdditionalApplication>
-  <AdditionalApplication>
-    <Id>bf795dc6-869a-4d2b-9edf-a716e68a1df6</Id>
-    <PlayCount>0</PlayCount>
-    <GameID>d99692c7-51c3-4e50-8592-7fab98295f5b</GameID>
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\En attente...</ApplicationPath>
-    <AutoRunAfter>false</AutoRunAfter>
-    <AutoRunBefore>false</AutoRunBefore>
-    <Name>Jouer la version (1991-06-23)(Sega)(EU-US)[t]...</Name>
-    <UseDosBox>false</UseDosBox>
-    <UseEmulator>false</UseEmulator>
-    <WaitForExit>false</WaitForExit>
-    <Version>(1991-06-23)(Sega)(EU-US)[t]</Version>
-    <Status />
-    <EmulatorId />
-    <SideA>false</SideA>
-    <SideB>false</SideB>
-    <Priority>1</Priority>
-  </AdditionalApplication>
-  <AdditionalApplication>
-    <Id>b2340e80-0932-44ed-9f20-c2bb22608213</Id>
-    <PlayCount>0</PlayCount>
-    <GameID>d99692c7-51c3-4e50-8592-7fab98295f5b</GameID>
-    <ApplicationPath>..\..\fauxgames\Games\Sega Mega Drive\En attente...</ApplicationPath>
-    <AutoRunAfter>false</AutoRunAfter>
-    <AutoRunBefore>false</AutoRunBefore>
-    <CommandLine />
-    <Name>Jouer la version REV00...</Name>
-    <UseDosBox>false</UseDosBox>
-    <UseEmulator>true</UseEmulator>
-    <WaitForExit>false</WaitForExit>
-    <Developer />
-    <Publisher />
-    <Region>World</Region>
-    <Version>REV00</Version>
-    <Status />
-    <EmulatorId>46980dd1-982d-4b30-ad3b-fda6139752c9</EmulatorId>
-    <SideA>false</SideA>
-    <SideB>false</SideB>
-    <Priority>1</Priority>
-  </AdditionalApplication>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Back</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Cart</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Complet</Name>
+    <Value>Oui</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 2D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 3D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Logo</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Manuel</Name>
+    <Value>FR</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Music</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Retro</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Synopsis</Name>
+    <Value>Fr</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Video</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Back</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Cart</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Complet</Name>
+    <Value>Oui</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 2D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 3D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Logo</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Manuel</Name>
+    <Value>FR</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Music</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Retro</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Synopsis</Name>
+    <Value>Fr</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Video</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Back</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Cart</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Complet</Name>
+    <Value>Oui</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 2D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 3D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Logo</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Manuel</Name>
+    <Value>FR</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Music</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Retro</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Synopsis</Name>
+    <Value>Fr</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Video</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Back</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Cart</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Complet</Name>
+    <Value>Oui</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 2D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 3D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Logo</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Manuel</Name>
+    <Value>FR</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Music</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Retro</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Synopsis</Name>
+    <Value>Fr</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Video</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Back</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Cart</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Complet</Name>
+    <Value>Oui</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 2D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 3D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Logo</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Manuel</Name>
+    <Value>FR</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Music</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Retro</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Synopsis</Name>
+    <Value>Fr</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Video</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Back</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Cart</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Complet</Name>
+    <Value>Oui</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 2D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 3D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Logo</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Manuel</Name>
+    <Value>FR</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Music</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Retro</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Synopsis</Name>
+    <Value>Fr</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Video</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Back</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Cart</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Complet</Name>
+    <Value>Oui</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 2D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 3D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Logo</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Manuel</Name>
+    <Value>FR</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Music</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Retro</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Synopsis</Name>
+    <Value>Fr</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Video</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Back</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Cart</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Complet</Name>
+    <Value>Oui</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 2D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 3D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Logo</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Manuel</Name>
+    <Value>FR</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Music</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Retro</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Synopsis</Name>
+    <Value>Fr</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Video</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Back</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Cart</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Complet</Name>
+    <Value>Oui</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 2D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 3D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Logo</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Manuel</Name>
+    <Value>FR</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Music</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Retro</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Synopsis</Name>
+    <Value>Fr</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Video</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Back</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Cart</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Complet</Name>
+    <Value>Oui</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 2D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 3D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Logo</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Manuel</Name>
+    <Value>FR</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Music</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Retro</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Synopsis</Name>
+    <Value>Fr</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Video</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Back</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Cart</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Complet</Name>
+    <Value>Oui</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 2D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 3D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Logo</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Manuel</Name>
+    <Value>FR</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Music</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Retro</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Synopsis</Name>
+    <Value>Fr</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Video</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Back</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Cart</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Complet</Name>
+    <Value>Oui</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 2D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 3D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Logo</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Manuel</Name>
+    <Value>FR</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Music</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Retro</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Synopsis</Name>
+    <Value>Fr</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Video</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Back</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Cart</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Complet</Name>
+    <Value>Oui</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 2D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 3D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Logo</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Manuel</Name>
+    <Value>FR</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Music</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Retro</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Synopsis</Name>
+    <Value>Fr</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Video</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Back</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Cart</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Complet</Name>
+    <Value>Oui</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 2D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 3D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Logo</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Manuel</Name>
+    <Value>FR</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Music</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Retro</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Synopsis</Name>
+    <Value>Fr</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Video</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Back</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Cart</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Complet</Name>
+    <Value>Oui</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 2D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 3D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Logo</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Manuel</Name>
+    <Value>FR</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Music</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Retro</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Synopsis</Name>
+    <Value>Fr</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Video</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Back</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Cart</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Complet</Name>
+    <Value>Oui</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 2D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 3D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Logo</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Manuel</Name>
+    <Value>FR</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Music</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Retro</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Synopsis</Name>
+    <Value>Fr</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Video</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Back</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Cart</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Complet</Name>
+    <Value>Oui</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 2D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 3D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Logo</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Manuel</Name>
+    <Value>FR</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Music</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Retro</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Synopsis</Name>
+    <Value>Fr</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Video</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Back</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Cart</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Complet</Name>
+    <Value>Oui</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 2D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 3D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Logo</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Manuel</Name>
+    <Value>FR</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Music</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Retro</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Synopsis</Name>
+    <Value>Fr</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Video</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Back</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Cart</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Complet</Name>
+    <Value>Oui</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 2D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 3D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Logo</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Manuel</Name>
+    <Value>FR</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Music</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Retro</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Synopsis</Name>
+    <Value>Fr</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Video</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Back</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Cart</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Complet</Name>
+    <Value>Oui</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 2D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Front 3D</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Logo</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Manuel</Name>
+    <Value>FR</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Music</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Retro</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Synopsis</Name>
+    <Value>Fr</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>abb077c5-21ca-4eb5-8589-185f9477018b</GameID>
+    <Name>Video</Name>
+    <Value>Ok</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>e816f293-75e4-42fa-b94a-8edbd225f87f</GameID>
+    <Name>Manuel</Name>
+    <Value>US</Value>
+  </CustomField>
+  <CustomField>
+    <GameID>e816f293-75e4-42fa-b94a-8edbd225f87f</GameID>
+    <Name>Synopsis</Name>
+    <Value>FR</Value>
+  </CustomField>
 </LaunchBox>

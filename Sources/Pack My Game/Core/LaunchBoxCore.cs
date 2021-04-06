@@ -316,8 +316,6 @@ namespace Pack_My_Game.Core
                 // --- Copie des fichiers
                 CopyFiles(lbGame, tree);
 
-                // --- On complète l'arborescence
-                FoncSchem.MakeListFolder(tree.Children[Common.Images]);
 
 
                 #region Serialization / improved backup of Launchbox datas (with found medias missing) 
@@ -339,6 +337,12 @@ namespace Pack_My_Game.Core
 
                 PackMe_IHM.LaunchBoxCore_Recap(gamePath, _ZePlatform, shGame.Title);
 
+
+                // --- On complète l'arborescence
+                FoncSchem.MakeListFolder(tree.Children[Common.Manuals]);
+                FoncSchem.MakeListFolder(tree.Children[Common.Images]);
+                FoncSchem.MakeListFolder(tree.Children[Common.Musics]);
+                FoncSchem.MakeListFolder(tree.Children[Common.Videos]);
 
                 #region Save Struct
                 if (PS.Default.opTreeV)
@@ -496,7 +500,7 @@ namespace Pack_My_Game.Core
             // Images
             CopyImages(lbGame, tree.Children[Common.Images].Path);
 
-            // Clones
+            // CheatCodes
             #region Copy CheatCodes
             if (PS.Default.opCheatCodes && !string.IsNullOrEmpty(PS.Default.CCodesPath))
             {
@@ -508,6 +512,7 @@ namespace Pack_My_Game.Core
             }
             #endregion
 
+            // Clones
             #region Copy Clones
             if (PS.Default.opClones)
             {
@@ -575,64 +580,85 @@ namespace Pack_My_Game.Core
         /// <summary>
         /// Copie les fichiers qui sont peut être identifiés dans le xml
         /// </summary>
-        /// <param name="dbPath"></param>
+        /// <param name="dbGamePath">Tiré des données du jeu</param>
         /// <param name="destLocation">Dossier de destination</param>
         /// <param name="mediatype">Utilisé pour retrouver dans l'objet plateforme</param>
         /// <param name="Assignation"></param>
         /// <remarks>
         /// </remarks>
-        private void CopySpecific(LBGame lbGame, string dbPath, string destLocation, string mediatype, Func<string, string> Assignation)
+        private void CopySpecific(LBGame lbGame, string dbGamePath, string destLocation, string mediatype, Func<string, string> Assignation)
         {
+            List<string> files = new List<string>();
+
             // Normal copy, if path get by xml exists
-            if (!string.IsNullOrEmpty(dbPath) && File.Exists(dbPath))
+            // 05/04/2021 Modifications pour lever le ou et mettre un système de "Et"
+            if (!string.IsNullOrEmpty(dbGamePath))
             {
-                SimpleCopyManager(dbPath, destLocation/*, mediatype*/, ref _FileConflictDecision);
-
-                // L'assignation permet de transmettre le résultat d'une fonction à une variable             
-                Assignation(DxPaths.Windows.DxPath.To_Relative(PS.Default.LBPath, dbPath));
-            }
-            else
-            {
-                // On récupère le dossier concerné par le média
-                PlatformFolder folder = _ZePlatform.PlatformFolders.First(
-                                            (x) => x.MediaType.Equals(mediatype, StringComparison.OrdinalIgnoreCase));
-                /*foreach (PlatformFolder pFormfolder in _ZePlatform.PlatformFolders)
+                string linkFile = Path.GetFullPath(dbGamePath, PS.Default.LBPath);
+                if (File.Exists(linkFile))
                 {
-                    if (pFormfolder.MediaType.Equals(mediatype))
-                    {
-                        folder = pFormfolder;
-                        break;
-                    }
-                }*/
+
+                    //05/04/2021 SimpleCopyManager(dbPath, destLocation/*, mediatype*/, ref _FileConflictDecision);
+                    files.Add(linkFile);
 
 
-                var filteredFiles = GetFilesByPredict(lbGame, folder.FolderPath, mediatype);
-
-
-                // En cas d'abandon ou de fichier non trouvé on sort
-                if (filteredFiles == null || filteredFiles.Count == 0)
-                    return;
-                #endregion
-
-
-
-                #region
-                // Traitement des fichiers pour la copie
-                foreach (string fichier in filteredFiles)
-                {
-                    //Recherche de fichiers déjà présents
-                    //string destFile = Path.Combine(destLocation, Path.GetFileName(fichier));
-
-                    SimpleCopyManager(fichier, destLocation, ref _FileConflictDecision);
+                    // L'assignation permet de transmettre le résultat d'une fonction à une variable             
+                    Assignation(DxPaths.Windows.DxPath.To_Relative(PS.Default.LBPath, linkFile));
                 }
-
-
-                Assignation(DxPaths.Windows.DxPath.To_Relative(PS.Default.LBPath, filteredFiles[0]));
-                #endregion
-
-
-
             }
+
+
+            // On récupère le dossier concerné par le média
+            PlatformFolder folder = _ZePlatform.PlatformFolders.First(
+                                            (x) => x.MediaType.Equals(mediatype, StringComparison.OrdinalIgnoreCase));
+            /*foreach (PlatformFolder pFormfolder in _ZePlatform.PlatformFolders)
+            {
+                if (pFormfolder.MediaType.Equals(mediatype))
+                {
+                    folder = pFormfolder;
+                    break;
+                }
+            }*/
+
+            List<string> filteredFiles = GetFilesByPredict(lbGame, folder.FolderPath, mediatype);
+
+
+            // En cas d'abandon ou de fichier non trouvé on sort
+            if (files.Count == 0 && (filteredFiles == null || filteredFiles.Count == 0))
+                return;
+
+            // On assigne si nécessaire
+            if (files.Count == 0 && filteredFiles.Count > 0)
+                Assignation(DxPaths.Windows.DxPath.To_Relative(PS.Default.LBPath, filteredFiles[0]));
+
+
+            files.AddRange(filteredFiles);
+
+            // On enlève les doublons
+            files = files.Distinct().ToList();
+
+            #region
+            // Traitement des fichiers pour la copie
+            foreach (string fichier in filteredFiles)
+            {
+                // Sachant qu'ici on a le nom du dossier source on peut conserver la structure
+                string tail = fichier.Replace(folder.FolderPath, "").Replace(Path.GetFileName(fichier), "");
+
+                //Recherche de fichiers déjà présents
+                //string destFile = Path.Combine(destLocation, Path.GetFileName(fichier));
+
+                if (tail.Length == 1)
+                    SimpleCopyManager(fichier, destLocation, ref _FileConflictDecision);
+                else
+                    SimpleCopyManager(fichier, Path.Combine(destLocation, tail.Substring(1)), ref _FileConflictDecision);
+            }
+
+
+            #endregion
+
+
+
+
         }
 
         /// <summary>
@@ -747,7 +773,7 @@ namespace Pack_My_Game.Core
             List<Clone> clones = XML_Games.ListClones(_XMLPlatformFile, "GameID", lBGame.Id).ToList();
 
             // tri des doublons / filter duplicates
-            List<Clone> fClones = FilesFunc.DistinctClones(clones, lBGame.ApplicationPath);
+            List<Clone> fClones = FilesFunc.DistinctClones(clones, lBGame.ApplicationPath, PS.Default.LBPath);
 
             // On va vérifier que chaque clone n'est pas déjà présent et selon déjà copier
             foreach (Clone zeClone in fClones)
@@ -757,6 +783,7 @@ namespace Pack_My_Game.Core
                 SimpleCopyManager(Path.GetFullPath(zeClone.ApplicationPath, PS.Default.LBPath), destLocation, ref _FileConflictDecision);
             }
         }
+        #endregion
 
 
 
@@ -998,7 +1025,7 @@ namespace Pack_My_Game.Core
             {
                 Gen_PlusCalculator calculator = Gen_PlusCalculator.Create(CancelToken);
                 string sum = calculator.Calcul(sevZippy.ArchiveLink, () => MD5.Create());
-                HashCalc.Files.ClassicParser.Write( sevZippy.ArchiveLink, sum, HashType.md5 ,overwrite: true);
+                HashCalc.Files.ClassicParser.Write(sevZippy.ArchiveLink, sum, HashType.md5, overwrite: true);
 
             }
             else

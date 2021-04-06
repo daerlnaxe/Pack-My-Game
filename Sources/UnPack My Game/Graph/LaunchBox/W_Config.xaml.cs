@@ -24,14 +24,14 @@ namespace UnPack_My_Game.Graph.LaunchBox
         private const string _Games = "Roms";
         private const string _CheatCodes = "CheatCodes";
         private const string _Images = "Images";
-        private const string _Manuals= "Manuals";
+        private const string _Manuals = "Manuals";
         private const string _Musics = "Musics";
         private const string _Videos = "Videos";
-                
+
 
         M_Config _Model = new M_Config();
 
-        
+
 
         public W_Config()
         {
@@ -142,6 +142,23 @@ namespace UnPack_My_Game.Graph.LaunchBox
             DialogResult = true;
             this.Close();
         }
+
+        #region 
+        private void Can_Submit(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = !_Model.HasErrors;
+        }
+
+        private void Exec_Submit(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (_Model.Save() == true)
+            {
+                this.DialogResult = true;
+                Close();
+
+            }
+        }
+        #endregion
     }
 
 }

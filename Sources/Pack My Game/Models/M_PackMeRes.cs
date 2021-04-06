@@ -32,18 +32,18 @@ namespace Pack_My_Game.Models
         public string SelectedGame { get; set; }
         public ObservableCollection<string> GamesCollection { get; set; } = new ObservableCollection<string>();
 
-        public string SelectedManual { get; set; }
-        public ObservableCollection<string> ManualsCollection { get; set; } = new ObservableCollection<string>();
+        public Filerep SelectedManual { get; set; }
+        public ObservableCollection<Filerep> ManualsCollection { get; set; } = new ObservableCollection<Filerep>();
 
-        public string SelectedMusic { get; set; }
-        public ObservableCollection<string> MusicsCollection { get; set; } = new ObservableCollection<string>();
+        public Filerep SelectedMusic { get; set; }
+        public ObservableCollection<Filerep> MusicsCollection { get; set; } = new ObservableCollection<Filerep>();
 
-        public string SelectedVideo { get; set; }
-        public ObservableCollection<string> VideosCollection { get; set; } = new ObservableCollection<string>();
+        public Filerep SelectedVideo { get; set; }
+        public ObservableCollection<Filerep> VideosCollection { get; set; } = new ObservableCollection<Filerep>();
 
         public string SelectedCheatFile { get; set; }
         public ObservableCollection<string> CheatsCollection { get; set; } = new ObservableCollection<string>();
-        
+
         /// <summary>
         /// Contient les chemins de la plateforme
         /// </summary>
@@ -55,7 +55,7 @@ namespace Pack_My_Game.Models
         {
             Root = root;
             Platform = platform;
-            GameName=gameName;
+            GameName = gameName;
 
             LoadFiles();
         }
@@ -81,23 +81,26 @@ namespace Pack_My_Game.Models
         private void LoadManuals()
         {
             ManualsCollection.Clear();
-            foreach (string f in Directory.EnumerateFiles(Path.Combine(Root, Common.Manuals), "*.*", SearchOption.TopDirectoryOnly))
-                ManualsCollection.Add(Path.GetFileName(f));
+            string manualsPath = Path.Combine(Root, Common.Manuals);
+            foreach (string f in Directory.EnumerateFiles(manualsPath, "*.*", SearchOption.AllDirectories))
+                ManualsCollection.Add(new Filerep(f.Replace($"{manualsPath}\\", string.Empty), f));
         }
 
 
         private void LoadMusics()
         {
             MusicsCollection.Clear();
-            foreach (string f in Directory.EnumerateFiles(Path.Combine(Root, Common.Musics), "*.*", SearchOption.TopDirectoryOnly))
-                MusicsCollection.Add(Path.GetFileName(f));
+            string musicsPath = Path.Combine(Root, Common.Musics);
+            foreach (string f in Directory.EnumerateFiles(musicsPath, "*.*", SearchOption.AllDirectories))
+                MusicsCollection.Add(new Filerep(f.Replace($"{musicsPath}\\", string.Empty), f));
         }
 
         private void LoadVideos()
         {
             VideosCollection.Clear();
-            foreach (string f in Directory.EnumerateFiles(Path.Combine(Root, Common.Videos), "*.*", SearchOption.TopDirectoryOnly))
-                VideosCollection.Add(Path.GetFileName(f));
+            string videosPath = Path.Combine(Root, Common.Videos);
+            foreach (string f in Directory.EnumerateFiles(videosPath, "*.*", SearchOption.AllDirectories))
+                VideosCollection.Add(new Filerep(f.Replace($"{videosPath}\\", string.Empty), f));
         }
 
         internal void LoadCheatCodes()
@@ -158,17 +161,14 @@ namespace Pack_My_Game.Models
 
         internal void OpenManual()
         {
-            if (String.IsNullOrEmpty(SelectedManual))
+            if (SelectedManual == null)
                 return;
 
-            string path = Path.Combine(Root, Common.Manuals, SelectedManual);
-            if (File.Exists(path))
-            {
-                Process p = new Process();
-                p.StartInfo.UseShellExecute = true;
-                p.StartInfo.FileName = path;
-                p.Start();
-            }
+            //string path = Path.Combine(Root, Common.Manuals, SelectedManual);
+            Process p = new Process();
+            p.StartInfo.UseShellExecute = true;
+            p.StartInfo.FileName = SelectedManual.PathLink;
+            p.Start();
 
         }
 
@@ -176,7 +176,7 @@ namespace Pack_My_Game.Models
         {
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = @$"{page}{GameName.Replace(' ' ,'+')}";
+            p.StartInfo.FileName = @$"{page}{GameName.Replace(' ', '+')}";
             p.Start();
         }
 
@@ -187,13 +187,13 @@ namespace Pack_My_Game.Models
 
         internal void RemoveManualF()
         {
-            if (!string.IsNullOrEmpty(SelectedManual))
+            if (SelectedManual != null)
             {
-                OpDFiles.Trash(Path.Combine(Root, Common.Manuals, SelectedManual));
+                OpDFiles.Trash(SelectedManual.PathLink);
                 LoadManuals();
             }
         }
-#endregion
+        #endregion
 
         #region Musique
         internal void CopyMusicF()
@@ -209,25 +209,22 @@ namespace Pack_My_Game.Models
 
         internal void OpenMusic()
         {
-            if (String.IsNullOrEmpty(SelectedMusic))
+            if (SelectedMusic == null)
                 return;
 
-            string path = Path.Combine(Root, Common.Musics, SelectedMusic);
-            if (File.Exists(path))
-            {
-                Process p = new Process();
-                p.StartInfo.UseShellExecute = true;
-                p.StartInfo.FileName = path;                
-                p.Start();
-                
-            }
+            //string path = Path.Combine(Root, Common.Musics, SelectedMusic);
+            Process p = new Process();
+            p.StartInfo.UseShellExecute = true;
+            p.StartInfo.FileName = SelectedMusic.PathLink;
+            p.Start();
+
         }
 
         internal void RemoveMusicF()
         {
-            if (!string.IsNullOrEmpty(SelectedMusic))
+            if (SelectedMusic != null)
             {
-                OpDFiles.Trash(Path.Combine(Root, Common.Musics, SelectedMusic));
+                OpDFiles.Trash(SelectedMusic.PathLink);
                 LoadMusics();
             }
         }
@@ -237,17 +234,14 @@ namespace Pack_My_Game.Models
 
         internal void OpenVideo()
         {
-            if (String.IsNullOrEmpty(SelectedVideo))
+            if (SelectedVideo == null)
                 return;
 
-            string path = Path.Combine(Root, Common.Videos, SelectedVideo);
-            if (File.Exists(path))
-            {
-                Process p = new Process();
-                p.StartInfo.UseShellExecute = true;
-                p.StartInfo.FileName = path;
-                p.Start();
-            }
+            //string path = Path.Combine(Root, Common.Videos, SelectedVideo);
+            Process p = new Process();
+            p.StartInfo.UseShellExecute = true;
+            p.StartInfo.FileName = SelectedVideo.PathLink;
+            p.Start();
         }
 
         internal void CopyVideoF()
@@ -279,9 +273,9 @@ namespace Pack_My_Game.Models
 
         internal void RemoveVideoF()
         {
-            if (!string.IsNullOrEmpty(SelectedVideo))
+            if (SelectedVideo != null)
             {
-                OpDFiles.Trash(Path.Combine(Root, Common.Videos, SelectedVideo));
+                OpDFiles.Trash(SelectedVideo.PathLink);
                 LoadVideos();
             }
         }

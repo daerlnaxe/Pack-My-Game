@@ -5,17 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UnPack_My_Game.Graph.LaunchBox"
         xmlns:lc="clr-namespace:DxTBoxCore.Languages;assembly=DxTBoxCore"
+        xmlns:cmd="clr-namespace:DxTBoxCore.Common;assembly=DxTBoxCore"
         xmlns:l="clr-namespace:UnPack_My_Game.Resources"
         mc:Ignorable="d"
         Title="W_Config" Height="450" Width="800">
+    <Window.CommandBindings>
+        <CommandBinding Command="cmd:Commands.Submit" CanExecute="Can_Submit" Executed="Exec_Submit" />
+    </Window.CommandBindings>
     <Window.Resources>
         <Style TargetType="Button" BasedOn="{StaticResource btStyle}"/>
     </Window.Resources>
     <DockPanel>
         <!-- Buttons -->
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
-            <Button Content="{x:Static lc:DxTBLang.Cancel}" Visibility="Collapsed" IsDefault="True" Click="Close"/>
-            <Button Content="{x:Static lc:DxTBLang.OK}"/>
+            <Button Content="{x:Static lc:DxTBLang.Cancel}" IsCancel="True" Click="Close"/>
+            <Button Content="{x:Static lc:DxTBLang.OK}" IsDefault="True" Command="cmd:Commands.Submit"/>
         </StackPanel>
         <!-- Content -->
         <TabControl>

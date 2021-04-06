@@ -174,6 +174,8 @@ silent debug...)
 - [ ] new mode for unpack using the platform xml file
 - [ ] Make a system to have possibility to add new site for research (perhaps plugin, or config files)
 - [ ] Make a system (not for now) to have the possibility to scrap to txt files, from a website (by plugin)
+- [ ] Ameliorate logs
+- [ ] Ameliorate progression for Pack-My-Game
 - [ ] Find somebody that wants hire me... real contract  :/
 
 useful ?

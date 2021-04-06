@@ -121,7 +121,6 @@ namespace Pack_My_Game.Compression
                         return false;
 
                     throw new Exception(e.Message);
-
                 }
             }
 

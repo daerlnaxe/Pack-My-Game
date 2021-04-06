@@ -1,4 +1,5 @@
 ﻿using LaunchBox_XML.BackupLB;
+using LaunchBox_XML.Container.AAPP;
 using LaunchBox_XML.Container.Game;
 using System;
 using System.Collections.Generic;
@@ -177,6 +178,8 @@ namespace UnPack_My_Game.Models
                 OnPropertyChanged();
             }
         }
+
+        public List<AdditionalApplication> Clones { get; internal set; }
         #endregion
 
         // --- 
@@ -246,7 +249,7 @@ namespace UnPack_My_Game.Models
         internal void AssignPaths()
         {
             Game.ApplicationPath = OGameP;
-            foreach (var AApp in Game.AdditionalApplications)
+            foreach (var AApp in Clones)
                 AApp.ApplicationPath = FindStringToReplace(AApp.ApplicationPath, TGamePath);
 
             Game.ManualPath = OManualP;

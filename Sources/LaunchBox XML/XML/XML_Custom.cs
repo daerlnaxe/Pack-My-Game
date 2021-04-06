@@ -3,7 +3,9 @@ using LaunchBox_XML.Container.Game;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace LaunchBox_XML.XML
@@ -41,6 +43,33 @@ namespace LaunchBox_XML.XML
                 Signal?.Invoke("Make_InfoGame", exc.ToString());
                 return false;
             }
+        }
+
+        public static bool TestPresence(string xmlFile, string balise, string field, string value)
+        {
+            XElement xelObject = XElement.Load(xmlFile);
+
+            List<XElement> resultat = new List<XElement>();
+            foreach(XElement elems in xelObject.Elements(balise))
+            {
+                foreach(var f in elems.Elements(field))
+                {
+                    if (((string)f.Value).Equals(value))
+                        resultat.Add(elems);
+
+                }
+            }
+                                            /*.Where(
+                                               (p) =>
+                                               {
+                                                   var element = p.Element(field);
+                                                   if (element != null && ((string)p.Element(field).Value).Equals(value))
+                                                       return true;
+                                                   return false;
+                                               }).ToArray();*/
+                                            
+
+            return resultat.Any();
         }
     }
 }

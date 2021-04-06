@@ -264,16 +264,15 @@ namespace UnPack_My_Game.Graph.LaunchBox
                 if (Mode == E_Method.LBMethod)
                 {
                     M_LBMethod model = (M_LBMethod)ActiveMethodPage.Model;
-                    C_LaunchBoxAdapt clbAdapt = new C_LaunchBoxAdapt(src.Games, model.SelectPlatform);
+                    C_LaunchBoxAdapt clbAdapt = new C_LaunchBoxAdapt(src.Games, model.SelectPlatform.Name);
 
                     daspW = new DxAsStateProgress()
                     {
                         AutoClose = false,
-                        Model = new M_ProgressCC()
-                        {
-                        },
+                        Model = M_ProgressC.Create<C_LaunchBoxAdapt, M_ProgressCC>(clbAdapt, () => clbAdapt.Run())
 
-                        TaskToRun = clbAdapt,
+
+                        //            TaskToRun = clbAdapt,
                     };
 
 
@@ -288,8 +287,10 @@ namespace UnPack_My_Game.Graph.LaunchBox
                     daspW = new DxAsStateProgress()
                     {
                         AutoClose = false,
-                        Model = new M_ProgressCC(),
-                        TaskToRun = clbEBAdapt
+                        Model = M_ProgressC.Create<C_LaunchBoxEB, M_ProgressCC>(clbEBAdapt, () => clbEBAdapt.Run())
+
+
+                        //TaskToRun = clbEBAdapt
                     };
                 }
 

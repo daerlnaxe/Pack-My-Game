@@ -108,7 +108,7 @@
                 <!-- Manuels -->
                 <Label Grid.Row="1" Content="{Binding Lang.ManualsExp, FallbackValue=ManualsExp}"/>
                 <ListView x:Name="lvManuals" Grid.Row="1" 
-                          ItemsSource="{Binding ManualsCollection, FallbackValue={StaticResource testArray}}"
+                          ItemsSource="{Binding ManualsCollection}" DisplayMemberPath="Name"
                           SelectedItem="{Binding SelectedManual}"
                           >
                     <ListView.ContextMenu>
@@ -122,7 +122,7 @@
                 <!-- Musics -->
                 <Label Grid.Row="2" Content="{Binding Lang.MusicsExp, FallbackValue=MusicsExp}"/>
                 <ListView x:Name="lvMusics" Grid.Row="2" 
-                          ItemsSource="{Binding MusicsCollection, FallbackValue={StaticResource testArray}}"
+                          ItemsSource="{Binding MusicsCollection}" DisplayMemberPath="Name"
                           SelectedItem="{Binding SelectedMusic}">
                     <ListView.ContextMenu>
                         <ContextMenu>
@@ -136,7 +136,7 @@
                 <!-- Videos -->
                 <Label Grid.Row="3" Content="{Binding Lang.VideosExp, FallbackValue=VideosExp}"/>
                 <ListView x:Name="lvVideos" Grid.Row="3"
-                          ItemsSource="{Binding VideosCollection, FallbackValue={StaticResource testArray}}"
+                          ItemsSource="{Binding VideosCollection}" DisplayMemberPath="Name"
                           SelectedItem="{Binding SelectedVideo}" >
                     <ListView.ContextMenu>
                         <ContextMenu>

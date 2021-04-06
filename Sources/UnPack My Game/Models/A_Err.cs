@@ -42,6 +42,15 @@ namespace UnPack_My_Game.Models
             ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
         }
 
+
+        protected void Test_NullValue(object value, [CallerMemberName] string propertyName = null)
+        {
+            Remove_Error(propertyName);
+
+            if (value == null)
+                Add_Error(Lang.NullValue, propertyName);
+        }
+
         protected void Test_NullValue(string value, [CallerMemberName] string propertyName = null)
         {
             Remove_Error(propertyName);

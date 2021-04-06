@@ -1,9 +1,11 @@
-﻿using DxTBoxCore.Box_Progress;
+﻿using DxLocalTransf;
+using DxLocalTransf.Progress.ToImp;
+using DxTBoxCore.Box_Progress;
+using DxTBoxCore.Common;
 using DxTBoxCore.Languages;
 using DxTBoxCore.MBox;
 using Hermes;
-using LaunchBox_XML.BackupLB;
-using LaunchBox_XML.Container;
+using LaunchBox_XML.Container.Game;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,6 +13,7 @@ using System.IO;
 using System.Threading;
 using System.Windows;
 using UnPack_My_Game.Cont;
+using UnPack_My_Game.Decompression;
 using UnPack_My_Game.Graph.LaunchBox;
 using UnPack_My_Game.Resources;
 using PS = UnPack_My_Game.Properties.Settings;
@@ -20,13 +23,13 @@ namespace UnPack_My_Game.Cores
     internal abstract class C_LaunchBox : I_ASBaseC
     {
         #region events
-        public abstract event DoubleDel UpdateProgressT;
-        public abstract event StringDel UpdateStatusT;
-        public abstract event DoubleDel MaximumProgressT;
+        public abstract event DoubleHandler UpdateProgressT;
+        public abstract event MessageHandler UpdateStatusT;
+        public abstract event DoubleHandler MaximumProgressT;
 
-        public virtual event DoubleDel UpdateProgress;
-        public virtual event StringDel UpdateStatus;
-        public virtual event DoubleDel MaximumProgress;
+        public virtual event DoubleHandler UpdateProgress;
+        public virtual event MessageHandler UpdateStatus;
+        public virtual event DoubleHandler MaximumProgress;
         #endregion
 
         // ---
@@ -125,13 +128,13 @@ namespace UnPack_My_Game.Cores
 
                 try
                 {
-                    UpdateStatus?.Invoke($"\t{Lang.Source}: {f}");
+                    UpdateStatus?.Invoke(this, $"\t{Lang.Source}: {f}");
 
                     string tail = f.Replace(dossier, "");
                     Debug.WriteLine($"t:{tail}");
 
                     target = Path.Combine(folderPath, tail.Substring(1));
-                    UpdateStatus?.Invoke($"\t{Lang.Target}: {target}");
+                    UpdateStatus?.Invoke(this, $"\t{Lang.Target}: {target}");
 
 
                     Directory.CreateDirectory(Path.GetDirectoryName(target));
@@ -140,16 +143,16 @@ namespace UnPack_My_Game.Cores
                 }
                 catch (IOException ioex)
                 {
-                    UpdateStatus?.Invoke($"\t***Error copy {target}\r\n {ioex.Message}");
+                    UpdateStatus?.Invoke(this, $"\t***Error copy {target}\r\n {ioex.Message}");
                 }
                 catch (UnauthorizedAccessException UnAuthExc)
                 {
-                    UpdateStatus?.Invoke($"\t{UnAuthExc.Message}");
+                    UpdateStatus?.Invoke(this, $"\t{UnAuthExc.Message}");
 
                 }
                 catch (Exception exc)
                 {
-                    UpdateStatus?.Invoke($"\t{exc.Message}");
+                    UpdateStatus?.Invoke(this, $"\t{exc.Message}");
                 }
             }
             //            Debug.WriteLine($"Copy Simu: {d} <|> {folderPath}");
@@ -175,7 +178,17 @@ namespace UnPack_My_Game.Cores
             }
         }
 
+        protected bool? AskIfRemove(LBGame lbGame)
+        {
+            bool? res = false;
+            Application.Current.Dispatcher?.Invoke(() =>
+            {
+                res = DxMBox.ShowDial("Game is Already present", "Question", E_DxButtons.Yes | E_DxButtons.No, lbGame.Title);
+            }
+                );
 
+            return res;
+        }
         public void StopTask()
         {
             throw new NotImplementedException();

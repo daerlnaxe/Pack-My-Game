@@ -1,4 +1,5 @@
-﻿using LaunchBox_XML.XML;
+﻿using LaunchBox_XML.Container;
+using LaunchBox_XML.XML;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,10 +16,10 @@ namespace UnPack_My_Game.Graph.LaunchBox
     {
         public event BasicHandler Error;
 
-        public ObservableCollection<string> Machines { get; set; } = new ObservableCollection<string>();
+        public ObservableCollection<Platform> Machines { get; set; } = new ObservableCollection<Platform>();
 
-        private string _SelectedPlatform;
-        public string SelectPlatform
+        private Platform _SelectedPlatform;
+        public Platform SelectPlatform
         {
             get => _SelectedPlatform;
             set
@@ -38,11 +39,12 @@ namespace UnPack_My_Game.Graph.LaunchBox
             Remove_Error(nameof(SelectPlatform));
             try
             {
+                XML_Platforms.ListShortPlatforms(Common.PlatformsFile, Machines);
 
-            // Extracting XML datas
-            XML_Functions xf = new XML_Functions();
-            if (xf.ReadFile(Common.PlatformsFile))
-                xf.ListMachine(Machines);
+                /*// Extracting XML datas
+                XML_Functions xf = new XML_Functions();
+                if (xf.ReadFile(Common.PlatformsFile))
+                    xf.ListMachine();*/
             }
             catch
             {

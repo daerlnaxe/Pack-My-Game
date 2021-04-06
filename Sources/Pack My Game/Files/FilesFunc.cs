@@ -44,14 +44,16 @@ namespace Pack_My_Game.Files
         /// <param name="clones"></param>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        internal static List<Clone> DistinctClones(List<Clone> clones, string applicationPath)
+        internal static List<Clone> DistinctClones(List<Clone> clones, string applicationPath, string launchboxPath)
         {
-            List<Clone> clonestmp = new List<Clone>();
+            string gamePath = Path.GetFullPath(applicationPath, launchboxPath);
+
+            List <Clone> clonestmp = new List<Clone>();
 
             foreach (Clone c in clones)
             {
                 // Ca peut y être par erreur
-                if (Path.GetFileName(c.ApplicationPath).Equals(applicationPath))
+                if (Path.GetFullPath(c.ApplicationPath, launchboxPath).Equals(gamePath))
                     continue;
 
                 // On cherche si c'est pas déjà présent dans clonestmp

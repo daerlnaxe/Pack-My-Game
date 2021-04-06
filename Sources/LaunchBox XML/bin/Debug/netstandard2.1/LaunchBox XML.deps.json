@@ -9,17 +9,17 @@
     ".NETStandard,Version=v2.1/": {
       "LaunchBox XML/1.0.0": {
         "dependencies": {
-          "Unbroken.LaunchBox.Plugins": "11.9.0.0"
+          "Unbroken.LaunchBox.Plugins": "11.10.0.0"
         },
         "runtime": {
           "LaunchBox XML.dll": {}
         }
       },
-      "Unbroken.LaunchBox.Plugins/11.9.0.0": {
+      "Unbroken.LaunchBox.Plugins/11.10.0.0": {
         "runtime": {
           "Unbroken.LaunchBox.Plugins.dll": {
-            "assemblyVersion": "11.9.0.0",
-            "fileVersion": "11.9.0.0"
+            "assemblyVersion": "11.10.0.0",
+            "fileVersion": "11.10.0.0"
           }
         }
       }
@@ -31,7 +31,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Unbroken.LaunchBox.Plugins/11.9.0.0": {
+    "Unbroken.LaunchBox.Plugins/11.10.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

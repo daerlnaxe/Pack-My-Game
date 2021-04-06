@@ -28,7 +28,7 @@ namespace LaunchBox_XML.XML
      *  - fPlatforms: general xmlFile with all the platforms listed
      *  - dPlatforms: directory root for all the platforms xml files
     */
-
+    [Obsolete]
     public class XML_Functions
     {
         public event MessageHandler Error;
@@ -311,6 +311,8 @@ namespace LaunchBox_XML.XML
             return zeGame;
         }
 
+
+        /*
         /// <summary>
         /// Get a game
         /// </summary>
@@ -783,7 +785,7 @@ namespace LaunchBox_XML.XML
 
             return backGame;
         }
-
+        */
 
 
 
@@ -793,6 +795,7 @@ namespace LaunchBox_XML.XML
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
+        /*2021
         [Obsolete]
         public Platform ScrapPlatform(string Name)
         {
@@ -818,6 +821,8 @@ namespace LaunchBox_XML.XML
                             PlatformFolder pfFolder = new PlatformFolder();
                             pfFolder.FolderPath = nodInfos.Current.Value;
                             pfFolder.MediaType = "AppPath";*/
+
+        /*2021
                             zePlatform.FolderPath = nodInfos.Current.Value;
                             break;
                     }
@@ -865,6 +870,6 @@ namespace LaunchBox_XML.XML
 
 
             return zePlatform;
-        }
+        }2021*/
     }
 }
