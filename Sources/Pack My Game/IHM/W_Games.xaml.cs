@@ -1,5 +1,5 @@
-﻿using LaunchBox_XML.Container;
-using LaunchBox_XML.Container.Game;
+﻿using Common_PMG.Container.Game;
+
 using Pack_My_Game.Cont;
 using System;
 using System.Collections.Generic;
@@ -46,6 +46,7 @@ namespace Pack_My_Game.IHM
         {
             var game = (ShortGame)((Button)sender).Tag;
             SelectedGames.Remove(game);
+            game.IsSelected = false;
             //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedGames)));
         }
 

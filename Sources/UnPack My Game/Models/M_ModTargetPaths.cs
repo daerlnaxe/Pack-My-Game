@@ -1,6 +1,6 @@
-﻿using LaunchBox_XML.BackupLB;
-using LaunchBox_XML.Container.AAPP;
-using LaunchBox_XML.Container.Game;
+﻿using Common_PMG.BackupLB;
+using Common_PMG.Container.AAPP;
+using Common_PMG.Container.Game;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -186,6 +186,7 @@ namespace UnPack_My_Game.Models
 
         public M_ModTargetPaths()
         {
+            OptNameChecked = Properties.Settings.Default.wGameNameFolder;
 
         }
 

@@ -5,10 +5,10 @@ using DxTBoxCore.MBox;
 using Hermes;
 using Hermes.Cont;
 using Hermes.Messengers;
-using LaunchBox_XML.BackupLB;
-using LaunchBox_XML.Container;
-using LaunchBox_XML.Container.AAPP;
-using LaunchBox_XML.Container.Game;
+using Common_PMG.BackupLB;
+using Common_PMG.Container;
+using Common_PMG.Container.AAPP;
+using Common_PMG.Container.Game;
 using LaunchBox_XML.XML;
 using System;
 using System.Collections.Generic;
@@ -42,7 +42,6 @@ namespace UnPack_My_Game.Cores
 
         #endregion
         public string PlatformName { get; }
-        public List<FileObj> Games { get; }
 
         #region Informations
         protected Platform Machine { get; set; }
@@ -52,33 +51,27 @@ namespace UnPack_My_Game.Cores
         #endregion
 
 
-        public C_LaunchBoxAdapt(List<Cont.FileObj> games, string platformName) : base()
+        public C_LaunchBoxAdapt(List<Cont.FileObj> games, string platformName) : base("LaunchBoxAdapt", games)
         {
             CancelToken = base.TokenSource.Token;
             PlatformName = platformName;
-            Games = games;
+            //Games = games;
         }
 
-        public override object Run(int timeSleep = 10)
+        public object Run(int timeSleep = 10)
         {
             try
             {
+                /*
 
-                // Tracing
-                MeSimpleLog log = new MeSimpleLog(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Common.Logs, $"{DateTime.Now.ToFileTime()}.log"))
-                {
-                    LogLevel = 1,
-                    FuncPrefix = EPrefix.Horodating,
-                };
                 log.AddCaller(this);
                 HeTrace.AddLogger("LaunchBox", log);
+                */
 
+                //UpdateStatus += (x, y) => HeTrace.WriteLine(y, this);
 
-                UpdateStatus += (x, y) => HeTrace.WriteLine(y, this);
-
-                ZipDecompression.StatCurrentProgress += (x, y) => this.UpdateProgress?.Invoke(x, y);
-                ZipDecompression.StatCurrentStatus += (x, y) => this.UpdateStatus?.Invoke(x, y);
-                ZipDecompression.StatMaxProgress += (x, y) => this.MaximumProgress?.Invoke(x, y);
+                // Redirige les signaux
+                //RedirectSignals();
 
 
                 // Récupération des infos de la plateforme
@@ -126,8 +119,8 @@ namespace UnPack_My_Game.Cores
 
                 //
                 int i = 0;
-                MaximumProgressT?.Invoke(this, Games.Count());
-                MaximumProgress?.Invoke(this, 100);
+                //MaximumProgressT?.Invoke(this, Games.Count());
+                //MaximumProgress?.Invoke(this, 100);
                 foreach (FileObj game in Games)
                 {
                     UpdateProgressT?.Invoke(this, i);
@@ -179,7 +172,7 @@ namespace UnPack_My_Game.Cores
                     // Retrait du jeu si présence
                     bool? replace = false;
                     if (XML_Custom.TestPresence(MachineXMLFile, "Game", nameof(lbGame.Id).ToUpper(), lbGame.Id))
-                        replace = AskIfRemove(lbGame);
+                        replace = AskDxMBox("Game is Already present", "Question", E_DxButtons.Yes | E_DxButtons.No, lbGame.Title);
 
                     if (replace == true)
                         XML_Games.Remove_Game(lbGame.Id, MachineXMLFile);
@@ -207,7 +200,7 @@ namespace UnPack_My_Game.Cores
                 }
 
                 UpdateStatus?.Invoke(this, "Task Finished");
-                HeTrace.RemoveLogger("LaunchBox");
+                HeTrace.RemoveLogger("LaunchBoxAdapt");
                 UpdateProgressT?.Invoke(this, 100);
 
                 return true;

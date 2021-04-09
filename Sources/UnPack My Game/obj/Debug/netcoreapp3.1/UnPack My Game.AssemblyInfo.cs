@@ -13,7 +13,7 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("Daerlnaxe Software")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright ©  2018-2021 Daerlnaxe Software")]
+[assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright ©  2018-2038 Daerlnaxe Software")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Unpack package for a Frontend")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]

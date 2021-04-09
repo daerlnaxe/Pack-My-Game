@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Language Lang="en-EN" Version="1.0.0.4" Name="English">
+<Language Lang="en-EN" Version="1.0.0.5" Name="English">
   <Add Value="Add" />
   <CCopy Value="Clones copy" />
   <Ch_Games Value="Choose game(s)" />
@@ -47,6 +47,7 @@
   <Q_Pack Value="Pack This game" />
   <S_Language Value="Select a language" />
   <Select Value="Select" />
+  <Selected Value="Selected" />
   <Submit Value="Submit" />
   <Title Value="Title" />
   <TViewFile Value="Treeview file" />

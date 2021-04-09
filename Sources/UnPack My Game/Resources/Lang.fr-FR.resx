@@ -166,7 +166,7 @@
     <value>Vous devez effacer manuellement ce dossier</value>
   </data>
   <data name="I_EBMethod" xml:space="preserve">
-    <value>Enhanced Backup methode: utilise les chemins de EBGame.xml pour copier les fichiers.</value>
+    <value>Enhanced Backup methode: utilise les chemins de EBGame.xml pour copier les fichiers. LaunchBox va réer au prochain démarrage la plateforme, mais vous aurez à specifier les dossiers (vous pouvez utiliser le plugin SappPasRoot). C'est la méthode de la dernière chance.</value>
   </data>
   <data name="I_HitEnter" xml:space="preserve">
     <value>Appuyez sur entrée pour valider.</value>
@@ -182,6 +182,12 @@
   </data>
   <data name="I_SevG" xml:space="preserve">
     <value>SVP selectionnez un dossier:</value>
+  </data>
+  <data name="I_TBMethod" xml:space="preserve">
+    <value>True Backup methode: utilise les chemins d'un fichier plateforme sauvegardé, injecte la platforme vers le fichier plateforme global de LaunchBox, injecte le(s) jeu(x) vers le fichier plateforme specifique (ou le créé).</value>
+  </data>
+  <data name="I_XML" xml:space="preserve">
+    <value>SVP sélectionnez un fichier a xml.</value>
   </data>
   <data name="Launchbox" xml:space="preserve">
     <value>UnPack pour Launchbox</value>

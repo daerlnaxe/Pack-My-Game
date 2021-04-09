@@ -3,12 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <RootNamespace>LaunchBox_XML</RootNamespace>
+    <Authors>Alexandre CODOUL aka Daerlnaxe</Authors>
+    <Company>Daerlnaxe Software</Company>
+    <Copyright>Copyright ©  2018-2038 Daerlnaxe Software</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="BackupLB\Etalon_LBGame.cs" />
-    <Compile Remove="Container\GameLBT.cs" />
-    <Compile Remove="Container\Game\GameLBT.cs" />
     <Compile Remove="JSon\ConfigPlatformsF.cs" />
     <Compile Remove="XML\MakeXML.cs" />
   </ItemGroup>
@@ -18,10 +18,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="BackupLB\Etalon_LBGame.cs" />
-    <None Include="Container\Game\GameLBT.cs" />
     <None Include="JSon\ConfigPlatformsF.cs" />
     <None Include="XML\MakeXML.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common_PMG\Common_PMG.csproj" />
   </ItemGroup>
 
   <ItemGroup>

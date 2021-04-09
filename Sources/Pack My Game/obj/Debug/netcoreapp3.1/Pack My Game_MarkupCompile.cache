@@ -1,5 +1,5 @@
 ﻿Pack My Game
-2.0.0.0
+2.0.0.1
 
 winexe
 C#
@@ -12,8 +12,8 @@ TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\App.xaml
 91522769124
 
-361199089510
-2221361682506
+3940157312
+223-838603302
 IHM\BoxProgress.xaml;IHM\W_Cheat.xaml;IHM\W_ChooseName.xaml;IHM\W_Config.xaml;IHM\W_Games.xaml;IHM\W_Info.xaml;IHM\W_PackMeRes.xaml;MainWindow.xaml;Resources\Style.xaml;
 
 False

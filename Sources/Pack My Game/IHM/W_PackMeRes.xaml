@@ -15,7 +15,7 @@
         <CommandBinding Command="local:W_PackMeRes.RemoveManualCmd" CanExecute="Can_Manual" Executed="Exec_RemoveManual"/>
         <!-- Musics -->
         <CommandBinding Command="local:W_PackMeRes.OpenMusicCmd" CanExecute="Can_Music" Executed="Exec_OpenMusic"/>
-        <CommandBinding Command="local:W_PackMeRes.RemoveMusicCmd" CanExecute="Can_Music" Executed="Exec_RemoveMusic"/>        
+        <CommandBinding Command="local:W_PackMeRes.RemoveMusicCmd" CanExecute="Can_Music" Executed="Exec_RemoveMusic"/>
         <!-- Videos -->
         <CommandBinding Command="local:W_PackMeRes.OpenVideoCmd" CanExecute="Can_Video" Executed="Exec_OpenVideo"/>
         <CommandBinding Command="local:W_PackMeRes.RemoveVideoCmd" CanExecute="Can_Video" Executed="Exec_RemoveVideo"/>
@@ -32,7 +32,6 @@
             <sys:String>Cat</sys:String>
         </x:Array>
         <conv:EnableIfElementsConv x:Key="EnableIfElements"/>
-        
         <!-- scrollviewer -->
         <Style TargetType="ScrollViewer">
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
@@ -42,9 +41,15 @@
         <Style TargetType="Label" BasedOn="{StaticResource lblStyle}">
 
         </Style>
+        <!-- Textbox -->
+        <Style TargetType="TextBlock" BasedOn="{StaticResource tbStyle}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Grid.Column" Value="1"/>
+        </Style>
         <!-- Listview -->
         <Style TargetType="ListView">
-            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="Grid.Column" Value="0"/>
+            <Setter Property="Grid.ColumnSpan" Value="2"/>
             <Setter Property="Margin" Value="0,5,0,5"/>
         </Style>
         <!-- Boutons -->
@@ -75,92 +80,155 @@
             </StackPanel>
             <!-- Content -->
             <!-- Fichiers -->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <!-- Jeux -->
-                <Label Content="{Binding Lang.GamesExp, FallbackValue=GamesExp}"/>
-                <ListView ItemsSource="{Binding GamesCollection, FallbackValue={StaticResource testArray}}"
-                          SelectedItem="{Binding SelectedGame}"
+            <TabControl TabStripPlacement="Left">
+                <!-- Games -->
+                <TabItem Header="{Binding Lang.GamesExp, FallbackValue=GamesExp}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!-- Sélectionné -->
+                        <Label Content="{Binding Lang.SelectedExp, FallbackValue=SelectedExp}"/>
+                        <TextBlock Text="{Binding ChosenGame.Name, FallbackValue=Selected}"/>
+                        <!-- Liste -->
+                        <ListView Grid.Row="1" ItemsSource="{Binding GamesCollection, FallbackValue={StaticResource testArray}}"
+                          SelectedItem="{Binding SelectedGame}" DisplayMemberPath="Name"
                           >
-                    <ListView.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="{Binding Lang.AddExp}" Click="Add_GameF"/>
-                            <MenuItem Header="{Binding Lang.DeleteExp}"
+                            <ListView.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="{Binding Lang.AddExp}" Click="Add_GameF"/>
+                                    <MenuItem Header="{Binding Lang.DeleteExp}"
                                       IsEnabled="{Binding GamesCollection.Count, Converter={StaticResource EnableIfElements} }"
                                       Click="Remove_GameF"/>
-                        </ContextMenu>
-                    </ListView.ContextMenu>
-                </ListView>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
+                        </ListView>
 
-<!--
-                <Button Grid.Column="2"/>-->
-                <!-- Manuels -->
-                <Label Grid.Row="1" Content="{Binding Lang.ManualsExp, FallbackValue=ManualsExp}"/>
-                <ListView x:Name="lvManuals" Grid.Row="1" 
+                    </Grid>
+                </TabItem>
+                <!-- Manuals -->
+                <TabItem Header="{Binding Lang.ManualsExp, FallbackValue=ManualsExp}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!-- Selected -->
+                        <Label Content="{Binding Lang.SelectedExp, FallbackValue=SelectedExp}"/>
+                        <TextBlock Text="{Binding ChosenManual.Name, FallbackValue=Selected, TargetNullValue=...}"/>
+                        <!-- Liste -->
+                        <ListView x:Name="lvManuals" Grid.Row="1" 
                           ItemsSource="{Binding ManualsCollection}" DisplayMemberPath="Name"
                           SelectedItem="{Binding SelectedManual}"
                           >
-                    <ListView.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="{Binding Lang.AddExp}" Click="Add_ManualF"/>
-                            <MenuItem Header="Open" Command="local:W_PackMeRes.OpenManualCmd"/>
-                            <MenuItem Header="{Binding Lang.DeleteExp}" Command="local:W_PackMeRes.RemoveManualCmd" />
-                        </ContextMenu>
-                    </ListView.ContextMenu>
-                </ListView>
+                            <ListView.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="{Binding Lang.AddExp}" Click="Add_ManualF"/>
+                                    <MenuItem Header="Open" Command="local:W_PackMeRes.OpenManualCmd"/>
+                                    <MenuItem Header="{Binding Lang.DeleteExp}" Command="local:W_PackMeRes.RemoveManualCmd" />
+                                </ContextMenu>
+                            </ListView.ContextMenu>
+                        </ListView>
+                    </Grid>
+                </TabItem>
                 <!-- Musics -->
-                <Label Grid.Row="2" Content="{Binding Lang.MusicsExp, FallbackValue=MusicsExp}"/>
-                <ListView x:Name="lvMusics" Grid.Row="2" 
+                <TabItem Header="{Binding Lang.MusicsExp, FallbackValue=MusicsExp}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!-- Selected -->
+                        <Label Content="{Binding Lang.SelectedExp, FallbackValue=SelectedExp}"/>
+                        <TextBlock Text="{Binding ChosenMusic.Name, FallbackValue=Selected, TargetNullValue=...}"/>
+                        <!-- Liste -->
+                        <ListView x:Name="lvMusics" Grid.Row="1" 
                           ItemsSource="{Binding MusicsCollection}" DisplayMemberPath="Name"
                           SelectedItem="{Binding SelectedMusic}">
-                    <ListView.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="{Binding Lang.AddExp}" Click="Add_MusicF"/>
-                            <MenuItem Header="Open" Command="local:W_PackMeRes.OpenMusicCmd"/>
-                            <MenuItem Header="{Binding Lang.DeleteExp}" Command="local:W_PackMeRes.RemoveMusicCmd"/>
-                        </ContextMenu>
-                    </ListView.ContextMenu>
-                    
-                </ListView>
+                            <ListView.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="{Binding Lang.AddExp}" Click="Add_MusicF"/>
+                                    <MenuItem Header="Open" Command="local:W_PackMeRes.OpenMusicCmd"/>
+                                    <MenuItem Header="{Binding Lang.DeleteExp}" Command="local:W_PackMeRes.RemoveMusicCmd"/>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
+
+                        </ListView>
+                    </Grid>
+                </TabItem>
                 <!-- Videos -->
-                <Label Grid.Row="3" Content="{Binding Lang.VideosExp, FallbackValue=VideosExp}"/>
-                <ListView x:Name="lvVideos" Grid.Row="3"
-                          ItemsSource="{Binding VideosCollection}" DisplayMemberPath="Name"
-                          SelectedItem="{Binding SelectedVideo}" >
-                    <ListView.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="{Binding Lang.AddExp}" Click="Add_VideoF"/>
-                            <MenuItem Header="Open" Command="local:W_PackMeRes.OpenVideoCmd"/>
-                            <MenuItem Header="{Binding Lang.DeleteExp}" Command="local:W_PackMeRes.RemoveVideoCmd"/>
-                        </ContextMenu>
-                    </ListView.ContextMenu>
-                </ListView>
-                <!-- Cheats -->
-                <Label Grid.Row="4" Content="{Binding Lang.CheatsExp, FallbackValue=CheatsExp}"/>
-                <ListView x:Name="lvCheats" Grid.Row="4" 
-                          ItemsSource="{Binding CheatsCollection, FallbackValue={StaticResource testArray}}"
-                          SelectedItem="{Binding SelectedCheatFile}" >
-                    <ListView.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="{Binding Lang.AddExp}" Click="Add_CheatF"/>
-                            <MenuItem Header="New" Click="New_CheatF"/>
-                            <MenuItem Header="Open" Command="local:W_PackMeRes.OpenCheatCmd"/>
-                            <MenuItem Header="{Binding Lang.DeleteExp}" Command="local:W_PackMeRes.RemoveCheatCmd"/>
-                        </ContextMenu>
-                    </ListView.ContextMenu>
-                </ListView>
-            </Grid>
+                <TabItem Header="{Binding Lang.VideosExp, FallbackValue=VideosExp}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!-- Selected -->
+                        <Label Content="{Binding Lang.SelectedExp, FallbackValue=SelectedExp}"/>
+                        <TextBlock Text="{Binding ChosenVideo.Name, FallbackValue=Selected, TargetNullValue= ...}"/>
+                        <!-- Liste -->
+                        <ListView x:Name="lvVideos" Grid.Row="1"
+                            ItemsSource="{Binding VideosCollection}" DisplayMemberPath="Name"
+                            SelectedItem="{Binding SelectedVideo}" >
+                            <ListView.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="{Binding Lang.AddExp}" Click="Add_VideoF"/>
+                                    <MenuItem Header="Open" Command="local:W_PackMeRes.OpenVideoCmd"/>
+                                    <MenuItem Header="{Binding Lang.DeleteExp}" Command="local:W_PackMeRes.RemoveVideoCmd"/>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
+                        </ListView>
+                    </Grid>
+                </TabItem>
+                <!-- CheatCodes -->
+                <TabItem Header="{Binding Lang.CheatsExp, FallbackValue=CheatsExp}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!-- Selected -->
+                        <!--
+                        <Label Content="{Binding Lang.SelectedExp, FallbackValue=SelectedExp}"/>
+                        <TextBlock Text="{Binding ChosenCheatF.Name, FallbackValue=Selected}"/>
+                        -->
+                        <!-- Liste -->
+                        <ListView x:Name="lvCheats" Grid.Row="1" 
+                            ItemsSource="{Binding CheatsCollection, FallbackValue={StaticResource testArray}}" DisplayMemberPath="Name"
+                            SelectedItem="{Binding SelectedCheatFile}" > 
+                            <ListView.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="{Binding Lang.AddExp}" Click="Add_CheatF"/>
+                                    <MenuItem Header="New" Click="New_CheatF"/>
+                                    <MenuItem Header="Open" Command="local:W_PackMeRes.OpenCheatCmd"/>
+                                    <MenuItem Header="{Binding Lang.DeleteExp}" Command="local:W_PackMeRes.RemoveCheatCmd"/>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
+                        </ListView>
+                    </Grid>
+                </TabItem>
+            </TabControl>
         </DockPanel>
     </DockPanel>
 </Window>

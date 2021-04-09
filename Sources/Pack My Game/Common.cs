@@ -21,10 +21,13 @@ namespace Pack_My_Game
         /// <summary>
         /// Language Version
         /// </summary>
-        public static string LangVersion => "1.0.0.4";
+        public static string LangVersion => "1.0.0.5";
 
         #region Médias 
         public static string CheatCodes => "CheatCodes";
+        /// <summary>
+        /// Games
+        /// </summary>
         public static string Games => "Games";
         public static string Images => "Images";
         public static string Manuals => "Manuals";

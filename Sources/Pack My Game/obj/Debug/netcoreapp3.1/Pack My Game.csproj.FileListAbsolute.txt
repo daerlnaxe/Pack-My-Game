@@ -148,3 +148,8 @@ E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\obj\Debug\netcoreapp3
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\obj\Debug\netcoreapp3.1\IHM\W_Cheat.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\obj\Debug\netcoreapp3.1\IHM\W_Info.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\obj\Debug\netcoreapp3.1\IHM\W_Info.baml
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\bin\Debug\netcoreapp3.1\Common_PMG.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\bin\Debug\netcoreapp3.1\Common_PMG.pdb
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\bin\Debug\netcoreapp3.1\Unbroken.LaunchBox.Plugins.dll

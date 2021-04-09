@@ -235,5 +235,17 @@ namespace UnPack_My_Game.Properties {
                 this["LastTargetPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool wGameNameFolder {
+            get {
+                return ((bool)(this["wGameNameFolder"]));
+            }
+            set {
+                this["wGameNameFolder"] = value;
+            }
+        }
     }
 }

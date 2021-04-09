@@ -2,7 +2,7 @@
 using DxTBoxCore.Box_Progress;
 using DxTBoxCore.BoxChoose;
 using HashCalc;
-using LaunchBox_XML.Container;
+using Common_PMG.Container;
 using Pack_My_Game.Cont;
 using Pack_My_Game.Files;
 using System;
@@ -15,6 +15,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Common_PMG.Container.Game;
 
 namespace Pack_My_Game.Models
 {
@@ -29,20 +30,25 @@ namespace Pack_My_Game.Models
 
         public Language Lang => Common.ObjectLang;
 
-        public string SelectedGame { get; set; }
-        public ObservableCollection<string> GamesCollection { get; set; } = new ObservableCollection<string>();
+        public Filerep ChosenGame { get; set; }
+        public Filerep SelectedGame { get; set; }
+        public ObservableCollection<Filerep> GamesCollection { get; set; } = new ObservableCollection<Filerep>();
 
+        public Filerep ChosenManual { get; set; }
         public Filerep SelectedManual { get; set; }
         public ObservableCollection<Filerep> ManualsCollection { get; set; } = new ObservableCollection<Filerep>();
 
+        public Filerep ChosenMusic { get; set; }
         public Filerep SelectedMusic { get; set; }
         public ObservableCollection<Filerep> MusicsCollection { get; set; } = new ObservableCollection<Filerep>();
 
+        public Filerep ChosenVideo { get; set; }
         public Filerep SelectedVideo { get; set; }
         public ObservableCollection<Filerep> VideosCollection { get; set; } = new ObservableCollection<Filerep>();
 
+        public Filerep ChosenCheatF { get; set; }
         public string SelectedCheatFile { get; set; }
-        public ObservableCollection<string> CheatsCollection { get; set; } = new ObservableCollection<string>();
+        public ObservableCollection<Filerep> CheatsCollection { get; set; } = new ObservableCollection<Filerep>();
 
         /// <summary>
         /// Contient les chemins de la plateforme
@@ -50,12 +56,15 @@ namespace Pack_My_Game.Models
         public Platform Platform { get; }
 
         public string GameName { get; }
+        public GamePaths GamePaths { get; }
 
-        public M_PackMeRes(string root, Platform platform, string gameName)
+        public M_PackMeRes(string root, Platform platform, GamePaths gp)
         {
             Root = root;
             Platform = platform;
-            GameName = gameName;
+            GameName = gp.Title;
+            GamePaths = gp;
+
 
             LoadFiles();
         }
@@ -73,9 +82,18 @@ namespace Pack_My_Game.Models
         private void LoadGames()
         {
             GamesCollection.Clear();
+            string gamesPath = Path.Combine(Root, Common.Games);
             foreach (string f in Directory.EnumerateFiles(Path.Combine(Root, Common.Games), "*.*", SearchOption.TopDirectoryOnly))
-                GamesCollection.Add(Path.GetFileName(f));
+            {
+                string tmp = f.Replace(gamesPath, ".");
+                if (tmp.Equals(GamePaths.ApplicationPath))
+                {
+                    ChosenGame = new Filerep(tmp, f);
+                    continue;
+                }
 
+                GamesCollection.Add(new Filerep(tmp, f));
+            }
         }
 
         private void LoadManuals()
@@ -83,7 +101,16 @@ namespace Pack_My_Game.Models
             ManualsCollection.Clear();
             string manualsPath = Path.Combine(Root, Common.Manuals);
             foreach (string f in Directory.EnumerateFiles(manualsPath, "*.*", SearchOption.AllDirectories))
-                ManualsCollection.Add(new Filerep(f.Replace($"{manualsPath}\\", string.Empty), f));
+            {
+                string tmp = f.Replace(manualsPath, ".");
+                if (tmp.Equals(GamePaths.ManualPath))
+                {
+                    ChosenManual = new Filerep(tmp, f);
+                    continue;
+                }
+
+                ManualsCollection.Add(new Filerep(tmp, f));
+            }
         }
 
 
@@ -92,7 +119,16 @@ namespace Pack_My_Game.Models
             MusicsCollection.Clear();
             string musicsPath = Path.Combine(Root, Common.Musics);
             foreach (string f in Directory.EnumerateFiles(musicsPath, "*.*", SearchOption.AllDirectories))
-                MusicsCollection.Add(new Filerep(f.Replace($"{musicsPath}\\", string.Empty), f));
+            {
+                string tmp = f.Replace(musicsPath, ".");
+                if (tmp.Equals(GamePaths.MusicPath))
+                {
+                    ChosenMusic = new Filerep(tmp, f);
+                    continue;
+                }
+
+                MusicsCollection.Add(new Filerep(tmp, f));
+            }
         }
 
         private void LoadVideos()
@@ -100,14 +136,27 @@ namespace Pack_My_Game.Models
             VideosCollection.Clear();
             string videosPath = Path.Combine(Root, Common.Videos);
             foreach (string f in Directory.EnumerateFiles(videosPath, "*.*", SearchOption.AllDirectories))
-                VideosCollection.Add(new Filerep(f.Replace($"{videosPath}\\", string.Empty), f));
+            {
+                string tmp = f.Replace(videosPath, ".");
+                if (tmp.Equals(GamePaths.VideoPath))
+                {
+                    ChosenVideo = new Filerep(tmp, f);
+                    continue;
+                }
+
+                VideosCollection.Add(new Filerep(tmp, f));
+            }
         }
 
         internal void LoadCheatCodes()
         {
+            string cheatsPath = Path.Combine(Root, Common.CheatCodes);
             CheatsCollection.Clear();
             foreach (string f in Directory.EnumerateFiles(Path.Combine(Root, Common.CheatCodes), "*.*", SearchOption.TopDirectoryOnly))
-                CheatsCollection.Add(Path.GetFileName(f));
+            {
+                string tmp = f.Replace(cheatsPath, ".");
+                CheatsCollection.Add(new Filerep(tmp, f));
+            }
         }
 
         #endregion
@@ -138,10 +187,15 @@ namespace Pack_My_Game.Models
 
 
         internal void RemoveGameF()
-        {
-            if (!string.IsNullOrEmpty(SelectedGame))
+        {            
+            /*if (!string.IsNullOrEmpty(SelectedGame))
             {
                 OpDFiles.Trash(Path.Combine(Root, Common.Games, SelectedGame));
+                LoadGames();
+            }*/
+            if (SelectedGame != null)
+            {
+                OpDFiles.Trash(SelectedGame.PathLink);
                 LoadGames();
             }
         }

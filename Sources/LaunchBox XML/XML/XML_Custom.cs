@@ -1,5 +1,5 @@
-﻿using LaunchBox_XML.Container;
-using LaunchBox_XML.Container.Game;
+﻿using Common_PMG.Container;
+using Common_PMG.Container.Game;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,7 +17,23 @@ namespace LaunchBox_XML.XML
     {
         public static event MessageHandler Signal;
 
+        public static bool CheckValidity(string linkResult, string balise)
+        {
+            try
+            {
+                XElement root = XElement.Load(linkResult);
 
+                var elements = root.Elements(balise);
+
+                return elements.Any();
+            }
+            catch
+            {
+                return false;
+            }
+
+
+        }
         /// <summary>
         /// Création d'un fichier infos.xml
         /// </summary>

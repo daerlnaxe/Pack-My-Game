@@ -11,19 +11,21 @@ using System.Threading;
 using Pack_My_Game.IHM;
 using System.Collections.ObjectModel;
 using DxTBoxCore.Common;
-using LaunchBox_XML.Container.Game;
+using Common_PMG.Container.Game;
 using LaunchBox_XML.XML;
 using System.Windows;
 using Pack_My_Game.Cont;
 using Pack_My_Game.Files;
 using System.Security.Cryptography;
-using LaunchBox_XML.Container;
+using Common_PMG.Container;
 using System.Linq;
-using LaunchBox_XML.Container.AAPP;
+using Common_PMG.Container.AAPP;
 using Pack_My_Game.Models;
 using Pack_My_Game.Compression;
 using HashCalc;
 using DxLocalTransf.Progress.ToImp;
+using DxTBoxCore.MBox;
+using DxPaths.Windows;
 //using Pack_My_Game.Compression;
 
 namespace Pack_My_Game.Core
@@ -34,7 +36,7 @@ namespace Pack_My_Game.Core
     /// <remarks>
     /// Dans la mesure du possible on n'utilise pas LBGame, on va copier directement le xml
     /// </remarks>
-    class LaunchBoxCore : I_ASBaseC
+    partial class LaunchBoxCore : I_ASBaseC
     {
         public delegate object SignalBoxHandler(object sender, params string[] parameters);
         public delegate void SignalRecapHandler(object sender, string destination, string title, Platform platform);
@@ -59,22 +61,32 @@ namespace Pack_My_Game.Core
         public CancellationTokenSource TokenSource { get; } = new CancellationTokenSource();
         public CancellationToken CancelToken { get; }
 
+        public bool IsPaused { get; set; }
+
+        /// <summary>
+        /// Objet gérant les vérifications
+        /// </summary>
+        OpDFilesExt _ObjectFiles { get; }
+
         // ---
 
         /// <summary>
         /// Liste des jeux
         /// </summary>
-        public ObservableCollection<ShortGame> _SelectedGames { get; private set; }
+        public static ObservableCollection<ShortGame> _SelectedGames { get; private set; }
+
+        /// <summary>
+        /// Object containing folders
+        /// </summary>
+        Platform _ZePlatform { get; }
+
+
 
         /// <summary>
         /// Fichier xml contenant les jeux
         /// </summary>
         private string _XMLPlatformFile { get; }
 
-        /// <summary>
-        /// Nom de la plateforme
-        /// </summary>
-        //private string _PlatformName { get; }
 
         /// <summary>
         /// Repertoire de travail
@@ -86,18 +98,13 @@ namespace Pack_My_Game.Core
         /// </summary>
         public string _SystemPath { get; }
 
-        /// <summary>
-        /// Objet gérant les vérifications
-        /// </summary>
-        OpDFilesExt _ObjectFiles { get; }
 
-        /// <summary>
-        /// Object containing folders
-        /// </summary>
-        Platform _ZePlatform { get; }
 
-        public bool IsPaused { get; set; }
 
+
+
+
+        #region Décisions
         /// <summary>
         /// Indique la décision précédente en cas de all.
         /// </summary>
@@ -111,10 +118,45 @@ namespace Pack_My_Game.Core
         /// </summary>
         E_Decision _FileConflictDecision;
 
+        #endregion
         /// <summary>
         /// Répertoire de travail pour le jeu (voir si utile)
         /// </summary>
         //private string _GamePath;
+
+        internal static bool PrepareToContinue(ObservableCollection<ShortGame> selectedGames, string platformName)
+        {
+            // Vérification des fichiers pour chaque jeu (ne gère pas les vidéos)
+            LaunchBoxFunc.CheckGamesValidity(selectedGames, platformName);
+            if (selectedGames.Count == 0)
+            {
+                if (selectedGames.Count > 1)
+                    DxMBox.ShowDial("No game selected");
+
+                return false;
+            }
+
+            W_Games gamesWindow = new W_Games();
+            gamesWindow.SelectedGames = selectedGames;
+
+            if (gamesWindow.ShowDialog() != true)
+            {
+                return false;
+            }
+
+            if (selectedGames.Count == 0)
+            {
+                if (selectedGames.Count > 1)
+                    DxMBox.ShowDial("No game selected");
+
+                return false;
+            }
+            _SelectedGames = gamesWindow.SelectedGames;
+
+            return true;
+
+
+        }
 
         /// <summary>
         /// Sert au traitement de packaging pour un jeu
@@ -127,7 +169,6 @@ namespace Pack_My_Game.Core
                 throw new Exception();
 
             CancelToken = TokenSource.Token;
-
 
             //_PlatformName = platformName;
 
@@ -169,25 +210,8 @@ namespace Pack_My_Game.Core
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="shGames"></param>
-        /// <returns></returns>
-        public bool Initialize(ObservableCollection<ShortGame> shGames)
-        {
-            W_Games gamesWindow = new W_Games();
-            gamesWindow.SelectedGames = shGames;
 
-            if (gamesWindow.ShowDialog() != true)
-            {
-                return false;
-            }
 
-            _SelectedGames = gamesWindow.SelectedGames;
-
-            return true;
-        }
 
         /// <summary>
         /// 
@@ -243,7 +267,7 @@ namespace Pack_My_Game.Core
                 // Dossiers
                 string gamePath = Path.Combine(_SystemPath, $"{shGame.ExploitableFileName}");             // New Working Folder
 
-                // Contrôle de collisions
+                // Contrôle de collisions pour les dossiers
                 if (Directory.Exists(gamePath))
                 {
                     HeTrace.WriteLine($"Directory Exists '{gamePath}'", this);
@@ -288,6 +312,7 @@ namespace Pack_My_Game.Core
                 var tree = MakeStructure(gamePath);
 
                 // ---
+
                 #region Original Backup Game - Before all modifications
                 if (PS.Default.opOBGame)
                 {
@@ -297,10 +322,16 @@ namespace Pack_My_Game.Core
                 {
                     HeTrace.WriteLine("[Run] Original Backup Game disabled");
                 }
+
+
                 #endregion
+
 
                 // Récupération du jeu
                 LBGame lbGame = XML_Games.Scrap_LBGame<LBGame>(_XMLPlatformFile, "ID", shGame.Id);
+                HeTrace.WriteLine("Alarms about not managed field are not important except if it's about a path containing datas");
+                HeTrace.WriteLine("EBGames and TBGames don't use a class they copy directly from xml to xml");
+
                 #region Creation of the Infos.xml (on ne récupère que ce que l'on veut)
                 if (PS.Default.opInfos)
                 {
@@ -313,10 +344,21 @@ namespace Pack_My_Game.Core
                 }
                 #endregion
 
+
+
+                // --- Récupération des fichiers
+                GamePathsExt gpX = GamePathsExt.CreateBasic(lbGame);
+
+                GetFiles(lbGame, gpX);
+
                 // --- Copie des fichiers
-                CopyFiles(lbGame, tree);
+                CopyFiles(gpX, tree);
 
+                //CopyFiles(lbGame, tree);
 
+                // --- Récapitulatif permettant de rajouter ou lever des fichiers au pack
+
+                PackMe_IHM.LaunchBoxCore_Recap(gamePath, _ZePlatform, gpX);
 
                 #region Serialization / improved backup of Launchbox datas (with found medias missing) 
                 /* - En théorie on est toujours sur du relative path
@@ -326,7 +368,8 @@ namespace Pack_My_Game.Core
                  */
                 if (PS.Default.opEBGame)
                 {
-                    XML_Games.EnhancedBackup(_XMLPlatformFile, lbGame, gamePath);
+                    Make_EnhanceBackup(gpX, lbGame, gamePath);
+                    
                 }
                 else
                 {
@@ -335,7 +378,10 @@ namespace Pack_My_Game.Core
 
                 #endregion
 
-                PackMe_IHM.LaunchBoxCore_Recap(gamePath, _ZePlatform, shGame.Title);
+                // --- Création d'un fichier conservant les fichiers par défaut définis par l'utilisateur en vue de réutilisation plus tard
+
+                //                ManageDefaultFiles(lbGame, gamePath, tree);
+                gpX.WriteToJson(Path.Combine(gamePath, "DPGame.json"));
 
 
                 // --- On complète l'arborescence
@@ -453,7 +499,34 @@ namespace Pack_My_Game.Core
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="gpX"></param>
+        /// <param name="lbGame"></param>
+        /// <param name="gamePath"></param>
+        private void Make_EnhanceBackup(GamePathsExt gpX, LBGame lbGame, string gamePath)
+        {
+            if (string.IsNullOrEmpty(lbGame.ManualPath))
+                lbGame.ManualPath = gpX.CompManuals[0];                
 
+            if (string.IsNullOrEmpty(lbGame.MusicPath))
+                lbGame.MusicPath = gpX.CompMusics[0];
+
+            if (string.IsNullOrEmpty(lbGame.VideoPath))
+                lbGame.VideoPath = gpX.CompVideos.FirstOrDefault(x => !x.Contains("Theme", StringComparison.OrdinalIgnoreCase));
+
+            if(string.IsNullOrEmpty(lbGame.ThemeVideoPath))
+                lbGame.ThemeVideoPath = gpX.CompVideos.FirstOrDefault(x => x.Contains("Theme", StringComparison.OrdinalIgnoreCase));
+
+            lbGame.ApplicationPath = DxPath.To_Relative(PS.Default.LBPath, lbGame.ApplicationPath);
+            lbGame.ManualPath = DxPath.To_Relative(PS.Default.LBPath, lbGame.ManualPath);
+            lbGame.MusicPath = DxPath.To_Relative(PS.Default.LBPath, lbGame.MusicPath);
+            lbGame.VideoPath = DxPath.To_Relative(PS.Default.LBPath, lbGame.VideoPath);
+            lbGame.ThemeVideoPath = DxPath.To_Relative(PS.Default.LBPath, lbGame.ThemeVideoPath);
+
+            XML_Games.EnhancedBackup(_XMLPlatformFile, lbGame, gamePath);
+        }
 
 
         /// <summary>
@@ -487,196 +560,150 @@ namespace Pack_My_Game.Core
             return tree;
         }
 
-
-        #region copies
-        private void CopyFiles(LBGame lbGame, Folder tree)
+        /// <summary>
+        /// Récupère tous les fichiers en fonction du LBGame, ainsi que des dossiers de la plateforme
+        /// </summary>
+        /// <param name="lbGame"></param>
+        /// <param name="gpX"></param>
+        private void GetFiles(LBGame lbGame, GamePathsExt gpX)
         {
-            // Jeu
-            CopyRoms(lbGame.ApplicationPath, tree.Children[Common.Games].Path);
-            // Video, Music, Manual
-            CopySpecific(lbGame, lbGame.ManualPath, tree.Children[Common.Manuals].Path, "Manual", x => lbGame.ManualPath = x);
-            CopySpecific(lbGame, lbGame.MusicPath, tree.Children[Common.Musics].Path, "Music", x => lbGame.MusicPath = x);
-            CopySpecific(lbGame, lbGame.VideoPath, tree.Children[Common.Videos].Path, "Video", x => lbGame.VideoPath = x); ;
-            // Images
-            CopyImages(lbGame, tree.Children[Common.Images].Path);
+            // 2021 - Formatage de la chaine pour éviter les erreurs
+            string toSearch = lbGame.Title.Replace(':', '_').Replace('\'', '_').Replace("__", "_");
+
+            gpX.ApplicationPath = GetFilesForGames(lbGame.ApplicationPath, gpX.CompApps);
 
             // CheatCodes
-            #region Copy CheatCodes
-            if (PS.Default.opCheatCodes && !string.IsNullOrEmpty(PS.Default.CCodesPath))
-            {
-                CopyCheatCodes(lbGame, tree.Children[Common.CheatCodes].Path);
-            }
-            else
-            {
-                HeTrace.WriteLine("[Run] Copy Cheat Codes disabled", this);
-            }
-            #endregion
+            GetCheatCodes(toSearch, gpX.CompCheatCodes);
+
+            // Manuels
+            gpX.ManualPath = GetFileForSpecifics(lbGame.ManualPath);
+            GetMoreFiles(toSearch, gpX.CompManuals, "Manual", gpX.ManualPath);
+
+            // Musics 
+            gpX.MusicPath = GetFileForSpecifics(lbGame.MusicPath);
+            GetMoreFiles(toSearch, gpX.CompMusics, "Music", gpX.MusicPath);
+
+            // Videos
+            gpX.VideoPath = GetFileForSpecifics(lbGame.VideoPath);
+            gpX.ThemeVideoPath = GetFileForSpecifics(lbGame.ThemeVideoPath);
+            GetMoreFiles(toSearch, gpX.CompVideos, "Video", gpX.VideoPath, gpX.ThemeVideoPath);
 
             // Clones
-            #region Copy Clones
-            if (PS.Default.opClones)
-            {
-                CopyClones(lbGame, tree.Children[Common.Games].Path);
-            }
-            else
-            {
-                HeTrace.WriteLine($"[Run] Clone copy disabled", this);
-            }
-            #endregion
+            GetClones(lbGame, gpX.CompApps);
+
+            // Images
+            GetImagesFiles(lbGame, toSearch, gpX.Images);
+
 
         }
 
-
         /// <summary>
-        /// Copy games files
+        /// 
         /// </summary>
-        /// <remarks>
-        /// Ne conserve pas les subfolders
-        /// </remarks>
         /// <param name="applicationPath"></param>
-        /// <param name="destLocation"></param>
-        private void CopyRoms(string applicationPath, string destLocation)
+        /// <param name="applications"></param>
+        /// <returns>Le fichier sélectionné</returns>
+        private string GetFilesForGames(string applicationPath, List<string> applications)
         {
-            /*
-             * On part du principe que le dossier rom DOIT être rempli
-            */
             if (string.IsNullOrEmpty(applicationPath))
-                throw new ArgumentNullException("[CopyRoms] Folder of application path is empty");
+                throw new ArgumentNullException("[GetFiles] Folder of application path is empty");
 
             string extension = Path.GetExtension(applicationPath);
 
             // si aucune extension on ne pack pas le fichier
             if (string.IsNullOrEmpty(extension))
-                throw new ArgumentNullException("[CopyRoms] Extension of application is null");
+                throw new ArgumentNullException("[GetFiles] Extension of application is null");
 
-
-            string srcFile = Path.GetFullPath(applicationPath, PS.Default.LBPath);
 
             // --- Cas des extensions cue
             if (extension.Equals(".cue", StringComparison.OrdinalIgnoreCase))
             {
+                string srcFile = Path.GetFullPath(applicationPath, PS.Default.LBPath);
+
                 //Lecture du fichier cue
                 Cue_Scrapper cuecont = new Cue_Scrapper(srcFile);
 
                 //Folder containing files
                 string sourceFold = Path.GetDirectoryName(srcFile);
 
-
                 // Fonctionne avec le nom du fichier
                 foreach (string fileName in cuecont.Files)
                 {
                     // Donne le lien complet vers le fichier
-                    string source = Path.Combine(sourceFold, fileName);
-
-                    SimpleCopyManager(source, destLocation, ref _FileConflictDecision);
+                    GamePathsExt.AddWVerif(Path.Combine(sourceFold, fileName), applications);
                 }
             }
 
-            // --- Copy of application (.cue file too)
-            SimpleCopyManager(srcFile, destLocation, ref _FileConflictDecision);
+
+            return Path.GetFullPath(applicationPath, PS.Default.LBPath);
 
         }
 
         /// <summary>
-        /// Copie les fichiers qui sont peut être identifiés dans le xml
+        /// 
         /// </summary>
-        /// <param name="dbGamePath">Tiré des données du jeu</param>
-        /// <param name="destLocation">Dossier de destination</param>
-        /// <param name="mediatype">Utilisé pour retrouver dans l'objet plateforme</param>
-        /// <param name="Assignation"></param>
-        /// <remarks>
-        /// </remarks>
-        private void CopySpecific(LBGame lbGame, string dbGamePath, string destLocation, string mediatype, Func<string, string> Assignation)
+        /// <param name="toSearch"></param>
+        /// <param name="compCheatCodes"></param>
+        private void GetCheatCodes(string toSearch, List<string> compCheatCodes)
         {
-            List<string> files = new List<string>();
+            string CCodesDir = Path.Combine(PS.Default.CCodesPath, _ZePlatform.Name);
+            if (!Directory.Exists(CCodesDir))
+            {
+                this.UpdateStatus?.Invoke(this, $"Directory doesn't exist: '{CCodesDir}'");
+                return;
+            }
 
-            // Normal copy, if path get by xml exists
-            // 05/04/2021 Modifications pour lever le ou et mettre un système de "Et"
+            compCheatCodes = GetFilesByPredict(toSearch, CCodesDir, "CheatCodes");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dbGamePath"></param>
+        /// <returns>
+        /// Vérifie et retourne le fichier sélectionné
+        /// </returns>
+        private string GetFileForSpecifics(string dbGamePath)
+        {
+            // Si le fichier indiqué dans le fichier du jeu existe
             if (!string.IsNullOrEmpty(dbGamePath))
             {
                 string linkFile = Path.GetFullPath(dbGamePath, PS.Default.LBPath);
                 if (File.Exists(linkFile))
                 {
-
-                    //05/04/2021 SimpleCopyManager(dbPath, destLocation/*, mediatype*/, ref _FileConflictDecision);
-                    files.Add(linkFile);
-
-
-                    // L'assignation permet de transmettre le résultat d'une fonction à une variable             
-                    Assignation(DxPaths.Windows.DxPath.To_Relative(PS.Default.LBPath, linkFile));
+                    return linkFile;
                 }
             }
-
-
-            // On récupère le dossier concerné par le média
-            PlatformFolder folder = _ZePlatform.PlatformFolders.First(
-                                            (x) => x.MediaType.Equals(mediatype, StringComparison.OrdinalIgnoreCase));
-            /*foreach (PlatformFolder pFormfolder in _ZePlatform.PlatformFolders)
-            {
-                if (pFormfolder.MediaType.Equals(mediatype))
-                {
-                    folder = pFormfolder;
-                    break;
-                }
-            }*/
-
-            List<string> filteredFiles = GetFilesByPredict(lbGame, folder.FolderPath, mediatype);
-
-
-            // En cas d'abandon ou de fichier non trouvé on sort
-            if (files.Count == 0 && (filteredFiles == null || filteredFiles.Count == 0))
-                return;
-
-            // On assigne si nécessaire
-            if (files.Count == 0 && filteredFiles.Count > 0)
-                Assignation(DxPaths.Windows.DxPath.To_Relative(PS.Default.LBPath, filteredFiles[0]));
-
-
-            files.AddRange(filteredFiles);
-
-            // On enlève les doublons
-            files = files.Distinct().ToList();
-
-            #region
-            // Traitement des fichiers pour la copie
-            foreach (string fichier in filteredFiles)
-            {
-                // Sachant qu'ici on a le nom du dossier source on peut conserver la structure
-                string tail = fichier.Replace(folder.FolderPath, "").Replace(Path.GetFileName(fichier), "");
-
-                //Recherche de fichiers déjà présents
-                //string destFile = Path.Combine(destLocation, Path.GetFileName(fichier));
-
-                if (tail.Length == 1)
-                    SimpleCopyManager(fichier, destLocation, ref _FileConflictDecision);
-                else
-                    SimpleCopyManager(fichier, Path.Combine(destLocation, tail.Substring(1)), ref _FileConflictDecision);
-            }
-
-
-            #endregion
-
-
-
-
+            return null;
         }
 
         /// <summary>
-        /// Copie les images / Copy the images
-        /// </summary>      
-        /// <remarks>To Add Mask see 'Where'</remarks>
-        private void CopyImages(LBGame lbGame, string imgsFolder)
+        /// 
+        /// </summary>
+        /// <param name="lbGame"></param>
+        /// <param name="applications"></param>
+        /// <remarks>
+        /// Test l'existance avant
+        /// </remarks>
+        private void GetClones(LBGame lbGame, List<string> applications)
         {
-            if (!imgsFolder.Contains(_WFolder))
-                throw new Exception($"[CreateFolders] Erreur la chaine '{imgsFolder}' ne contient pas '{_WFolder}'");
+            List<Clone> clones = XML_Games.ListClones(_XMLPlatformFile, "GameID", lbGame.Id).ToList();
 
-            //ITrace.WriteLine(prefix: false);
+            // tri des doublons / filter duplicates
+            List<Clone> fClones = FilesFunc.DistinctClones(clones, lbGame.ApplicationPath, PS.Default.LBPath);
 
-            Queue<PackFile> lPackFile = new Queue<PackFile>();
+            foreach (Clone c in fClones)
+            {
+                string path = Path.GetFullPath(c.ApplicationPath, PS.Default.LBPath);
 
-            // Get All images (To Add mask see at Where)
-            Console.WriteLine($"[CopyImages] Search all images for '{lbGame.Title}'");
+                if (File.Exists(path))
+                    GamePathsExt.AddWVerif(path, applications);
+            }
+        }
 
+        private void GetImagesFiles(LBGame lbGame, string toSearch, List<PackFile> images)
+        {
+            //Queue<string> lPackFile = new Queue<string>();
 
             foreach (PlatformFolder plfmFolder in _ZePlatform.PlatformFolders)
             {
@@ -690,9 +717,6 @@ namespace Pack_My_Game.Core
                         continue;
                 }
 
-                // 2020 - on modify pour certains titres, la recherche
-                string toSearch = lbGame.Title.Replace(':', '_').Replace('\'', '_').Replace("__", "_");
-
                 // Liste du contenu des dossiers
                 foreach (var fichier in Directory.EnumerateFiles(plfmFolder.FolderPath, "*.*", SearchOption.AllDirectories))
                 {
@@ -703,86 +727,201 @@ namespace Pack_My_Game.Core
                         !fileName.StartsWith($"{ lbGame.Title}.{ lbGame.Id}-"))
                         continue;
 
-                    HeTrace.WriteLine($"\t\t[CopyImages] Found '{fichier}' in '{plfmFolder.FolderPath}'");
+                    HeTrace.WriteLine($"\t\t[GetImages] Found '{fichier}' in '{plfmFolder.FolderPath}'");
 
                     PackFile tmp = new PackFile(plfmFolder.MediaType, fichier);
 
-                    lPackFile.Enqueue(tmp);
+                    //   lPackFile.Enqueue(fichier);
+                    images.Add(tmp);
                 }
             }
+        }
 
-            //      ITrace.WriteLine(prefix: false);
-            E_Decision resMem = E_Decision.None;
-            while (lPackFile.Count != 0)
+
+        private void GetMoreFiles(string toSearch, List<string> files, string mediatype, params string[] fields)
+        {
+            // On récupère le dossier concerné par le média
+            PlatformFolder folder = _ZePlatform.PlatformFolders.First(
+                                            (x) => x.MediaType.Equals(mediatype, StringComparison.OrdinalIgnoreCase));
+
+            List<string> filteredFiles = GetFilesByPredict(toSearch, folder.FolderPath, mediatype);
+
+            foreach (string f in filteredFiles)
             {
-                var pkFile = lPackFile.Dequeue();
+                // Evite de prendre en double ceux qui sont sélectionnés
+                if (fields.Contains(f))
+                    continue;
 
+                HeTrace.WriteLine($"[GetMoreFiles] found: '{f}'", this);
+                GamePathsExt.AddWVerif(f, files);
+            }
+        }
+
+
+        #region copies
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="gpX"></param>
+        /// <param name="tree"></param>
+        /// <remarks>
+        /// Altère GPX pour suivre les fichiers
+        /// </remarks>
+        private void CopyFiles(GamePathsExt gpX, Folder tree)
+        {
+            // Roms + Clones
+            gpX.ApplicationPath = CopyMain(gpX.ApplicationPath, tree.Children[Common.Games].Path, false);
+            CopyList(gpX.CompApps, tree.Children[Common.Games].Path, false);
+
+            // CheatCodes
+            CopyList(gpX.CompCheatCodes, tree.Children[Common.CheatCodes].Path, false);
+
+            // Manuals
+            gpX.ManualPath = CopyMain(gpX.ManualPath, tree.Children[Common.Manuals].Path, true, "Manual");
+            CopyList(gpX.CompManuals, tree.Children[Common.Manuals].Path, true, "Manual");
+
+            // Musics
+            gpX.MusicPath = CopyMain(gpX.MusicPath, tree.Children[Common.Musics].Path, true, "Music");
+            CopyList(gpX.CompMusics, tree.Children[Common.Musics].Path, true, "Music");
+
+            // Videos
+            gpX.VideoPath = CopyMain(gpX.VideoPath, tree.Children[Common.Videos].Path, true, "Video");
+            gpX.ThemeVideoPath = CopyMain(gpX.ThemeVideoPath, tree.Children[Common.Videos].Path, true, "Video");
+            CopyList(gpX.CompVideos, tree.Children[Common.Videos].Path, true, "Video");
+
+            // Images
+            CopyImages(gpX.Images, tree.Children[Common.Images].Path);
+        }
+
+        /*       /// <summary>
+               /// 
+               /// </summary>
+               /// <param name="path"></param>
+               /// <param name="compApps"></param>
+               /// <param name="destLocation"></param>
+               /// <returns></returns>
+               /// <remarks>
+               /// On ne garde pas le tail
+               /// </remarks>
+               private string CopyMain(string path, string destLocation)
+               {
+                   string futurLink = Path.Combine(destLocation, Path.GetFileName(path));
+
+                   SimpleCopyManager(path, ref _FileConflictDecision, futurLink);
+
+                   return DxPath.To_Relative(destLocation, futurLink);
+               }*/
+
+        private string CopyMain(string fichier, string destLocation, bool wTail, string mediatype = null)
+        {
+            if (string.IsNullOrEmpty(fichier))
+                return string.Empty;
+
+            PlatformFolder folder = null;
+            if (wTail && !string.IsNullOrEmpty(mediatype))
+            {
+                // On récupère le dossier concerné par le média
+                folder = _ZePlatform.PlatformFolders.First(
+                            (x) => x.MediaType.Equals(mediatype, StringComparison.OrdinalIgnoreCase));
+            }
+
+            string futurLink, tail;
+            futurLink = tail = string.Empty;
+
+            if (folder != null && fichier.Contains(folder.FolderPath))
+            {
+                tail = fichier.Replace(folder.FolderPath, string.Empty).TrimStart('\\');
+                futurLink = Path.Combine(destLocation, tail);
+            }
+            else
+            {
+                futurLink = Path.Combine(destLocation, Path.GetFileName(fichier));
+            }
+
+            SimpleCopyManager(fichier, ref _FileConflictDecision, futurLink);
+
+            return DxPath.To_Relative(destLocation, futurLink);
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="compApps"></param>
+        /// <param name="folder"></param>
+        /// <remarks>
+        /// Conserve la structure si c'est souhaité
+        /// </remarks>
+        private void CopyList(List<string> elems, string destLocation, bool wTail, string mediatype = null)
+        {
+            PlatformFolder folder = null;
+            if (wTail && !string.IsNullOrEmpty(mediatype))
+            {
+                // On récupère le dossier concerné par le média
+                folder = _ZePlatform.PlatformFolders.First(
+                            (x) => x.MediaType.Equals(mediatype, StringComparison.OrdinalIgnoreCase));
+            }
+
+            string tail, futurLink;
+            foreach (string fichier in elems)
+            {
+                futurLink = string.Empty;
+                tail = string.Empty;
+
+                if (wTail)
+                {
+                    if (folder != null && fichier.Contains(folder.FolderPath))
+                    {
+                        tail = fichier.Replace(folder.FolderPath, string.Empty).TrimStart('\\');
+                        futurLink = Path.Combine(destLocation, tail);
+
+                        SimpleCopyManager(fichier, ref _FileConflictDecision, futurLink);
+                        continue;
+                    }
+                }
+
+                futurLink = Path.Combine(destLocation, Path.GetFileName(fichier));
+                SimpleCopyManager(fichier, ref _FileConflictDecision, futurLink);
+            }
+        }
+
+        private void CopyImages(List<PackFile> images, string destLocation)
+        {
+            E_Decision resMem = E_Decision.None;
+            string tail, futurLink;
+            foreach (PackFile pkFile in images)
+            {
+                tail = string.Empty;
                 // On récupère la tail
-                int pos = pkFile.LinkToThePath.IndexOf(pkFile.Categorie);
-                string tail1 = Path.GetDirectoryName(pkFile.LinkToThePath).Substring(pos);
+                PlatformFolder folder = _ZePlatform.PlatformFolders.First(
+                                          (x) => x.MediaType.Equals(pkFile.Categorie, StringComparison.OrdinalIgnoreCase));
+
+
+                if (folder != null && pkFile.LinkToThePath.Contains(folder.FolderPath))
+                {
+                    tail = pkFile.LinkToThePath.Replace(folder.FolderPath, string.Empty).TrimStart('\\');
+
+                    futurLink = Path.Combine(destLocation, pkFile.Categorie, tail);
+                }
+                else
+                {
+                    futurLink = Path.Combine(destLocation, Path.GetFileName(pkFile.LinkToThePath));
+                }
+
+                SimpleCopyManager(pkFile.LinkToThePath, ref resMem, futurLink);
 
                 // Dossier de destination
                 //25/03/2021string destFolder = Path.Combine(_Tree.Children[nameof(SubFolder.Images)].Path, tail1);
-                string destFolder = Path.Combine(imgsFolder, tail1);
+                //string destFolder = Path.Combine(imgsFolder, tail1);
 
-                SimpleCopyManager(pkFile.LinkToThePath, destFolder, ref resMem);
-            }
-
-        }
-
-        /// <summary>
-        /// Copie les cheatcodes / Copy all cheatcodes
-        /// </summary>
-        private void CopyCheatCodes(LBGame lBGame, string destLocation)
-        {
-
-            string CCodesDir = Path.Combine(PS.Default.CCodesPath, _ZePlatform.Name);
-            if (!Directory.Exists(CCodesDir))
-            {
-                this.UpdateStatus?.Invoke(this, $"Directory doesn't exist: '{CCodesDir}'");
-                return;
-            }
-
-            var filteredFiles = GetFilesByPredict(lBGame, CCodesDir, "CheatCodes");
-
-
-            // En cas d'abandon ou de fichier non trouvé on sort
-            if (filteredFiles == null || filteredFiles.Count == 0)
-                return;
-
-            //
-            foreach (string fichier in filteredFiles)
-            {
-                SimpleCopyManager(fichier, destLocation, ref _FileConflictDecision);
-
+                //SimpleCopyManager(pkFile.LinkToThePath, destFolder, ref resMem);
             }
         }
 
-        private void CopyClones(LBGame lBGame, string destLocation)
-        {
-            //ITrace.WriteLine(prefix: false);
-            /* 26/03/2021
-            OPFiles opF = new OPFiles()
-            {
-                Buttons = Dcs_Buttons.NoStop,
-                WhoCallMe = "Clone"
-            };
-            opF.IWriteLine += (string message) => ITrace.WriteLine(message);
-            opF.IWrite += (string message) => ITrace.BeginLine(message);*/
 
-            List<Clone> clones = XML_Games.ListClones(_XMLPlatformFile, "GameID", lBGame.Id).ToList();
 
-            // tri des doublons / filter duplicates
-            List<Clone> fClones = FilesFunc.DistinctClones(clones, lBGame.ApplicationPath, PS.Default.LBPath);
 
-            // On va vérifier que chaque clone n'est pas déjà présent et selon déjà copier
-            foreach (Clone zeClone in fClones)
-            {
-                //waiting zeClone.ApplicationPath = ReconstructPath(zeClone.ApplicationPath);
 
-                SimpleCopyManager(Path.GetFullPath(zeClone.ApplicationPath, PS.Default.LBPath), destLocation, ref _FileConflictDecision);
-            }
-        }
         #endregion
 
 
@@ -792,10 +931,8 @@ namespace Pack_My_Game.Core
         /// <summary>
         /// Récupère les fichiers par "prédiction"
         /// </summary>
-        internal List<string> GetFilesByPredict(LBGame lbGame, string folder, string mediatype)
+        internal List<string> GetFilesByPredict(string toSearch, string folder, string mediatype)
         {
-            // 2020 - Formatage de la chaine pour éviter les erreurs
-            string toSearch = lbGame.Title.Replace(':', '_').Replace('\'', '_').Replace("__", "_");
 
             // array of files with a part of the name
             string[] files = Directory.GetFiles(Path.GetFullPath(folder, PS.Default.LBPath), $"{toSearch}*.*", SearchOption.AllDirectories);
@@ -843,21 +980,24 @@ namespace Pack_My_Game.Core
         }
 
 
-        /// <summary>
-        /// Verifiy if file exist, if it is doesn't copy + HashVerif at the end
-        /// </summary>
-        /// <param name="fileSrc"></param>
-        /// <param name="destFile"></param>
-        internal void SimpleCopyManager(string fileSrc, string destFolder, ref E_Decision previousDec)
+
+
+        internal void SimpleCopyManager(string fileSrc, ref E_Decision previousDec, string destFile)
         {
             if (CancelToken.IsCancellationRequested)
                 throw new OperationCanceledException("Operation stopped");
 
+            if (!destFile.Contains(_WFolder))
+                throw new Exception($"[CreateFolders] Erreur la chaine '{destFile}' ne contient pas '{_WFolder}'");
+
+
             // Création des dossiers
+            string destFolder = Path.GetDirectoryName(destFile);
             if (!Directory.Exists(destFolder))
                 Directory.CreateDirectory(destFolder);
 
-            string destFile = Path.Combine(destFolder, Path.GetFileName(fileSrc));
+            //string destFile = Path.Combine(destFolder, Path.GetFileName(fileSrc));
+
             E_Decision? conflictDec = previousDec;
 
             bool overwrite = false;
@@ -968,6 +1108,58 @@ namespace Pack_My_Game.Core
 
         }*/
         #endregion tree
+
+        /// <summary>
+        /// Check les fichiers définis dans les données du jeu et enregistre ça dans un fichier
+        /// ayant comme référent le dossier où ils sont sauvegardés.
+        /// </summary>
+        /// <param name="lbGame"></param>
+        [Obsolete]
+        private void ManageDefaultFiles(LBGame lbGame, string gamePath, Folder tree)
+        {
+            GamePaths gp = (GamePaths)lbGame;
+            gp.ApplicationPath = ManageRomPath(lbGame.ApplicationPath, tree.Children[Common.Games]);
+            gp.ManualPath = ManageDefaultFile(lbGame.ManualPath, tree.Children[Common.Manuals], "Manual");
+            gp.MusicPath = ManageDefaultFile(lbGame.MusicPath, tree.Children[Common.Musics], "Music");
+            //gp.VideoPath = ManageDefaultFile(lbGame.VideoPath, tree.Children[Common.Videos]);
+            //gp.ThemeVideoPath = ManageDefaultFile(lbGame.ThemeVideoPath, tree.Children[Common.]);
+
+            gp.WriteToJson(Path.Combine(gamePath, "DPGame.json"));
+        }
+
+        [Obsolete]
+        private string ManageRomPath(string fileLoc, Folder folder)
+        {
+            string fileN = Path.GetFileName(fileLoc);
+
+            if (File.Exists(Path.Combine(folder.Path, Path.GetFileName(fileLoc))))
+                return $"\\{fileN}";
+            else
+                return null;
+        }
+        [Obsolete]
+        private string ManageDefaultFile(string fileLoc, Folder folder, string media)
+        {
+            var motherF = _ZePlatform.PlatformFolders.FirstOrDefault((x) => x.MediaType == media);
+            if (motherF == null)
+                return null;
+
+            // Conversion des chemins pour les faire pointer vers le dossier de travail
+            string tmp = Path.GetFullPath(fileLoc, PS.Default.LBPath);
+            string rootF = Path.GetFullPath(motherF.FolderPath, PS.Default.LBPath);
+
+            if (!tmp.Contains(rootF))
+                return null;
+
+
+            tmp.Replace(rootF, folder.Path);
+            // Vérification de l'existence des fichiers
+            if (File.Exists(tmp))
+                return DxPaths.Windows.DxPath.To_Relative(folder.Path, tmp);
+            else
+                return null;
+        }
+
 
         #region Compression & Hash
         /// <summary>

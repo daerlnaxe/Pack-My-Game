@@ -110,7 +110,7 @@ namespace Pack_My_Game.Compression
                     szp.CompressDirectory(folder, Path.Combine(DestinationFolder, tmp));
 
                     // on renomme
-                    File.Move(tmp, ArchiveLink);
+                    File.Move(tmp, ArchiveLink, true);
 
                     return true;
                 }

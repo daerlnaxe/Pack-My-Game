@@ -8,6 +8,7 @@ namespace UnPack_My_Game.Graph.LaunchBox
     {
         None, 
         EBMethod, // Basé sur les chemins donnés dans EBGame.xml
-        LBMethod, // Basés sur les chemins donnés par la plateforme dans Launchbox
+        LBMethod, // Basé sur les chemins donnés par la plateforme dans Launchbox
+        TBMethod, // Basé sur les chemins donnés par un fichier plateforme 
     }
 }

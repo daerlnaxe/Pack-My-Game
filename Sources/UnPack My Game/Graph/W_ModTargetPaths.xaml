@@ -44,7 +44,8 @@
             <Label Content="{x:Static l:Lang.Pivot}" Grid.RowSpan="4" VerticalAlignment="Center"/>
             <TextBox Grid.Column="1" Text="{Binding Pivot, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="4"/>
             <!-- AppName option -->
-            <CheckBox Content="avé le nom du jeu" Grid.Row="5" Grid.ColumnSpan="2" IsChecked="{Binding OptNameChecked}"/>
+            <CheckBox Content="Place game files to a folder" ToolTip="Place games files to a folder named with the game name"
+                      Grid.Row="5" Grid.ColumnSpan="3" IsChecked="{Binding OptNameChecked}"/>
             <!-- Game -->
             <Label Grid.Column="3" Content="{x:Static l:Lang.Game}"/>
             <TextBox Grid.Column="4" Text="{Binding ToReplaceGame, FallbackValue=ToReplaceGame, UpdateSourceTrigger=PropertyChanged}"/>

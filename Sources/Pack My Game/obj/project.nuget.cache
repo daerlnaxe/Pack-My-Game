@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "iBh6Gu/9nvLEMGYP/nbz08OxfTDGUmpqENeTKI2B/PMgHUSM16ZkNDJHqqSlMcF8/QcW4hGX+enCu8rAJzOwsA==",
+  "dgSpecHash": "IVubhaj5GYOgpi0HXCdAXJTh5TsELZnwzn/fv2Bcnd6MWblP7SeQUeNH+Fn/1CLXRGSvn9kPRtWYH4x9nOsqWQ==",
   "success": true,
   "projectFilePath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\Pack My Game\\Pack My Game.csproj",
   "expectedPackageFiles": [
@@ -64,6 +64,8 @@
     "C:\\Users\\daerlnaxe\\.nuget\\packages\\system.serviceprocess.servicecontroller\\5.0.0\\system.serviceprocess.servicecontroller.5.0.0.nupkg.sha512",
     "C:\\Users\\daerlnaxe\\.nuget\\packages\\system.speech\\5.0.0\\system.speech.5.0.0.nupkg.sha512",
     "C:\\Users\\daerlnaxe\\.nuget\\packages\\system.text.encoding.codepages\\5.0.0\\system.text.encoding.codepages.5.0.0.nupkg.sha512",
+    "C:\\Users\\daerlnaxe\\.nuget\\packages\\system.text.encodings.web\\5.0.1\\system.text.encodings.web.5.0.1.nupkg.sha512",
+    "C:\\Users\\daerlnaxe\\.nuget\\packages\\system.text.json\\5.0.2\\system.text.json.5.0.2.nupkg.sha512",
     "C:\\Users\\daerlnaxe\\.nuget\\packages\\system.threading.accesscontrol\\5.0.0\\system.threading.accesscontrol.5.0.0.nupkg.sha512",
     "C:\\Users\\daerlnaxe\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512"
   ],

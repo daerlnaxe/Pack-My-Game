@@ -5,7 +5,9 @@ using DxTBoxCore.Common;
 using DxTBoxCore.Languages;
 using DxTBoxCore.MBox;
 using Hermes;
-using LaunchBox_XML.Container.Game;
+using Hermes.Cont;
+using Hermes.Messengers;
+using Common_PMG.Container.Game;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -25,7 +27,7 @@ namespace UnPack_My_Game.Cores
         #region events
         public abstract event DoubleHandler UpdateProgressT;
         public abstract event MessageHandler UpdateStatusT;
-        public abstract event DoubleHandler MaximumProgressT;
+        public virtual event DoubleHandler MaximumProgressT;
 
         public virtual event DoubleHandler UpdateProgress;
         public virtual event MessageHandler UpdateStatus;
@@ -42,6 +44,8 @@ namespace UnPack_My_Game.Cores
         public bool IsPaused { get; set; }
         #endregion
 
+        public List<FileObj> Games { get; }
+
 
         protected string TGamesP { get; set; }
         protected string TCheatsCodesP { get; set; }
@@ -56,12 +60,32 @@ namespace UnPack_My_Game.Cores
         public E_Method Mode { get; internal set; }
 
 
+        public C_LaunchBox(string logTitle, List<FileObj> games)
+        {
+            Games = games;
 
-        public abstract object Run(int timeSleep = 10);
+            // Tracing
+            MeSimpleLog log = new MeSimpleLog(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Common.Logs, $"{DateTime.Now.ToFileTime()}.log"))
+            {
+                LogLevel = 1,
+                FuncPrefix = EPrefix.Horodating,
+            };
 
+            log.AddCaller(this);
+            HeTrace.AddLogger(logTitle, log);
 
+            UpdateStatus += (x, y) => HeTrace.WriteLine(y, this);
 
+            ZipDecompression.StatCurrentProgress += (x, y) => this.UpdateProgress?.Invoke(x, y);
+            ZipDecompression.StatCurrentStatus += (x, y) => this.UpdateStatus?.Invoke(x, y);
+            ZipDecompression.StatMaxProgress += (x, y) => this.MaximumProgress?.Invoke(x, y);
 
+            //
+            MaximumProgressT?.Invoke(this, games.Count);
+            MaximumProgress?.Invoke(this, 100);
+        }
+
+        /*
         /// <summary>
         /// 
         /// </summary>
@@ -72,9 +96,13 @@ namespace UnPack_My_Game.Cores
 
 
         }
+        */
+        /*
+        protected void RedirectSignals()
+        {
 
-
-
+        }
+        */
 
 
 
@@ -111,11 +139,66 @@ namespace UnPack_My_Game.Cores
         }
 
 
+                // --- Backup
+        /// <summary>
+        /// Backup Platform xml file
+        /// </summary>
+        /// <param name="platformsFile"></param>
+        protected static void BackupPlatformsFile(string platformsFile)
+        {
+            string targetfP = Path.Combine(
+                                AppDomain.CurrentDomain.BaseDirectory,
+                                Common.BackUp,
+                                $"{Path.GetFileNameWithoutExtension(platformsFile)} - ");
+
+            for (int i = 00; i < 100; i++)
+            {
+                string tempo = targetfP + i.ToString("00") + ".xml";
+
+
+                if (!File.Exists(tempo))
+                {
+                    targetfP = tempo;
+                    break;
+                }
+
+                if (i == 99)
+                    targetfP += "00.xml";
+            }
+
+            //File.Copy(machine,);
+            File.Copy(platformsFile, targetfP, true);
+        }
+
+        /// <summary>
+        /// Copie les images
+        /// </summary>
+        /// <param name="srcFolder"></param>
+        protected void Copy_Images(string srcFolder, string destination)
+        {
+            foreach (string d in Directory.GetDirectories(srcFolder))
+            {
+         //       string dirName = Path.GetFileName(d);
+
+                UpdateStatus?.Invoke(this, $"\t{Lang.I_Copy} {Lang.Images} '{srcFolder}' => '{TImagesP}'");
+
+                CopyContent(d, destination);
+            }
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dossier"></param>
+        /// <param name="folderPath">Dossier de destination</param>
+        /// <remarks>
+        /// Recherche le répertoire définitif avant de copier, conserve la structure.
+        /// </remarks>
         protected void CopyContent(string dossier, string folderPath)
         {
             if (string.IsNullOrEmpty(folderPath))
                 return;
-
 
             folderPath = Path.GetFullPath(folderPath, PS.Default.LastLBpath);
             string target = null;
@@ -178,12 +261,12 @@ namespace UnPack_My_Game.Cores
             }
         }
 
-        protected bool? AskIfRemove(LBGame lbGame)
+        protected bool? AskDxMBox(string message, string title, E_DxButtons buttons, string optionnalMessage = null)
         {
             bool? res = false;
             Application.Current.Dispatcher?.Invoke(() =>
             {
-                res = DxMBox.ShowDial("Game is Already present", "Question", E_DxButtons.Yes | E_DxButtons.No, lbGame.Title);
+                res = DxMBox.ShowDial(message, title, buttons, optionnalMessage);
             }
                 );
 

@@ -12,10 +12,10 @@
 - It takes also the cheatcode files if you fill the path('GameName-.')
 - It generates a tree view file.
 - 7z and zip compression "</Description>
-    <Copyright>Copyright ©  2018-2021 Daerlnaxe Software</Copyright>
+    <Copyright>Copyright ©  2018-2038 Daerlnaxe Software</Copyright>
     <Company>Daerlnaxe Software</Company>
     <AssemblyVersion>2.0.0.1</AssemblyVersion>
-    <FileVersion>2.0.0.0</FileVersion>
+    <FileVersion>2.0.0.1</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

@@ -15,8 +15,13 @@
         Height="600" Width="800"
         >
     <Window.CommandBindings>
-        <CommandBinding Command="local:MainWindow.ExtractPlatformCmd" CanExecute="Can_ExtractPlatform" Executed="Exec_ExtractPlatform"/>
+        <!--        -->
+        <CommandBinding Command="local:MainWindow.CheckGameValidityCmd" CanExecute="Can_GamesSelected" Executed="Exec_CheckGameValidity"/>
+        <CommandBinding Command="local:MainWindow.ExtractPlatformCmd" CanExecute="Can_GamesSelected" Executed="Exec_ExtractPlatform"/>
+        <CommandBinding Command="local:MainWindow.ExtractDefaultFilesCmd" CanExecute="Can_GamesSelected" Executed="Exec_ExtractDefFiles"/>
         <CommandBinding Command="local:Common.ProcessCommand" CanExecute="Can_Process" Executed="Exec_Process"/>
+        <CommandBinding Command="local:MainWindow.SelectAllCmd" CanExecute="Can_SelectAll" Executed="Exec_SelectAll"/>
+        <CommandBinding Command="local:MainWindow.SelectNoneCmd" CanExecute="Can_DeselectAll" Executed="Exec_SelectNone"/>
     </Window.CommandBindings>
     <Window.Resources>
         <root:Common x:Key="Slang"/>
@@ -79,6 +84,7 @@
         </Menu>
         <!--Buttons -->
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+            <!--            -->
             <Button Content="{Binding Lang.ProcessExp, FallbackValue=ProcessExp}" Command="local:Common.ProcessCommand"/>
         </StackPanel>
         <!-- Center -->
@@ -91,7 +97,21 @@
             </Grid.RowDefinitions>
             <!-- Informations -->
             <GroupBox Grid.Row="0" Header="{Binding Lang.InfExp, FallbackValue=Informations}" HeaderStringFormat="{}{0}:">
-                <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="484,0,0,0" Click="button_Click"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content=""/>
+                    <TextBox />
+                    <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="484,0,0,0" Click="button_Click"/>
+
+                </Grid>
             </GroupBox>
             <!-- Options -->
             <GroupBox Grid.Row="1" Header="{Binding Lang.OptionsExp, FallbackValue=Options}">
@@ -117,7 +137,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
-                        
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions >
                         <ColumnDefinition Width="Auto"/>
@@ -153,19 +173,26 @@
                     <ScrollViewer x:Name="sv"  Grid.Row="2" Grid.ColumnSpan="4" VerticalScrollBarVisibility="Auto" 
                                   IsEnabled="{Binding NoGame, NotifyOnValidationError=True}">
                         <ListView ItemsSource="{Binding AvailableGames}"  PreviewMouseWheel="Game_WheelMouse">
+                            <ListView.ContextMenu>
+                                <ContextMenu>
+                                    <!--                                  -->
+                                    <MenuItem Command="local:MainWindow.CheckGameValidityCmd"/>
+                                    <MenuItem Command="local:MainWindow.ExtractDefaultFilesCmd"/>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <EventSetter Event="PreviewMouseDoubleClick" Handler="ListGame_DblClick"/>
                                 </Style>
                             </ListView.ItemContainerStyle>
-                            <ListView.View>                                
+                            <ListView.View>
                                 <GridView>
                                     <GridViewColumn >
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <CheckBox IsChecked="{Binding IsSelected}" Checked="Game_Checked" Unchecked="Game_Unchecked" Tag="{Binding}"/>
                                             </DataTemplate>
-                                        </GridViewColumn.CellTemplate>                                            
+                                        </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                     <GridViewColumn Header="{Binding Lang.TitleExp, FallbackValue=TitleExp}" DisplayMemberBinding="{Binding Title}" />
                                     <GridViewColumn Header="{Binding Lang.VersionExp, FallbackValue=VersionExp}" DisplayMemberBinding="{Binding Version}" />
@@ -187,6 +214,11 @@
                             -->
                         </ListView>
                     </ScrollViewer>
+                    <!-- All/None -->
+                    <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="3">
+                        <Button Content="All" Margin="0,5,0,5" Command="local:MainWindow.SelectAllCmd"/>
+                        <Button Content="None" Command="local:MainWindow.SelectNoneCmd"/>
+                    </StackPanel>
                 </Grid>
             </GroupBox>
         </Grid>

@@ -1,7 +1,7 @@
-﻿using LaunchBox_XML.BackupLB;
-using LaunchBox_XML.Container;
-using LaunchBox_XML.Container.AAPP;
-using LaunchBox_XML.Container.Game;
+﻿using Common_PMG.BackupLB;
+using Common_PMG.Container;
+using Common_PMG.Container.AAPP;
+using Common_PMG.Container.Game;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -29,14 +29,102 @@ namespace LaunchBox_XML.XML
     /// <remarks>
     /// Ne plus utiliser la sérialization pour mieux faire apparaitre les modifications et assurer une meilleure compatibilité
     /// </remarks>
-    public class XML_Games
+    public class XML_Games : IDisposable
     {
+        public static event MessageHandler Error;
         public static event MessageHandler Signal;
 
-        public static void NewPlatform(string machineXMLFile)
+        /// <summary>
+        /// 
+        /// </summary>
+        public string XmlGamesPlateforme { get; private set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public XElement Root { get; private set; }
+
+        public XML_Games(string xmlPlateforme)
         {
-            XElement xelPlatform = new XElement("LaunchBox");
-            xelPlatform.Save(machineXMLFile);
+            XmlGamesPlateforme = xmlPlateforme;
+            Root = XElement.Load(XmlGamesPlateforme);
+        }
+
+
+
+        #region Lecture
+        public bool Exists(string field, string value, string balise = "Game")
+        {
+            var platforms = from platform in Root.Elements(balise)
+                            where (string)platform.Element(field).Value == value
+                            select platform;
+
+            return platforms.Any();
+        }
+
+        #region Lecture verbatim
+        public static XElement GetGameNode(string xmlFile, int number = 0, string field = null, string value = null)
+        {
+            XElement root = XElement.Load(xmlFile);
+
+            var games = root.Elements("Game");
+
+            if (!string.IsNullOrEmpty(field) && !string.IsNullOrEmpty(value))
+                games.Elements()
+                        .Where(x => x.Element(field).Value == value)
+                        .Remove();
+
+            return games.ElementAt(number);
+        }
+
+        public static IEnumerable<XElement> GetNodes(string xmlFile, string what, string field = null, string value = null)
+        {
+            XElement root = XElement.Load(xmlFile);
+
+            IEnumerable<XElement> aApps = null;
+            if (string.IsNullOrEmpty(field) || string.IsNullOrEmpty(value))
+            {
+                aApps = root.Elements(what);
+            }
+            else
+            {
+                aApps = root.Elements(what)
+                            .Where(x => x.Element(field).Value == value);
+            }
+
+
+            return aApps;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="verbatimData"></param>
+        /// <param name="Tag"></param>
+        /// <returns></returns>
+        public static string GetByTag(XElement verbatimData, string Tag)
+        {
+            return (string)verbatimData.Element(Tag);
+        }
+        #endregion Lecture verbatim
+
+        #endregion Lecture
+
+        // --- 
+
+        #region Lecture par conversion
+        public static T Scrap_BasicGame<T>(XElement root) where T : I_BasicGame, new()
+        {
+            T gameBase = new T();
+            foreach (var field in root.Descendants())
+            {
+                if (field.Value == null)
+                    continue;
+
+                if (Make_BasicGame(gameBase, field))
+                    continue;
+            }
+
+            return gameBase;
         }
 
         /// <summary>
@@ -78,6 +166,7 @@ namespace LaunchBox_XML.XML
 
             return games.OrderBy(x => x.Title);
         }
+
 
         /// <summary>
         /// Scrape un jeu en mode InfoGame (basic + qqs infos en plus)
@@ -132,41 +221,13 @@ namespace LaunchBox_XML.XML
                 if (Make_InfoGame(gameLB, field))
                     continue;
 
+                //
                 if (Make_LBGame(gameLB, field))
                     continue;
             }
+
             return gameLB;
         }
-
-
-
-
-
-        /*    public static LBGame Scrap_LBGame<T>(string xmlFile) where T : LBGame
-            {
-                LBGame gameLB = new LBGame();
-
-                IEnumerable<XElement> games = from game in XElement.Load(xmlFile).Elements("Game")
-                                              where (string)game.Element(fieldName).Value == fieldValue
-                                              select game;
-
-                foreach (var field in games.ElementAt(0).Descendants())
-                {
-                    if (field.Value == null)
-                        continue;
-
-                    if (Make_BasicGame(gameLB, field))
-                        continue;
-
-                    if (Make_InfoGame(gameLB, field))
-                        continue;
-
-                    if (Make_LBGame(gameLB, field))
-                        continue;
-                }
-                return gameLB;
-            }*/
-
 
         /// <summary>
         /// Load a game (first)
@@ -238,9 +299,480 @@ namespace LaunchBox_XML.XML
             return gameLB;
         }
 
+        public static List<Clone> ListClones(string xmlFile)
+        {
+            List<Clone> aAppz = new List<Clone>();
+
+            foreach (var element in XElement.Load(xmlFile).Elements(nameof(AdditionalApplication)))
+            {
+                Clone cln = new Clone();
+
+                foreach (var field in element.Descendants())
+                {
+                    Make_Clone(field, cln);
+                }
+                aAppz.Add(cln);
+            }
+
+            return aAppz;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="xmlFile"></param>
+        /// <param name="fieldName"></param>
+        /// <param name="fieldValue"></param>
+        /// <returns></returns>
+        public static IEnumerable<Clone> ListClones(string xmlFile, string fieldName, string fieldValue)
+        {
+            //var root = XElement.Load(xmlFile);
+            List<Clone> aAppz = new List<Clone>();
+            var elements = from addApp in XElement.Load(xmlFile).Elements("AdditionalApplication")
+                           where (string)addApp.Element(fieldName).Value == fieldValue
+                           select addApp;
+
+            foreach (var element in elements)
+            {
+                Clone cln = new Clone();
+
+                foreach (var field in element.Descendants())
+                {
+                    Make_Clone(field, cln);
+                }
+                aAppz.Add(cln);
+            }
+
+            return aAppz;
+        }
+
+        public static List<AdditionalApplication> ListAddApps(string xmlFile)
+        {
+            List<AdditionalApplication> aAppz = new List<AdditionalApplication>();
+
+            foreach (var element in XElement.Load(xmlFile).Elements(nameof(AdditionalApplication)))
+            {
+                AdditionalApplication addApp = new AdditionalApplication();
+
+                foreach (var field in element.Descendants())
+                {
+                    Make_Clone(field, addApp);
+                    Make_AddApp(field, addApp);
+                }
+                aAppz.Add(addApp);
+            }
+
+            return aAppz;
+        }
+
+        public static List<CustomField> ListCustomFields(string xmlFile, string balise)
+        {
+            List<CustomField> customFields = new List<CustomField>();
+
+            foreach (var element in XElement.Load(xmlFile).Elements(balise))
+            {
+
+                customFields.Add(Make_CustomField(element));
+
+            }
+
+            return customFields;
+        }
+
+        private static CustomField Make_CustomField(XElement element)
+        {
+            CustomField cf = new CustomField();
+
+            foreach (var elem in element.Elements())
+            {
+                switch (elem.Name.LocalName)
+                {
+                    case nameof(cf.GameID):
+                        cf.GameID = elem.Value;
+                        break;
+
+                    case nameof(cf.Name):
+                        cf.Name = elem.Value;
+                        break;
+
+                    case nameof(cf.Value):
+                        cf.Value = elem.Value;
+                        break;
+
+                    default:
+                        Debug.WriteLine($"Non pris en charge: {elem.Name}");
+                        break;
+                }
+            }
+
+            return cf;
+        }
+
+        /*    public static LBGame Scrap_LBGame<T>(string xmlFile) where T : LBGame
+            {
+                LBGame gameLB = new LBGame();
+
+                IEnumerable<XElement> games = from game in XElement.Load(xmlFile).Elements("Game")
+                                              where (string)game.Element(fieldName).Value == fieldValue
+                                              select game;
+
+                foreach (var field in games.ElementAt(0).Descendants())
+                {
+                    if (field.Value == null)
+                        continue;
+
+                    if (Make_BasicGame(gameLB, field))
+                        continue;
+
+                    if (Make_InfoGame(gameLB, field))
+                        continue;
+
+                    if (Make_LBGame(gameLB, field))
+                        continue;
+                }
+                return gameLB;
+            }*/
+
+        #endregion Lecture par Conversion
+
+
+        // ---
+
+        #region Ecriture sans conversion
+
+        public static void NewPlatform(string machineXMLFile)
+        {
+            XElement xelPlatform = new XElement("LaunchBox");
+            xelPlatform.Save(machineXMLFile);
+        }
+
+
+        /// <summary>
+        /// Récupère les infos relatives à un game et injecte dans un autre fichier (aucune altération)
+        /// </summary>
+        /// <param name="id"></param>
+        public static void TrueBackup(string xmlFile, string id, string destFolder)
+        {
+            XElement root = XElement.Load(xmlFile);
+
+            XElement game = root.Elements("Game")
+                              .Where((x) => x.Element("ID").Value == id)
+                              .SingleOrDefault();
+
+            var addApps = from aApp in root.Elements("AdditionalApplication")
+                          where (string)aApp.Element("GameID").Value == id
+                          select aApp;
+
+            var customF = from cf in root.Elements("CustomField")
+                          where (string)cf.Element("GameID").Value == id
+                          select cf;
+
+            // On récupère les noms alternatifs
+            var altNames = from altN in root.Elements("AlternateName")
+                           where (string)altN.Element("GameID").Value == id
+                           select altN;
+
+
+            XElement tbGame = new XElement("TBGame");
+            tbGame.Add(new XComment("Verbatim backup"));
+            tbGame.Add(game, addApps, customF, altNames);
+
+            tbGame.Save(Path.Combine(destFolder, "TBGame.xml"));
+        }
+
+        /// <summary>
+        /// Backup with modification on media paths ~verbatim
+        /// </summary>
+        /// <param name="xmlFile"></param>
+        /// <param name="lbGame"></param>
+        /// <param name="destFolder"></param>
+        /// <remarks>
+        /// N'utilise lbGame que pour modifier les données
+        /// </remarks>
+        public static void EnhancedBackup(string xmlFile, LBGame lbGame, string destFolder)
+        {
+            XElement root = XElement.Load(xmlFile);
+
+            XElement game = root.Elements("Game")
+                              .Where((x) => x.Element("ID").Value == lbGame.Id)
+                              .SingleOrDefault();
+
+            if (game == null)
+                return;
+
+            XElement xelManual = game.Element("ManualPath");
+            if (xelManual != null)
+                xelManual.Value = lbGame.ManualPath;
+
+            XElement xelMusic = game.Element("MusicPath");
+            if (xelMusic != null)
+                xelMusic.Value = lbGame.MusicPath;
+
+            XElement xelVideo = game.Element("VideoPath");
+            if (xelVideo != null)
+                xelVideo.Value = lbGame.VideoPath;
+
+            XElement xelThemeVideo = game.Element("ThemeVideoPath");
+            if (xelThemeVideo != null)
+                xelThemeVideo.Value = lbGame.ThemeVideoPath;
+
+
+            // On récupère les additional apps
+            var addApps = from aApp in root.Elements("AdditionalApplication")
+                          where (string)aApp.Element("GameID").Value == lbGame.Id
+                          select aApp;
+
+            // On récupère les custom fields
+            var customF = from cf in root.Elements("CustomField")
+                          where (string)cf.Element("GameID").Value == lbGame.Id
+                          select cf;
+
+            // On récupère les noms alternatifs
+            var altNames = from altN in root.Elements("AlternateName")
+                           where (string)altN.Element("GameID").Value == lbGame.Id
+                           select altN;
+
+
+            XElement ebGame = new XElement("EBGame");
+            ebGame.Add(new XComment("Backup with media paths"));
+
+
+            ebGame.Add(game, addApps, customF, altNames);
+
+            ebGame.Save(Path.Combine(destFolder, "EBGame.xml"));
+        }
+
+        #region Injection Verbatim
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="verbatimGame"></param>
+        public void InjectGame(XElement verbatimGame)
+        {
+            IEnumerable<XElement> games = Root.Elements("Game");
+
+            if (games.Count() != 0)
+                games.Last().AddAfterSelf(verbatimGame);
+            else
+                Root.Add(verbatimGame);
+
+            Root.Save(this.XmlGamesPlateforme);
+        }
+
+        public void InjectAddApps(IEnumerable<XElement> addApps)
+        {
+            if (addApps.Count() == 0)
+            {
+                Error?.Invoke(this, $"Null value {addApps}");
+                return;
+            }
+
+            IEnumerable<XElement> otherApps = Root.Elements(nameof(AdditionalApplication));
+            if (otherApps.Count() > 0)
+            {
+                otherApps.Last().AddAfterSelf(addApps);
+            }
+            else
+            {
+                IEnumerable<XElement> games = Root.Elements("Game");
+                games.Last().AddAfterSelf(addApps);
+            }
+
+
+            Root.Save(this.XmlGamesPlateforme);
+        }
+
+        public void InjectCustomF(IEnumerable<XElement> cFields)
+        {
+            if (cFields.Count() == 0)
+            {
+                Error?.Invoke(this, $"Null value {cFields}");
+                return;
+            }
+
+            XElement lastElem = Root.Elements(Common.CustField).Last();
+            if (lastElem == null)
+                lastElem = Root.Elements(Common.AddApp).Last();
+
+            if (lastElem == null)
+                lastElem = Root.Elements(Common.Game).Last();
+
+            lastElem.AddAfterSelf(cFields);
+        }
+
+        public void InjectAltName(IEnumerable<XElement> altNames)
+        {
+            if (altNames.Count() == 0)
+            {
+                Error?.Invoke(this, $"Null value {altNames}");
+                return;
+            }
+
+            XElement lastElem = Root.Elements(Common.AltName).Last();
+            if (lastElem == null)
+                lastElem = Root.Elements(Common.CustField).Last();
+
+            if (lastElem == null)
+                lastElem = Root.Elements(Common.AddApp).Last();
+
+            if (lastElem == null)
+                lastElem = Root.Elements(Common.Game).Last();
+
+            lastElem.AddAfterSelf(altNames);
+        }
+
+        #endregion
+
+        #region Transferts
+        /// <summary>
+        /// Transfert des custom folders
+        /// </summary>
+        /// <param name="srcXmlFile"></param>
+        /// <param name="destXmlFile"></param>
+        /// <remarks>
+        /// Evite normalement les doublons
+        /// </remarks>
+        public static void Trans_CustomF(string srcXmlFile, string destXmlFile)
+        {
+            XElement xSource = XElement.Load(srcXmlFile);
+            XElement xDestination = XElement.Load(destXmlFile);
+
+            var cSrcFields = xSource.Elements(nameof(CustomField));
+            var cDestFields = xDestination.Elements(nameof(CustomField));
+
+            foreach (var cField in cSrcFields)
+            {
+                if (cDestFields.FirstOrDefault((x) => x.Element("GameID") == cField.Element("GameID")) != null)
+                    continue;
+
+                xDestination.Add(cField);
+            }
+
+            xDestination.Save(destXmlFile);
+        }
+        #endregion
+
+        #region Remove
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="iD"></param>
+        /// <param name="platformFile"></param>
+        public static void Remove_Game(string iD, string platformFile)
+        {
+            XElement xelPlatform = XElement.Load(platformFile);
+
+            /*IEnumerable<XElement> games = from game in xelPlatform.Elements("Game")
+                                          where (string)game.Element("ID").Value == iD
+                                          select game;*/
+
+            xelPlatform.Elements("Game")
+                .Where(x => x.Element("ID").Value == iD)
+                .Remove();
+
+            xelPlatform.Elements("AdditionalApplication")
+                .Where(x => x.Element("GameID").Value == iD)
+                .Remove();
+
+            xelPlatform.Elements("CustomField")
+                .Where(x => x.Element("GameID").Value == iD)
+                .Remove();
+
+            /* if(games.Any())
+             {
+                 foreach (XElement g in games)
+                 {
+                     g.Remove();
+
+                 }
+
+             }
+            */
+            xelPlatform.Save(platformFile);
+        }
+
+        // --- Non static (ne sauvegarde pas)
+
+        /// <summary>
+        /// Remove all games with this parameters
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="value"></param>
+        public void RemoveByChild(string what, string field, string value)
+        {
+            Root.Elements(what)
+                .Where(x => x.Element(field).Value == value)
+                .Remove();
+
+        }
 
 
 
+        #endregion Remove
+
+        #endregion Ecriture sans conversion
+
+        // ---
+
+        #region Ecriture avec conversion
+        #region Injection
+
+        public static void InjectCustomFields(IEnumerable<CustomField> cFields, string platformFile)
+        {
+            if (cFields.Count() == 0)
+                return;
+
+            XElement xelPlatform = XElement.Load(platformFile);
+
+            // Conversion en XElements
+            IEnumerable<XElement> xelCFields = from cField in cFields
+                                               select ConvertCField(cField);
+
+            xelPlatform.Add(xelCFields);
+            xelPlatform.Save(platformFile);
+        }
+
+
+        public static void InjectAddApps(IEnumerable<AdditionalApplication> addApps, string platformFile)
+        {
+            if (addApps.Count() == 0)
+                return;
+
+            XElement xelPlatform = XElement.Load(platformFile);
+
+            // Conversion en XElements
+            IEnumerable<XElement> xelAddApp = from addApp in addApps
+                                              select ConvertAddApp(addApp);
+
+            // On cherche les autres Applications additionnelles
+            IEnumerable<XElement> exAApps = xelPlatform.Elements(nameof(AdditionalApplication));
+
+            // Dans le cas où il y en a d'autres
+            if (exAApps.Count() > 0)
+            {
+                exAApps.Last().AddAfterSelf(xelAddApp);
+                xelPlatform.Save(platformFile);
+                return;
+            }
+
+            // Sinon on ajoute après les jeux
+            IEnumerable<XElement> exGames = xelPlatform.Elements("Game");
+            if (exGames.Count() > 0)
+            {
+                exGames.Last().AddAfterSelf(xelAddApp);
+                xelPlatform.Save(platformFile);
+                return;
+            }
+
+        }
+
+        #endregion Injection
+
+
+        #endregion Ecriture avec conversion
+
+        #region Convertisseurs X vers Class
         /// <summary>
         /// Récupère les informations basiques
         /// </summary>
@@ -266,10 +798,17 @@ namespace LaunchBox_XML.XML
                 case "Version":
                     game.Version = field.Value;
                     return true;
+
+                case "Platform":
+                    game.Platform = field.Value;
+                    return true;
+
             }
 
             return false;
         }
+
+
 
         /// <summary>
         /// Récupère les informations un peu plus avancées
@@ -297,9 +836,6 @@ namespace LaunchBox_XML.XML
                     gameInf.Notes = field.Value;
                     return true;
 
-                case "Platform":
-                    gameInf.Platform = field.Value;
-                    return true;
 
                 case "PlayMode":
                     gameInf.PlayMode = field.Value;
@@ -494,7 +1030,7 @@ namespace LaunchBox_XML.XML
 
                 // ---
 
-                #region 
+                #region Scumm
                 case "ScummVMAspectCorrection":
                 case "ScummVmAspectCorrection":
                     gameLB.ScummVmAspectCorrection = Boolean.Parse(field.Value);
@@ -572,79 +1108,11 @@ namespace LaunchBox_XML.XML
                 // ---
 
                 default:
-                    Signal?.Invoke(nameof(Make_LBGame), $"Not managed: {field.Name.LocalName}");
+                    Signal?.Invoke(nameof(Make_LBGame), $"LBGame Not managed: {field.Name.LocalName}");
                     return false;
 
             }
 
-        }
-
-
-        public static List<Clone> ListClones(string xmlFile)
-        {
-            List<Clone> aAppz = new List<Clone>();
-
-            foreach (var element in XElement.Load(xmlFile).Elements(nameof(AdditionalApplication)))
-            {
-                Clone cln = new Clone();
-
-                foreach (var field in element.Descendants())
-                {
-                    Make_Clone(field, cln);
-                }
-                aAppz.Add(cln);
-            }
-
-            return aAppz;
-        }
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="xmlFile"></param>
-        /// <param name="fieldName"></param>
-        /// <param name="fieldValue"></param>
-        /// <returns></returns>
-        public static IEnumerable<Clone> ListClones(string xmlFile, string fieldName, string fieldValue)
-        {
-            //var root = XElement.Load(xmlFile);
-            List<Clone> aAppz = new List<Clone>();
-            var elements = from addApp in XElement.Load(xmlFile).Elements("AdditionalApplication")
-                           where (string)addApp.Element(fieldName).Value == fieldValue
-                           select addApp;
-
-            foreach (var element in elements)
-            {
-                Clone cln = new Clone();
-
-                foreach (var field in element.Descendants())
-                {
-                    Make_Clone(field, cln);
-                }
-                aAppz.Add(cln);
-            }
-
-            return aAppz;
-        }
-
-        public static List<AdditionalApplication> ListAddApps(string xmlFile)
-        {
-            List<AdditionalApplication> aAppz = new List<AdditionalApplication>();
-
-            foreach (var element in XElement.Load(xmlFile).Elements(nameof(AdditionalApplication)))
-            {
-                AdditionalApplication addApp = new AdditionalApplication();
-
-                foreach (var field in element.Descendants())
-                {
-                    Make_Clone(field, addApp);
-                    Make_AddApp(field, addApp);
-                }
-                aAppz.Add(addApp);
-            }
-
-            return aAppz;
         }
 
         /// <summary>
@@ -759,50 +1227,101 @@ namespace LaunchBox_XML.XML
             return true;
         }
 
-        public static List<CustomField> ListCustomFields(string xmlFile, string balise)
+        #endregion Convertisseurs X vers Class
+
+        // --- Conversions vers XElement
+
+        #region Conversion Class vers X
+        public static IEnumerable<XElement> ConvertBasicGame(BasicGame shGame)
         {
-            List<CustomField> customFields = new List<CustomField>();
+            List<XElement> values = new List<XElement>();
 
-            foreach (var element in XElement.Load(xmlFile).Elements(balise))
-            {
+            values.Add(new XElement(nameof(shGame.Id), shGame.Id));
+            values.Add(new XElement(nameof(shGame.Title), shGame.Title));
+            values.Add(new XElement(nameof(shGame.Region), shGame.Region));
+            values.Add(new XElement(nameof(shGame.Version), shGame.Version));
+            values.Add(new XElement(nameof(shGame.Platform), shGame.Platform));
 
-                customFields.Add(Make_CustomField(element));
-
-            }
-
-            return customFields;
+            return values;
         }
 
-        private static CustomField Make_CustomField(XElement element)
+        public static IEnumerable<XElement> ConvertMedGame(MedGame medGame)
         {
-            CustomField cf = new CustomField();
+            List<XElement> values = new List<XElement>();
 
-            foreach (var elem in element.Elements())
-            {
-                switch (elem.Name.LocalName)
-                {
-                    case nameof(cf.GameID):
-                        cf.GameID = elem.Value;
-                        break;
+            values.Add(new XElement(nameof(medGame.Series), medGame.Series));
+            values.Add(new XElement(nameof(medGame.Genre), medGame.Genre));
+            values.Add(new XElement(nameof(medGame.PlayMode), medGame.PlayMode));
+            values.Add(new XElement(nameof(medGame.MaxPlayers), medGame.MaxPlayers));
+            values.Add(new XElement(nameof(medGame.Developer), medGame.Developer));
+            values.Add(new XElement(nameof(medGame.Publisher), medGame.Publisher));
+            values.Add(new XElement(nameof(medGame.ReleaseDate), medGame.ReleaseDate));
+            values.Add(new XElement(nameof(medGame.Rating), medGame.Rating));
+            values.Add(new XElement(nameof(medGame.Notes), medGame.Notes));
 
-                    case nameof(cf.Name):
-                        cf.Name = elem.Value;
-                        break;
-
-                    case nameof(cf.Value):
-                        cf.Value = elem.Value;
-                        break;
-
-                    default:
-                        Debug.WriteLine($"Non pris en charge: {elem.Name}");
-                        break;
-                }
-            }
-
-            return cf;
+            return values;
         }
 
-        // ---
+        public static IEnumerable<XElement> ConvertLBGame(LBGame lbGame)
+        {
+            List<XElement> values = new List<XElement>();
+
+            return values;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="addApp"></param>
+        /// <returns></returns>
+        public static XElement ConvertAddApp(AdditionalApplication addApp)
+        {
+            XElement xel = new XElement(nameof(AdditionalApplication));
+            xel.Add
+                (
+                    new XElement(nameof(addApp.Id), addApp.Id),
+                    new XElement(nameof(addApp.PlayCount), addApp.PlayCount),
+                    new XElement(nameof(addApp.GameID), addApp.GameID),
+                    new XElement(nameof(addApp.ApplicationPath), addApp.ApplicationPath),
+                    new XElement(nameof(addApp.AutoRunAfter), addApp.AutoRunAfter),
+                    new XElement(nameof(addApp.AutoRunBefore), addApp.AutoRunBefore),
+                    new XElement(nameof(addApp.Name), addApp.Name),
+                    new XElement(nameof(addApp.UseDosBox), addApp.UseDosBox),
+                    new XElement(nameof(addApp.UseEmulator), addApp.UseEmulator),
+                    new XElement(nameof(addApp.WaitForExit), addApp.WaitForExit),
+                    new XElement(nameof(addApp.Version), addApp.Version),
+                    new XElement(nameof(addApp.Status), addApp.Status),
+                    new XElement(nameof(addApp.Version), addApp.Version),
+                    new XElement(nameof(addApp.EmulatorId), addApp.EmulatorId),
+                    new XElement(nameof(addApp.SideA), addApp.SideA),
+                    new XElement(nameof(addApp.SideB), addApp.SideB),
+                    new XElement(nameof(addApp.Priority), addApp.Priority)
+                );
+            return xel;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cField"></param>
+        /// <returns></returns>
+        private static XElement ConvertCField(CustomField cField)
+        {
+            XElement xel = new XElement(nameof(CustomField));
+            xel.Add
+                (
+                    new XElement(nameof(cField.GameID), cField.GameID),
+                    new XElement(nameof(cField.Name), cField.Name),
+                    new XElement(nameof(cField.Value), cField.Value)
+                );
+
+            return xel;
+        }
+
+        #endregion Conversion Class vers X
+
+
+
 
         public static void InjectGame(LBGame lbGame, string platformFile)
         {
@@ -902,280 +1421,17 @@ namespace LaunchBox_XML.XML
         }
 
 
-        public static void InjectAddApps(IEnumerable<AdditionalApplication> addApps, string platformFile)
-        {
-            XElement xelPlatform = XElement.Load(platformFile);
-
-            // Conversion en XElements
-            IEnumerable<XElement> xelAddApp = from addApp in addApps
-                                              select ConvertAddApp(addApp);
-
-            // On cherche les autres Applications additionnelles
-            IEnumerable<XElement> exAApps = xelPlatform.Elements(nameof(AdditionalApplication));
-
-            // Dans le cas où il y en a d'autres
-            if (exAApps.Count() > 0)
-            {
-                exAApps.Last().AddAfterSelf(xelAddApp);
-                xelPlatform.Save(platformFile);
-                return;
-            }
-
-            // Sinon on ajoute après les jeux
-            IEnumerable<XElement> exGames = xelPlatform.Elements("Game");
-            if (exGames.Count() > 0)
-            {
-                exGames.Last().AddAfterSelf(xelAddApp);
-                xelPlatform.Save(platformFile);
-                return;
-            }
-
-        }
-
-        public static void InjectCustomFields(IEnumerable<CustomField> cFields, string platformFile)
-        {
-            XElement xelPlatform = XElement.Load(platformFile);
-
-            // Conversion en XElements
-            IEnumerable<XElement> xelCFields = from cField in cFields
-                                               select ConvertCField(cField);
-
-            xelPlatform.Add(xelCFields);
-            xelPlatform.Save(platformFile);
-        }
 
 
         // ---
 
-        /// <summary>
-        /// Récupère les infos relatives à un game et injecte dans un autre fichier (aucune altération)
-        /// </summary>
-        /// <param name="id"></param>
-        public static void TrueBackup(string xmlFile, string id, string destFolder)
+
+   
+
+
+        public void Dispose()
         {
-            XElement root = XElement.Load(xmlFile);
-
-            XElement game = root.Elements("Game")
-                              .Where((x) => x.Element("ID").Value == id)
-                              .SingleOrDefault();
-
-            var addApps = from aApp in root.Elements("AdditionalApplication")
-                          where (string)aApp.Element("GameID").Value == id
-                          select aApp;
-
-            var customF = from cf in root.Elements("CustomField")
-                          where (string)cf.Element("GameID").Value == id
-                          select cf;
-
-
-            XElement tbGame = new XElement("TBGame");
-            tbGame.Add(new XComment("Verbatim backup"));
-            tbGame.Add(game, addApps, customF);
-
-            tbGame.Save(Path.Combine(destFolder, "TBGame.xml"));
-        }
-
-
-        /// <summary>
-        /// Backup with modification on media paths
-        /// </summary>
-        /// <param name="xmlFile"></param>
-        /// <param name="lbGame"></param>
-        /// <param name="destFolder"></param>
-        /// <remarks>
-        /// Theme video unmanaged for the while
-        /// </remarks>
-        public static void EnhancedBackup(string xmlFile, LBGame lbGame, string destFolder)
-        {
-            XElement root = XElement.Load(xmlFile);
-
-            XElement game = root.Elements("Game")
-                              .Where((x) => x.Element("ID").Value == lbGame.Id)
-                              .SingleOrDefault();
-
-            game.Element("ManualPath").Value = lbGame.ManualPath;
-            game.Element("MusicPath").Value = lbGame.MusicPath;
-            game.Element("VideoPath").Value = lbGame.VideoPath;
-            //game.Element("ThemeVideoPath").Value = lbGame.ThemeVideoPath;
-
-
-            var addApps = from aApp in root.Elements("AdditionalApplication")
-                          where (string)aApp.Element("GameID").Value == lbGame.Id
-                          select aApp;
-
-            var customF = from cf in root.Elements("CustomField")
-                          where (string)cf.Element("GameID").Value == lbGame.Id
-                          select cf;
-
-
-            XElement ebGame = new XElement("EBGame");
-            ebGame.Add(new XComment("Backup with media paths"));
-
-
-            ebGame.Add(game, addApps, customF);
-
-            ebGame.Save(Path.Combine(destFolder, "EBGame.xml"));
-        }
-
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="iD"></param>
-        /// <param name="platformFile"></param>
-        public static void Remove_Game(string iD, string platformFile)
-        {
-            XElement xelPlatform = XElement.Load(platformFile);
-
-            IEnumerable<XElement> games = from game in xelPlatform.Elements("Game")
-                                          where (string)game.Element("ID").Value == iD
-                                          select game;
-
-            xelPlatform.Elements("Game")
-                .Where(x => x.Element("ID").Value == iD)
-                .Remove();
-
-            xelPlatform.Elements("AdditionalApplication")
-                .Where(x => x.Element("GameID").Value == iD)
-                .Remove();
-
-            xelPlatform.Elements("CustomField")
-                .Where(x => x.Element("GameID").Value == iD)
-                .Remove();
-
-            /* if(games.Any())
-             {
-                 foreach (XElement g in games)
-                 {
-                     g.Remove();
-
-                 }
-
-             }
-            */
-            xelPlatform.Save(platformFile);
-        }
-
-
-        // --- Conversions vers XElement
-
-        public static IEnumerable<XElement> ConvertBasicGame(BasicGame shGame)
-        {
-            List<XElement> values = new List<XElement>();
-
-            values.Add(new XElement(nameof(shGame.Id), shGame.Id));
-            values.Add(new XElement(nameof(shGame.Title), shGame.Title));
-            values.Add(new XElement(nameof(shGame.Region), shGame.Region));
-            values.Add(new XElement(nameof(shGame.Version), shGame.Version));
-
-            return values;
-        }
-
-        public static IEnumerable<XElement> ConvertMedGame(MedGame medGame)
-        {
-            List<XElement> values = new List<XElement>();
-
-            values.Add(new XElement(nameof(medGame.Platform), medGame.Platform));
-            values.Add(new XElement(nameof(medGame.Series), medGame.Series));
-            values.Add(new XElement(nameof(medGame.Genre), medGame.Genre));
-            values.Add(new XElement(nameof(medGame.PlayMode), medGame.PlayMode));
-            values.Add(new XElement(nameof(medGame.MaxPlayers), medGame.MaxPlayers));
-            values.Add(new XElement(nameof(medGame.Developer), medGame.Developer));
-            values.Add(new XElement(nameof(medGame.Publisher), medGame.Publisher));
-            values.Add(new XElement(nameof(medGame.ReleaseDate), medGame.ReleaseDate));
-            values.Add(new XElement(nameof(medGame.Rating), medGame.Rating));
-            values.Add(new XElement(nameof(medGame.Notes), medGame.Notes));
-
-            return values;
-        }
-
-        public static IEnumerable<XElement> ConvertLBGame(LBGame lbGame)
-        {
-            List<XElement> values = new List<XElement>();
-
-
-
-            return values;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="addApp"></param>
-        /// <returns></returns>
-        public static XElement ConvertAddApp(AdditionalApplication addApp)
-        {
-            XElement xel = new XElement(nameof(AdditionalApplication));
-            xel.Add
-                (
-                    new XElement(nameof(addApp.Id), addApp.Id),
-                    new XElement(nameof(addApp.PlayCount), addApp.PlayCount),
-                    new XElement(nameof(addApp.GameID), addApp.GameID),
-                    new XElement(nameof(addApp.ApplicationPath), addApp.ApplicationPath),
-                    new XElement(nameof(addApp.AutoRunAfter), addApp.AutoRunAfter),
-                    new XElement(nameof(addApp.AutoRunBefore), addApp.AutoRunBefore),
-                    new XElement(nameof(addApp.Name), addApp.Name),
-                    new XElement(nameof(addApp.UseDosBox), addApp.UseDosBox),
-                    new XElement(nameof(addApp.UseEmulator), addApp.UseEmulator),
-                    new XElement(nameof(addApp.WaitForExit), addApp.WaitForExit),
-                    new XElement(nameof(addApp.Version), addApp.Version),
-                    new XElement(nameof(addApp.Status), addApp.Status),
-                    new XElement(nameof(addApp.Version), addApp.Version),
-                    new XElement(nameof(addApp.EmulatorId), addApp.EmulatorId),
-                    new XElement(nameof(addApp.SideA), addApp.SideA),
-                    new XElement(nameof(addApp.SideB), addApp.SideB),
-                    new XElement(nameof(addApp.Priority), addApp.Priority)
-                );
-            return xel;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="cField"></param>
-        /// <returns></returns>
-        private static XElement ConvertCField(CustomField cField)
-        {
-            XElement xel = new XElement(nameof(CustomField));
-            xel.Add
-                (
-                    new XElement(nameof(cField.GameID), cField.GameID),
-                    new XElement(nameof(cField.Name), cField.Name),
-                    new XElement(nameof(cField.Value), cField.Value)
-                );
-
-            return xel;
-        }
-
-        // --- Transferts direct d'un fichier xml à un autre (verbatim)
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="srcXmlFile"></param>
-        /// <param name="destXmlFile"></param>
-        /// <remarks>
-        /// Evite normalement les doublons
-        /// </remarks>
-        public static void Trans_CustomF(string srcXmlFile, string destXmlFile)
-        {
-            XElement xSource = XElement.Load(srcXmlFile);
-            XElement xDestination = XElement.Load(destXmlFile);
-
-            var cSrcFields = xSource.Elements(nameof(CustomField));
-            var cDestFields = xDestination.Elements(nameof(CustomField));
-
-            foreach (var cField in cSrcFields)
-            {
-                if (cDestFields.FirstOrDefault((x) => x.Element("GameID") == cField.Element("GameID")) != null)
-                    continue;
-
-                xDestination.Add(cField);
-            }
-
-            xDestination.Save(destXmlFile);
+            Root = null;
         }
     }
 }

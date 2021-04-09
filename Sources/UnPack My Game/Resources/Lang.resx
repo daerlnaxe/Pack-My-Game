@@ -169,7 +169,7 @@
     <value>You must delete manually this folder</value>
   </data>
   <data name="I_EBMethod" xml:space="preserve">
-    <value>Enhanced Backup method: use paths from EBGame.xml to copy files.</value>
+    <value>Enhanced Backup method: use paths from EBGame.xml to copy files, LaunchBox will create at the next launch the platform, but you will have to specify folders (you can use SappPasRoot plugin).It's the last luck method. </value>
   </data>
   <data name="I_HitEnter" xml:space="preserve">
     <value>Hit enter to valid.</value>
@@ -185,6 +185,12 @@
   </data>
   <data name="I_SevG" xml:space="preserve">
     <value>Please select the folder:</value>
+  </data>
+  <data name="I_TBMethod" xml:space="preserve">
+    <value>True Backup method: uses paths from platform file backed, inject platform to general LaunchBox platform file, inject game to specific plartform file (or create).</value>
+  </data>
+  <data name="I_XML" xml:space="preserve">
+    <value>Please select a xml file.</value>
   </data>
   <data name="Launchbox" xml:space="preserve">
     <value>UnPack for Launchbox</value>

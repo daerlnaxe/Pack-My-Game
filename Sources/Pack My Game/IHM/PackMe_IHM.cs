@@ -4,7 +4,7 @@ using DxTBoxCore.Box_Collec;
 using DxTBoxCore.Box_Progress;
 using DxTBoxCore.Common;
 using DxTBoxCore.MBox;
-using LaunchBox_XML.Container;
+using Common_PMG.Container;
 using Pack_My_Game.Compression;
 using Pack_My_Game.Models;
 using System;
@@ -13,6 +13,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using Pack_My_Game.Cont;
+using Common_PMG.Container.Game;
 
 namespace Pack_My_Game.IHM
 {
@@ -110,7 +112,7 @@ namespace Pack_My_Game.IHM
             return ChosenFiles;
         }
 
-        internal static void LaunchBoxCore_Recap(string rootFolder, Platform platform, string gameName)
+        internal static void LaunchBoxCore_Recap(string rootFolder, Platform platform, GamePaths gp )
         {
             Application.Current.Dispatcher?.Invoke
                 (
@@ -118,8 +120,8 @@ namespace Pack_My_Game.IHM
                 {
                     W_PackMeRes W_res = new W_PackMeRes()
                     {
-                        Title = $"{Common.ObjectLang.ResultExp} - {gameName}",
-                        Model = new M_PackMeRes(rootFolder, platform, gameName),
+                        Title = $"{Common.ObjectLang.ResultExp} - {gp.Title}",
+                        Model = new M_PackMeRes(rootFolder, platform, gp),
 
                     };
                     W_res.ShowDialog();

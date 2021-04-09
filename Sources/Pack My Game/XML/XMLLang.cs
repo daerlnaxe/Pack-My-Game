@@ -92,6 +92,7 @@ namespace Pack_My_Game.XML
                 new XElement("Q_Pack", new XAttribute(_Value, "Pack This game")),
                 new XElement("S_Language", new XAttribute(_Value, "Select a language")),
                 new XElement("Select", new XAttribute(_Value, "Select")),
+                new XElement("Selected", new XAttribute(_Value, "Selected")),
                 new XElement("Submit", new XAttribute(_Value, "Submit")),
                 new XElement("Title", new XAttribute(_Value, "Title")),
                 new XElement("TViewFile", new XAttribute(_Value, "Treeview file")),
@@ -185,6 +186,7 @@ namespace Pack_My_Game.XML
                 "Note: Autant d'archives que vous voulez.")),
                 new XElement("S_Language", new XAttribute(_Value, "Sélectionnez une langue")),
                 new XElement("Select", new XAttribute(_Value, "Sélectionnez")),
+                new XElement("Selected", new XAttribute(_Value, "Sélection")),
                 new XElement("Submit", new XAttribute(_Value, "Soumettre")),
                 new XElement("Videos", new XAttribute(_Value, "Vidéos")),
                 new XElement("Window", new XAttribute(_Value, "Fenêtre")),
@@ -417,9 +419,16 @@ namespace Pack_My_Game.XML
                         lang.Select = element.Attribute(_Value).Value;
                         break;
 
+                    case "Selected":
+                        lang.SelectedExp = element.Attribute(_Value).Value;
+                        break;
+
+
                     case "Submit":
                         lang.SubmitExp = element.Attribute(_Value).Value;
                         break;
+
+
                     case "Title":
                         lang.TitleExp = element.Attribute(_Value).Value;
                         break;

@@ -28,11 +28,7 @@ namespace UnPack_My_Game.Graph.LaunchBox
         private M_LaunchBox _Model = new M_LaunchBox();
 
         public static readonly RoutedUICommand Process = new RoutedUICommand("Process", "btProcess", typeof(LaunchBox_Start));
-
-
-        
-
-
+           
 
 
         public LaunchBox_Start()
@@ -72,14 +68,6 @@ namespace UnPack_My_Game.Graph.LaunchBox
 
 
 
-
-
-
-
-        #region Raz
-      
-        #endregion
-
         private void Config_Click(object sender, RoutedEventArgs e)
         {
             new W_Config().ShowDialog();
@@ -102,11 +90,19 @@ namespace UnPack_My_Game.Graph.LaunchBox
             _Model.Mode = E_Method.LBMethod;
         }
 
+        private void TB_Click(object sender, RoutedEventArgs e)
+        {
+            _Model.ActiveMethodPage = new P_TBMethod();
+            _Model.Mode = E_Method.TBMethod;
+        }
+
         private void EB_Click(object sender, RoutedEventArgs e)
         {
             _Model.ActiveMethodPage = new P_EBMethod();
             _Model.Mode = E_Method.EBMethod;
         }
         #endregion
+
+
     }
 }

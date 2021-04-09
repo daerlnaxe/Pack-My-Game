@@ -191,6 +191,8 @@ namespace Pack_My_Game.Cont
         public string WindowExp { get; internal set; } = "Window";
         //--- a rajouter
         public string ListGamesExp { get; internal set; }
+
+        public string SelectedExp { get; internal set; } = "Selected";
         public string CancelExp { get; internal set; } = "Cancel";
         public string OkExp { get; internal set; } = "OK";
         public string CheatsExp { get; internal set; } = "Cheats";

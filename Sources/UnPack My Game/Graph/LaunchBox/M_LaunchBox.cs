@@ -293,6 +293,21 @@ namespace UnPack_My_Game.Graph.LaunchBox
                         //TaskToRun = clbEBAdapt
                     };
                 }
+                else if(Mode == E_Method.TBMethod)
+                {
+                    M_TBMethod model = (M_TBMethod)ActiveMethodPage.Model;
+
+                    C_LaunchBoxTB clbTB = new C_LaunchBoxTB(src.Games, model.SelectedXML );
+
+                    daspW = new DxAsStateProgress()
+                    {
+                        AutoClose = false,
+                        Model = M_ProgressC.Create<C_LaunchBoxTB, M_ProgressCC>(clbTB, () => clbTB.Run(model.Plateforme))
+
+
+                        //TaskToRun = clbEBAdapt
+                    };
+                }
 
                 if (daspW != null)
                     daspW.ShowDialog();

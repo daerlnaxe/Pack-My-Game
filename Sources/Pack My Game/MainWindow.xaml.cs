@@ -1,29 +1,15 @@
-﻿using DxTBoxCore.Box_Collec;
+﻿using Common_PMG.Container.Game;
 using DxTBoxCore.BoxChoose;
-using DxTBoxCore.MBox;
-using LaunchBox_XML.Container;
-using LaunchBox_XML.Container.Game;
 using LaunchBox_XML.XML;
 using Pack_My_Game.IHM;
 using Pack_My_Game.Models;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 //using System.Windows.Shapes;
 using PS = Pack_My_Game.Properties.Settings;
 
@@ -34,7 +20,11 @@ namespace Pack_My_Game
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static readonly RoutedUICommand ExtractPlatformCmd = new RoutedUICommand("Extract", "ExtractPlatformCmd", typeof(MainWindow));
+        public static readonly RoutedUICommand CheckGameValidityCmd = new RoutedUICommand("Test game links", nameof(CheckGameValidityCmd), typeof(MainWindow));
+        public static readonly RoutedUICommand ExtractPlatformCmd = new RoutedUICommand("Extract Platform", "ExtractPlatformCmd", typeof(MainWindow));
+        public static readonly RoutedUICommand ExtractDefaultFilesCmd = new RoutedUICommand("Extract Default Files", "ExtractDefaultFilesCmd", typeof(MainWindow));
+        public static readonly RoutedUICommand SelectAllCmd = new RoutedUICommand("Select All", "SelectAllCmd", typeof(MainWindow));
+        public static readonly RoutedUICommand SelectNoneCmd = new RoutedUICommand("Select None", "SelectNoneCmd", typeof(MainWindow));
 
         private M_Main _Model = new M_Main();
 
@@ -223,18 +213,73 @@ namespace Pack_My_Game
                     StartingFolder = System.IO.Path.Combine(PS.Default.OutPPath, _Model.SelectedPlatform.Name),
                     ShowFiles = true,
                     Info = "Save to ...",
-                    FileValue = "TBPlatform.xml"
-                    
+                    FileValue = $"TBPlatform - {_Model.SelectedPlatform.Name}.xml"
+
                 }
             };
-           
-            if(ts.ShowDialog()== true)
+
+            if (ts.ShowDialog() == true)
             {
-                XML_Platforms.ExtractPlatform(Path.Combine(PS.Default.LBPath,PS.Default.fPlatforms), _Model.SelectedPlatform.Name, ts.Model.LinkResult);
+                XML_Platforms.ExtractPlatform(Path.Combine(PS.Default.LBPath, PS.Default.fPlatforms), _Model.SelectedPlatform.Name, ts.Model.LinkResult);
             }
 
-           
+
         }
         #endregion
+
+        #region Games
+        private void Can_GamesSelected(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = _Model.SelectedGames.Any();
+        }
+
+        /// <summary>
+        /// Création d'un fichier indiquant les fichiers choisis par l'utilisateur dans LaunchBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Exec_ExtractDefFiles(object sender, ExecutedRoutedEventArgs e)
+        {
+            _Model.ExtractDefaultFiles();
+        }
+
+        /// <summary>
+        /// Vérifie que le manuel, la musique et le jeu sont correctement linkés
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Exec_CheckGameValidity(object sender, ExecutedRoutedEventArgs e)
+        {
+
+            _Model.CheckGamesValidity();
+        }
+        #endregion
+        private void Can_SelectAll(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = _Model.AvailableGames != null &&
+                                _Model.AvailableGames.Any() &&
+                                _Model.AvailableGames.Count != _Model.SelectedGames.Count;
+        }
+
+        private void Exec_SelectAll(object sender, ExecutedRoutedEventArgs e)
+        {
+            _Model.SelectAll();
+        }
+
+
+
+        private void Can_DeselectAll(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = _Model.AvailableGames !=null &&
+                                _Model.AvailableGames.Any() &&
+                                _Model.SelectedGames.Any();
+        }
+
+        private void Exec_SelectNone(object sender, ExecutedRoutedEventArgs e)
+        {
+            _Model.SelectNone();
+        }
+
+
     }
 }

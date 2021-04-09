@@ -196,7 +196,7 @@ namespace UnPack_My_Game.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Enhanced Backup method: use paths from EBGame.xml to copy files..
+        ///   Recherche une chaîne localisée semblable à Enhanced Backup method: use paths from EBGame.xml to copy files, LaunchBox will create at the next launch the platform, but you will have to specify folders (you can use SappPasRoot plugin).It&apos;s the last luck method. .
         /// </summary>
         public static string I_EBMethod {
             get {
@@ -246,6 +246,24 @@ namespace UnPack_My_Game.Resources {
         public static string I_SevG {
             get {
                 return ResourceManager.GetString("I_SevG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à True Backup method: uses paths from platform file backed, inject platform to general LaunchBox platform file, inject game to specific plartform file (or create)..
+        /// </summary>
+        public static string I_TBMethod {
+            get {
+                return ResourceManager.GetString("I_TBMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Please select a xml file..
+        /// </summary>
+        public static string I_XML {
+            get {
+                return ResourceManager.GetString("I_XML", resourceCulture);
             }
         }
         
