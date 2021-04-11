@@ -195,6 +195,8 @@ E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreap
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\System.ServiceProcess.ServiceController.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\System.Speech.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\System.Text.Encoding.CodePages.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\System.Threading.AccessControl.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\System.Windows.Extensions.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\Microsoft.Win32.Registry.dll
@@ -240,24 +242,34 @@ E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreap
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Threading.AccessControl.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\Common_PMG.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\DxCCtrl.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\DxLocalTransf.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\DxTBoxCore.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\HashCalc.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\Hermes.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\LaunchBox XML.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\Unbroken.LaunchBox.Plugins.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\DxTBoxCore.pdb
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\DxTBoxCore.dll.config
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\HashCalc.pdb
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\Hermes.pdb
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\LaunchBox XML.pdb
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\Common_PMG.pdb
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\DxLocalTransf.pdb
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\DxCCtrl.pdb
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\fr-FR\DxTBoxCore.resources.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\UnPack My Game.csprojAssemblyReference.cache
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Style.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\LaunchBox_Start.g.cs
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_DPG.g.cs
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_DPGFile.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_EBMethod.g.cs
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_LaunchBox.g.cs
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_LaunchBox_Main.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_LBMethod.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\W_Config.g.cs
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\W_DPGMaker.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\P_OGame.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\P_SGames.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\W_Common.g.cs
@@ -265,13 +277,19 @@ E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreap
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\W_ModTargetPaths.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\App.g.cs
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\UnPack My Game_MarkupCompile.cache
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\UnPack My Game_MarkupCompile.lref
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\App.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\LaunchBox_Start.baml
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_DPG.baml
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_DPGFile.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_EBMethod.baml
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_LaunchBox.baml
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_LaunchBox_Main.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_LBMethod.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\W_Config.baml
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\W_DPGMaker.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\P_OGame.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\P_SGames.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\W_Common.baml
@@ -290,10 +308,9 @@ E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreap
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\UnPack My Game.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\UnPack My Game.pdb
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\UnPack My Game.genruntimeconfig.cache
-E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_TBMethod.g.cs
-E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_TBMethod.baml
-E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
-E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\System.Text.Json.dll
-E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\Common_PMG.dll
-E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\Unbroken.LaunchBox.Plugins.dll
-E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\Common_PMG.pdb
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\AreaSelect.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\AreaSelect.pdb
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\DxTBoxCore.deps.json
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\DxTBoxCore.runtimeconfig.json
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\DxTBoxCore.runtimeconfig.dev.json
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\DxTBoxCore.exe

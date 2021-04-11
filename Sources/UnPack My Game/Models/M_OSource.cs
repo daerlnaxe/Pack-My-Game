@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Common_PMG.Container;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using UnPack_My_Game.Cont;
 
 namespace UnPack_My_Game.Models
 {
@@ -21,7 +21,7 @@ namespace UnPack_My_Game.Models
 
 
         //private IEnumerable<Game> _Games = new Game[0];
-        public override List<FileObj> Games { get; set; } = new List<FileObj>();
+        public override List<DataRep> Games { get; set; } = new List<DataRep>();
         /*{
             get => _Games;
             set

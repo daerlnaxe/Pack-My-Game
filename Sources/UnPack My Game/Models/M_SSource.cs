@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Common_PMG.Container;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using UnPack_My_Game.Cont;
 
 namespace UnPack_My_Game.Models
 {
@@ -22,11 +22,11 @@ namespace UnPack_My_Game.Models
             }
         }
 
-        public override List<FileObj> Games { get; set; } = new List<FileObj>();
+        public override List<DataRep> Games { get; set; } = new List<DataRep>();
 
 
-        private Queue<FileObj> _AvailableGames;
-        public Queue<FileObj> AvailableGames
+        private Queue<DataRep> _AvailableGames;
+        public Queue<DataRep> AvailableGames
         {
             get => _AvailableGames;
             set
@@ -49,12 +49,12 @@ namespace UnPack_My_Game.Models
             /*else
             {*/
 
-            AvailableGames = new Queue<FileObj>(); //new List<FileObj>();
+            AvailableGames = new Queue<DataRep>(); //new List<FileObj>();
             string[] extensions = new string[] { "zip", "7zip" };
 
             foreach (string f in Directory.EnumerateFiles(linkFolderGames, "*.*", SearchOption.AllDirectories))
                 if (extensions.Contains(Path.GetExtension(f).TrimStart('.').ToLowerInvariant()))
-                    AvailableGames.Enqueue(new FileObj(f));
+                    AvailableGames.Enqueue(new DataRep(f));
 
             Test_HasElement(AvailableGames, nameof(SelectedFolder));
 

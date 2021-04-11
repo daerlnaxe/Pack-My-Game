@@ -8,6 +8,7 @@ namespace UnPack_My_Game.Cont
     /// <summary>
     /// Used to list, to have Name of the game and path
     /// </summary>
+    [Obsolete]
     public class FileObj: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

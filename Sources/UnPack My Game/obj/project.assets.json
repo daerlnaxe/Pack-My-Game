@@ -986,6 +986,19 @@
           }
         }
       },
+      "AreaSelect/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/AreaSelect.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AreaSelect.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
       "Common_PMG/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
@@ -1039,6 +1052,19 @@
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App.WPF"
         ]
+      },
+      "HashCalc/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "DxLocalTransf": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/HashCalc.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HashCalc.dll": {}
+        }
       },
       "Hermes/1.0.0": {
         "type": "project",
@@ -3243,6 +3269,11 @@
         "version.txt"
       ]
     },
+    "AreaSelect/1.0.0": {
+      "type": "project",
+      "path": "../../../AreaSelect/AreaSelect.csproj",
+      "msbuildProject": "../../../AreaSelect/AreaSelect.csproj"
+    },
     "Common_PMG/1.0.0": {
       "type": "project",
       "path": "../../Common_PMG/Common_PMG.csproj",
@@ -3263,6 +3294,11 @@
       "path": "../../../DxTBoxCore/Sources/DxTBoxCore.csproj",
       "msbuildProject": "../../../DxTBoxCore/Sources/DxTBoxCore.csproj"
     },
+    "HashCalc/1.0.0": {
+      "type": "project",
+      "path": "../../../HashCalc/Source/HashCalc.csproj",
+      "msbuildProject": "../../../HashCalc/Source/HashCalc.csproj"
+    },
     "Hermes/1.0.0": {
       "type": "project",
       "path": "../../../Hermes/Sources/Hermes.csproj",
@@ -3276,8 +3312,10 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "AreaSelect >= 1.0.0",
       "DotNetZip >= 1.15.0",
       "DxTBoxCore >= 1.0.0",
+      "HashCalc >= 1.0.0",
       "Hermes >= 1.0.0",
       "LaunchBox XML >= 1.0.0"
     ]
@@ -3316,8 +3354,14 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
+            "E:\\Programmation\\Git-Hub\\AreaSelect\\AreaSelect.csproj": {
+              "projectPath": "E:\\Programmation\\Git-Hub\\AreaSelect\\AreaSelect.csproj"
+            },
             "E:\\Programmation\\Git-Hub\\DxTBoxCore\\Sources\\DxTBoxCore.csproj": {
               "projectPath": "E:\\Programmation\\Git-Hub\\DxTBoxCore\\Sources\\DxTBoxCore.csproj"
+            },
+            "E:\\Programmation\\Git-Hub\\HashCalc\\Source\\HashCalc.csproj": {
+              "projectPath": "E:\\Programmation\\Git-Hub\\HashCalc\\Source\\HashCalc.csproj"
             },
             "E:\\Programmation\\Git-Hub\\Hermes\\Sources\\Hermes.csproj": {
               "projectPath": "E:\\Programmation\\Git-Hub\\Hermes\\Sources\\Hermes.csproj"

@@ -263,7 +263,7 @@ namespace UnPack_My_Game.Graph.LaunchBox
                 DxAsStateProgress daspW = null;
                 if (Mode == E_Method.LBMethod)
                 {
-                    M_LBMethod model = (M_LBMethod)ActiveMethodPage.Model;
+               /*     M_LBMethod model = (M_LBMethod)ActiveMethodPage.Model;
                     C_LaunchBoxAdapt clbAdapt = new C_LaunchBoxAdapt(src.Games, model.SelectPlatform.Name);
 
                     daspW = new DxAsStateProgress()
@@ -276,12 +276,12 @@ namespace UnPack_My_Game.Graph.LaunchBox
                     };
 
 
-
+                    */
                     //C_LaunchBox.Run_LBMethode(ref games, model.SelectPlatform);
                 }
                 else if (Mode == E_Method.EBMethod)
                 {
-                    M_EBMethod model = (M_EBMethod)ActiveMethodPage.Model;
+                    /*M_EBMethod model = (M_EBMethod)ActiveMethodPage.Model;
                     C_LaunchBoxEB clbEBAdapt = new C_LaunchBoxEB(src.Games);
 
                     daspW = new DxAsStateProgress()
@@ -291,11 +291,11 @@ namespace UnPack_My_Game.Graph.LaunchBox
 
 
                         //TaskToRun = clbEBAdapt
-                    };
+                    };*/
                 }
                 else if(Mode == E_Method.TBMethod)
                 {
-                    M_TBMethod model = (M_TBMethod)ActiveMethodPage.Model;
+/*                    M_DPGMethod model = (M_DPGMethod)ActiveMethodPage.Model;
 
                     C_LaunchBoxTB clbTB = new C_LaunchBoxTB(src.Games, model.SelectedXML );
 
@@ -307,8 +307,8 @@ namespace UnPack_My_Game.Graph.LaunchBox
 
                         //TaskToRun = clbEBAdapt
                     };
+*/
                 }
-
                 if (daspW != null)
                     daspW.ShowDialog();
             }

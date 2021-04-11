@@ -74,5 +74,18 @@ namespace UnPack_My_Game
 
             this.Show();
         }
+
+        private void LaunchBoxRevo_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+
+            new W_Common()
+            {
+                ActivePage = new P_LaunchBox_Main()
+
+            }.ShowDialog();
+
+            this.Show();
+        }
     }
 }

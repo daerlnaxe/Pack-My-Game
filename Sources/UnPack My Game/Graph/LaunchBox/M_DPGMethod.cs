@@ -7,7 +7,7 @@ using UnPack_My_Game.Models;
 
 namespace UnPack_My_Game.Graph.LaunchBox
 {
-    class M_TBMethod : A_Method
+    class M_DPGMethod : A_Method
     {
 
         private string _SelectedXML;

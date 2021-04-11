@@ -120,6 +120,9 @@
   <data name="AccessF" xml:space="preserve">
     <value>Dossiers d'accès</value>
   </data>
+  <data name="Add" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
   <data name="Arch_Struc" xml:space="preserve">
     <value>Structure de l'archive</value>
   </data>
@@ -165,6 +168,9 @@
   <data name="I_DelByYourself" xml:space="preserve">
     <value>Vous devez effacer manuellement ce dossier</value>
   </data>
+  <data name="I_DPGZipFile" xml:space="preserve">
+    <value>Selectionner un fichier zip pour faire un fichier DPG, celà va le créer, le sauver dans votre fichier zip et recalculer le fichier somme md5.</value>
+  </data>
   <data name="I_EBMethod" xml:space="preserve">
     <value>Enhanced Backup methode: utilise les chemins de EBGame.xml pour copier les fichiers. LaunchBox va réer au prochain démarrage la plateforme, mais vous aurez à specifier les dossiers (vous pouvez utiliser le plugin SappPasRoot). C'est la méthode de la dernière chance.</value>
   </data>
@@ -182,9 +188,6 @@
   </data>
   <data name="I_SevG" xml:space="preserve">
     <value>SVP selectionnez un dossier:</value>
-  </data>
-  <data name="I_TBMethod" xml:space="preserve">
-    <value>True Backup methode: utilise les chemins d'un fichier plateforme sauvegardé, injecte la platforme vers le fichier plateforme global de LaunchBox, injecte le(s) jeu(x) vers le fichier plateforme specifique (ou le créé).</value>
   </data>
   <data name="I_XML" xml:space="preserve">
     <value>SVP sélectionnez un fichier a xml.</value>
@@ -243,6 +246,9 @@
   <data name="Q_Continue" xml:space="preserve">
     <value>Vous êtes sûr(e) de vouloir continuer ?</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Enlever</value>
+  </data>
   <data name="ResetF" xml:space="preserve">
     <value>Réglages d'usine</value>
   </data>
@@ -254,6 +260,9 @@
   </data>
   <data name="Source" xml:space="preserve">
     <value>Source</value>
+  </data>
+  <data name="S_File" xml:space="preserve">
+    <value>Sélectionnez un fichier</value>
   </data>
   <data name="S_Folder" xml:space="preserve">
     <value>Selectionnez un dossier</value>

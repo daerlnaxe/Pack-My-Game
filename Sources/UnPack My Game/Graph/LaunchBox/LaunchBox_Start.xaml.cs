@@ -90,9 +90,9 @@ namespace UnPack_My_Game.Graph.LaunchBox
             _Model.Mode = E_Method.LBMethod;
         }
 
-        private void TB_Click(object sender, RoutedEventArgs e)
+        private void DPG_Click(object sender, RoutedEventArgs e)
         {
-            _Model.ActiveMethodPage = new P_TBMethod();
+            //_Model.ActiveMethodPage = new P_DPGMethod();
             _Model.Mode = E_Method.TBMethod;
         }
 

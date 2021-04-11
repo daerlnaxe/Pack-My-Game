@@ -36,7 +36,7 @@ namespace Pack_My_Game.Core
     /// <remarks>
     /// Dans la mesure du possible on n'utilise pas LBGame, on va copier directement le xml
     /// </remarks>
-    partial class LaunchBoxCore : I_ASBaseC
+    partial class LaunchBoxCore : IASBaseC
     {
         public delegate object SignalBoxHandler(object sender, params string[] parameters);
         public delegate void SignalRecapHandler(object sender, string destination, string title, Platform platform);
@@ -81,7 +81,6 @@ namespace Pack_My_Game.Core
         Platform _ZePlatform { get; }
 
 
-
         /// <summary>
         /// Fichier xml contenant les jeux
         /// </summary>
@@ -97,11 +96,6 @@ namespace Pack_My_Game.Core
         /// Répertoire de travail selon la machine (voir si utile)
         /// </summary>
         public string _SystemPath { get; }
-
-
-
-
-
 
 
         #region Décisions
@@ -206,11 +200,6 @@ namespace Pack_My_Game.Core
             _ObjectFiles.SignalProgression += (x, y) => UpdateProgress(x, y);
             #endregion
         }
-
-
-
-
-
 
 
         /// <summary>
@@ -322,8 +311,6 @@ namespace Pack_My_Game.Core
                 {
                     HeTrace.WriteLine("[Run] Original Backup Game disabled");
                 }
-
-
                 #endregion
 
 
@@ -461,7 +448,6 @@ namespace Pack_My_Game.Core
 
 
 
-
                 #region suppression du dossier de travail
                 if (PackMe_IHM.Dispatch_Mbox(this, "Would you want to ERASE the temp folder", "Erase", E_DxButtons.No | E_DxButtons.Yes, optMessage: shGame.ExploitableFileName) == true)
                 {
@@ -480,9 +466,6 @@ namespace Pack_My_Game.Core
                     }
                 }
                 #endregion
-
-
-
 
                 UpdateStatus?.Invoke(this, $"Finished: {lbGame.Title}");
             }
@@ -979,9 +962,6 @@ namespace Pack_My_Game.Core
             return filteredFiles;
         }
 
-
-
-
         internal void SimpleCopyManager(string fileSrc, ref E_Decision previousDec, string destFile)
         {
             if (CancelToken.IsCancellationRequested)
@@ -1109,56 +1089,7 @@ namespace Pack_My_Game.Core
         }*/
         #endregion tree
 
-        /// <summary>
-        /// Check les fichiers définis dans les données du jeu et enregistre ça dans un fichier
-        /// ayant comme référent le dossier où ils sont sauvegardés.
-        /// </summary>
-        /// <param name="lbGame"></param>
-        [Obsolete]
-        private void ManageDefaultFiles(LBGame lbGame, string gamePath, Folder tree)
-        {
-            GamePaths gp = (GamePaths)lbGame;
-            gp.ApplicationPath = ManageRomPath(lbGame.ApplicationPath, tree.Children[Common.Games]);
-            gp.ManualPath = ManageDefaultFile(lbGame.ManualPath, tree.Children[Common.Manuals], "Manual");
-            gp.MusicPath = ManageDefaultFile(lbGame.MusicPath, tree.Children[Common.Musics], "Music");
-            //gp.VideoPath = ManageDefaultFile(lbGame.VideoPath, tree.Children[Common.Videos]);
-            //gp.ThemeVideoPath = ManageDefaultFile(lbGame.ThemeVideoPath, tree.Children[Common.]);
-
-            gp.WriteToJson(Path.Combine(gamePath, "DPGame.json"));
-        }
-
-        [Obsolete]
-        private string ManageRomPath(string fileLoc, Folder folder)
-        {
-            string fileN = Path.GetFileName(fileLoc);
-
-            if (File.Exists(Path.Combine(folder.Path, Path.GetFileName(fileLoc))))
-                return $"\\{fileN}";
-            else
-                return null;
-        }
-        [Obsolete]
-        private string ManageDefaultFile(string fileLoc, Folder folder, string media)
-        {
-            var motherF = _ZePlatform.PlatformFolders.FirstOrDefault((x) => x.MediaType == media);
-            if (motherF == null)
-                return null;
-
-            // Conversion des chemins pour les faire pointer vers le dossier de travail
-            string tmp = Path.GetFullPath(fileLoc, PS.Default.LBPath);
-            string rootF = Path.GetFullPath(motherF.FolderPath, PS.Default.LBPath);
-
-            if (!tmp.Contains(rootF))
-                return null;
-
-
-            tmp.Replace(rootF, folder.Path);
-            // Vérification de l'existence des fichiers
-            if (File.Exists(tmp))
-                return DxPaths.Windows.DxPath.To_Relative(folder.Path, tmp);
-            else
-                return null;
-        }
+   
 
 
         #region Compression & Hash

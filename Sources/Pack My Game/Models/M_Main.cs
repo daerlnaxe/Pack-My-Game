@@ -77,7 +77,7 @@ namespace Pack_My_Game.Models
             OnPropertyChanged(nameof(LaunchBoxPath));
             OnPropertyChanged(nameof(WorkingFolder));
             LoadOptions();
-            LoadPlatforms();
+            //LoadPlatforms();
         }
 
         private void LoadOptions()
@@ -175,6 +175,9 @@ namespace Pack_My_Game.Models
         /// </summary>
         internal void Process()
         {
+            // Vérifier qu'une plateforme est sélectionnée
+            Test_NullValue(SelectedPlatform);
+
             // Vérifie que des jeux ont été sélectionnés
             Test_HasElement(SelectedGames, nameof(NoGame));
 

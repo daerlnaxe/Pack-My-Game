@@ -164,7 +164,7 @@ namespace Pack_My_Game.IHM
         /// <param name="compressMethod"></param>
         /// <param name="title">Titre de la tâche</param>
         /// <returns></returns>
-        internal static bool? ZipCompressFolder(I_ASBaseC Objet, Func<object> compressMethod, string title = null)
+        internal static bool? ZipCompressFolder(IASBaseC Objet, Func<object> compressMethod, string title = null)
         {
             return Application.Current.Dispatcher?.Invoke
                 (
@@ -174,7 +174,7 @@ namespace Pack_My_Game.IHM
                         {
                             TaskName = title,
                             HideCloseButton = true,
-                            Model = M_ProgressC.Create<I_ASBaseC, Merde>(Objet, compressMethod),
+                            Model = M_ProgressC.Create<IASBaseC, Merde>(Objet, compressMethod),
                         };
 
                         if (dadProgress.ShowDialog() == true)

@@ -29,6 +29,7 @@ namespace Pack_My_Game.Cont
             {
                     Id = lbGame.Id,
                     Title = lbGame.Title,
+                    Platform = lbGame.Platform,
             };
         }
 
@@ -47,7 +48,7 @@ namespace Pack_My_Game.Cont
                 liste.Add(fichier);
         }
 
-        internal static void Add(Filerep filerep, List<Filerep> liste)
+        internal static void Add(DataRep filerep, List<DataRep> liste)
         {
             liste.Add(filerep);
         }

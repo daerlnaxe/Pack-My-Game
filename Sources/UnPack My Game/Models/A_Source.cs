@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Common_PMG.Container;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
-using UnPack_My_Game.Cont;
 
 namespace UnPack_My_Game.Models
 {
@@ -15,7 +15,7 @@ namespace UnPack_My_Game.Models
     {
         public virtual event BasicHandler Signal;
 
-        public abstract List<FileObj> Games { get; set; } 
+        public abstract List<DataRep> Games { get; set; } 
 
         public abstract void CheckErrors();
 
@@ -26,20 +26,20 @@ namespace UnPack_My_Game.Models
             //Games = new FileObj[0];
             /*else
             {*/
-            Games.Add(new FileObj(linkGame));
+            Games.Add(new DataRep(linkGame));
 
             /*}*/
 
             Signal?.Invoke(this);
         }
 
-        public virtual void Add_Game(FileObj game)
+        public virtual void Add_Game(DataRep game)
         {
             Games.Add(game);
             Signal?.Invoke(this);
         }
 
-        public virtual void Remove_Game(FileObj game)
+        public virtual void Remove_Game(DataRep game)
         {
             Games.Remove(game);
             Signal?.Invoke(this);

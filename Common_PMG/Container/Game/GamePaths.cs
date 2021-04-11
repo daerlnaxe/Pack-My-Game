@@ -14,6 +14,7 @@ namespace Common_PMG.Container.Game
     {
         public string Id { get; set; }
         public string Title { get; set; }
+        public string Platform { get; set; }
         public string ApplicationPath { get; set; }
         public string ManualPath { get; set; }
         public string MusicPath { get; set; }
@@ -24,11 +25,17 @@ namespace Common_PMG.Container.Game
         {
             var options = new JsonSerializerOptions()
             {
-                WriteIndented = true,                
+                WriteIndented = true,
             };
-                        
+
             string jsonString = JsonSerializer.Serialize(this, options).ToString();
             File.WriteAllText(fileName, jsonString);
+        }
+
+        public static GamePaths ReadFromJson(string fileName)
+        {
+            string jsonString = File.ReadAllText(fileName);
+            return JsonSerializer.Deserialize<GamePaths>(jsonString);
         }
 
         public static explicit operator GamePaths(LBGame v)
@@ -37,6 +44,7 @@ namespace Common_PMG.Container.Game
             {
                 Id = v.Id,
                 Title = v.Title,
+                Platform = v.Platform,
                 ApplicationPath = v.ApplicationPath,
                 ManualPath = v.ManualPath,
                 MusicPath = v.MusicPath,

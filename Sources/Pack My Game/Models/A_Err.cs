@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -42,10 +43,20 @@ namespace Pack_My_Game.Models
             ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
         }
 
+        protected void Test_NullValue(object val, [CallerMemberName] string propertyName = null)
+        {
+            Remove_Error(propertyName);
+
+            Debug.WriteLine(propertyName + ": null object used");
+            if (val == null)
+                Add_Error(Lang.NullValue, propertyName);
+        }
+
         protected void Test_NullValue(string value, [CallerMemberName] string propertyName = null)
         {
             Remove_Error(propertyName);
 
+            Debug.WriteLine(propertyName + ": null string used");
             if (string.IsNullOrEmpty(value))
                 Add_Error(Lang.NullValue, propertyName);
         }

@@ -1,4 +1,5 @@
-﻿using DxTBoxCore.BoxChoose;
+﻿using Common_PMG.Container;
+using DxTBoxCore.BoxChoose;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using UnPack_My_Game.Cont;
 using UnPack_My_Game.Models;
 using UnPack_My_Game.Resources;
 
@@ -66,14 +66,14 @@ namespace UnPack_My_Game.Graph
         private void Game_Checked(object sender, RoutedEventArgs e)
         {
             CheckBox cb = e.Source as CheckBox;
-            Model.Add_Game((FileObj)cb.Tag);
+            Model.Add_Game((DataRep)cb.Tag);
         //    Model.CheckErrors();
         }
 
         private void Game_Unchecked(object sender, RoutedEventArgs e)
         {
             CheckBox cb = e.Source as CheckBox;
-            Model.Remove_Game((FileObj) cb.Tag);
+            Model.Remove_Game((DataRep) cb.Tag);
           //  Model.CheckErrors();
         }
 
@@ -85,13 +85,13 @@ namespace UnPack_My_Game.Graph
         private void Exec_SelectAll(object sender, ExecutedRoutedEventArgs e)
         {
             foreach (var g in ((M_SSource)Model).AvailableGames)
-                g.Selected = true; // Ajoute automatiquement grâce au bind
+                g.IsSelected = true; // Ajoute automatiquement grâce au bind
         }
 
         private void Exec_DeselectAll(object sender, ExecutedRoutedEventArgs e)
         {
             foreach (var g in ((M_SSource)Model).AvailableGames)
-                g.Selected = false; // Enlève automatiquement grâce au bind
+                g.IsSelected = false; // Enlève automatiquement grâce au bind
         }
     }
 }

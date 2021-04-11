@@ -79,6 +79,7 @@ namespace Pack_My_Game
 
             if (cfg.ShowDialog() == true)
             {
+                // On recharge le fichier langue
                 _Model.Relocalize();
                 _Model.ReloadConfig();
 

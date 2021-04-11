@@ -7,16 +7,25 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Graph\LaunchBox\P_DPG.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Graph\LaunchBox\P_LaunchBox_Main.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Graph\LaunchBox\LaunchBox_Start.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Graph\LaunchBox\P_EBMethod.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Graph\LaunchBox\P_LaunchBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Graph\LaunchBox\P_LBMethod.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Graph\LaunchBox\P_TBMethod.xaml.cs">
+    <Compile Update="Graph\LaunchBox\P_DPGFile.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Graph\LaunchBox\W_Config.xaml.cs">
@@ -44,19 +53,31 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Graph\LaunchBox\P_DPG.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Graph\LaunchBox\P_LaunchBox_Main.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Graph\LaunchBox\LaunchBox_Start.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Graph\LaunchBox\P_EBMethod.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Graph\LaunchBox\P_LaunchBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Graph\LaunchBox\P_LBMethod.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Graph\LaunchBox\P_TBMethod.xaml">
+    <Page Update="Graph\LaunchBox\P_DPGFile.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Graph\LaunchBox\W_Config.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Graph\LaunchBox\W_DPGMaker.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Graph\P_OGame.xaml">

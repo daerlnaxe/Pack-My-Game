@@ -13,16 +13,43 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Cont\EBGame.cs" />
+    <Compile Remove="Cont\FileObj.cs" />
+    <Compile Remove="Cores\C_LaunchBoxAdapt.cs" />
+    <Compile Remove="Cores\C_LaunchBoxEB.cs" />
+    <Compile Remove="Cores\C_LaunchBoxTB.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Cont\EBGame.cs" />
+    <None Include="Cont\FileObj.cs" />
+    <None Include="Cores\C_LaunchBoxAdapt.cs" />
+    <None Include="Cores\C_LaunchBoxEB.cs" />
+    <None Include="Cores\C_LaunchBoxTB.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="DotNetZip" Version="1.15.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\AreaSelect\AreaSelect.csproj" />
     <ProjectReference Include="..\..\..\DxTBoxCore\Sources\DxTBoxCore.csproj" />
+    <ProjectReference Include="..\..\..\HashCalc\Source\HashCalc.csproj" />
     <ProjectReference Include="..\..\..\Hermes\Sources\Hermes.csproj" />
     <ProjectReference Include="..\LaunchBox XML\LaunchBox XML.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="System.Windows.Forms">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.Windows.Forms.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Graph\LaunchBox\W_DPGMaker.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
@@ -56,6 +83,13 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Graph\LaunchBox\W_DPGMaker.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 
 </Project>

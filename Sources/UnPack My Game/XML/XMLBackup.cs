@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common_PMG.Container;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -8,7 +9,6 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Xml.XPath;
-using UnPack_My_Game.Cont;
 
 namespace UnPack_My_Game.XML
 {
@@ -118,7 +118,7 @@ namespace UnPack_My_Game.XML
         }
 
     
-        internal static void Alter_EBPaths(FileObj g, string destPath)
+        internal static void Alter_EBPaths(DataRep g, string destPath)
         {
             string tmpFile = Path.Combine(destPath, $"tmp.xml");
             // Backup de l'EBGame            

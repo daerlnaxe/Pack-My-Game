@@ -16,6 +16,7 @@
         <TextBlock Text="{x:Static l:Lang.Intro}" Margin="10"/>
         <StackPanel HorizontalAlignment="Center">
             <Button Content="{x:Static l:Lang.Launchbox}" Click="LaunchBox_Click"/>
+            <Button Content="{x:Static l:Lang.Launchbox}" Click="LaunchBoxRevo_Click"/>
 
         </StackPanel>
     </StackPanel>

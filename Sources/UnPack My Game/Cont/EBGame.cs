@@ -7,6 +7,7 @@ namespace UnPack_My_Game.Cont
     /// <summary>
     /// Objet représentant une backup amélioréer de jeu
     /// </summary>
+    [Obsolete]
     class EBGame
     {
         public string Main { get; set; }

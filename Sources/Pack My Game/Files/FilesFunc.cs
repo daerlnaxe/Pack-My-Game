@@ -23,7 +23,6 @@ namespace Pack_My_Game.Files
         {
             HeTrace.Write($"[CopyFiles] Copy of the file '{Path.GetFileName(fileSrc)}': ");
 
-
             try
             {
                 File.Copy(fileSrc, destFile, overWrite);

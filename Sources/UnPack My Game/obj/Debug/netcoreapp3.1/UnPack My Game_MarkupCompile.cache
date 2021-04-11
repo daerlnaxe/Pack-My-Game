@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\App.xaml
-12-648041411
+16-91866700
 
-41429242165
-220-1447078275
-Graph\LaunchBox\LaunchBox_Start.xaml;Graph\LaunchBox\P_EBMethod.xaml;Graph\LaunchBox\P_LBMethod.xaml;Graph\LaunchBox\P_TBMethod.xaml;Graph\LaunchBox\W_Config.xaml;Graph\P_OGame.xaml;Graph\P_SGames.xaml;Graph\W_Common.xaml;Graph\W_DefinePaths.xaml;Graph\W_ModTargetPaths.xaml;MainWindow.xaml;Style.xaml;
+48-1014966564
+223712608153
+Graph\LaunchBox\LaunchBox_Start.xaml;Graph\LaunchBox\P_DPG.xaml;Graph\LaunchBox\P_DPGFile.xaml;Graph\LaunchBox\P_EBMethod.xaml;Graph\LaunchBox\P_LaunchBox.xaml;Graph\LaunchBox\P_LaunchBox_Main.xaml;Graph\LaunchBox\P_LBMethod.xaml;Graph\LaunchBox\W_Config.xaml;Graph\LaunchBox\W_DPGMaker.xaml;Graph\P_OGame.xaml;Graph\P_SGames.xaml;Graph\W_Common.xaml;Graph\W_DefinePaths.xaml;Graph\W_ModTargetPaths.xaml;MainWindow.xaml;Style.xaml;
 
 False
 

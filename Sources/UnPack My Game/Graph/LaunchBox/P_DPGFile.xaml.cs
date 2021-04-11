@@ -19,11 +19,11 @@ namespace UnPack_My_Game.Graph.LaunchBox
     /// <summary>
     /// Logique d'interaction pour P_TBMethode.xaml
     /// </summary>
-    public partial class P_TBMethod : Page, I_Method
+    public partial class P_DPGFile : Page, I_Method
     {
-        public A_Method Model { get; set; } = new M_TBMethod();
+        public A_Method Model { get; set; } = new M_DPGMethod();
 
-        public P_TBMethod()
+        public P_DPGFile()
         {
             InitializeComponent();
             DataContext = Model;
@@ -46,7 +46,7 @@ namespace UnPack_My_Game.Graph.LaunchBox
             if (tc.ShowDialog() != true)
                 return;
 
-            ((M_TBMethod)Model).AssignXML(tc.LinkResult);
+            ((M_DPGMethod)Model).AssignXML(tc.LinkResult);
         }
     }
 }

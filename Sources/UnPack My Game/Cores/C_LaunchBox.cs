@@ -14,15 +14,15 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Windows;
-using UnPack_My_Game.Cont;
 using UnPack_My_Game.Decompression;
 using UnPack_My_Game.Graph.LaunchBox;
 using UnPack_My_Game.Resources;
 using PS = UnPack_My_Game.Properties.Settings;
+using Common_PMG.Container;
 
 namespace UnPack_My_Game.Cores
 {
-    internal abstract class C_LaunchBox : I_ASBaseC
+    internal abstract class C_LaunchBox : IASBaseC
     {
         #region events
         public abstract event DoubleHandler UpdateProgressT;
@@ -44,7 +44,7 @@ namespace UnPack_My_Game.Cores
         public bool IsPaused { get; set; }
         #endregion
 
-        public List<FileObj> Games { get; }
+        public List<DataRep> Games { get; }
 
 
         protected string TGamesP { get; set; }
@@ -60,7 +60,7 @@ namespace UnPack_My_Game.Cores
         public E_Method Mode { get; internal set; }
 
 
-        public C_LaunchBox(string logTitle, List<FileObj> games)
+        public C_LaunchBox(string logTitle, List<DataRep> games)
         {
             Games = games;
 

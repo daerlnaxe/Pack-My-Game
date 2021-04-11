@@ -120,6 +120,9 @@
   <data name="AccessF" xml:space="preserve">
     <value>Access folders</value>
   </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
   <data name="Arch_Struc" xml:space="preserve">
     <value>Archive structure</value>
   </data>
@@ -168,6 +171,9 @@
   <data name="I_DelByYourself" xml:space="preserve">
     <value>You must delete manually this folder</value>
   </data>
+  <data name="I_DPGZipFile" xml:space="preserve">
+    <value>Select a zip file to make DPG file, it will make it, save it in your zip and recalculate md5 file.</value>
+  </data>
   <data name="I_EBMethod" xml:space="preserve">
     <value>Enhanced Backup method: use paths from EBGame.xml to copy files, LaunchBox will create at the next launch the platform, but you will have to specify folders (you can use SappPasRoot plugin).It's the last luck method. </value>
   </data>
@@ -185,9 +191,6 @@
   </data>
   <data name="I_SevG" xml:space="preserve">
     <value>Please select the folder:</value>
-  </data>
-  <data name="I_TBMethod" xml:space="preserve">
-    <value>True Backup method: uses paths from platform file backed, inject platform to general LaunchBox platform file, inject game to specific plartform file (or create).</value>
   </data>
   <data name="I_XML" xml:space="preserve">
     <value>Please select a xml file.</value>
@@ -246,6 +249,9 @@
   <data name="Q_Continue" xml:space="preserve">
     <value>Are you sure you want to continue ?</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
   <data name="ResetF" xml:space="preserve">
     <value>Reset Factory</value>
   </data>
@@ -257,6 +263,9 @@
   </data>
   <data name="Source" xml:space="preserve">
     <value>Source</value>
+  </data>
+  <data name="S_File" xml:space="preserve">
+    <value>Select a file</value>
   </data>
   <data name="S_Folder" xml:space="preserve">
     <value>Select a folder</value>

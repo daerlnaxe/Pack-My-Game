@@ -30,25 +30,25 @@ namespace Pack_My_Game.Models
 
         public Language Lang => Common.ObjectLang;
 
-        public Filerep ChosenGame { get; set; }
-        public Filerep SelectedGame { get; set; }
-        public ObservableCollection<Filerep> GamesCollection { get; set; } = new ObservableCollection<Filerep>();
+        public DataRep ChosenGame { get; set; }
+        public DataRep SelectedGame { get; set; }
+        public ObservableCollection<DataRep> GamesCollection { get; set; } = new ObservableCollection<DataRep>();
 
-        public Filerep ChosenManual { get; set; }
-        public Filerep SelectedManual { get; set; }
-        public ObservableCollection<Filerep> ManualsCollection { get; set; } = new ObservableCollection<Filerep>();
+        public DataRep ChosenManual { get; set; }
+        public DataRep SelectedManual { get; set; }
+        public ObservableCollection<DataRep> ManualsCollection { get; set; } = new ObservableCollection<DataRep>();
 
-        public Filerep ChosenMusic { get; set; }
-        public Filerep SelectedMusic { get; set; }
-        public ObservableCollection<Filerep> MusicsCollection { get; set; } = new ObservableCollection<Filerep>();
+        public DataRep ChosenMusic { get; set; }
+        public DataRep SelectedMusic { get; set; }
+        public ObservableCollection<DataRep> MusicsCollection { get; set; } = new ObservableCollection<DataRep>();
 
-        public Filerep ChosenVideo { get; set; }
-        public Filerep SelectedVideo { get; set; }
-        public ObservableCollection<Filerep> VideosCollection { get; set; } = new ObservableCollection<Filerep>();
+        public DataRep ChosenVideo { get; set; }
+        public DataRep SelectedVideo { get; set; }
+        public ObservableCollection<DataRep> VideosCollection { get; set; } = new ObservableCollection<DataRep>();
 
-        public Filerep ChosenCheatF { get; set; }
+        public DataRep ChosenCheatF { get; set; }
         public string SelectedCheatFile { get; set; }
-        public ObservableCollection<Filerep> CheatsCollection { get; set; } = new ObservableCollection<Filerep>();
+        public ObservableCollection<DataRep> CheatsCollection { get; set; } = new ObservableCollection<DataRep>();
 
         /// <summary>
         /// Contient les chemins de la plateforme
@@ -88,11 +88,11 @@ namespace Pack_My_Game.Models
                 string tmp = f.Replace(gamesPath, ".");
                 if (tmp.Equals(GamePaths.ApplicationPath))
                 {
-                    ChosenGame = new Filerep(tmp, f);
+                    ChosenGame = new DataRep(tmp, f);
                     continue;
                 }
 
-                GamesCollection.Add(new Filerep(tmp, f));
+                GamesCollection.Add(new DataRep(tmp, f));
             }
         }
 
@@ -105,11 +105,11 @@ namespace Pack_My_Game.Models
                 string tmp = f.Replace(manualsPath, ".");
                 if (tmp.Equals(GamePaths.ManualPath))
                 {
-                    ChosenManual = new Filerep(tmp, f);
+                    ChosenManual = new DataRep(tmp, f);
                     continue;
                 }
 
-                ManualsCollection.Add(new Filerep(tmp, f));
+                ManualsCollection.Add(new DataRep(tmp, f));
             }
         }
 
@@ -123,11 +123,11 @@ namespace Pack_My_Game.Models
                 string tmp = f.Replace(musicsPath, ".");
                 if (tmp.Equals(GamePaths.MusicPath))
                 {
-                    ChosenMusic = new Filerep(tmp, f);
+                    ChosenMusic = new DataRep(tmp, f);
                     continue;
                 }
 
-                MusicsCollection.Add(new Filerep(tmp, f));
+                MusicsCollection.Add(new DataRep(tmp, f));
             }
         }
 
@@ -140,11 +140,11 @@ namespace Pack_My_Game.Models
                 string tmp = f.Replace(videosPath, ".");
                 if (tmp.Equals(GamePaths.VideoPath))
                 {
-                    ChosenVideo = new Filerep(tmp, f);
+                    ChosenVideo = new DataRep(tmp, f);
                     continue;
                 }
 
-                VideosCollection.Add(new Filerep(tmp, f));
+                VideosCollection.Add(new DataRep(tmp, f));
             }
         }
 
@@ -155,7 +155,7 @@ namespace Pack_My_Game.Models
             foreach (string f in Directory.EnumerateFiles(Path.Combine(Root, Common.CheatCodes), "*.*", SearchOption.TopDirectoryOnly))
             {
                 string tmp = f.Replace(cheatsPath, ".");
-                CheatsCollection.Add(new Filerep(tmp, f));
+                CheatsCollection.Add(new DataRep(tmp, f));
             }
         }
 
@@ -195,7 +195,7 @@ namespace Pack_My_Game.Models
             }*/
             if (SelectedGame != null)
             {
-                OpDFiles.Trash(SelectedGame.PathLink);
+                OpDFiles.Trash(SelectedGame.ALinkToThePast);
                 LoadGames();
             }
         }
@@ -221,7 +221,7 @@ namespace Pack_My_Game.Models
             //string path = Path.Combine(Root, Common.Manuals, SelectedManual);
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = SelectedManual.PathLink;
+            p.StartInfo.FileName = SelectedManual.ALinkToThePast;
             p.Start();
 
         }
@@ -243,7 +243,7 @@ namespace Pack_My_Game.Models
         {
             if (SelectedManual != null)
             {
-                OpDFiles.Trash(SelectedManual.PathLink);
+                OpDFiles.Trash(SelectedManual.ALinkToThePast);
                 LoadManuals();
             }
         }
@@ -269,7 +269,7 @@ namespace Pack_My_Game.Models
             //string path = Path.Combine(Root, Common.Musics, SelectedMusic);
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = SelectedMusic.PathLink;
+            p.StartInfo.FileName = SelectedMusic.ALinkToThePast;
             p.Start();
 
         }
@@ -278,7 +278,7 @@ namespace Pack_My_Game.Models
         {
             if (SelectedMusic != null)
             {
-                OpDFiles.Trash(SelectedMusic.PathLink);
+                OpDFiles.Trash(SelectedMusic.ALinkToThePast);
                 LoadMusics();
             }
         }
@@ -294,7 +294,7 @@ namespace Pack_My_Game.Models
             //string path = Path.Combine(Root, Common.Videos, SelectedVideo);
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = SelectedVideo.PathLink;
+            p.StartInfo.FileName = SelectedVideo.ALinkToThePast;
             p.Start();
         }
 
@@ -329,7 +329,7 @@ namespace Pack_My_Game.Models
         {
             if (SelectedVideo != null)
             {
-                OpDFiles.Trash(SelectedVideo.PathLink);
+                OpDFiles.Trash(SelectedVideo.ALinkToThePast);
                 LoadVideos();
             }
         }

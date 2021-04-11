@@ -29,8 +29,8 @@
                    Text="LaunchBox" Style="{StaticResource tbTitle}"/>
         <!-- Left Menu -->
         <StackPanel DockPanel.Dock="Left" Background="{DynamicResource LeftMenu}" HorizontalAlignment="Left">
+            <Button Content="DPG Methode" Click="DPG_Click" />
             <Button Content="LB Methode" Click="LB_Click"/>
-            <Button Content="TB Methode" Click="TB_Click" />
             <Button Content="EB Methode" Click="EB_Click"/>
             <Separator/>
             <Button Content="{x:Static l:Lang.OneG}" Click="OneG_Click"

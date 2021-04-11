@@ -2,6 +2,7 @@
 using Common_PMG.Container.AAPP;
 using Common_PMG.Container.Game;
 using DxLocalTransf;
+
 using DxTBoxCore.Common;
 using Hermes;
 using LaunchBox_XML.XML;
@@ -25,6 +26,7 @@ namespace Pack_My_Game.Core
         [Obsolete]
         private void CopyFiles(LBGame lbGame, Folder tree)
         {
+            
             // 2021 - Formatage de la chaine pour éviter les erreurs
             string toSearch = lbGame.Title.Replace(':', '_').Replace('\'', '_').Replace("__", "_");
 
@@ -414,8 +416,60 @@ namespace Pack_My_Game.Core
             //this.UpdateProgress?.Invoke(100);
 
         }
+
+
+        // --- 
+
+
+        /// <summary>
+        /// Check les fichiers définis dans les données du jeu et enregistre ça dans un fichier
+        /// ayant comme référent le dossier où ils sont sauvegardés.
+        /// </summary>
+        /// <param name="lbGame"></param>
+        [Obsolete]
+        private void ManageDefaultFiles(LBGame lbGame, string gamePath, Folder tree)
+        {
+            GamePaths gp = (GamePaths)lbGame;
+            gp.ApplicationPath = ManageRomPath(lbGame.ApplicationPath, tree.Children[Common.Games]);
+            gp.ManualPath = ManageDefaultFile(lbGame.ManualPath, tree.Children[Common.Manuals], "Manual");
+            gp.MusicPath = ManageDefaultFile(lbGame.MusicPath, tree.Children[Common.Musics], "Music");
+            //gp.VideoPath = ManageDefaultFile(lbGame.VideoPath, tree.Children[Common.Videos]);
+            //gp.ThemeVideoPath = ManageDefaultFile(lbGame.ThemeVideoPath, tree.Children[Common.]);
+
+            gp.WriteToJson(Path.Combine(gamePath, "DPGame.json"));
+        }
+
+        [Obsolete]
+        private string ManageRomPath(string fileLoc, Folder folder)
+        {
+            string fileN = Path.GetFileName(fileLoc);
+
+            if (File.Exists(Path.Combine(folder.Path, Path.GetFileName(fileLoc))))
+                return $"\\{fileN}";
+            else
+                return null;
+        }
+        [Obsolete]
+        private string ManageDefaultFile(string fileLoc, Folder folder, string media)
+        {
+            var motherF = _ZePlatform.PlatformFolders.FirstOrDefault((x) => x.MediaType == media);
+            if (motherF == null)
+                return null;
+
+            // Conversion des chemins pour les faire pointer vers le dossier de travail
+            string tmp = Path.GetFullPath(fileLoc, PS.Default.LBPath);
+            string rootF = Path.GetFullPath(motherF.FolderPath, PS.Default.LBPath);
+
+            if (!tmp.Contains(rootF))
+                return null;
+
+
+            tmp.Replace(rootF, folder.Path);
+            // Vérification de l'existence des fichiers
+            if (File.Exists(tmp))
+                return DxPaths.Windows.DxPath.To_Relative(folder.Path, tmp);
+            else
+                return null;
+        }
     }
-
-
-
 }

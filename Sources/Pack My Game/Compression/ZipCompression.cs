@@ -25,7 +25,7 @@ namespace Pack_My_Game.Compression
      *      
      *      .saveprogress: event lors de la compression
      */
-    class ZipCompression: DxLocalTransf.Progress.ToImp.I_ASBaseC
+    class ZipCompression: DxLocalTransf.Progress.ToImp.IASBaseC
     {
         public delegate bool DecisionHandler(string message, string title);
 
