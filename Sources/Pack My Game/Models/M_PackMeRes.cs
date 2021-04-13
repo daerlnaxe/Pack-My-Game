@@ -413,7 +413,7 @@ namespace Pack_My_Game.Models
             UpdateStatus(this, $"Copy verification");
             MaximumProgress?.Invoke(this, 100);
 
-            DxProgressB1 progressBox = new DxProgressB1();
+            /*DxProgressB1 progressBox = new DxProgressB1();
 
             //bool? res = _ObjectFiles.VerifByHash_Sync(fileSrc, destFile, () => MD5.Create());
             OpDFilesExt objectFiles = new OpDFilesExt();
@@ -425,8 +425,8 @@ namespace Pack_My_Game.Models
             Task.Run(() => res = objectFiles.DeepVerif(fileSrc, destFile, () => MD5.Create()));
 
             progressBox.ShowDialog();
-
             UpdateStatus?.Invoke(this, $"Check verif: {res}");
+            */
             return true;
         }
     }

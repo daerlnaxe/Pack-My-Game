@@ -1088,6 +1088,15 @@
         "runtime": {
           "bin/placeholder/LaunchBox XML.dll": {}
         }
+      },
+      "SevenZip/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/SevenZip.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SevenZip.dll": {}
+        }
       }
     }
   },
@@ -3308,6 +3317,11 @@
       "type": "project",
       "path": "../LaunchBox XML/LaunchBox XML.csproj",
       "msbuildProject": "../LaunchBox XML/LaunchBox XML.csproj"
+    },
+    "SevenZip/1.0.0": {
+      "type": "project",
+      "path": "../../../SeverZipSharp/SevenZip/SevenZip.csproj",
+      "msbuildProject": "../../../SeverZipSharp/SevenZip/SevenZip.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -3317,7 +3331,8 @@
       "DxTBoxCore >= 1.0.0",
       "HashCalc >= 1.0.0",
       "Hermes >= 1.0.0",
-      "LaunchBox XML >= 1.0.0"
+      "LaunchBox XML >= 1.0.0",
+      "SevenZip >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -3368,6 +3383,9 @@
             },
             "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\LaunchBox XML\\LaunchBox XML.csproj": {
               "projectPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\LaunchBox XML\\LaunchBox XML.csproj"
+            },
+            "E:\\Programmation\\Git-Hub\\SeverZipSharp\\SevenZip\\SevenZip.csproj": {
+              "projectPath": "E:\\Programmation\\Git-Hub\\SeverZipSharp\\SevenZip\\SevenZip.csproj"
             }
           }
         }

@@ -153,3 +153,7 @@ E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\bin\Debug\netcoreapp3
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\bin\Debug\netcoreapp3.1\Unbroken.LaunchBox.Plugins.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\bin\Debug\netcoreapp3.1\DxTBoxCore.deps.json
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\bin\Debug\netcoreapp3.1\DxTBoxCore.runtimeconfig.json
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\bin\Debug\netcoreapp3.1\DxTBoxCore.runtimeconfig.dev.json
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\bin\Debug\netcoreapp3.1\DxTBoxCore.exe

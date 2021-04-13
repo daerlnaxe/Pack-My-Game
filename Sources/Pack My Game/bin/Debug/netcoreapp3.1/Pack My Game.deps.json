@@ -1019,6 +1019,14 @@
         "runtime": {
           "SevenZipSharp.dll": {}
         }
+      },
+      "Unbroken.LaunchBox.Plugins/11.10.0.0": {
+        "runtime": {
+          "Unbroken.LaunchBox.Plugins.dll": {
+            "assemblyVersion": "11.10.0.0",
+            "fileVersion": "11.10.0.0"
+          }
+        }
       }
     }
   },
@@ -1518,6 +1526,11 @@
     },
     "SevenZip/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Unbroken.LaunchBox.Plugins/11.10.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

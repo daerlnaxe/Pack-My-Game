@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <Compile Remove="Compression\ZipCompress.cs" />
+    <Compile Remove="Core\LaunchBocDeprecated.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -68,6 +69,7 @@
 
   <ItemGroup>
     <None Include="Compression\ZipCompress.cs" />
+    <None Include="Core\LaunchBocDeprecated.cs" />
   </ItemGroup>
 
 </Project>

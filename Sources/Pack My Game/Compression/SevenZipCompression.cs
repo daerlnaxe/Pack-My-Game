@@ -1,5 +1,6 @@
 ﻿
 using DxLocalTransf;
+using DxLocalTransf.Progress;
 using DxTBoxCore.Box_Progress;
 using Pack_My_Game.IHM;
 using SevenZip;
@@ -15,19 +16,20 @@ namespace Pack_My_Game.Compression
     /// 
     /// </summary>
     /// <remarks>Modèle avec Task</remarks>
-    class SevenZipCompression : DxLocalTransf.Progress.ToImp.I_ASBase
+    class SevenZipCompression : I_AsyncSig
     {
         public delegate bool DecisionHandler(string message, string title);
 
 
         public event DoubleHandler UpdateProgress;
         public event MessageHandler UpdateStatus;
+        public event MessageHandler UpdateStatusNL;
         public event DoubleHandler MaximumProgress;
 
         public static event DecisionHandler Error;
 
         //
-        public CancellationTokenSource TokenSource { get; } = new CancellationTokenSource();
+        public CancellationTokenSource TokenSource { get; set; }
 
         public CancellationToken CancelToken => TokenSource.Token;
 
@@ -62,7 +64,6 @@ namespace Pack_My_Game.Compression
 
 
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -70,10 +71,10 @@ namespace Pack_My_Game.Compression
         /// <param name="archiveDest">Archive name</param>
         /// <param name="cplLvl">Level of compression</param>
         /// <returns></returns>
-        public bool CompressFolder(string folder, string archiveDest, int cplLvl)
+        public bool CompressFolder(string folderSrc, string archiveDest, int cplLvl)
         {
-            if (!Directory.Exists(folder))
-                throw new FileNotFoundException(folder);
+            if (!Directory.Exists(folderSrc))
+                throw new FileNotFoundException(folderSrc);
 
             //  string archiveName = archiveDest + ".7z";
             ArchiveLink = archiveDest + ".7z";
@@ -107,7 +108,7 @@ namespace Pack_My_Game.Compression
                     szp.CompressionFinished += CompressionFinished;
 
                     string tmp = $"{Path.GetRandomFileName()}.7z.tmp";
-                    szp.CompressDirectory(folder, Path.Combine(DestinationFolder, tmp));
+                    szp.CompressDirectory(folderSrc, Path.Combine(DestinationFolder, tmp));
 
                     // on renomme
                     File.Move(tmp, ArchiveLink, true);
@@ -149,7 +150,7 @@ namespace Pack_My_Game.Compression
             //BoxProgress.dProgress.EntryUpdate(e.PercentDone);
 
             //BoxProgress.dProgress.CurrentInfo = e.FileName;
-            this.UpdateStatus?.Invoke(this, e.FileName);
+            this.UpdateStatusNL?.Invoke(this, e.FileName);
 
             //BoxProgress.AsyncUpdateEntryTxt(e.PercentDone);
             Debug.WriteLine($"fcs Percent done: {e.PercentDone}%");
@@ -197,7 +198,7 @@ namespace Pack_My_Game.Compression
             Console.WriteLine($"Compression tout fini{e.ToString()}");
             BoxProgress.StopIt();*/
 
-            this.UpdateStatus?.Invoke(this, "Finished");
+            this.UpdateStatusNL?.Invoke(this, "Finished");
             Thread.Sleep(500);
         }
 

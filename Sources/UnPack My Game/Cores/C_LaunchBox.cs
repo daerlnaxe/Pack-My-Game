@@ -19,10 +19,11 @@ using UnPack_My_Game.Graph.LaunchBox;
 using UnPack_My_Game.Resources;
 using PS = UnPack_My_Game.Properties.Settings;
 using Common_PMG.Container;
+using DxLocalTransf.Progress;
 
 namespace UnPack_My_Game.Cores
 {
-    internal abstract class C_LaunchBox : IASBaseC
+    internal abstract class C_LaunchBox : I_ASBase
     {
         #region events
         public abstract event DoubleHandler UpdateProgressT;
@@ -75,10 +76,6 @@ namespace UnPack_My_Game.Cores
             HeTrace.AddLogger(logTitle, log);
 
             UpdateStatus += (x, y) => HeTrace.WriteLine(y, this);
-
-            ZipDecompression.StatCurrentProgress += (x, y) => this.UpdateProgress?.Invoke(x, y);
-            ZipDecompression.StatCurrentStatus += (x, y) => this.UpdateStatus?.Invoke(x, y);
-            ZipDecompression.StatMaxProgress += (x, y) => this.MaximumProgress?.Invoke(x, y);
 
             //
             MaximumProgressT?.Invoke(this, games.Count);

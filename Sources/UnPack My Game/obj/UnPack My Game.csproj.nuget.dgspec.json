@@ -555,6 +555,9 @@
               },
               "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\LaunchBox XML\\LaunchBox XML.csproj": {
                 "projectPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\LaunchBox XML\\LaunchBox XML.csproj"
+              },
+              "E:\\Programmation\\Git-Hub\\SeverZipSharp\\SevenZip\\SevenZip.csproj": {
+                "projectPath": "E:\\Programmation\\Git-Hub\\SeverZipSharp\\SevenZip\\SevenZip.csproj"
               }
             }
           }
@@ -594,6 +597,16 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
+      }
+    },
+    "E:\\Programmation\\Git-Hub\\SeverZipSharp\\SevenZip\\SevenZip.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\Programmation\\Git-Hub\\SeverZipSharp\\SevenZip\\SevenZip.csproj",
+        "projectName": "SevenZip",
+        "projectPath": "E:\\Programmation\\Git-Hub\\SeverZipSharp\\SevenZip\\SevenZip.csproj"
+      },
+      "frameworks": {
+        "net48": {}
       }
     }
   }

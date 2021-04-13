@@ -16,6 +16,7 @@ using Common_PMG.Container.Game;
 using DxTBoxCore.Box_Collec;
 using System.Linq;
 using Cst = LaunchBox_XML.Common;
+using DxTBoxCore.Async_Box_Progress;
 
 namespace Pack_My_Game.Models
 {
@@ -192,7 +193,10 @@ namespace Pack_My_Game.Models
                 DxAsStateProgress progressW = new DxAsStateProgress()
                 {
                     AutoClose = false,
-                    Model = (M_ProgressCC)M_ProgressC.Create<LaunchBoxCore, M_ProgressCC>(lbCore, () => lbCore.Run()),
+                    Model = lbCore,
+                    Launcher = lbCore
+                    
+                    //= M_ProgressD.Create<LaunchBoxCore, M_ProgressDL>(lbCore, () => lbCore.Run()),
 
                     /*new M_ProgressCC()
                     {
@@ -203,7 +207,7 @@ namespace Pack_My_Game.Models
                 progressW.ShowDialog();
 
                 // On vérifie que la tâche est allée jusqu'au bout
-                if (progressW.Model.TaskRunning.Status != System.Threading.Tasks.TaskStatus.RanToCompletion)
+                if (progressW.Launcher.TaskRunning.Status != System.Threading.Tasks.TaskStatus.RanToCompletion)
                 {
                     HeTrace.WriteLine("Task not ran to completion");
                     return;

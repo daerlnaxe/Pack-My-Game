@@ -1,5 +1,6 @@
 ﻿using Common_PMG.Container;
 using DxLocalTransf;
+using DxLocalTransf.Progress;
 using DxLocalTransf.Progress.ToImp;
 using Hermes;
 using Hermes.Cont;
@@ -17,7 +18,7 @@ namespace UnPack_My_Game.Cores
     /// <summary>
     /// Processus évolutif
     /// </summary>
-    internal class C_LaunchBoxDPG : IASBaseC
+    internal class C_LaunchBoxDPG : I_AsyncSigD
     {
 
         public CancellationTokenSource TokenSource { get; } = new CancellationTokenSource();
@@ -47,9 +48,6 @@ namespace UnPack_My_Game.Cores
 
             UpdateStatus += (x, y) => HeTrace.WriteLine(y, this);
 
-            ZipDecompression.StatCurrentProgress += (x, y) => this.UpdateProgress?.Invoke(x, y);
-            ZipDecompression.StatCurrentStatus += (x, y) => this.UpdateStatus?.Invoke(x, y);
-            ZipDecompression.StatMaxProgress += (x, y) => this.MaximumProgress?.Invoke(x, y);
 
         }
 

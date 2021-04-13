@@ -502,19 +502,19 @@ namespace LaunchBox_XML.XML
 
             XElement xelManual = game.Element("ManualPath");
             if (xelManual != null)
-                xelManual.Value = lbGame.ManualPath;
+                xelManual.Value = lbGame.ManualPath ?? string.Empty;
 
             XElement xelMusic = game.Element("MusicPath");
             if (xelMusic != null)
-                xelMusic.Value = lbGame.MusicPath;
+                xelMusic.Value = lbGame.MusicPath ?? string.Empty;
 
             XElement xelVideo = game.Element("VideoPath");
             if (xelVideo != null)
-                xelVideo.Value = lbGame.VideoPath;
+                xelVideo.Value = lbGame.VideoPath ?? string.Empty;
 
             XElement xelThemeVideo = game.Element("ThemeVideoPath");
             if (xelThemeVideo != null)
-                xelThemeVideo.Value = lbGame.ThemeVideoPath;
+                xelThemeVideo.Value = lbGame.ThemeVideoPath ?? string.Empty;
 
 
             // On récupère les additional apps
@@ -1426,7 +1426,7 @@ namespace LaunchBox_XML.XML
         // ---
 
 
-   
+
 
 
         public void Dispose()

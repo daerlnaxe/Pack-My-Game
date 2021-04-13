@@ -64,7 +64,7 @@ namespace UnPack_My_Game.Graph.LaunchBox {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/UnPack My Game;component/graph/launchbox/w_config.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/UnPack My Game;V1.0.0.0;component/graph/launchbox/w_config.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Graph\LaunchBox\W_Config.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

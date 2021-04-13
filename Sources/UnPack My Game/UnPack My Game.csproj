@@ -37,6 +37,7 @@
     <ProjectReference Include="..\..\..\DxTBoxCore\Sources\DxTBoxCore.csproj" />
     <ProjectReference Include="..\..\..\HashCalc\Source\HashCalc.csproj" />
     <ProjectReference Include="..\..\..\Hermes\Sources\Hermes.csproj" />
+    <ProjectReference Include="..\..\..\SeverZipSharp\SevenZip\SevenZip.csproj" />
     <ProjectReference Include="..\LaunchBox XML\LaunchBox XML.csproj" />
   </ItemGroup>
 

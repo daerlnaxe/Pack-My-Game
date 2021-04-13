@@ -15,6 +15,8 @@ using System.Text;
 using System.Windows;
 using Pack_My_Game.Cont;
 using Common_PMG.Container.Game;
+using DxLocalTransf.Progress;
+using DxTBoxCore.Async_Box_Progress;
 
 namespace Pack_My_Game.IHM
 {
@@ -157,6 +159,7 @@ namespace Pack_My_Game.IHM
             return res;
         }
 
+        /*
         /// <summary>
         /// 
         /// </summary>
@@ -164,7 +167,7 @@ namespace Pack_My_Game.IHM
         /// <param name="compressMethod"></param>
         /// <param name="title">Titre de la tâche</param>
         /// <returns></returns>
-        internal static bool? ZipCompressFolder(IASBaseC Objet, Func<object> compressMethod, string title = null)
+        internal static bool? ZipCompressFolder(I_AsyncSigD Objet, Func<object> compressMethod, string title = null)
         {
             return Application.Current.Dispatcher?.Invoke
                 (
@@ -174,7 +177,7 @@ namespace Pack_My_Game.IHM
                         {
                             TaskName = title,
                             HideCloseButton = true,
-                            Model = M_ProgressC.Create<IASBaseC, Merde>(Objet, compressMethod),
+                            Model = M_ProgressD.Create<I_AsyncSigD>(Objet, compressMethod),
                         };
 
                         if (dadProgress.ShowDialog() == true)
@@ -187,17 +190,18 @@ namespace Pack_My_Game.IHM
                 );
         }
 
-
-        internal static bool? LaunchOpProgress(I_ASBase Objet, Func<object> compressMethod, string title = null)
+        /*
+        internal static bool? LaunchOpProgress(I_AsyncSig Objet, Func<object> compressMethod, string title = null)
         {
             return Application.Current.Dispatcher?.Invoke
                 (
                     () =>
                     {
-                        DxTBoxCore.Box_Progress_2.DxAsProgress dadProgress = new DxTBoxCore.Box_Progress_2.DxAsProgress()
+                        DxAsProgress dadProgress = new DxAsProgress()
                         {
                             TaskName = title,
-                            Model = M_Progress.Create(Objet, compressMethod),
+                            Model =  compressMethod,
+                            M_Progress.Create(Objet, compressMethod),
                         };
 
                         if (dadProgress.ShowDialog() == true)
@@ -208,6 +212,6 @@ namespace Pack_My_Game.IHM
                         throw new OperationCanceledException("Interrupted by user");
                     }
                 );
-        }
+        }*/
     }
 }

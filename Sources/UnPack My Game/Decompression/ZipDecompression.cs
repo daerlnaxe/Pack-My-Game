@@ -8,22 +8,29 @@ using System.Threading;
 using DxTBoxCore.Box_Progress;
 using DxLocalTransf;
 using System.Linq;
+using DxLocalTransf.Progress.ToImp;
+using DxLocalTransf.Progress;
 
 namespace UnPack_My_Game.Decompression
 {
-    internal class ZipDecompression
+    internal class ZipDecompression: I_ASBase
     {
 
-        public event DoubleHandler CurrentProgress;
-        public event MessageHandler CurrentStatus;
-        public event DoubleHandler MaxProgress;
-
-        public static event DoubleHandler StatCurrentProgress;
-        public static event MessageHandler StatCurrentStatus;
-        public static event DoubleHandler StatMaxProgress;
+        public event DoubleHandler UpdateProgress;
+        public event MessageHandler UpdateStatus;
+        public event DoubleHandler MaximumProgress;
 
 
-        public static CancellationToken StatToken { get; set; }
+        public event DoubleHandler UpdateProgressT;
+        public event MessageHandler UpdateStatusT;
+        public event DoubleHandler MaximumProgressT;
+
+        public CancellationTokenSource TokenSource { get; } = new CancellationTokenSource();
+        public CancellationToken CancelToken { get; }
+
+        public bool IsPaused { get; set; }
+
+
 
         #region gestion des events
         private static void ArchiveZ_ExtractProgress(object sender, ExtractProgressEventArgs e)
@@ -36,20 +43,23 @@ namespace UnPack_My_Game.Decompression
         {
             Debug.WriteLine(e.Exception.Message);
         }
+        #endregion event
 
-        public static bool UnCompressArchive(string fileArchive, string destFolder, CancellationToken token)
+        public static bool UnCompressArchive(string fileArchive, string destFolder, CancellationToken token, I_TProgress asker = null)
         {
             ZipDecompression zc = new ZipDecompression();
-            zc.CurrentProgress += (x, y) => StatCurrentProgress?.Invoke(x, y);
-            zc.CurrentStatus += (x, y) => StatCurrentStatus?.Invoke(x, y);
-            zc.MaxProgress += (x, y) => StatMaxProgress?.Invoke(x, y);
+            if (asker != null)
+            {
+                zc.UpdateProgress += asker.SetProgress;
+                zc.UpdateStatus += asker.SetStatus;
+                zc.MaximumProgress += asker.SetMaximum;
+
+            }
 
             return zc.UncompressArchive(fileArchive, destFolder, token);
 
         }
 
-
-        #endregion event
 
         public bool UncompressArchive(string fileArchive, string destFolder, CancellationToken token)
         {
@@ -67,15 +77,15 @@ namespace UnPack_My_Game.Decompression
                 archiveZ.ExtractProgress += ArchiveZ_ExtractProgress;
                 archiveZ.ZipError += ArchiveZ_ZipError;
 
-                CurrentProgress?.Invoke(this, 0);
-                CurrentStatus?.Invoke(this, "Zip Decompression");
-                MaxProgress?.Invoke(this, archiveZ.Entries.Count);
+                UpdateProgress?.Invoke(this, 0);
+                UpdateStatus?.Invoke(this, "Zip Decompression");
+                MaximumProgress?.Invoke(this, archiveZ.Entries.Count);
 
                 int i = 0;
                 foreach (ZipEntry ze in archiveZ.Entries)
                 {
-                    CurrentProgress?.Invoke(this, i);
-                    CurrentStatus?.Invoke(this, $"\tZipExtraction: {ze.FileName}");
+                    UpdateProgress?.Invoke(this, i);
+                    UpdateStatus?.Invoke(this, $"\tZipExtraction: {ze.FileName}");
 
                     if (token.IsCancellationRequested)
                         return false;
@@ -85,7 +95,7 @@ namespace UnPack_My_Game.Decompression
                     i++;
                 }
 
-                CurrentProgress?.Invoke(this, archiveZ.Entries.Count);
+                UpdateProgress?.Invoke(this, archiveZ.Entries.Count);
             }
 
 
@@ -93,67 +103,83 @@ namespace UnPack_My_Game.Decompression
         }
 
 
-        internal static bool StatExtract(string fileArchive, string destFolder, params string[] extensions)
+        internal static bool StatExtractByExtension(string fileArchive, string destFolder, params string[] extensions)
         {
             ZipDecompression decomp = new ZipDecompression();
-            return decomp.Extract(fileArchive, destFolder, extensions);
+
+
+            return decomp.ExtractByExtension(fileArchive, destFolder, extensions);
 
         }
 
-        internal bool Extract(string fileArchive, string destFolder, params string[] extensions)
+        private bool ExtractByExtension(string fileArchive, string destFolder, string[] extensions)
         {
             if (!File.Exists(fileArchive))
                 return false;
-
 
             using (ZipFile archiveZ = ZipFile.Read(fileArchive))
             {
                 archiveZ.ExtractProgress += ArchiveZ_ExtractProgress;
                 archiveZ.ZipError += ArchiveZ_ZipError;
 
-                CurrentProgress?.Invoke(this, 0);
-                CurrentStatus?.Invoke(this, "Zip Decompression");
+                IEnumerable<ZipEntry> files = GetFilesByExtension(archiveZ, extensions);
 
-                int i = 0;
-                Queue<ZipEntry> filesToExtract = new Queue<ZipEntry>();
-                foreach (ZipEntry ze in archiveZ.Entries)
+                if (files.Any())
                 {
-                    if (StatToken.IsCancellationRequested)
-                        return false;
-
-
-                    string extension = Path.GetExtension(ze.FileName).TrimStart('.');
-
-                    if (extensions.Contains(extension))
-                    {
-                        filesToExtract.Enqueue(ze);
-                        i++;
-                    }
-
-
-
-
+                    Extractfiles(archiveZ, files, destFolder);
+                    return true;
                 }
 
-                if (filesToExtract.Any())
-                {
-                    MaxProgress?.Invoke(this, i);
-
-                    int j = 0;
-                    foreach (var ze in filesToExtract)
-                    {
-                        CurrentProgress?.Invoke(this, j);
-                        CurrentStatus?.Invoke(this, $"\tZipExtraction: {ze.FileName}");
-                        ze.Extract(destFolder, ExtractExistingFileAction.OverwriteSilently);
-
-                    }
-                    CurrentProgress?.Invoke(this, i);
-                }
+                return false;
 
             }
+        }
+
+        internal IEnumerable<ZipEntry> GetFilesByExtension(ZipFile archiveZ, params string[] extensions)
+        {
+
+            Queue<ZipEntry> files = new Queue<ZipEntry>();
+            foreach (ZipEntry ze in archiveZ.Entries)
+            {
+                string extension = Path.GetExtension(ze.FileName).TrimStart('.');
+                if (extensions.Contains(extension))
+                {
+                    files.Enqueue(ze);
+                }
+            }
+
+            return files;
+        }
 
 
+        private bool Extractfiles(ZipFile archiveZ, IEnumerable<ZipEntry> files, string destFolder)
+        {
+            int max = files.Count();
+
+            UpdateProgress?.Invoke(this, 0);
+            UpdateStatus?.Invoke(this, "Zip Decompression");
+
+            MaximumProgress?.Invoke(this, max);
+
+            int i = 0;
+            foreach (var ze in files)
+            {
+                if (TokenSource != null && TokenSource.IsCancellationRequested)
+                    return false;
+
+                UpdateProgress?.Invoke(this, i);
+                UpdateStatus?.Invoke(this, $"\tZipExtraction: {ze.FileName}");
+                ze.Extract(destFolder, ExtractExistingFileAction.OverwriteSilently);
+            }
+
+            UpdateProgress?.Invoke(this, max);
             return true;
+        }
+
+        public void StopTask()
+        {
+            throw new NotImplementedException();
         }
     }
 }
+

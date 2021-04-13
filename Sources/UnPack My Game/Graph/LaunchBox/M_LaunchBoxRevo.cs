@@ -266,7 +266,7 @@ namespace UnPack_My_Game.Graph.LaunchBox
                 DxAsStateProgress daspW = new DxAsStateProgress()
                 {
                     AutoClose = false,
-                    Model = M_ProgressC.Create<C_LaunchBoxDPG, M_ProgressCC>(clbDPG, ()=> clbDPG.InjectSeveralGames(src.Games)),
+                    Model = M_ProgressD.Create<C_LaunchBoxDPG, M_ProgressDL>(clbDPG, ()=> clbDPG.InjectSeveralGames(src.Games)),
                 };
 
 

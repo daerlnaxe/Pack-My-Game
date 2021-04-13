@@ -58,7 +58,6 @@ namespace UnPack_My_Game.Graph.LaunchBox
             }
         }
 
-
         public P_DPG()
         {
             //Model = new M_DPGFileZip();

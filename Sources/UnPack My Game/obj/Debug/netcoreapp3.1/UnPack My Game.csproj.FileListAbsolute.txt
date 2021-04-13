@@ -314,3 +314,7 @@ E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreap
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\DxTBoxCore.runtimeconfig.json
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\DxTBoxCore.runtimeconfig.dev.json
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\DxTBoxCore.exe
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\7z.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\SevenZipSharp.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\SevenZipSharp.pdb
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\SevenZipSharp.xml
