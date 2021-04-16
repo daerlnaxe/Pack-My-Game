@@ -18,7 +18,7 @@ namespace UnPack_My_Game.Cores
             }
 
 
-
+            /*
 
             Application.Current.Dispatcher?.Invoke(() =>
             {
@@ -34,7 +34,7 @@ namespace UnPack_My_Game.Cores
                 {
                     throw new OperationCanceledException("Interrupted by user");
                 }
-            });
+            });*/
         }
     }
 }

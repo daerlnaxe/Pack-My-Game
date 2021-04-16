@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Text;
 
 namespace Common_PMG.Container
@@ -15,11 +14,11 @@ namespace Common_PMG.Container
 
 
         public string Name { get; set; }
-        public string ALinkToThePast { get; set; }
+        public string ALinkToThePath { get; set; }
+        public string DestPath { get; set; }
+
 
         private bool _IsSelected;
-
-
         public bool IsSelected
         {
             get => _IsSelected;
@@ -41,13 +40,13 @@ namespace Common_PMG.Container
         public DataRep(string n, string p)
         {
             Name = n;
-            ALinkToThePast = p;
+            ALinkToThePath = p;
         }
 
         public DataRep(string p)
         {
             Name = System.IO.Path.GetFileName(p);
-            ALinkToThePast = p;
+            ALinkToThePath = p;
         }
 
         /// <summary>
@@ -57,14 +56,15 @@ namespace Common_PMG.Container
         /// <returns></returns>
         public static DataRep MakeChosen(string link)
         {
-            return new DataRep(Path.GetFileName(link), link)
+            return new DataRep(System.IO.Path.GetFileName(link), link)
             {
                 IsSelected = true
             };
         }
+
         public static DataRep MakeNormal(string link)
         {
-            return new DataRep(Path.GetFileName(link), link)
+            return new DataRep(System.IO.Path.GetFileName(link), link)
             {
                 IsSelected = false
             };

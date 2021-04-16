@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Unbroken.LaunchBox.Plugins.Data;
 
-namespace Common_PMG.Container.Game
+namespace Common_PMG.Container.Game.LaunchBox
 {
     // 1-29 les infos relatives au jeu
     // 30 - 49 complément info

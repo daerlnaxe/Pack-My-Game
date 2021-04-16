@@ -1,4 +1,5 @@
-﻿using Common_PMG.Container;
+﻿using AsyncProgress.Cont;
+using Common_PMG.Container;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -88,7 +89,7 @@ namespace LaunchBox_XML.XML
             }
             catch (Exception exc)
             {
-                Error?.Invoke(nameof(XML_Platforms), exc.Message);
+                Error?.Invoke(nameof(XML_Platforms), new MessageArg(exc.Message));
             }
         }
         // --- Get Platform
@@ -143,7 +144,7 @@ namespace LaunchBox_XML.XML
                             break;
 
                         default:
-                            Signal?.Invoke("XML_Platforms", $"Unmanaged {field.Name.LocalName}");
+                            Signal?.Invoke("XML_Platforms", new MessageArg($"Unmanaged {field.Name.LocalName}"));
                             break;
                     }
                 }
@@ -214,7 +215,7 @@ namespace LaunchBox_XML.XML
                             break;
 
                         default:
-                            Signal?.Invoke("XML_Platforms", $"Unmanaged {field.Name.LocalName}");
+                            Signal?.Invoke("XML_Platforms", new MessageArg( $"Unmanaged {field.Name.LocalName}"));
                             break;
                     }
                 }
@@ -357,9 +358,9 @@ namespace LaunchBox_XML.XML
             {
                 Root.Save(platformsFile);
             }
-            catch(Exception exc)
+            catch (Exception exc)
             {
-                Error?.Invoke(this, exc.Message);
+                Error?.Invoke(this, new MessageArg( exc.Message));
             }
 
         }

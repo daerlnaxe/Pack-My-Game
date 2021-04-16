@@ -11,7 +11,7 @@ using System.Xml.Serialization;
     ShortGame contains ID, Title, Version
     */
 
-namespace Common_PMG.Container.Game
+namespace Common_PMG.Container.Game.LaunchBox
 {
     /// <summary>
     /// Récupère les informations les plus représentatives

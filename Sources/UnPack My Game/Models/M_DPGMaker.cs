@@ -15,21 +15,18 @@ using System.Threading.Tasks;
 using System.Windows;
 using Common_PMG.Container.Game;
 using PS = UnPack_My_Game.Properties.Settings;
+using DxLocalTransf.Cont.Progress;
 
-namespace UnPack_My_Game.Graph.LaunchBox
+namespace UnPack_My_Game.Graph
 {
 
     public class M_DPGMaker
     {
-        public static event DoubleHandler UpdateProgress;
-        public static event MessageHandler UpdateStatus;
-        public static event DoubleHandler MaximumProgress;
 
         public string Root { get; private set; }
 
-      //  public Language Lang => Common.ObjectLang;
+        //  public Language Lang => Common.ObjectLang;
 
-        public DataRep ChosenGame { get; set; }
         public DataRep SelectedGame { get; set; }
         public ObservableCollection<DataRep> GamesCollection { get; set; } = new ObservableCollection<DataRep>();
 
@@ -57,40 +54,40 @@ namespace UnPack_My_Game.Graph.LaunchBox
         public string GameName { get; }
         public GamePaths GamePaths { get; }
 
-        public M_DPGMaker(string root)
+        public M_DPGMaker(GamePathsExt gpX, string root)
         {
             Root = root;
 
+            LoadGames(gpX);
 
-            LoadFiles();
+
+        }
+
+        private void LoadGames(GamePathsExt gpX)
+        {
+            foreach (var game in gpX.CompApps)
+            {
+                DataRep d = new DataRep(game);
+                if (d.ALinkToThePast.Equals(gpX.ApplicationPath))
+                    d.IsSelected = true;
+
+                GamesCollection.Add(new DataRep(game));
+            }
+        }
+
+        internal void GameSelect()
+        {
+            foreach (var game in GamesCollection)
+            {
+                if (SelectedGame == game)
+                    continue;
+                game.IsSelected = false;
+            }
         }
 
         #region initialisation
-        internal void LoadFiles()
-        {
-            LoadGames();
-            LoadManuals();
-            LoadMusics();
-            LoadVideos();
-            LoadCheatCodes();
-        }
-
-        private void LoadGames()
-        {
-            GamesCollection.Clear();
-            string gamesPath = Path.Combine(Root, PS.Default.Games);
-            foreach (string f in Directory.EnumerateFiles(gamesPath, "*.*", SearchOption.TopDirectoryOnly))
-            {
-                string tmp = f.Replace(gamesPath, ".");
-                if (tmp.Equals(GamePaths.ApplicationPath))
-                {
-                    ChosenGame = new DataRep(tmp, f);
-                    continue;
-                }
-
-                GamesCollection.Add(new DataRep(tmp, f));
-            }
-        }
+        
+       
 
         private void LoadManuals()
         {
@@ -157,44 +154,8 @@ namespace UnPack_My_Game.Graph.LaunchBox
 
         #endregion
 
-        /// <summary>
-        /// Fonction de copie des fichiers
-        /// </summary>
-        /// <param name="sourceDirectory">Répertoire source</param>
-        /// <param name="targetDirectory">Répertoire cible</param>
-        public void CopyGameF()
-        {/*
-            TreeChoose tc = new TreeChoose()
-            {
-                Model = new M_ChooseRaw()
-                {
-                    Mode = ChooseMode.File,
-                    ShowFiles = true,
-                    StartingFolder = Platform.FolderPath,
-                    Info = "Select a manual file",
-                }
-            };*/
-            if (Copy2(PS.Default.LastSpath , PS.Default.Games, "Select a game file"))
-            {
-                LoadGames();
-            }
-        }
+     
 
-
-
-        internal void RemoveGameF()
-        {            
-            /*if (!string.IsNullOrEmpty(SelectedGame))
-            {
-                OpDFiles.Trash(Path.Combine(Root, Common.Games, SelectedGame));
-                LoadGames();
-            }*/
-            if (SelectedGame != null)
-            {
-                OpDFiles.Trash(SelectedGame.ALinkToThePast);
-                LoadGames();
-            }
-        }
 
 
         #region Manuals
@@ -384,37 +345,50 @@ namespace UnPack_My_Game.Graph.LaunchBox
         /// <param name="destFolder"></param>
         private bool Copy(string fileSrc, string destFolder)
         {
-
             string destFile = Path.Combine(destFolder, Path.GetFileName(fileSrc));
 
             if (File.Exists(destFile))
                 return false;
 
             // --- Copie
-            UpdateStatus(this, $"Copy {fileSrc}");
+
+            OpDFilesExt copyObj = new OpDFilesExt();
+            MawEvo mawEvo = new MawEvo(copyObj);
+            TaskLauncher launcher = new TaskLauncher()
+            {
+                AutoCloseWindow = true,
+                ProgressIHM = new DxDoubleProgress(mawEvo),
+                MethodToRun = ()=> copyObj.CopyANVerif(fileSrc, destFile, true),                 
+            };
+            launcher.Launch(copyObj);
+
+            /*UpdateStatus(this, $"Copy {fileSrc}");
             UpdateProgress?.Invoke(this, 0);
-            MaximumProgress?.Invoke(this, 1);
-            File.Copy(fileSrc, destFile);
-            UpdateProgress?.Invoke(this, 1);
+            MaximumProgress?.Invoke(this, 1);*/
+            //File.Copy(fileSrc, destFile);
+            /*UpdateProgress?.Invoke(this, 1);*/
 
             // --- Vérification des sommes
-            UpdateStatus(this, $"Copy verification");
+            /*UpdateStatus(this, $"Copy verification");
             MaximumProgress?.Invoke(this, 100);
+            */
 
-            DxProgressB1 progressBox = new DxProgressB1();
+            /*        DxProgressB1 progressBox = new DxProgressB1();*/
 
             //bool? res = _ObjectFiles.VerifByHash_Sync(fileSrc, destFile, () => MD5.Create());
-            OpDFilesExt objectFiles = new OpDFilesExt();
-            objectFiles.SignalProgression += (x, y) => progressBox.CurrentProgress = y;
-            objectFiles.Finished += ((x) => Application.Current.Dispatcher?.Invoke
-                                                        (() => { progressBox.Close(); }));
 
+            //objectFiles.SignalProgression += progressBox.CurrentProgress;
+
+            /*objectFiles.Finished += ((x) => Application.Current.Dispatcher?.Invoke
+                                                        (() => { progressBox.Close(); }));
+            */
+            /*
             EFileResult res = EFileResult.None;
             Task.Run(() => res = objectFiles.DeepVerif(fileSrc, destFile, () => MD5.Create()));
 
             progressBox.ShowDialog();
 
-            UpdateStatus?.Invoke(this, $"Check verif: {res}");
+            UpdateStatus?.Invoke(this, new StateArg( $"Check verif: {res}");*/
             return true;
         }
     }

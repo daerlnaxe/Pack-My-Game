@@ -2,6 +2,7 @@
 using DxLocalTransf;
 using DxLocalTransf.Progress;
 using DxLocalTransf.Progress.ToImp;
+using DxTBoxCore.Async_Box_Progress.Basix;
 using Hermes;
 using Hermes.Cont;
 using Hermes.Messengers;
@@ -18,20 +19,20 @@ namespace UnPack_My_Game.Cores
     /// <summary>
     /// Processus évolutif
     /// </summary>
-    internal class C_LaunchBoxDPG : I_AsyncSigD
+    internal class C_LaunchBoxDPG : A_ProgressPersistD
     {
 
         public CancellationTokenSource TokenSource { get; } = new CancellationTokenSource();
         public CancellationToken CancelToken { get; }
 
         public bool IsPaused { get; set; }
-
+        /*
         public event DoubleHandler UpdateProgressT;
         public event MessageHandler UpdateStatusT;
         public event DoubleHandler MaximumProgressT;
         public event DoubleHandler UpdateProgress;
         public event DoubleHandler MaximumProgress;
-        public event MessageHandler UpdateStatus;
+        public event MessageHandler UpdateStatus;*/
 
 
         public C_LaunchBoxDPG()

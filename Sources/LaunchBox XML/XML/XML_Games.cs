@@ -16,7 +16,8 @@ using System.Xml.Serialization;
 using System.Xml.XPath;
 using Unbroken.LaunchBox.Plugins.Data;
 using System.ComponentModel;
-
+using Common_PMG.Container.Game.LaunchBox;
+using AsyncProgress.Cont;
 
 namespace LaunchBox_XML.XML
 {
@@ -161,10 +162,34 @@ namespace LaunchBox_XML.XML
             }
             catch (Exception exc)
             {
-                Signal?.Invoke(nameof(ListShortGames), exc.Message);
+                Error?.Invoke(nameof(ListShortGames), new MessageArg(exc.Message));
             }
 
             return games.OrderBy(x => x.Title);
+        }
+
+        public static ShortGame Scrap_ShortGame(string xmlFile)
+        {
+            var g = XElement.Load(xmlFile).Elements("Game").ElementAt(0);
+
+            ShortGame game = new ShortGame();
+            foreach (var field in g.Descendants())
+            {
+                if (field.Value == null)
+                    continue;
+
+                if (Make_BasicGame<ShortGame>(game, field))
+                    continue;
+
+                if (field.Name.LocalName == "ApplicationPath")
+                {
+                    game.FileName = Path.GetFileName(field.Value);
+                    game.ExploitableFileName = Path.GetFileNameWithoutExtension(game.FileName);//2020zeGame.FileName.Split('.')[0];
+                }
+            }
+
+
+            return game;
         }
 
 
@@ -563,7 +588,7 @@ namespace LaunchBox_XML.XML
         {
             if (addApps.Count() == 0)
             {
-                Error?.Invoke(this, $"Null value {addApps}");
+                Error?.Invoke(this, new MessageArg($"Null value {addApps}"));
                 return;
             }
 
@@ -586,7 +611,7 @@ namespace LaunchBox_XML.XML
         {
             if (cFields.Count() == 0)
             {
-                Error?.Invoke(this, $"Null value {cFields}");
+                Error?.Invoke(this, new MessageArg($"Null value {cFields}"));
                 return;
             }
 
@@ -604,7 +629,7 @@ namespace LaunchBox_XML.XML
         {
             if (altNames.Count() == 0)
             {
-                Error?.Invoke(this, $"Null value {altNames}");
+                Error?.Invoke(this, new MessageArg($"Null value {altNames}"));
                 return;
             }
 
@@ -1108,7 +1133,7 @@ namespace LaunchBox_XML.XML
                 // ---
 
                 default:
-                    Signal?.Invoke(nameof(Make_LBGame), $"LBGame Not managed: {field.Name.LocalName}");
+                    Signal?.Invoke(nameof(Make_LBGame), new MessageArg($"LBGame Not managed: {field.Name.LocalName}"));
                     return false;
 
             }

@@ -1,8 +1,7 @@
 ﻿
-using DxLocalTransf;
-using DxLocalTransf.Progress;
-using DxTBoxCore.Box_Progress;
-using Pack_My_Game.IHM;
+using AsyncProgress;
+using AsyncProgress.Cont;
+using AsyncProgress.ToImp;
 using SevenZip;
 using System;
 using System.Diagnostics;
@@ -16,24 +15,15 @@ namespace Pack_My_Game.Compression
     /// 
     /// </summary>
     /// <remarks>Modèle avec Task</remarks>
-    class SevenZipCompression : I_AsyncSig
+    class SevenZipCompression : A_ASBase, I_AsyncSig
     {
         public delegate bool DecisionHandler(string message, string title);
 
-
-        public event DoubleHandler UpdateProgress;
-        public event MessageHandler UpdateStatus;
-        public event MessageHandler UpdateStatusNL;
-        public event DoubleHandler MaximumProgress;
-
         public static event DecisionHandler Error;
 
-        //
-        public CancellationTokenSource TokenSource { get; set; }
+        public event ProgressHandler UpdateProgress;
+        public event StateHandler UpdateStatus;
 
-        public CancellationToken CancelToken => TokenSource.Token;
-
-        public bool IsPaused { get; set; }
 
         //
         //static string _ArchiveName;
@@ -43,6 +33,7 @@ namespace Pack_My_Game.Compression
         /// Archive link
         /// </summary>
         public string ArchiveLink { get; private set; }
+
 
         /// <summary>
         /// 
@@ -62,6 +53,31 @@ namespace Pack_My_Game.Compression
                 Directory.CreateDirectory(destinationFolder);
         }
 
+        event ProgressHandler I_SigProgress.UpdateProgress
+        {
+            add
+            {
+                throw new NotImplementedException();
+            }
+
+            remove
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        event StateHandler I_SigProgress.UpdateStatus
+        {
+            add
+            {
+                throw new NotImplementedException();
+            }
+
+            remove
+            {
+                throw new NotImplementedException();
+            }
+        }
 
 
         /// <summary>
@@ -73,6 +89,7 @@ namespace Pack_My_Game.Compression
         /// <returns></returns>
         public bool CompressFolder(string folderSrc, string archiveDest, int cplLvl)
         {
+            Debug.WriteLine("SevenZip compressfolder");
             if (!Directory.Exists(folderSrc))
                 throw new FileNotFoundException(folderSrc);
 
@@ -108,6 +125,7 @@ namespace Pack_My_Game.Compression
                     szp.CompressionFinished += CompressionFinished;
 
                     string tmp = $"{Path.GetRandomFileName()}.7z.tmp";
+
                     szp.CompressDirectory(folderSrc, Path.Combine(DestinationFolder, tmp));
 
                     // on renomme
@@ -138,19 +156,26 @@ namespace Pack_My_Game.Compression
 
             //BoxProgress.dProgress.TotalFiles = e.Value;
 
-            //this.MaximumProgressT?.Invoke(100);
+            this.UpdateProgress?.Invoke(this, new ProgressArg(0, 100, CancelFlag));
             Debug.WriteLine($"Files: {e.Value} Found");
         }
+
 
         // Se produit après files found
         private void FileCompressionStarted(object sender, FileNameEventArgs e)
         {
+            if (CancelToken.IsCancellationRequested)
+            {
+                e.Cancel = true;
+                IsInterrupted = true;
+            }
+
             Debug.WriteLine($"File being compressed: {e.FileName}");
 
             //BoxProgress.dProgress.EntryUpdate(e.PercentDone);
 
             //BoxProgress.dProgress.CurrentInfo = e.FileName;
-            this.UpdateStatusNL?.Invoke(this, e.FileName);
+            this.UpdateStatus?.Invoke(this, new StateArg(e.FileName, CancelFlag));
 
             //BoxProgress.AsyncUpdateEntryTxt(e.PercentDone);
             Debug.WriteLine($"fcs Percent done: {e.PercentDone}%");
@@ -167,7 +192,7 @@ namespace Pack_My_Game.Compression
         private void Compressing(object sender, ProgressEventArgs e)
         {
             //BoxProgress.dProgress.EntryUpdate(e.PercentDone);
-            this.UpdateProgress?.Invoke(this, e.PercentDone);
+            this.UpdateProgress?.Invoke(this, new ProgressArg( e.PercentDone, 100, CancelFlag));
 
             //BoxProgress.AsyncUpdateEntryTxt(e.PercentDone);            
 
@@ -198,14 +223,17 @@ namespace Pack_My_Game.Compression
             Console.WriteLine($"Compression tout fini{e.ToString()}");
             BoxProgress.StopIt();*/
 
-            this.UpdateStatusNL?.Invoke(this, "Finished");
+            this.UpdateStatus?.Invoke(this, new StateArg( "Finished", CancelFlag));
             Thread.Sleep(500);
         }
 
-        public void StopTask()
+        public override void StopTask()
         {
-            throw new NotImplementedException();
+            TokenSource.Cancel();
+
         }
+
+   
 
         /// <summary>
         /// 

@@ -15,17 +15,23 @@
   <ItemGroup>
     <Compile Remove="Cont\EBGame.cs" />
     <Compile Remove="Cont\FileObj.cs" />
+    <Compile Remove="Cores\C_LaunchBox.cs" />
     <Compile Remove="Cores\C_LaunchBoxAdapt.cs" />
+    <Compile Remove="Cores\C_LaunchBoxDPG.cs" />
     <Compile Remove="Cores\C_LaunchBoxEB.cs" />
     <Compile Remove="Cores\C_LaunchBoxTB.cs" />
+    <Compile Remove="Graph\LaunchBox\M_DPGMaker.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Cont\EBGame.cs" />
     <None Include="Cont\FileObj.cs" />
+    <None Include="Cores\C_LaunchBox.cs" />
     <None Include="Cores\C_LaunchBoxAdapt.cs" />
+    <None Include="Cores\C_LaunchBoxDPG.cs" />
     <None Include="Cores\C_LaunchBoxEB.cs" />
     <None Include="Cores\C_LaunchBoxTB.cs" />
+    <None Include="Models\M_DPGMaker.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,7 +54,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Graph\LaunchBox\W_DPGMaker.xaml.cs">
+    <Compile Update="Graph\W_DPGMaker.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Properties\Settings.Designer.cs">
@@ -87,7 +93,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Graph\LaunchBox\W_DPGMaker.xaml">
+    <Page Update="Graph\W_DPGMaker.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

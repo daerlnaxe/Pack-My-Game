@@ -1,22 +1,17 @@
-﻿using DxLocalTransf;
-using DxLocalTransf.Progress.ToImp;
+﻿using AsyncProgress;
+using Common_PMG.Container;
+using Common_PMG.Container.Game;
+using DxLocalTransf;
 using DxTBoxCore.Box_Collec;
 using DxTBoxCore.Box_Progress;
 using DxTBoxCore.Common;
 using DxTBoxCore.MBox;
-using Common_PMG.Container;
-using Pack_My_Game.Compression;
 using Pack_My_Game.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Windows;
-using Pack_My_Game.Cont;
-using Common_PMG.Container.Game;
-using DxLocalTransf.Progress;
-using DxTBoxCore.Async_Box_Progress;
 
 namespace Pack_My_Game.IHM
 {
@@ -31,7 +26,7 @@ namespace Pack_My_Game.IHM
         /// <param name="sender"></param>
         /// <param name="message"></param>
         /// <param name="title"></param>
-        internal static bool? Dispatch_Mbox(object sender, string message, string title, E_DxButtons buttons , string optMessage = null)
+        internal static bool? Dispatch_Mbox(object sender, string message, string title, E_DxButtons buttons, string optMessage = null)
         {
             bool? res = false;
             Application.Current.Dispatcher?.Invoke(() => res = DxMBox.ShowDial(message, title, buttons, optMessage));
@@ -114,7 +109,7 @@ namespace Pack_My_Game.IHM
             return ChosenFiles;
         }
 
-        internal static void LaunchBoxCore_Recap(string rootFolder, Platform platform, GamePaths gp )
+        internal static void LaunchBoxCore_Recap(string rootFolder, Platform platform, GamePaths gp)
         {
             Application.Current.Dispatcher?.Invoke
                 (
@@ -159,7 +154,7 @@ namespace Pack_My_Game.IHM
             return res;
         }
 
-        /*
+
         /// <summary>
         /// 
         /// </summary>
@@ -169,42 +164,51 @@ namespace Pack_My_Game.IHM
         /// <returns></returns>
         internal static bool? ZipCompressFolder(I_AsyncSigD Objet, Func<object> compressMethod, string title = null)
         {
+            //DxDoubleProgress dp = null;
             return Application.Current.Dispatcher?.Invoke
                 (
                     () =>
-                    {
-                        DxAsDoubleProgress dadProgress = new DxAsDoubleProgress()
-                        {
-                            TaskName = title,
-                            HideCloseButton = true,
-                            Model = M_ProgressD.Create<I_AsyncSigD>(Objet, compressMethod),
-                        };
+                    {// dp = new DxDoubleProgress(mawmaw)
+                        EphemProgressD ephem = new EphemProgressD(Objet);
 
-                        if (dadProgress.ShowDialog() == true)
+                        TaskLauncher launcher = new TaskLauncher()
+                        {
+                            AutoCloseWindow = false,
+                            LoopDelay = 50,
+                            ProgressIHM = new DxDoubleProgress(ephem),
+                            MethodToRun = compressMethod
+
+                        };
+                        if (launcher.Launch(Objet) == true)
                         {
                             return true;
                         }
 
-                        return false;
+                        throw new OperationCanceledException("Interrupted by user");
                     }
-                );
-        }
 
-        /*
-        internal static bool? LaunchOpProgress(I_AsyncSig Objet, Func<object> compressMethod, string title = null)
+                 );
+
+        }     
+
+
+        internal static bool? LaunchOpProgress(I_AsyncSig Objet, Func<object> method, string title = null)
         {
-            return Application.Current.Dispatcher?.Invoke
+           return   Application.Current.Dispatcher?.Invoke
                 (
                     () =>
                     {
-                        DxAsProgress dadProgress = new DxAsProgress()
+                        EphemProgress ephem = new EphemProgress(Objet);
+
+                        TaskLauncher launcher = new TaskLauncher()
                         {
-                            TaskName = title,
-                            Model =  compressMethod,
-                            M_Progress.Create(Objet, compressMethod),
+                            AutoCloseWindow = false,
+                            LoopDelay = 50,
+                            ProgressIHM = new DxProgressB1(ephem),
+                            MethodToRun = method,
                         };
 
-                        if (dadProgress.ShowDialog() == true)
+                        if (launcher.Launch(Objet)== true)
                         {
                             return true;
                         }
@@ -212,6 +216,46 @@ namespace Pack_My_Game.IHM
                         throw new OperationCanceledException("Interrupted by user");
                     }
                 );
-        }*/
+
+        }
+
+        /*
+    DxAsProgress dadProgress = new DxAsProgress()
+    {
+     TaskName = title,
+     Model =  compressMethod,
+     M_Progress.Create(Objet, compressMethod),
+    };
+
+    if (dadProgress.ShowDialog() == true)
+    {
+     return true;
+    }
+
+    throw new OperationCanceledException("Interrupted by user");*/
+        /*
+      return Application.Current.Dispatcher?.Invoke
+          (
+              () =>
+              {
+                  MawEvo maw = new MawEvo(Objet);
+
+                  DxAsDoubleProgress dadProgress = new DxAsDoubleProgress()
+                  {
+                      TaskName = title,
+                      HideCloseButton = true,
+                      Model = maw,
+                      Launcher = BasicLauncher<MawEvo>.Create(maw, compressMethod),
+                  };
+
+                  if (dadProgress.ShowDialog() == true)
+                  {
+                      return true;
+                  }
+
+                  return false;
+              }
+          );*/
+
     }
 }

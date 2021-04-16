@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Unbroken.LaunchBox.Plugins.Data;
 
-namespace Common_PMG.Container.Game
+namespace Common_PMG.Container.Game.LaunchBox
 {
     interface I_FullGame : IGame
     {

@@ -21,7 +21,7 @@ namespace UnPack_My_Game.Graph.LaunchBox
     /// </summary>
     public partial class W_Config : Window
     {
-        private const string _Games = "Roms";
+        private const string _Games = "Games";
         private const string _CheatCodes = "CheatCodes";
         private const string _Images = "Images";
         private const string _Manuals = "Manuals";

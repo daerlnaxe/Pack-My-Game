@@ -62,7 +62,7 @@
                                 <Setter Property="Grid.Column" Value="1"/>
                                 <Setter Property="ContentStringFormat" Value="{}{0}:"/>
                             </Style>
-                            <Style TargetType="TextBlock" BasedOn="{StaticResource tblockStyle}">
+                            <Style TargetType="TextBox" BasedOn="{StaticResource tboxStyle}">
                                 <Setter Property="Grid.Column" Value="2"/>
                                 <Setter Property="Margin" Value="3"/>
                             </Style>
@@ -90,27 +90,27 @@
                         <Label Grid.Column="0" Content="{x:Static l:Lang.I_RFolder}" ContentStringFormat="{}{0}:" Grid.ColumnSpan="3"/>
                         <!-- Games -->
                         <Label Grid.Row="1" Content="{x:Static l:Lang.Games}" />
-                        <TextBlock Grid.Row="1" Text="{Binding Games, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, FallbackValue=Test}"/>
+                        <TextBox Grid.Row="1" Text="{Binding Games, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, FallbackValue=Test}"/>
                         <Button Grid.Row="1" Content="!" Click="Raz_Games"/>
                         <!-- CheatCodes -->
                         <Label Grid.Row="2" Content="{x:Static l:Lang.CheatCodes}"/>
-                        <TextBlock Grid.Row="2" Text="{Binding CheatCodes, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
+                        <TextBox Grid.Row="2" Text="{Binding CheatCodes, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
                         <Button Grid.Row="2" Content="!" Click="Raz_CheatsCodes"/>
                         <!-- Manuals -->
                         <Label Grid.Row="3" Content="{x:Static l:Lang.Manuals}"/>
-                        <TextBlock Grid.Row="3" Text="{Binding Manuals, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}" />
+                        <TextBox Grid.Row="3" Text="{Binding Manuals, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}" />
                         <Button Grid.Row="3" Content="!" Click="Raz_Manuals"/>
                         <!-- Images -->
                         <Label Grid.Row="4" Content="{x:Static l:Lang.Images}"/>
-                        <TextBlock Grid.Row="4" Text="{Binding Images, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
+                        <TextBox Grid.Row="4" Text="{Binding Images, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
                         <Button Grid.Row="4" Content="!" Click="Raz_Images"/>
                         <!-- Musiques -->
                         <Label Grid.Row="5" Content="{x:Static l:Lang.Musics}"/>
-                        <TextBlock Grid.Row="5" Text="{Binding Musics, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
+                        <TextBox Grid.Row="5" Text="{Binding Musics, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
                         <Button Grid.Row="5" Content="!" Click="Raz_Musics"/>
                         <!-- Videos -->
                         <Label Grid.Row="6" Content="{x:Static l:Lang.Videos}"/>
-                        <TextBlock Grid.Row="6" Text="{Binding Videos, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
+                        <TextBox Grid.Row="6" Text="{Binding Videos, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
                         <Button Grid.Row="6" Content="!" Click="Raz_Videos"/>
                     </Grid>
 

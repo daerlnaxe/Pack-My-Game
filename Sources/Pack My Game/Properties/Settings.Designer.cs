@@ -304,5 +304,65 @@ namespace Pack_My_Game.Properties {
                 this["opMd5"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool KeepGameStruct {
+            get {
+                return ((bool)(this["KeepGameStruct"]));
+            }
+            set {
+                this["KeepGameStruct"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool KeepManualStruct {
+            get {
+                return ((bool)(this["KeepManualStruct"]));
+            }
+            set {
+                this["KeepManualStruct"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool KeepMusicStruct {
+            get {
+                return ((bool)(this["KeepMusicStruct"]));
+            }
+            set {
+                this["KeepMusicStruct"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool KeepVideoStruct {
+            get {
+                return ((bool)(this["KeepVideoStruct"]));
+            }
+            set {
+                this["KeepVideoStruct"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool KeepCheatCStruct {
+            get {
+                return ((bool)(this["KeepCheatCStruct"]));
+            }
+            set {
+                this["KeepCheatCStruct"] = value;
+            }
+        }
     }
 }

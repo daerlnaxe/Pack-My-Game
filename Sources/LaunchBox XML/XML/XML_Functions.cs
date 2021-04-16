@@ -14,6 +14,8 @@ using Common_PMG.BackupLB;
 using System.Collections.ObjectModel;
 using Common_PMG.Container.Game;
 using Common_PMG.Container.AAPP;
+using Common_PMG.Container.Game.LaunchBox;
+using AsyncProgress.Cont;
 
 namespace LaunchBox_XML.XML
 {
@@ -48,7 +50,7 @@ namespace LaunchBox_XML.XML
             }
             catch
             {
-                Error?.Invoke(this, $"'{_XmlFile}' not found");
+                Error?.Invoke(this, new MessageArg($"'{_XmlFile}' not found"));
                 //MessageBox.Show($"'{_XmlFile}' not found", "Error - list of machines", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
@@ -57,7 +59,7 @@ namespace LaunchBox_XML.XML
         }
 
 
-  
+
 
         /// <summary>
         /// Lis le fichier xml dédié pour retourner la liste des jeux - Read dedicated xml file to get the list of games
@@ -87,7 +89,7 @@ namespace LaunchBox_XML.XML
                         {
                             case "Title":
                                 Console.WriteLine(nodes.Current.Value);
-                                zeGame.Title = nodes.Current.Value.Replace(";amp", "&"); 
+                                zeGame.Title = nodes.Current.Value.Replace(";amp", "&");
                                 break;
 
                             case "ID":
@@ -250,7 +252,7 @@ namespace LaunchBox_XML.XML
 
                         case "ReleaseDate":
                             Console.WriteLine(nodes.Current.Value);
-                        //2021    zeGame.ReleaseDate = nodes.Current.Value;
+                            //2021    zeGame.ReleaseDate = nodes.Current.Value;
                             break;
 
                         case "Genre":

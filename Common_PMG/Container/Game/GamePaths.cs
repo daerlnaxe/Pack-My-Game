@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common_PMG.Container.Game.LaunchBox;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -32,10 +33,35 @@ namespace Common_PMG.Container.Game
             File.WriteAllText(fileName, jsonString);
         }
 
-        public static GamePaths ReadFromJson(string fileName)
-        {
+        public static T ReadFromJson<T>(string fileName)where T: GamePaths
+        {            
             string jsonString = File.ReadAllText(fileName);
-            return JsonSerializer.Deserialize<GamePaths>(jsonString);
+            return JsonSerializer.Deserialize<T>(jsonString);
+        }
+
+        /// <summary>
+        /// N'utilise pas les chemins
+        /// </summary>
+        /// <param name="lbGame"></param>
+        /// <returns></returns>
+        public static GamePaths CreateBasic(LBGame lbGame)
+        {
+            return new GamePaths()
+            {
+                Id = lbGame.Id,
+                Title = lbGame.Title,
+                Platform = lbGame.Platform,
+            };
+        }
+        
+        public static explicit operator GamePaths(ShortGame v)
+        {
+            return new GamePaths
+            {
+                Id = v.Id,
+                Title = v.Title,
+                Platform = v.Platform,
+            };
         }
 
         public static explicit operator GamePaths(LBGame v)
@@ -52,5 +78,7 @@ namespace Common_PMG.Container.Game
                 ThemeVideoPath = v.ThemeVideoPath,
             };
         }
+
+
     }
 }

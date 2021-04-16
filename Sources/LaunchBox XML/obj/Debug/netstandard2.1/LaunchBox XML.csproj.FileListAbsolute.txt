@@ -22,3 +22,5 @@ E:\Programmation\Git-Hub\Pack-My-Game\Sources\LaunchBox XML\obj\Debug\netstandar
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\LaunchBox XML\obj\Debug\netstandard2.1\LaunchBox XML.csproj.CopyComplete
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\LaunchBox XML\obj\Debug\netstandard2.1\LaunchBox XML.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\LaunchBox XML\obj\Debug\netstandard2.1\LaunchBox XML.pdb
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\LaunchBox XML\bin\Debug\netstandard2.1\AsyncProgress.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\LaunchBox XML\bin\Debug\netstandard2.1\AsyncProgress.pdb

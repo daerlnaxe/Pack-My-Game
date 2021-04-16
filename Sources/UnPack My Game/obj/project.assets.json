@@ -999,6 +999,16 @@
           "Microsoft.WindowsDesktop.App.WPF"
         ]
       },
+      "AsyncProgress/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "compile": {
+          "bin/placeholder/AsyncProgress.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AsyncProgress.dll": {}
+        }
+      },
       "Common_PMG/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
@@ -1028,6 +1038,9 @@
       "DxLocalTransf/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "AsyncProgress": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/DxLocalTransf.dll": {}
         },
@@ -1039,6 +1052,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "AsyncProgress": "1.0.0",
           "DxCCtrl": "1.0.0",
           "DxLocalTransf": "1.0.0",
           "Microsoft.Windows.Compatibility": "5.0.2"
@@ -1057,6 +1071,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
+          "AsyncProgress": "1.0.0",
           "DxLocalTransf": "1.0.0"
         },
         "compile": {
@@ -1069,6 +1084,9 @@
       "Hermes/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "AsyncProgress": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Hermes.dll": {}
         },
@@ -1080,6 +1098,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
+          "AsyncProgress": "1.0.0",
           "Common_PMG": "1.0.0"
         },
         "compile": {
@@ -3283,6 +3302,11 @@
       "path": "../../../AreaSelect/AreaSelect.csproj",
       "msbuildProject": "../../../AreaSelect/AreaSelect.csproj"
     },
+    "AsyncProgress/1.0.0": {
+      "type": "project",
+      "path": "../../../AsyncProgress/AsyncProgress.csproj",
+      "msbuildProject": "../../../AsyncProgress/AsyncProgress.csproj"
+    },
     "Common_PMG/1.0.0": {
       "type": "project",
       "path": "../../Common_PMG/Common_PMG.csproj",
@@ -3423,7 +3447,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

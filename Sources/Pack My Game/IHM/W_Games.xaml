@@ -9,6 +9,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="600"
         Width="600" Height="300"
+        WindowStartupLocation="CenterScreen"
       Title="W_Games">
     <Window.CommandBindings>
         <CommandBinding Command="cmd:Commands.Submit" CanExecute="Can_Valide" Executed="Exec_Valide"/>

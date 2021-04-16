@@ -259,6 +259,7 @@ namespace UnPack_My_Game.Graph.LaunchBox
             // Sauvegarde des folders
             PS.Default.Save();
 
+                /*15/04/2021
             try
             {
                 C_LaunchBoxDPG clbDPG = new C_LaunchBoxDPG();
@@ -289,6 +290,7 @@ namespace UnPack_My_Game.Graph.LaunchBox
 
                     */
                     //C_LaunchBox.Run_LBMethode(ref games, model.SelectPlatform);
+                    /*15/04/2021
                 }
                 else if (Mode == E_Method.EBMethod)
                 {
@@ -303,6 +305,7 @@ namespace UnPack_My_Game.Graph.LaunchBox
 
                         //TaskToRun = clbEBAdapt
                     };*/
+            /*15042021
                 }
                 else if(Mode == E_Method.TBMethod)
                 {
@@ -319,6 +322,7 @@ namespace UnPack_My_Game.Graph.LaunchBox
                         //TaskToRun = clbEBAdapt
                     };
 */
+            /*1504/2021
                 }
                 if (daspW != null)
                     daspW.ShowDialog();

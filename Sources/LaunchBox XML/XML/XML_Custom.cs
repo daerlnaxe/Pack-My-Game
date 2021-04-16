@@ -1,4 +1,5 @@
-﻿using Common_PMG.Container;
+﻿using AsyncProgress.Cont;
+using Common_PMG.Container;
 using Common_PMG.Container.Game;
 using System;
 using System.Collections.Generic;
@@ -42,7 +43,7 @@ namespace LaunchBox_XML.XML
         {
             string xmlDest = Path.Combine(path, "Infos.xml");
 
-            Signal?.Invoke("Make_InfoGame", "InfoGame Serialization... ");
+            Signal?.Invoke("Make_InfoGame", new MessageArg( "InfoGame Serialization... "));
 
             try
             {
@@ -51,12 +52,12 @@ namespace LaunchBox_XML.XML
                 {
                     xs.Serialize(wr, zeGame);
                 }
-                Signal?.Invoke("Make_InfoGame", "InfoGame Finished");
+                Signal?.Invoke("Make_InfoGame", new MessageArg( "InfoGame Finished"));
                 return true;
             }
             catch (Exception exc)
             {
-                Signal?.Invoke("Make_InfoGame", exc.ToString());
+                Signal?.Invoke("Make_InfoGame", new MessageArg( exc.ToString()));
                 return false;
             }
         }

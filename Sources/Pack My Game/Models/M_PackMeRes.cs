@@ -22,9 +22,9 @@ namespace Pack_My_Game.Models
 
     public class M_PackMeRes
     {
-        public static event DoubleHandler UpdateProgress;
+        /*public static event DoubleHandler UpdateProgress;
         public static event MessageHandler UpdateStatus;
-        public static event DoubleHandler MaximumProgress;
+        public static event DoubleHandler MaximumProgress;*/
 
         public string Root { get; private set; }
 
@@ -195,7 +195,7 @@ namespace Pack_My_Game.Models
             }*/
             if (SelectedGame != null)
             {
-                OpDFiles.Trash(SelectedGame.ALinkToThePast);
+                OpDFiles.Trash(SelectedGame.ALinkToThePath);
                 LoadGames();
             }
         }
@@ -221,7 +221,7 @@ namespace Pack_My_Game.Models
             //string path = Path.Combine(Root, Common.Manuals, SelectedManual);
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = SelectedManual.ALinkToThePast;
+            p.StartInfo.FileName = SelectedManual.ALinkToThePath;
             p.Start();
 
         }
@@ -243,7 +243,7 @@ namespace Pack_My_Game.Models
         {
             if (SelectedManual != null)
             {
-                OpDFiles.Trash(SelectedManual.ALinkToThePast);
+                OpDFiles.Trash(SelectedManual.ALinkToThePath);
                 LoadManuals();
             }
         }
@@ -269,7 +269,7 @@ namespace Pack_My_Game.Models
             //string path = Path.Combine(Root, Common.Musics, SelectedMusic);
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = SelectedMusic.ALinkToThePast;
+            p.StartInfo.FileName = SelectedMusic.ALinkToThePath;
             p.Start();
 
         }
@@ -278,7 +278,7 @@ namespace Pack_My_Game.Models
         {
             if (SelectedMusic != null)
             {
-                OpDFiles.Trash(SelectedMusic.ALinkToThePast);
+                OpDFiles.Trash(SelectedMusic.ALinkToThePath);
                 LoadMusics();
             }
         }
@@ -294,7 +294,7 @@ namespace Pack_My_Game.Models
             //string path = Path.Combine(Root, Common.Videos, SelectedVideo);
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = SelectedVideo.ALinkToThePast;
+            p.StartInfo.FileName = SelectedVideo.ALinkToThePath;
             p.Start();
         }
 
@@ -329,7 +329,7 @@ namespace Pack_My_Game.Models
         {
             if (SelectedVideo != null)
             {
-                OpDFiles.Trash(SelectedVideo.ALinkToThePast);
+                OpDFiles.Trash(SelectedVideo.ALinkToThePath);
                 LoadVideos();
             }
         }
@@ -403,15 +403,15 @@ namespace Pack_My_Game.Models
                 return false;
 
             // --- Copie
-            UpdateStatus(this, $"Copy {fileSrc}");
+            /*UpdateStatus(this, $"Copy {fileSrc}");
             UpdateProgress?.Invoke(this, 0);
-            MaximumProgress?.Invoke(this, 1);
+            MaximumProgress?.Invoke(this, 1);*/
             FilesFunc.Copy(fileSrc, destFile);
-            UpdateProgress?.Invoke(this, 1);
+            //UpdateProgress?.Invoke(this, 1);
 
             // --- Vérification des sommes
-            UpdateStatus(this, $"Copy verification");
-            MaximumProgress?.Invoke(this, 100);
+            /*UpdateStatus(this, $"Copy verification");
+            MaximumProgress?.Invoke(this, 100);*/
 
             /*DxProgressB1 progressBox = new DxProgressB1();
 

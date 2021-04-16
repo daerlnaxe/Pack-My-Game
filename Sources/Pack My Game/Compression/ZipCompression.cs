@@ -1,12 +1,11 @@
-﻿using DxLocalTransf;
-using DxLocalTransf.Progress;
+﻿using AsyncProgress;
+using AsyncProgress.Cont;
+using AsyncProgress.ToImp;
 using Ionic.Zip;
 using Ionic.Zlib;
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Pack_My_Game.Compression
 {
@@ -18,34 +17,28 @@ namespace Pack_My_Game.Compression
      *      
      *      .saveprogress: event lors de la compression
      */
-    class ZipCompression: I_AsyncSigD
+    class ZipCompression : A_ASBase, I_AsyncSigD
     {
         public delegate bool DecisionHandler(string message, string title);
 
-        public event DoubleHandler UpdateProgress;
-        public event MessageHandler UpdateStatus;
-        public event MessageHandler UpdateStatusNL;
-        public event DoubleHandler MaximumProgress;
-
-        public event DoubleHandler UpdateProgressT;
-        public event MessageHandler UpdateStatusT;
-        public event MessageHandler UpdateStatusTNL;
-        public event DoubleHandler MaximumProgressT;
-
         public static event DecisionHandler Error;
 
-        public bool IsPaused { get; set; }
+        public event ProgressHandler UpdateProgress;
+        public event StateHandler UpdateStatus;
+
+        public event ProgressHandler UpdateProgressT;
+        public event StateHandler UpdateStatusT;
 
         /// <summary>
         /// Répertoire de destination
         /// </summary>
         public string DestinationFolder { get; internal set; }
 
-        public CancellationTokenSource TokenSource { get; set; }
 
-        public CancellationToken CancelToken => TokenSource.Token;
 
         public string ArchiveLink { get; private set; }
+
+
 
 
         /// <summary>
@@ -121,13 +114,14 @@ namespace Pack_My_Game.Compression
                         zipFile.AddProgress += AddProgress;
                         zipFile.SaveProgress += SaveProgress;
 
-                        MaximumProgress?.Invoke(this,100);
+                        //MaximumProgress?.Invoke(this, 100);
 
-                        UpdateStatusNL?.Invoke(this, "Compression Zip");
+                        UpdateStatus?.Invoke(this, new StateArg( "Compression Zip", CancelFlag));
 
                         //Task.Run(() => zipFile.Save(zipName));
                         zipFile.AddDirectory(folder);
                         zipFile.Save(ArchiveLink);
+
 
 
                     }
@@ -147,7 +141,7 @@ namespace Pack_My_Game.Compression
         }
 
 
-        
+
 
         /*
          * 
@@ -166,72 +160,73 @@ namespace Pack_My_Game.Compression
         {
             // On peut placer le cancel token ici
             if (CancelToken.IsCancellationRequested)
-                throw new OperationCanceledException();
-
-
-            // Begin compression
-            // Note: on ne peut pas avoir le nombre total
-            if (e.EventType == ZipProgressEventType.Saving_Started)
             {
-                UpdateStatusNL?.Invoke(this, $"Début de la compression vers: {e.ArchiveName}");                
+                e.Cancel = true;
+                IsInterrupted = true;
+                /*zip.Dispose();
+                throw new OperationCanceledException("Zip Compression stopped by user");*/
             }
 
-            // Création d'un dossier => On indique la tâche en cours + raz barre de progression
-            else if (e.EventType == ZipProgressEventType.Saving_BeforeWriteEntry && e.CurrentEntry.IsDirectory)
+
+            switch (e.EventType)
             {
-                string txt = $"Folder Creation: { e.CurrentEntry.FileName}";
-                Debug.WriteLine($"\tspA {txt}");
+                // Begin compression
+                // --- Note: on ne peut pas avoir le nombre total
+                case ZipProgressEventType.Saving_Started:
+                    UpdateStatus?.Invoke(this, new StateArg( $"Début de la compression vers: {e.ArchiveName}", CancelFlag));
+                    break;
 
-                UpdateProgress?.Invoke(this, 0);
-                UpdateStatusNL?.Invoke(this, e.CurrentEntry.FileName);
-            }
+                case ZipProgressEventType.Saving_BeforeWriteEntry:
+                   // UpdateProgress?.Invoke(this, 0);
+                    UpdateStatus?.Invoke(this, new StateArg( e.CurrentEntry.FileName, CancelFlag));
 
-            // Intervient au début de la compression du fichier && exclusion des dossiers => Tâche en cours + raz barre de progression
-            else if (e.EventType == ZipProgressEventType.Saving_BeforeWriteEntry && !e.CurrentEntry.IsDirectory)
-            {
-                string txt = $"File to Compression: { e.CurrentEntry.FileName}";
+                    string txt = null;
+                    // --- Création d'un dossier => On indique la tâche en cours + raz barre de progression
+                    if (e.CurrentEntry.IsDirectory)
+                    {
+                        txt = $"Folder Creation: { e.CurrentEntry.FileName}";
+                    }
+                    // -- Intervient au début de la compression du fichier && exclusion des dossiers => Tâche en cours + raz barre de progression
+                    else
+                    {
+                        txt = $"File to Compression: { e.CurrentEntry.FileName}";
+                     //   MaximumProgressT?.Invoke(this, e.EntriesTotal);
+                    }
 
-                Debug.WriteLine($"\tspA {txt}");
+                    Debug.WriteLine($"\tspA {txt}");
+                    break;
 
-                UpdateProgress?.Invoke(this, 0);
-                UpdateStatusNL?.Invoke(this, e.CurrentEntry.FileName);
-                MaximumProgressT?.Invoke(this, e.EntriesTotal);
-            }
+                // ---  Progress: Envoie de X>0 jusqu'au 100% => Only progress EntryBar
+                case ZipProgressEventType.Saving_EntryBytesRead:
+                    Debug.WriteLine($"\t\tspP Transfert saved {e.BytesTransferred} / {e.TotalBytesToTransfer}");
+                    //     BoxProgress.dProgress.EntryCalcUpdate(e.BytesTransferred, e.TotalBytesToTransfer);
+                    if (e.BytesTransferred < e.TotalBytesToTransfer)
+                        Debug.WriteLine("");
 
-            // Progress: Envoie de X>0 jusqu'au 100% => Only progress EntryBar
-            else if (e.EventType == ZipProgressEventType.Saving_EntryBytesRead)
-            {
-                Debug.WriteLine($"\t\tspP Transfert saved {e.BytesTransferred} / {e.TotalBytesToTransfer}");
-                //     BoxProgress.dProgress.EntryCalcUpdate(e.BytesTransferred, e.TotalBytesToTransfer);
+                    //this.MaximumProgress?.Invoke(this, e.TotalBytesToTransfer);
+                    this.UpdateProgress?.Invoke(this, new ProgressArg( e.BytesTransferred, e.TotalBytesToTransfer, CancelFlag));
+                    //Task.Delay(5000);
+                    break;
 
-                if (e.BytesTransferred < e.TotalBytesToTransfer)
-                    Debug.WriteLine("");
+                // Intervient à la fin de la compression du fichier ou des dossiers => on update le global
+                case ZipProgressEventType.Saving_AfterWriteEntry:
+                    Debug.WriteLine($"\t\tspE Entries saved {e.EntriesSaved} / {e.EntriesTotal}");
+                    //   BoxProgress.dProgress.GlobalProgress(e.EntriesSaved, e.EntriesTotal);
+                    this.UpdateProgressT?.Invoke(this, new ProgressArg( e.EntriesSaved, e.EntriesTotal, CancelFlag));
+                    break;
 
-                this.MaximumProgress?.Invoke(this, e.TotalBytesToTransfer);
-                this.UpdateProgress?.Invoke(this, e.BytesTransferred);
-                Task.Delay(5000);
-            }
+                // End of Compression
+                case ZipProgressEventType.Saving_Completed:
+                    Debug.WriteLine("Done");
+                    //     BoxProgress.StopIt();
+                    UpdateStatus?.Invoke(this, new StateArg( "Done", CancelFlag));
+                    break;
 
-            // Intervient à la fin de la compression du fichier ou des dossiers => on update le global
-            else if (e.EventType == ZipProgressEventType.Saving_AfterWriteEntry)
-            {
-                Debug.WriteLine($"\t\tspE Entries saved {e.EntriesSaved} / {e.EntriesTotal}");
-                //   BoxProgress.dProgress.GlobalProgress(e.EntriesSaved, e.EntriesTotal);
-                this.UpdateProgressT?.Invoke(this, e.EntriesSaved);
-            }
+                default:
+                    Debug.WriteLine($"======> Non géré {e.EventType} ");
+                    break;
+            };
 
-            // End of Compression
-            else if (e.EventType == ZipProgressEventType.Saving_Completed)
-            {
-                Debug.WriteLine("Done");
-                UpdateStatusNL?.Invoke(this, "Done");
-           //     BoxProgress.StopIt();
-
-            }
-            else
-            {
-                Debug.WriteLine($"======> Non géré {e.EventType} ");
-            }
         }
 
         private static void AddProgress(object sender, AddProgressEventArgs e)
@@ -243,9 +238,9 @@ namespace Pack_My_Game.Compression
 
 
 
-        public void StopTask()
+        public override void StopTask()
         {
-            throw new NotImplementedException();
+            TokenSource.Cancel();
         }
     }
 }

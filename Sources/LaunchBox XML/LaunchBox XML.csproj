@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="JSon\ConfigPlatformsF.cs" />
     <Compile Remove="XML\MakeXML.cs" />
   </ItemGroup>
 
@@ -18,11 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="JSon\ConfigPlatformsF.cs" />
     <None Include="XML\MakeXML.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\AsyncProgress\AsyncProgress.csproj" />
     <ProjectReference Include="..\..\Common_PMG\Common_PMG.csproj" />
   </ItemGroup>
 
@@ -30,10 +29,6 @@
     <Reference Include="Unbroken.LaunchBox.Plugins">
       <HintPath>G:\Frontend\LaunchBox - Test\Core\Unbroken.LaunchBox.Plugins.dll</HintPath>
     </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="JSon\ConfigPlatformsF.cs" />
   </ItemGroup>
 
 </Project>

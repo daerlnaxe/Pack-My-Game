@@ -1,4 +1,5 @@
 ﻿using Common_PMG.Container.Game;
+using Common_PMG.Container.Game.LaunchBox;
 using DxTBoxCore.Common;
 using DxTBoxCore.MBox;
 using LaunchBox_XML.XML;

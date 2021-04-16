@@ -17,6 +17,9 @@ using DxTBoxCore.Box_Collec;
 using System.Linq;
 using Cst = LaunchBox_XML.Common;
 using DxTBoxCore.Async_Box_Progress;
+using Common_PMG.Container.Game.LaunchBox;
+using Common_PMG.Container.Game;
+
 
 namespace Pack_My_Game.Models
 {
@@ -183,27 +186,41 @@ namespace Pack_My_Game.Models
             Test_HasElement(SelectedGames, nameof(NoGame));
 
             if (HasErrors)
-                return;            
+                return;
 
 
             if (LaunchBoxCore.PrepareToContinue(SelectedGames, SelectedPlatform.Name))
             {
                 LaunchBoxCore lbCore = new LaunchBoxCore(SelectedPlatform.Name);
 
-                DxAsStateProgress progressW = new DxAsStateProgress()
+                TaskLauncher taskLauncher = new TaskLauncher()
                 {
-                    AutoClose = false,
-                    Model = lbCore,
-                    Launcher = lbCore
-                    
-                    //= M_ProgressD.Create<LaunchBoxCore, M_ProgressDL>(lbCore, () => lbCore.Run()),
-
-                    /*new M_ProgressCC()
+                    ProgressIHM = new DxStateProgress()
                     {
-                        MaxProgressT = SelectedGames.Count,
-                    },
-                    TaskToRun = lbCore*/
+                        Model = lbCore,
+                    }
+                    ,
+                    AutoCloseWindow = false,
+                    MethodToRun = () => lbCore.Run(),
+
                 };
+                bool? Res = taskLauncher.Launch(lbCore);
+
+                /*
+            DxAsStateProgress progressW = new DxAsStateProgress()
+            {
+                AutoClose = false,
+                Model = lbCore,
+                Launcher = lbCore
+
+                //= M_ProgressD.Create<LaunchBoxCore, M_ProgressDL>(lbCore, () => lbCore.Run()),
+
+                 * new M_ProgressCC()
+                {
+                    MaxProgressT = SelectedGames.Count,
+                },
+                TaskToRun = lbCore*/
+                /*};
                 progressW.ShowDialog();
 
                 // On vérifie que la tâche est allée jusqu'au bout
@@ -213,12 +230,13 @@ namespace Pack_My_Game.Models
                     return;
 
                 }
+                */
 
                 if (DxMBox.ShowDial($"Remove game(s) from the list ?", "Remove game(s)", E_DxButtons.No | E_DxButtons.Yes) == true)
                 {
                     HeTrace.WriteLine($"Remove game(s) from list");
-               /*     foreach (ShortGame sgame in selectedGames)
-                        AvailableGames.Remove(sgame);*/
+                    /*     foreach (ShortGame sgame in selectedGames)
+                             AvailableGames.Remove(sgame);*/
                 }
             }
 

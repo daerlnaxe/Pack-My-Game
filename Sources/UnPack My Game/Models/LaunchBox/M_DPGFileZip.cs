@@ -1,7 +1,7 @@
 ﻿using Common_PMG.Container;
 using DxLocalTransf.Progress.ToImp;
+using DxTBoxCore.Async_Box_Progress;
 using DxTBoxCore.Box_Progress;
-using DxTBoxCore.Box_Progress_2;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -80,21 +80,16 @@ namespace UnPack_My_Game.Models.LaunchBox
             if (HasErrors)
                 return false;
 
-           /* DxAsDoubleProgress dd = new DxAsDoubleProgress()
-            {
-                Model = new UnModeleAHeriter(),
-            };*/
-
-
             DPGCore dpgC = new DPGCore();
-            DxAsStateProgress daspW = new DxAsStateProgress()
+            TaskLauncher launcher = new TaskLauncher()
             {
-                Model = dpgC,
-                //  Model =
-                //   Model = M_ProgressC.Create<DPGCore, M_ProgressCC>(dpgC, () => dpgC.MakeFileDPG(Elements)),
-
+                AutoCloseWindow = false,
+                ProgressIHM = new DxStateProgress(dpgC),
+                MethodToRun = () => dpgC.MakeFileDPG(Elements),                 
             };
-            daspW.ShowDialog();
+
+            launcher.Launch(dpgC);
+
             return true;
         }
 

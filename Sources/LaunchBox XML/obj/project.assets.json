@@ -91,6 +91,16 @@
           "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "AsyncProgress/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "compile": {
+          "bin/placeholder/AsyncProgress.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AsyncProgress.dll": {}
+        }
+      },
       "Common_PMG/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
@@ -347,6 +357,11 @@
         "version.txt"
       ]
     },
+    "AsyncProgress/1.0.0": {
+      "type": "project",
+      "path": "../../../AsyncProgress/AsyncProgress.csproj",
+      "msbuildProject": "../../../AsyncProgress/AsyncProgress.csproj"
+    },
     "Common_PMG/1.0.0": {
       "type": "project",
       "path": "../../Common_PMG/Common_PMG.csproj",
@@ -355,6 +370,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.1": [
+      "AsyncProgress >= 1.0.0",
       "Common_PMG >= 1.0.0"
     ]
   },
@@ -392,6 +408,9 @@
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "projectReferences": {
+            "E:\\Programmation\\Git-Hub\\AsyncProgress\\AsyncProgress.csproj": {
+              "projectPath": "E:\\Programmation\\Git-Hub\\AsyncProgress\\AsyncProgress.csproj"
+            },
             "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Common_PMG\\Common_PMG.csproj": {
               "projectPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Common_PMG\\Common_PMG.csproj"
             }

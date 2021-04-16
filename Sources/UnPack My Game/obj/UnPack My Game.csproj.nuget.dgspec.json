@@ -62,7 +62,66 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Programmation\\Git-Hub\\AsyncProgress\\AsyncProgress.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Programmation\\Git-Hub\\AsyncProgress\\AsyncProgress.csproj",
+        "projectName": "AsyncProgress",
+        "projectPath": "E:\\Programmation\\Git-Hub\\AsyncProgress\\AsyncProgress.csproj",
+        "packagesPath": "C:\\Users\\daerlnaxe\\.nuget\\packages\\",
+        "outputPath": "E:\\Programmation\\Git-Hub\\AsyncProgress\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\daerlnaxe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -124,7 +183,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -156,7 +215,11 @@
         "frameworks": {
           "netstandard2.1": {
             "targetAlias": "netstandard2.1",
-            "projectReferences": {}
+            "projectReferences": {
+              "E:\\Programmation\\Git-Hub\\AsyncProgress\\AsyncProgress.csproj": {
+                "projectPath": "E:\\Programmation\\Git-Hub\\AsyncProgress\\AsyncProgress.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -183,7 +246,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -216,6 +279,9 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
+              "E:\\Programmation\\Git-Hub\\AsyncProgress\\AsyncProgress.csproj": {
+                "projectPath": "E:\\Programmation\\Git-Hub\\AsyncProgress\\AsyncProgress.csproj"
+              },
               "E:\\Programmation\\Git-Hub\\DxCoreControls\\Source\\DxCCtrl.csproj": {
                 "projectPath": "E:\\Programmation\\Git-Hub\\DxCoreControls\\Source\\DxCCtrl.csproj"
               },
@@ -258,7 +324,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -291,6 +357,9 @@
           "netstandard2.1": {
             "targetAlias": "netstandard2.1",
             "projectReferences": {
+              "E:\\Programmation\\Git-Hub\\AsyncProgress\\AsyncProgress.csproj": {
+                "projectPath": "E:\\Programmation\\Git-Hub\\AsyncProgress\\AsyncProgress.csproj"
+              },
               "E:\\Programmation\\Git-Hub\\DxLocalTrans\\DxLocalTrans\\DxLocalTransf.csproj": {
                 "projectPath": "E:\\Programmation\\Git-Hub\\DxLocalTrans\\DxLocalTrans\\DxLocalTransf.csproj"
               }
@@ -321,7 +390,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -353,7 +422,11 @@
         "frameworks": {
           "netstandard2.1": {
             "targetAlias": "netstandard2.1",
-            "projectReferences": {}
+            "projectReferences": {
+              "E:\\Programmation\\Git-Hub\\AsyncProgress\\AsyncProgress.csproj": {
+                "projectPath": "E:\\Programmation\\Git-Hub\\AsyncProgress\\AsyncProgress.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -380,7 +453,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -445,7 +518,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -478,6 +551,9 @@
           "netstandard2.1": {
             "targetAlias": "netstandard2.1",
             "projectReferences": {
+              "E:\\Programmation\\Git-Hub\\AsyncProgress\\AsyncProgress.csproj": {
+                "projectPath": "E:\\Programmation\\Git-Hub\\AsyncProgress\\AsyncProgress.csproj"
+              },
               "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Common_PMG\\Common_PMG.csproj": {
                 "projectPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Common_PMG\\Common_PMG.csproj"
               }
@@ -508,7 +584,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -595,7 +671,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },

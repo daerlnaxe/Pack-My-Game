@@ -77,7 +77,7 @@
     <Page Update="Graph\LaunchBox\W_Config.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Graph\LaunchBox\W_DPGMaker.xaml">
+    <Page Update="Graph\W_DPGMaker.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Graph\P_OGame.xaml">

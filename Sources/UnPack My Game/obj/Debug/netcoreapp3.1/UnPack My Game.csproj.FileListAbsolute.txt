@@ -269,7 +269,6 @@ E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreap
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_LaunchBox_Main.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_LBMethod.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\W_Config.g.cs
-E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\W_DPGMaker.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\P_OGame.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\P_SGames.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\W_Common.g.cs
@@ -277,7 +276,6 @@ E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreap
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\W_ModTargetPaths.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\App.g.cs
-E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\UnPack My Game_MarkupCompile.cache
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\UnPack My Game_MarkupCompile.lref
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\App.baml
@@ -289,7 +287,6 @@ E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreap
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_LaunchBox_Main.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_LBMethod.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\W_Config.baml
-E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\W_DPGMaker.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\P_OGame.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\P_SGames.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\W_Common.baml
@@ -318,3 +315,6 @@ E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreap
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\SevenZipSharp.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\SevenZipSharp.pdb
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\SevenZipSharp.xml
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\W_DPGMaker.g.cs
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\W_DPGMaker.baml

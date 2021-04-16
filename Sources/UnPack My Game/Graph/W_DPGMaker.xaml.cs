@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace UnPack_My_Game.Graph.LaunchBox
+namespace UnPack_My_Game.Graph
 {
     /// <summary>
     /// Logique d'interaction pour W_PackMeRes.xaml
@@ -36,8 +36,6 @@ namespace UnPack_My_Game.Graph.LaunchBox
 
         public W_DPGMaker()
         {
-
-
             InitializeComponent();
         }
 
@@ -47,22 +45,13 @@ namespace UnPack_My_Game.Graph.LaunchBox
 
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
 
+        private void Game_Select(object sender, RoutedEventArgs e)
+        {
+            Model.GameSelect();
         }
 
-        #region
-        private void Add_GameF(object sender, RoutedEventArgs e)
-        {
-            Model.CopyGameF();
-        }
 
-        private void Remove_GameF(object sender, RoutedEventArgs e)
-        {
-            Model.RemoveGameF();
-        }
-        #endregion
 
 
         #region
@@ -156,10 +145,6 @@ namespace UnPack_My_Game.Graph.LaunchBox
         #endregion
 
 
-        private void Reload_Click(object sender, RoutedEventArgs e)
-        {
-            Model.LoadFiles();
-        }
 
         private void OpenFolder_Click(object sender, RoutedEventArgs e)
         {
@@ -173,10 +158,8 @@ namespace UnPack_My_Game.Graph.LaunchBox
 
         }
 
-        private void JVCom_Click(object sender, RoutedEventArgs e)
-        {
-            Model.LaunchPage("https://www.jeuxvideo.com/rechercher.php?q=");
-            
-        }
+
+
+
     }
 }

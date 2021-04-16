@@ -10,11 +10,12 @@
   <ItemGroup>
     <Compile Remove="BackupLB\Etalon_LBGame.cs" />
     <Compile Remove="Container\Game\GameLBT.cs" />
+    <Compile Remove="Container\Game\LaunchBox\GameLBT.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="BackupLB\Etalon_LBGame.cs" />
-    <None Include="Container\Game\GameLBT.cs" />
+    <None Include="Container\Game\LaunchBox\GameLBT.cs" />
   </ItemGroup>
 
   <ItemGroup>

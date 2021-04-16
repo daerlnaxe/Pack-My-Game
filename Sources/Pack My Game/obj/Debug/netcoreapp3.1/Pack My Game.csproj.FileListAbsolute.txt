@@ -157,3 +157,5 @@ E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\bin\Debug\netcoreapp3
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\bin\Debug\netcoreapp3.1\DxTBoxCore.runtimeconfig.json
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\bin\Debug\netcoreapp3.1\DxTBoxCore.runtimeconfig.dev.json
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\bin\Debug\netcoreapp3.1\DxTBoxCore.exe
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\bin\Debug\netcoreapp3.1\AsyncProgress.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\bin\Debug\netcoreapp3.1\AsyncProgress.pdb
