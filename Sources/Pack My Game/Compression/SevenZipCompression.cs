@@ -24,8 +24,7 @@ namespace Pack_My_Game.Compression
         public event ProgressHandler UpdateProgress;
         public event StateHandler UpdateStatus;
 
-
-        //
+ 
         //static string _ArchiveName;
         public string DestinationFolder { get; internal set; }
 
@@ -53,32 +52,7 @@ namespace Pack_My_Game.Compression
                 Directory.CreateDirectory(destinationFolder);
         }
 
-        event ProgressHandler I_SigProgress.UpdateProgress
-        {
-            add
-            {
-                throw new NotImplementedException();
-            }
-
-            remove
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        event StateHandler I_SigProgress.UpdateStatus
-        {
-            add
-            {
-                throw new NotImplementedException();
-            }
-
-            remove
-            {
-                throw new NotImplementedException();
-            }
-        }
-
+     
 
         /// <summary>
         /// 
@@ -160,7 +134,6 @@ namespace Pack_My_Game.Compression
             Debug.WriteLine($"Files: {e.Value} Found");
         }
 
-
         // Se produit après files found
         private void FileCompressionStarted(object sender, FileNameEventArgs e)
         {
@@ -191,6 +164,7 @@ namespace Pack_My_Game.Compression
         /// </remarks>
         private void Compressing(object sender, ProgressEventArgs e)
         {
+
             //BoxProgress.dProgress.EntryUpdate(e.PercentDone);
             this.UpdateProgress?.Invoke(this, new ProgressArg( e.PercentDone, 100, CancelFlag));
 
@@ -214,6 +188,7 @@ namespace Pack_My_Game.Compression
         // #?
         private void CompressionFinished(object sender, EventArgs e)
         {
+
             //Aucune info nonplus
             /*int totalFiles = BoxProgress.dProgress.TotalFiles;
        

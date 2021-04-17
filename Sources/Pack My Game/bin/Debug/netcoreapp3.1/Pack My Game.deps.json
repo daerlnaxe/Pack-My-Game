@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v3.1": {
       "Pack My Game/1.0.0": {
         "dependencies": {
+          "Common_PMG": "1.0.0",
           "DotNetZip": "1.15.0",
           "DxPaths": "1.0.0",
           "DxTBoxCore": "1.0.0",
@@ -963,6 +964,8 @@
       },
       "Common_PMG/1.0.0": {
         "dependencies": {
+          "AsyncProgress": "1.0.0",
+          "DxLocalTransf": "1.0.0",
           "System.Text.Json": "5.0.2"
         },
         "runtime": {
@@ -1022,8 +1025,7 @@
       },
       "LaunchBox XML/1.0.0": {
         "dependencies": {
-          "AsyncProgress": "1.0.0",
-          "Common_PMG": "1.0.0"
+          "AsyncProgress": "1.0.0"
         },
         "runtime": {
           "LaunchBox XML.dll": {}

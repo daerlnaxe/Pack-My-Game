@@ -1,24 +1,19 @@
-﻿using System;
-using System.ComponentModel;
-using PS = Pack_My_Game.Properties.Settings;
+﻿using Common_PMG.Container;
+using Common_PMG.Container.Game;
+using Common_PMG.Container.Game.LaunchBox;
+using Common_PMG.XML;
+using DxTBoxCore.Box_Progress;
+using DxTBoxCore.Common;
+using DxTBoxCore.MBox;
+using Hermes;
+using LaunchBox_XML;
 using Pack_My_Game.Cont;
+using Pack_My_Game.Core;
+using System;
 using System.Collections.ObjectModel;
 using System.IO;
-using Hermes;
-using LaunchBox_XML.XML;
-using Common_PMG.Container;
-using System.Collections.Generic;
-using DxTBoxCore.MBox;
-using DxTBoxCore.Common;
-using Pack_My_Game.Core;
-using DxTBoxCore.Box_Progress;
-using Common_PMG.Container.Game;
-using DxTBoxCore.Box_Collec;
 using System.Linq;
-using Cst = LaunchBox_XML.Common;
-using DxTBoxCore.Async_Box_Progress;
-using Common_PMG.Container.Game.LaunchBox;
-using Common_PMG.Container.Game;
+using PS = Pack_My_Game.Properties.Settings;
 
 
 namespace Pack_My_Game.Models
@@ -256,7 +251,7 @@ namespace Pack_My_Game.Models
             bool ok = true;
             foreach (ShortGame g in SelectedGames)
             {
-                GamePaths game = (GamePaths)XML_Games.Scrap_LBGame<LBGame>(platformXmlFile, Cst.Id, g.Id);
+                GamePaths game = (GamePaths)XML_Games.Scrap_LBGame<LBGame>(platformXmlFile, Tag.Id, g.Id);
 
                 string res = LaunchBoxFunc.CheckGameValidity(game);
 
@@ -292,7 +287,7 @@ namespace Pack_My_Game.Models
             foreach (var g in SelectedGames)
             {
 
-                GamePaths game = (GamePaths)XML_Games.Scrap_LBGame<LBGame>(platformXmlFile, Cst.Id, g.Id);
+                GamePaths game = (GamePaths)XML_Games.Scrap_LBGame<LBGame>(platformXmlFile, Tag.Id, g.Id);
 
                 game.ApplicationPath = Assign(game.ApplicationPath, SelectedPlatform.FolderPath);
 
@@ -305,7 +300,7 @@ namespace Pack_My_Game.Models
 
                 game.ThemeVideoPath = Assign(game.ThemeVideoPath, p, "Video");
 
-                string tmp = Path.Combine(WorkingFolder, SelectedPlatform.Name, Cst.WindowsConv_TitleToFileName(game.Title));
+                string tmp = Path.Combine(WorkingFolder, SelectedPlatform.Name, Tool.WindowsConv_TitleToFileName(game.Title));
                 Directory.CreateDirectory(tmp);
                 tmp = Path.Combine(tmp, "DPGame.json");
                 game.WriteToJson(tmp);

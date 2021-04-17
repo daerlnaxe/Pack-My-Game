@@ -1,6 +1,6 @@
 ﻿using Common_PMG.Container.Game;
+using Common_PMG.XML;
 using DxTBoxCore.BoxChoose;
-using LaunchBox_XML.XML;
 using Pack_My_Game.IHM;
 using Pack_My_Game.Models;
 using System.Diagnostics;

@@ -1,19 +1,18 @@
 ﻿using AsyncProgress;
 using AsyncProgress.Cont;
+using AsyncProgress.Basix;
 using Common_PMG.Container;
 using Common_PMG.Container.AAPP;
 using Common_PMG.Container.Game;
 using Common_PMG.Container.Game.LaunchBox;
 using DxLocalTransf;
 using DxPaths.Windows;
-using DxTBoxCore.Async_Box_Progress.Basix;
 using DxTBoxCore.Box_Decisions;
 using DxTBoxCore.Common;
 using DxTBoxCore.MBox;
 using HashCalc;
 using Hermes;
 using Hermes.Messengers;
-using LaunchBox_XML.XML;
 using Pack_My_Game.Compression;
 using Pack_My_Game.Cont;
 using Pack_My_Game.Files;
@@ -27,6 +26,8 @@ using System.Security.Cryptography;
 using System.Threading;
 using System.Windows;
 using PS = Pack_My_Game.Properties.Settings;
+using Common_PMG.XML;
+using DxLocalTransf.Copy;
 //using Pack_My_Game.Compression;
 
 namespace Pack_My_Game.Core
@@ -62,10 +63,6 @@ namespace Pack_My_Game.Core
         public bool IsInterrupted { get; private set; }
         public bool CancelFlag { get; private set; }
 
-        /// <summary>
-        /// Objet gérant les vérifications
-        /// </summary>
-        OpDFilesExt _ObjectFiles { get; }
 
         // ---
 
@@ -197,10 +194,6 @@ namespace Pack_My_Game.Core
 
             XML_Games.Signal += (x, y) => SetStatus(x, new StateArg(y, true));
 
-            #region Initialisation de l'objet de copie
-            _ObjectFiles = new OpDFilesExt();
-            _ObjectFiles.UpdateProgress += SetProgress;
-            #endregion
         }
 
 
@@ -335,7 +328,7 @@ namespace Pack_My_Game.Core
 
 
                 // --- Récupération des fichiers
-                GameDataCont gdC = new GameDataCont();
+                GameDataCont gdC = new GameDataCont(lbGame.Title);
 
                 GetFiles(lbGame, gdC);
 
@@ -345,23 +338,19 @@ namespace Pack_My_Game.Core
                 PrepareList(gdC.Manuals, tree, PS.Default.KeepManualStruct, "Manual");
                 PrepareList(gdC.Musics, tree, PS.Default.KeepMusicStruct, "Music");
                 PrepareList(gdC.Videos, tree, PS.Default.KeepVideoStruct, "Video");
-
+                PrepareImages(gdC.Images, tree.Children[Common.Images].Path);
 
 
                 // --- Copie des fichiers
-                //CopyFiles(gdC, tree);
+                CopyFiles(gdC, tree);
+
+
+                // --- Récapitulatif permettant de rajouter ou lever des fichiers au pack
+                PackMe_IHM.LaunchBoxCore_Recap(gamePath, _ZePlatform, gdC);
 
                 // --- GamePaths --- 
                 GamePaths gpX = MakeGamePaths(lbGame, gdC, tree);
 
-
-
-                //CopyFiles(lbGame, tree);
-
-                // --- Récapitulatif permettant de rajouter ou lever des fichiers au pack
-
-                throw new NotImplementedException();
-                //PackMe_IHM.LaunchBoxCore_Recap(gamePath, _ZePlatform, gdC);
 
                 #region Serialization / improved backup of Launchbox datas (with found medias missing) 
                 /* - En théorie on est toujours sur du relative path
@@ -497,9 +486,6 @@ namespace Pack_My_Game.Core
 
             }
         }
-
-
-
 
 
         /// <summary>
@@ -790,265 +776,6 @@ namespace Pack_My_Game.Core
         }
 
 
-        #endregion
-
-        #region Préparation
-        /*
-    private GamePaths PrepareFiles(GameDataCont gdC, Folder tree)
-    {
-        GamePaths gP = new GamePaths();
-
-
-
-        gP.ApplicationPath = 
-        gP.ManualPath = 
-        gP.MusicPath = 
-
-        gP.VideoPath = gdC.DefaultVideo;
-
-
-
-        return gP;
-    }
-        */
-
-        private string PrepareList(List<DataRep> elems, Folder tree, bool keepStruct, string mediatype)
-        {
-            string destLocation = tree.Children[$"{mediatype}s"].Path;
-
-            PlatformFolder folder = null;
-            if (keepStruct && !string.IsNullOrEmpty(mediatype))
-            {
-                // On récupère le dossier concerné par le média
-                folder = _ZePlatform.PlatformFolders.FirstOrDefault(
-                            (x) => x.MediaType.Equals(mediatype, StringComparison.OrdinalIgnoreCase));
-            }
-
-            string futurLink, tail, gpAssign;
-            gpAssign = string.Empty;
-            foreach (var fichier in elems)
-            {
-                futurLink = string.Empty;
-                tail = string.Empty;
-
-                if (keepStruct && folder != null && fichier.ALinkToThePath.Contains(folder.FolderPath))
-                {
-                    tail = fichier.ALinkToThePath.Replace(folder.FolderPath, string.Empty).TrimStart('\\');
-                    futurLink = Path.Combine(destLocation, tail);
-                }
-                else
-                {
-                    futurLink = Path.Combine(destLocation, Path.GetFileName(fichier.ALinkToThePath));
-                }
-
-                fichier.DestPath = futurLink;
-
-                // --- Renvoie pour le GP.
-                if (fichier.IsSelected)
-                    gpAssign = DxPath.To_Relative(destLocation, futurLink);
-            }
-
-            return gpAssign;
-        }
-        #endregion
-
-
-        private GamePaths MakeGamePaths(LBGame lbGame, GameDataCont gdC, Folder tree)
-        {
-            GamePaths gpX = GamePaths.CreateBasic(lbGame);
-            gpX.ApplicationPath = AssignDefaultPath(tree.Children[Common.Games].Path, gdC.DefaultApp);
-            gpX.ManualPath = AssignDefaultPath(tree.Children[Common.Manuals].Path, gdC.DefaultManual);
-            gpX.MusicPath = AssignDefaultPath(tree.Children[Common.Musics].Path, gdC.DefaultMusic);
-            gpX.VideoPath = AssignDefaultPath(tree.Children[Common.Videos].Path, gdC.DefaultVideo);
-            gpX.ThemeVideoPath = AssignDefaultPath(tree.Children[Common.Videos].Path, gdC.DefaultThemeVideo);
-            return gpX;
-        }
-
-
-        private string AssignDefaultPath(string destPath, DataRep defaultPath)
-        {
-            if (defaultPath == null)
-                return null;
-
-            return DxPath.To_Relative(destPath, defaultPath.DestPath); ;
-
-        }
-
-
-        #region copies
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="gpX"></param>
-        /// <param name="tree"></param>
-        /// <remarks>
-        /// Altère GPX pour suivre les fichiers
-        /// </remarks>
-        private void CopyFiles(GameDataCont gpX, Folder tree)
-        {
-            throw new NotImplementedException();
-
-            /*
-            // Roms + Clones
-            gpX.ApplicationPath = CopyMain(gpX.ApplicationPath, tree.Children[Common.Games].Path, false);
-            CopyList(gpX.Apps, tree.Children[Common.Games].Path, false);
-
-            // CheatCodes
-            CopyList(gpX.CompCheatCodes, tree.Children[Common.CheatCodes].Path, false);
-
-            // Manuals
-            gpX.ManualPath = CopyMain(gpX.ManualPath, tree.Children[Common.Manuals].Path, true, "Manual");
-            CopyList(gpX.CompManuals, tree.Children[Common.Manuals].Path, true, "Manual");
-
-            // Musics
-            gpX.MusicPath = CopyMain(gpX.MusicPath, tree.Children[Common.Musics].Path, true, "Music");
-            CopyList(gpX.Musics, tree.Children[Common.Musics].Path, true, "Music");
-
-            // Videos
-            gpX.VideoPath = CopyMain(gpX.VideoPath, tree.Children[Common.Videos].Path, true, "Video");
-            gpX.ThemeVideoPath = CopyMain(gpX.ThemeVideoPath, tree.Children[Common.Videos].Path, true, "Video");
-            CopyList(gpX.Videos, tree.Children[Common.Videos].Path, true, "Video");
-
-            // Images
-            CopyImages(gpX.Images, tree.Children[Common.Images].Path);
-            */
-        }
-
-        /*       /// <summary>
-               /// 
-               /// </summary>
-               /// <param name="path"></param>
-               /// <param name="compApps"></param>
-               /// <param name="destLocation"></param>
-               /// <returns></returns>
-               /// <remarks>
-               /// On ne garde pas le tail
-               /// </remarks>
-               private string CopyMain(string path, string destLocation)
-               {
-                   string futurLink = Path.Combine(destLocation, Path.GetFileName(path));
-
-                   SimpleCopyManager(path, ref _FileConflictDecision, futurLink);
-
-                   return DxPath.To_Relative(destLocation, futurLink);
-               }*/
-
-        private string CopyMain(string fichier, string destLocation, bool wTail, string mediatype = null)
-        {
-            if (string.IsNullOrEmpty(fichier))
-                return string.Empty;
-
-            PlatformFolder folder = null;
-            if (wTail && !string.IsNullOrEmpty(mediatype))
-            {
-                // On récupère le dossier concerné par le média
-                folder = _ZePlatform.PlatformFolders.First(
-                            (x) => x.MediaType.Equals(mediatype, StringComparison.OrdinalIgnoreCase));
-            }
-
-            string futurLink, tail;
-            futurLink = tail = string.Empty;
-
-            if (folder != null && fichier.Contains(folder.FolderPath))
-            {
-                tail = fichier.Replace(folder.FolderPath, string.Empty).TrimStart('\\');
-                futurLink = Path.Combine(destLocation, tail);
-            }
-            else
-            {
-                futurLink = Path.Combine(destLocation, Path.GetFileName(fichier));
-            }
-
-            SimpleCopyManager(fichier, ref _FileConflictDecision, futurLink);
-
-            return DxPath.To_Relative(destLocation, futurLink);
-        }
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="compApps"></param>
-        /// <param name="folder"></param>
-        /// <remarks>
-        /// Conserve la structure si c'est souhaité
-        /// </remarks>
-        private void CopyList(List<string> elems, string destLocation, bool wTail, string mediatype = null)
-        {
-            PlatformFolder folder = null;
-            if (wTail && !string.IsNullOrEmpty(mediatype))
-            {
-                // On récupère le dossier concerné par le média
-                folder = _ZePlatform.PlatformFolders.First(
-                            (x) => x.MediaType.Equals(mediatype, StringComparison.OrdinalIgnoreCase));
-            }
-
-            string tail, futurLink;
-            foreach (string fichier in elems)
-            {
-                futurLink = string.Empty;
-                tail = string.Empty;
-
-                if (wTail)
-                {
-                    if (folder != null && fichier.Contains(folder.FolderPath))
-                    {
-                        tail = fichier.Replace(folder.FolderPath, string.Empty).TrimStart('\\');
-                        futurLink = Path.Combine(destLocation, tail);
-
-                        SimpleCopyManager(fichier, ref _FileConflictDecision, futurLink);
-                        continue;
-                    }
-                }
-
-                futurLink = Path.Combine(destLocation, Path.GetFileName(fichier));
-                SimpleCopyManager(fichier, ref _FileConflictDecision, futurLink);
-            }
-        }
-
-        private void CopyImages(List<DataRepExt> images, string destLocation)
-        {
-            E_Decision resMem = E_Decision.None;
-            string tail, futurLink;
-            foreach (DataRepExt pkFile in images)
-            {
-                tail = string.Empty;
-                // On récupère la tail
-                PlatformFolder folder = _ZePlatform.PlatformFolders.First(
-                                          (x) => x.MediaType.Equals(pkFile.Categorie, StringComparison.OrdinalIgnoreCase));
-
-
-                if (folder != null && pkFile.ALinkToThePath.Contains(folder.FolderPath))
-                {
-                    tail = pkFile.ALinkToThePath.Replace(folder.FolderPath, string.Empty).TrimStart('\\');
-
-                    futurLink = Path.Combine(destLocation, pkFile.Categorie, tail);
-                }
-                else
-                {
-                    futurLink = Path.Combine(destLocation, Path.GetFileName(pkFile.ALinkToThePath));
-                }
-
-                SimpleCopyManager(pkFile.ALinkToThePath, ref resMem, futurLink);
-
-                // Dossier de destination
-                //25/03/2021string destFolder = Path.Combine(_Tree.Children[nameof(SubFolder.Images)].Path, tail1);
-                //string destFolder = Path.Combine(imgsFolder, tail1);
-
-                //SimpleCopyManager(pkFile.LinkToThePath, destFolder, ref resMem);
-            }
-        }
-
-
-
-
-
-        #endregion
-
-
-
-
-
         /// <summary>
         /// Récupère les fichiers par "prédiction"
         /// </summary>
@@ -1100,82 +827,147 @@ namespace Pack_My_Game.Core
             return filteredFiles;
         }
 
-        // ---
+        #endregion
 
-        internal void SimpleCopyManager(string fileSrc, ref E_Decision previousDec, string destFile)
+        #region Préparation
+        /*
+    private GamePaths PrepareFiles(GameDataCont gdC, Folder tree)
+    {
+        GamePaths gP = new GamePaths();
+
+
+
+        gP.ApplicationPath = 
+        gP.ManualPath = 
+        gP.MusicPath = 
+
+        gP.VideoPath = gdC.DefaultVideo;
+
+
+
+        return gP;
+    }
+        */
+
+        private string PrepareList(List<DataRep> elems, Folder tree, bool keepStruct, string mediatype)
         {
-            if (CancelToken.IsCancellationRequested)
-                throw new OperationCanceledException("Operation stopped");
+            HeTrace.WriteLine($"[{nameof(PrepareList)}] for {mediatype}", this);
 
-            if (!destFile.Contains(_WFolder))
-                throw new Exception($"[CreateFolders] Erreur la chaine '{destFile}' ne contient pas '{_WFolder}'");
+            string destLocation = tree.Children[$"{mediatype}s"].Path;
 
-
-            // Création des dossiers
-            string destFolder = Path.GetDirectoryName(destFile);
-            if (!Directory.Exists(destFolder))
-                Directory.CreateDirectory(destFolder);
-
-            //string destFile = Path.Combine(destFolder, Path.GetFileName(fileSrc));
-
-            E_Decision? conflictDec = previousDec;
-
-            bool overwrite = false;
-            if (File.Exists(destFile))
+            PlatformFolder folder = null;
+            if (keepStruct && !string.IsNullOrEmpty(mediatype))
             {
-                HeTrace.Write($"[CopyHandler] Destination file exists... ", this);
-                if (conflictDec == E_Decision.None)
-                {
-                    conflictDec = PackMe_IHM.Ask4_FileConflict(fileSrc, destFile, E_DxConfB.OverWrite | E_DxConfB.Pass | E_DxConfB.Trash);
-
-                    // Mémorisation pour les futurs conflits
-                    switch (conflictDec)
-                    {
-                        case E_Decision.PassAll:
-                        case E_Decision.OverWriteAll:
-                        case E_Decision.TrashAll:
-                            previousDec = conflictDec == null ? E_Decision.None : (E_Decision)conflictDec;
-                            break;
-                    }
-                }
-
-                HeTrace.EndLine(conflictDec.ToString(), this);
-                switch (conflictDec)
-                {
-                    case E_Decision.Pass:
-                    case E_Decision.PassAll:
-                        SetStatus(this, new StateArg($"Pass: {fileSrc}", CancelFlag));
-                        return;
-                    case E_Decision.OverWrite:
-                    case E_Decision.OverWriteAll:
-                        SetStatus(this, new StateArg($"OverWrite: {destFile}", CancelFlag));
-                        overwrite = true;
-                        break;
-                    case E_Decision.Trash:
-                    case E_Decision.TrashAll:
-                        SetStatus(this, new StateArg($"Trash: {destFile}", CancelFlag));
-                        OpDFiles.Trash(destFile);
-                        break;
-                }
+                // On récupère le dossier concerné par le média
+                folder = _ZePlatform.PlatformFolders.FirstOrDefault(
+                            (x) => x.MediaType.Equals(mediatype, StringComparison.OrdinalIgnoreCase));
             }
 
-            // --- Copie
-            SetStatus(this, new StateArg($"Copy {fileSrc}", CancelFlag));
-            SetProgress(this, new ProgressArg(0, 1, CancelFlag));
-            FilesFunc.Copy(fileSrc, destFile, overwrite);
-            SetProgress(this, new ProgressArg(1, 1, CancelFlag));
+            string futurLink, tail, gpAssign;
+            gpAssign = string.Empty;
+            foreach (var fichier in elems)
+            {
+                futurLink = string.Empty;
+                tail = string.Empty;
 
-            // --- Vérification des sommes
-            this.SetStatus(this, new StateArg($"Copy verification", CancelFlag));
-            //this.SetMaximum(this, 100);
+                if (keepStruct && folder != null && fichier.ALinkToThePath.Contains(folder.FolderPath))
+                {
+                    tail = fichier.ALinkToThePath.Replace(folder.FolderPath, string.Empty).TrimStart('\\');
+                    futurLink = Path.Combine(destLocation, tail);
+                }
+                else
+                {
+                    futurLink = Path.Combine(destLocation, Path.GetFileName(fichier.ALinkToThePath));
+                }
 
-            //bool? res = _ObjectFiles.VerifByHash_Sync(fileSrc, destFile, () => MD5.Create());
-            var res = _ObjectFiles.DeepVerif(fileSrc, destFile, () => MD5.Create());
+                fichier.DestPath = futurLink;
 
-            this.SetStatus(this, new StateArg($"Check verif: {res}", CancelFlag));
-            //this.UpdateProgress?.Invoke(100);
+                // --- Renvoie pour le GP.
+                if (fichier.IsSelected)
+                    gpAssign = DxPath.To_Relative(destLocation, futurLink);
+            }
+
+            return gpAssign;
+        }
+
+        private void PrepareImages(List<DataRepExt> images, string destLocation)
+        {
+            E_Decision resMem = E_Decision.None;
+            string tail; 
+            foreach (DataRepExt pkFile in images)
+            {
+                tail = string.Empty;
+                // On récupère la tail
+                PlatformFolder folder = _ZePlatform.PlatformFolders.First(
+                                          (x) => x.MediaType.Equals(pkFile.Categorie, StringComparison.OrdinalIgnoreCase));
+
+
+                if (folder != null && pkFile.ALinkToThePath.Contains(folder.FolderPath))
+                {
+                    tail = pkFile.ALinkToThePath.Replace(folder.FolderPath, string.Empty).TrimStart('\\');
+
+                    pkFile.DestPath = Path.Combine(destLocation, pkFile.Categorie, tail);
+                }
+                else
+                {
+                    pkFile.DestPath = Path.Combine(destLocation, Path.GetFileName(pkFile.ALinkToThePath));
+                }                
+            }
+        }
+
+        #endregion
+
+
+        private GamePaths MakeGamePaths(LBGame lbGame, GameDataCont gdC, Folder tree)
+        {
+            GamePaths gpX = GamePaths.CreateBasic(lbGame);
+            gpX.ApplicationPath = AssignDefaultPath(tree.Children[Common.Games].Path, gdC.DefaultApp);
+            gpX.ManualPath = AssignDefaultPath(tree.Children[Common.Manuals].Path, gdC.DefaultManual);
+            gpX.MusicPath = AssignDefaultPath(tree.Children[Common.Musics].Path, gdC.DefaultMusic);
+            gpX.VideoPath = AssignDefaultPath(tree.Children[Common.Videos].Path, gdC.DefaultVideo);
+            gpX.ThemeVideoPath = AssignDefaultPath(tree.Children[Common.Videos].Path, gdC.DefaultThemeVideo);
+            return gpX;
+        }
+
+
+        private string AssignDefaultPath(string destPath, DataRep defaultPath)
+        {
+            if (defaultPath == null)
+                return null;
+
+            return DxPath.To_Relative(destPath, defaultPath.DestPath); ;
 
         }
+
+
+
+        // ---
+
+        private void CopyFiles(GameDataCont gdC, Folder tree)
+        {
+            CopyNVerif copyObj = new CopyNVerif();
+            copyObj.AskToUser += PackMe_IHM.Ask4_FileConflict2;
+
+            HeTrace.WriteLine("[CopyFiles] All files except images");
+            // Fusion des fichiers sauf les images
+            List<DataRep> Fichiers = new List<DataRep>();
+            Fichiers.AddRange(gdC.Apps);
+            Fichiers.AddRange(gdC.CheatCodes);
+            Fichiers.AddRange(gdC.Manuals);
+            Fichiers.AddRange(gdC.Musics);
+            Fichiers.AddRange(gdC.Videos);
+
+            PackMe_IHM.DoubleProgress(copyObj, "Copy",
+                (test)=> test= copyObj.CopySNVerif(Fichiers),
+                (test) => test = copyObj.CopySNVerif(gdC.Images));
+            //copyObj.CopySNVerif(Fichiers);
+
+        }
+
+
+
+
+
 
         #endregion
 

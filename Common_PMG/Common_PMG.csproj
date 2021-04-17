@@ -1,5 +1,4 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Authors>Alexandre CODOUL aka Daerlnaxe</Authors>
@@ -11,11 +10,13 @@
     <Compile Remove="BackupLB\Etalon_LBGame.cs" />
     <Compile Remove="Container\Game\GameLBT.cs" />
     <Compile Remove="Container\Game\LaunchBox\GameLBT.cs" />
+    <Compile Remove="XML\MakeXML.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="BackupLB\Etalon_LBGame.cs" />
     <None Include="Container\Game\LaunchBox\GameLBT.cs" />
+    <None Include="XML\MakeXML.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +31,11 @@
 
   <ItemGroup>
     <Folder Include="Converters\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AsyncProgress\AsyncProgress.csproj" />
+    <ProjectReference Include="..\..\DxLocalTrans\DxLocalTrans\DxLocalTransf.csproj" />
   </ItemGroup>
 
 </Project>

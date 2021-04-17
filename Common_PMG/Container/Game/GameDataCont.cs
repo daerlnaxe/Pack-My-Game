@@ -14,6 +14,7 @@ namespace Common_PMG.Container.Game
     /// </summary>
     public sealed class GameDataCont
     {
+
         public List<DataRep> Apps { get; } = new List<DataRep>();
         public List<DataRep> Manuals { get;/* set; */} = new List<DataRep>();
         public List<DataRep> Musics { get; /*set;*/ } = new List<DataRep>();
@@ -21,13 +22,14 @@ namespace Common_PMG.Container.Game
         public List<DataRep> CheatCodes { get; /*set;*/ } = new List<DataRep>();
         public List<DataRepExt> Images { get; set; } = new List<DataRepExt>();
 
-
-        public int FileNumber => Apps.Count() +
+        public int NumberofFiles => Apps.Count() +
                                     Manuals.Count() +
                                     Musics.Count() +
                                     Videos.Count() +
                                     CheatCodes.Count() +
                                     Images.Count();
+
+        
 
         public DataRep DefaultApp { get; private set; }
         public DataRep DefaultManual { get; private set; }
@@ -102,8 +104,9 @@ namespace Common_PMG.Container.Game
 
         // ---
 
-        public GameDataCont()
+        public GameDataCont(string title)
         {
+            Title = title;
         }
 
         // ---
@@ -156,6 +159,8 @@ namespace Common_PMG.Container.Game
                 }
             }
         }
+
+        public string Title { get; }
 
 
 

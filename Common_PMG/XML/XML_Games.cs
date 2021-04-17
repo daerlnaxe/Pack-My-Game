@@ -19,7 +19,7 @@ using System.ComponentModel;
 using Common_PMG.Container.Game.LaunchBox;
 using AsyncProgress.Cont;
 
-namespace LaunchBox_XML.XML
+namespace Common_PMG.XML
 {
 
 
@@ -615,12 +615,12 @@ namespace LaunchBox_XML.XML
                 return;
             }
 
-            XElement lastElem = Root.Elements(Common.CustField).Last();
+            XElement lastElem = Root.Elements(Tag.CustField).Last();
             if (lastElem == null)
-                lastElem = Root.Elements(Common.AddApp).Last();
+                lastElem = Root.Elements(Tag.AddApp).Last();
 
             if (lastElem == null)
-                lastElem = Root.Elements(Common.Game).Last();
+                lastElem = Root.Elements(Tag.Game).Last();
 
             lastElem.AddAfterSelf(cFields);
         }
@@ -633,15 +633,15 @@ namespace LaunchBox_XML.XML
                 return;
             }
 
-            XElement lastElem = Root.Elements(Common.AltName).Last();
+            XElement lastElem = Root.Elements(Tag.AltName).Last();
             if (lastElem == null)
-                lastElem = Root.Elements(Common.CustField).Last();
+                lastElem = Root.Elements(Tag.CustField).Last();
 
             if (lastElem == null)
-                lastElem = Root.Elements(Common.AddApp).Last();
+                lastElem = Root.Elements(Tag.AddApp).Last();
 
             if (lastElem == null)
-                lastElem = Root.Elements(Common.Game).Last();
+                lastElem = Root.Elements(Tag.Game).Last();
 
             lastElem.AddAfterSelf(altNames);
         }

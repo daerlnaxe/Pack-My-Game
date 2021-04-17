@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using System.Text;
 
-namespace LaunchBox_XML
+namespace Common_PMG.XML
 {
-    public class Common
+    public class Tag
     {
         #region Common
         public static string Name => "Name";
@@ -28,26 +29,5 @@ namespace LaunchBox_XML
         public static string Platform = "Platform";
         public static string PlatformFolder = "PlatformFolder";
         #endregion
-
-        /*
-            '<>':   replaced
-            ':' :   get first part only
-            '"' :   replaced
-            '/' :   replaced
-            '\' :   replaced
-            '|' :   replaced
-            '?' :   removed
-            '*' :   replaced
-        */
-        public static string WindowsConv_TitleToFileName(string title)
-        {
-            string tmp = title.Split(":")[0];                      
-
-            tmp = new Regex(@"[<>""/\\|*]").Replace(tmp, " ");
-            tmp = new Regex(@"[?]").Replace(tmp, "");
-
-            return tmp;
-        }
-
     }
 }

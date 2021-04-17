@@ -1,7 +1,9 @@
 ﻿using AsyncProgress;
+using AsyncProgress.Tools;
 using Common_PMG.Container;
 using Common_PMG.Container.Game;
 using DxLocalTransf;
+using DxLocalTransf.Cont;
 using DxTBoxCore.Box_Collec;
 using DxTBoxCore.Box_Progress;
 using DxTBoxCore.Common;
@@ -34,7 +36,6 @@ namespace Pack_My_Game.IHM
         }
 
 
-
         /// <summary>
         /// Show a window to ask what to do when there is a file conflict
         /// </summary>
@@ -43,40 +44,40 @@ namespace Pack_My_Game.IHM
         /// <param name="destination"></param>
         /// <param name="buttons"></param>
         /// <returns></returns>
-        internal static E_Decision Ask4_FileConflict(string source, string destination, DxTBoxCore.Common.E_DxConfB buttons = DxTBoxCore.Common.E_DxConfB.All)
+        internal static E_Decision? Ask4_FileConflict2(object sender, EFileResult state, FileArgs fileSrc, FileArgs fileDest)
         {
-            FileInfo srcFi = new FileInfo(source);
-            FileInfo dstFi = new FileInfo(destination);
+            fileSrc.Length = new FileInfo(fileSrc.Path).Length;
+            fileDest.Length = new FileInfo(fileDest.Path).Length;
 
-            E_Decision decision = E_Decision.None;
-
-            Application.Current.Dispatcher?.Invoke(
-                () =>
-                {
-                    DxTBoxCore.Box_Decisions.MBDecision boxDeciz = new DxTBoxCore.Box_Decisions.MBDecision()
+            return Application.Current.Dispatcher?.Invoke
+                (
+                    () =>
                     {
-                        Model = new DxTBoxCore.Box_Decisions.M_Decision()
+                        DxTBoxCore.Box_Decisions.MBDecision boxDeciz = new DxTBoxCore.Box_Decisions.MBDecision()
                         {
-                            Message = Common.ObjectLang.FileEExp,
-                            Source = source,
-                            Destination = destination,
+                            Model = new DxTBoxCore.Box_Decisions.M_Decision()
+                            {
+                                Message = Common.ObjectLang.FileEExp,
+                                Source = fileSrc.Path,
+                                Destination = fileDest.Path,
 
-                            SourceInfo = FileSizeFormatter.Convert(dstFi.Length),
-                            DestInfo = FileSizeFormatter.Convert(dstFi.Length),
-                        },
-                        Buttons = buttons,
-                    };
+                                SourceInfo = FileSizeFormatter.Convert(fileSrc.Length),
+                                DestInfo = FileSizeFormatter.Convert(fileDest.Length),
+                            },
+                            Buttons = E_DxConfB.OverWrite | E_DxConfB.Pass | E_DxConfB.Trash,
+                        };
 
-                    if (boxDeciz.ShowDialog() == true)
-                    {
-                        decision = boxDeciz.Model.Decision;
+                        if (boxDeciz.ShowDialog() == true)
+                        {
+                            return boxDeciz.Model.Decision;
+                        }
+
+                        return E_Decision.None;
                     }
-
-
-                }
                 );
-            return decision;
         }
+
+
 
 
 
@@ -109,7 +110,7 @@ namespace Pack_My_Game.IHM
             return ChosenFiles;
         }
 
-        internal static void LaunchBoxCore_Recap(string rootFolder, Platform platform, GamePaths gp)
+        internal static void LaunchBoxCore_Recap(string rootFolder, Platform platform, GameDataCont gdC)
         {
             Application.Current.Dispatcher?.Invoke
                 (
@@ -117,8 +118,8 @@ namespace Pack_My_Game.IHM
                 {
                     W_PackMeRes W_res = new W_PackMeRes()
                     {
-                        Title = $"{Common.ObjectLang.ResultExp} - {gp.Title}",
-                        Model = new M_PackMeRes(rootFolder, platform, gp),
+                        Title = $"{Common.ObjectLang.ResultExp} - {gdC.Title}",
+                        Model = new M_PackMeRes(rootFolder, platform, gdC),
 
                     };
                     W_res.ShowDialog();
@@ -159,10 +160,10 @@ namespace Pack_My_Game.IHM
         /// 
         /// </summary>
         /// <param name="Objet"></param>
-        /// <param name="compressMethod"></param>
+        /// <param name="method"></param>
         /// <param name="title">Titre de la tâche</param>
         /// <returns></returns>
-        internal static bool? ZipCompressFolder(I_AsyncSigD Objet, Func<object> compressMethod, string title = null)
+        internal static bool? ZipCompressFolder(I_AsyncSigD Objet, Func<object> method, string title = null)
         {
             //DxDoubleProgress dp = null;
             return Application.Current.Dispatcher?.Invoke
@@ -176,7 +177,7 @@ namespace Pack_My_Game.IHM
                             AutoCloseWindow = false,
                             LoopDelay = 50,
                             ProgressIHM = new DxDoubleProgress(ephem),
-                            MethodToRun = compressMethod
+                            MethodToRun = method
 
                         };
                         if (launcher.Launch(Objet) == true)
@@ -189,50 +190,81 @@ namespace Pack_My_Game.IHM
 
                  );
 
-        }     
-
+        }
 
         internal static bool? LaunchOpProgress(I_AsyncSig Objet, Func<object> method, string title = null)
         {
-           return   Application.Current.Dispatcher?.Invoke
-                (
-                    () =>
-                    {
-                        EphemProgress ephem = new EphemProgress(Objet);
+            return Application.Current.Dispatcher?.Invoke
+                 (
+                     () =>
+                     {
+                         EphemProgress ephem = new EphemProgress(Objet);
 
-                        TaskLauncher launcher = new TaskLauncher()
-                        {
-                            AutoCloseWindow = false,
-                            LoopDelay = 50,
-                            ProgressIHM = new DxProgressB1(ephem),
-                            MethodToRun = method,
-                        };
+                         TaskLauncher launcher = new TaskLauncher()
+                         {
+                             AutoCloseWindow = false,
+                             LoopDelay = 50,
+                             ProgressIHM = new DxProgressB1(ephem),
+                             MethodToRun = method,
+                         };
 
-                        if (launcher.Launch(Objet)== true)
-                        {
-                            return true;
-                        }
+                         if (launcher.Launch(Objet) == true)
+                         {
+                             return true;
+                         }
 
-                        throw new OperationCanceledException("Interrupted by user");
-                    }
-                );
+                         throw new OperationCanceledException("Interrupted by user");
+                     }
+                 );
 
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Objet"></param>
+        /// <param name="method"></param>
+        /// <param name="title">Titre de la tâche</param>
+        /// <returns></returns>
+        public static bool? DoubleProgress(I_AsyncSigD objet, string title, params Func<object, object>[] methods)
+        {
+            return Application.Current.Dispatcher?.Invoke
+                (
+                    () =>
+                    {
+                        EphemProgressD ephem = new EphemProgressD(objet)
+                        {
+                             TaskName = title,
+                        };
+
+                        TasksLauncher launcher = new TasksLauncher()
+                        {
+                            AutoCloseWindow = true,
+                            ProgressIHM = new DxDoubleProgress(ephem),
+                            MethodsToRun = methods,
+                        };
+                        return launcher.Launch(objet);
+                    }
+                ); ;
+
+        }
+
+
         /*
-    DxAsProgress dadProgress = new DxAsProgress()
-    {
-     TaskName = title,
-     Model =  compressMethod,
-     M_Progress.Create(Objet, compressMethod),
-    };
+DxAsProgress dadProgress = new DxAsProgress()
+{
+TaskName = title,
+Model =  compressMethod,
+M_Progress.Create(Objet, compressMethod),
+};
 
-    if (dadProgress.ShowDialog() == true)
-    {
-     return true;
-    }
+if (dadProgress.ShowDialog() == true)
+{
+return true;
+}
 
-    throw new OperationCanceledException("Interrupted by user");*/
+throw new OperationCanceledException("Interrupted by user");*/
         /*
       return Application.Current.Dispatcher?.Invoke
           (

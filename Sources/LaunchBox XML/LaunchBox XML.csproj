@@ -9,20 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="XML\MakeXML.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="XML\MakeXML.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\AsyncProgress\AsyncProgress.csproj" />
-    <ProjectReference Include="..\..\Common_PMG\Common_PMG.csproj" />
   </ItemGroup>
 
   <ItemGroup>

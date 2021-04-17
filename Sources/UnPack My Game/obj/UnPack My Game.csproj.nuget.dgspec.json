@@ -485,7 +485,14 @@
         "frameworks": {
           "netstandard2.1": {
             "targetAlias": "netstandard2.1",
-            "projectReferences": {}
+            "projectReferences": {
+              "E:\\Programmation\\Git-Hub\\AsyncProgress\\AsyncProgress.csproj": {
+                "projectPath": "E:\\Programmation\\Git-Hub\\AsyncProgress\\AsyncProgress.csproj"
+              },
+              "E:\\Programmation\\Git-Hub\\DxLocalTrans\\DxLocalTrans\\DxLocalTransf.csproj": {
+                "projectPath": "E:\\Programmation\\Git-Hub\\DxLocalTrans\\DxLocalTrans\\DxLocalTransf.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -553,9 +560,6 @@
             "projectReferences": {
               "E:\\Programmation\\Git-Hub\\AsyncProgress\\AsyncProgress.csproj": {
                 "projectPath": "E:\\Programmation\\Git-Hub\\AsyncProgress\\AsyncProgress.csproj"
-              },
-              "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Common_PMG\\Common_PMG.csproj": {
-                "projectPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Common_PMG\\Common_PMG.csproj"
               }
             }
           }
@@ -628,6 +632,9 @@
               },
               "E:\\Programmation\\Git-Hub\\Hermes\\Sources\\Hermes.csproj": {
                 "projectPath": "E:\\Programmation\\Git-Hub\\Hermes\\Sources\\Hermes.csproj"
+              },
+              "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Common_PMG\\Common_PMG.csproj": {
+                "projectPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Common_PMG\\Common_PMG.csproj"
               },
               "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\LaunchBox XML\\LaunchBox XML.csproj": {
                 "projectPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\LaunchBox XML\\LaunchBox XML.csproj"

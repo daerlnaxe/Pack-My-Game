@@ -1000,6 +1000,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
+          "AsyncProgress": "1.0.0",
+          "DxLocalTransf": "1.0.0",
           "System.Text.Json": "5.0.2"
         },
         "compile": {
@@ -1094,8 +1096,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "AsyncProgress": "1.0.0",
-          "Common_PMG": "1.0.0"
+          "AsyncProgress": "1.0.0"
         },
         "compile": {
           "bin/placeholder/LaunchBox XML.dll": {}
@@ -3346,6 +3347,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Common_PMG >= 1.0.0",
       "DotNetZip >= 1.15.0",
       "DxPaths >= 1.0.0",
       "DxTBoxCore >= 1.0.0",
@@ -3400,6 +3402,9 @@
             },
             "E:\\Programmation\\Git-Hub\\Hermes\\Sources\\Hermes.csproj": {
               "projectPath": "E:\\Programmation\\Git-Hub\\Hermes\\Sources\\Hermes.csproj"
+            },
+            "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Common_PMG\\Common_PMG.csproj": {
+              "projectPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Common_PMG\\Common_PMG.csproj"
             },
             "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\LaunchBox XML\\LaunchBox XML.csproj": {
               "projectPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\LaunchBox XML\\LaunchBox XML.csproj"

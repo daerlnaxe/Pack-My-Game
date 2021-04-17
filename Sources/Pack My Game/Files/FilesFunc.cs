@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Diagnostics;
 
 namespace Pack_My_Game.Files
 {
@@ -53,7 +54,10 @@ namespace Pack_My_Game.Files
             {
                 // Ca peut y être par erreur
                 if (Path.GetFullPath(c.ApplicationPath, launchboxPath).Equals(gamePath))
+                {
+                    Debug.WriteLine($"Clone avoid: {c.ApplicationPath}");
                     continue;
+                }
 
                 // On cherche si c'est pas déjà présent dans clonestmp
                // var kk = clonestmp.FirstOrDefault(x => c.ApplicationPath.Equals(x.ApplicationPath));

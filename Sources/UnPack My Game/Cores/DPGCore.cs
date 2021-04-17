@@ -1,18 +1,12 @@
-﻿using Common_PMG.Container;
-using Common_PMG.Container.Game;
-using DxLocalTransf;
-using DxLocalTransf.Progress;
-using DxLocalTransf.Progress.ToImp;
-using DxTBoxCore.Async_Box_Progress.Basix;
-using DxTBoxCore.Box_Progress.Basix;
+﻿using AsyncProgress;
+using AsyncProgress.Basix;
+using Common_PMG.Container;
 using Hermes;
-using LaunchBox_XML.XML;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using UnPack_My_Game.Decompression;
 using UnPack_My_Game.Graph;
@@ -49,7 +43,7 @@ namespace UnPack_My_Game.Cores
                     ArchiveMode mode = ArchiveMode.None;
 
                     string gamePath = Path.Combine(Path.GetTempPath(), Path.GetFileNameWithoutExtension(zF.Name));
-                    string fileExt = Path.GetExtension(zF.ALinkToThePast).TrimStart('.');
+                    string fileExt = Path.GetExtension(zF.ALinkToThePath).TrimStart('.');
                     GamePathsExt gpX = null;
 
                     // Création du dossier de destination
@@ -94,7 +88,7 @@ namespace UnPack_My_Game.Cores
                         return false;
 
                     // Complément des données
-                    gpXCompletion(gpX, mode, zF.ALinkToThePast);
+                    gpXCompletion(gpX, mode, zF.ALinkToThePath);
 
                     // Affichage
                     IHMStatic.ShowDPG(gpX, gamePath);
@@ -141,7 +135,7 @@ namespace UnPack_My_Game.Cores
             };
 
 
-            IHMStatic.LaunchDouble(zippy, () => zippy.ExtractSpecificFiles(archive.ALinkToThePast, gamePath,
+            IHMStatic.LaunchDouble(zippy, () => zippy.ExtractSpecificFiles(archive.ALinkToThePath, gamePath,
                                                         "TBGame.xml", "EBGame.xml", "DPGame.json"),
                                                         "Zip Extraction");
             /*var res = PackMe_IHM.ZipCompressFolder(zippy, () => zippy.CompressFolder(
@@ -158,7 +152,7 @@ namespace UnPack_My_Game.Cores
                 IsPaused = this.IsPaused,
             };
 
-            IHMStatic.LaunchDouble(zippy, () => zippy.ExtractSpecificFiles(zF.ALinkToThePast, gamePath,
+            IHMStatic.LaunchDouble(zippy, () => zippy.ExtractSpecificFiles(zF.ALinkToThePath, gamePath,
                                                         "TBGame.xml", "EBGame.xml", "DPGame.json"),
                                                         "SevenZip Extraction");
         }

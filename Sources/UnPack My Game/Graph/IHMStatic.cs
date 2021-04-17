@@ -1,9 +1,6 @@
-﻿using Common_PMG.Container.Game;
-using DxLocalTransf.Progress;
+﻿using AsyncProgress;
 using DxTBoxCore.Box_Progress;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 
 namespace UnPack_My_Game.Graph

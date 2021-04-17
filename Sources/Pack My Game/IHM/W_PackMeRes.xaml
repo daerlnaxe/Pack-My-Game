@@ -12,6 +12,7 @@
         Loaded="Window_Loaded"
         >
     <Window.CommandBindings>
+        <!-- Games -->
         <!-- Manuals -->
         <CommandBinding Command="local:W_PackMeRes.OpenManualCmd" CanExecute="Can_Manual" Executed="Exec_OpenManual"/>
         <CommandBinding Command="local:W_PackMeRes.RemoveManualCmd" CanExecute="Can_Manual" Executed="Exec_RemoveManual"/>
@@ -21,6 +22,10 @@
         <!-- Videos -->
         <CommandBinding Command="local:W_PackMeRes.OpenVideoCmd" CanExecute="Can_Video" Executed="Exec_OpenVideo"/>
         <CommandBinding Command="local:W_PackMeRes.RemoveVideoCmd" CanExecute="Can_Video" Executed="Exec_RemoveVideo"/>
+        <CommandBinding Command="local:W_PackMeRes.SetVideoCmd" CanExecute="Can_Video" Executed="Exec_HandleVideo"/>
+        <CommandBinding Command="local:W_PackMeRes.UnsetVideoCmd" CanExecute="Can_UnsetVideo" Executed="Exec_HandleVideo"/>
+        <CommandBinding Command="local:W_PackMeRes.SetThemeVideoCmd" CanExecute="Can_Video" Executed="Exec_HandleThemeVideo"/>
+        <CommandBinding Command="local:W_PackMeRes.UnsetThemeVideoCmd" CanExecute="Can_UnsetThemeVideo" Executed="Exec_HandleThemeVideo"/>
         <!-- Cheats -->
         <CommandBinding Command="local:W_PackMeRes.OpenCheatCmd" CanExecute="Can_Cheat" Executed="Exec_OpenCheat"/>
         <CommandBinding Command="local:W_PackMeRes.RemoveCheatCmd" CanExecute="Can_Cheat" Executed="Exec_RemoveCheat"/>
@@ -99,7 +104,7 @@
                         <TextBlock Text="{Binding ChosenGame.Name, FallbackValue=Selected}"/>
                         <!-- Liste -->
                         <ListView Grid.Row="1" ItemsSource="{Binding GamesCollection, FallbackValue={StaticResource testArray}}"
-                          SelectedItem="{Binding SelectedGame}" DisplayMemberPath="Name"
+                          SelectedItem="{Binding SelectedGame}"
                           >
                             <ListView.ContextMenu>
                                 <ContextMenu>
@@ -109,6 +114,15 @@
                                       Click="Remove_GameF"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <RadioButton IsChecked="{Binding IsSelected}" Tag="{Binding}"
+                                                  Checked="Game_Handler"/>
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
                         </ListView>
 
                     </Grid>
@@ -129,9 +143,8 @@
                         <TextBlock Text="{Binding ChosenManual.Name, FallbackValue=Selected, TargetNullValue=...}"/>
                         <!-- Liste -->
                         <ListView x:Name="lvManuals" Grid.Row="1" 
-                          ItemsSource="{Binding ManualsCollection}" DisplayMemberPath="Name"
-                          SelectedItem="{Binding SelectedManual}"
-                          >
+                          ItemsSource="{Binding ManualsCollection}"
+                          SelectedItem="{Binding SelectedManual}" >
                             <ListView.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="{Binding Lang.AddExp}" Click="Add_ManualF"/>
@@ -139,6 +152,15 @@
                                     <MenuItem Header="{Binding Lang.DeleteExp}" Command="local:W_PackMeRes.RemoveManualCmd" />
                                 </ContextMenu>
                             </ListView.ContextMenu>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <RadioButton IsChecked="{Binding IsSelected}" Tag="{Binding}"
+                                                  Checked="Manual_Handler" />
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
                         </ListView>
                     </Grid>
                 </TabItem>
@@ -158,8 +180,7 @@
                         <TextBlock Text="{Binding ChosenMusic.Name, FallbackValue=Selected, TargetNullValue=...}"/>
                         <!-- Liste -->
                         <ListView x:Name="lvMusics" Grid.Row="1" 
-                          ItemsSource="{Binding MusicsCollection}" DisplayMemberPath="Name"
-                          SelectedItem="{Binding SelectedMusic}">
+                          ItemsSource="{Binding MusicsCollection}" SelectedItem="{Binding SelectedMusic}">
                             <ListView.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="{Binding Lang.AddExp}" Click="Add_MusicF"/>
@@ -167,7 +188,15 @@
                                     <MenuItem Header="{Binding Lang.DeleteExp}" Command="local:W_PackMeRes.RemoveMusicCmd"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
-
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <RadioButton IsChecked="{Binding IsSelected}" Tag="{Binding}"
+                                                  Checked="Music_Handler" />
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
                         </ListView>
                     </Grid>
                 </TabItem>
@@ -187,15 +216,28 @@
                         <TextBlock Text="{Binding ChosenVideo.Name, FallbackValue=Selected, TargetNullValue= ...}"/>
                         <!-- Liste -->
                         <ListView x:Name="lvVideos" Grid.Row="1"
-                            ItemsSource="{Binding VideosCollection}" DisplayMemberPath="Name"
+                            ItemsSource="{Binding VideosCollection}"
                             SelectedItem="{Binding SelectedVideo}" >
                             <ListView.ContextMenu>
                                 <ContextMenu>
+                                    <MenuItem Command="local:W_PackMeRes.SetVideoCmd" CommandParameter="true"/>
+                                    <MenuItem Command="local:W_PackMeRes.UnsetVideoCmd" CommandParameter="false"/>
+                                    <MenuItem Command="local:W_PackMeRes.SetThemeVideoCmd" CommandParameter="true"/>
+                                    <MenuItem Command="local:W_PackMeRes.UnsetThemeVideoCmd" CommandParameter="false"/>
+                                    <Separator/>
                                     <MenuItem Header="{Binding Lang.AddExp}" Click="Add_VideoF"/>
                                     <MenuItem Header="Open" Command="local:W_PackMeRes.OpenVideoCmd"/>
                                     <MenuItem Header="{Binding Lang.DeleteExp}" Command="local:W_PackMeRes.RemoveVideoCmd"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <CheckBox IsChecked="{Binding IsSelected}" IsHitTestVisible="False"/>
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
                         </ListView>
                     </Grid>
                 </TabItem>
@@ -218,7 +260,7 @@
                         <!-- Liste -->
                         <ListView x:Name="lvCheats" Grid.Row="1" 
                             ItemsSource="{Binding CheatsCollection, FallbackValue={StaticResource testArray}}" DisplayMemberPath="Name"
-                            SelectedItem="{Binding SelectedCheatFile}" > 
+                            SelectedItem="{Binding SelectedCheatFile}" >
                             <ListView.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="{Binding Lang.AddExp}" Click="Add_CheatF"/>

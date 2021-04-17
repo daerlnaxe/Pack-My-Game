@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using Ionic.Zip;
-using System.Text;
 using System.Diagnostics;
 using System.Threading;
-using DxTBoxCore.Box_Progress;
-using DxLocalTransf;
 using System.Linq;
-using DxLocalTransf.Progress.ToImp;
-using DxLocalTransf.Progress;
-using DxLocalTransf.Cont.Progress;
+using AsyncProgress.ToImp;
+using AsyncProgress;
+using AsyncProgress.Cont;
 
 namespace UnPack_My_Game.Decompression
 {

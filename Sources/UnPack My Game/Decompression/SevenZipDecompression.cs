@@ -1,15 +1,12 @@
-﻿using DxLocalTransf;
-using DxLocalTransf.Cont.Progress;
-using DxLocalTransf.Progress;
-using DxLocalTransf.Progress.ToImp;
+﻿using AsyncProgress;
+using AsyncProgress.Cont;
+using AsyncProgress.ToImp;
 using SevenZip;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading;
 
 namespace UnPack_My_Game.Decompression
 {

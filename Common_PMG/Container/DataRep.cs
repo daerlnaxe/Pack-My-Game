@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DxLocalTransf.Copy;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
@@ -8,17 +9,13 @@ namespace Common_PMG.Container
     /// <summary>
     /// File representation
     /// </summary>
-    public class DataRep : INotifyPropertyChanged
+    public class DataRep : DataTrans, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        public string Name { get; set; }
-        public string ALinkToThePath { get; set; }
-        public string DestPath { get; set; }
-
-
         private bool _IsSelected;
+
         public bool IsSelected
         {
             get => _IsSelected;
@@ -32,21 +29,40 @@ namespace Common_PMG.Container
             }
         }
 
+        public DataRep()
+        {
+
+        }
+
+        public DataRep(string p)
+        {
+            SetBase(p);
+        }
+
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="n">Name</param>
         /// <param name="p">PathLink</param>
-        public DataRep(string n, string p)
+        public static DataRep MakeNameNPath(string n, string p)
         {
-            Name = n;
-            ALinkToThePath = p;
+            return new DataRep()
+            {
+                Name = n,
+                ALinkToThePath = p,
+            };
+
         }
 
-        public DataRep(string p)
+
+        public static DataRep DataRepFactory(DataRep elem)
         {
-            Name = System.IO.Path.GetFileName(p);
-            ALinkToThePath = p;
+            return new DataRep(elem.ALinkToThePath)
+            {
+                DestPath = elem.DestPath,
+                IsSelected = elem.IsSelected,
+            };
         }
 
         /// <summary>
@@ -56,16 +72,20 @@ namespace Common_PMG.Container
         /// <returns></returns>
         public static DataRep MakeChosen(string link)
         {
-            return new DataRep(System.IO.Path.GetFileName(link), link)
+            return new DataRep()
             {
+                Name = System.IO.Path.GetFileName(link),
+                ALinkToThePath = link,
                 IsSelected = true
             };
         }
 
         public static DataRep MakeNormal(string link)
         {
-            return new DataRep(System.IO.Path.GetFileName(link), link)
+            return new DataRep()
             {
+                Name = System.IO.Path.GetFileName(link),
+                ALinkToThePath = link,
                 IsSelected = false
             };
         }

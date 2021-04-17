@@ -1,8 +1,8 @@
 ﻿using Common_PMG.Container.Game;
 using Common_PMG.Container.Game.LaunchBox;
+using Common_PMG.XML;
 using DxTBoxCore.Common;
 using DxTBoxCore.MBox;
-using LaunchBox_XML.XML;
 using Pack_My_Game.IHM;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
-using Cst = LaunchBox_XML.Common;
+using Cst = LaunchBox_XML.Tool;
 using PS = Pack_My_Game.Properties.Settings;
 
 namespace Pack_My_Game.Core
@@ -26,7 +26,7 @@ namespace Pack_My_Game.Core
             foreach(var g in filteredGames)
             {
                 
-                GamePaths game = (GamePaths)XML_Games.Scrap_LBGame<LBGame>(platformXmlFile, Cst.Id, g.Id);
+                GamePaths game = (GamePaths)XML_Games.Scrap_LBGame<LBGame>(platformXmlFile, Tag.Id, g.Id);
                 string? res = CheckGameValidity(game);
 
                 bool? keepit = true;

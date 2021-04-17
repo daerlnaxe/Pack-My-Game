@@ -17,7 +17,7 @@ using Common_PMG.Container.AAPP;
 using Common_PMG.Container.Game.LaunchBox;
 using AsyncProgress.Cont;
 
-namespace LaunchBox_XML.XML
+namespace Common_PMG.XML
 {
 
     /*

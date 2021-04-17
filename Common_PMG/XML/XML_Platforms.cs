@@ -11,7 +11,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 
-namespace LaunchBox_XML.XML
+namespace Common_PMG.XML
 {
     public sealed class XML_Platforms : IDisposable
     {

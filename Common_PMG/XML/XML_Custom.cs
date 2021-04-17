@@ -9,7 +9,7 @@ using System.Text;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
-namespace LaunchBox_XML.XML
+namespace Common_PMG.XML
 {
     /// <summary>
     /// Custom methods

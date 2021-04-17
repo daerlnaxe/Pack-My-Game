@@ -30,6 +30,16 @@ namespace Pack_My_Game.Compression
         public event StateHandler UpdateStatusT;
 
         /// <summary>
+        /// Permet de régler un timer pour le calcul des pourcentages des progressions et les émissions
+        /// du signal
+        /// </summary>
+        /// <remarks>
+        /// Milliseconds
+        /// </remarks>
+        public int InternalTimer { get; set; }
+        Stopwatch _SW = new Stopwatch();
+
+        /// <summary>
         /// Répertoire de destination
         /// </summary>
         public string DestinationFolder { get; internal set; }
@@ -173,6 +183,7 @@ namespace Pack_My_Game.Compression
                 // Begin compression
                 // --- Note: on ne peut pas avoir le nombre total
                 case ZipProgressEventType.Saving_Started:
+                    _SW.Restart();
                     UpdateStatus?.Invoke(this, new StateArg( $"Début de la compression vers: {e.ArchiveName}", CancelFlag));
                     break;
 
@@ -217,6 +228,7 @@ namespace Pack_My_Game.Compression
 
                 // End of Compression
                 case ZipProgressEventType.Saving_Completed:
+                    _SW.Stop();
                     Debug.WriteLine("Done");
                     //     BoxProgress.StopIt();
                     UpdateStatus?.Invoke(this, new StateArg( "Done", CancelFlag));

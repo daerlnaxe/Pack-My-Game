@@ -471,5 +471,241 @@ namespace Pack_My_Game.Core
             else
                 return null;
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="gpX"></param>
+        /// <param name="tree"></param>
+        /// <remarks>
+        /// Altère GPX pour suivre les fichiers
+        /// </remarks>
+        private void CopyFiles(GameDataCont gpX, Folder tree)
+        {
+            // Roms + Clones
+            gpX.ApplicationPath = CopyMain(gpX.ApplicationPath, tree.Children[Common.Games].Path, false);
+            CopyList(gpX.Apps, tree.Children[Common.Games].Path, false);
+
+            // CheatCodes
+            CopyList(gpX.CompCheatCodes, tree.Children[Common.CheatCodes].Path, false);
+
+            // Manuals
+            gpX.ManualPath = CopyMain(gpX.ManualPath, tree.Children[Common.Manuals].Path, true, "Manual");
+            CopyList(gpX.CompManuals, tree.Children[Common.Manuals].Path, true, "Manual");
+
+            // Musics
+            gpX.MusicPath = CopyMain(gpX.MusicPath, tree.Children[Common.Musics].Path, true, "Music");
+            CopyList(gpX.Musics, tree.Children[Common.Musics].Path, true, "Music");
+
+            // Videos
+            gpX.VideoPath = CopyMain(gpX.VideoPath, tree.Children[Common.Videos].Path, true, "Video");
+            gpX.ThemeVideoPath = CopyMain(gpX.ThemeVideoPath, tree.Children[Common.Videos].Path, true, "Video");
+            CopyList(gpX.Videos, tree.Children[Common.Videos].Path, true, "Video");
+
+            // Images
+            CopyImages(gpX.Images, tree.Children[Common.Images].Path);
+
+        }
+
+        /*   /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="path"></param>
+       /// <param name="compApps"></param>
+       /// <param name="destLocation"></param>
+       /// <returns></returns>
+       /// <remarks>
+       /// On ne garde pas le tail
+       /// </remarks>
+       private string CopyMain(string path, string destLocation)
+       {
+           string futurLink = Path.Combine(destLocation, Path.GetFileName(path));
+
+           SimpleCopyManager(path, ref _FileConflictDecision, futurLink);
+
+           return DxPath.To_Relative(destLocation, futurLink);
+       }*/
+
+        private string CopyMain(string fichier, string destLocation, bool wTail, string mediatype = null)
+        {
+            if (string.IsNullOrEmpty(fichier))
+                return string.Empty;
+
+            PlatformFolder folder = null;
+            if (wTail && !string.IsNullOrEmpty(mediatype))
+            {
+                // On récupère le dossier concerné par le média
+                folder = _ZePlatform.PlatformFolders.First(
+                            (x) => x.MediaType.Equals(mediatype, StringComparison.OrdinalIgnoreCase));
+            }
+
+            string futurLink, tail;
+            futurLink = tail = string.Empty;
+
+            if (folder != null && fichier.Contains(folder.FolderPath))
+            {
+                tail = fichier.Replace(folder.FolderPath, string.Empty).TrimStart('\\');
+                futurLink = Path.Combine(destLocation, tail);
+            }
+            else
+            {
+                futurLink = Path.Combine(destLocation, Path.GetFileName(fichier));
+            }
+
+            SimpleCopyManager(fichier, ref _FileConflictDecision, futurLink);
+
+            return DxPath.To_Relative(destLocation, futurLink);
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="compApps"></param>
+        /// <param name="folder"></param>
+        /// <remarks>
+        /// Conserve la structure si c'est souhaité
+        /// </remarks>
+        private void CopyList(List<string> elems, string destLocation, bool wTail, string mediatype = null)
+        {
+            PlatformFolder folder = null;
+            if (wTail && !string.IsNullOrEmpty(mediatype))
+            {
+                // On récupère le dossier concerné par le média
+                folder = _ZePlatform.PlatformFolders.First(
+                            (x) => x.MediaType.Equals(mediatype, StringComparison.OrdinalIgnoreCase));
+            }
+
+            string tail, futurLink;
+            foreach (string fichier in elems)
+            {
+                futurLink = string.Empty;
+                tail = string.Empty;
+
+                if (wTail)
+                {
+                    if (folder != null && fichier.Contains(folder.FolderPath))
+                    {
+                        tail = fichier.Replace(folder.FolderPath, string.Empty).TrimStart('\\');
+                        futurLink = Path.Combine(destLocation, tail);
+
+                        SimpleCopyManager(fichier, ref _FileConflictDecision, futurLink);
+                        continue;
+                    }
+                }
+
+                futurLink = Path.Combine(destLocation, Path.GetFileName(fichier));
+                SimpleCopyManager(fichier, ref _FileConflictDecision, futurLink);
+            }
+        }
+
+        private void CopyImages(List<DataRepExt> images, string destLocation)
+        {
+            E_Decision resMem = E_Decision.None;
+            string tail, futurLink;
+            foreach (DataRepExt pkFile in images)
+            {
+                tail = string.Empty;
+                // On récupère la tail
+                PlatformFolder folder = _ZePlatform.PlatformFolders.First(
+                                          (x) => x.MediaType.Equals(pkFile.Categorie, StringComparison.OrdinalIgnoreCase));
+
+
+                if (folder != null && pkFile.ALinkToThePath.Contains(folder.FolderPath))
+                {
+                    tail = pkFile.ALinkToThePath.Replace(folder.FolderPath, string.Empty).TrimStart('\\');
+
+                    futurLink = Path.Combine(destLocation, pkFile.Categorie, tail);
+                }
+                else
+                {
+                    futurLink = Path.Combine(destLocation, Path.GetFileName(pkFile.ALinkToThePath));
+                }
+
+                SimpleCopyManager(pkFile.ALinkToThePath, ref resMem, futurLink);
+
+                // Dossier de destination
+                //25/03/2021string destFolder = Path.Combine(_Tree.Children[nameof(SubFolder.Images)].Path, tail1);
+                //string destFolder = Path.Combine(imgsFolder, tail1);
+
+                //SimpleCopyManager(pkFile.LinkToThePath, destFolder, ref resMem);
+            }
+        }
+
+        internal void SimpleCopyManager(string fileSrc, ref E_Decision previousDec, string destFile)
+        {
+            if (CancelToken.IsCancellationRequested)
+                throw new OperationCanceledException("Operation stopped");
+
+            if (!destFile.Contains(_WFolder))
+                throw new Exception($"[CreateFolders] Erreur la chaine '{destFile}' ne contient pas '{_WFolder}'");
+
+
+            // Création des dossiers
+            string destFolder = Path.GetDirectoryName(destFile);
+            if (!Directory.Exists(destFolder))
+                Directory.CreateDirectory(destFolder);
+
+            //string destFile = Path.Combine(destFolder, Path.GetFileName(fileSrc));
+
+            E_Decision? conflictDec = previousDec;
+
+            bool overwrite = false;
+            if (File.Exists(destFile))
+            {
+                HeTrace.Write($"[CopyHandler] Destination file exists... ", this);
+                if (conflictDec == E_Decision.None)
+                {
+                    conflictDec = PackMe_IHM.Ask4_FileConflict(fileSrc, destFile, E_DxConfB.OverWrite | E_DxConfB.Pass | E_DxConfB.Trash);
+
+                    // Mémorisation pour les futurs conflits
+                    switch (conflictDec)
+                    {
+                        case E_Decision.PassAll:
+                        case E_Decision.OverWriteAll:
+                        case E_Decision.TrashAll:
+                            previousDec = conflictDec == null ? E_Decision.None : (E_Decision)conflictDec;
+                            break;
+                    }
+                }
+
+                HeTrace.EndLine(conflictDec.ToString(), this);
+                switch (conflictDec)
+                {
+                    case E_Decision.Pass:
+                    case E_Decision.PassAll:
+                        SetStatus(this, new StateArg($"Pass: {fileSrc}", CancelFlag));
+                        return;
+                    case E_Decision.OverWrite:
+                    case E_Decision.OverWriteAll:
+                        SetStatus(this, new StateArg($"OverWrite: {destFile}", CancelFlag));
+                        overwrite = true;
+                        break;
+                    case E_Decision.Trash:
+                    case E_Decision.TrashAll:
+                        SetStatus(this, new StateArg($"Trash: {destFile}", CancelFlag));
+                        OpDFiles.Trash(destFile);
+                        break;
+                }
+            }
+
+            // --- Copie
+            SetStatus(this, new StateArg($"Copy {fileSrc}", CancelFlag));
+            SetProgress(this, new ProgressArg(0, 1, CancelFlag));
+            FilesFunc.Copy(fileSrc, destFile, overwrite);
+            SetProgress(this, new ProgressArg(1, 1, CancelFlag));
+
+            // --- Vérification des sommes
+            this.SetStatus(this, new StateArg($"Copy verification", CancelFlag));
+            //this.SetMaximum(this, 100);
+
+            //bool? res = _ObjectFiles.VerifByHash_Sync(fileSrc, destFile, () => MD5.Create());
+            //var res = _ObjectFiles.DeepVerif(fileSrc, destFile, () => MD5.Create());
+
+            this.SetStatus(this, new StateArg($"Check verif: {res}", CancelFlag));
+            //this.UpdateProgress?.Invoke(100);
+
+        }
     }
 }

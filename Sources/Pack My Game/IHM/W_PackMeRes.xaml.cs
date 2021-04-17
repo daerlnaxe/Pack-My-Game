@@ -19,6 +19,7 @@ namespace Pack_My_Game.IHM
     /// </summary>
     public partial class W_PackMeRes : Window
     {
+
         public static readonly RoutedUICommand DeleteCmd = new RoutedUICommand("Delete", "DeleteCmd", typeof(W_PackMeRes));
 
         public static readonly RoutedUICommand OpenCheatCmd = new RoutedUICommand("Open", "OpenCheatCmd", typeof(W_PackMeRes));
@@ -32,6 +33,11 @@ namespace Pack_My_Game.IHM
 
         public static readonly RoutedUICommand OpenVideoCmd = new RoutedUICommand("Open", "OpenVideoCmd", typeof(W_PackMeRes));
         public static readonly RoutedUICommand RemoveVideoCmd = new RoutedUICommand("Delete", "RemoveVideoCmd", typeof(W_PackMeRes));
+
+        public static readonly RoutedUICommand SetVideoCmd = new RoutedUICommand("Set Video", "SetVideoCmd", typeof(W_PackMeRes));
+        public static readonly RoutedUICommand UnsetVideoCmd = new RoutedUICommand("Unset Video", "UnsetVideoCmd", typeof(W_PackMeRes));
+        public static readonly RoutedUICommand SetThemeVideoCmd = new RoutedUICommand("Set ThemeVideo", "SetThemeVideoCmd", typeof(W_PackMeRes));
+        public static readonly RoutedUICommand UnsetThemeVideoCmd = new RoutedUICommand("Unset ThemeVideo", "UnsetThemeVideoCmd", typeof(W_PackMeRes));
 
 
 
@@ -184,7 +190,49 @@ namespace Pack_My_Game.IHM
         private void JVCom_Click(object sender, RoutedEventArgs e)
         {
             Model.LaunchPage("https://www.jeuxvideo.com/rechercher.php?q=");
-            
+
         }
+
+        #region Check / Uncheck
+        private void Game_Handler(object sender, RoutedEventArgs e)
+        {
+            RadioButton cb = (RadioButton)sender;
+            Model.Game_Handler(cb.Tag, cb.IsChecked);
+        }
+
+        private void Manual_Handler(object sender, RoutedEventArgs e)
+        {
+            RadioButton cb = (RadioButton)sender;
+            Model.Manual_Handler(cb.Tag, cb.IsChecked);
+        }
+
+
+        private void Music_Handler(object sender, RoutedEventArgs e)
+        {
+            RadioButton cb = (RadioButton)sender;
+            Model.Music_Handler(cb.Tag, cb.IsChecked);
+        }
+
+        private void Can_UnsetVideo(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = Model.SelectedVideo != null & Model.SelectedVideo == Model.ChosenVideo;
+        }
+
+        private void Exec_HandleVideo(object sender, ExecutedRoutedEventArgs e)
+        {
+            Model.Video_Handler(Model.SelectedVideo, bool.Parse(e.Parameter.ToString()));
+        }
+
+
+        private void Can_UnsetThemeVideo(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = Model.SelectedVideo != null & Model.SelectedVideo == Model.ChosenThemeVideo;
+        }
+        private void Exec_HandleThemeVideo(object sender, ExecutedRoutedEventArgs e)
+        {
+            Model.ThemeVideo_Handler(Model.SelectedVideo, bool.Parse(e.Parameter.ToString()));
+        }
+
     }
+    #endregion Check / Uncheck
 }
