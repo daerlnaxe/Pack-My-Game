@@ -159,7 +159,7 @@ namespace Pack_My_Game.IHM
 
         private void Exec_OpenCheat(object sender, ExecutedRoutedEventArgs e)
         {
-            W_Cheat window = new W_Cheat(System.IO.Path.Combine(Model.Root, Common.CheatCodes), Model.GameName, Model.SelectedCheatFile);
+            W_Cheat window = new W_Cheat(System.IO.Path.Combine(Model.Root, Common.CheatCodes), Model.GameName, Model.SelectedCheatFile.DestPath);
             window.ShowDialog();
         }
 
@@ -169,7 +169,10 @@ namespace Pack_My_Game.IHM
         }
         #endregion
 
-
+        private void Reset(object sender, RoutedEventArgs e)
+        {
+            Model.Init();
+        }
         private void Reload_Click(object sender, RoutedEventArgs e)
         {
             Model.LoadFiles();
@@ -180,12 +183,7 @@ namespace Pack_My_Game.IHM
             Model.LoadFolder();
         }
 
-        private void Ok_Click(object sender, RoutedEventArgs e)
-        {
-            DialogResult = true;
-            this.Close();
 
-        }
 
         private void JVCom_Click(object sender, RoutedEventArgs e)
         {
@@ -233,6 +231,15 @@ namespace Pack_My_Game.IHM
             Model.ThemeVideo_Handler(Model.SelectedVideo, bool.Parse(e.Parameter.ToString()));
         }
 
+        private void Ok_Click(object sender, RoutedEventArgs e)
+        {
+            if (Model.Apply_Modifs())
+            {
+                DialogResult = true;
+                this.Close();
+            }
+
+        }
     }
     #endregion Check / Uncheck
 }

@@ -174,7 +174,7 @@ namespace Pack_My_Game.IHM
 
                         TaskLauncher launcher = new TaskLauncher()
                         {
-                            AutoCloseWindow = false,
+                            AutoCloseWindow = true,
                             LoopDelay = 50,
                             ProgressIHM = new DxDoubleProgress(ephem),
                             MethodToRun = method
@@ -192,7 +192,7 @@ namespace Pack_My_Game.IHM
 
         }
 
-        internal static bool? LaunchOpProgress(I_AsyncSig Objet, Func<object> method, string title = null)
+        internal static object LaunchOpProgress(I_AsyncSig Objet, Func<object> method, string title = null)
         {
             return Application.Current.Dispatcher?.Invoke
                  (
@@ -202,7 +202,7 @@ namespace Pack_My_Game.IHM
 
                          TaskLauncher launcher = new TaskLauncher()
                          {
-                             AutoCloseWindow = false,
+                             AutoCloseWindow = true,
                              LoopDelay = 50,
                              ProgressIHM = new DxProgressB1(ephem),
                              MethodToRun = method,

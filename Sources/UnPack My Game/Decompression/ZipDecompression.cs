@@ -155,6 +155,13 @@ namespace UnPack_My_Game.Decompression
         #endregion
 
         #region GetFiles
+
+        internal static IEnumerable<string> StaticGetAllFiles(string archiveFile)
+        {
+            ZipDecompression sevenZip = new ZipDecompression();
+            return sevenZip.GetFilesStartingBy(archiveFile, "");
+        }
+
         internal static IEnumerable<string> StaticGetFilesStartingBy(string archiveFile, string startString)
         {
             ZipDecompression sevenZip = new ZipDecompression();
@@ -180,6 +187,8 @@ namespace UnPack_My_Game.Decompression
 
             return selectedFiles;
         }
+
+
 
         internal IEnumerable<ZipEntry> GetFilesByExtension(ZipFile archiveZ, params string[] extensions)
         {

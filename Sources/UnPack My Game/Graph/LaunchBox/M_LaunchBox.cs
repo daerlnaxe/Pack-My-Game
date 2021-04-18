@@ -11,7 +11,6 @@ using UnPack_My_Game.Resources;
 using LaunchBox_XML;
 using PS = UnPack_My_Game.Properties.Settings;
 using System.Collections.ObjectModel;
-using LaunchBox_XML.XML;
 using DxTBoxCore.MBox;
 using DxTBoxCore.Common;
 using UnPack_My_Game.Cores;
@@ -19,6 +18,7 @@ using UnPack_My_Game.Models;
 using DxTBoxCore.Box_Progress;
 using System.Diagnostics;
 using DxTBoxCore.Async_Box_Progress;
+using Common_PMG.Models;
 
 namespace UnPack_My_Game.Graph.LaunchBox
 {

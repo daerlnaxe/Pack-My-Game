@@ -21,17 +21,15 @@ using System.Runtime.CompilerServices;
 using PS = Pack_My_Game.Properties.Settings;
 using AsyncProgress.Tools;
 using DxLocalTransf.Copy;
+using Pack_My_Game.IHM;
+using DxTBoxCore.MBox;
+using Common_PMG.Models;
 
 namespace Pack_My_Game.Models
 {
 
-    public class M_PackMeRes : INotifyPropertyChanged
+    public class M_PackMeRes : A_Err
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
         /*public static event DoubleHandler UpdateProgress;
         public static event MessageHandler UpdateStatus;
         public static event DoubleHandler MaximumProgress;*/
@@ -70,7 +68,7 @@ namespace Pack_My_Game.Models
         DataRep _ChosenMusic;
         public DataRep ChosenMusic
         {
-            get => _ChosenManual;
+            get => _ChosenMusic;
             set
             {
                 _ChosenMusic = value;
@@ -105,7 +103,7 @@ namespace Pack_My_Game.Models
 
 
 
-        //public DataRep SelectedGame { get; set; }
+        public DataRep SelectedGame { get; set; }
         public ObservableCollection<DataRep> GamesCollection { get; set; } = new ObservableCollection<DataRep>();
 
         public DataRep SelectedManual { get; set; }
@@ -118,7 +116,7 @@ namespace Pack_My_Game.Models
         public DataRep SelectedVideo { get; set; }
         public ObservableCollection<DataRep> VideosCollection { get; set; } = new ObservableCollection<DataRep>();
 
-        public string SelectedCheatFile { get; set; }
+        public DataRep SelectedCheatFile { get; set; }
         public ObservableCollection<DataRep> CheatsCollection { get; set; } = new ObservableCollection<DataRep>();
 
         /// <summary>
@@ -137,26 +135,32 @@ namespace Pack_My_Game.Models
             GameName = gdC.Title;
             GameDataC = gdC;
 
-            // Création des collections (par rapport au changement de nom
-            MakeCollection(gdC.Apps, GamesCollection, Common.Games);
-            MakeCollection(gdC.CheatCodes, CheatsCollection, Common.CheatCodes);
-            MakeCollection(gdC.Manuals, ManualsCollection, Common.Manuals);
-            MakeCollection(gdC.Musics, MusicsCollection, Common.Musics);
-            MakeCollection(gdC.Videos, VideosCollection, Common.Videos);
-
-            // Initialisation des fichiers par défaut.
-            ChosenGame = GamesCollection.FirstOrDefault(x => x.DestPath.Equals(gdC.DefaultApp?.DestPath));
-            ChosenManual = ManualsCollection.FirstOrDefault(x => x.DestPath.Equals(gdC?.DefaultManual.DestPath));
-            ChosenMusic = MusicsCollection.FirstOrDefault(x => x.DestPath.Equals(gdC.DefaultMusic?.DestPath));
-            ChosenVideo = VideosCollection.FirstOrDefault(x => x.DestPath.Equals(gdC.DefaultVideo?.DestPath));
-            ChosenThemeVideo = VideosCollection.FirstOrDefault(x => x.DestPath.Equals(gdC.DefaultThemeVideo?.DestPath));
-
-            LoadFiles();
+            Init();
         }
 
 
 
         #region initialisation
+
+        internal void Init()
+        {
+            // Création des collections (par rapport au changement de nom
+            MakeCollection(GameDataC.Apps, GamesCollection, Common.Games);
+            MakeCollection(GameDataC.CheatCodes, CheatsCollection, Common.CheatCodes);
+            MakeCollection(GameDataC.Manuals, ManualsCollection, Common.Manuals);
+            MakeCollection(GameDataC.Musics, MusicsCollection, Common.Musics);
+            MakeCollection(GameDataC.Videos, VideosCollection, Common.Videos);
+
+            // Initialisation des fichiers par défaut.
+            ChosenGame = GamesCollection.FirstOrDefault(x => x.DestPath.Equals(GameDataC.DefaultApp?.DestPath));
+            ChosenManual = ManualsCollection.FirstOrDefault(x => x.DestPath.Equals(GameDataC?.DefaultManual.DestPath));
+            ChosenMusic = MusicsCollection.FirstOrDefault(x => x.DestPath.Equals(GameDataC.DefaultMusic?.DestPath));
+            ChosenVideo = VideosCollection.FirstOrDefault(x => x.DestPath.Equals(GameDataC.DefaultVideo?.DestPath));
+            ChosenThemeVideo = VideosCollection.FirstOrDefault(x => x.DestPath.Equals(GameDataC.DefaultThemeVideo?.DestPath));
+
+            LoadFiles();
+        }
+
         private void MakeCollection(List<DataRep> srcCollected, ObservableCollection<DataRep> targetedCollec, string mediatype)
         {
             string pRoot = Path.Combine(Root, mediatype);
@@ -168,7 +172,6 @@ namespace Pack_My_Game.Models
                 targetedCollec.Add(dr);
             }
         }
-
 
         internal void LoadFiles()
         {
@@ -254,33 +257,34 @@ namespace Pack_My_Game.Models
             #endregion
         }
 
-
         internal void LoadCheatCodes()
         {
             string cheatsPath = Path.Combine(Root, Common.CheatCodes);
-            CheatsCollection.Clear();
+            /*CheatsCollection.Clear();
             foreach (string f in Directory.EnumerateFiles(Path.Combine(Root, Common.CheatCodes), "*.*", SearchOption.TopDirectoryOnly))
             {
-                string tmp = f.Replace(cheatsPath, ".");
-                CheatsCollection.Add(DataRep.MakeNameNPath(tmp, f));
-            }
+                DataRep dr = DataRep.MakeNormal(f);
+                dr.Name = f.Replace(cheatsPath, ".");
+                dr.DestPath = f;
+                CheatsCollection.Add();
+            }*/
+            LoadFiles2(cheatsPath, CheatsCollection);
+            TestFiles(CheatsCollection);
         }
 
         private void LoadFiles2(string path, ObservableCollection<DataRep> collection)
         {
             foreach (string f in Directory.EnumerateFiles(path, "*.*", SearchOption.AllDirectories))
             {
-                string tmp = f.Replace(path, ".");
-
                 // on ajoute que si non présent
                 var test = collection.FirstOrDefault((x) => x.DestPath.Equals(f));
                 if (test == null)
                 {
                     DataRep dr = new DataRep(f);
                     dr.DestPath = f;
+                    dr.Name = dr.DestPath.Replace(path, ".");
                     collection.Add(dr);
                 }
-
             }
         }
 
@@ -382,21 +386,26 @@ namespace Pack_My_Game.Models
         /// <param name="targetDirectory">Répertoire cible</param>
         public void CopyGameF()
         {
-            if (Copy2(Platform.FolderPath, Common.Games, "Select a game file"))
+            if (Copy2(Platform.FolderPath, Common.Games, "Select a game file", GamesCollection))
             {
                 LoadGames();
             }
         }
 
-
-
         internal void RemoveGameF()
         {
-            /*if (!string.IsNullOrEmpty(SelectedGame))
+            if (SelectedGame.IsSelected)
             {
-                OpDFiles.Trash(Path.Combine(Root, Common.Games, SelectedGame));
+                DxMBox.ShowDial("You must select another before to delete it");
+                return;
+            }
+
+            if (SelectedGame != null)
+            {
+
+                OpDFiles.Trash(SelectedGame.DestPath);
                 LoadGames();
-            }*/
+            }
             /*  if (SelectedGame != null)
               {
                   OpDFiles.Trash(SelectedGame.ALinkToThePath);
@@ -411,7 +420,7 @@ namespace Pack_My_Game.Models
             PlatformFolder pFolder = Platform.PlatformFolders.FirstOrDefault((x) => x.MediaType == "Manual");
             string folder = pFolder == null ? string.Empty : pFolder.FolderPath;
 
-            if (Copy2(folder, Common.Manuals, "Select a manual"))
+            if (Copy2(folder, Common.Manuals, "Select a manual", ManualsCollection))
             {
                 LoadManuals();
             }
@@ -445,9 +454,15 @@ namespace Pack_My_Game.Models
 
         internal void RemoveManualF()
         {
+            if (SelectedManual.IsSelected)
+            {
+                DxMBox.ShowDial("You must select another before to delete it");
+                return;
+            }
+
             if (SelectedManual != null)
             {
-                OpDFiles.Trash(SelectedManual.ALinkToThePath);
+                OpDFiles.Trash(SelectedManual.DestPath);
                 LoadManuals();
             }
         }
@@ -459,7 +474,7 @@ namespace Pack_My_Game.Models
             PlatformFolder pFolder = Platform.PlatformFolders.FirstOrDefault((x) => x.MediaType == "Music");
             string folder = pFolder == null ? string.Empty : pFolder.FolderPath;
 
-            if (Copy2(folder, Common.Musics, "Select a music file"))
+            if (Copy2(folder, Common.Musics, "Select a music file", MusicsCollection))
             {
                 LoadMusics();
             }
@@ -480,9 +495,15 @@ namespace Pack_My_Game.Models
 
         internal void RemoveMusicF()
         {
+            if (SelectedMusic.IsSelected)
+            {
+                DxMBox.ShowDial("You must select another before to delete it");
+                return;
+            }
+
             if (SelectedMusic != null)
             {
-                OpDFiles.Trash(SelectedMusic.ALinkToThePath);
+                OpDFiles.Trash(SelectedMusic.DestPath);
                 LoadMusics();
             }
         }
@@ -507,17 +528,23 @@ namespace Pack_My_Game.Models
             PlatformFolder pFolder = Platform.PlatformFolders.FirstOrDefault((x) => x.MediaType == "Video");
             string folder = pFolder == null ? string.Empty : pFolder.FolderPath;
 
-            if (Copy2(folder, Common.Videos, "Select a video file"))
+            if (Copy2(folder, Common.Videos, "Select a video file", VideosCollection))
             {
                 LoadVideos();
-            }        
+            }
         }
 
         internal void RemoveVideoF()
         {
+            if (SelectedVideo.IsSelected)
+            {
+                DxMBox.ShowDial("You must select another before to delete it");
+                return;
+            }
+
             if (SelectedVideo != null)
             {
-                OpDFiles.Trash(SelectedVideo.ALinkToThePath);
+                OpDFiles.Trash(SelectedVideo.DestPath);
                 LoadVideos();
             }
         }
@@ -528,7 +555,7 @@ namespace Pack_My_Game.Models
 
         internal void CopyAstuceF()
         {
-            if (Copy2(Properties.Settings.Default.LastKPath, Common.CheatCodes, "Select a cheat codes file"))
+            if (Copy2(PS.Default.LastKPath, Common.CheatCodes, "Select a cheat codes file", CheatsCollection))
             {
                 LoadCheatCodes();
             }
@@ -536,30 +563,31 @@ namespace Pack_My_Game.Models
 
         internal void OpenCheat()
         {
-            if (String.IsNullOrEmpty(SelectedCheatFile))
+            if (SelectedCheatFile != null)
                 return;
 
-            string path = Path.Combine(Root, Common.CheatCodes, SelectedCheatFile);
-            if (File.Exists(path))
+            if (File.Exists(SelectedCheatFile.DestPath))
             {
-                Process.Start(path);
+                Process.Start(SelectedCheatFile.DestPath);
             }
         }
 
 
         internal void RemoveCheatF()
         {
-            if (!string.IsNullOrEmpty(SelectedCheatFile))
+            if (SelectedCheatFile != null)
             {
-                OpDFiles.Trash(Path.Combine(Root, Common.CheatCodes, SelectedCheatFile));
+                OpDFiles.Trash(SelectedCheatFile.DestPath);
                 LoadCheatCodes();
             }
         }
         #endregion
 
 
-        private bool Copy2(string srcFolder, string subFolder, string message)
+        private bool Copy2(string srcFolder, string subFolder, string message, Collection<DataRep> collec)
         {
+            DataRep dr = null;
+
             TreeChoose tc = new TreeChoose()
             {
                 Model = new M_ChooseRaw()
@@ -572,21 +600,75 @@ namespace Pack_My_Game.Models
             };
             if (tc.ShowDialog() == true)
             {
+                string folderDest = Path.Combine(Root, subFolder);
+                dr = DataTrans.MakeSrcnDest<DataRep>(tc.LinkResult, subFolder);
+                dr.Name = dr.DestPath.Replace(subFolder, ".");
+
+                DateTime oldLW = new DateTime();
+                DataRep oldDr = collec.FirstOrDefault(x => x.DestPath.Equals(dr.DestPath));
+                if (oldDr != null)
+                    oldLW = File.GetLastWriteTimeUtc(oldDr.DestPath);
+
+                //
                 EphemProgress ephem = new EphemProgress();
                 CopyNVerif copyZat = new CopyNVerif();
+                copyZat.AskToUser += PackMe_IHM.Ask4_FileConflict2;
 
+                bool copyres = false;
                 TaskLauncher launcher = new TaskLauncher()
                 {
                     AutoCloseWindow = true,
                     ProgressIHM = new DxProgressB1(ephem),
-                    MethodToRun = () => copyZat.CopyANVerif(DataTrans.MakeSrcnDest(tc.LinkResult, Path.Combine(Root, subFolder))),
+                    MethodToRun = () => copyres = copyZat.CopyANVerif(dr),
                 };
                 launcher.Launch(copyZat);
+
+                //
+                if (!copyres)
+                    return false;
+
+                DateTime newLW = File.GetLastWriteTimeUtc(dr.DestPath);
+                if (oldLW == newLW)
+                    return false;
+
+                if (oldDr != null)
+                    collec.Remove(oldDr);
+
+                collec.Add(dr);
+
                 return true;
                 //return Copy(tc.LinkResult, Path.Combine(Root, subFolder));
             }
+
             return false;
         }
 
+
+        internal bool Apply_Modifs()
+        {
+            this.Test_HasElement(GamesCollection, nameof(GamesCollection));
+
+
+            if (HasErrors)
+                return false;
+
+            // Jeux
+            GameDataC.Reinitialize(GameDataC.Apps, GamesCollection,
+                new KeyValuePair<string, DataRep>(nameof(GameDataC.DefaultApp), ChosenGame));
+            // Cheats
+            GameDataC.Reinitialize(GameDataC.CheatCodes, CheatsCollection);
+            // Manuals
+            GameDataC.Reinitialize(GameDataC.Manuals, ManualsCollection,
+                new KeyValuePair<string, DataRep>(nameof(GameDataC.DefaultManual), ChosenManual));
+            // Musics
+            GameDataC.Reinitialize(GameDataC.Musics, MusicsCollection,
+                new KeyValuePair<string, DataRep>(nameof(GameDataC.DefaultMusic), ChosenMusic));
+            // Videos
+            GameDataC.Reinitialize(GameDataC.Videos, VideosCollection,
+                new KeyValuePair<string, DataRep>(nameof(GameDataC.DefaultVideo), ChosenVideo),
+                new KeyValuePair<string, DataRep>(nameof(GameDataC.DefaultThemeVideo), ChosenThemeVideo));
+
+            return true;
+        }
     }
 }

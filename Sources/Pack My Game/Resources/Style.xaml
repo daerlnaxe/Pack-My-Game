@@ -7,7 +7,7 @@
     </Style>
     <!-- TextBox -->
     <Style TargetType="TextBlock" x:Key="tbStyle">
-        
+        <Setter Property="Margin" Value="5"/>
     </Style>
     <!-- Combobox -->
     <Style TargetType="ComboBox" x:Key="cbStyle">

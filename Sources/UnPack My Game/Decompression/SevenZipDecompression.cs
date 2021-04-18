@@ -68,6 +68,11 @@ namespace UnPack_My_Game.Decompression
 
 
         #region Get Files
+        internal static IEnumerable<string> StaticGetAllFiles(string archiveName)
+        {
+            SevenZipDecompression sevenZip = new SevenZipDecompression();
+            return sevenZip.GetFilesStartingBy(archiveName, "");
+        }
 
         #region Get Files Starting By
 
@@ -91,6 +96,9 @@ namespace UnPack_My_Game.Decompression
             Queue<ArchiveFileInfo> selectedFiles = new Queue<ArchiveFileInfo>();
             foreach (ArchiveFileInfo aFileName in sevenZip.ArchiveFileData)
             {
+                if (aFileName.IsDirectory)
+                    continue;
+
                 if (aFileName.FileName.StartsWith(startString, StringComparison.OrdinalIgnoreCase))
                     selectedFiles.Enqueue(aFileName);
             }
@@ -199,6 +207,7 @@ namespace UnPack_My_Game.Decompression
             return true;
         }
 
+   
         #endregion
 
         // ---

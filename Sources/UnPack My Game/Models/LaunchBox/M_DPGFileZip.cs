@@ -1,5 +1,5 @@
 ﻿using Common_PMG.Container;
-using DxLocalTransf.Progress.ToImp;
+using Common_PMG.Models;
 using DxTBoxCore.Async_Box_Progress;
 using DxTBoxCore.Box_Progress;
 using System;
@@ -50,7 +50,7 @@ namespace UnPack_My_Game.Models.LaunchBox
 
                 foreach (var file in ofd.FileNames)
                 {
-                    if (Elements.FirstOrDefault((x) => x.ALinkToThePast.Equals(file)) == null)
+                    if (Elements.FirstOrDefault((x) => x.ALinkToThePath.Equals(file)) == null)
                         Elements.Add(new DataRep(file));
                 }
                 Test_HasElement(Elements, nameof(Elements));

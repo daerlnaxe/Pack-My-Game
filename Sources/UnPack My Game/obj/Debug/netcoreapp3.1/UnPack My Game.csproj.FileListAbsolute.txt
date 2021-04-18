@@ -315,6 +315,7 @@ E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreap
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\SevenZipSharp.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\SevenZipSharp.pdb
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\SevenZipSharp.xml
-E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\W_DPGMaker.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\W_DPGMaker.baml
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\AsyncProgress.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\AsyncProgress.pdb

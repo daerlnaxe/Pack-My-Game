@@ -16,6 +16,9 @@ namespace Common_PMG.Container.Game
         public string Id { get; set; }
         public string Title { get; set; }
         public string Platform { get; set; }
+
+        // ---
+
         public string ApplicationPath { get; set; }
         public string ManualPath { get; set; }
         public string MusicPath { get; set; }

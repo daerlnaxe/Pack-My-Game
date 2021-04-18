@@ -59,7 +59,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Button Content="Save" Command="local:W_Cheat.SaveCmd"/>
-                <Button Content="Cancel" Grid.Column="2"/>
+                <Button Content="Cancel" Grid.Column="2" IsCancel="True"/>
                 <Button Content="Ok" Grid.Column="3" Command="local:W_Cheat.OkCmd"/>
             </Grid>
             <!-- Texte -->

@@ -21,6 +21,7 @@
   <ItemGroup>
     <Compile Remove="Compression\ZipCompress.cs" />
     <Compile Remove="Core\LaunchBocDeprecated.cs" />
+    <Compile Remove="Models\A_Err.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -71,6 +72,7 @@
   <ItemGroup>
     <None Include="Compression\ZipCompress.cs" />
     <None Include="Core\LaunchBocDeprecated.cs" />
+    <None Include="Models\A_Err.cs" />
   </ItemGroup>
 
 </Project>

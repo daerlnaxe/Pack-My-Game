@@ -361,7 +361,6 @@ namespace Pack_My_Game.Core
                 if (PS.Default.opEBGame)
                 {
                     Make_EnhanceBackup(gdC, lbGame, gamePath);
-
                 }
                 else
                 {
@@ -373,8 +372,7 @@ namespace Pack_My_Game.Core
                 // --- Création d'un fichier conservant les fichiers par défaut définis par l'utilisateur en vue de réutilisation plus tard
 
                 //                ManageDefaultFiles(lbGame, gamePath, tree);
-                throw new NotImplementedException();
-                //gdC.WriteToJson(Path.Combine(gamePath, "DPGame.json"));
+                gpX.WriteToJson(Path.Combine(gamePath, "DPGame.json"));
 
 
                 // --- On complète l'arborescence
@@ -452,8 +450,6 @@ namespace Pack_My_Game.Core
                 }
                 #endregion
 
-
-
                 #region suppression du dossier de travail
                 if (PackMe_IHM.Dispatch_Mbox(this, "Would you want to ERASE the temp folder", "Erase", E_DxButtons.No | E_DxButtons.Yes, optMessage: shGame.ExploitableFileName) == true)
                 {
@@ -494,33 +490,18 @@ namespace Pack_My_Game.Core
         /// <param name="gpX"></param>
         /// <param name="lbGame"></param>
         /// <param name="gamePath"></param>
-        private void Make_EnhanceBackup(GameDataCont gpC, LBGame lbGame, string gamePath)
+        /// <remarks>
+        /// Modifie le lbgame
+        /// </remarks>
+        private void Make_EnhanceBackup(GameDataCont gdC, LBGame lbGame, string gamePath)
         {
-            string test = null;
+            lbGame.ApplicationPath = DxPath.To_RelativeOrNull(PS.Default.LBPath, gdC.DefaultApp?.ALinkToThePath);
+            lbGame.ManualPath = DxPath.To_RelativeOrNull(PS.Default.LBPath, gdC.DefaultManual?.ALinkToThePath);
+            lbGame.MusicPath = DxPath.To_RelativeOrNull(PS.Default.LBPath, gdC.DefaultMusic?.ALinkToThePath);
+            lbGame.VideoPath = DxPath.To_RelativeOrNull(PS.Default.LBPath, gdC.DefaultVideo?.ALinkToThePath);
+            lbGame.ThemeVideoPath = DxPath.To_RelativeOrNull(PS.Default.LBPath, gdC.DefaultThemeVideo?.ALinkToThePath) ;
 
-            Console.WriteLine(test);
-
-            throw new NotImplementedException();
-            /*
-            if (string.IsNullOrEmpty(lbGame.ManualPath))
-                lbGame.ManualPath = gpC.Manuals[0];
-
-            if (string.IsNullOrEmpty(lbGame.MusicPath))
-                lbGame.MusicPath = gpX.Musics[0];
-
-            if (string.IsNullOrEmpty(lbGame.VideoPath))
-                lbGame.VideoPath = gpX.Videos.FirstOrDefault(x => !x.Contains("Theme", StringComparison.OrdinalIgnoreCase));
-
-            if (string.IsNullOrEmpty(lbGame.ThemeVideoPath))
-                lbGame.ThemeVideoPath = gpX.Videos.FirstOrDefault(x => x.Contains("Theme", StringComparison.OrdinalIgnoreCase));
-
-            lbGame.ApplicationPath = DxPath.To_RelativeOrNull(PS.Default.LBPath, lbGame.ApplicationPath);
-            lbGame.ManualPath = DxPath.To_RelativeOrNull(PS.Default.LBPath, lbGame.ManualPath);
-            lbGame.MusicPath = DxPath.To_RelativeOrNull(PS.Default.LBPath, lbGame.MusicPath);
-            lbGame.VideoPath = DxPath.To_RelativeOrNull(PS.Default.LBPath, lbGame.VideoPath);
-            lbGame.ThemeVideoPath = DxPath.To_RelativeOrNull(PS.Default.LBPath, lbGame.ThemeVideoPath);
-
-            XML_Games.EnhancedBackup(_XMLPlatformFile, lbGame, gamePath);*/
+            XML_Games.EnhancedBackup(_XMLPlatformFile, lbGame, gamePath);
         }
 
 
@@ -571,7 +552,7 @@ namespace Pack_My_Game.Core
             string toSearch = lbGame.Title.Replace(':', '_').Replace('\'', '_').Replace("__", "_");
 
             // Jeu principal
-            gdC.SetMainApplication = GetFilesForGames(lbGame.ApplicationPath, gdC);
+            gdC.SetDefaultApplication = GetFilesForGames(lbGame.ApplicationPath, gdC);
 
             // Clones
             GetClones(lbGame, gdC);
@@ -580,16 +561,16 @@ namespace Pack_My_Game.Core
             gdC.SetCheatCodes = GetCheatCodes(toSearch);
 
             // Manuels
-            gdC.SetManualPath = GetFileForSpecifics(lbGame.ManualPath);
+            gdC.SetDefaultManual = GetFileForSpecifics(lbGame.ManualPath);
             gdC.SetManuals = GetMoreFiles("Manual", toSearch);
 
             // Musics 
-            gdC.SetMusicPath = GetFileForSpecifics(lbGame.MusicPath);
+            gdC.SetDefaultMusic = GetFileForSpecifics(lbGame.MusicPath);
             gdC.SetMusics = GetMoreFiles("Music", toSearch);
 
             // Videos
-            gdC.SetVideoPath = GetFileForSpecifics(lbGame.VideoPath);
-            gdC.SetThemeVideoPath = GetFileForSpecifics(lbGame.ThemeVideoPath);
+            gdC.SetDefaultVideo = GetFileForSpecifics(lbGame.VideoPath);
+            gdC.SetDefaultThemeVideo = GetFileForSpecifics(lbGame.ThemeVideoPath);
             gdC.SetVideos = GetMoreFiles("Video", toSearch);
 
             //GetMoreFiles(toSearch, gpX.CompVideos, "Video", gpX.VideoPath, gpX.ThemeVideoPath);
@@ -893,7 +874,7 @@ namespace Pack_My_Game.Core
         private void PrepareImages(List<DataRepExt> images, string destLocation)
         {
             E_Decision resMem = E_Decision.None;
-            string tail; 
+            string tail;
             foreach (DataRepExt pkFile in images)
             {
                 tail = string.Empty;
@@ -911,7 +892,7 @@ namespace Pack_My_Game.Core
                 else
                 {
                     pkFile.DestPath = Path.Combine(destLocation, Path.GetFileName(pkFile.ALinkToThePath));
-                }                
+                }
             }
         }
 
@@ -939,8 +920,6 @@ namespace Pack_My_Game.Core
 
         }
 
-
-
         // ---
 
         private void CopyFiles(GameDataCont gdC, Folder tree)
@@ -958,19 +937,12 @@ namespace Pack_My_Game.Core
             Fichiers.AddRange(gdC.Videos);
 
             PackMe_IHM.DoubleProgress(copyObj, "Copy",
-                (test)=> test= copyObj.CopySNVerif(Fichiers),
+                (test) => test = copyObj.CopySNVerif(Fichiers),
                 (test) => test = copyObj.CopySNVerif(gdC.Images));
             //copyObj.CopySNVerif(Fichiers);
 
         }
-
-
-
-
-
-
         #endregion
-
 
 
         #region tree
@@ -1045,14 +1017,20 @@ namespace Pack_My_Game.Core
                                          gamePath, title, PS.Default.cZipCompLvl), "Compression Zip");
 
             //ZipCompression.CompressFolder(gamePath, Path.Combine(_SystemPath, shGame.ExploitableFileName), PS.Default.c7zCompLvl);
+            if (res != true)
+                return;
 
             #region Création du fichier  MD5
-            if (res == true && PS.Default.opMd5)
+            if (PS.Default.opMd5)
             {
                 Gen_PlusCalculator calculator = Gen_PlusCalculator.Create(CancelToken);
-                string sum = calculator.Calcul(zippy.ArchiveLink, () => MD5.Create());
-                HashCalc.Files.ClassicParser.Write(zippy.ArchiveLink, sum, HashType.md5, overwrite: true);
 
+                string sum = string.Empty;
+                PackMe_IHM.LaunchOpProgress(calculator,
+                        () => sum = calculator.Calcul(zippy.ArchiveLink, () => MD5.Create()),
+                        "Calcul de somme");
+
+                HashCalc.Files.ClassicParser.Write(zippy.ArchiveLink, sum, HashType.md5, overwrite: true);
             }
             else
             {
@@ -1074,22 +1052,23 @@ namespace Pack_My_Game.Core
                 TokenSource = this.TokenSource
             };
 
-            /* sevZippy.UpdateProgress += this.SetProgress;
-             sevZippy.UpdateStatus += this.SetStatus;
-             sevZippy.MaximumProgress += this.SetMaximum;*/
 
-            /* sevZippy.CompressFolder(gamePath, title, PS.Default.c7zCompLvl);*/
-
-            //var res = PackMe_IHM.LaunchOpProgress(sevZippy, () => sevZippy.Testtamere(), "") ;
-            var res = PackMe_IHM.LaunchOpProgress(sevZippy, () => sevZippy.CompressFolder(
+            var res = (bool?)PackMe_IHM.ZipCompressFolder(sevZippy, () => sevZippy.CompressFolder(
                                     gamePath, title, PS.Default.c7zCompLvl), "Compression 7z");
 
+            if (res != true)
+                return;
 
             #region Création du fichier  MD5
-            if (res == true && PS.Default.opMd5)
+            if (PS.Default.opMd5)
             {
                 Gen_PlusCalculator calculator = Gen_PlusCalculator.Create(CancelToken);
-                string sum = calculator.Calcul(sevZippy.ArchiveLink, () => MD5.Create());
+
+                string sum = string.Empty;
+                PackMe_IHM.LaunchOpProgress(calculator,
+                                    () => sum = calculator.Calcul(sevZippy.ArchiveLink, () => MD5.Create()),
+                                    "Calcul de somme");
+
                 HashCalc.Files.ClassicParser.Write(sevZippy.ArchiveLink, sum, HashType.md5, overwrite: true);
 
             }

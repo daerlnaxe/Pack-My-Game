@@ -15,7 +15,7 @@ namespace Pack_My_Game.Compression
     /// 
     /// </summary>
     /// <remarks>Modèle avec Task</remarks>
-    class SevenZipCompression : A_ASBase, I_AsyncSig
+    class SevenZipCompression : A_ASBase, I_AsyncSigD, IEcoProgress
     {
         public delegate bool DecisionHandler(string message, string title);
 
@@ -23,8 +23,13 @@ namespace Pack_My_Game.Compression
 
         public event ProgressHandler UpdateProgress;
         public event StateHandler UpdateStatus;
+        public event ProgressHandler UpdateProgressT;
+        public event StateHandler UpdateStatusT;
 
- 
+        public int TimeLimit { get; set; } = 100;
+
+        public Stopwatch Timer { get; private set; } = new Stopwatch();
+
         //static string _ArchiveName;
         public string DestinationFolder { get; internal set; }
 
@@ -124,38 +129,30 @@ namespace Pack_My_Game.Compression
         //avant compressing - #1
         private void FilesFound(object sender, IntEventArgs e)
         {
-            //BoxProgress.dProgress.InfoSup = _ArchiveName;
-            // BoxProgress.FilesDone = 0;
-            //BoxProgress.dProgress.GlobalProgress(BoxProgress.dProgress.FilesDone, BoxProgress.dProgress.TotalFiles);
-
-            //BoxProgress.dProgress.TotalFiles = e.Value;
-
             this.UpdateProgress?.Invoke(this, new ProgressArg(0, 100, CancelFlag));
+            this.UpdateProgressT?.Invoke(this, new ProgressArg(0, e.Value, CancelFlag));
             Debug.WriteLine($"Files: {e.Value} Found");
         }
 
-        // Se produit après files found
+        // Se produit après files found #2, donne l'état d'avancement global et quel fichier va être traité
         private void FileCompressionStarted(object sender, FileNameEventArgs e)
         {
+            Timer.Restart();
             if (CancelToken.IsCancellationRequested)
             {
                 e.Cancel = true;
                 IsInterrupted = true;
             }
 
-            Debug.WriteLine($"File being compressed: {e.FileName}");
-
-            //BoxProgress.dProgress.EntryUpdate(e.PercentDone);
-
-            //BoxProgress.dProgress.CurrentInfo = e.FileName;
+            this.UpdateProgressT?.Invoke(this, new ProgressArg(e.PercentDone, 100, CancelFlag));
             this.UpdateStatus?.Invoke(this, new StateArg(e.FileName, CancelFlag));
 
-            //BoxProgress.AsyncUpdateEntryTxt(e.PercentDone);
+            Debug.WriteLine($"File being compressed: {e.FileName}");
             Debug.WriteLine($"fcs Percent done: {e.PercentDone}%");
         }
 
         /// <summary>
-        /// 
+        /// Serait la progression sur chaque fichier
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -164,40 +161,32 @@ namespace Pack_My_Game.Compression
         /// </remarks>
         private void Compressing(object sender, ProgressEventArgs e)
         {
+            if (Timer.ElapsedMilliseconds < TimeLimit)
+                return;
 
-            //BoxProgress.dProgress.EntryUpdate(e.PercentDone);
             this.UpdateProgress?.Invoke(this, new ProgressArg( e.PercentDone, 100, CancelFlag));
 
-            //BoxProgress.AsyncUpdateEntryTxt(e.PercentDone);            
 
             Debug.WriteLine($"\t\tCompressing - {e.PercentDone} %"); // on dirait la compression totale
             Debug.WriteLine($"\t\tCompressing - Delta: {e.PercentDelta}");
+
+            Timer.Restart();
         }
 
+        // Arrive à la fin de la compression d'un fichier
         private void FileCompressionFinished(object sender, EventArgs e)
         {
-            //Apparement aucune info si ce n'est que c'est fini
-            //  BoxProgress.dProgress.FilesDone++;
-
-            //  BoxProgress.dProgress.EntryUpdate(100);
-            //   BoxProgress.dProgress.GlobalProgress(BoxProgress.dProgress.FilesDone, BoxProgress.dProgress.TotalFiles);
-
-            Debug.WriteLine($"Compression du fichier terminée{e.ToString()}");
+            // Event args est vide, aucune information
+            this.UpdateProgress?.Invoke(this, new ProgressArg(100,100, CancelFlag));
+            Debug.WriteLine($"FileCompressionFinished: {e.ToString()}");
         }
 
-        // #?
+        // A la fin de la compression totale
         private void CompressionFinished(object sender, EventArgs e)
         {
-
             //Aucune info nonplus
-            /*int totalFiles = BoxProgress.dProgress.TotalFiles;
-       
-            /*BoxProgress.dProgress.FilesDone = totalFiles;
-            BoxProgress.dProgress.GlobalProgress(totalFiles, totalFiles);
 
-            Console.WriteLine($"Compression tout fini{e.ToString()}");
-            BoxProgress.StopIt();*/
-
+            this.UpdateProgressT?.Invoke(this, new ProgressArg(100,100, CancelFlag));
             this.UpdateStatus?.Invoke(this, new StateArg( "Finished", CancelFlag));
             Thread.Sleep(500);
         }

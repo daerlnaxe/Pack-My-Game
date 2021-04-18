@@ -5,9 +5,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
-using UnPack_My_Game.Resources;
 
-namespace UnPack_My_Game.Models
+namespace Common_PMG.Models
 {
 
     public delegate void BasicHandler(object sender);
@@ -48,7 +47,7 @@ namespace UnPack_My_Game.Models
             Remove_Error(propertyName);
 
             if (value == null)
-                Add_Error(Lang.NullValue, propertyName);
+                Add_Error("Null", propertyName);
         }
 
         protected void Test_NullValue(string value, [CallerMemberName] string propertyName = null)
@@ -56,7 +55,7 @@ namespace UnPack_My_Game.Models
             Remove_Error(propertyName);
 
             if (string.IsNullOrEmpty(value))
-                Add_Error(Lang.NullValue, propertyName);
+                Add_Error("Null", propertyName);
         }
 
         protected void Test_HasElement<T>(IEnumerable<T> Elements, [CallerMemberName] string propertyName = null )where T: class
@@ -64,7 +63,7 @@ namespace UnPack_My_Game.Models
             Remove_Error(propertyName);
 
             if (Elements.Count() <= 0)
-                Add_Error(Lang.NoElem, propertyName);
+                Add_Error("Null", propertyName);
         }
 
 

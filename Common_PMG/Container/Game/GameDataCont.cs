@@ -3,8 +3,10 @@ using Common_PMG.Container.Game;
 using Common_PMG.Container.Game.LaunchBox;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace Common_PMG.Container.Game
@@ -14,7 +16,7 @@ namespace Common_PMG.Container.Game
     /// </summary>
     public sealed class GameDataCont
     {
-
+        public string Title { get; set; }
         public List<DataRep> Apps { get; } = new List<DataRep>();
         public List<DataRep> Manuals { get;/* set; */} = new List<DataRep>();
         public List<DataRep> Musics { get; /*set;*/ } = new List<DataRep>();
@@ -38,11 +40,11 @@ namespace Common_PMG.Container.Game
         public DataRep DefaultThemeVideo { get; private set; }
 
 
-        public string SetMainApplication
+        public string SetDefaultApplication
         {
             set
             {
-                if (value != null)
+                if (!string.IsNullOrEmpty(value))
                 {
                     var dr = DataRep.MakeChosen(value);
                     Apps.Add(dr);
@@ -51,7 +53,7 @@ namespace Common_PMG.Container.Game
             }
         }
 
-        public string SetManualPath
+        public string SetDefaultManual
         {
             set
             {
@@ -64,7 +66,7 @@ namespace Common_PMG.Container.Game
             }
         }
 
-        public string SetMusicPath
+        public string SetDefaultMusic
         {
             set
             {
@@ -76,7 +78,7 @@ namespace Common_PMG.Container.Game
                 }
             }
         }
-        public string SetVideoPath
+        public string SetDefaultVideo
         {
             set
             {
@@ -89,7 +91,7 @@ namespace Common_PMG.Container.Game
             }
         }
 
-        public string SetThemeVideoPath
+        public string SetDefaultThemeVideo
         {
             set
             {
@@ -115,6 +117,19 @@ namespace Common_PMG.Container.Game
         {
             AddWVerif(fichier, Apps);
         }
+
+
+        public List<string> SetApplications
+        {
+            set
+            {
+                foreach(var f in value)
+                {
+                    AddWVerif(f, Apps);
+                }
+            }
+        }
+
 
         public List<string> SetCheatCodes
         {
@@ -160,14 +175,6 @@ namespace Common_PMG.Container.Game
             }
         }
 
-        public string Title { get; }
-
-
-
-
-
-
-
         /*
         public GameDataCont(GamePaths g)
         {
@@ -199,11 +206,20 @@ namespace Common_PMG.Container.Game
             }
         }
 
-        [Obsolete]
-        internal static void Add(DataRep filerep, List<DataRep> liste)
+        public void Reinitialize( List<DataRep> list, IEnumerable<DataRep> collection, params KeyValuePair<string, DataRep>[] defauts)
         {
-            liste.Add(filerep);
+            list.Clear();
+            foreach (var elem in collection)
+                list.Add(elem);
+
+            foreach(var action in defauts)
+            {
+                this.GetType().GetProperty(action.Key).SetValue(this, action.Value);
+            }
+                //
         }
+
+
 
 
         /*  public static explicit operator GameDataCont(LBGame v)
@@ -220,5 +236,21 @@ namespace Common_PMG.Container.Game
                   ThemeVideoPath = v.ThemeVideoPath,
               };
           }*/
+
+        // ---
+        /*
+        public static explicit operator GameDataCont(GamePaths v)
+        {
+            GameDataCont GDC = new GameDataCont(v.Title);
+            GDC.SetDefaultApplication = v.ApplicationPath;
+            GDC.SetDefaultManual = v.ManualPath;
+            GDC.SetDefaultMusic = v.MusicPath;
+            GDC.SetDefaultVideo = v.VideoPath;
+            GDC.SetDefaultThemeVideo = v.ThemeVideoPath;
+
+            return GDC;
+
+        }*/
+
     }
 }

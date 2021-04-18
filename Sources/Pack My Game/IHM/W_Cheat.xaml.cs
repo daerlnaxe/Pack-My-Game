@@ -90,7 +90,6 @@ namespace Pack_My_Game.IHM
 
         public W_Cheat(string cheatCodesPath, string gameName, string selectedCheatFile) : this(cheatCodesPath, gameName)
         {
-            _CheatFilePath = System.IO.Path.Combine(_CheatCodesPath, selectedCheatFile);
 
             using (FileStream fs = new FileStream(_CheatFilePath, FileMode.Open, FileAccess.Read))
             using (StreamReader rs = new StreamReader(fs))

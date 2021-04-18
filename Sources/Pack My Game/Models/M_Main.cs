@@ -1,6 +1,7 @@
 ﻿using Common_PMG.Container;
 using Common_PMG.Container.Game;
 using Common_PMG.Container.Game.LaunchBox;
+using Common_PMG.Models;
 using Common_PMG.XML;
 using DxTBoxCore.Box_Progress;
 using DxTBoxCore.Common;

@@ -31,7 +31,6 @@
     <None Include="Cores\C_LaunchBoxDPG.cs" />
     <None Include="Cores\C_LaunchBoxEB.cs" />
     <None Include="Cores\C_LaunchBoxTB.cs" />
-    <None Include="Models\M_DPGMaker.cs" />
   </ItemGroup>
 
   <ItemGroup>

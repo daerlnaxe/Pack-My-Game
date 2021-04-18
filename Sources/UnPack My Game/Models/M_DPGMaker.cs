@@ -15,13 +15,86 @@ using System.Threading.Tasks;
 using System.Windows;
 using Common_PMG.Container.Game;
 using PS = UnPack_My_Game.Properties.Settings;
-using DxLocalTransf.Cont.Progress;
+using AsyncProgress.Tools;
+using Common_PMG.Models;
 
 namespace UnPack_My_Game.Graph
 {
 
-    public class M_DPGMaker
+    public class M_DPGMaker : A_Err
     {
+        public bool Advanced => false;
+
+        public string Title { get; set; }
+        public string Platform { get; set; }
+
+
+        #region Chosen
+        DataRep _ChosenGame;
+        public DataRep ChosenGame
+        {
+            get => _ChosenGame;
+            set
+            {
+                _ChosenGame = value;
+                OnPropertyChanged();
+            }
+        }
+
+        //public DataRep ChosenCheatF { get; set; }
+
+
+        DataRep _ChosenManual;
+        public DataRep ChosenManual
+        {
+            get => _ChosenManual;
+            set
+            {
+                _ChosenManual = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        DataRep _ChosenMusic;
+        public DataRep ChosenMusic
+        {
+            get => _ChosenMusic;
+            set
+            {
+                _ChosenMusic = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+
+        DataRep _ChosenVideo;
+        public DataRep ChosenVideo
+        {
+            get => _ChosenVideo;
+            set
+            {
+                _ChosenVideo = value;
+                OnPropertyChanged();
+            }
+        }
+
+        DataRep _ChosenThemeVideo;
+        public DataRep ChosenThemeVideo
+        {
+            get => _ChosenThemeVideo;
+            set
+            {
+                _ChosenThemeVideo = value;
+                OnPropertyChanged();
+            }
+        }
+        #endregion
+
+
+
+
 
         public string Root { get; private set; }
 
@@ -30,40 +103,35 @@ namespace UnPack_My_Game.Graph
         public DataRep SelectedGame { get; set; }
         public ObservableCollection<DataRep> GamesCollection { get; set; } = new ObservableCollection<DataRep>();
 
-        public DataRep ChosenManual { get; set; }
         public DataRep SelectedManual { get; set; }
         public ObservableCollection<DataRep> ManualsCollection { get; set; } = new ObservableCollection<DataRep>();
 
-        public DataRep ChosenMusic { get; set; }
         public DataRep SelectedMusic { get; set; }
         public ObservableCollection<DataRep> MusicsCollection { get; set; } = new ObservableCollection<DataRep>();
 
-        public DataRep ChosenVideo { get; set; }
         public DataRep SelectedVideo { get; set; }
         public ObservableCollection<DataRep> VideosCollection { get; set; } = new ObservableCollection<DataRep>();
 
-        public DataRep ChosenCheatF { get; set; }
         public string SelectedCheatFile { get; set; }
         public ObservableCollection<DataRep> CheatsCollection { get; set; } = new ObservableCollection<DataRep>();
 
-        /// <summary>
-        /// Contient les chemins de la plateforme
-        /// </summary>
-        public string Platform { get; set; }
 
-        public string GameName { get; }
+        public GameDataCont GameDataC { get; }
         public GamePaths GamePaths { get; }
 
-        public M_DPGMaker(GamePathsExt gpX, string root)
+
+        public M_DPGMaker(GameDataCont gpC, GamePaths gpx, string root)
         {
             Root = root;
 
-            LoadGames(gpX);
+            GameDataC = gpC;
+            GamePaths = gpx;
 
-
+            Init();
         }
 
-        private void LoadGames(GamePathsExt gpX)
+        /*
+        private void LoadGames(GamePaths gpX)
         {
             foreach (var game in gpX.CompApps)
             {
@@ -73,7 +141,118 @@ namespace UnPack_My_Game.Graph
 
                 GamesCollection.Add(new DataRep(game));
             }
+        }*/
+
+        internal void Init()
+        {
+            Title = GamePaths.Title;
+            Platform = GamePaths.Platform;
+
+            // Création des collections (par rapport au changement de nom
+            MakeCollection(GameDataC.Apps, GamesCollection, PS.Default.Games);
+            MakeCollection(GameDataC.CheatCodes, CheatsCollection, PS.Default.CheatCodes);
+            MakeCollection(GameDataC.Manuals, ManualsCollection, PS.Default.Manuals);
+            MakeCollection(GameDataC.Musics, MusicsCollection, PS.Default.Musics);
+            MakeCollection(GameDataC.Videos, VideosCollection, PS.Default.Videos);
+
+            // Initialisation des fichiers par défaut.
+            ChosenGame = GamesCollection.FirstOrDefault(x => x.Name.Equals(GameDataC.DefaultApp?.ALinkToThePath));
+            ChosenManual = ManualsCollection.FirstOrDefault(x => x.Name.Equals(GameDataC.DefaultManual?.ALinkToThePath));
+            ChosenMusic = MusicsCollection.FirstOrDefault(x => x.Name.Equals(GameDataC.DefaultMusic?.ALinkToThePath));
+            ChosenVideo = VideosCollection.FirstOrDefault(x => x.Name.Equals(GameDataC.DefaultVideo?.ALinkToThePath));
+            ChosenThemeVideo = VideosCollection.FirstOrDefault(x => x.Name.Equals(GameDataC.DefaultThemeVideo?.ALinkToThePath));
         }
+
+        private void MakeCollection(List<DataRep> srcCollected, ObservableCollection<DataRep> targetedCollec, string mediatype)
+        {
+            string pRoot = Path.Combine(Root, mediatype);
+            targetedCollec.Clear();
+            foreach (DataRep elem in srcCollected)
+            {
+                DataRep dr = new DataRep()
+                {
+                    Name = elem.ALinkToThePath,
+                    ALinkToThePath = Path.GetFullPath(elem.ALinkToThePath, pRoot),
+                    IsSelected = elem.IsSelected,
+                };
+
+                //dr.ALinkToThePath =
+                targetedCollec.Add(dr);
+            }
+        }
+
+
+        #region check/uncheck
+
+        internal void Game_Handler(object tag)
+        {
+                SetDefault(tag, GamesCollection, (x) => ChosenGame = x);
+            /* else
+                 UnsetDefault(tag, (x) => ChosenGame = x);*/
+        }
+
+        internal void Manual_Handler(object tag, bool? isChecked)
+        {
+            if (isChecked == true)
+                SetDefault(tag, ManualsCollection, (x) => ChosenManual = x);
+            /* else
+                 UnsetDefault(tag, (x) => ChosenManual = x);*/
+        }
+
+        internal void Music_Handler(object tag, bool? isChecked)
+        {
+            if (isChecked == true)
+                SetDefault(tag, MusicsCollection, (x) => ChosenMusic = x);
+        }
+
+
+        internal void Video_Handler(DataRep selected, bool isChecked)
+        {
+            if (isChecked)
+                SetDefault(selected, VideosCollection, ChosenThemeVideo, (x) => ChosenVideo = x);
+            else
+                UnsetDefault(selected, (x) => ChosenVideo = x);
+        }
+
+        internal void ThemeVideo_Handler(DataRep selected, bool isChecked)
+        {
+            if (isChecked)
+                SetDefault(selected, VideosCollection, ChosenVideo, (x) => ChosenThemeVideo = x);
+            else
+                UnsetDefault(selected, (x) => ChosenThemeVideo = x);
+        }
+
+        private void SetDefault(object selected, ObservableCollection<DataRep> collection, Action<DataRep> SetChosen)
+        {
+            DataRep dr = (DataRep)selected;
+
+            foreach (var elem in collection)
+                if (dr != elem)
+                    elem.IsSelected = false;
+
+            SetChosen(dr);
+        }
+
+        internal void SetDefault(DataRep dr, ObservableCollection<DataRep> collection, DataRep other, Action<DataRep> SetChosen)
+        {
+            foreach (var elem in collection)
+                if (elem != other && elem != dr)
+                    elem.IsSelected = false;
+
+            dr.IsSelected = true;
+            SetChosen(dr);
+        }
+
+        private void UnsetDefault(object tag, Func<DataRep, object> SetChosen)
+        {
+            DataRep dr = (DataRep)tag;
+            dr.IsSelected = false;
+            SetChosen(null);
+        }
+
+        #endregion check/uncheck
+
+        // ---
 
         internal void GameSelect()
         {
@@ -86,8 +265,8 @@ namespace UnPack_My_Game.Graph
         }
 
         #region initialisation
-        
-       
+
+
 
         private void LoadManuals()
         {
@@ -96,13 +275,13 @@ namespace UnPack_My_Game.Graph
             foreach (string f in Directory.EnumerateFiles(manualsPath, "*.*", SearchOption.AllDirectories))
             {
                 string tmp = f.Replace(manualsPath, ".");
-                if (tmp.Equals(GamePaths.ManualPath))
-                {
-                    ChosenManual = new DataRep(tmp, f);
-                    continue;
-                }
+                /*          if (tmp.Equals(GamePaths.ManualPath))
+                          {
+                          //    ChosenManual = new DataRep(tmp, f);
+                              continue;
+                          }*/
 
-                ManualsCollection.Add(new DataRep(tmp, f));
+                // ManualsCollection.Add(new DataRep(tmp, f));
             }
         }
 
@@ -114,13 +293,13 @@ namespace UnPack_My_Game.Graph
             foreach (string f in Directory.EnumerateFiles(musicsPath, "*.*", SearchOption.AllDirectories))
             {
                 string tmp = f.Replace(musicsPath, ".");
-                if (tmp.Equals(GamePaths.MusicPath))
-                {
-                    ChosenMusic = new DataRep(tmp, f);
-                    continue;
-                }
+                /*   if (tmp.Equals(GamePaths.MusicPath))
+                   {
+            //           ChosenMusic = new DataRep(tmp, f);
+                       continue;
+                   }*/
 
-                MusicsCollection.Add(new DataRep(tmp, f));
+                //                MusicsCollection.Add(new DataRep(tmp, f));
             }
         }
 
@@ -131,13 +310,13 @@ namespace UnPack_My_Game.Graph
             foreach (string f in Directory.EnumerateFiles(videosPath, "*.*", SearchOption.AllDirectories))
             {
                 string tmp = f.Replace(videosPath, ".");
-                if (tmp.Equals(GamePaths.VideoPath))
-                {
-                    ChosenVideo = new DataRep(tmp, f);
-                    continue;
-                }
+                /*    if (tmp.Equals(GamePaths.VideoPath))
+                    {
+            //            ChosenVideo = new DataRep(tmp, f);
+                        continue;
+                    }*/
 
-                VideosCollection.Add(new DataRep(tmp, f));
+                //        VideosCollection.Add(new DataRep(tmp, f));
             }
         }
 
@@ -148,13 +327,13 @@ namespace UnPack_My_Game.Graph
             foreach (string f in Directory.EnumerateFiles(cheatsPath, "*.*", SearchOption.TopDirectoryOnly))
             {
                 string tmp = f.Replace(cheatsPath, ".");
-                CheatsCollection.Add(new DataRep(tmp, f));
+                //            CheatsCollection.Add(new DataRep(tmp, f));
             }
         }
 
         #endregion
 
-     
+
 
 
 
@@ -175,7 +354,7 @@ namespace UnPack_My_Game.Graph
             //string path = Path.Combine(Root, Common.Manuals, SelectedManual);
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = SelectedManual.ALinkToThePast;
+            p.StartInfo.FileName = SelectedManual.ALinkToThePath;
             p.Start();
 
         }
@@ -184,7 +363,7 @@ namespace UnPack_My_Game.Graph
         {
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = @$"{page}{GameName.Replace(' ', '+')}";
+            //  p.StartInfo.FileName = @$"{page}{GameName.Replace(' ', '+')}";
             p.Start();
         }
 
@@ -197,7 +376,7 @@ namespace UnPack_My_Game.Graph
         {
             if (SelectedManual != null)
             {
-                OpDFiles.Trash(SelectedManual.ALinkToThePast);
+                OpDFiles.Trash(SelectedManual.ALinkToThePath);
                 LoadManuals();
             }
         }
@@ -221,7 +400,7 @@ namespace UnPack_My_Game.Graph
             //string path = Path.Combine(Root, Common.Musics, SelectedMusic);
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = SelectedMusic.ALinkToThePast;
+            p.StartInfo.FileName = SelectedMusic.ALinkToThePath;
             p.Start();
 
         }
@@ -230,7 +409,7 @@ namespace UnPack_My_Game.Graph
         {
             if (SelectedMusic != null)
             {
-                OpDFiles.Trash(SelectedMusic.ALinkToThePast);
+                OpDFiles.Trash(SelectedMusic.ALinkToThePath);
                 LoadMusics();
             }
         }
@@ -246,7 +425,7 @@ namespace UnPack_My_Game.Graph
             //string path = Path.Combine(Root, Common.Videos, SelectedVideo);
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = SelectedVideo.ALinkToThePast;
+            p.StartInfo.FileName = SelectedVideo.ALinkToThePath;
             p.Start();
         }
 
@@ -278,7 +457,7 @@ namespace UnPack_My_Game.Graph
         {
             if (SelectedVideo != null)
             {
-                OpDFiles.Trash(SelectedVideo.ALinkToThePast);
+                OpDFiles.Trash(SelectedVideo.ALinkToThePath);
                 LoadVideos();
             }
         }
@@ -358,7 +537,7 @@ namespace UnPack_My_Game.Graph
             {
                 AutoCloseWindow = true,
                 ProgressIHM = new DxDoubleProgress(mawEvo),
-                MethodToRun = ()=> copyObj.CopyANVerif(fileSrc, destFile, true),                 
+                // MethodToRun = ()=> copyObj.CopyANVerif(fileSrc, destFile, true),                 
             };
             launcher.Launch(copyObj);
 
@@ -389,6 +568,23 @@ namespace UnPack_My_Game.Graph
             progressBox.ShowDialog();
 
             UpdateStatus?.Invoke(this, new StateArg( $"Check verif: {res}");*/
+            return true;
+        }
+
+        public bool Apply_Modifs()
+        {
+            this.Test_HasElement(GamesCollection, nameof(GamesCollection));
+            this.Test_NullValue(ChosenGame, nameof(GamesCollection));
+
+            if (HasErrors)
+                return false;
+
+            GamePaths.ApplicationPath = this.ChosenGame.Name;
+            GamePaths.ManualPath = this.ChosenManual == null ? null: ChosenManual.Name;
+            GamePaths.MusicPath = this.ChosenMusic == null? null: ChosenMusic.Name;
+            GamePaths.VideoPath = this.ChosenVideo == null ? null: ChosenVideo.Name;
+            GamePaths.ThemeVideoPath = this.ChosenThemeVideo == null ? null: ChosenThemeVideo.Name;
+
             return true;
         }
     }

@@ -1,4 +1,6 @@
 ﻿using AsyncProgress;
+using AsyncProgress.Tools;
+using Common_PMG.Container.Game;
 using DxTBoxCore.Box_Progress;
 using System;
 using System.Windows;
@@ -18,7 +20,7 @@ namespace UnPack_My_Game.Graph
                         {
                             AutoCloseWindow = true,
                             ProgressIHM = new DxDoubleProgress(mawmaw),
-                            MethodToRun = method,                          
+                            MethodToRun = method,
                         };
                         return launcher.Launch(objet);
                     }
@@ -26,15 +28,15 @@ namespace UnPack_My_Game.Graph
 
         }
 
-        internal static void ShowDPG(GamePathsExt gpX, string gamePath)
+        internal static void ShowDPG(GameDataCont gpC, GamePaths gpx, string gamePath)
         {
             Application.Current.Dispatcher?.Invoke
                 (
-                    ()=>
+                    () =>
                     {
                         W_DPGMaker winDPG = new W_DPGMaker()
                         {
-                            Model = new M_DPGMaker(gpX, gamePath),
+                            Model = new M_DPGMaker(gpC, gpx, gamePath),
                         };
                         if (winDPG.ShowDialog() == true)
                         {

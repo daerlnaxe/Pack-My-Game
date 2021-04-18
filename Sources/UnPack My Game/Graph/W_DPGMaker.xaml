@@ -11,16 +11,28 @@
         Loaded="Window_Loaded"
         >
     <Window.CommandBindings>
+        <!-- Games -->
+        <CommandBinding Command="local:W_DPGMaker.AddGameCmd" CanExecute="Can_Advanced" Executed="Exec_AddGame"/>
+        <CommandBinding Command="local:W_DPGMaker.RemoveGameCmd" CanExecute="Can_Game" Executed="Exec_RemoveGame"/>
         <!-- Manuals -->
+        <CommandBinding Command="local:W_DPGMaker.AddManualCmd" CanExecute="Can_Advanced" Executed="Exec_AddManual"/>
         <CommandBinding Command="local:W_DPGMaker.OpenManualCmd" CanExecute="Can_Manual" Executed="Exec_OpenManual"/>
         <CommandBinding Command="local:W_DPGMaker.RemoveManualCmd" CanExecute="Can_Manual" Executed="Exec_RemoveManual"/>
         <!-- Musics -->
+        <CommandBinding Command="local:W_DPGMaker.AddMusicCmd" CanExecute="Can_Advanced" Executed="Exec_AddMusic"/>
         <CommandBinding Command="local:W_DPGMaker.OpenMusicCmd" CanExecute="Can_Music" Executed="Exec_OpenMusic"/>
         <CommandBinding Command="local:W_DPGMaker.RemoveMusicCmd" CanExecute="Can_Music" Executed="Exec_RemoveMusic"/>
         <!-- Videos -->
-        <CommandBinding Command="local:W_DPGMaker.OpenVideoCmd" CanExecute="Can_Video" Executed="Exec_OpenVideo"/>
-        <CommandBinding Command="local:W_DPGMaker.RemoveVideoCmd" CanExecute="Can_Video" Executed="Exec_RemoveVideo"/>
+        <CommandBinding Command="local:W_DPGMaker.AddVideoCmd" CanExecute="Can_Advanced" Executed="Exec_AddVideo"/>
+        <CommandBinding Command="local:W_DPGMaker.OpenVideoCmd" CanExecute="Can_AdvVideo" Executed="Exec_OpenVideo"/>
+        <CommandBinding Command="local:W_DPGMaker.RemoveVideoCmd" CanExecute="Can_AdvVideo" Executed="Exec_RemoveVideo"/>
+        <CommandBinding Command="local:W_DPGMaker.SetVideoCmd" CanExecute="Can_Video" Executed="Exec_HandleVideo"/>
+        <CommandBinding Command="local:W_DPGMaker.UnsetVideoCmd" CanExecute="Can_UnsetVideo" Executed="Exec_HandleVideo"/>
+        <CommandBinding Command="local:W_DPGMaker.SetThemeVideoCmd" CanExecute="Can_Video" Executed="Exec_HandleThemeVideo"/>
+        <CommandBinding Command="local:W_DPGMaker.UnsetThemeVideoCmd" CanExecute="Can_UnsetThemeVideo" Executed="Exec_HandleThemeVideo"/>
         <!-- Cheats -->
+        <CommandBinding Command="local:W_DPGMaker.AddCheatCmd" CanExecute="Can_Advanced" Executed="Exec_AddCheat"/>
+        <CommandBinding Command="local:W_DPGMaker.NewCheatCmd" CanExecute="Can_Advanced" Executed="Exec_NewCheat"/>
         <CommandBinding Command="local:W_DPGMaker.OpenCheatCmd" CanExecute="Can_Cheat" Executed="Exec_OpenCheat"/>
         <CommandBinding Command="local:W_DPGMaker.RemoveCheatCmd" CanExecute="Can_Cheat" Executed="Exec_RemoveCheat"/>
     </Window.CommandBindings>
@@ -32,8 +44,6 @@
             <sys:String>Bird</sys:String>
             <sys:String>Cat</sys:String>
         </x:Array>
-        <!--        -->
-        <conv:EnableIfElementsConv x:Key="EnableIfElements"/>
         <!-- scrollviewer -->
         <Style TargetType="ScrollViewer">
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
@@ -41,12 +51,15 @@
         </Style>
         <!-- Label -->
         <Style TargetType="Label" BasedOn="{StaticResource lbStyle}">
-
+            <Setter Property="ContentStringFormat" Value="{}{0}:"/>
         </Style>
         <!-- Textbox -->
         <Style TargetType="TextBlock" BasedOn="{StaticResource tblockStyle}">
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Grid.Column" Value="1"/>
+        </Style>
+        <Style TargetType="TextBox" BasedOn="{StaticResource tboxStyle}">
+            <Setter Property="Margin" Value="5"/>
         </Style>
         <!-- Listview -->
         <Style TargetType="ListView">
@@ -71,7 +84,8 @@
             </StackPanel>
             <!-- Right Buttons -->
             <StackPanel DockPanel.Dock="Right" Margin="5,2,5,2">
-                <Button Content="Open Folder" Click="OpenFolder_Click" Visibility="Collapsed"/>
+                <Button Content="Open Folder" Click="OpenFolder_Click" />
+                <Button Content="Reset" Click="Reset_Click" />
             </StackPanel>
             <!-- Content -->
             <DockPanel>
@@ -120,21 +134,30 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <!-- Liste -->
-                            <ListView Grid.Row="1" ItemsSource="{Binding GamesCollection, FallbackValue={StaticResource testArray}}"
+                            <Label Content="Chosen Game"/>
+                            <TextBlock Text="{Binding ChosenGame.Name, FallbackValue=Selected}"/>
+                            <!-- List of Games -->
+                            <ListView Grid.Row="1" ItemsSource="{Binding GamesCollection, ValidatesOnNotifyDataErrors=True}"                                      
                                 SelectedItem="{Binding SelectedGame}" >
+                                <!-- Menu -->
+                                <ListView.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Command="local:W_DPGMaker.AddGameCmd"/>
+                                        <MenuItem Command="local:W_DPGMaker.RemoveGameCmd"/>
+                                    </ContextMenu>
+                                </ListView.ContextMenu>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <CheckBox IsChecked="{Binding IsSelected}" Checked="Game_Select" />
+                                            <RadioButton IsChecked="{Binding IsSelected}" Checked="Game_Handler" Tag="{Binding}"/>
                                             <TextBlock Text="{Binding Name}"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
-
                         </Grid>
                     </TabItem>
+
                     <!-- Manuals -->
                     <TabItem Header="{Binding Lang.ManualsExp, FallbackValue=ManualsExp}">
                         <Grid>
@@ -149,19 +172,26 @@
                             <!-- Selected -->
                             <Label Content="{Binding Lang.SelectedExp, FallbackValue=SelectedExp}"/>
                             <TextBlock Text="{Binding ChosenManual.Name, FallbackValue=Selected, TargetNullValue=...}"/>
-                            <!-- Liste -->
+                            <!-- List of Manuals -->
                             <ListView x:Name="lvManuals" Grid.Row="1" 
-                          ItemsSource="{Binding ManualsCollection}" DisplayMemberPath="Name"
-                          SelectedItem="{Binding SelectedManual}"
-                          >
+                                     ItemsSource="{Binding ManualsCollection}" 
+                                    SelectedItem="{Binding SelectedManual}">
+                                <!-- Menu -->
                                 <ListView.ContextMenu>
                                     <ContextMenu>
-                                        <!--  -->
-                                        <MenuItem Header="{Binding Lang.AddExp}" Click="Add_ManualF"/>
-                                        <MenuItem Header="Open" Command="local:W_DPGMaker.OpenManualCmd"/>
-                                        <MenuItem Header="{Binding Lang.DeleteExp}" Command="local:W_DPGMaker.RemoveManualCmd" />
+                                        <MenuItem Command="local:W_DPGMaker.AddManualCmd"/>
+                                        <MenuItem Command="local:W_DPGMaker.OpenManualCmd"/>
+                                        <MenuItem Command="local:W_DPGMaker.RemoveManualCmd" />
                                     </ContextMenu>
                                 </ListView.ContextMenu>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <RadioButton IsChecked="{Binding IsSelected}" Checked="Manual_Handler" Tag="{Binding}"/>
+                                            <TextBlock Text="{Binding Name}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
                             </ListView>
                         </Grid>
                     </TabItem>
@@ -179,26 +209,36 @@
                             <!-- Selected -->
                             <Label Content="{Binding Lang.SelectedExp, FallbackValue=SelectedExp}"/>
                             <TextBlock Text="{Binding ChosenMusic.Name, FallbackValue=Selected, TargetNullValue=...}"/>
-                            <!-- Liste -->
+                            <!-- List of Musics -->
                             <ListView x:Name="lvMusics" Grid.Row="1" 
-                          ItemsSource="{Binding MusicsCollection}" DisplayMemberPath="Name"
+                          ItemsSource="{Binding MusicsCollection}" 
                           SelectedItem="{Binding SelectedMusic}">
+                                <!-- Menu -->
                                 <ListView.ContextMenu>
                                     <ContextMenu>
-                                        <!--    -->
-                                        <MenuItem Header="{Binding Lang.AddExp}" Click="Add_MusicF"/>
-                                        <MenuItem Header="Open" Command="local:W_DPGMaker.OpenMusicCmd"/>
-                                        <MenuItem Header="{Binding Lang.DeleteExp}" Command="local:W_DPGMaker.RemoveMusicCmd"/>
+                                        <MenuItem Command="local:W_DPGMaker.AddMusicCmd"/>
+                                        <MenuItem Command="local:W_DPGMaker.OpenMusicCmd"/>
+                                        <MenuItem Command="local:W_DPGMaker.RemoveMusicCmd"/>
                                     </ContextMenu>
                                 </ListView.ContextMenu>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <RadioButton IsChecked="{Binding IsSelected}" Checked="Music_Handler" Tag="{Binding}" />
+                                            <TextBlock Text="{Binding Name}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
 
                             </ListView>
                         </Grid>
                     </TabItem>
+
                     <!-- Videos -->
-                    <TabItem Header="{Binding Lang.VideosExp, FallbackValue=VideosExp}" Visibility="Collapsed">
+                    <TabItem Header="{Binding Lang.VideosExp, FallbackValue=VideosExp}" >
                         <Grid>
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
@@ -207,20 +247,36 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <!-- Selected -->
-                            <Label Content="{Binding Lang.SelectedExp, FallbackValue=SelectedExp}"/>
+                            <Label Content="Default Video"/>
                             <TextBlock Text="{Binding ChosenVideo.Name, FallbackValue=Selected, TargetNullValue= ...}"/>
-
-                            <!--Liste  -->
-                            <ListView x:Name="lvVideos" Grid.Row="1"
-                            ItemsSource="{Binding VideosCollection}" DisplayMemberPath="Name"
-                            SelectedItem="{Binding SelectedVideo}" >
+                            <Label Grid.Row="1" Content="Default ThemeVideo"/>
+                            <TextBlock Grid.Row="1" Text="{Binding ChosenThemeVideo.Name, FallbackValue=Selected, TargetNullValue= ...}"/>
+                            <!--Liste  of Videos -->
+                            <ListView x:Name="lvVideos" Grid.Row="2"
+                                ItemsSource="{Binding VideosCollection}"
+                                SelectedItem="{Binding SelectedVideo}" >
+                                <!-- Menu -->
                                 <ListView.ContextMenu>
                                     <ContextMenu>
-                                        <MenuItem Header="{Binding Lang.AddExp}" Click="Add_VideoF"/>
-                                        <MenuItem Header="Open" Command="local:W_DPGMaker.OpenVideoCmd"/>
-                                        <MenuItem Header="{Binding Lang.DeleteExp}" Command="local:W_DPGMaker.RemoveVideoCmd"/>
+                                        <MenuItem Command="local:W_DPGMaker.SetVideoCmd" CommandParameter="true"/>
+                                        <MenuItem Command="local:W_DPGMaker.UnsetVideoCmd" CommandParameter="false"/>
+                                        <MenuItem Command="local:W_DPGMaker.SetThemeVideoCmd" CommandParameter="true"/>
+                                        <MenuItem Command="local:W_DPGMaker.UnsetThemeVideoCmd" CommandParameter="false"/>
+                                        <Separator/>
+                                        <MenuItem Command="local:W_DPGMaker.AddVideoCmd"/>
+                                        <MenuItem Command="local:W_DPGMaker.OpenVideoCmd"/>
+                                        <MenuItem Command="local:W_DPGMaker.RemoveVideoCmd"/>
                                     </ContextMenu>
                                 </ListView.ContextMenu>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <CheckBox IsChecked="{Binding IsSelected}"  IsHitTestVisible="False" Focusable="False" />
+                                            <TextBlock Text="{Binding Name}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+
                             </ListView>
                         </Grid>
                     </TabItem>
@@ -242,11 +298,12 @@
                             <ListView x:Name="lvCheats" Grid.Row="1" 
                             ItemsSource="{Binding CheatsCollection, FallbackValue={StaticResource testArray}}" DisplayMemberPath="Name"
                             SelectedItem="{Binding SelectedCheatFile}" >
+                                <!-- Menu -->
                                 <ListView.ContextMenu>
                                     <ContextMenu>
-                                        <MenuItem Header="{Binding Lang.AddExp}" Click="Add_CheatF"/>
-                                        <MenuItem Header="Open" Command="local:W_DPGMaker.OpenCheatCmd"/>
-                                        <MenuItem Header="{Binding Lang.DeleteExp}" Command="local:W_DPGMaker.RemoveCheatCmd"/>
+                                        <MenuItem Command="local:W_DPGMaker.AddCheatCmd"/>
+                                        <MenuItem Command="local:W_DPGMaker.OpenCheatCmd"/>
+                                        <MenuItem Command="local:W_DPGMaker.RemoveCheatCmd"/>
                                     </ContextMenu>
                                 </ListView.ContextMenu>
                             </ListView>

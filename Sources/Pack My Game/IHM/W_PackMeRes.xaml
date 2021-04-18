@@ -31,13 +31,6 @@
         <CommandBinding Command="local:W_PackMeRes.RemoveCheatCmd" CanExecute="Can_Cheat" Executed="Exec_RemoveCheat"/>
     </Window.CommandBindings>
     <Window.Resources>
-        <x:Array x:Key="testArray" Type="sys:String"
-            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-            xmlns:sys="clr-namespace:System;assembly=mscorlib">
-            <sys:String>Bear</sys:String>
-            <sys:String>Bird</sys:String>
-            <sys:String>Cat</sys:String>
-        </x:Array>
         <conv:EnableIfElementsConv x:Key="EnableIfElements"/>
         <!-- scrollviewer -->
         <Style TargetType="ScrollViewer">
@@ -82,6 +75,7 @@
             </StackPanel>
             <!-- Right Buttons -->
             <StackPanel DockPanel.Dock="Right" Margin="5,2,5,2">
+                <Button Content="Reset" Click="Reset"/>
                 <Button Content="Reload" Click="Reload_Click"/>
                 <Button Content="Open Folder" Click="OpenFolder_Click"/>
             </StackPanel>
@@ -103,7 +97,7 @@
                         <Label Content="{Binding Lang.SelectedExp, FallbackValue=SelectedExp}"/>
                         <TextBlock Text="{Binding ChosenGame.Name, FallbackValue=Selected}"/>
                         <!-- Liste -->
-                        <ListView Grid.Row="1" ItemsSource="{Binding GamesCollection, FallbackValue={StaticResource testArray}}"
+                        <ListView Grid.Row="1" ItemsSource="{Binding GamesCollection}"
                           SelectedItem="{Binding SelectedGame}"
                           >
                             <ListView.ContextMenu>
@@ -178,7 +172,7 @@
                         <!-- Selected -->
                         <Label Content="{Binding Lang.SelectedExp, FallbackValue=SelectedExp}"/>
                         <TextBlock Text="{Binding ChosenMusic.Name, FallbackValue=Selected, TargetNullValue=...}"/>
-                        <!-- Liste -->
+                        <!-- Liste of Musics -->
                         <ListView x:Name="lvMusics" Grid.Row="1" 
                           ItemsSource="{Binding MusicsCollection}" SelectedItem="{Binding SelectedMusic}">
                             <ListView.ContextMenu>
@@ -205,17 +199,20 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="31*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <!-- Selected -->
-                        <Label Content="{Binding Lang.SelectedExp, FallbackValue=SelectedExp}"/>
+                        <Label Content="Default Video"/>
                         <TextBlock Text="{Binding ChosenVideo.Name, FallbackValue=Selected, TargetNullValue= ...}"/>
-                        <!-- Liste -->
-                        <ListView x:Name="lvVideos" Grid.Row="1"
+                        <Label Grid.Row="1" Content="Default ThemeVideo"/>
+                        <TextBlock Grid.Row="1" Text="{Binding ChosenThemeVideo.Name, FallbackValue=Selected, TargetNullValue= ...}"/>
+                        <!-- Liste of Videos -->
+                        <ListView x:Name="lvVideos" Grid.Row="2"
                             ItemsSource="{Binding VideosCollection}"
                             SelectedItem="{Binding SelectedVideo}" >
                             <ListView.ContextMenu>
@@ -259,7 +256,7 @@
                         -->
                         <!-- Liste -->
                         <ListView x:Name="lvCheats" Grid.Row="1" 
-                            ItemsSource="{Binding CheatsCollection, FallbackValue={StaticResource testArray}}" DisplayMemberPath="Name"
+                            ItemsSource="{Binding CheatsCollection}" DisplayMemberPath="Name"
                             SelectedItem="{Binding SelectedCheatFile}" >
                             <ListView.ContextMenu>
                                 <ContextMenu>
