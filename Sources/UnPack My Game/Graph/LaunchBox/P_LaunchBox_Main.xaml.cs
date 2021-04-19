@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UnPack_My_Game.Models.LaunchBox;
+using UnPack_My_Game.Models.Submenus;
 
 namespace UnPack_My_Game.Graph.LaunchBox
 {
@@ -33,40 +35,31 @@ namespace UnPack_My_Game.Graph.LaunchBox
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ActivePage)));
             }
         }
-        /*
-        public List<ICommand> Buttons
-        {
-            get;
-            set;
-        } = new List<ICommand>() { MeeCmd };
 
-        public static readonly RoutedCommand MeeCmd = new RoutedCommand("Mee", typeof(P_LaunchBox_Main));
-        */
 
 
         public P_LaunchBox_Main()
         {
-            /*Buttons.Add("Atchoum", "") ;
-            Buttons.Add("Simplet", "") ;*/
-            //this.CommandBindings.Add(new CommandBinding(MeeCmd, Mee_Exec, Mee_CanExec));
             InitializeComponent();
             DataContext = this;
         }
 
-        private void Mee_CanExec(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
-        }
-
-
 
         private void Depack_Click(object sender, RoutedEventArgs e)
         {
-
+            ActivePage = new P_Selecter()
+            {
+                Model = new M_DPGUnpack(),
+            };
         }
+
+
         private void DPGMaker_Click(object sender, RoutedEventArgs e)
         {
-            ActivePage = new P_Selecter();
+            ActivePage = new P_SubMenu()
+            {
+                Driver = new DPGMakerSub(),
+            };
             return;
         }
 
@@ -74,7 +67,8 @@ namespace UnPack_My_Game.Graph.LaunchBox
 
         private void InjectG_Click(object sender, RoutedEventArgs e)
         {
-
+            //ActivePage = new P_DPG();
+            return;
         }
 
         private void InjectPlatform_Click(object sender, RoutedEventArgs e)

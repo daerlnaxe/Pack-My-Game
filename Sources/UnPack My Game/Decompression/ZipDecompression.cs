@@ -11,8 +11,12 @@ using AsyncProgress.Cont;
 
 namespace UnPack_My_Game.Decompression
 {
-    internal class ZipDecompression : A_ASBase, I_AsyncSigD
+    internal class ZipDecompression : A_ASBase, I_AsyncSigD, IEcoProgress
     {
+        public int TimeLimit { get; set; } = 100;
+
+        public Stopwatch Timer { get; } = new Stopwatch();
+
         public event ProgressHandler UpdateProgress;
         public event StateHandler UpdateStatus;
 
@@ -41,21 +45,27 @@ namespace UnPack_My_Game.Decompression
                     Debug.WriteLine("BeforeExtractAll");
                     break;
 
-                // apparu en premier - on a le nom du fichier
+                // #1 - on a le nom du fichier
                 case ZipProgressEventType.Extracting_BeforeExtractEntry:
+                    Timer.Restart();
                     Debug.WriteLine("BeforeExtractEntry");
                     this.UpdateProgress?.Invoke(this, new ProgressArg(0, 100, e.Cancel));
                     this.UpdateStatus?.Invoke(this, new StateArg($"Begin extraction: {e.CurrentEntry.FileName}", CancelFlag));
                     break;
 
-                // apparu en second - on a les bytes transferés, la somme totale a transférer, le nom du ficiher
+                // #2 - on a les bytes transferés, la somme totale a transférer, le nom du ficiher
                 case ZipProgressEventType.Extracting_EntryBytesWritten:
+                    if (Timer.ElapsedMilliseconds < TimeLimit)
+                        return;
+
                     Debug.WriteLine($"EntryBytesWritten: {e.BytesTransferred}|{e.TotalBytesToTransfer}");
-                    this.UpdateProgress?.Invoke(this, new ProgressArg(e.BytesTransferred * 100, e.TotalBytesToTransfer, CancelFlag));
+                    double percent = Math.Round((Double)e.BytesTransferred * 100 / e.TotalBytesToTransfer);
+                    this.UpdateProgress?.Invoke(this, new ProgressArg(percent, e.TotalBytesToTransfer, CancelFlag));
                     break;
 
                 // Apparu à la fin d'un fichier - on a le nom du fichier
                 case ZipProgressEventType.Extracting_AfterExtractEntry:
+                    Timer.Stop();
                     Debug.WriteLine("AfterExtractEntry");
                     this.UpdateProgress?.Invoke(this, new ProgressArg(100, 100, CancelFlag));
                     this.UpdateStatus?.Invoke(this, new StateArg($"Extraction finished: {e.CurrentEntry.FileName}", CancelFlag));
@@ -94,7 +104,7 @@ namespace UnPack_My_Game.Decompression
         }*/
 
 
-        public bool UncompressArchive(string fileArchive, string destFolder, CancellationToken token)
+        public bool ExtractAll(string fileArchive, string destFolder)
         {
             /*if (!Directory.Exists(destFolder))
                 return false;*/
@@ -115,10 +125,10 @@ namespace UnPack_My_Game.Decompression
                 int max = archiveZ.Entries.Count();
                 foreach (ZipEntry ze in archiveZ.Entries)
                 {
-                    UpdateProgress?.Invoke(this, new ProgressArg(i, archiveZ.Entries.Count, CancelFlag));
+                    UpdateProgressT?.Invoke(this, new ProgressArg(i, max, CancelFlag));
                     UpdateStatus?.Invoke(this, new StateArg($"\tZipExtraction: {ze.FileName}", CancelFlag));
 
-                    if (token.IsCancellationRequested)
+                    if (CancelToken.IsCancellationRequested)
                         return false;
 
                     ze.Extract(destFolder, ExtractExistingFileAction.OverwriteSilently);

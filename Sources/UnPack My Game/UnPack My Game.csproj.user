@@ -7,9 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Graph\P_Selecter.xaml.cs">
+    <None Update="Graph\P_DPG.xaml.cs">
       <SubType>Code</SubType>
-    </Compile>
+    </None>
     <Compile Update="Graph\LaunchBox\P_LaunchBox_Main.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -34,7 +34,13 @@
     <Compile Update="Graph\P_OGame.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Graph\P_Selecter.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Graph\P_SGames.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Graph\P_SubMenu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Graph\W_Common.xaml.cs">
@@ -53,9 +59,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Graph\P_Selecter.xaml">
+    <None Update="Graph\P_DPG.xaml">
       <SubType>Designer</SubType>
-    </Page>
+    </None>
     <Page Update="Graph\LaunchBox\P_LaunchBox_Main.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -75,6 +81,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Graph\LaunchBox\W_Config.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Graph\P_Selecter.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Graph\P_SubMenu.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Graph\W_DPGMaker.xaml">

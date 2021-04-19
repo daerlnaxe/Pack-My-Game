@@ -20,7 +20,7 @@ namespace UnPack_My_Game.Cores
     /// <summary>
     /// Tout ce qui est en rapport avec le DPG
     /// </summary>
-    internal class DPGCore : A_ProgressPersistD, I_ASBase
+    internal class DPGMakerCore : A_ProgressPersistD, I_ASBase
     {
 
         public Queue<DataRep> RejectedDatas { get; private set; } = new Queue<DataRep>();
@@ -35,11 +35,11 @@ namespace UnPack_My_Game.Cores
         public bool IsInterrupted { get; private set; }
 
 
-        internal bool MakeFileDPG(IEnumerable<DataRep> archives)
+        internal bool MakeDPG_Comp(IEnumerable<DataRep> archives)
         {
             try
             {
-                // prérequis ? Doit être zip, 7zip | ou dossier (A venir)
+                // prérequis ? Doit être zip, 7zip
 
                 foreach (DataRep zF in archives)
                 {
@@ -47,8 +47,6 @@ namespace UnPack_My_Game.Cores
 
                     string gamePath = Path.Combine(Path.GetTempPath(), Path.GetFileNameWithoutExtension(zF.Name));
                     string fileExt = Path.GetExtension(zF.ALinkToThePath).TrimStart('.');
-                    GamePaths gpX = null;
-                    GameDataCont gpC = new GameDataCont($"tmp-{zF.Name}");
 
                     // Création du dossier de destination
                     Directory.CreateDirectory(gamePath);
@@ -58,7 +56,6 @@ namespace UnPack_My_Game.Cores
                         mode = ArchiveMode.Zip;
                     if (fileExt.Equals("7zip", StringComparison.OrdinalIgnoreCase) || fileExt.Equals("7z", StringComparison.OrdinalIgnoreCase))
                         mode = ArchiveMode.SevenZip;
-
                     else
                         RejectedDatas.Enqueue(zF); // pas sur que ça serve
 
@@ -68,36 +65,8 @@ namespace UnPack_My_Game.Cores
                     else if (mode == ArchiveMode.SevenZip)
                         DPG7ZipCore(zF, gamePath);
 
-#if DEBUG
-                    Process.Start("explorer.exe", gamePath);
-#endif
+                    MakeDPG(gamePath, mode, zF.ALinkToThePath) ;
 
-                    // Lecture des fichiers
-                    if (File.Exists(Path.Combine(gamePath, "DPGame.json")))
-                    {
-                        gpX = GamePaths.ReadFromJson<GamePaths>(Path.Combine(gamePath, "DPGame.json"));
-                    }
-                    else if (File.Exists(Path.Combine(gamePath, "EBGame.xml")))
-                    {
-                        gpX = GetMainsInfo(gamePath, "EBGame.xml");
-                    }
-                    else if (File.Exists(Path.Combine(gamePath, "TBGame.xml")))
-                    {
-                        gpX = GetMainsInfo(gamePath, "TBGame.xml");
-                    }
-
-                    if (gpX == null)
-                        return false;
-
-                    gpC = (GameDataCont)gpX;
-                    GameDataCompletion(gpC, mode, zF.ALinkToThePath);
-
-
-                    // Affichage
-                    IHMStatic.ShowDPG(gpC, gpX, gamePath);
-
-                    // Sauvegarde
-                    gpX.WriteToJson(Path.Combine(gamePath, "DPGame.json"));
                 }
                 return true;
             }
@@ -111,26 +80,100 @@ namespace UnPack_My_Game.Cores
             }
         }
 
-        internal bool MakeDpg(DataRep zipFile)
+
+        internal bool MakeDPG_Folders(ICollection<DataRep> folders)
         {
             try
             {
-                // ---
+                foreach (var game in folders)
+                {
+                    MakeDPG_Folder(game);
+                }
 
                 return true;
             }
             catch (Exception exc)
             {
-                HeTrace.WriteLine(exc.Message);
                 return false;
             }
         }
 
+        internal bool MakeDPG_Folder(DataRep game)
+        {
+            string gamePath = Path.Combine(Path.GetTempPath(), Path.GetFileNameWithoutExtension(game.Name));
+
+            MakeDPG(game.ALinkToThePath, ArchiveMode.Folder, game.ALinkToThePath);
+           /* GamePaths gpX = null;
+
+            if(File.Exists(Path.Combine(game.ALinkToThePath, "DPGame.json")))
+            {
+                gpX = GamePaths.ReadFromJson<GamePaths>(Path.Combine(game.ALinkToThePath, "DPGame.json"));
+            }
+            else if(File.Exists(Path.Combine(game.ALinkToThePath, "EBGame.xml")))
+            {
+
+            }
+            else if(File.Exists(Path.Combine(game.ALinkToThePath, "TBGame.Xml")))
+            {
+
+            }
+           */
+           /*
+            if (gpX == null)
+                return false;
+            // Affichage
+            //    IHMStatic.ShowDPG(gpC, gpX, gamePath);
+
+            // Sauvegarde
+            gpX.WriteToJson(Path.Combine(game.ALinkToThePath, "DPGame.json"));
+            */
+            return true;
+        }
+
+        internal bool MakeDPG(string gamePath, ArchiveMode mode, string archiveLink)
+        {
+            GamePaths gpX = null;
+
+            // ---
+#if DEBUG
+            Process.Start("explorer.exe", gamePath);
+#endif
+
+            // Lecture des fichiers
+            if (File.Exists(Path.Combine(gamePath, "DPGame.json")))
+            {
+                gpX = GamePaths.ReadFromJson<GamePaths>(Path.Combine(gamePath, "DPGame.json"));
+            }
+            else if (File.Exists(Path.Combine(gamePath, "EBGame.xml")))
+            {
+                gpX = GetMainsInfo(gamePath, "EBGame.xml");
+            }
+            else if (File.Exists(Path.Combine(gamePath, "TBGame.xml")))
+            {
+                gpX = GetMainsInfo(gamePath, "TBGame.xml");
+            }
+
+            if (gpX == null)
+                return false;
+
+            GameDataCont gpC = (GameDataCont)gpX;
+            GameDataCompletion(gpC, mode, archiveLink);
+
+
+            // Affichage
+            IHMStatic.ShowDPG(gpC, gpX, gamePath);
+
+            // Sauvegarde
+            gpX.WriteToJson(Path.Combine(gamePath, "DPGame.json"));
+
+            return true;
+        }
+
+
+
         #region Compression
         void DPGZipCore(DataRep archive, string gamePath)
         {
-            // Lecture des préréquis ? <= pas utile je crois
-
             // Extraction des fichiers xml
             ZipDecompression zippy = new ZipDecompression()
             {
@@ -189,7 +232,7 @@ namespace UnPack_My_Game.Cores
             int pos = path.IndexOf(lbGame.Platform);
 
             if (pos < 0)
-                return string.Empty;
+                return null;
 
             res = path.Substring(pos).Replace(lbGame.Platform, $".");
 
@@ -197,7 +240,7 @@ namespace UnPack_My_Game.Cores
             return res;
         }
 
-
+        /*
         private void SetSelected(GamePaths gpX, GameDataCont gpC)
         {
             var app = gpC.Apps.FirstOrDefault(x => x.ALinkToThePath.Equals(gpX.ApplicationPath));
@@ -207,16 +250,16 @@ namespace UnPack_My_Game.Cores
             var music = gpC.Apps.FirstOrDefault(x => x.ALinkToThePath.Equals(gpX.ApplicationPath));
             var video = gpC.Apps.FirstOrDefault(x => x.ALinkToThePath.Equals(gpX.ApplicationPath));
             var themevideo = gpC.Apps.FirstOrDefault(x => x.ALinkToThePath.Equals(gpX.ApplicationPath));
-        }
+        }*/
 
 
         private void GameDataCompletion(GameDataCont gpC, ArchiveMode mode, string archiveName)
         {
-            IEnumerable<string> Files = null;
+            IEnumerable<string> files = null;
             if (mode == ArchiveMode.Zip)
             {
-                Files = ZipDecompression.StaticGetAllFiles(archiveName);
-                Files = Files.Select(f => f.Replace('/', '\\'));
+                files = ZipDecompression.StaticGetAllFiles(archiveName);
+                files = files.Select(f => f.Replace('/', '\\'));
 
                 /*   gpC.SetApplications = GameDataCompletion(Files, PS.Default.Games, "/", "\\");
                    gpC.SetCheatCodes = GameDataCompletion(Files, PS.Default.CheatCodes, "/", "\\");
@@ -226,31 +269,40 @@ namespace UnPack_My_Game.Cores
             }
             else if (mode == ArchiveMode.SevenZip)
             {
-                Files = SevenZipDecompression.StaticGetAllFiles(archiveName);
+                files = SevenZipDecompression.StaticGetAllFiles(archiveName);
+            }
+            else if(mode == ArchiveMode.Folder)
+            {
+                files = Directory.GetFiles(archiveName, "*.*", SearchOption.AllDirectories);
+                files = files.Select(f => f.Replace($@"{archiveName}\", string.Empty));
+            }
+            else
+            {
+                throw new Exception("Not supported");
             }
             // Vérification des fichiers par défaut;
             string tmp;
-            tmp = $@"{PS.Default.Games}{gpC.DefaultApp.ALinkToThePath.Substring(1)}";
-            if (!Files.Contains(tmp))
+            tmp = $@"{PS.Default.Games}{gpC.DefaultApp?.ALinkToThePath?.Substring(1)}";
+            if (!files.Contains(tmp))
                 gpC.UnsetDefaultApp();
 
-            if (!Files.Contains($@"{PS.Default.Manuals}{gpC.DefaultManual.ALinkToThePath.Substring(1)}"))
+            if (!files.Contains($@"{PS.Default.Manuals}{gpC.DefaultManual?.ALinkToThePath.Substring(1)}"))
                 gpC.UnsetDefaultManual();
 
-            if (!Files.Contains($@"{PS.Default.Musics}{gpC.DefaultMusic.ALinkToThePath.Substring(1)}"))
+            if (!files.Contains($@"{PS.Default.Musics}{gpC.DefaultMusic?.ALinkToThePath.Substring(1)}"))
                 gpC.UnsetDefaultMusic();
 
-            if (!Files.Contains($@"{PS.Default.Videos}{gpC.DefaultVideo.ALinkToThePath.Substring(1)}"))
+            if (!files.Contains($@"{PS.Default.Videos}{gpC.DefaultVideo?.ALinkToThePath.Substring(1)}"))
                 gpC.UnsetDefaultVideo();
 
-            if (!Files.Contains($@"{PS.Default.Videos}{gpC.DefaultThemeVideo.ALinkToThePath.Substring(1)}"))
+            if (!files.Contains($@"{PS.Default.Videos}{gpC.DefaultThemeVideo?.ALinkToThePath.Substring(1)}"))
                 gpC.UnsetDefaultThemeVideo();
 
-            gpC.SetApplications = GameDataCompletion(Files, PS.Default.Games, "\\", "\\");
-            gpC.SetCheatCodes = GameDataCompletion(Files, PS.Default.CheatCodes, "\\", "\\");
-            gpC.SetManuals = GameDataCompletion(Files, PS.Default.Manuals, "\\", "\\");
-            gpC.SetMusics = GameDataCompletion(Files, PS.Default.Musics, "\\", "\\");
-            gpC.SetVideos = GameDataCompletion(Files, PS.Default.Videos, "\\", "\\");
+            gpC.SetApplications = GameDataCompletion(files, PS.Default.Games, "\\", "\\");
+            gpC.SetCheatCodes = GameDataCompletion(files, PS.Default.CheatCodes, "\\", "\\");
+            gpC.SetManuals = GameDataCompletion(files, PS.Default.Manuals, "\\", "\\");
+            gpC.SetMusics = GameDataCompletion(files, PS.Default.Musics, "\\", "\\");
+            gpC.SetVideos = GameDataCompletion(files, PS.Default.Videos, "\\", "\\");
             //}
         }
 
@@ -268,7 +320,7 @@ namespace UnPack_My_Game.Cores
             return res;
         }
 
-                        
+
         #endregion
 
         public void StopTask()

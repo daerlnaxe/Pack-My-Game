@@ -6,12 +6,10 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace UnPack_My_Game.Models.LaunchBox
+namespace UnPack_My_Game.Models
 {
-    public interface I_DPG
+    public interface I_Select
     {
-
-
         public string Information{ get; }
 
         public string SelectSentence { get; }
@@ -19,12 +17,12 @@ namespace UnPack_My_Game.Models.LaunchBox
 
         public ObservableCollection<DataRep> Elements { get; set; }
 
-        public void SelectFunc();
-
-        public bool Process();
+        //public void SelectFunc();
 
         void Add();
         void RemoveElement(object element);
         void RemoveElements(IList<object> parameter);
+
+        public bool Process();
     }
 }

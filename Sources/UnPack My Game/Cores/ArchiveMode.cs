@@ -9,5 +9,6 @@ namespace UnPack_My_Game.Cores
         None,
         Zip,
         SevenZip,
+        Folder,
     }
 }

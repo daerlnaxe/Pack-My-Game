@@ -17,10 +17,14 @@
     <Compile Remove="Cont\FileObj.cs" />
     <Compile Remove="Cores\C_LaunchBox.cs" />
     <Compile Remove="Cores\C_LaunchBoxAdapt.cs" />
-    <Compile Remove="Cores\C_LaunchBoxDPG.cs" />
     <Compile Remove="Cores\C_LaunchBoxEB.cs" />
     <Compile Remove="Cores\C_LaunchBoxTB.cs" />
     <Compile Remove="Graph\LaunchBox\M_DPGMaker.cs" />
+    <Compile Remove="Graph\P_DPG.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Graph\P_DPG.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,9 +32,10 @@
     <None Include="Cont\FileObj.cs" />
     <None Include="Cores\C_LaunchBox.cs" />
     <None Include="Cores\C_LaunchBoxAdapt.cs" />
-    <None Include="Cores\C_LaunchBoxDPG.cs" />
     <None Include="Cores\C_LaunchBoxEB.cs" />
     <None Include="Cores\C_LaunchBoxTB.cs" />
+    <None Include="Graph\P_DPG.xaml" />
+    <None Include="Graph\P_DPG.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>

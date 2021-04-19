@@ -1,6 +1,5 @@
 ﻿using Common_PMG.Container;
 using Common_PMG.Models;
-using DxTBoxCore.Async_Box_Progress;
 using DxTBoxCore.Box_Progress;
 using System;
 using System.Collections.Generic;
@@ -9,30 +8,17 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using UnPack_My_Game.Cores;
-using UnPack_My_Game.Decompression;
-using UnPack_My_Game.Resources;
 
 namespace UnPack_My_Game.Models.LaunchBox
 {
-    class M_DPGFileZip : A_Err, I_DPG
+    class M_DPGUnpack : A_Err, I_Select
     {
-        public string Information => Lang.I_DPGZipFile;
+        public string Information => "Unpack to LaunchBox";
+
         public string SelectSentence => "Ajoutez des fichiers via le menu contextuel";
 
         public ObservableCollection<DataRep> Elements { get; set; } = new ObservableCollection<DataRep>();
 
-        public M_DPGFileZip()
-        {
-            /*Elements.Add(new DataRep("Chat", "animal/chat"));
-            Elements.Add(new DataRep("Chien", "animal/chien"));*/
-        }
-
-
-
-        public void SelectFunc()
-        {
-            throw new NotImplementedException();
-        }
 
         public void Add()
         {
@@ -63,6 +49,8 @@ namespace UnPack_My_Game.Models.LaunchBox
             Elements.Remove((DataRep)element);
             Test_HasElement(Elements, nameof(Elements));
         }
+
+
         public void RemoveElements(IList<object> parameter)
         {
             foreach (DataRep data in parameter.ToList())
@@ -80,18 +68,19 @@ namespace UnPack_My_Game.Models.LaunchBox
             if (HasErrors)
                 return false;
 
-            DPGCore dpgC = new DPGCore();
+            LBDataPackGCore lbDPGCore = new LBDataPackGCore();
             TaskLauncher launcher = new TaskLauncher()
             {
                 AutoCloseWindow = false,
-                ProgressIHM = new DxStateProgress(dpgC),
-                MethodToRun = () => dpgC.MakeFileDPG(Elements),                 
+                ProgressIHM = new DxStateProgress(lbDPGCore),
+                MethodToRun = () => lbDPGCore.Depacking(Elements),
             };
 
-            launcher.Launch(dpgC);
+            launcher.Launch(lbDPGCore);
 
             return true;
         }
+
 
     }
 }
