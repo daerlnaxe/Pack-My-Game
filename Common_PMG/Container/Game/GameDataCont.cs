@@ -31,7 +31,7 @@ namespace Common_PMG.Container.Game
                                     CheatCodes.Count() +
                                     Images.Count();
 
-        
+
 
         public DataRep DefaultApp { get; private set; }
         public DataRep DefaultManual { get; private set; }
@@ -52,6 +52,11 @@ namespace Common_PMG.Container.Game
                 }
             }
         }
+        public void UnsetDefaultApp()
+        {
+            Apps.Remove(DefaultApp);
+            DefaultApp = null;
+        }
 
         public string SetDefaultManual
         {
@@ -64,6 +69,11 @@ namespace Common_PMG.Container.Game
                     DefaultManual = dr;
                 }
             }
+        }
+        public void UnsetDefaultManual()
+        {
+            Manuals.Remove(DefaultManual);
+            DefaultManual = null;
         }
 
         public string SetDefaultMusic
@@ -78,6 +88,13 @@ namespace Common_PMG.Container.Game
                 }
             }
         }
+
+        public void UnsetDefaultMusic()
+        {
+            Manuals.Remove(DefaultMusic);
+            DefaultMusic = null;
+        }
+
         public string SetDefaultVideo
         {
             set
@@ -91,6 +108,12 @@ namespace Common_PMG.Container.Game
             }
         }
 
+        public void UnsetDefaultVideo()
+        {
+            Videos.Remove(DefaultVideo);
+            DefaultVideo = null;
+        }
+
         public string SetDefaultThemeVideo
         {
             set
@@ -102,6 +125,11 @@ namespace Common_PMG.Container.Game
                     DefaultThemeVideo = dr;
                 }
             }
+        }
+        public void UnsetDefaultThemeVideo()
+        {
+            Videos.Remove(DefaultThemeVideo);
+            DefaultThemeVideo = null;
         }
 
         // ---
@@ -119,17 +147,19 @@ namespace Common_PMG.Container.Game
         }
 
 
+
         public List<string> SetApplications
         {
             set
             {
-                foreach(var f in value)
+                foreach (var f in value)
                 {
                     AddWVerif(f, Apps);
                 }
             }
         }
 
+        // ---
 
         public List<string> SetCheatCodes
         {
@@ -152,6 +182,7 @@ namespace Common_PMG.Container.Game
                 }
             }
         }
+
 
         public List<string> SetMusics
         {
@@ -206,19 +237,24 @@ namespace Common_PMG.Container.Game
             }
         }
 
-        public void Reinitialize( List<DataRep> list, IEnumerable<DataRep> collection, params KeyValuePair<string, DataRep>[] defauts)
+        /// <summary>
+        /// Reinitialize a list with a collection
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="collection"></param>
+        /// <param name="defauts"></param>
+        public void Reinitialize(List<DataRep> list, IEnumerable<DataRep> collection)
         {
             list.Clear();
             foreach (var elem in collection)
                 list.Add(elem);
-
-            foreach(var action in defauts)
-            {
-                this.GetType().GetProperty(action.Key).SetValue(this, action.Value);
-            }
-                //
+            //
         }
 
+        public void SetDefault(string propertyName, DataRep value)
+        {
+            this.GetType().GetProperty(propertyName).SetValue(this, value);
+        }
 
 
 
@@ -238,7 +274,7 @@ namespace Common_PMG.Container.Game
           }*/
 
         // ---
-        /*
+
         public static explicit operator GameDataCont(GamePaths v)
         {
             GameDataCont GDC = new GameDataCont(v.Title);
@@ -250,7 +286,8 @@ namespace Common_PMG.Container.Game
 
             return GDC;
 
-        }*/
+        }
+
 
     }
 }

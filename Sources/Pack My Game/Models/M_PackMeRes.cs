@@ -653,20 +653,20 @@ namespace Pack_My_Game.Models
                 return false;
 
             // Jeux
-            GameDataC.Reinitialize(GameDataC.Apps, GamesCollection,
-                new KeyValuePair<string, DataRep>(nameof(GameDataC.DefaultApp), ChosenGame));
+            GameDataC.Reinitialize(GameDataC.Apps, GamesCollection);
+            GameDataC.SetDefault(nameof(GameDataC.DefaultApp), ChosenGame);
             // Cheats
             GameDataC.Reinitialize(GameDataC.CheatCodes, CheatsCollection);
             // Manuals
-            GameDataC.Reinitialize(GameDataC.Manuals, ManualsCollection,
-                new KeyValuePair<string, DataRep>(nameof(GameDataC.DefaultManual), ChosenManual));
+            GameDataC.Reinitialize(GameDataC.Manuals, ManualsCollection);
+            GameDataC.SetDefault(nameof(GameDataC.DefaultManual), ChosenManual);
             // Musics
-            GameDataC.Reinitialize(GameDataC.Musics, MusicsCollection,
-                new KeyValuePair<string, DataRep>(nameof(GameDataC.DefaultMusic), ChosenMusic));
+            GameDataC.Reinitialize(GameDataC.Musics, MusicsCollection);
+            GameDataC.SetDefault(nameof(GameDataC.DefaultMusic), ChosenMusic);
             // Videos
-            GameDataC.Reinitialize(GameDataC.Videos, VideosCollection,
-                new KeyValuePair<string, DataRep>(nameof(GameDataC.DefaultVideo), ChosenVideo),
-                new KeyValuePair<string, DataRep>(nameof(GameDataC.DefaultThemeVideo), ChosenThemeVideo));
+            GameDataC.Reinitialize(GameDataC.Videos, VideosCollection);
+            GameDataC.SetDefault(nameof(GameDataC.DefaultVideo), ChosenVideo);
+            GameDataC.SetDefault(nameof(GameDataC.DefaultThemeVideo), ChosenThemeVideo);
 
             return true;
         }
