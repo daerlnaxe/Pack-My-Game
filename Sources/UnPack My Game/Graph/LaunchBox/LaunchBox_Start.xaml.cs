@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using UnPack_My_Game.Models;
+using UnPack_My_Game.Models.LaunchBox;
 using UnPack_My_Game.Resources;
 
 namespace UnPack_My_Game.Graph.LaunchBox

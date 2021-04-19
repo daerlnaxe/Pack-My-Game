@@ -17,18 +17,18 @@ using UnPack_My_Game.Resources;
 using System.Linq;
 using System.Diagnostics;
 
-namespace UnPack_My_Game.Graph.LaunchBox
+namespace UnPack_My_Game.Graph
 {
     /// <summary>
     /// Logique d'interaction pour P_DPG_Main.xaml
     /// </summary>
-    public partial class P_DPG : Page, INotifyPropertyChanged
+    public partial class P_Selecter : Page, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public static readonly RoutedUICommand AddCmd = new RoutedUICommand(Lang.Add, "AddCmd", typeof(P_DPG));
-        public static readonly RoutedUICommand RemoveCmd = new RoutedUICommand(Lang.Remove, "RemoveCmd", typeof(P_DPG));
-        public static readonly RoutedUICommand ProcessCmd = new RoutedUICommand(Lang.Process, "ProcessCmd", typeof(P_DPG));
+        public static readonly RoutedUICommand AddCmd = new RoutedUICommand(Lang.Add, "AddCmd", typeof(P_Selecter));
+        public static readonly RoutedUICommand RemoveCmd = new RoutedUICommand(Lang.Remove, "RemoveCmd", typeof(P_Selecter));
+        public static readonly RoutedUICommand ProcessCmd = new RoutedUICommand(Lang.Process, "ProcessCmd", typeof(P_Selecter));
 
         private I_DPG _Model;
         public I_DPG Model
@@ -58,7 +58,7 @@ namespace UnPack_My_Game.Graph.LaunchBox
             }
         }
 
-        public P_DPG()
+        public P_Selecter()
         {
             //Model = new M_DPGFileZip();
             InitializeComponent();

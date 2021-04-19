@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UnPack_My_Game.Graph.LaunchBox
+namespace UnPack_My_Game.Models.LaunchBox
 {
     enum E_Method    
     {

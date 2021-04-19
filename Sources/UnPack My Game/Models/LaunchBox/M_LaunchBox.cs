@@ -19,8 +19,10 @@ using DxTBoxCore.Box_Progress;
 using System.Diagnostics;
 using DxTBoxCore.Async_Box_Progress;
 using Common_PMG.Models;
+using UnPack_My_Game.Graph;
+using UnPack_My_Game.Graph.LaunchBox;
 
-namespace UnPack_My_Game.Graph.LaunchBox
+namespace UnPack_My_Game.Models.LaunchBox
 {
     class M_LaunchBox : A_Err
     {

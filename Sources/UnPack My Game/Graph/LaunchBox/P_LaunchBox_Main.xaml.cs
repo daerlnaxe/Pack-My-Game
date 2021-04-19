@@ -58,29 +58,19 @@ namespace UnPack_My_Game.Graph.LaunchBox
             e.CanExecute = true;
         }
 
-        private void Mee_Exec(object sender, ExecutedRoutedEventArgs e)
-        {
-            Debug.WriteLine("tu shlingues de la shneck");
-        }
 
-        private void DPGMaker_Click(object sender, RoutedEventArgs e)
-        {
-            ActivePage = new P_DPG();
-            return;
-            FolderBrowserDialog fbd = new FolderBrowserDialog()
-            {
-
-
-            };
-            fbd.ShowDialog();
-
-
-        }
 
         private void Depack_Click(object sender, RoutedEventArgs e)
         {
 
         }
+        private void DPGMaker_Click(object sender, RoutedEventArgs e)
+        {
+            ActivePage = new P_Selecter();
+            return;
+        }
+
+
 
         private void InjectG_Click(object sender, RoutedEventArgs e)
         {

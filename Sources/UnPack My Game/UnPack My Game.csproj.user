@@ -7,7 +7,7 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Graph\LaunchBox\P_DPG.xaml.cs">
+    <Compile Update="Graph\P_Selecter.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Graph\LaunchBox\P_LaunchBox_Main.xaml.cs">
@@ -53,7 +53,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Graph\LaunchBox\P_DPG.xaml">
+    <Page Update="Graph\P_Selecter.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Graph\LaunchBox\P_LaunchBox_Main.xaml">
