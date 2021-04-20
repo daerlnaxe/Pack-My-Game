@@ -8,7 +8,6 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Controls;
 using UnPack_My_Game.Resources;
-using LaunchBox_XML;
 using PS = UnPack_My_Game.Properties.Settings;
 using System.Collections.ObjectModel;
 using DxTBoxCore.MBox;

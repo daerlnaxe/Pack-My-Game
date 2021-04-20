@@ -1,6 +1,5 @@
 ﻿using Common_PMG.Container;
 using Common_PMG.Models;
-using DxTBoxCore.Async_Box_Progress;
 using DxTBoxCore.Box_Progress;
 using System;
 using System.Collections.Generic;
@@ -9,23 +8,16 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using UnPack_My_Game.Cores;
-using UnPack_My_Game.Decompression;
-using UnPack_My_Game.Resources;
 
 namespace UnPack_My_Game.Models.LaunchBox
 {
-    class M_DPGFile : A_Err, I_Select
+    class M_LBcDPGUnpack : A_Err, I_Select
     {
-        public string Information => Lang.I_DPGZipFile;
+        public string Information => "Unpack to LaunchBox";
+
         public string SelectSentence => "Ajoutez des fichiers via le menu contextuel";
 
         public ObservableCollection<DataRep> Elements { get; set; } = new ObservableCollection<DataRep>();
-
-        public M_DPGFile()
-        {
-            /*Elements.Add(new DataRep("Chat", "animal/chat"));
-            Elements.Add(new DataRep("Chien", "animal/chien"));*/
-        }
 
 
         public void Add()
@@ -66,8 +58,8 @@ namespace UnPack_My_Game.Models.LaunchBox
                 Elements.Remove(data);
             }
             Test_HasElement(Elements, nameof(Elements));
-        }
 
+        }
 
         public bool Process()
         {
@@ -76,17 +68,19 @@ namespace UnPack_My_Game.Models.LaunchBox
             if (HasErrors)
                 return false;
 
-            DPGMakerCore dpgC = new DPGMakerCore();
+            DataPackGCore lbDPGCore = new DataPackGCore();
             TaskLauncher launcher = new TaskLauncher()
             {
                 AutoCloseWindow = false,
-                ProgressIHM = new DxStateProgress(dpgC),
-                MethodToRun = () => dpgC.MakeDPG_Comp(Elements),                 
+                ProgressIHM = new DxStateProgress(lbDPGCore),
+                MethodToRun = () => lbDPGCore.Depacking(Elements),
             };
 
-            launcher.Launch(dpgC);
+            launcher.Launch(lbDPGCore);
 
             return true;
         }
+
+
     }
 }

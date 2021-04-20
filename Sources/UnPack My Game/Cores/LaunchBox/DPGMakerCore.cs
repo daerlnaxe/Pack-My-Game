@@ -85,9 +85,9 @@ namespace UnPack_My_Game.Cores
         {
             try
             {
-                foreach (var game in folders)
+                foreach (DataRep game in folders)
                 {
-                    MakeDPG_Folder(game);
+                    MakeDPG_Folder(game.ALinkToThePath);
                 }
 
                 return true;
@@ -98,11 +98,10 @@ namespace UnPack_My_Game.Cores
             }
         }
 
-        internal bool MakeDPG_Folder(DataRep game)
-        {
-            string gamePath = Path.Combine(Path.GetTempPath(), Path.GetFileNameWithoutExtension(game.Name));
+        internal bool MakeDPG_Folder(string path)
+        {           
 
-            MakeDPG(game.ALinkToThePath, ArchiveMode.Folder, game.ALinkToThePath);
+            MakeDPG(path, ArchiveMode.Folder,path);
            /* GamePaths gpX = null;
 
             if(File.Exists(Path.Combine(game.ALinkToThePath, "DPGame.json")))
@@ -130,6 +129,7 @@ namespace UnPack_My_Game.Cores
             return true;
         }
 
+
         internal bool MakeDPG(string gamePath, ArchiveMode mode, string archiveLink)
         {
             GamePaths gpX = null;
@@ -142,19 +142,22 @@ namespace UnPack_My_Game.Cores
             // Lecture des fichiers
             if (File.Exists(Path.Combine(gamePath, "DPGame.json")))
             {
+                HeTrace.WriteLine("DPG Found" );
                 gpX = GamePaths.ReadFromJson<GamePaths>(Path.Combine(gamePath, "DPGame.json"));
             }
             else if (File.Exists(Path.Combine(gamePath, "EBGame.xml")))
             {
+                HeTrace.WriteLine("DPG Missing, work with EBGame" );
                 gpX = GetMainsInfo(gamePath, "EBGame.xml");
             }
             else if (File.Exists(Path.Combine(gamePath, "TBGame.xml")))
             {
+                HeTrace.WriteLine("DPG Missing, work with TBGame" );
                 gpX = GetMainsInfo(gamePath, "TBGame.xml");
             }
 
             if (gpX == null)
-                return false;
+                throw new Exception("Impossible to continue");
 
             GameDataCont gpC = (GameDataCont)gpX;
             GameDataCompletion(gpC, mode, archiveLink);
@@ -165,6 +168,8 @@ namespace UnPack_My_Game.Cores
 
             // Sauvegarde
             gpX.WriteToJson(Path.Combine(gamePath, "DPGame.json"));
+
+            HeTrace.WriteLine("DPG Done");
 
             return true;
         }

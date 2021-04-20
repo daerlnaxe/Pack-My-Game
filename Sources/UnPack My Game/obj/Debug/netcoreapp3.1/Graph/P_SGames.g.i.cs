@@ -55,7 +55,7 @@ namespace UnPack_My_Game.Graph {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/UnPack My Game;component/graph/p_sgames.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/UnPack My Game;V1.0.0.0;component/graph/p_sgames.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Graph\P_SGames.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

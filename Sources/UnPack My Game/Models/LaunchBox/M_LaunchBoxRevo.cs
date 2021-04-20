@@ -1,24 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Common_PMG.Models;
+using System;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Windows.Controls;
-using UnPack_My_Game.Resources;
-using LaunchBox_XML;
-using PS = UnPack_My_Game.Properties.Settings;
-using System.Collections.ObjectModel;
-using DxTBoxCore.MBox;
-using DxTBoxCore.Common;
-using UnPack_My_Game.Cores;
-using UnPack_My_Game.Models;
-using DxTBoxCore.Box_Progress;
-using System.Diagnostics;
-using Common_PMG.Models;
 using UnPack_My_Game.Graph;
+using UnPack_My_Game.Resources;
+using PS = UnPack_My_Game.Properties.Settings;
 
 namespace UnPack_My_Game.Models.LaunchBox
 {

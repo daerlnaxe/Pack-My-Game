@@ -49,10 +49,17 @@ namespace UnPack_My_Game.Graph.LaunchBox
         {
             ActivePage = new P_Selecter()
             {
-                Model = new M_DPGUnpack(),
+                Model = new M_LBcDPGUnpack(),
             };
         }
 
+        private void InjectG_Click(object sender, RoutedEventArgs e)
+        {
+            ActivePage = new P_Selecter()
+            {
+                Model = new M_LBCDPGFolder(),
+            };
+        }
 
         private void DPGMaker_Click(object sender, RoutedEventArgs e)
         {
@@ -60,16 +67,8 @@ namespace UnPack_My_Game.Graph.LaunchBox
             {
                 Driver = new DPGMakerSub(),
             };
-            return;
         }
 
-
-
-        private void InjectG_Click(object sender, RoutedEventArgs e)
-        {
-            //ActivePage = new P_DPG();
-            return;
-        }
 
         private void InjectPlatform_Click(object sender, RoutedEventArgs e)
         {

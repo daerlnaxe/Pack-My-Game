@@ -23,7 +23,7 @@
                     ToolTip="{x:Static l:Lang.T_OneG}"
                     />
             <Button Content="Inject" Click="InjectG_Click"
-                    ToolTip="Inject game(s) by folder(s)"  IsEnabled="False"
+                    ToolTip="Inject game(s) by folder(s)" 
                     />
             <Separator/>
             <Button Content="DPG Maker" ToolTip="Make a dpg with tbgame or ebgame"                    

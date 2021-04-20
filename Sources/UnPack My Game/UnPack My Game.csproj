@@ -15,10 +15,9 @@
   <ItemGroup>
     <Compile Remove="Cont\EBGame.cs" />
     <Compile Remove="Cont\FileObj.cs" />
-    <Compile Remove="Cores\C_LaunchBox.cs" />
-    <Compile Remove="Cores\C_LaunchBoxAdapt.cs" />
-    <Compile Remove="Cores\C_LaunchBoxEB.cs" />
-    <Compile Remove="Cores\C_LaunchBoxTB.cs" />
+    <Compile Remove="Cores\LaunchBox\C_LaunchBoxAdapt.cs" />
+    <Compile Remove="Cores\LaunchBox\C_LaunchBoxEB.cs" />
+    <Compile Remove="Cores\LaunchBox\C_LaunchBoxTB.cs" />
     <Compile Remove="Graph\LaunchBox\M_DPGMaker.cs" />
     <Compile Remove="Graph\P_DPG.xaml.cs" />
   </ItemGroup>
@@ -30,10 +29,9 @@
   <ItemGroup>
     <None Include="Cont\EBGame.cs" />
     <None Include="Cont\FileObj.cs" />
-    <None Include="Cores\C_LaunchBox.cs" />
-    <None Include="Cores\C_LaunchBoxAdapt.cs" />
-    <None Include="Cores\C_LaunchBoxEB.cs" />
-    <None Include="Cores\C_LaunchBoxTB.cs" />
+    <None Include="Cores\LaunchBox\C_LaunchBoxAdapt.cs" />
+    <None Include="Cores\LaunchBox\C_LaunchBoxEB.cs" />
+    <None Include="Cores\LaunchBox\C_LaunchBoxTB.cs" />
     <None Include="Graph\P_DPG.xaml" />
     <None Include="Graph\P_DPG.xaml.cs" />
   </ItemGroup>

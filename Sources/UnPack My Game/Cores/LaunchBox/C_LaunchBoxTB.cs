@@ -179,46 +179,7 @@ namespace UnPack_My_Game.Cores
 
 
 
-        /// <summary>
-        /// Travail sur le fichier xml contenant les plateformes
-        /// </summary>
-        /// <param name="platformsFile"></param>
-        /// <param name="machineName"></param>
-        private void WorkOnPlatformFile(string platformsFile, string machineName)
-        {
-            using (XML_Platforms xPlat = new XML_Platforms(platformsFile))
-            {
-                // Backup du fichier de la plateforme;
-                BackupPlatformsFile(platformsFile);
 
-                // On demande pour REMPLACER la machine si elle existe déjà
-                if (xPlat.Exists("Name", machineName))
-                {
-                    bool? res = AskDxMBox("Platform is Already present, replace it ?", "Question", E_DxButtons.Yes | E_DxButtons.No, machineName);
-                    if (res == true)
-                    {
-                        xPlat.RemoveElemByChild(Cst.Platform, Cst.Name, machineName);
-                        xPlat.RemoveElemByChild(Cst.PlatformFolder, Cst.Platform, machineName);
-                        UpdateStatus?.Invoke(this, "The has been removed");
-                    }
-                    else
-                    {
-                        UpdateStatus?.Invoke(this, "Injection aborted");
-                        return;
-                    }
-                }
-
-                // Injection en mode true verbatim
-                XElement verbatimPlatform = XML_Platforms.GetPlatformNode(_SelectedPlatformXML);
-                xPlat.InjectPlatform(verbatimPlatform);
-                var verbatimPFolders = XML_Platforms.GetFoldersNodes(_SelectedPlatformXML);
-                xPlat.InjectPlatFolders(verbatimPFolders);
-
-                UpdateStatus?.Invoke(this, $"Platform {machineName} injected");
-
-                xPlat.Save(platformsFile);
-            }
-        }
 
 
         /// <summary>

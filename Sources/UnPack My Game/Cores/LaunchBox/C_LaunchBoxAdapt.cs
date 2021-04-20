@@ -147,7 +147,7 @@ namespace UnPack_My_Game.Cores
                     string xmlFile = Path.Combine(tmpPath, "EBGame.xml");
                     LBGame lbGame = XML_Games.Scrap_LBGame(xmlFile);
                     List<AdditionalApplication> clones = XML_Games.ListAddApps(xmlFile);
-
+                    
 
 
                     //05/04/2021                LBGame lbGame = XML_Games.Scrap_GameLB(Path.Combine(tmpPath, "EBGame.xml"), "LaunchBox_Backup", PS.Default.wCustomFields);

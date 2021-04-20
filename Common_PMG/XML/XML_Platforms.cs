@@ -92,6 +92,8 @@ namespace Common_PMG.XML
                 Error?.Invoke(nameof(XML_Platforms), new MessageArg(exc.Message));
             }
         }
+
+
         // --- Get Platform
 
 
@@ -215,7 +217,7 @@ namespace Common_PMG.XML
                             break;
 
                         default:
-                            Signal?.Invoke("XML_Platforms", new MessageArg( $"Unmanaged {field.Name.LocalName}"));
+                            Signal?.Invoke("XML_Platforms", new MessageArg($"Unmanaged {field.Name.LocalName}"));
                             break;
                     }
                 }
@@ -312,9 +314,38 @@ namespace Common_PMG.XML
 
         // --- Les méthodes non static ne sauvegardent pas
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="platformFile"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Protection antidoublon
+        /// </remarks>
+        public bool InjectPlatformExt(string platformFile)
+        {
+            XElement root = XElement.Load(platformFile);
+
+            // Vérification anti doublon
+            if ( Exists(Tag.Name, root.Element(Tag.Platform)?.Element(Tag.Name)?.Value))
+                return false;
+
+            // Injection de la plateforme
+            XElement newPlat = root.Element(Tag.Platform);
+            this.InjectPlatform(newPlat);
+
+            // Injection des dossiers
+            var verbatimPFolders = root.Elements(Tag.PlatformFolder);
+            this.InjectPlatFolders(verbatimPFolders);
+
+            return true;
+        }
+
         public void InjectPlatform(XElement verbatimPlatform)
         {
             var platforms = Root.Elements("Platform");
+
 
             if (platforms.Count() == 0)
                 Root.Add(verbatimPlatform);
@@ -325,14 +356,20 @@ namespace Common_PMG.XML
 
         public void InjectPlatFolders(IEnumerable<XElement> verbatimPFolders)
         {
-
-
             Root.Add(verbatimPFolders);
-
         }
 
 
         // --- Remove
+        public static void RemovePlatform(string platformsFile, string tag, string value)
+        {
+            using (XML_Platforms xPlat = new XML_Platforms(platformsFile))
+            {
+                XElement root = XElement.Load(platformsFile);
+                xPlat.RemoveElemByChild(Tag.Platform, tag, value);
+                xPlat.RemoveElemByChild(Tag.PlatformFolder, tag, value);
+            }
+        }
 
         /// <summary>
         /// 
@@ -346,6 +383,8 @@ namespace Common_PMG.XML
                 .Where(x => x.Element(field).Value == value)
                 .Remove();
         }
+
+
         #endregion
 
         /// <summary>
@@ -360,7 +399,7 @@ namespace Common_PMG.XML
             }
             catch (Exception exc)
             {
-                Error?.Invoke(this, new MessageArg( exc.Message));
+                Error?.Invoke(this, new MessageArg(exc.Message));
             }
 
         }
