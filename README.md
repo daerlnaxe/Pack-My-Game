@@ -37,8 +37,8 @@ no image file in the the destination folder. (28/10/2020 to Modify)
 ## Versions
 ### (21/04/2021):
  * Common PMG: Alpha 1.0.0.1
- * PackMyGame: Alpha 1.0.1.0
- * UnPackMyGame: Alpha 2.0.0.2
+ * PackMyGame: Alpha 2.0.0.2
+ * UnPackMyGame: Alpha 1.0.1.0
  
 [See more](https://github.com/daerlnaxe/Pack-My-Game/wiki/Pack-My-Game-*-Development-(En))
 
