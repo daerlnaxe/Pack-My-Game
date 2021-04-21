@@ -35,6 +35,12 @@ no image file in the the destination folder. (28/10/2020 to Modify)
  * It logs everything during the game treatment in a window, and a file.
 		
 ## Versions
+### (21/04/2021):
+ * Common PMG: Alpha 1.0.0.1
+ * PackMyGame: Alpha 1.0.1.0
+ * UnPackMyGame: Alpha 2.0.0.2
+
+
 ### Alpha 2.0.0.0
  * Big changes, the application migrates to wpf system instead of forms.
  * .Net Core + .Net standard for external libraries.
