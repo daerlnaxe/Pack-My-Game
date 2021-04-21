@@ -39,7 +39,8 @@ no image file in the the destination folder. (28/10/2020 to Modify)
  * Common PMG: Alpha 1.0.0.1
  * PackMyGame: Alpha 1.0.1.0
  * UnPackMyGame: Alpha 2.0.0.2
-
+ 
+[See more](https://github.com/daerlnaxe/Pack-My-Game/wiki/Pack-My-Game-*-Development-(En))
 
 ### Alpha 2.0.0.0
  * Big changes, the application migrates to wpf system instead of forms.
