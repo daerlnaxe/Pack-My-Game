@@ -65,9 +65,15 @@ namespace Common_PMG.XML
         #region Lecture verbatim
         public static XElement GetGameNode(string xmlFile, int number = 0, string field = null, string value = null)
         {
-            XElement root = XElement.Load(xmlFile);
+            using (XML_Games xmlPlat = new XML_Games(xmlFile))
+            {
+                return xmlPlat.GetGameNode(number, field, value);
+            }
+        }
 
-            var games = root.Elements("Game");
+        public XElement GetGameNode(int number = 0, string field = null, string value = null)
+        {
+            var games = Root.Elements("Game");
 
             if (!string.IsNullOrEmpty(field) && !string.IsNullOrEmpty(value))
                 games.Elements()
@@ -77,23 +83,29 @@ namespace Common_PMG.XML
             return games.ElementAt(number);
         }
 
+        /*
         public static IEnumerable<XElement> GetNodes(string xmlFile, string what, string field = null, string value = null)
         {
-            XElement root = XElement.Load(xmlFile);
+            using (XML_Games xmlPlat = new XML_Games(xmlFile))
+            {
+                return xmlPlat.GetNodes(what, field, value);
+            }
+        }*/
 
-            IEnumerable<XElement> aApps = null;
+        public IEnumerable<XElement> GetNodes(string what, string field = null, string value = null)
+        {
+            IEnumerable<XElement> elems = null;
             if (string.IsNullOrEmpty(field) || string.IsNullOrEmpty(value))
             {
-                aApps = root.Elements(what);
+                elems = Root.Elements(what);
             }
             else
             {
-                aApps = root.Elements(what)
+                elems = Root.Elements(what)
                             .Where(x => x.Element(field).Value == value);
             }
 
-
-            return aApps;
+            return elems;
         }
 
         /// <summary>
@@ -191,7 +203,6 @@ namespace Common_PMG.XML
 
             return game;
         }
-
 
         /// <summary>
         /// Scrape un jeu en mode InfoGame (basic + qqs infos en plus)
@@ -323,7 +334,6 @@ namespace Common_PMG.XML
             return g;*/
             return gameLB;
         }
-
         public static List<Clone> ListClones(string xmlFile)
         {
             List<Clone> aAppz = new List<Clone>();
@@ -686,38 +696,55 @@ namespace Common_PMG.XML
         /// <param name="platformFile"></param>
         public static void Remove_Game(string iD, string platformFile)
         {
-            XElement xelPlatform = XElement.Load(platformFile);
+            //XElement xelPlatform = XElement.Load(platformFile);
+            using (XML_Games xelPlat = new XML_Games(platformFile))
+            {
+                xelPlat.Remove_Game(iD);
+                xelPlat.Remove_AddApps(iD);
+                xelPlat.Remove_CustomF(iD);
+                xelPlat.Remove_AlternateN(iD);
 
-            /*IEnumerable<XElement> games = from game in xelPlatform.Elements("Game")
-                                          where (string)game.Element("ID").Value == iD
-                                          select game;*/
-
-            xelPlatform.Elements("Game")
-                .Where(x => x.Element("ID").Value == iD)
-                .Remove();
-
-            xelPlatform.Elements("AdditionalApplication")
-                .Where(x => x.Element("GameID").Value == iD)
-                .Remove();
-
-            xelPlatform.Elements("CustomField")
-                .Where(x => x.Element("GameID").Value == iD)
-                .Remove();
-
-            /* if(games.Any())
-             {
-                 foreach (XElement g in games)
-                 {
-                     g.Remove();
-
-                 }
-
-             }
-            */
-            xelPlatform.Save(platformFile);
+                xelPlat.Root.Save(platformFile);
+            }
         }
 
         // --- Non static (ne sauvegarde pas)
+
+        public void Remove_Game(string iD)
+        {
+            /*IEnumerable<XElement> games = from game in xelPlatform.Elements("Game")
+                                    where (string)game.Element("ID").Value == iD
+                                    select game;*/
+
+            Root.Elements("Game")
+                .Where(x => x.Element("ID").Value == iD)
+                .Remove();
+        }
+
+        public void Remove_AddApps(string iD)
+        {
+
+            Root.Elements("AdditionalApplication")
+                .Where(x => x.Element("GameID").Value == iD)
+                .Remove();
+        }
+
+        public void Remove_CustomF(string iD)
+        {
+
+            Root.Elements("CustomField")
+                .Where(x => x.Element("GameID").Value == iD)
+                .Remove();
+
+        }
+
+        public void Remove_AlternateN(string iD)
+        {
+            Root.Elements("AlternateName")
+                .Where(x => x.Element("GameID").Value == iD)
+                .Remove();
+        }
+
 
         /// <summary>
         /// Remove all games with this parameters
@@ -1445,14 +1472,7 @@ namespace Common_PMG.XML
             xelPlatform.Save(platformFile);
         }
 
-
-
-
         // ---
-
-
-
-
 
         public void Dispose()
         {

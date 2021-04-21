@@ -1,13 +1,35 @@
-﻿using System;
+﻿using Common_PMG.JSon;
+using DxLocalTransf.Copy;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Common_PMG.Container
 {
-    public class DataPlus : DataRep
+    [JsonConverter(typeof(DataPlusConverter))]
+    public class DataPlus : DataTrans, IData, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
+        private bool _IsSelected;
+
+        [JsonPropertyName("Default")]
+        public bool IsSelected
+        {
+            get => _IsSelected;
+            set
+            {
+                if (_IsSelected == value)
+                    return;
+
+                _IsSelected = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsSelected)));
+            }
+        }
         public string Id { get; set; }
 
         [JsonPropertyName("Path")]
@@ -40,6 +62,15 @@ namespace Common_PMG.Container
                 Name = n,
                 CurrentPath = p,
                 IsSelected = true
+            };
+        }
+        public static DataPlus MakeNormal(string p)
+        {
+            return new DataPlus()
+            {
+                Name = System.IO.Path.GetFileName(p),
+                CurrentPath = p,
+                IsSelected = false
             };
         }
 

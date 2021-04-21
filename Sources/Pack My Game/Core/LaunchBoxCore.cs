@@ -559,20 +559,20 @@ namespace Pack_My_Game.Core
             gdC.SetApplications = GetFilesForGames(lbGame);
 
             // CheatCodes
-            gdC.SetCheatCodes = GetCheatCodes(toSearch);
+            gdC.SSetCheatCodes = GetCheatCodes(toSearch);
 
             // Manuels
             gdC.SetDefaultManual = GetFileForSpecifics(lbGame.ManualPath);
-            gdC.SetManuals = GetMoreFiles("Manual", toSearch);
+            gdC.SSetManuals = GetMoreFiles("Manual", toSearch);
 
             // Musics 
             gdC.SetDefaultMusic = GetFileForSpecifics(lbGame.MusicPath);
-            gdC.SetMusics = GetMoreFiles("Music", toSearch);
+            gdC.SSetMusics = GetMoreFiles("Music", toSearch);
 
             // Videos
             gdC.SetDefaultVideo = GetFileForSpecifics(lbGame.VideoPath);
             gdC.SetDefaultThemeVideo = GetFileForSpecifics(lbGame.ThemeVideoPath);
-            gdC.SetVideos = GetMoreFiles("Video", toSearch);
+            gdC.SSetVideos = GetMoreFiles("Video", toSearch);
 
             //GetMoreFiles(toSearch, gpX.CompVideos, "Video", gpX.VideoPath, gpX.ThemeVideoPath);
 
@@ -619,7 +619,7 @@ namespace Pack_My_Game.Core
                 foreach (string fileName in cuecont.Files)
                 {
                     // Donne le lien complet vers le fichier
-                    games.Add((DataPlus)DataPlus.MakeNormal(Path.Combine(sourceFold, fileName)));
+                    games.Add(DataPlus.MakeNormal(Path.Combine(sourceFold, fileName)));
                 }
             }
 
@@ -896,7 +896,7 @@ namespace Pack_My_Game.Core
             //return gpAssign;
         }
 
-        private void PrepareFile(DataRep fichier, string destLocation, bool keepStruct, PlatformFolder folder)
+        private void PrepareFile(DataTrans fichier, string destLocation, bool keepStruct, PlatformFolder folder)
         {
             string futurLink = string.Empty;
             //tail = string.Empty;
@@ -943,12 +943,19 @@ namespace Pack_My_Game.Core
 
         #endregion
 
-        
+
         private GamePaths MakeGamePaths(LBGame lbGame, GameDataCont gdC, Folder tree)
         {
             GamePaths gpX = GamePaths.CreateBasic(lbGame);
             //  gpX.ApplicationPath = AssignDefaultPath(tree.Children[Common.Games].Path, gdC.DefaultApp);
-            gpX.Applications = gdC.Apps;
+            gpX.Applications = gdC.Apps.Select(x =>
+                                        new DataPlus()
+                                        {
+                                            Id = x.Id,
+                                            Name = x.Name,
+                                            CurrentPath = x.Name,
+                                            IsSelected = x.IsSelected,
+                                        }).ToList();
 
             gpX.ManualPath = AssignDefaultPath(tree.Children[Common.Manuals].Path, gdC.DefaultManual);
             gpX.MusicPath = AssignDefaultPath(tree.Children[Common.Musics].Path, gdC.DefaultMusic);
@@ -976,7 +983,7 @@ namespace Pack_My_Game.Core
 
             HeTrace.WriteLine("[CopyFiles] All files except images");
             // Fusion des fichiers sauf les images
-            List<DataRep> Fichiers = new List<DataRep>();
+            List<DataTrans> Fichiers = new List<DataTrans>();
             Fichiers.AddRange(gdC.Apps);
             Fichiers.AddRange(gdC.CheatCodes);
             Fichiers.AddRange(gdC.Manuals);

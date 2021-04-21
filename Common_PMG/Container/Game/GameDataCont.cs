@@ -34,30 +34,24 @@ namespace Common_PMG.Container.Game
 
 
 
-        public DataRep DefaultApp { get; private set; }
+        public DataPlus DefaultApp { get;          private set;        }
         public DataRep DefaultManual { get; private set; }
         public DataRep DefaultMusic { get; private set; }
         public DataRep DefaultVideo { get; private set; }
         public DataRep DefaultThemeVideo { get; private set; }
 
-
+        /*
         public string SetDefaultApplication
         {
             set
             {
                 if (!string.IsNullOrEmpty(value))
                 {
-                    var dr = DataRep.MakeChosen(value);
+                    var dr = DataPlus.MakeChosen(value);
                     Apps.Add((DataPlus)dr);
                     DefaultApp = dr;
                 }
             }
-        }
-        /*
-        public void UnsetDefaultApp()
-        {
-            Apps.Remove(DefaultApp);
-            DefaultApp = null;
         }*/
 
         public string SetDefaultManual
@@ -155,7 +149,54 @@ namespace Common_PMG.Container.Game
 
         // ---
 
-        public List<string> SetCheatCodes
+        public List<DataPlus> SetApplications
+        {
+            set
+            {
+                foreach (DataPlus app in value)
+                {
+                    if (app.IsSelected)
+                        DefaultApp = app;
+                }
+
+                Apps = value;
+
+            }
+
+        }
+        public List<string> SSetApplications
+        {
+            set
+            {
+                foreach (var f in value)
+                {
+                    //if(Apps.FirstOrDefault(x => x.CurrentPath.Equals(f) )==null))
+                    AddWVerif(DataPlus.MakeNormal(f), Apps);
+                }
+            }
+        }
+
+        public void RemoveApp(DataPlus app)
+        {
+            if (app == DefaultApp)
+                DefaultApp = null;
+
+            Apps.Remove(app);
+        }
+
+
+
+        public List<DataRep> SetCheatCodes
+        {
+            set
+            {
+                foreach (var f in value)
+                {
+                    AddWVerif(f, CheatCodes);
+                }
+            }
+        }
+        public List<string> SSetCheatCodes
         {
             set
             {
@@ -166,7 +207,17 @@ namespace Common_PMG.Container.Game
             }
         }
 
-        public List<string> SetManuals
+        public List<DataRep> SetManuals
+        {
+            set
+            {
+                foreach (var f in value)
+                {
+                    AddWVerif(f, Manuals);
+                }
+            }
+        }
+        public List<string> SSetManuals
         {
             set
             {
@@ -178,7 +229,17 @@ namespace Common_PMG.Container.Game
         }
 
 
-        public List<string> SetMusics
+        public List<DataRep> SetMusics
+        {
+            set
+            {
+                foreach (var f in value)
+                {
+                    AddWVerif(f, Musics);
+                }
+            }
+        }
+        public List<string> SSetMusics
         {
             set
             {
@@ -189,7 +250,17 @@ namespace Common_PMG.Container.Game
             }
         }
 
-        public List<string> SetVideos
+        public List<DataRep> SetVideos
+        {
+            set
+            {
+                foreach (var f in value)
+                {
+                    AddWVerif(f, Videos);
+                }
+            }
+        }
+        public List<string> SSetVideos
         {
             set
             {
@@ -214,22 +285,19 @@ namespace Common_PMG.Container.Game
         }*/
 
 
-        public List<DataPlus> SetApplications
+
+
+
+
+        private void AddWVerif<T>(T fichier, List<T> liste) where T : IData
         {
-            set
-            {
-                foreach (var app in value)
-                {
-                    if (app.IsSelected)
-                        DefaultApp = app;
-                }
+            foreach (var fr in liste)
+                if (fr.CurrentPath.Equals(fichier.CurrentPath))
+                    return;
 
-                Apps = value;
-            }
 
+            liste.Add(fichier);
         }
-
-
 
         private void AddWVerif(string fichier, List<DataRep> liste)
         {
@@ -237,39 +305,28 @@ namespace Common_PMG.Container.Game
                 if (fr.CurrentPath.Equals(fichier))
                     return;
 
-
             liste.Add(DataRep.MakeNormal(fichier));
         }
 
-        /*     private void AddWVerif(string fichier, List<DataPlus> liste)
-             {
-                 foreach (var fr in liste)
-                     if (fr.CurrentPath.Equals(fichier))
-                         return;
 
-                 liste.Add(DataRep.MakeNormal());
-             }*/
+            /// <summary>
+            /// Reinitialize a list with a collection
+            /// </summary>
+            /// <param name="list"></param>
+            /// <param name="collection"></param>
+            /// <param name="defauts"></param>
+            public void Reinitialize(List<DataRep> list, IEnumerable<DataRep> collection)
+            {
+                list.Clear();
+                foreach (var elem in collection)
+                    list.Add(elem);
+                //
+            }
 
-
-
-        /// <summary>
-        /// Reinitialize a list with a collection
-        /// </summary>
-        /// <param name="list"></param>
-        /// <param name="collection"></param>
-        /// <param name="defauts"></param>
-        public void Reinitialize(List<DataRep> list, IEnumerable<DataRep> collection)
-        {
-            list.Clear();
-            foreach (var elem in collection)
-                list.Add(elem);
-            //
-        }
-
-        public void SetDefault(string propertyName, DataRep value)
-        {
-            this.GetType().GetProperty(propertyName).SetValue(this, value);
-        }
+            public void SetDefault(string propertyName, DataRep value)
+            {
+                this.GetType().GetProperty(propertyName).SetValue(this, value);
+            }
 
 
 
@@ -288,13 +345,14 @@ namespace Common_PMG.Container.Game
               };
           }*/
 
-        // ---
+            // ---
 
 
         public static explicit operator GameDataCont(GamePaths v)
         {
             GameDataCont GDC = new GameDataCont(v.Title);
-            GDC.Apps = v.Applications;
+            GDC.SetApplications = v.Applications;
+            //GDC.SetDefaultApplication = v.Applications.Select
 
 
             GDC.SetDefaultManual = v.ManualPath;

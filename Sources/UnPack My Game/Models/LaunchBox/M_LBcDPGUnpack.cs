@@ -36,7 +36,7 @@ namespace UnPack_My_Game.Models.LaunchBox
 
                 foreach (var file in ofd.FileNames)
                 {
-                    if (Elements.FirstOrDefault((x) => x.ALinkToThePath.Equals(file)) == null)
+                    if (Elements.FirstOrDefault((x) => x.CurrentPath.Equals(file)) == null)
                         Elements.Add(new DataRep(file));
                 }
                 Test_HasElement(Elements, nameof(Elements));

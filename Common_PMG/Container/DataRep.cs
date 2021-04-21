@@ -10,7 +10,7 @@ namespace Common_PMG.Container
     /// <summary>
     /// File representation
     /// </summary>
-    public class DataRep : DataTrans, INotifyPropertyChanged
+    public class DataRep : DataTrans, IData, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Common_PMG.XML
 {
-    public class Tag
+    public static class Tag
     {
         #region Common
         public static string Name => "Name";
@@ -13,15 +13,19 @@ namespace Common_PMG.XML
 
 
         #region Games
-        public static string AddApp = "AdditionnalApplication";
+        public static string AddApp = "AdditionalApplication";
         public static string AltName = "AlternateName";
+        public static string AppPath = "ApplicationPath";
         public static string CustField = "CustomField";
         public static string Game = "Game";
         public static string GameId = "GameID";
+        public static string ManPath = "ManualPath";
+        public static string MusPath = "MusicPath";
+        public static string VidPath= "VideoPath";
+        public static string ThVidPath = "ThemeVideoPath";
         /// <summary>
         /// ID
         /// </summary>
-        public static string Id = "ID";
         public static string ManualP = "ManualPath";
         #endregion
 

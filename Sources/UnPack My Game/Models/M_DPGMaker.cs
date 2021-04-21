@@ -30,8 +30,8 @@ namespace UnPack_My_Game.Graph
 
 
         #region Chosen
-        DataRep _ChosenGame;
-        public DataRep ChosenGame
+        DataPlus _ChosenGame;
+        public DataPlus ChosenGame
         {
             get => _ChosenGame;
             set
@@ -100,8 +100,8 @@ namespace UnPack_My_Game.Graph
 
         //  public Language Lang => Common.ObjectLang;
 
-        public DataRep SelectedGame { get; set; }
-        public ObservableCollection<DataRep> GamesCollection { get; set; } = new ObservableCollection<DataRep>();
+        public DataPlus SelectedGame { get; set; }
+        public ObservableCollection<DataPlus> GamesCollection { get; set; } = new ObservableCollection<DataPlus>();
 
         public DataRep SelectedManual { get; set; }
         public ObservableCollection<DataRep> ManualsCollection { get; set; } = new ObservableCollection<DataRep>();
@@ -117,7 +117,7 @@ namespace UnPack_My_Game.Graph
 
 
         public GameDataCont GameDataC { get; }
-  //      public GamePaths GamePaths { get; }
+        public GamePaths GamePaths { get; }
 
 
         public M_DPGMaker(GameDataCont gpC, GamePaths gpx, string root)
@@ -149,18 +149,19 @@ namespace UnPack_My_Game.Graph
             Platform = GamePaths.Platform;
 
             // Création des collections (par rapport au changement de nom
-            MakeCollection(GameDataC.Apps, GamesCollection, PS.Default.Games);
+            GamesCollection = new ObservableCollection<DataPlus>(GameDataC.Apps);
+
             MakeCollection(GameDataC.CheatCodes, CheatsCollection, PS.Default.CheatCodes);
             MakeCollection(GameDataC.Manuals, ManualsCollection, PS.Default.Manuals);
             MakeCollection(GameDataC.Musics, MusicsCollection, PS.Default.Musics);
             MakeCollection(GameDataC.Videos, VideosCollection, PS.Default.Videos);
 
             // Initialisation des fichiers par défaut.
-            ChosenGame = GamesCollection.FirstOrDefault(x => x.Name.Equals(GameDataC.DefaultApp?.ALinkToThePath));
-            ChosenManual = ManualsCollection.FirstOrDefault(x => x.Name.Equals(GameDataC.DefaultManual?.ALinkToThePath));
-            ChosenMusic = MusicsCollection.FirstOrDefault(x => x.Name.Equals(GameDataC.DefaultMusic?.ALinkToThePath));
-            ChosenVideo = VideosCollection.FirstOrDefault(x => x.Name.Equals(GameDataC.DefaultVideo?.ALinkToThePath));
-            ChosenThemeVideo = VideosCollection.FirstOrDefault(x => x.Name.Equals(GameDataC.DefaultThemeVideo?.ALinkToThePath));
+            ChosenGame = GamesCollection.FirstOrDefault(x => x.Name.Equals(GameDataC.DefaultApp?.CurrentPath));
+            ChosenManual = ManualsCollection.FirstOrDefault(x => x.Name.Equals(GameDataC.DefaultManual?.CurrentPath));
+            ChosenMusic = MusicsCollection.FirstOrDefault(x => x.Name.Equals(GameDataC.DefaultMusic?.CurrentPath));
+            ChosenVideo = VideosCollection.FirstOrDefault(x => x.Name.Equals(GameDataC.DefaultVideo?.CurrentPath));
+            ChosenThemeVideo = VideosCollection.FirstOrDefault(x => x.Name.Equals(GameDataC.DefaultThemeVideo?.CurrentPath));
         }
 
         private void MakeCollection(List<DataRep> srcCollected, ObservableCollection<DataRep> targetedCollec, string mediatype)
@@ -171,8 +172,8 @@ namespace UnPack_My_Game.Graph
             {
                 DataRep dr = new DataRep()
                 {
-                    Name = elem.ALinkToThePath,
-                    ALinkToThePath = Path.GetFullPath(elem.ALinkToThePath, pRoot),
+                    Name = elem.CurrentPath,
+                    CurrentPath = Path.GetFullPath(elem.CurrentPath, pRoot),
                     IsSelected = elem.IsSelected,
                 };
 
@@ -186,7 +187,7 @@ namespace UnPack_My_Game.Graph
 
         internal void Game_Handler(object tag)
         {
-                SetDefault(tag, GamesCollection, (x) => ChosenGame = x);
+            SetDefault((DataPlus)tag, GamesCollection, (x) => ChosenGame = x);
             /* else
                  UnsetDefault(tag, (x) => ChosenGame = x);*/
         }
@@ -194,7 +195,7 @@ namespace UnPack_My_Game.Graph
         internal void Manual_Handler(object tag, bool? isChecked)
         {
             if (isChecked == true)
-                SetDefault(tag, ManualsCollection, (x) => ChosenManual = x);
+                SetDefault((DataRep)tag, ManualsCollection, (x) => ChosenManual = x);
             /* else
                  UnsetDefault(tag, (x) => ChosenManual = x);*/
         }
@@ -202,7 +203,7 @@ namespace UnPack_My_Game.Graph
         internal void Music_Handler(object tag, bool? isChecked)
         {
             if (isChecked == true)
-                SetDefault(tag, MusicsCollection, (x) => ChosenMusic = x);
+                SetDefault((DataRep)tag, MusicsCollection, (x) => ChosenMusic = x);
         }
 
 
@@ -222,10 +223,8 @@ namespace UnPack_My_Game.Graph
                 UnsetDefault(selected, (x) => ChosenThemeVideo = x);
         }
 
-        private void SetDefault(object selected, ObservableCollection<DataRep> collection, Action<DataRep> SetChosen)
+        private void SetDefault<T>(T dr, ObservableCollection<T> collection, Action<T> SetChosen) where T: class, IData
         {
-            DataRep dr = (DataRep)selected;
-
             foreach (var elem in collection)
                 if (dr != elem)
                     elem.IsSelected = false;
@@ -354,7 +353,7 @@ namespace UnPack_My_Game.Graph
             //string path = Path.Combine(Root, Common.Manuals, SelectedManual);
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = SelectedManual.ALinkToThePath;
+            p.StartInfo.FileName = SelectedManual.CurrentPath;
             p.Start();
 
         }
@@ -376,7 +375,7 @@ namespace UnPack_My_Game.Graph
         {
             if (SelectedManual != null)
             {
-                OpDFiles.Trash(SelectedManual.ALinkToThePath);
+                OpDFiles.Trash(SelectedManual.CurrentPath);
                 LoadManuals();
             }
         }
@@ -400,7 +399,7 @@ namespace UnPack_My_Game.Graph
             //string path = Path.Combine(Root, Common.Musics, SelectedMusic);
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = SelectedMusic.ALinkToThePath;
+            p.StartInfo.FileName = SelectedMusic.CurrentPath;
             p.Start();
 
         }
@@ -409,7 +408,7 @@ namespace UnPack_My_Game.Graph
         {
             if (SelectedMusic != null)
             {
-                OpDFiles.Trash(SelectedMusic.ALinkToThePath);
+                OpDFiles.Trash(SelectedMusic.CurrentPath);
                 LoadMusics();
             }
         }
@@ -425,7 +424,7 @@ namespace UnPack_My_Game.Graph
             //string path = Path.Combine(Root, Common.Videos, SelectedVideo);
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = SelectedVideo.ALinkToThePath;
+            p.StartInfo.FileName = SelectedVideo.CurrentPath;
             p.Start();
         }
 
@@ -457,7 +456,7 @@ namespace UnPack_My_Game.Graph
         {
             if (SelectedVideo != null)
             {
-                OpDFiles.Trash(SelectedVideo.ALinkToThePath);
+                OpDFiles.Trash(SelectedVideo.CurrentPath);
                 LoadVideos();
             }
         }
@@ -579,7 +578,8 @@ namespace UnPack_My_Game.Graph
             if (HasErrors)
                 return false;
 
-            GamePaths.ApplicationPath = this.ChosenGame.Name;
+            /*GamePaths.ApplicationPath = this.ChosenGame.Name;*/
+            GamePaths.Applications = GamesCollection.ToList();
             GamePaths.ManualPath = this.ChosenManual == null ? null: ChosenManual.Name;
             GamePaths.MusicPath = this.ChosenMusic == null? null: ChosenMusic.Name;
             GamePaths.VideoPath = this.ChosenVideo == null ? null: ChosenVideo.Name;

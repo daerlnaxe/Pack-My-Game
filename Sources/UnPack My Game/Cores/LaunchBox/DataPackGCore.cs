@@ -4,6 +4,8 @@ using AsyncProgress.Cont;
 using Common_PMG.Container;
 using Common_PMG.Container.Game;
 using Common_PMG.XML;
+using DxPaths.Windows;
+using DxTBoxCore.Common;
 using Hermes;
 using Hermes.Cont;
 using Hermes.Messengers;
@@ -126,22 +128,6 @@ namespace UnPack_My_Game.Cores
             if (!File.Exists(machineXMLFile))
                 XML_Games.NewPlatform(machineXMLFile);
 
-            // Lecture du fichier EBGame
-            string xmlGame = null;
-            if (File.Exists(Path.Combine(gamePath, "TBGame.xml")))
-                xmlGame = Path.Combine(gamePath, "TBGame.xml");
-            else if (File.Exists(Path.Combine(gamePath, "EBGame.xml")))
-                xmlGame = Path.Combine(gamePath, "EBGame.xml");
-
-
-            if (xmlGame == null)
-                throw new Exception("No XML file to inject");
-
-            // Lecture du fichier
-            XElement xelGame = XML_Games.GetGameNode(xmlGame, 0);
-
-            // Modification du fichier xml pour l'injection
-
             // Backup platform file
             if (!backupDone)
             {
@@ -150,7 +136,7 @@ namespace UnPack_My_Game.Cores
                 backupDone = true;
             }
 
-
+            InjectInXMLFile(gamePath, gdC, machineXMLFile);
 
 
         }
@@ -165,28 +151,38 @@ namespace UnPack_My_Game.Cores
 
             // Games
             tmp = Path.Combine(root, Default.Games);
-            gdc.SetDefaultApplication = gpX.ApplicationPath == null ? null : Path.GetFullPath(gpX.ApplicationPath, tmp);
-            gdc.SetApplications = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();
+            gdc.SetApplications = gpX.Applications.Select(x =>
+                                        new DataPlus()
+                                        {
+                                            Id = x.Id,
+                                            Name = x.Name,
+                                            CurrentPath = Path.GetFullPath(x.CurrentPath, tmp),
+                                            IsSelected = x.IsSelected,
+                                        }).ToList();
+
+            gdc.SSetApplications = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();
+            /*gdc.SetDefaultApplication = gpX.ApplicationPath == null ? null : Path.GetFullPath(gpX.ApplicationPath, tmp);
+            gdc.SetApplications = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();*/
 
             // Manuals
             tmp = Path.Combine(root, Default.Manuals);
             gdc.SetDefaultManual = gpX.ManualPath == null ? null : Path.GetFullPath(gpX.ManualPath, tmp);
-            gdc.SetManuals = Directory.GetFiles(Path.Combine(tmp), "*.*", SearchOption.AllDirectories).ToList();
+            gdc.SSetManuals = Directory.GetFiles(Path.Combine(tmp), "*.*", SearchOption.AllDirectories).ToList();
 
             // Musics
             tmp = Path.Combine(root, Default.Musics);
             gdc.SetDefaultMusic = gpX.MusicPath == null ? null : Path.GetFullPath(gpX.MusicPath, tmp);
-            gdc.SetMusics = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();
+            gdc.SSetMusics = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();
 
             // Videos
             tmp = Path.Combine(root, Default.Videos);
             gdc.SetDefaultVideo = gpX.VideoPath == null ? null : Path.GetFullPath(gpX.VideoPath, root);
             gdc.SetDefaultThemeVideo = gpX.ThemeVideoPath == null ? null : Path.GetFullPath(gpX.ThemeVideoPath, root);
-            gdc.SetVideos = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();
+            gdc.SSetVideos = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();
 
             // Cheat Codes
             tmp = Path.Combine(root, Default.CheatCodes);
-            gdc.SetCheatCodes = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();
+            gdc.SSetCheatCodes = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();
 
             // Images
             tmp = Path.Combine(root, Default.Images);
@@ -265,7 +261,93 @@ namespace UnPack_My_Game.Cores
         }
 
 
+        private void InjectInXMLFile(string gamePath, GameDataCont gdC, string xmlPlatform)
+        {
+            DataPlus defGame = gdC.Apps.FirstOrDefault(x => x.IsSelected);
 
+            if (defGame == null)
+                throw new Exception("No default game chosen");
+
+            // Lecture du fichier EBGame
+            string xmlGame = null;
+            if (File.Exists(Path.Combine(gamePath, "TBGame.xml")))
+                xmlGame = Path.Combine(gamePath, "TBGame.xml");
+            else if (File.Exists(Path.Combine(gamePath, "EBGame.xml")))
+                xmlGame = Path.Combine(gamePath, "EBGame.xml");
+
+
+            if (xmlGame == null)
+                throw new Exception("No XML file to inject");
+
+
+            // Vérification pour voir si le jeu est présent
+            using (XML_Games xmlSrc = new XML_Games(xmlGame))
+            using (XML_Games xmlPlat = new XML_Games(xmlPlatform))
+            {
+                bool? remove = false;
+                if (xmlPlat.Exists(GameTag.ID, defGame.Id))
+                    remove = IHMStatic.AskDxMBox("Game is already present, remove it ? ", "Question", E_DxButtons.No | E_DxButtons.Yes, defGame.Name);
+
+                // On enlève si désiré
+                if (remove == true)
+                {
+                    xmlPlat.Remove_Game(defGame.Id);
+                    xmlPlat.Remove_AddApps(defGame.Id);
+                    xmlPlat.Remove_CustomF(defGame.Id);
+                    xmlPlat.Remove_AlternateN(defGame.Id);
+                }
+
+                // --- Récupération du jeu.
+                XElement xelGame = xmlSrc.GetGameNode();
+
+                // Modifications
+                // App
+                xelGame.Element(Tag.AppPath).Value = DxPath.To_RelativeOrNull(Default.LastLBpath, defGame.DestPath);
+                // Manuel
+                xelGame.Element(Tag.ManPath).Value = gdC.DefaultManual == null ? string.Empty :
+                        DxPath.To_RelativeOrNull(Default.LastLBpath, gdC.DefaultManual?.DestPath);
+                // Musique
+                xelGame.Element(Tag.MusPath).Value = gdC.DefaultMusic == null ? string.Empty :
+                        DxPath.To_RelativeOrNull(Default.LastLBpath, gdC.DefaultMusic?.DestPath);
+                // Video
+                xelGame.Element(Tag.VidPath).Value = gdC.DefaultVideo == null ? string.Empty :
+                        DxPath.To_RelativeOrNull(Default.LastLBpath, gdC.DefaultVideo?.DestPath);
+                // ThemeVideo
+                xelGame.Element(Tag.ThVidPath).Value = gdC.DefaultThemeVideo == null ? string.Empty :
+                        DxPath.To_RelativeOrNull(Default.LastLBpath, gdC.DefaultThemeVideo.DestPath);
+
+                // --- Récupération des clones + modification
+                var xelClones = xmlSrc.GetNodes(Tag.AddApp);
+                foreach (XElement clone in xelClones)
+                {
+                    var file = gdC.Apps.FirstOrDefault(x => x.Id == clone.Element(CloneTag.Id).Value);
+                    if (file != null)
+                        clone.Element(Tag.AppPath).Value = 
+                            DxPath.To_RelativeOrNull(Default.LastLBpath, file.DestPath);
+                }
+
+                // --- Récupération des Custom Fields
+                var xelCFields = xmlSrc.GetNodes(Tag.CustField);
+
+                // --- Récupération des Alternate Names
+                var xelANs = xmlSrc.GetNodes(Tag.AltName);
+
+                // --------------------------------- Injection ------------------
+                xmlPlat.InjectGame(xelGame);
+                xmlPlat.InjectAddApps(xelClones);
+                xmlPlat.InjectCustomF(xelCFields);
+                xmlPlat.InjectAltName(xelANs);
+
+                xmlPlat.Root.Save(xmlPlatform);
+            }
+            /*
+                    elem.Value = DxPath.To_RelativeOrNull(Default.LastLBpath, defGame.DestPath);
+            }
+
+
+            // Modification du fichier xml pour l'injection
+            */
+        }
 
         #endregion
 

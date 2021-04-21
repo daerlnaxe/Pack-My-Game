@@ -14,7 +14,7 @@
 - 7z and zip compression "</Description>
     <Copyright>Copyright ©  2018-2038 Daerlnaxe Software</Copyright>
     <Company>Daerlnaxe Software</Company>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>2.0.0.2</AssemblyVersion>
     <FileVersion>2.0.0.1</FileVersion>
   </PropertyGroup>
 

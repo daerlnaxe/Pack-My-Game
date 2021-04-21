@@ -252,7 +252,7 @@ namespace Pack_My_Game.Models
             bool ok = true;
             foreach (ShortGame g in SelectedGames)
             {
-                GamePaths game = (GamePaths)XML_Games.Scrap_LBGame<LBGame>(platformXmlFile, Tag.Id, g.Id);
+                GamePaths game = (GamePaths)XML_Games.Scrap_LBGame<LBGame>(platformXmlFile, GameTag.ID, g.Id);
 
                 string res = LaunchBoxFunc.CheckGameValidity(game);
 

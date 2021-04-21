@@ -1050,6 +1050,15 @@
           "bin/placeholder/DxLocalTransf.dll": {}
         }
       },
+      "DxPaths/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/DxPaths.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DxPaths.dll": {}
+        }
+      },
       "DxTBoxCore/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -3323,6 +3332,11 @@
       "path": "../../../DxLocalTrans/DxLocalTrans/DxLocalTransf.csproj",
       "msbuildProject": "../../../DxLocalTrans/DxLocalTrans/DxLocalTransf.csproj"
     },
+    "DxPaths/1.0.0": {
+      "type": "project",
+      "path": "../../../../../Clouds/GDrive - Dx/Programmation/CSharp/DxPaths/DxPaths.csproj",
+      "msbuildProject": "../../../../../Clouds/GDrive - Dx/Programmation/CSharp/DxPaths/DxPaths.csproj"
+    },
     "DxTBoxCore/1.0.0": {
       "type": "project",
       "path": "../../../DxTBoxCore/Sources/DxTBoxCore.csproj",
@@ -3354,6 +3368,7 @@
       "AreaSelect >= 1.0.0",
       "Common_PMG >= 1.0.0",
       "DotNetZip >= 1.15.0",
+      "DxPaths >= 1.0.0",
       "DxTBoxCore >= 1.0.0",
       "HashCalc >= 1.0.0",
       "Hermes >= 1.0.0",
@@ -3395,6 +3410,9 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
+            "E:\\Clouds\\GDrive - Dx\\Programmation\\CSharp\\DxPaths\\DxPaths.csproj": {
+              "projectPath": "E:\\Clouds\\GDrive - Dx\\Programmation\\CSharp\\DxPaths\\DxPaths.csproj"
+            },
             "E:\\Programmation\\Git-Hub\\AreaSelect\\AreaSelect.csproj": {
               "projectPath": "E:\\Programmation\\Git-Hub\\AreaSelect\\AreaSelect.csproj"
             },

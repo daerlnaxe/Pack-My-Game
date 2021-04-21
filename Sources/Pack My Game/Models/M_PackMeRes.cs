@@ -39,8 +39,8 @@ namespace Pack_My_Game.Models
         public Language Lang => Common.ObjectLang;
 
         #region Chosen
-        DataRep _ChosenGame;
-        public DataRep ChosenGame
+        DataPlus _ChosenGame;
+        public DataPlus ChosenGame
         {
             get => _ChosenGame;
             set
@@ -188,7 +188,7 @@ namespace Pack_My_Game.Models
 
         internal void LoadFiles()
         {
-          //  LoadGames();
+            //  LoadGames();
             LoadManuals();
             LoadMusics();
             LoadVideos();
@@ -322,7 +322,7 @@ namespace Pack_My_Game.Models
         internal void Game_Handler(object tag, bool? isChecked)
         {
             if (isChecked == true)
-                SetDefault(tag, GamesCollection, (x) => ChosenGame = x);
+                SetDefault((DataPlus)tag, GamesCollection, (x) => ChosenGame = x);
             /* else
                  UnsetDefault(tag, (x) => ChosenGame = x);*/
         }
@@ -330,7 +330,7 @@ namespace Pack_My_Game.Models
         internal void Manual_Handler(object tag, bool? isChecked)
         {
             if (isChecked == true)
-                SetDefault(tag, ManualsCollection, (x) => ChosenManual = x);
+                SetDefault((DataRep)tag, ManualsCollection, (x) => ChosenManual = x);
             /* else
                  UnsetDefault(tag, (x) => ChosenManual = x);*/
         }
@@ -338,7 +338,7 @@ namespace Pack_My_Game.Models
         internal void Music_Handler(object tag, bool? isChecked)
         {
             if (isChecked == true)
-                SetDefault(tag, MusicsCollection, (x) => ChosenMusic = x);
+                SetDefault((DataRep)tag, MusicsCollection, (x) => ChosenMusic = x);
             /*   else
                    UnsetDefault(tag, (x) => ChosenMusic = x);*/
 
@@ -361,9 +361,8 @@ namespace Pack_My_Game.Models
         }
 
 
-        private void SetDefault<T>(object selected, ObservableCollection<T> collection, Action<DataRep> SetChosen)where T: DataRep
+        private void SetDefault<T>(T dr, ObservableCollection<T> collection, Action<T> SetChosen) where T : class, IData
         {
-            T dr = (T)selected;
 
             foreach (var elem in collection)
                 if (dr != elem)

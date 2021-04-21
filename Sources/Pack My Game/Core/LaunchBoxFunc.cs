@@ -24,7 +24,7 @@ namespace Pack_My_Game.Core
             IEnumerable<ShortGame> filteredGames = new List<ShortGame>( selectedGames);
             foreach(var g in filteredGames)
             {                
-                GamePaths game = (GamePaths)XML_Games.Scrap_LBGame<LBGame>(platformXmlFile, Tag.Id, g.Id);              
+                GamePaths game = (GamePaths)XML_Games.Scrap_LBGame<LBGame>(platformXmlFile, GameTag.ID, g.Id);              
 
                 string? res = CheckGameValidity(game);
 

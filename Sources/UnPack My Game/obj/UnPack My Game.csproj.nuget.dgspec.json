@@ -4,6 +4,16 @@
     "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\UnPack My Game\\UnPack My Game.csproj": {}
   },
   "projects": {
+    "E:\\Clouds\\GDrive - Dx\\Programmation\\CSharp\\DxPaths\\DxPaths.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\Clouds\\GDrive - Dx\\Programmation\\CSharp\\DxPaths\\DxPaths.csproj",
+        "projectName": "DxPaths",
+        "projectPath": "E:\\Clouds\\GDrive - Dx\\Programmation\\CSharp\\DxPaths\\DxPaths.csproj"
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
     "E:\\Programmation\\Git-Hub\\AreaSelect\\AreaSelect.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -621,6 +631,9 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
+              "E:\\Clouds\\GDrive - Dx\\Programmation\\CSharp\\DxPaths\\DxPaths.csproj": {
+                "projectPath": "E:\\Clouds\\GDrive - Dx\\Programmation\\CSharp\\DxPaths\\DxPaths.csproj"
+              },
               "E:\\Programmation\\Git-Hub\\AreaSelect\\AreaSelect.csproj": {
                 "projectPath": "E:\\Programmation\\Git-Hub\\AreaSelect\\AreaSelect.csproj"
               },

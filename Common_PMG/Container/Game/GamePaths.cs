@@ -21,6 +21,7 @@ namespace Common_PMG.Container.Game
         // ---
 
         //   public string ApplicationPath { get; set; }
+        [JsonPropertyName("Games")]
         public List<DataPlus> Applications { get; set; }
 
         // ---
@@ -32,10 +33,13 @@ namespace Common_PMG.Container.Game
 
         public void WriteToJson(string fileName)
         {
-            var writerOptions = new JsonWriterOptions
+            var options = new JsonSerializerOptions()
             {
-                Indented = true
+                WriteIndented = true,
             };
+            #region
+            /*
+ 
 
             using FileStream fs = File.Create(fileName);
             using var writer = new Utf8JsonWriter(fs, options: writerOptions);
@@ -58,21 +62,49 @@ namespace Common_PMG.Container.Game
                 writer.WriteEndObject();
 
                 writer.Flush();
-            }
-            /*var options = new JsonSerializerOptions()
-            {
-                WriteIndented = true,
-            };
+            }*/
+            #endregion
             string jsonString = JsonSerializer.Serialize(this, options).ToString();
-            */
+            
 
-            //File.WriteAllText(fileName, jsonString);
+            File.WriteAllText(fileName, jsonString);
         }
 
         public static T ReadFromJson<T>(string fileName) where T : GamePaths
         {
             string jsonString = File.ReadAllText(fileName);
             return JsonSerializer.Deserialize<T>(jsonString);
+            /*
+
+            byte[] data = File.ReadAllBytes(fileName);
+            Utf8JsonReader reader = new Utf8JsonReader(data);
+
+            T gp = new T();
+
+            while (reader.Read())
+            {
+                switch (reader.TokenType)
+                {
+                    case JsonTokenType.StartObject:
+                        Console.WriteLine("-------------");
+                        break;
+                    case JsonTokenType.EndObject:
+                        break;
+                    case JsonTokenType.StartArray:
+                    case JsonTokenType.EndArray:
+                        break;
+                    case JsonTokenType.PropertyName:
+                        Console.Write($"{reader.GetString()}: ");
+                        break;
+                    case JsonTokenType.String:
+                        Console.WriteLine(reader.GetString());
+                        break;
+                    default:
+                        throw new ArgumentException();
+
+                }
+            }
+            return gp;*/
         }
 
         /// <summary>
