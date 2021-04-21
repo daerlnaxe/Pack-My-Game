@@ -57,5 +57,7 @@ namespace Common_PMG.Container.Game
         /// </remarks>
         [XmlElement(Order = 5)]
         public string Platform { get; set; }
+
+
     }
 }

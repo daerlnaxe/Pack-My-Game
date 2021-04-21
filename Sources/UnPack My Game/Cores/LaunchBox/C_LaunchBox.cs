@@ -2,7 +2,9 @@
 using AsyncProgress.Basix;
 using Common_PMG;
 using Common_PMG.Container;
+using Common_PMG.Container.Game;
 using Common_PMG.XML;
+using DxLocalTransf.Copy;
 using DxTBoxCore.Common;
 using DxTBoxCore.Languages;
 using DxTBoxCore.MBox;
@@ -71,15 +73,15 @@ namespace UnPack_My_Game.Cores
 
         public bool Depacking(DataRep g, string tmpPath)
         {
-            string fileExt = Path.GetExtension(g.ALinkToThePath).TrimStart('.');
+            string fileExt = Path.GetExtension(g.CurrentPath).TrimStart('.');
 
 
             // Décompression
             // Détection du mode
             if (fileExt.Equals("zip", StringComparison.OrdinalIgnoreCase))
-                DepackZip(g.ALinkToThePath, tmpPath);
+                DepackZip(g.CurrentPath, tmpPath);
             else if (fileExt.Equals("7zip", StringComparison.OrdinalIgnoreCase) || fileExt.Equals("7z", StringComparison.OrdinalIgnoreCase))
-                Depack7Zip(g.ALinkToThePath, tmpPath);
+                Depack7Zip(g.CurrentPath, tmpPath);
             else
                 throw new Exception("File format not managed");
 
@@ -140,6 +142,24 @@ namespace UnPack_My_Game.Cores
                     xPlat.Save(platformsFile);
                 }
             }
+        }
+
+
+        protected void CopyFiles(GameDataCont gdC)
+        {
+            var files = new List<DataTrans>();
+            files.AddRange(gdC.Apps);
+            files.AddRange(gdC.Manuals);
+            files.AddRange(gdC.Musics);
+            files.AddRange(gdC.Videos);
+
+            CopyFExt copyObj = new CopyFExt();
+            copyObj.AskToUser += IHMStatic.Ask4_FileConflict2;
+
+            IHMStatic.LaunchDouble(copyObj, ()=> copyObj.CopyN(files), "Copy files");
+            
+            IHMStatic.LaunchDouble(copyObj, ()=> copyObj.CopyN(gdC.Images), "Copy Images files");
+
         }
 
 

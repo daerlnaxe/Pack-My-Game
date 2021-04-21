@@ -10,7 +10,6 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
-using Cst = LaunchBox_XML.Tool;
 using PS = Pack_My_Game.Properties.Settings;
 
 namespace Pack_My_Game.Core
@@ -24,9 +23,9 @@ namespace Pack_My_Game.Core
 
             IEnumerable<ShortGame> filteredGames = new List<ShortGame>( selectedGames);
             foreach(var g in filteredGames)
-            {
-                
-                GamePaths game = (GamePaths)XML_Games.Scrap_LBGame<LBGame>(platformXmlFile, Tag.Id, g.Id);
+            {                
+                GamePaths game = (GamePaths)XML_Games.Scrap_LBGame<LBGame>(platformXmlFile, Tag.Id, g.Id);              
+
                 string? res = CheckGameValidity(game);
 
                 bool? keepit = true;
@@ -49,7 +48,7 @@ namespace Pack_My_Game.Core
         internal static string? CheckGameValidity(GamePaths game)
         {
             string res = null;
-            if (!CheckValidity(game.ApplicationPath))
+            if (!CheckValidity(game.Applications[0]?.CurrentPath))
                 res += $"Game link broken or null\r\n";
 
             if (!CheckValidity(game.ManualPath))

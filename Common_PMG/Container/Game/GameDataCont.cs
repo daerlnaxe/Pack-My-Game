@@ -17,7 +17,8 @@ namespace Common_PMG.Container.Game
     public sealed class GameDataCont
     {
         public string Title { get; set; }
-        public List<DataRep> Apps { get; } = new List<DataRep>();
+
+        public List<DataPlus> Apps { get; private set; } = new List<DataPlus>();
         public List<DataRep> Manuals { get;/* set; */} = new List<DataRep>();
         public List<DataRep> Musics { get; /*set;*/ } = new List<DataRep>();
         public List<DataRep> Videos { get; /*set;*/ } = new List<DataRep>();
@@ -47,16 +48,17 @@ namespace Common_PMG.Container.Game
                 if (!string.IsNullOrEmpty(value))
                 {
                     var dr = DataRep.MakeChosen(value);
-                    Apps.Add(dr);
+                    Apps.Add((DataPlus)dr);
                     DefaultApp = dr;
                 }
             }
         }
+        /*
         public void UnsetDefaultApp()
         {
             Apps.Remove(DefaultApp);
             DefaultApp = null;
-        }
+        }*/
 
         public string SetDefaultManual
         {
@@ -141,23 +143,15 @@ namespace Common_PMG.Container.Game
 
         // ---
 
+        /*
         public void AddApplication(string fichier)
         {
             AddWVerif(fichier, Apps);
         }
+        */
 
 
 
-        public List<string> SetApplications
-        {
-            set
-            {
-                foreach (var f in value)
-                {
-                    AddWVerif(f, Apps);
-                }
-            }
-        }
 
         // ---
 
@@ -220,22 +214,43 @@ namespace Common_PMG.Container.Game
         }*/
 
 
-        private void AddWVerif(string fichier, List<DataRep> liste)
+        public List<DataPlus> SetApplications
         {
-            bool contains = false;
-            foreach (var fr in liste)
-                if (fr.ALinkToThePath.Equals(fichier))
+            set
+            {
+                foreach (var app in value)
                 {
-                    contains = true;
-                    break;
+                    if (app.IsSelected)
+                        DefaultApp = app;
                 }
 
-
-            if (!contains)
-            {
-                liste.Add(DataRep.MakeNormal(fichier));
+                Apps = value;
             }
+
         }
+
+
+
+        private void AddWVerif(string fichier, List<DataRep> liste)
+        {
+            foreach (var fr in liste)
+                if (fr.CurrentPath.Equals(fichier))
+                    return;
+
+
+            liste.Add(DataRep.MakeNormal(fichier));
+        }
+
+        /*     private void AddWVerif(string fichier, List<DataPlus> liste)
+             {
+                 foreach (var fr in liste)
+                     if (fr.CurrentPath.Equals(fichier))
+                         return;
+
+                 liste.Add(DataRep.MakeNormal());
+             }*/
+
+
 
         /// <summary>
         /// Reinitialize a list with a collection
@@ -275,10 +290,13 @@ namespace Common_PMG.Container.Game
 
         // ---
 
+
         public static explicit operator GameDataCont(GamePaths v)
         {
             GameDataCont GDC = new GameDataCont(v.Title);
-            GDC.SetDefaultApplication = v.ApplicationPath;
+            GDC.Apps = v.Applications;
+
+
             GDC.SetDefaultManual = v.ManualPath;
             GDC.SetDefaultMusic = v.MusicPath;
             GDC.SetDefaultVideo = v.VideoPath;

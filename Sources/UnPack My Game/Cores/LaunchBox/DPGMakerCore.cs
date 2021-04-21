@@ -46,7 +46,7 @@ namespace UnPack_My_Game.Cores
                     ArchiveMode mode = ArchiveMode.None;
 
                     string gamePath = Path.Combine(Path.GetTempPath(), Path.GetFileNameWithoutExtension(zF.Name));
-                    string fileExt = Path.GetExtension(zF.ALinkToThePath).TrimStart('.');
+                    string fileExt = Path.GetExtension(zF.CurrentPath).TrimStart('.');
 
                     // Création du dossier de destination
                     Directory.CreateDirectory(gamePath);
@@ -65,7 +65,7 @@ namespace UnPack_My_Game.Cores
                     else if (mode == ArchiveMode.SevenZip)
                         DPG7ZipCore(zF, gamePath);
 
-                    MakeDPG(gamePath, mode, zF.ALinkToThePath) ;
+                    MakeDPG(gamePath, mode, zF.CurrentPath) ;
 
                 }
                 return true;
@@ -87,7 +87,7 @@ namespace UnPack_My_Game.Cores
             {
                 foreach (DataRep game in folders)
                 {
-                    MakeDPG_Folder(game.ALinkToThePath);
+                    MakeDPG_Folder(game.CurrentPath);
                 }
 
                 return true;
@@ -187,7 +187,7 @@ namespace UnPack_My_Game.Cores
             };
 
 
-            IHMStatic.LaunchDouble(zippy, () => zippy.ExtractSpecificFiles(archive.ALinkToThePath, gamePath,
+            IHMStatic.LaunchDouble(zippy, () => zippy.ExtractSpecificFiles(archive.CurrentPath, gamePath,
                                                         "TBGame.xml", "EBGame.xml", "DPGame.json"),
                                                         "Zip Extraction");
             /*var res = PackMe_IHM.ZipCompressFolder(zippy, () => zippy.CompressFolder(
@@ -204,7 +204,7 @@ namespace UnPack_My_Game.Cores
                 IsPaused = this.IsPaused,
             };
 
-            IHMStatic.LaunchDouble(zippy, () => zippy.ExtractSpecificFiles(zF.ALinkToThePath, gamePath,
+            IHMStatic.LaunchDouble(zippy, () => zippy.ExtractSpecificFiles(zF.CurrentPath, gamePath,
                                                         "TBGame.xml", "EBGame.xml", "DPGame.json"),
                                                         "SevenZip Extraction");
         }
@@ -287,20 +287,20 @@ namespace UnPack_My_Game.Cores
             }
             // Vérification des fichiers par défaut;
             string tmp;
-            tmp = $@"{PS.Default.Games}{gpC.DefaultApp?.ALinkToThePath?.Substring(1)}";
+            tmp = $@"{PS.Default.Games}{gpC.DefaultApp?.CurrentPath?.Substring(1)}";
             if (!files.Contains(tmp))
                 gpC.UnsetDefaultApp();
 
-            if (!files.Contains($@"{PS.Default.Manuals}{gpC.DefaultManual?.ALinkToThePath.Substring(1)}"))
+            if (!files.Contains($@"{PS.Default.Manuals}{gpC.DefaultManual?.CurrentPath.Substring(1)}"))
                 gpC.UnsetDefaultManual();
 
-            if (!files.Contains($@"{PS.Default.Musics}{gpC.DefaultMusic?.ALinkToThePath.Substring(1)}"))
+            if (!files.Contains($@"{PS.Default.Musics}{gpC.DefaultMusic?.CurrentPath.Substring(1)}"))
                 gpC.UnsetDefaultMusic();
 
-            if (!files.Contains($@"{PS.Default.Videos}{gpC.DefaultVideo?.ALinkToThePath.Substring(1)}"))
+            if (!files.Contains($@"{PS.Default.Videos}{gpC.DefaultVideo?.CurrentPath.Substring(1)}"))
                 gpC.UnsetDefaultVideo();
 
-            if (!files.Contains($@"{PS.Default.Videos}{gpC.DefaultThemeVideo?.ALinkToThePath.Substring(1)}"))
+            if (!files.Contains($@"{PS.Default.Videos}{gpC.DefaultThemeVideo?.CurrentPath.Substring(1)}"))
                 gpC.UnsetDefaultThemeVideo();
 
             gpC.SetApplications = GameDataCompletion(files, PS.Default.Games, "\\", "\\");

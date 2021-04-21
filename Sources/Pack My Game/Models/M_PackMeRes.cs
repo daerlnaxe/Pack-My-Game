@@ -104,7 +104,7 @@ namespace Pack_My_Game.Models
 
 
         public DataRep SelectedGame { get; set; }
-        public ObservableCollection<DataRep> GamesCollection { get; set; } = new ObservableCollection<DataRep>();
+        public ObservableCollection<DataPlus> GamesCollection { get; set; } = new ObservableCollection<DataPlus>();
 
         public DataRep SelectedManual { get; set; }
         public ObservableCollection<DataRep> ManualsCollection { get; set; } = new ObservableCollection<DataRep>();
@@ -161,12 +161,25 @@ namespace Pack_My_Game.Models
             LoadFiles();
         }
 
-        private void MakeCollection(List<DataRep> srcCollected, ObservableCollection<DataRep> targetedCollec, string mediatype)
+        private void MakeCollection(List<DataPlus> srcCollected, ObservableCollection<DataPlus> targetedCollec, string mediatype)
+        {
+            string pRoot = Path.Combine(Root, mediatype);
+            targetedCollec.Clear();
+            foreach (DataPlus elem in srcCollected)
+            {
+                DataPlus dp = new DataPlus(elem);
+                dp.Name = elem.DestPath.Replace(pRoot, ".");
+                targetedCollec.Add(dp);
+            }
+        }
+
+        private void MakeCollection(IEnumerable<DataRep> srcCollected, ObservableCollection<DataRep> targetedCollec, string mediatype)
         {
             string pRoot = Path.Combine(Root, mediatype);
             targetedCollec.Clear();
             foreach (DataRep elem in srcCollected)
             {
+
                 DataRep dr = DataRep.DataRepFactory(elem);
                 dr.Name = dr.DestPath.Replace(pRoot, ".");
                 targetedCollec.Add(dr);
@@ -175,7 +188,7 @@ namespace Pack_My_Game.Models
 
         internal void LoadFiles()
         {
-            LoadGames();
+          //  LoadGames();
             LoadManuals();
             LoadMusics();
             LoadVideos();
@@ -183,10 +196,10 @@ namespace Pack_My_Game.Models
         }
 
         private void LoadGames()
-        {
+        {/*
             string gamesPath = Path.Combine(Root, Common.Games);
             LoadFiles2(gamesPath, GamesCollection);
-            TestFiles(GamesCollection, ChosenGame);
+            TestFiles(GamesCollection, ChosenGame);*/
         }
 
 
@@ -348,9 +361,9 @@ namespace Pack_My_Game.Models
         }
 
 
-        private void SetDefault(object selected, ObservableCollection<DataRep> collection, Action<DataRep> SetChosen)
+        private void SetDefault<T>(object selected, ObservableCollection<T> collection, Action<DataRep> SetChosen)where T: DataRep
         {
-            DataRep dr = (DataRep)selected;
+            T dr = (T)selected;
 
             foreach (var elem in collection)
                 if (dr != elem)
@@ -378,7 +391,7 @@ namespace Pack_My_Game.Models
 
         #endregion check/uncheck
 
-
+        /*
         /// <summary>
         /// Fonction de copie des fichiers
         /// </summary>
@@ -390,8 +403,8 @@ namespace Pack_My_Game.Models
             {
                 LoadGames();
             }
-        }
-
+        }*/
+        /*
         internal void RemoveGameF()
         {
             if (SelectedGame.IsSelected)
@@ -410,9 +423,9 @@ namespace Pack_My_Game.Models
               {
                   OpDFiles.Trash(SelectedGame.ALinkToThePath);
                   LoadGames();
-              }*/
+              }*//*
         }
-
+    */
 
         #region Manuals
         internal void CopyManualF()
@@ -434,7 +447,7 @@ namespace Pack_My_Game.Models
             //string path = Path.Combine(Root, Common.Manuals, SelectedManual);
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = SelectedManual.ALinkToThePath;
+            p.StartInfo.FileName = SelectedManual.CurrentPath;
             p.Start();
 
         }
@@ -488,7 +501,7 @@ namespace Pack_My_Game.Models
             //string path = Path.Combine(Root, Common.Musics, SelectedMusic);
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = SelectedMusic.ALinkToThePath;
+            p.StartInfo.FileName = SelectedMusic.CurrentPath;
             p.Start();
 
         }
@@ -519,7 +532,7 @@ namespace Pack_My_Game.Models
             //string path = Path.Combine(Root, Common.Videos, SelectedVideo);
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = SelectedVideo.ALinkToThePath;
+            p.StartInfo.FileName = SelectedVideo.CurrentPath;
             p.Start();
         }
 
@@ -653,8 +666,9 @@ namespace Pack_My_Game.Models
                 return false;
 
             // Jeux
-            GameDataC.Reinitialize(GameDataC.Apps, GamesCollection);
-            GameDataC.SetDefault(nameof(GameDataC.DefaultApp), ChosenGame);
+            GameDataC.SetApplications = GamesCollection.ToList();
+            /*GameDataC.Reinitialize(GameDataC.Apps, GamesCollection);
+            GameDataC.SetDefault(nameof(GameDataC.DefaultApp), ChosenGame);*/
             // Cheats
             GameDataC.Reinitialize(GameDataC.CheatCodes, CheatsCollection);
             // Manuals

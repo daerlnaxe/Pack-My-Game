@@ -1,4 +1,5 @@
-﻿using Common_PMG.Container.Game.LaunchBox;
+﻿using Common_PMG.Container.AAPP;
+using Common_PMG.Container.Game.LaunchBox;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,6 +36,36 @@ namespace Common_PMG.Container.Game
 
         [XmlIgnore]
         public string ExploitableFileName { get; set; }
+
+        /*
+        /// <summary>
+        /// Chemin de l'application
+        /// </summary>
+        /// <remarks>
+        /// ex: '..\..\Games\Roms\Sega Mega Drive\Pending\3 Ninjas Kick Back(1994)(Sony Imagesoft) (US).zip'
+        /// </remarks>
+        [XmlIgnore]
+        public string ApplicationPath {get; set;}
+
+        /// <summary>
+        /// Manuel
+        /// </summary>
+        [XmlIgnore]
+        public string ManualPath { get; set; }
+
+        [XmlIgnore]
+        public string MusicPath { get; set; }
+
+        [XmlIgnore]
+        public string VideoPath { get; set; }
+
+        [XmlIgnore]
+        public string ThemeVideoPath { get; set; }
+
+        [XmlIgnore]
+        public List<Clone> AdditionalApplications { get; set; } = new List<Clone>();
+        */
+
 
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Common_PMG.Container
 {
@@ -16,6 +17,7 @@ namespace Common_PMG.Container
 
         private bool _IsSelected;
 
+        [JsonPropertyName("Default")]
         public bool IsSelected
         {
             get => _IsSelected;
@@ -52,7 +54,7 @@ namespace Common_PMG.Container
             return new DataRep()
             {
                 Name = n,
-                ALinkToThePath = p,
+                CurrentPath = p,
             };
 
         }
@@ -60,7 +62,7 @@ namespace Common_PMG.Container
 
         public static DataRep DataRepFactory(DataRep elem)
         {
-            return new DataRep(elem.ALinkToThePath)
+            return new DataRep(elem.CurrentPath)
             {
                 DestPath = elem.DestPath,
                 IsSelected = elem.IsSelected,
@@ -77,7 +79,7 @@ namespace Common_PMG.Container
             return new DataRep()
             {
                 Name = System.IO.Path.GetFileName(link),
-                ALinkToThePath = link,
+                CurrentPath = link,
                 IsSelected = true
             };
         }
@@ -87,10 +89,20 @@ namespace Common_PMG.Container
             return new DataRep()
             {
                 Name = System.IO.Path.GetFileName(link),
-                ALinkToThePath = link,
+                CurrentPath = link,
                 IsSelected = false
             };
         }
 
+        /*
+        public static T MakeNormal<T>(string link) where T : DataRep, new()
+        {
+            return new T()
+            {
+                Name = System.IO.Path.GetFileName(link),
+                CurrentPath = link,
+                IsSelected = false
+            };
+        }*/
     }
 }

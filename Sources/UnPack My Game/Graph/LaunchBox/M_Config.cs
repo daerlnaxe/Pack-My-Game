@@ -128,7 +128,16 @@ namespace UnPack_My_Game.Graph.LaunchBox
             set
             {
                 PS.Default.wCustomFields = value;
-                PS.Default.Save();
+                OnPropertyChanged();
+            }
+        } 
+        
+        public bool WithFolderGameName
+        {
+            get => PS.Default.wGameNameFolder;
+            set
+            {
+                PS.Default.wGameNameFolder = value;
                 OnPropertyChanged();
             }
         }
@@ -176,6 +185,7 @@ namespace UnPack_My_Game.Graph.LaunchBox
             PS.Default.Musics = Musics;
             PS.Default.Videos = Videos;
             PS.Default.wCustomFields = WithCustomFields;
+            PS.Default.wGameNameFolder = this.WithFolderGameName;
             PS.Default.Save();
 
             return true;

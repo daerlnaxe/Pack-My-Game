@@ -63,12 +63,12 @@ namespace Pack_My_Game.IHM
         #region
         private void Add_GameF(object sender, RoutedEventArgs e)
         {
-            Model.CopyGameF();
+            //Model.CopyGameF();
         }
 
         private void Remove_GameF(object sender, RoutedEventArgs e)
         {
-            Model.RemoveGameF();
+            //Model.RemoveGameF();
         }
         #endregion
 

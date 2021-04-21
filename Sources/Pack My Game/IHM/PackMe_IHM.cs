@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using static Common_PMG.Tool;
 
 namespace Pack_My_Game.IHM
 {

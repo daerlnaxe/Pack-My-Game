@@ -282,6 +282,8 @@ namespace Pack_My_Game.Models
         /// </remarks>
         internal void ExtractDefaultFiles()
         {
+            throw new NotImplementedException();
+            /*
             string platformXmlFile = Path.Combine(PS.Default.LBPath, PS.Default.dPlatforms, $"{SelectedPlatform.Name}.xml");
             Platform p = XML_Platforms.GetPlatformPaths(Path.Combine(LaunchBoxPath, PS.Default.fPlatforms), SelectedPlatform.Name);
 
@@ -305,9 +307,9 @@ namespace Pack_My_Game.Models
                 Directory.CreateDirectory(tmp);
                 tmp = Path.Combine(tmp, "DPGame.json");
                 game.WriteToJson(tmp);
-
                 //  Check_AllDefaultFiles(lbGame);
             }
+            */
 
         }
 

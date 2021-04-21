@@ -256,10 +256,6 @@ namespace Common_PMG.Container.Game.LaunchBox
         [XmlIgnore]
         public List<CustomField> CustomFields { get; set; } = new List<CustomField>(); // 2020 initialization here
 
-        //[XmlIgnore] 2021 on a dégagé ça pour une version ou les clones sont récupérés autrement
-        //public List<AdditionalApplication> AdditionalApplications { get; set; } = new List<AdditionalApplication>(); //2020 initialization here
-
-
     }
 
 }

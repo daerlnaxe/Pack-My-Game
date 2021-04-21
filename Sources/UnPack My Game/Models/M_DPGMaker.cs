@@ -117,7 +117,7 @@ namespace UnPack_My_Game.Graph
 
 
         public GameDataCont GameDataC { get; }
-        public GamePaths GamePaths { get; }
+  //      public GamePaths GamePaths { get; }
 
 
         public M_DPGMaker(GameDataCont gpC, GamePaths gpx, string root)
