@@ -5,20 +5,21 @@ using System.IO;
 using System.Text;
 using UnPack_My_Game.Models;
 using UnPack_My_Game.Resources;
-using PS = UnPack_My_Game.Properties.Settings;
+using static UnPack_My_Game.Properties.Settings;
 
 namespace UnPack_My_Game.Graph.LaunchBox
 {
-    public class M_Config: A_Err
+    public class M_Config : A_Err
     {
-        //private string _LaunchBoxPath;
+        private string _LaunchBoxPath;
         public string LaunchBoxPath
         {
-            get => PS.Default.LastLBpath;
+            get => _LaunchBoxPath;
             set
             {
-                PS.Default.LastLBpath = value;
+                _LaunchBoxPath = value;
                 OnPropertyChanged();
+                Remove_Error("Bad Path");
 
                 Test_NullValue(value);
             }
@@ -27,78 +28,74 @@ namespace UnPack_My_Game.Graph.LaunchBox
         // ---
 
         #region Folders
-        //private string _Games;
+        private string _Games;
         public string Games
         {
-            get => PS.Default.Games;
+            get => _Games;
             set
             {
-                PS.Default.Games = value;
+                _Games = value;
                 OnPropertyChanged();
-
                 Test_NullValue(value);
-
             }
         }
 
-
-
-        //private string _CheatCodes;
+        private string _CheatCodes;
         public string CheatCodes
         {
-            get => PS.Default.CheatCodes;
+            get => _CheatCodes;
             set
             {
-                PS.Default.CheatCodes = value;
+                _CheatCodes = value;
                 OnPropertyChanged();
 
                 Test_NullValue(value);
             }
         }
 
-        //public string _Images;
+        public string _Images;
         public string Images
         {
-            get => PS.Default.Images;
+            get => _Images;
             set
             {
-                PS.Default.Images = value;
+                _Images = value;
                 OnPropertyChanged();
                 Test_NullValue(value);
             }
         }
 
-        //private string _Manuals;
+        private string _Manuals;
         public string Manuals
         {
-            get => PS.Default.Manuals;
+            get => _Manuals;
             set
             {
-                PS.Default.Manuals = value;
+                _Manuals = value;
                 OnPropertyChanged();
                 Test_NullValue(value);
             }
         }
 
-        //private string _Musics;
+        private string _Musics;
         public string Musics
         {
-            get => PS.Default.Musics;
+            get => _Musics;
             set
             {
-                PS.Default.Musics = value;
+                _Musics = value;
                 OnPropertyChanged();
                 Test_NullValue(value);
             }
         }
 
-        //private string _Videos;
+        private string _Videos;
         public string Videos
         {
-            get => PS.Default.Videos;
+            get => _Videos;
             set
             {
-                PS.Default.Videos = value;
+                _Videos = value;
                 OnPropertyChanged();
                 Test_NullValue(value);
             }
@@ -107,37 +104,39 @@ namespace UnPack_My_Game.Graph.LaunchBox
 
         // ---
 
+        /*
         public bool ChangePlatform
         {
-            get => PS.Default.ChangePlatform;
+            get => Default.ChangePlatform;
             set
             {
-                PS.Default.ChangePlatform = value;
+                Default.ChangePlatform = value;
                 OnPropertyChanged();
 
             }
         }
-
+        */
         // ---
 
         // ---
 
+        private bool _WithCustomFields;
         public bool WithCustomFields
         {
-            get => PS.Default.wCustomFields;
+            get => _WithCustomFields;
             set
             {
-                PS.Default.wCustomFields = value;
+                _WithCustomFields = value;
                 OnPropertyChanged();
             }
-        } 
-        
+        }
+        private bool _WithFolderGameName;
         public bool WithFolderGameName
         {
-            get => PS.Default.wGameNameFolder;
+            get => _WithFolderGameName;
             set
             {
-                PS.Default.wGameNameFolder = value;
+                _WithFolderGameName = value;
                 OnPropertyChanged();
             }
         }
@@ -159,13 +158,41 @@ namespace UnPack_My_Game.Graph.LaunchBox
 
             // Sauvegarde du chemin
             //Properties.Settings.Default.LastLBpath = LaunchBoxPath;
-            
+
 
             //Load_Platforms();
         }
 
+        public M_Config()
+        {
+            Init();
+        }
+
+        public void Init()
+        {
+            LaunchBoxPath = Default.LaunchBoxPath;
+            //
+            Games = Default.Games;
+            CheatCodes = Default.CheatCodes;
+            Images = Default.Images;
+            Manuals = Default.Manuals;
+            Musics = Default.Musics;
+            Videos = Default.Videos;
+            //
+            WithCustomFields = Default.wCustomFields;
+            WithFolderGameName = Default.wGameNameFolder;
+
+
+
+
+        }
+
+
         internal bool Save()
         {
+            if (!File.Exists(Path.Combine(LaunchBoxPath, Default.fPlatforms)))
+                Add_Error("Bad Path", nameof(LaunchBoxPath));
+
             Test_NullValue(LaunchBoxPath, nameof(LaunchBoxPath));
             Test_NullValue(Games, nameof(Games));
             Test_NullValue(CheatCodes, nameof(CheatCodes));
@@ -177,19 +204,24 @@ namespace UnPack_My_Game.Graph.LaunchBox
             if (HasErrors)
                 return false;
 
-            PS.Default.LastLBpath = LaunchBoxPath;
-            PS.Default.Games = Games;
-            PS.Default.CheatCodes = CheatCodes;
-            PS.Default.Images = Images;
-            PS.Default.Manuals = Manuals;
-            PS.Default.Musics = Musics;
-            PS.Default.Videos = Videos;
-            PS.Default.wCustomFields = WithCustomFields;
-            PS.Default.wGameNameFolder = this.WithFolderGameName;
-            PS.Default.Save();
+            Default.LaunchBoxPath = LaunchBoxPath;
+            //
+            Default.Games = Games;
+            Default.CheatCodes = CheatCodes;
+            Default.Images = Images;
+            Default.Manuals = Manuals;
+            Default.Musics = Musics;
+            Default.Videos = Videos;
+            //
+            Default.wCustomFields = WithCustomFields;
+            Default.wGameNameFolder = this.WithFolderGameName;
+            //
+            Default.Save();
 
             return true;
 
         }
+
+
     }
 }

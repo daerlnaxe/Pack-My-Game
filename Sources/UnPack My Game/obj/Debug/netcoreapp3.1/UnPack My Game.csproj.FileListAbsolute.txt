@@ -280,9 +280,7 @@ E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreap
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_LaunchBox_Main.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_LBMethod.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\W_Config.g.cs
-E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\P_OGame.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\P_Selecter.g.cs
-E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\P_SGames.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\P_SubMenu.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\W_Common.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\W_DefinePaths.g.cs
@@ -300,9 +298,7 @@ E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreap
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_LaunchBox_Main.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_LBMethod.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\W_Config.baml
-E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\P_OGame.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\P_Selecter.baml
-E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\P_SGames.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\P_SubMenu.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\W_Common.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\W_DefinePaths.baml
@@ -323,3 +319,5 @@ E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreap
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\UnPack My Game.genruntimeconfig.cache
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\DxPaths.dll
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\DxPaths.pdb
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\Common Graph.dll
+E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreapp3.1\Common Graph.pdb

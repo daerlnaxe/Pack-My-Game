@@ -7,7 +7,7 @@ using DxLocalTransf.Cont;
 using DxTBoxCore.Box_Collec;
 using DxTBoxCore.Box_Progress;
 using DxTBoxCore.Common;
-using DxTBoxCore.MBox;
+using DxTBoxCore.Box_MBox;
 using Pack_My_Game.Models;
 using System;
 using System.Collections.Generic;
@@ -23,18 +23,6 @@ namespace Pack_My_Game.IHM
     /// </summary>
     class PackMe_IHM
     {
-        /// <summary>
-        /// Show a message window, called by delegate (useful with async)
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="message"></param>
-        /// <param name="title"></param>
-        internal static bool? Dispatch_Mbox(object sender, string message, string title, E_DxButtons buttons, string optMessage = null)
-        {
-            bool? res = false;
-            Application.Current.Dispatcher?.Invoke(() => res = DxMBox.ShowDial(message, title, buttons, optMessage));
-            return res;
-        }
 
 
         /// <summary>

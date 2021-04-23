@@ -5,7 +5,7 @@
     <Setting Name="LastSpath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="LastLBpath" Type="System.String" Scope="User">
+    <Setting Name="LaunchBoxPath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Games" Type="System.String" Scope="User">
@@ -64,6 +64,12 @@
     </Setting>
     <Setting Name="wGameNameFolder" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="LastFolderPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LastFilePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

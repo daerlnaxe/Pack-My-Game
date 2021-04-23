@@ -15,11 +15,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright ©  2018-2038 Daerlnaxe Software")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Unpack package for a Frontend")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.1.0")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.1.1")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("UnPack My Game")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UnPack My Game")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.1.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.0.1.1")]
 
 // Généré par la classe MSBuild WriteCodeFragment.
 

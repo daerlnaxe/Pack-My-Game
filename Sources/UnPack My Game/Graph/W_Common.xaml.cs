@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Hermes;
+using Hermes.Cont;
+using Hermes.Messengers;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace UnPack_My_Game.Graph
 {
@@ -37,11 +32,35 @@ namespace UnPack_My_Game.Graph
 
         public W_Common()
         {
+#if DEBUG
+            MeDebug md = new MeDebug
+            {
+                ByPass = true,
+
+            };
+            HeTrace.AddMessenger("Debug", md);
+
+#endif
+
+            // Tracing
+            MeSimpleLog log = new MeSimpleLog(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Common.Logs, $"{DateTime.Now.ToFileTime()}.log"))
+            {
+                LogLevel = 1,
+                FuncPrefix = EPrefix.Horodating,
+                ByPass = true,
+            };
+
+            log.AddCaller(this);
+            HeTrace.AddLogger("C_LBDPG", log);
+
+
             InitializeComponent();
             DataContext = this;
         }
 
-
-
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            HeTrace.RemoveMessenger("Debug");
+        }
     }
 }

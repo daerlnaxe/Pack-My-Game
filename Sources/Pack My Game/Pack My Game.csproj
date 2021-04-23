@@ -50,7 +50,8 @@
     <ProjectReference Include="..\..\..\HashCalc\Source\HashCalc.csproj" />
     <ProjectReference Include="..\..\..\Hermes\Sources\Hermes.csproj" />
     <ProjectReference Include="..\..\..\SeverZipSharp\SevenZip\SevenZip.csproj" />
-    <ProjectReference Include="..\..\Common_PMG\Common_PMG.csproj" />
+    <ProjectReference Include="..\Common Graph\Common Graph.csproj" />
+    <ProjectReference Include="..\Common_PMG\Common_PMG.csproj" />
     <ProjectReference Include="..\LaunchBox XML\LaunchBox XML.csproj" />
   </ItemGroup>
 

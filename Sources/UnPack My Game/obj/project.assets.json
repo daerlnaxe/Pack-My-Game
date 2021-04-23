@@ -1009,12 +1009,28 @@
           "bin/placeholder/AsyncProgress.dll": {}
         }
       },
+      "Common Graph/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "DxTBoxCore": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Common Graph.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Common Graph.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
       "Common_PMG/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "AsyncProgress": "1.0.0",
           "DxLocalTransf": "1.0.0",
+          "Hermes": "1.0.0",
           "System.Text.Json": "5.0.2"
         },
         "compile": {
@@ -3317,10 +3333,15 @@
       "path": "../../../AsyncProgress/AsyncProgress.csproj",
       "msbuildProject": "../../../AsyncProgress/AsyncProgress.csproj"
     },
+    "Common Graph/1.0.0": {
+      "type": "project",
+      "path": "../Common Graph/Common Graph.csproj",
+      "msbuildProject": "../Common Graph/Common Graph.csproj"
+    },
     "Common_PMG/1.0.0": {
       "type": "project",
-      "path": "../../Common_PMG/Common_PMG.csproj",
-      "msbuildProject": "../../Common_PMG/Common_PMG.csproj"
+      "path": "../Common_PMG/Common_PMG.csproj",
+      "msbuildProject": "../Common_PMG/Common_PMG.csproj"
     },
     "DxCCtrl/1.0.0": {
       "type": "project",
@@ -3366,6 +3387,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "AreaSelect >= 1.0.0",
+      "Common Graph >= 1.0.0",
       "Common_PMG >= 1.0.0",
       "DotNetZip >= 1.15.0",
       "DxPaths >= 1.0.0",
@@ -3425,8 +3447,11 @@
             "E:\\Programmation\\Git-Hub\\Hermes\\Sources\\Hermes.csproj": {
               "projectPath": "E:\\Programmation\\Git-Hub\\Hermes\\Sources\\Hermes.csproj"
             },
-            "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Common_PMG\\Common_PMG.csproj": {
-              "projectPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Common_PMG\\Common_PMG.csproj"
+            "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\Common Graph\\Common Graph.csproj": {
+              "projectPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\Common Graph\\Common Graph.csproj"
+            },
+            "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\Common_PMG\\Common_PMG.csproj": {
+              "projectPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\Common_PMG\\Common_PMG.csproj"
             },
             "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\LaunchBox XML\\LaunchBox XML.csproj": {
               "projectPath": "E:\\Programmation\\Git-Hub\\Pack-My-Game\\Sources\\LaunchBox XML\\LaunchBox XML.csproj"

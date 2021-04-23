@@ -1,5 +1,5 @@
 ﻿UnPack My Game
-1.0.1.0
+1.0.1.1
 
 winexe
 C#
@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\App.xaml
-17-590752257
+152101157234
 
-62-624715391
-2261797018035
-Graph\LaunchBox\LaunchBox_Start.xaml;Graph\LaunchBox\P_DPGFile.xaml;Graph\LaunchBox\P_EBMethod.xaml;Graph\LaunchBox\P_LaunchBox.xaml;Graph\LaunchBox\P_LaunchBox_Main.xaml;Graph\LaunchBox\P_LBMethod.xaml;Graph\LaunchBox\W_Config.xaml;Graph\P_OGame.xaml;Graph\P_Selecter.xaml;Graph\P_SGames.xaml;Graph\P_SubMenu.xaml;Graph\W_Common.xaml;Graph\W_DefinePaths.xaml;Graph\W_DPGMaker.xaml;Graph\W_ModTargetPaths.xaml;MainWindow.xaml;Style.xaml;
+60898677103
+227-522001892
+Graph\LaunchBox\LaunchBox_Start.xaml;Graph\LaunchBox\P_DPGFile.xaml;Graph\LaunchBox\P_EBMethod.xaml;Graph\LaunchBox\P_LaunchBox.xaml;Graph\LaunchBox\P_LaunchBox_Main.xaml;Graph\LaunchBox\P_LBMethod.xaml;Graph\LaunchBox\W_Config.xaml;Graph\P_Selecter.xaml;Graph\P_SubMenu.xaml;Graph\W_Common.xaml;Graph\W_DefinePaths.xaml;Graph\W_DPGMaker.xaml;Graph\W_ModTargetPaths.xaml;MainWindow.xaml;Style.xaml;
 
-False
+True
 

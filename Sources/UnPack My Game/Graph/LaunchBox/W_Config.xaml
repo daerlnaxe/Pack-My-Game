@@ -52,10 +52,10 @@
             </TabItem>
             <TabItem Header="{x:Static l:Lang.Arch_Struc}">
                 <DockPanel>
-                    <Button DockPanel.Dock="Right" VerticalAlignment="Top" 
-                            Content="{x:Static l:Lang.ResetF}"
-                            Click="ResetT_Click"
-                            />
+                    <StackPanel DockPanel.Dock="Right">
+                        <Button Content="{x:Static l:Lang.ResetF}" Click="ResetT_Click"/>
+                        <Button Content="Reset" Click="Reset_Click"/>
+                    </StackPanel>
                     <Grid Grid.Row="2" >
                         <Grid.Resources>
                             <Style TargetType="Label" BasedOn="{StaticResource lbStyle}">
@@ -72,8 +72,8 @@
                         </Grid.Resources>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto" MinWidth="100"/>
                             <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto" MinWidth="200"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>

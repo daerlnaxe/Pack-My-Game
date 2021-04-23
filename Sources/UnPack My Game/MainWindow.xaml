@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UnPack_My_Game"
         xmlns:l="clr-namespace:UnPack_My_Game.Resources"        
-        Width="350" Height="150"        
+        SizeToContent="WidthAndHeight"     
         mc:Ignorable="d"
         Title="{Binding Title, Mode=OneWay ,FallbackValue=Title}" WindowStartupLocation="CenterScreen"
         >

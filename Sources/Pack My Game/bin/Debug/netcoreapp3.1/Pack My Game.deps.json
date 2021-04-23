@@ -962,10 +962,18 @@
           "AsyncProgress.dll": {}
         }
       },
+      "Common Graph/1.0.0": {
+        "dependencies": {
+          "DxTBoxCore": "1.0.0"
+        },
+        "runtime": {
+          "Common Graph.dll": {}
+        }
+      },
       "Common_PMG/1.0.0": {
         "dependencies": {
-          "AsyncProgress": "1.0.0",
           "DxLocalTransf": "1.0.0",
+          "Hermes": "1.0.0",
           "System.Text.Json": "5.0.2"
         },
         "runtime": {
@@ -1036,11 +1044,11 @@
           "SevenZipSharp.dll": {}
         }
       },
-      "Unbroken.LaunchBox.Plugins/11.10.0.0": {
+      "Unbroken.LaunchBox.Plugins/11.11.0.0": {
         "runtime": {
           "Unbroken.LaunchBox.Plugins.dll": {
-            "assemblyVersion": "11.10.0.0",
-            "fileVersion": "11.10.0.0"
+            "assemblyVersion": "11.11.0.0",
+            "fileVersion": "11.11.0.0"
           }
         }
       }
@@ -1505,6 +1513,11 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Common Graph/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Common_PMG/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -1550,7 +1563,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Unbroken.LaunchBox.Plugins/11.10.0.0": {
+    "Unbroken.LaunchBox.Plugins/11.11.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

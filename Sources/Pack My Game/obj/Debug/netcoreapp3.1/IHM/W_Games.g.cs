@@ -63,7 +63,7 @@ namespace Pack_My_Game.IHM {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Pack My Game;V2.0.0.1;component/ihm/w_games.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Pack My Game;V2.0.0.2;component/ihm/w_games.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\IHM\W_Games.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

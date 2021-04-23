@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UnPack_My_Game.Graph"
         mc:Ignorable="d"
-        Title="{Binding Title, FallbackValue=Title}" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen">
+        Title="{Binding Title, FallbackValue=Title}" 
+        Height="450" Width="800" WindowState="Maximized" 
+        WindowStartupLocation="CenterScreen" Closing="Window_Closing">
     <Grid>
         <Frame NavigationUIVisibility="Hidden" Content="{Binding ActivePage, Mode=OneWay}"/>
     </Grid>

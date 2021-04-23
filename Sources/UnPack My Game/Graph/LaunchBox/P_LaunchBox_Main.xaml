@@ -8,7 +8,13 @@
       xmlns:l="clr-namespace:UnPack_My_Game.Resources"
       xmlns:lc="clr-namespace:DxTBoxCore.Languages;assembly=DxTBoxCore"
       d:DesignHeight="450" d:DesignWidth="800"
+      Loaded="Page_Loaded"
       Title="LaunchBox_Main">
+    <Page.CommandBindings>
+        <CommandBinding Command="local:P_LaunchBox_Main.DepackCmd" CanExecute="CanRun" Executed="Exec_Depack"/>
+        <CommandBinding Command="local:P_LaunchBox_Main.InjectGCmd" CanExecute="CanRun" Executed="Exec_InjectG"/>
+        <CommandBinding Command="local:P_LaunchBox_Main.InjectPCmd" CanExecute="CanRun" Executed="Exec_InjectPlatform"/>
+    </Page.CommandBindings>
     <Page.Resources>
         <Style TargetType="Button" BasedOn="{StaticResource btStyle}"/>
     </Page.Resources>
@@ -19,17 +25,17 @@
                    Text="LaunchBox" Style="{StaticResource tbTitle}"/>
         <!-- Left Menu -->
         <StackPanel DockPanel.Dock="Left" Background="{DynamicResource LeftMenu}" HorizontalAlignment="Left">
-            <Button Content="Depack" Click="Depack_Click"
+            <Button Content="Depack" Command="local:P_LaunchBox_Main.DepackCmd"
                     ToolTip="{x:Static l:Lang.T_OneG}"
                     />
-            <Button Content="Inject" Click="InjectG_Click"
+            <Button Content="Inject" Command="local:P_LaunchBox_Main.InjectGCmd"
                     ToolTip="Inject game(s) by folder(s)" 
                     />
             <Separator/>
             <Button Content="DPG Maker" ToolTip="Make a dpg with tbgame or ebgame"                    
                     Click="DPGMaker_Click"/>
-            <Button Content="Inject Platform" 
-                    Click="InjectPlatform_Click"
+            <Button Content="Inject Platform"
+                    Command="local:P_LaunchBox_Main.InjectPCmd"
                     />
             <Separator/>
             <Button Content="{x:Static l:Lang.Configuration}" Click="Config_Click"/>

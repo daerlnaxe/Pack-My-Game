@@ -54,7 +54,7 @@ namespace UnPack_My_Game.Graph.LaunchBox {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/UnPack My Game;V1.0.1.0;component/graph/launchbox/p_lbmethod.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/UnPack My Game;V1.0.1.1;component/graph/launchbox/p_lbmethod.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Graph\LaunchBox\P_LBMethod.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

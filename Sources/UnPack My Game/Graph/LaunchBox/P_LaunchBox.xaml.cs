@@ -42,12 +42,12 @@ namespace UnPack_My_Game.Graph.LaunchBox
 
         private void OneG_Click(object sender, RoutedEventArgs e)
         {
-            _Model.ActiveSrcPage = new P_OGame();
+            //_Model.ActiveSrcPage = new P_OGame();
         }
 
         private void SevG_Click(object sender, RoutedEventArgs e)
         {
-            _Model.ActiveSrcPage = new P_SGames();
+            //_Model.ActiveSrcPage = new P_SGames();
         }
 
         private void Process_CanExec(object sender, CanExecuteRoutedEventArgs e)

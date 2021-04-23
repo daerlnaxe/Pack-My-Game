@@ -6,7 +6,7 @@ using DxLocalTransf.Cont;
 using DxTBoxCore.Box_Progress;
 using DxTBoxCore.BoxChoose;
 using DxTBoxCore.Common;
-using DxTBoxCore.MBox;
+using DxTBoxCore.Box_MBox;
 using System;
 using System.IO;
 using System.Windows;

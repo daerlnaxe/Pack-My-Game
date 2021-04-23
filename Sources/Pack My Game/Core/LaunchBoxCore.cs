@@ -9,7 +9,7 @@ using DxLocalTransf;
 using DxPaths.Windows;
 using DxTBoxCore.Box_Decisions;
 using DxTBoxCore.Common;
-using DxTBoxCore.MBox;
+using DxTBoxCore.Box_MBox;
 using HashCalc;
 using Hermes;
 using Hermes.Messengers;
@@ -28,6 +28,7 @@ using System.Windows;
 using PS = Pack_My_Game.Properties.Settings;
 using Common_PMG.XML;
 using DxLocalTransf.Copy;
+using Common_Graph;
 //using Pack_My_Game.Compression;
 
 namespace Pack_My_Game.Core
@@ -339,7 +340,7 @@ namespace Pack_My_Game.Core
                 GetFiles(lbGame, gdC);
 
                 // --- Prepare files;
-                PrepareList(gdC.Apps, tree, PS.Default.KeepGameStruct, "Game");
+                PrepareList(gdC.Applications, tree, PS.Default.KeepGameStruct, "Game");
                 PrepareList(gdC.CheatCodes, tree, PS.Default.KeepCheatCStruct, "CheatCode");
                 PrepareList(gdC.Manuals, tree, PS.Default.KeepManualStruct, "Manual");
                 PrepareList(gdC.Musics, tree, PS.Default.KeepMusicStruct, "Music");
@@ -454,7 +455,7 @@ namespace Pack_My_Game.Core
                 #endregion
 
                 #region suppression du dossier de travail
-                if (PackMe_IHM.Dispatch_Mbox(this, "Would you want to ERASE the temp folder", "Erase", E_DxButtons.No | E_DxButtons.Yes, optMessage: shGame.ExploitableFileName) == true)
+                if (SafeBoxes.Dispatch_Mbox(this, "Would you want to ERASE the temp folder", "Erase", E_DxButtons.No | E_DxButtons.Yes, optMessage: shGame.ExploitableFileName) == true)
                 {
 
                     // Erase the temp folder
@@ -477,7 +478,7 @@ namespace Pack_My_Game.Core
             catch (Exception exc)
             {
                 HeTrace.WriteLine(exc.Message, this);
-                PackMe_IHM.Dispatch_Mbox(this, exc.Message, "Error", E_DxButtons.Ok);
+                SafeBoxes.Dispatch_Mbox(this, exc.Message, "Error", E_DxButtons.Ok);
             }
             finally
             {
@@ -817,7 +818,7 @@ namespace Pack_My_Game.Core
 
             if (filteredFiles.Count <= 0)
             {
-                PackMe_IHM.Dispatch_Mbox(this, $"Searching for { mediatype} returned 0 result", $"Searching for { mediatype}", E_DxButtons.Ok);
+                SafeBoxes.Dispatch_Mbox(this, $"Searching for { mediatype} returned 0 result", $"Searching for { mediatype}", E_DxButtons.Ok);
             }
             else
             {
@@ -851,7 +852,7 @@ namespace Pack_My_Game.Core
 
         //private string Prepare
 
-        private void PrepareList(List<DataPlus> elems, Folder tree, bool keepStruct, string mediatype)
+        private void PrepareList<T>(IEnumerable<T> elems, Folder tree, bool keepStruct, string mediatype) where T: DataTrans
         {
             HeTrace.WriteLine($"[{nameof(PrepareList)}] for {mediatype}", this);
             string destLocation = tree.Children[$"{mediatype}s"].Path;
@@ -868,6 +869,7 @@ namespace Pack_My_Game.Core
                 PrepareFile(fichier, destLocation, keepStruct, folder);
 
         }
+
         private /*string*/ void PrepareList(List<DataRep> elems, Folder tree, bool keepStruct, string mediatype)
         {
             HeTrace.WriteLine($"[{nameof(PrepareList)}] for {mediatype}", this);
@@ -947,15 +949,16 @@ namespace Pack_My_Game.Core
         private GamePaths MakeGamePaths(LBGame lbGame, GameDataCont gdC, Folder tree)
         {
             GamePaths gpX = GamePaths.CreateBasic(lbGame);
+
             //  gpX.ApplicationPath = AssignDefaultPath(tree.Children[Common.Games].Path, gdC.DefaultApp);
-            gpX.Applications = gdC.Apps.Select(x =>
+            gpX.SetApplications = gdC.Applications.Select(x =>
                                         new DataPlus()
                                         {
                                             Id = x.Id,
                                             Name = x.Name,
                                             CurrentPath = x.Name,
                                             IsSelected = x.IsSelected,
-                                        }).ToList();
+                                        });
 
             gpX.ManualPath = AssignDefaultPath(tree.Children[Common.Manuals].Path, gdC.DefaultManual);
             gpX.MusicPath = AssignDefaultPath(tree.Children[Common.Musics].Path, gdC.DefaultMusic);
@@ -984,7 +987,7 @@ namespace Pack_My_Game.Core
             HeTrace.WriteLine("[CopyFiles] All files except images");
             // Fusion des fichiers sauf les images
             List<DataTrans> Fichiers = new List<DataTrans>();
-            Fichiers.AddRange(gdC.Apps);
+            Fichiers.AddRange(gdC.Applications);
             Fichiers.AddRange(gdC.CheatCodes);
             Fichiers.AddRange(gdC.Manuals);
             Fichiers.AddRange(gdC.Musics);

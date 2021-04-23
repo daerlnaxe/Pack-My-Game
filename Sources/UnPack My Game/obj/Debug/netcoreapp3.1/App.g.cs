@@ -59,7 +59,7 @@ namespace UnPack_My_Game {
             
             #line default
             #line hidden
-            System.Uri resourceLocater = new System.Uri("/UnPack My Game;component/app.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/UnPack My Game;V1.0.1.1;component/app.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\App.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

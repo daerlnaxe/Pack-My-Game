@@ -39,8 +39,6 @@ namespace UnPack_My_Game.Graph.LaunchBox
             DataContext = _Model;
         }
 
-
-
         /// <summary>
         /// When clicked on browse button
         /// </summary>
@@ -53,7 +51,7 @@ namespace UnPack_My_Game.Graph.LaunchBox
                 Model = new M_ChooseRaw()
                 {
                     Info = Lang.ChooseLBf,
-                    StartingFolder = Properties.Settings.Default.LastLBpath,
+                    StartingFolder = PS.Default.LaunchBoxPath,
                     Mode = ChooseMode.Folder,
                     ShowFiles = false,
 
@@ -74,6 +72,10 @@ namespace UnPack_My_Game.Graph.LaunchBox
         }
 
         #region Reset
+        private void Reset_Click(object sender, RoutedEventArgs e)
+        {
+            _Model.Init();
+        }
         private void ResetT_Click(object sender, RoutedEventArgs e)
         {
             _Model.Games = _Games;
@@ -125,6 +127,7 @@ namespace UnPack_My_Game.Graph.LaunchBox
 
         #endregion
 
+        /*
         private void Ergo_Checked(object sender, RoutedEventArgs e)
         {
             _Model.ChangePlatform = true;
@@ -135,7 +138,7 @@ namespace UnPack_My_Game.Graph.LaunchBox
         {
             _Model.ChangePlatform = false;
             PS.Default.Save();
-        }
+        }*/
 
         private void Close(object sender, RoutedEventArgs e)
         {
@@ -159,6 +162,8 @@ namespace UnPack_My_Game.Graph.LaunchBox
             }
         }
         #endregion
+
+
     }
 
 }

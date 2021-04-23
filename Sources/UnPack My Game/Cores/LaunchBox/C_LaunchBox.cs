@@ -7,7 +7,7 @@ using Common_PMG.XML;
 using DxLocalTransf.Copy;
 using DxTBoxCore.Common;
 using DxTBoxCore.Languages;
-using DxTBoxCore.MBox;
+using DxTBoxCore.Box_MBox;
 using Hermes;
 using Hermes.Cont;
 using Hermes.Messengers;
@@ -22,7 +22,7 @@ using System.Windows;
 using UnPack_My_Game.Decompression;
 using UnPack_My_Game.Graph;
 using UnPack_My_Game.Resources;
-using PS = UnPack_My_Game.Properties.Settings;
+using static UnPack_My_Game.Properties.Settings;
 
 namespace UnPack_My_Game.Cores
 {
@@ -42,36 +42,7 @@ namespace UnPack_My_Game.Cores
 
         #region Depacking
 
-        internal bool Depacking(ObservableCollection<DataRep> games)
-        {
-            ProgressTotal = games.Count();
-            try
-            {
-                List<DataRep> folders = new List<DataRep>();
-
-                // Dépack
-                foreach (DataRep game in games)
-                {
-                    string tmpPath = Path.Combine(Path.GetTempPath(), Path.GetFileNameWithoutExtension(game.Name));
-
-                    Depacking(game, tmpPath);
-
-                    folders.Add(new DataRep(tmpPath));
-                }
-
-                // Injection
-                InjectGames(folders);
-
-                return true;
-            }
-            catch (Exception exc)
-            {
-                return false;
-            }
-        }
-
-
-        public bool Depacking(DataRep g, string tmpPath)
+        protected bool Depacking(DataRep g, string tmpPath)
         {
             string fileExt = Path.GetExtension(g.CurrentPath).TrimStart('.');
 
@@ -113,7 +84,7 @@ namespace UnPack_My_Game.Cores
         public bool CheckIfInjectionNeeded(string machineName)
         {
             // --- Lecture du fichier source
-            string platformsFile = Path.Combine(PS.Default.LastLBpath, PS.Default.fPlatforms);
+            string platformsFile = Path.Combine(Default.LaunchBoxPath, Default.fPlatforms);
 
             bool? write = true;
 
@@ -131,7 +102,7 @@ namespace UnPack_My_Game.Cores
 
         public void InjectPlatform(string platform, string newPFile)
         {
-            string platformsFile = Path.Combine(PS.Default.LastLBpath, PS.Default.fPlatforms);
+            string platformsFile = Path.Combine(Default.LaunchBoxPath, Default.fPlatforms);
 
             using (XML_Platforms xPlat = new XML_Platforms(platformsFile))
             {
@@ -148,7 +119,7 @@ namespace UnPack_My_Game.Cores
         protected void CopyFiles(GameDataCont gdC)
         {
             var files = new List<DataTrans>();
-            files.AddRange(gdC.Apps);
+            files.AddRange(gdC.Applications);
             files.AddRange(gdC.Manuals);
             files.AddRange(gdC.Musics);
             files.AddRange(gdC.Videos);

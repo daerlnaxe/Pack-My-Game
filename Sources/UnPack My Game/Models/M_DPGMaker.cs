@@ -149,8 +149,7 @@ namespace UnPack_My_Game.Graph
             Platform = GamePaths.Platform;
 
             // Création des collections (par rapport au changement de nom
-            GamesCollection = new ObservableCollection<DataPlus>(GameDataC.Apps);
-
+            MakeCollection(GameDataC.Applications, GamesCollection, PS.Default.Games);
             MakeCollection(GameDataC.CheatCodes, CheatsCollection, PS.Default.CheatCodes);
             MakeCollection(GameDataC.Manuals, ManualsCollection, PS.Default.Manuals);
             MakeCollection(GameDataC.Musics, MusicsCollection, PS.Default.Musics);
@@ -164,13 +163,13 @@ namespace UnPack_My_Game.Graph
             ChosenThemeVideo = VideosCollection.FirstOrDefault(x => x.Name.Equals(GameDataC.DefaultThemeVideo?.CurrentPath));
         }
 
-        private void MakeCollection(List<DataRep> srcCollected, ObservableCollection<DataRep> targetedCollec, string mediatype)
+        private void MakeCollection<T>(IEnumerable<T> srcCollected, ObservableCollection<T> targetedCollec, string mediatype) where T: IData, new()
         {
             string pRoot = Path.Combine(Root, mediatype);
             targetedCollec.Clear();
-            foreach (DataRep elem in srcCollected)
+            foreach (T elem in srcCollected)
             {
-                DataRep dr = new DataRep()
+                T dr = new T()
                 {
                     Name = elem.CurrentPath,
                     CurrentPath = Path.GetFullPath(elem.CurrentPath, pRoot),
@@ -467,7 +466,7 @@ namespace UnPack_My_Game.Graph
 
         internal void CopyAstuceF()
         {
-            if (Copy2(PS.Default.LastLBpath, PS.Default.CheatCodes, "Select a cheat codes file"))
+            if (Copy2(PS.Default.LaunchBoxPath, PS.Default.CheatCodes, "Select a cheat codes file"))
             {
                 LoadCheatCodes();
             }
@@ -579,7 +578,7 @@ namespace UnPack_My_Game.Graph
                 return false;
 
             /*GamePaths.ApplicationPath = this.ChosenGame.Name;*/
-            GamePaths.Applications = GamesCollection.ToList();
+            GamePaths.SetApplications = GamesCollection;
             GamePaths.ManualPath = this.ChosenManual == null ? null: ChosenManual.Name;
             GamePaths.MusicPath = this.ChosenMusic == null? null: ChosenMusic.Name;
             GamePaths.VideoPath = this.ChosenVideo == null ? null: ChosenVideo.Name;

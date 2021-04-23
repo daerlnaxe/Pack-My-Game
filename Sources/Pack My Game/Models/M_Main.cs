@@ -6,7 +6,7 @@ using Common_PMG.Models;
 using Common_PMG.XML;
 using DxTBoxCore.Box_Progress;
 using DxTBoxCore.Common;
-using DxTBoxCore.MBox;
+using DxTBoxCore.Box_MBox;
 using Hermes;
 using Pack_My_Game.Cont;
 using Pack_My_Game.Core;

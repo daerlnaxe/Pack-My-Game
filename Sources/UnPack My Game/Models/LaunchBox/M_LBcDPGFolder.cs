@@ -26,10 +26,11 @@ namespace UnPack_My_Game.Models.LaunchBox
                 Description = "Select a folder containing the game",
                 RootFolder = Environment.SpecialFolder.UserProfile,
                 ShowNewFolderButton = false,
+                SelectedPath = Properties.Settings.Default.LastFolderPath,
             };
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                Properties.Settings.Default.LastSpath = ofd.SelectedPath;
+                Properties.Settings.Default.LastFolderPath = ofd.SelectedPath;
                 Properties.Settings.Default.Save();
 
                 Elements.Add(new DataRep(ofd.SelectedPath));

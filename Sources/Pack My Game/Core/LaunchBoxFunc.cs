@@ -2,7 +2,7 @@
 using Common_PMG.Container.Game.LaunchBox;
 using Common_PMG.XML;
 using DxTBoxCore.Common;
-using DxTBoxCore.MBox;
+using DxTBoxCore.Box_MBox;
 using Pack_My_Game.IHM;
 using System;
 using System.Collections.Generic;

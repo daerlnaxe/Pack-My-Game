@@ -34,12 +34,12 @@ namespace UnPack_My_Game.Models.LaunchBox
             {
                 Multiselect = true,
                 Filter = "Zip, 7Zip | *.zip;*.7zip;*.7z",
-                InitialDirectory = Properties.Settings.Default.LastSpath,
+                InitialDirectory = Properties.Settings.Default.LastFilePath,
             };
 
             if (ofd.ShowDialog() == true)
             {
-                Properties.Settings.Default.LastSpath = Path.GetDirectoryName(ofd.FileName);
+                Properties.Settings.Default.LastFilePath = Path.GetDirectoryName(ofd.FileName);
                 Properties.Settings.Default.Save();
 
                 foreach (var file in ofd.FileNames)

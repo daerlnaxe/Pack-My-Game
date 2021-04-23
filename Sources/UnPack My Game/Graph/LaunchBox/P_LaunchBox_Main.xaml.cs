@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Text;
+﻿using System.ComponentModel;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using UnPack_My_Game.Models.LaunchBox;
 using UnPack_My_Game.Models.Submenus;
+using static UnPack_My_Game.Properties.Settings;
 
 namespace UnPack_My_Game.Graph.LaunchBox
 {
@@ -24,6 +15,13 @@ namespace UnPack_My_Game.Graph.LaunchBox
     public partial class P_LaunchBox_Main : Page, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private bool _LaunchBoxOk;
+
+        public static readonly RoutedCommand DepackCmd = new RoutedCommand();
+        public static readonly RoutedCommand InjectGCmd = new RoutedCommand();
+        public static readonly RoutedCommand InjectPCmd = new RoutedCommand();
+
 
         private Page _ActivePage;
         public Page ActivePage
@@ -44,21 +42,28 @@ namespace UnPack_My_Game.Graph.LaunchBox
             DataContext = this;
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Check de LaunchBox
+            if (File.Exists(Path.Combine(Default.LaunchBoxPath, Default.fPlatforms)))
+            {
+                _LaunchBoxOk = true;
+            }
+            else
+            {
+                DxTBoxCore.Box_MBox.DxMBox.ShowDial("Wrong LaunchBox path", "Warning");
+            }
+        }
+
 
         private void Depack_Click(object sender, RoutedEventArgs e)
         {
-            ActivePage = new P_Selecter()
-            {
-                Model = new M_LBcDPGUnpack(),
-            };
+
         }
 
         private void InjectG_Click(object sender, RoutedEventArgs e)
         {
-            ActivePage = new P_Selecter()
-            {
-                Model = new M_LBCDPGFolder(),
-            };
+
         }
 
         private void DPGMaker_Click(object sender, RoutedEventArgs e)
@@ -70,28 +75,39 @@ namespace UnPack_My_Game.Graph.LaunchBox
         }
 
 
-        private void InjectPlatform_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Config_Click(object sender, RoutedEventArgs e)
         {
             if (new W_Config().ShowDialog() == true)
             {
-
+                _LaunchBoxOk = true;
             }
-            // var platform = _Model.SelectPlatform;
-            /*
-            I_Source p = _Model.ActiveSrcPage;
 
-
-            _Model = new M_LaunchBox();
-            _Model.ActiveSrcPage = p;
-            //_Model.SelectPlatform = platform;
-
-            DataContext = _Model;*/
         }
 
+        private void CanRun(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = _LaunchBoxOk;
+        }
+
+        private void Exec_Depack(object sender, ExecutedRoutedEventArgs e)
+        {
+            ActivePage = new P_Selecter()
+            {
+                Model = new M_LBcDPGUnpack(),
+            };
+        }
+
+        private void Exec_InjectG(object sender, ExecutedRoutedEventArgs e)
+        {
+            ActivePage = new P_Selecter()
+            {
+                Model = new M_LBCDPGFolder(),
+            };
+        }
+
+        private void Exec_InjectPlatform(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
     }
 }

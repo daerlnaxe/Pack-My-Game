@@ -54,10 +54,10 @@ namespace UnPack_My_Game.Models.LaunchBox
         //private string _LaunchBoxPath;
         public string LaunchBoxPath
         {
-            get => PS.Default.LastLBpath;
+            get => PS.Default.LaunchBoxPath;
             set
             {
-                PS.Default.LastLBpath = value;
+                PS.Default.LaunchBoxPath = value;
                 OnPropertyChanged();
 
                 Test_NullValue(value);
@@ -150,7 +150,7 @@ namespace UnPack_My_Game.Models.LaunchBox
         {
 
             // Vérifications
-            var platformsFile = Path.Combine(PS.Default.LastLBpath, PS.Default.fPlatforms);
+            var platformsFile = Path.Combine(PS.Default.LaunchBoxPath, PS.Default.fPlatforms);
 
             // Vérification du dossier Launchbox
             if (!File.Exists(platformsFile))

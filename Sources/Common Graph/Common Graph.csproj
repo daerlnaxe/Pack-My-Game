@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Common_Graph</RootNamespace>
+    <UseWPF>true</UseWPF>
+    <Authors>Alexandre CODOUL aka Daerlnaxe</Authors>
+    <Company>Daerlnaxe Software</Company>
+    <Copyright>Copyright ©  2018-2038 Daerlnaxe Software</Copyright>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <PackageReleaseNotes>Graphic part common between two programs
+</PackageReleaseNotes>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Page Remove="Resources\Style.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\DxTBoxCore\Sources\DxTBoxCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Converters\" />
+    <Folder Include="Graph\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Resources\Style.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.Windows.Forms.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

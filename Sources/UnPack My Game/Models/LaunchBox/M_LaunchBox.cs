@@ -10,7 +10,7 @@ using System.Windows.Controls;
 using UnPack_My_Game.Resources;
 using PS = UnPack_My_Game.Properties.Settings;
 using System.Collections.ObjectModel;
-using DxTBoxCore.MBox;
+using DxTBoxCore.Box_MBox;
 using DxTBoxCore.Common;
 using UnPack_My_Game.Cores;
 using UnPack_My_Game.Models;
@@ -68,10 +68,10 @@ namespace UnPack_My_Game.Models.LaunchBox
         //private string _LaunchBoxPath;
         public string LaunchBoxPath
         {
-            get => PS.Default.LastLBpath;
+            get => PS.Default.LaunchBoxPath;
             set
             {
-                PS.Default.LastLBpath = value;
+                PS.Default.LaunchBoxPath = value;
                 OnPropertyChanged();
 
                 Test_NullValue(value);
@@ -164,7 +164,7 @@ namespace UnPack_My_Game.Models.LaunchBox
         {
 
             // Vérifications
-            var platformsFile = Path.Combine(PS.Default.LastLBpath, PS.Default.fPlatforms);
+            var platformsFile = Path.Combine(PS.Default.LaunchBoxPath, PS.Default.fPlatforms);
 
             // Vérification du dossier Launchbox
             if (!File.Exists(platformsFile))
@@ -319,13 +319,6 @@ namespace UnPack_My_Game.Models.LaunchBox
 
                 Debug.WriteLine(exc.Message);
             }
-
-            // Lancement du traitement
-            /*if (DxMBox.ShowDial(Lang.Q_Continue, Lang.Question, E_DxButtons.No | E_DxButtons.Yes) == true)
-            {
-                C_LaunchBox lbCore = new C_LaunchBox();
-                //lbCore.Run(LaunchBoxPath, SelectPlatform, ref games);
-            }*/
 
             // Récupération des sources
         }

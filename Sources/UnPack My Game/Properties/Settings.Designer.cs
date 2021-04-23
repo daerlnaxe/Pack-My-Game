@@ -38,12 +38,12 @@ namespace UnPack_My_Game.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string LastLBpath {
+        public string LaunchBoxPath {
             get {
-                return ((string)(this["LastLBpath"]));
+                return ((string)(this["LaunchBoxPath"]));
             }
             set {
-                this["LastLBpath"] = value;
+                this["LaunchBoxPath"] = value;
             }
         }
         
@@ -245,6 +245,30 @@ namespace UnPack_My_Game.Properties {
             }
             set {
                 this["wGameNameFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastFolderPath {
+            get {
+                return ((string)(this["LastFolderPath"]));
+            }
+            set {
+                this["LastFolderPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastFilePath {
+            get {
+                return ((string)(this["LastFilePath"]));
+            }
+            set {
+                this["LastFilePath"] = value;
             }
         }
     }

@@ -22,7 +22,7 @@ using PS = Pack_My_Game.Properties.Settings;
 using AsyncProgress.Tools;
 using DxLocalTransf.Copy;
 using Pack_My_Game.IHM;
-using DxTBoxCore.MBox;
+using DxTBoxCore.Box_MBox;
 using Common_PMG.Models;
 
 namespace Pack_My_Game.Models
@@ -145,7 +145,7 @@ namespace Pack_My_Game.Models
         internal void Init()
         {
             // Création des collections (par rapport au changement de nom
-            MakeCollection(GameDataC.Apps, GamesCollection, Common.Games);
+            MakeCollection(GameDataC.Applications, GamesCollection, Common.Games);
             MakeCollection(GameDataC.CheatCodes, CheatsCollection, Common.CheatCodes);
             MakeCollection(GameDataC.Manuals, ManualsCollection, Common.Manuals);
             MakeCollection(GameDataC.Musics, MusicsCollection, Common.Musics);
@@ -161,8 +161,8 @@ namespace Pack_My_Game.Models
             LoadFiles();
         }
 
-        private void MakeCollection(List<DataPlus> srcCollected, ObservableCollection<DataPlus> targetedCollec, string mediatype)
-        {
+        private void MakeCollection(IEnumerable<DataPlus> srcCollected, ObservableCollection<DataPlus> targetedCollec, string mediatype)
+        {            
             string pRoot = Path.Combine(Root, mediatype);
             targetedCollec.Clear();
             foreach (DataPlus elem in srcCollected)
@@ -665,14 +665,15 @@ namespace Pack_My_Game.Models
                 return false;
 
             // Jeux
-            GameDataC.SetApplications = GamesCollection.ToList();
+            GameDataC.SetApplications = GamesCollection;
+                
             /*GameDataC.Reinitialize(GameDataC.Apps, GamesCollection);
             GameDataC.SetDefault(nameof(GameDataC.DefaultApp), ChosenGame);*/
             // Cheats
             GameDataC.Reinitialize(GameDataC.CheatCodes, CheatsCollection);
             // Manuals
-            GameDataC.Reinitialize(GameDataC.Manuals, ManualsCollection);
             GameDataC.SetDefault(nameof(GameDataC.DefaultManual), ChosenManual);
+            GameDataC.SetManuals = ManualsCollection;
             // Musics
             GameDataC.Reinitialize(GameDataC.Musics, MusicsCollection);
             GameDataC.SetDefault(nameof(GameDataC.DefaultMusic), ChosenMusic);
