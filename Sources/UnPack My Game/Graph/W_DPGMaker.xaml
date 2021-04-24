@@ -11,9 +11,10 @@
         Loaded="Window_Loaded"
         >
     <Window.CommandBindings>
-        <!-- Games -->
+        <!-- Games 
         <CommandBinding Command="local:W_DPGMaker.AddGameCmd" CanExecute="Can_Advanced" Executed="Exec_AddGame"/>
         <CommandBinding Command="local:W_DPGMaker.RemoveGameCmd" CanExecute="Can_Game" Executed="Exec_RemoveGame"/>
+        -->
         <!-- Manuals -->
         <CommandBinding Command="local:W_DPGMaker.AddManualCmd" CanExecute="Can_Advanced" Executed="Exec_AddManual"/>
         <CommandBinding Command="local:W_DPGMaker.OpenManualCmd" CanExecute="Can_Manual" Executed="Exec_OpenManual"/>
@@ -139,17 +140,18 @@
                             <!-- List of Games -->
                             <ListView Grid.Row="1" ItemsSource="{Binding GamesCollection, ValidatesOnNotifyDataErrors=True}"                                      
                                 SelectedItem="{Binding SelectedGame}" >
-                                <!-- Menu -->
+                                <!-- Menu 
                                 <ListView.ContextMenu>
                                     <ContextMenu>
                                         <MenuItem Command="local:W_DPGMaker.AddGameCmd"/>
                                         <MenuItem Command="local:W_DPGMaker.RemoveGameCmd"/>
                                     </ContextMenu>
                                 </ListView.ContextMenu>
+                                -->
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <RadioButton IsChecked="{Binding IsSelected}" Checked="Game_Handler" Tag="{Binding}"/>
+                                            <RadioButton IsChecked="{Binding IsSelected}" IsEnabled="False" Tag="{Binding}"/>
                                             <TextBlock Text="{Binding Name}"/>
                                         </StackPanel>
                                     </DataTemplate>

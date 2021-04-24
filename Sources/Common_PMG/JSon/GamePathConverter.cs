@@ -92,7 +92,7 @@ namespace Common_PMG.JSon
             writer.WriteString(nameof(value.VideoPath), value.VideoPath);
             writer.WriteString(nameof(value.ThemeVideoPath), value.ThemeVideoPath);
             //
-            writer.WriteCommentValue("Please, use LaunchBox if you want to modify default application");
+            writer.WriteString("_comment", "Please, use LaunchBox if you want to modify default application");
             writer.WriteStartArray("Games");
             foreach (var data in value.Applications)
             {

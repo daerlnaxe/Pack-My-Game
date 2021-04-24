@@ -56,25 +56,7 @@ namespace UnPack_My_Game.Graph
         }
 
 
-        public static bool? LaunchDouble(I_AsyncSigD objet, Func<object> method, string title)
-        {
-            return Application.Current.Dispatcher?.Invoke
-                (
-                    () =>
-                    {
-                        EphemProgressD mawmaw = new EphemProgressD(objet);
-                        TaskLauncher launcher = new TaskLauncher()
-                        {
-                            AutoCloseWindow = true,
-                            ProgressIHM = new DxDoubleProgress(mawmaw),
-                            MethodToRun = method,
-                        };
-                        return launcher.Launch(objet);
-                    }
-                ); ;
-
-        }
-
+ 
         internal static void ShowDPG(GameDataCont gpC, GamePaths gpx, string gamePath)
         {
             Application.Current.Dispatcher?.Invoke

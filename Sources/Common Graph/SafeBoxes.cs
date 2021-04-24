@@ -5,6 +5,9 @@ using System.Windows;
 using System.Collections.Generic;
 using DxTBoxCore.Box_Status;
 using System.Windows.Media;
+using AsyncProgress;
+using AsyncProgress.Tools;
+using DxTBoxCore.Box_Progress;
 
 namespace Common_Graph
 {
@@ -51,5 +54,25 @@ namespace Common_Graph
                 }
                 );
         }
+
+        public static bool? LaunchDouble(I_AsyncSigD objet, Func<object> method, string title)
+        {
+            return Application.Current.Dispatcher?.Invoke
+                (
+                    () =>
+                    {
+                        EphemProgressD mawmaw = new EphemProgressD(objet);
+                        TaskLauncher launcher = new TaskLauncher()
+                        {
+                            AutoCloseWindow = true,
+                            ProgressIHM = new DxDoubleProgress(mawmaw),
+                            MethodToRun = method,
+                        };
+                        return launcher.Launch(objet);
+                    }
+                ); ;
+
+        }
+
     }
 }

@@ -23,6 +23,7 @@ using UnPack_My_Game.Graph.LaunchBox;
 using static UnPack_My_Game.Properties.Settings;
 using static Common_PMG.Tool;
 using Common_Graph;
+using Common_PMG;
 
 namespace UnPack_My_Game.Cores
 {
@@ -98,7 +99,7 @@ namespace UnPack_My_Game.Cores
                     ByPass = true,
                 };
                 mee.SignalWrite += (x, y) => this.SetStatus(x, new StateArg(y, false));
-                mee.SignalWriteLine += (x, y) => this.SetStatus(x, new StateArg(y, true));
+                mee.SignalWriteLine += (x, y) => this.SetStatus(x, new StateArg(y, false));
                 HeTrace.AddMessenger("Mee", mee);
 
                 foreach (var game in games)
@@ -326,7 +327,7 @@ namespace UnPack_My_Game.Cores
             string appTarget = string.Empty;
 
             if (Default.wGameNameFolder)
-                appTarget = Path.Combine(zePlatform.FolderPath, gdC.Title);
+                appTarget = Path.Combine(zePlatform.FolderPath, Tool.WindowsConv_TitleToFileName( gdC.Title));
             else
                 appTarget = zePlatform.FolderPath;
 

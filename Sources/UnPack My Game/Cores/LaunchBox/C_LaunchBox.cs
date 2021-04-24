@@ -23,6 +23,7 @@ using UnPack_My_Game.Decompression;
 using UnPack_My_Game.Graph;
 using UnPack_My_Game.Resources;
 using static UnPack_My_Game.Properties.Settings;
+using Common_Graph;
 
 namespace UnPack_My_Game.Cores
 {
@@ -68,7 +69,7 @@ namespace UnPack_My_Game.Cores
                 IsPaused = this.IsPaused,
             };
 
-            IHMStatic.LaunchDouble(zippy, () => zippy.ExtractAll(pathLink, tmpPath), "Zip Extraction");
+            SafeBoxes.LaunchDouble(zippy, () => zippy.ExtractAll(pathLink, tmpPath), "Zip Extraction");
         }
 
 
@@ -127,9 +128,9 @@ namespace UnPack_My_Game.Cores
             CopyFExt copyObj = new CopyFExt();
             copyObj.AskToUser += IHMStatic.Ask4_FileConflict2;
 
-            IHMStatic.LaunchDouble(copyObj, ()=> copyObj.CopyN(files), "Copy files");
-            
-            IHMStatic.LaunchDouble(copyObj, ()=> copyObj.CopyN(gdC.Images), "Copy Images files");
+            SafeBoxes.LaunchDouble(copyObj, ()=> copyObj.CopyN(files), "Copy files");
+
+            SafeBoxes.LaunchDouble(copyObj, ()=> copyObj.CopyN(gdC.Images), "Copy Images files");
 
         }
 

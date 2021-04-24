@@ -191,11 +191,11 @@ namespace Pack_My_Game.Core
             };
             HeTrace.AddMessenger("Signal", mdE);
             mdE.SignalWrite += (x, y) => SetStatus(x, new StateArg(y, false));
-            mdE.SignalWriteLine += (x, y) => SetStatus(x, new StateArg(y, true));
+            mdE.SignalWriteLine += (x, y) => SetStatus(x, new StateArg(y, false));
 
             #endregion
 
-            XML_Games.Signal += (x, y) => SetStatus(x, new StateArg(y, true));
+            XML_Games.Signal += (x, y) => SetStatus(x, new StateArg(y, false));
 
         }
 

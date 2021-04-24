@@ -20,8 +20,8 @@ namespace UnPack_My_Game.Graph
     {
         public static readonly RoutedUICommand DeleteCmd = new RoutedUICommand("Delete", "DeleteCmd", typeof(W_DPGMaker));
 
-        public static readonly RoutedUICommand AddGameCmd = new RoutedUICommand("Add Game", "AddGameCmd", typeof(W_DPGMaker));
-        public static readonly RoutedUICommand RemoveGameCmd = new RoutedUICommand("Remove Game", "RemoveGameCmd", typeof(W_DPGMaker));
+    /*    public static readonly RoutedUICommand AddGameCmd = new RoutedUICommand("Add Game", "AddGameCmd", typeof(W_DPGMaker));
+        public static readonly RoutedUICommand RemoveGameCmd = new RoutedUICommand("Remove Game", "RemoveGameCmd", typeof(W_DPGMaker));*/
 
         public static readonly RoutedUICommand AddCheatCmd = new RoutedUICommand("Add Cheat", "AddCheatCmd", typeof(W_DPGMaker));
         public static readonly RoutedUICommand NewCheatCmd = new RoutedUICommand("New Cheat", "NewCheatCmd", typeof(W_DPGMaker));
@@ -82,12 +82,12 @@ namespace UnPack_My_Game.Graph
 
         }
 
-
+        /*
         private void Game_Handler(object sender, RoutedEventArgs e)
         {
             RadioButton cb = (RadioButton)sender;
             Model.Game_Handler(cb.Tag);
-        }
+        }*/
 
         private void Manual_Handler(object sender, RoutedEventArgs e)
         {
@@ -137,7 +137,7 @@ namespace UnPack_My_Game.Graph
         }
 
         // --- Games
-
+        /*
         private void Exec_AddGame(object sender, ExecutedRoutedEventArgs e)
         {
 
@@ -151,7 +151,7 @@ namespace UnPack_My_Game.Graph
         private void Exec_RemoveGame(object sender, ExecutedRoutedEventArgs e)
         {
 
-        }
+        }*/
 
         // --- Manuals
 

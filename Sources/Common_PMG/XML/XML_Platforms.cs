@@ -188,7 +188,11 @@ namespace Common_PMG.XML
                     continue;
 
                 if (field.Name.LocalName == "Folder")
-                    zePlatform.FolderPath = string.IsNullOrEmpty(baseFolder) ? field.Value : Path.Combine( baseFolder, Tag.Games.ToString(), name);
+                {
+                    if (string.IsNullOrEmpty(field.Value))
+                        field.Value = Path.Combine(baseFolder, "Games", name); // Cas ou le dossier est vide (par défaut sur LaunchBox)
+                    zePlatform.FolderPath = string.IsNullOrEmpty(baseFolder) ? field.Value : Path.GetFullPath( field.Value, baseFolder);
+                }
             }
 
             // --- Additionnal paths

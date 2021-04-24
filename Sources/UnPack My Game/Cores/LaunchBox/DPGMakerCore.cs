@@ -1,6 +1,7 @@
 ﻿using AsyncProgress;
 using AsyncProgress.Basix;
 using AsyncProgress.Cont;
+using Common_Graph;
 using Common_PMG.Container;
 using Common_PMG.Container.Game;
 using Common_PMG.Container.Game.LaunchBox;
@@ -43,8 +44,8 @@ namespace UnPack_My_Game.Cores
             {
                 ByPass = true,  
             };
-            mee.SignalWrite += (x, y ) => this.SetStatus(x, (StateArg)y );
-            mee.SignalWriteLine += (x, y ) => this.SetStatus(x, (StateArg)y );
+            mee.SignalWrite += (x, y) => this.SetStatus(x, new StateArg(y, false) );
+            mee.SignalWriteLine += (x, y ) => this.SetStatus(x, new StateArg(y, false) );
             HeTrace.AddMessenger("Mee", mee);
             
         }
@@ -185,7 +186,7 @@ namespace UnPack_My_Game.Cores
             };
 
 
-            IHMStatic.LaunchDouble(zippy, () => zippy.ExtractSpecificFiles(archive.CurrentPath, gamePath,
+            SafeBoxes.LaunchDouble(zippy, () => zippy.ExtractSpecificFiles(archive.CurrentPath, gamePath,
                                                         "TBGame.xml", "EBGame.xml", "DPGame.json"),
                                                         "Zip Extraction");
             /*var res = PackMe_IHM.ZipCompressFolder(zippy, () => zippy.CompressFolder(
@@ -202,7 +203,7 @@ namespace UnPack_My_Game.Cores
                 IsPaused = this.IsPaused,
             };
 
-            IHMStatic.LaunchDouble(zippy, () => zippy.ExtractSpecificFiles(zF.CurrentPath, gamePath,
+            SafeBoxes.LaunchDouble(zippy, () => zippy.ExtractSpecificFiles(zF.CurrentPath, gamePath,
                                                         "TBGame.xml", "EBGame.xml", "DPGame.json"),
                                                         "SevenZip Extraction");
         }
@@ -232,7 +233,6 @@ namespace UnPack_My_Game.Cores
 
                 gpX = GamePaths.CreateBasic(xelG);
                 gpX.Complete(xelGames.GetNodes(Tag.AddApp, Tag.GameId, gpX.Id));
-
 
                 // Essaie de récupération des paths
                 foreach (var app in gpX.Applications)
