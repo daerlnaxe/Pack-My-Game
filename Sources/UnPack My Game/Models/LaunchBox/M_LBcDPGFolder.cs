@@ -4,6 +4,7 @@ using DxTBoxCore.Box_Progress;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using UnPack_My_Game.Cores;
@@ -42,12 +43,17 @@ namespace UnPack_My_Game.Models.LaunchBox
 
         public void RemoveElement(object element)
         {
-            throw new NotImplementedException();
+            Elements.Remove((DataRep)element);
+            Test_HasElement(Elements, nameof(Elements));
         }
 
         public void RemoveElements(IList<object> parameter)
         {
-            throw new NotImplementedException();
+            foreach (DataRep data in parameter.ToList())
+            {
+                Elements.Remove(data);
+            }
+            Test_HasElement(Elements, nameof(Elements));
         }
 
         public bool Process()

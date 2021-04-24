@@ -1,5 +1,6 @@
 ﻿using Common_PMG.Container;
 using Common_PMG.Container.Game;
+using Hermes;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -70,7 +71,8 @@ namespace Common_PMG.JSon
 
 
                         default:
-                            throw new ArgumentException();
+                            HeTrace.WriteLine($"Not managed: {propertyName}");
+                            break;
 
                     }
                 }
@@ -80,7 +82,26 @@ namespace Common_PMG.JSon
 
         public override void Write(Utf8JsonWriter writer, GamePaths value, JsonSerializerOptions options)
         {
-            throw new NotImplementedException();
+            writer.WriteStartObject();
+
+            writer.WriteString(nameof(value.Id), value.Id);
+            writer.WriteString(nameof(value.Title), value.Title);
+            writer.WriteString(nameof(value.Platform), value.Platform);
+            writer.WriteString(nameof(value.ManualPath), value.ManualPath);
+            writer.WriteString(nameof(value.MusicPath), value.MusicPath);
+            writer.WriteString(nameof(value.VideoPath), value.VideoPath);
+            writer.WriteString(nameof(value.ThemeVideoPath), value.ThemeVideoPath);
+            //
+            writer.WriteStartArray("Games");
+            foreach (var data in value.Applications)
+            {
+                   JsonSerializer.Serialize(writer, data);
+            }
+            writer.WriteEndArray();
+            //
+            writer.WriteEndObject();
+
+            
         }
     }
 }

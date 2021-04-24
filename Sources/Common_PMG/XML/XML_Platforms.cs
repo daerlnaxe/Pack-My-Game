@@ -182,13 +182,13 @@ namespace Common_PMG.XML
                             where (string)platform.Element("Name").Value == name
                             select platform;
 
-            foreach (var field in platforms.ElementAt(0).Descendants())
+            foreach (var field in platforms.ElementAt(0).Elements())
             {
                 if (field.Value == null)
                     continue;
 
                 if (field.Name.LocalName == "Folder")
-                    zePlatform.FolderPath = string.IsNullOrEmpty(baseFolder) ? field.Value : Path.GetFullPath(field.Value, baseFolder);
+                    zePlatform.FolderPath = string.IsNullOrEmpty(baseFolder) ? field.Value : Path.Combine( baseFolder, Tag.Games.ToString(), name);
             }
 
             // --- Additionnal paths
@@ -213,7 +213,7 @@ namespace Common_PMG.XML
                             break;
 
                         case "FolderPath":
-                            pfFolder.FolderPath = string.IsNullOrEmpty(baseFolder) ? field.Value : Path.GetFullPath(field.Value, baseFolder);
+                            pfFolder.FolderPath = Path.GetFullPath(field.Value, baseFolder);
                             break;
 
                         default:

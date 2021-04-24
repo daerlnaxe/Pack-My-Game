@@ -41,6 +41,8 @@ namespace Common_PMG.Container.Game
         {
             set
             {
+                _Applications.Clear();
+
                 if (value == null)
                     return;
 
@@ -151,6 +153,7 @@ namespace Common_PMG.Container.Game
         public static GamePaths CreateBasic(XElement xelG)
         {
             GamePaths gp = new GamePaths();
+            DataPlus dp = new DataPlus();
 
             foreach (var element in xelG.Elements())
             {
@@ -158,7 +161,10 @@ namespace Common_PMG.Container.Game
 
                 // id
                 if (name == GameTag.ID.ToLower())
+                {
                     gp.Id = element.Value;
+                    dp.Id = element.Value;
+                }
                 // title
                 else if (name == GameTag.Title.ToLower())
                     gp.Title = element.Value;
@@ -168,8 +174,9 @@ namespace Common_PMG.Container.Game
                 // application path
                 else if (name == Tag.AppPath.ToLower())
                 {
-                    string appN = Path.GetFileName(element.Value);
-                    gp.AddApplication(DataPlus.MakeChosen(gp.Id, appN, element.Value));
+                    dp.Name= Path.GetFileName(element.Value);
+                    dp.IsSelected = true;
+                    dp.CurrentPath = element.Value;
                 }
                 else if (name == GameTag.ManPath.ToLower())
                     gp.ManualPath = element.Value;
@@ -180,6 +187,7 @@ namespace Common_PMG.Container.Game
                 else if (name == GameTag.ThVidPath.ToLower())
                     gp.ThemeVideoPath = element.Value;
             }
+            gp.AddApplication(dp);
             return gp;
         }
 

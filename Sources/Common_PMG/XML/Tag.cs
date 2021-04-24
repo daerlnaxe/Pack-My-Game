@@ -29,6 +29,7 @@ namespace Common_PMG.XML
         #region Platforms
         public static string Platform = "Platform";
         public static string PlatformFolder = "PlatformFolder";
+        public static string Games = "Games";
         public static string MediaTManual = "Manual";
         public static string MediaTMusic = "Music";
         public static string MediaTVideo = "Video";

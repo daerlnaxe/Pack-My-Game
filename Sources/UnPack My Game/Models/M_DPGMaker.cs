@@ -150,6 +150,7 @@ namespace UnPack_My_Game.Graph
 
             // Création des collections (par rapport au changement de nom
             MakeCollection(GameDataC.Applications, GamesCollection, PS.Default.Games);
+            throw new Exception("LEs jeux ne conservent pas l'id ici !!!"); 
             MakeCollection(GameDataC.CheatCodes, CheatsCollection, PS.Default.CheatCodes);
             MakeCollection(GameDataC.Manuals, ManualsCollection, PS.Default.Manuals);
             MakeCollection(GameDataC.Musics, MusicsCollection, PS.Default.Musics);
@@ -170,7 +171,7 @@ namespace UnPack_My_Game.Graph
             foreach (T elem in srcCollected)
             {
                 T dr = new T()
-                {
+                {                    
                     Name = elem.CurrentPath,
                     CurrentPath = Path.GetFullPath(elem.CurrentPath, pRoot),
                     IsSelected = elem.IsSelected,

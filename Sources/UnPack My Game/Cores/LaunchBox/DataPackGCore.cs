@@ -161,7 +161,7 @@ namespace UnPack_My_Game.Cores
                 if (string.IsNullOrEmpty(newPFile))
                     throw new Exception("File for injection is not filled");
 
-                HeTrace.WriteLine($"Injecting {gpX.Platform} in platforms file");
+                HeTrace.WriteLine($"Injecting {gpX.Platform} in platforms file for {gpX.Platform}");
                 InjectPlatform(gpX.Platform, newPFile);
             }
 

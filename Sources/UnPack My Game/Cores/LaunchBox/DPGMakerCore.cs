@@ -312,7 +312,7 @@ namespace UnPack_My_Game.Cores
 
             foreach (DataPlus app in gpC.Applications.ToList())
             {
-                tmp = $@"{Default.Games}{app.Name?.Substring(1)}";
+                tmp = $@"{Default.Games}{app.CurrentPath?.Substring(1)}";
                 if (!files.Contains(tmp))
                     gpC.RemoveApp(app);
             }
@@ -320,8 +320,8 @@ namespace UnPack_My_Game.Cores
             /*tmp = $@"{PS.Default.Games}{gpC.DefaultApp?.CurrentPath?.Substring(1)}";
             if (!files.Contains(tmp))
                 gpC.UnsetDefaultApp();*/
-
-            if (!files.Contains($@"{Default.Manuals}{gpC.DefaultManual?.CurrentPath.Substring(1)}"))
+            var tmp2 = $@"{Default.Manuals}{gpC.DefaultManual?.CurrentPath.Substring(1)}";
+            if (!files.Contains(tmp2))
                 gpC.UnsetDefaultManual();
 
             if (!files.Contains($@"{Default.Musics}{gpC.DefaultMusic?.CurrentPath.Substring(1)}"))
