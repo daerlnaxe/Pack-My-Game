@@ -28,7 +28,7 @@ namespace Common_PMG.Container.AAPP
         /// ex :d99692c7-51c3-4e50-8592-7fab98295f5b
         /// </remarks>
         [XmlElement(Order = 1)]
-        public string GameID { get; set; }
+        public string GameId { get; set; }
 
         /// <summary>
         /// Chemin vers l'application

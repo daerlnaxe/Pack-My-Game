@@ -83,9 +83,12 @@ namespace Pack_My_Game.Models
         }
         #endregion
 
-        #region
+        #region Compression
+        public bool ZipCompression { get; set; }
         public int ZipLvlCompression { get; set; }
         public int ZipMaxLvl => PS.Default.cZMaxComp;
+
+        public bool SevCompression { get; set; }
         public int SevZipLvlCompression 
         { 
             get;
@@ -104,9 +107,11 @@ namespace Pack_My_Game.Models
         
         public bool MD5Calcul { get; set; }
         // --- 
-
-        public bool ZipCompression { get; set; }
-        public bool SevCompression { get; set; }
+        public bool KeepGamesStructure { get; set; }
+        public bool KeepCheatsStructure { get; set; }
+        public bool KeepManualsStructure { get; set; }
+        public bool KeepMusicsStructure { get; set; }
+        public bool KeepVideosStructure { get; set; }
 
         // ---
 
@@ -122,7 +127,9 @@ namespace Pack_My_Game.Models
             WorkingPath = PS.Default.OutPPath;
             CheatCodesPath = PS.Default.CCodesPath;
             // ---
+            ZipCompression = PS.Default.opZip;
             ZipLvlCompression = 6;//PS.Default.cZipCompLvl;
+            SevCompression = PS.Default.op7_Zip;
             SevZipLvlCompression = PS.Default.c7zCompLvl;
             // ---
             InfosGame = PS.Default.opInfos;
@@ -133,8 +140,11 @@ namespace Pack_My_Game.Models
             CheatsCopy = PS.Default.opCheatCodes;
             MD5Calcul = PS.Default.opMd5;
             // ---
-            ZipCompression = PS.Default.opZip;
-            SevCompression = PS.Default.op7_Zip;
+            KeepGamesStructure = PS.Default.KeepGameStruct;
+            KeepCheatsStructure = PS.Default.KeepCheatCStruct;
+            KeepManualsStructure = PS.Default.KeepManualStruct;
+            KeepMusicsStructure = PS.Default.KeepMusicStruct;
+            KeepVideosStructure = PS.Default.KeepVideoStruct;
             // ---
             FileLog = PS.Default.opLogFile;
             WindowLog = PS.Default.opLogWindow;

@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Compile Remove="BackupLB\Etalon_LBGame.cs" />
+    <Compile Remove="Container\DataClone.cs" />
     <Compile Remove="Container\Game\GameLBT.cs" />
     <Compile Remove="Container\Game\LaunchBox\GameLBT.cs" />
     <Compile Remove="XML\MakeXML.cs" />
@@ -16,6 +17,7 @@
 
   <ItemGroup>
     <None Include="BackupLB\Etalon_LBGame.cs" />
+    <None Include="Container\DataClone.cs" />
     <None Include="Container\Game\LaunchBox\GameLBT.cs" />
     <None Include="XML\MakeXML.cs" />
   </ItemGroup>

@@ -233,6 +233,8 @@ namespace Common_PMG.XML
             return gameInf;
         }
 
+
+
         /// <summary>
         /// Scrape un jeu en mode LBGame en fonction d'un critère.
         /// </summary>
@@ -276,7 +278,7 @@ namespace Common_PMG.XML
             XElement game = XElement.Load(xmlFile).Element("Game");
             LBGame gameLB = new LBGame();
 
-            foreach (var field in game.Descendants())
+            foreach (var field in game.Elements())
             {
                 if (field.Value == null)
                     continue;
@@ -290,6 +292,8 @@ namespace Common_PMG.XML
                 if (Make_LBGame(gameLB, field))
                     continue;
             }
+
+            #region
             /* 2021
             XmlSerializer xs;
             LBGame g;
@@ -332,6 +336,7 @@ namespace Common_PMG.XML
      });*/
             /*2021
             return g;*/
+            #endregion
             return gameLB;
         }
         public static List<Clone> ListClones(string xmlFile)
@@ -399,6 +404,98 @@ namespace Common_PMG.XML
 
             return aAppz;
         }
+
+        #region abandonné
+        /*
+
+        public static GamePaths StatScrap_GamePaths(string platformXmlFile, string id)
+        {
+            using (XML_Games xmlG = new XML_Games(platformXmlFile))
+            {
+                return xmlG.Scrap_GamePaths(xmlG.Root, id);
+            }
+        }
+
+        public GamePaths Scrap_GamePaths(XElement root, string id = null)
+        {
+            var gp = new GamePaths();
+
+            IEnumerable<XElement> games = root.Elements(Tag.Game);
+
+            if (!string.IsNullOrEmpty(id))
+                games = games.Where((game) => game.Element(GameTag.ID).Value == id);
+
+            if (!games.Any())
+                throw new Exception("No Game found");
+
+            DataClone dtc = new DataClone();
+            dtc.IsSelected = true;
+
+
+            foreach (var elem in games.ElementAt(0).Elements())
+            {
+                string name = elem.Name.LocalName.ToLower();
+                if (elem.Value == null)
+                    continue;
+
+                // Général
+                if (name == GameTag.Title.ToLower())
+                    gp.Title = elem.Value;
+                else if (name == GameTag.ManPath.ToLower())
+                    gp.ManualPath = elem.Value;
+                else if (name == GameTag.MusPath.ToLower())
+                    gp.MusicPath = elem.Value;
+                else if (name == GameTag.Platform.ToLower())
+                    gp.Platform = elem.Value;
+                else if (name == GameTag.VidPath.ToLower())
+                    gp.VideoPath = elem.Value;
+                else if (name == GameTag.ThVidPath.ToLower())
+                    gp.ThemeVideoPath = elem.Value;
+
+                // DataClone
+                MakeDataClone(elem, dtc, ref name);
+            }
+
+            // Clones
+            IEnumerable<XElement> clones = root.Elements(Tag.AddApp);
+            if (!string.IsNullOrEmpty(id))
+                clones = clones.Where((game) => game.Element(Tag.GameId).Value == id);
+
+            LBGame lb = new LBGame();
+            DataClone blee = new DataClone()
+            {
+                ApplicationPath = lb.ApplicationPath,
+                   /*pas dans jeu
+                     AutoRunAfter
+                     AutoRunBefore
+                     Disc 
+                      Installed
+                    
+
+                   CommandLine = lb.CommandLine,
+                   PlayCount = lb.PlayCount,
+                    Developer = lb.Developer,
+                     EmulatorId = lb.EmulatorId,
+            };
+
+
+
+            return gp;
+
+            void MakeDataClone(XElement element, in DataClone dtc, ref string name)
+            {
+                if (name == GameTag.ID.ToLower())
+                    dtc.Id = element.Value;
+                else if (name == Tag.AppPath)
+                    dtc.ApplicationPath = element.Value;
+                else
+                    Make_AddApp(element, dtc);
+
+            }
+        }
+        */
+        #endregion
+
 
         public static List<CustomField> ListCustomFields(string xmlFile, string balise)
         {
@@ -627,7 +724,7 @@ namespace Common_PMG.XML
 
             var xelCF = Root.Elements(Tag.CustField);
 
-            if(xelCF.Count() > 0)
+            if (xelCF.Count() > 0)
             {
                 xelCF.Last().AddAfterSelf(cFields);
             }
@@ -1184,8 +1281,8 @@ namespace Common_PMG.XML
                     clone.Id = elem.Value;
                     break;
 
-                case nameof(clone.GameID):
-                    clone.GameID = elem.Value;
+                case nameof(clone.GameId):
+                    clone.GameId = elem.Value;
                     break;
 
                 case nameof(clone.ApplicationPath):
@@ -1208,6 +1305,9 @@ namespace Common_PMG.XML
             {
                 case nameof(AApp.PlayCount):
                     AApp.PlayCount = int.Parse(elem.Value);
+                    break;
+                case nameof(AApp.LastPlayed):
+                    AApp.LastPlayed = string.IsNullOrEmpty(elem.Value) ? null : (DateTime?)DateTime.Parse(elem.Value); ;
                     break;
 
                 case nameof(AApp.AutoRunAfter):
@@ -1250,6 +1350,10 @@ namespace Common_PMG.XML
                     AApp.Region = elem.Value;
                     break;
 
+                case nameof(AApp.ReleaseDate):
+                    AApp.ReleaseDate = string.IsNullOrEmpty(elem.Value) ? null : (DateTime?)DateTime.Parse(elem.Value);
+                    break;
+
                 case nameof(AApp.Version):
                     AApp.Version = elem.Value;
                     break;
@@ -1273,8 +1377,12 @@ namespace Common_PMG.XML
                 case nameof(AApp.Priority):
                     AApp.Priority = int.Parse(elem.Value);
                     break;
-
-
+                case nameof(AApp.Disc):
+                    AApp.Disc = int.TryParse(elem.Value, out var disc) ? disc : default(int?);
+                    break;
+                case nameof(AApp.Installed):
+                    AApp.Installed = bool.TryParse(elem.Value, out var installed) ? installed : default(bool?);
+                    break;
                 default:
                     Debug.WriteLine($"Non pris en charge: {elem.Name}");
                     break;
@@ -1336,7 +1444,7 @@ namespace Common_PMG.XML
                 (
                     new XElement(nameof(addApp.Id), addApp.Id),
                     new XElement(nameof(addApp.PlayCount), addApp.PlayCount),
-                    new XElement(nameof(addApp.GameID), addApp.GameID),
+                    new XElement(nameof(addApp.GameId), addApp.GameId),
                     new XElement(nameof(addApp.ApplicationPath), addApp.ApplicationPath),
                     new XElement(nameof(addApp.AutoRunAfter), addApp.AutoRunAfter),
                     new XElement(nameof(addApp.AutoRunBefore), addApp.AutoRunBefore),

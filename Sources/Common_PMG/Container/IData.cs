@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Common_PMG.Container
 {
-    public interface  IData
+    public interface IData
     {
         public string Name { get; set; }
         public string CurrentPath { get; set; }

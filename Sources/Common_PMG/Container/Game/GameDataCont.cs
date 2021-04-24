@@ -19,6 +19,13 @@ namespace Common_PMG.Container.Game
     {
         public string Title { get; set; }
 
+        public DataPlus DefaultApp { get; private set; }
+        public DataRep DefaultManual { get; private set; }
+        public DataRep DefaultMusic { get; private set; }
+        public DataRep DefaultVideo { get; private set; }
+        public DataRep DefaultThemeVideo { get; private set; }
+
+
         private List<DataPlus> _Applications = new List<DataPlus>();
         public IReadOnlyCollection<DataPlus> Applications => _Applications.AsReadOnly();
 
@@ -37,11 +44,7 @@ namespace Common_PMG.Container.Game
                                     CheatCodes.Count() +
                                     Images.Count();
 
-        public DataPlus DefaultApp { get; private set; }
-        public DataRep DefaultManual { get; private set; }
-        public DataRep DefaultMusic { get; private set; }
-        public DataRep DefaultVideo { get; private set; }
-        public DataRep DefaultThemeVideo { get; private set; }
+
 
         /*
         public string SetDefaultApplication
@@ -133,16 +136,6 @@ namespace Common_PMG.Container.Game
 
         // ---
 
-        // ---
-
-        /*
-        public void AddApplication(string fichier)
-        {
-            AddWVerif(fichier, Apps);
-        }
-        */
-
-        // ---
 
         /// <summary>
         /// Initialize or replace applications
@@ -168,7 +161,7 @@ namespace Common_PMG.Container.Game
             }
         }
 
-        public IEnumerable<string> SSetApplications
+        public ICollection<string> SSetApplications
         {
             set
             {
@@ -178,19 +171,18 @@ namespace Common_PMG.Container.Game
             }
         }
 
-
-        public List<DataRep> SetCheatCodes
+        public ICollection<DataRep> SetDCheatCodes
         {
             set
             {
                 if (value != null)
-                    foreach (var f in value)
+                    foreach (var data in value)
                     {
-                        AddWVerif(f, CheatCodes);
+                        AddWVerif(data, CheatCodes);
                     }
             }
         }
-        public List<string> SSetCheatCodes
+        public ICollection<string> SetSCheatCodes
         {
             set
             {
@@ -201,24 +193,46 @@ namespace Common_PMG.Container.Game
             }
         }
 
+        #region Manuals
+
         /// <summary>
-        /// Initialize or replace manuals
+        /// Initialize manuals
         /// </summary>
-        public IEnumerable<DataRep> SetManuals
+        public ICollection<DataRep> SetManuals
         {
             set
             {
                 if (value != null)
                 {
                     _Manuals.Clear();
-                    foreach (var f in value)
+                    foreach (var data in value)
                     {
-                        AddWVerif(f, _Manuals);
+                        if (data.IsSelected)
+                            DefaultManual = data;
+                        AddWVerif(data, _Manuals);
                     }
                 }
             }
         }
-        public List<string> SSetManuals
+
+        /// <summary>
+        /// Add Manuals (no clear)
+        /// </summary>
+        public ICollection<DataRep> AddDManuals
+        {
+            set
+            {
+                foreach (var data in value)
+                {
+                    AddWVerif(data, _Manuals);
+                }
+            }
+        }
+      
+        /// <summary>
+        /// Add Manuals (no clear)
+        /// </summary>
+        public ICollection<string> AddSManuals
         {
             set
             {
@@ -229,46 +243,71 @@ namespace Common_PMG.Container.Game
             }
         }
 
+        #endregion
 
-        public List<DataRep> SetMusics
+        #region music
+        /// <summary>
+        /// Initialize musics
+        /// </summary>
+        public ICollection<DataRep> SetMusics
         {
             set
             {
-
-                if (value == null)
-                    return;
-
+                if (value != null)
+                {
+                    Musics.Clear();
+                    foreach (var data in value)
+                    {
+                        if (data.IsSelected)
+                            DefaultMusic = data;
+                        AddWVerif(data, Musics);
+                    }
+                }
+            }
+        }
+       
+        public ICollection<string> AddSMusics
+        {
+            set
+            {
                 foreach (var f in value)
                 {
                     AddWVerif(f, Musics);
                 }
             }
         }
-        public List<string> SSetMusics
+
+        #endregion
+
+        #region videos
+        /// <summary>
+        /// Initialize videos
+        /// </summary>
+        public ICollection<DataRep> SetVideos
         {
             set
             {
-                foreach (var f in value)
+                if (value != null)
                 {
-                    AddWVerif(f, Musics);
+                    Videos.Clear();
+                    foreach (var f in value)
+                    {
+                        AddWVerif(f, Videos);
+                    }
                 }
             }
         }
-
-        public List<DataRep> SetVideos
+        public ICollection<DataRep> AddDVideos
         {
             set
             {
-                if (value == null)
-                    return;
-
                 foreach (var f in value)
                 {
                     AddWVerif(f, Videos);
                 }
             }
         }
-        public List<string> SSetVideos
+        public ICollection<string> AddSVideos
         {
             set
             {
@@ -279,26 +318,12 @@ namespace Common_PMG.Container.Game
             }
         }
 
-        /*
-        public GameDataCont(GamePaths g)
-        {
-            this.Id = g.Id;
-            this.Title = g.Title;
-            this.Platform = g.Platform;
-            this.ApplicationPath = g.ApplicationPath;
-            this.ManualPath = g.ManualPath;
-            this.MusicPath = g.MusicPath;
-            this.VideoPath = g.VideoPath;
-            this.ThemeVideoPath = g.ThemeVideoPath;
-        }*/
+        #endregion
 
         public GameDataCont(string title)
         {
             Title = title;
         }
-
-
-
 
         public void RemoveApp(DataPlus app)
         {
@@ -336,20 +361,6 @@ namespace Common_PMG.Container.Game
             liste.Add(DataRep.MakeNormal(fichier));
         }
 
-
-        /// <summary>
-        /// Reinitialize a list with a collection
-        /// </summary>
-        /// <param name="list"></param>
-        /// <param name="collection"></param>
-        /// <param name="defauts"></param>
-        public void Reinitialize(List<DataRep> list, IEnumerable<DataRep> collection)
-        {
-            list.Clear();
-            foreach (var elem in collection)
-                list.Add(elem);
-            //
-        }
 
         public void SetDefault(string propertyName, DataRep value)
         {

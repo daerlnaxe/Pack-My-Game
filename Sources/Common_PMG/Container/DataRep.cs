@@ -94,6 +94,18 @@ namespace Common_PMG.Container
             };
         }
 
+
+        public static DataRep Copy(DataRep src)
+        {
+            return new DataRep()
+            {
+                Name = src.Name,
+                CurrentPath = src.CurrentPath,
+                DestPath = src.DestPath,
+                IsSelected = src.IsSelected,
+            };
+        }
+
         /*
         public static T MakeNormal<T>(string link) where T : DataRep, new()
         {

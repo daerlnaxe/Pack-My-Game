@@ -282,56 +282,48 @@ namespace Pack_My_Game.Models
         /// </remarks>
         internal void ExtractDefaultFiles()
         {
-            throw new NotImplementedException();
-            /*
             string platformXmlFile = Path.Combine(PS.Default.LBPath, PS.Default.dPlatforms, $"{SelectedPlatform.Name}.xml");
             Platform p = XML_Platforms.GetPlatformPaths(Path.Combine(LaunchBoxPath, PS.Default.fPlatforms), SelectedPlatform.Name);
 
             foreach (var g in SelectedGames)
             {
+                GamePaths gp = (GamePaths)XML_Games.Scrap_LBGame<LBGame>(platformXmlFile, GameTag.ID, g.Id);
 
-                GamePaths game = (GamePaths)XML_Games.Scrap_LBGame<LBGame>(platformXmlFile, Tag.Id, g.Id);
+                //clones
+                foreach (var clone in XML_Games.ListClones(platformXmlFile, Tag.GameId, g.Id))
+                    gp.AddApplication(clone.Id, clone.Id, clone.ApplicationPath);
 
-                game.ApplicationPath = Assign(game.ApplicationPath, SelectedPlatform.FolderPath);
+                if (PS.Default.opClones)
+                    foreach (var app in gp.Applications)
+                        app.Name = Assign(app.CurrentPath, SelectedPlatform.FolderPath, PS.Default.KeepGameStruct);
 
+                gp.ManualPath = Assign(gp.ManualPath, p, "Manual", PS.Default.KeepManualStruct);
+                gp.MusicPath = Assign(gp.MusicPath, p, "Music", PS.Default.KeepMusicStruct);
+                gp.VideoPath = Assign(gp.VideoPath, p, "Video", PS.Default.KeepVideoStruct);
+                gp.ThemeVideoPath = Assign(gp.ThemeVideoPath, p, "Video", true);
 
-                game.ManualPath = Assign(game.ManualPath, p, "Manual");
-
-                game.MusicPath = Assign(game.MusicPath, p, "Music");
-
-                game.VideoPath = Assign(game.VideoPath, p, "Video");
-
-                game.ThemeVideoPath = Assign(game.ThemeVideoPath, p, "Video");
-
-                string tmp = Path.Combine(WorkingFolder, SelectedPlatform.Name, Tool.WindowsConv_TitleToFileName(game.Title));
+                string tmp = Path.Combine(WorkingFolder, SelectedPlatform.Name, Tool.WindowsConv_TitleToFileName(gp.Title));
                 Directory.CreateDirectory(tmp);
                 tmp = Path.Combine(tmp, "DPGame.json");
-                game.WriteToJson(tmp);
-                //  Check_AllDefaultFiles(lbGame);
+
+                gp.WriteToJson(tmp);
             }
-            */
 
         }
 
-        private string Assign(string file, Platform platform, string category)
+        private string Assign(string file, Platform platform, string category, bool keepStruct)
         {
             var platformFolder = platform.PlatformFolders.First((x) => x.MediaType.Equals(category, StringComparison.OrdinalIgnoreCase));
 
             if (platformFolder != null)
             {
-                return Assign(file, platformFolder.FolderPath);
+                return Assign(file, platformFolder.FolderPath, keepStruct);
             }
             else
             {
-                return Assign(file, null);
+                return Assign(file, null, keepStruct);
             }
-
-
-            //    Path.Combine(PS.Default.LBPath, Common.Manuals, SelectedPlatform.Name)); ;
-
         }
-
-
 
 
         /// <summary>
@@ -341,7 +333,7 @@ namespace Pack_My_Game.Models
         /// <param name="platformPath"></param>
         /// <param name="defaultPlatformPath"></param>
         /// <returns></returns>
-        private string Assign(string file, string platformPath/*, string defaultPlatformPath*/)
+        private string Assign(string file, string platformPath, bool keepStruct)
         {
             file = Path.GetFullPath(file, PS.Default.LBPath);
 
@@ -349,9 +341,6 @@ namespace Pack_My_Game.Models
             if (string.IsNullOrEmpty(file))
                 return string.Empty;
 
-            // Quand le platformPath est null c'est qu'on utilise les dossiers par défaut
-            /*if (string.IsNullOrEmpty(platformPath))
-                platformPath = defaultPlatformPath;*/
 
             platformPath = Path.GetFullPath(platformPath, PS.Default.LBPath);
 
@@ -362,11 +351,11 @@ namespace Pack_My_Game.Models
             }
 
             // si c'est bien linké selon les dossiers de la plateforme
-            if (file.Contains(platformPath))
-                return file.Replace(platformPath, string.Empty);
+            if (keepStruct && file.Contains(platformPath))
+                return file.Replace(platformPath, ".");
 
             // Si ce n'est pas bien linké
-            return $"\\{Path.GetFileName(file)}";
+            return $".\\{Path.GetFileName(file)}";
         }
 
         private void Check_AllDefaultFiles(LBGame g)

@@ -149,12 +149,11 @@ namespace UnPack_My_Game.Graph
             Platform = GamePaths.Platform;
 
             // Création des collections (par rapport au changement de nom
-            MakeCollection(GameDataC.Applications, GamesCollection, PS.Default.Games);
-            throw new Exception("LEs jeux ne conservent pas l'id ici !!!"); 
-            MakeCollection(GameDataC.CheatCodes, CheatsCollection, PS.Default.CheatCodes);
-            MakeCollection(GameDataC.Manuals, ManualsCollection, PS.Default.Manuals);
-            MakeCollection(GameDataC.Musics, MusicsCollection, PS.Default.Musics);
-            MakeCollection(GameDataC.Videos, VideosCollection, PS.Default.Videos);
+            MakeCollection(GameDataC.Applications, GamesCollection, PS.Default.Games, x => DataPlus.Copy(x));
+            MakeCollection(GameDataC.CheatCodes, CheatsCollection, PS.Default.CheatCodes, x=>DataRep.Copy(x));
+            MakeCollection(GameDataC.Manuals, ManualsCollection, PS.Default.Manuals, x => DataRep.Copy(x));
+            MakeCollection(GameDataC.Musics, MusicsCollection, PS.Default.Musics, x => DataRep.Copy(x));
+            MakeCollection(GameDataC.Videos, VideosCollection, PS.Default.Videos, x => DataRep.Copy(x));
 
             // Initialisation des fichiers par défaut.
             ChosenGame = GamesCollection.FirstOrDefault(x => x.Name.Equals(GameDataC.DefaultApp?.CurrentPath));
@@ -162,25 +161,53 @@ namespace UnPack_My_Game.Graph
             ChosenMusic = MusicsCollection.FirstOrDefault(x => x.Name.Equals(GameDataC.DefaultMusic?.CurrentPath));
             ChosenVideo = VideosCollection.FirstOrDefault(x => x.Name.Equals(GameDataC.DefaultVideo?.CurrentPath));
             ChosenThemeVideo = VideosCollection.FirstOrDefault(x => x.Name.Equals(GameDataC.DefaultThemeVideo?.CurrentPath));
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="srcCollected"></param>
+            /// <param name="targetedCollec"></param>
+            /// <param name="mediatype"></param>
+            /// <remarks>
+            /// Ne pas faire de générique car il faut que l'id passe
+            /// </remarks>
+            void MakeCollection<T>(IReadOnlyCollection<T> srcCollected, ObservableCollection<T> targetedCollec, string mediatype, Func<T, T> copy) where T : IData
+            {
+                string pRoot = Path.Combine(Root, mediatype);
+                targetedCollec.Clear();
+                foreach (T elem in srcCollected)
+                {
+                    //T dr = DataPlus.Copy(elem);
+                    T dr = copy(elem);
+                    dr.Name = elem.CurrentPath;
+                    dr.CurrentPath = Path.GetFullPath(elem.CurrentPath, pRoot);
+                    targetedCollec.Add(dr);
+                }
+            }
         }
 
-        private void MakeCollection<T>(IEnumerable<T> srcCollected, ObservableCollection<T> targetedCollec, string mediatype) where T: IData, new()
+    
+        /*
+        private void MakeCollection(IEnumerable<DataRep> srcCollected, ObservableCollection<DataRep> targetedCollec, string mediatype)
         {
             string pRoot = Path.Combine(Root, mediatype);
             targetedCollec.Clear();
-            foreach (T elem in srcCollected)
+            foreach (DataRep elem in srcCollected)
             {
-                T dr = new T()
-                {                    
+                DataRep dr = DataRep.Copy(elem);
+                dr.Name = elem.CurrentPath;
+                dr.CurrentPath = Path.GetFullPath(elem.CurrentPath, pRoot);
+                /*T dr = new T()
+                {
                     Name = elem.CurrentPath,
                     CurrentPath = Path.GetFullPath(elem.CurrentPath, pRoot),
                     IsSelected = elem.IsSelected,
-                };
-
+                };*/
+        /*
                 //dr.ALinkToThePath =
                 targetedCollec.Add(dr);
             }
-        }
+        }*/
 
 
         #region check/uncheck
@@ -223,7 +250,7 @@ namespace UnPack_My_Game.Graph
                 UnsetDefault(selected, (x) => ChosenThemeVideo = x);
         }
 
-        private void SetDefault<T>(T dr, ObservableCollection<T> collection, Action<T> SetChosen) where T: class, IData
+        private void SetDefault<T>(T dr, ObservableCollection<T> collection, Action<T> SetChosen) where T : class, IData
         {
             foreach (var elem in collection)
                 if (dr != elem)
@@ -580,10 +607,11 @@ namespace UnPack_My_Game.Graph
 
             /*GamePaths.ApplicationPath = this.ChosenGame.Name;*/
             GamePaths.SetApplications = GamesCollection;
-            GamePaths.ManualPath = this.ChosenManual == null ? null: ChosenManual.Name;
-            GamePaths.MusicPath = this.ChosenMusic == null? null: ChosenMusic.Name;
-            GamePaths.VideoPath = this.ChosenVideo == null ? null: ChosenVideo.Name;
-            GamePaths.ThemeVideoPath = this.ChosenThemeVideo == null ? null: ChosenThemeVideo.Name;
+            //
+            GamePaths.ManualPath = this.ChosenManual == null ? null : ChosenManual.Name;
+            GamePaths.MusicPath = this.ChosenMusic == null ? null : ChosenMusic.Name;
+            GamePaths.VideoPath = this.ChosenVideo == null ? null : ChosenVideo.Name;
+            GamePaths.ThemeVideoPath = this.ChosenThemeVideo == null ? null : ChosenThemeVideo.Name;
 
             return true;
         }

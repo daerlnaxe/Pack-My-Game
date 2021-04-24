@@ -85,6 +85,16 @@ namespace Common_PMG.Container
             };
         }
 
-
+        public static DataPlus Copy(DataPlus src)
+        {
+            return new DataPlus()
+            {
+                Id= src.Id,
+                Name =src.Name,
+                CurrentPath = src.CurrentPath,
+                DestPath = src.DestPath,
+                IsSelected = src.IsSelected,
+            };
+        }
     }
 }

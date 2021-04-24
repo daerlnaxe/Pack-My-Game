@@ -560,20 +560,20 @@ namespace Pack_My_Game.Core
             gdC.SetApplications = GetFilesForGames(lbGame);
 
             // CheatCodes
-            gdC.SSetCheatCodes = GetCheatCodes(toSearch);
+            gdC.SetSCheatCodes = GetCheatCodes(toSearch);
 
             // Manuels
             gdC.SetDefaultManual = GetFileForSpecifics(lbGame.ManualPath);
-            gdC.SSetManuals = GetMoreFiles("Manual", toSearch);
+            gdC.AddSManuals = GetMoreFiles("Manual", toSearch);
 
             // Musics 
             gdC.SetDefaultMusic = GetFileForSpecifics(lbGame.MusicPath);
-            gdC.SSetMusics = GetMoreFiles("Music", toSearch);
+            gdC.AddSMusics = GetMoreFiles("Music", toSearch);
 
             // Videos
             gdC.SetDefaultVideo = GetFileForSpecifics(lbGame.VideoPath);
             gdC.SetDefaultThemeVideo = GetFileForSpecifics(lbGame.ThemeVideoPath);
-            gdC.SSetVideos = GetMoreFiles("Video", toSearch);
+            gdC.AddSVideos = GetMoreFiles("Video", toSearch);
 
             //GetMoreFiles(toSearch, gpX.CompVideos, "Video", gpX.VideoPath, gpX.ThemeVideoPath);
 
@@ -589,7 +589,7 @@ namespace Pack_My_Game.Core
         /// <param name="applicationPath"></param>
         /// <param name="applications"></param>
         /// <returns>Le fichier sélectionné</returns>
-        private List<DataPlus> GetFilesForGames(LBGame lbGame)
+        private ICollection<DataPlus> GetFilesForGames(LBGame lbGame)
         {
             List<DataPlus> games = new List<DataPlus>();
 
@@ -649,16 +649,6 @@ namespace Pack_My_Game.Core
                 }
             }
 
-
-
-
-
-
-
-
-
-
-
             return games;
         }
 
@@ -667,7 +657,7 @@ namespace Pack_My_Game.Core
         /// </summary>
         /// <param name="toSearch"></param>
         /// <param name="compCheatCodes"></param>
-        private List<string> GetCheatCodes(string toSearch)
+        private ICollection<string> GetCheatCodes(string toSearch)
         {
             string CCodesDir = Path.Combine(PS.Default.CCodesPath, _ZePlatform.Name);
             if (!Directory.Exists(CCodesDir))

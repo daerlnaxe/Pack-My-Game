@@ -97,11 +97,9 @@
                         <Label Content="{Binding Lang.SelectedExp, FallbackValue=SelectedExp}"/>
                         <TextBlock Text="{Binding ChosenGame.Name, FallbackValue=Selected}"/>
                         <!-- Liste -->
-                        <ListView Grid.Row="1" ItemsSource="{Binding GamesCollection}"
-                          SelectedItem="{Binding SelectedGame}"
-                          >
+                        <ListView Grid.Row="1" ItemsSource="{Binding GamesCollection}" >
                             <ListView.ContextMenu>
-                                <ContextMenu>
+                                <ContextMenu Visibility="Collapsed">
                                     <MenuItem Header="{Binding Lang.AddExp}" Click="Add_GameF"/>
                                     <MenuItem Header="{Binding Lang.DeleteExp}"
                                       IsEnabled="{Binding GamesCollection.Count, Converter={StaticResource EnableIfElements} }"
@@ -111,8 +109,7 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <RadioButton IsChecked="{Binding IsSelected}" Tag="{Binding}"
-                                                  Checked="Game_Handler"/>
+                                        <RadioButton IsChecked="{Binding IsSelected}" Tag="{Binding}" IsEnabled="False" Focusable="False"/>
                                         <TextBlock Text="{Binding Name}"/>
                                     </StackPanel>
                                 </DataTemplate>

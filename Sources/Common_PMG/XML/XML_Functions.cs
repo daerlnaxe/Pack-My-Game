@@ -155,7 +155,7 @@ namespace Common_PMG.XML
 
                             case "GameID":
                                 Console.WriteLine(nodes.Current.Value);
-                                zeClone.GameID = nodes.Current.Value;
+                                zeClone.GameId = nodes.Current.Value;
                                 break;
 
                             case "Id":

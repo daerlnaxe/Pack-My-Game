@@ -19,7 +19,7 @@ namespace Common_PMG.Container.Game
     [JsonConverter(typeof(GamepathConverter))]
     public class GamePaths
     {
-        [JsonIgnore]
+
         public string Id { get; set; }
         public string Title { get; set; }
         public string Platform { get; set; }
@@ -217,7 +217,7 @@ namespace Common_PMG.Container.Game
         {
             return new GamePaths
             {
-                Id = v.Id,
+                //Id = v.Id,
                 Title = v.Title,
                 Platform = v.Platform,
             };
@@ -227,7 +227,7 @@ namespace Common_PMG.Container.Game
         {
             GamePaths gp = new GamePaths()
             {
-                Id = v.Id,
+                //Id = v.Id,
                 Title = v.Title,
                 Platform = v.Platform,
                 ManualPath = v.ManualPath,
@@ -248,12 +248,19 @@ namespace Common_PMG.Container.Game
         /// <param name="name"></param>
         /// <param name="path"></param>
         /// <remarks>
-        /// Refuse les path vides
+        /// Refuse les path vides & les doublons
         /// </remarks>
         public void AddApplication(string id, string name, string path)
         {
             if (string.IsNullOrEmpty(path))
                 return;
+
+            for (int i = 0; i < _Applications.Count; i++)
+            {
+                DataPlus elem = _Applications[i];
+                if (elem.CurrentPath.Equals(path))
+                    return;
+            }
 
             _Applications.Add(DataPlus.MakeNormal(id, name, path));
         }

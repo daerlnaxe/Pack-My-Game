@@ -32,7 +32,7 @@ namespace Common_PMG.JSon
                         reader.Read();
 
                     switch (propertyName)
-                    {
+                    {                        
                         case "Id":
                             gpX.Id = reader.GetString();
                             break;
@@ -83,7 +83,7 @@ namespace Common_PMG.JSon
         public override void Write(Utf8JsonWriter writer, GamePaths value, JsonSerializerOptions options)
         {
             writer.WriteStartObject();
-
+            
             writer.WriteString(nameof(value.Id), value.Id);
             writer.WriteString(nameof(value.Title), value.Title);
             writer.WriteString(nameof(value.Platform), value.Platform);
@@ -92,6 +92,7 @@ namespace Common_PMG.JSon
             writer.WriteString(nameof(value.VideoPath), value.VideoPath);
             writer.WriteString(nameof(value.ThemeVideoPath), value.ThemeVideoPath);
             //
+            writer.WriteCommentValue("Please, use LaunchBox if you want to modify default application");
             writer.WriteStartArray("Games");
             foreach (var data in value.Applications)
             {

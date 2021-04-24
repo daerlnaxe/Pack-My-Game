@@ -4,16 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using Unbroken.LaunchBox.Plugins.Data;
 
 namespace Common_PMG.Container.AAPP
 {
     //[XmlRoot("AdditionalApplication")]
-    public class AdditionalApplication: Clone
+    public class AdditionalApplication: Clone//, IAdditionalApplication
     {
         #region info jeu
-
-        
-
 
         [XmlElement(Order = 2)]
         public string Name { get; set; }                // Jouer la version(1991-04)(Sega)[Sonic Mega Collection]...
@@ -26,6 +24,11 @@ namespace Common_PMG.Container.AAPP
         public string Publisher { get; set; }                   //Sony Imagesoft
         [XmlElement(Order = 6)]
         public string Region { get; set; }                      //United States
+
+        [XmlElement(Order = 7)]
+        public DateTime? ReleaseDate { get; set; }
+
+
         #endregion
 
         #region complément jeu (fini, status...)
@@ -37,9 +40,6 @@ namespace Common_PMG.Container.AAPP
         #endregion
 
 
-        #region chemins
-        
-        #endregion
 
         #region params de lancement
         [XmlElement(Order = 100)]
@@ -69,7 +69,7 @@ namespace Common_PMG.Container.AAPP
         public int PlayCount { get; set; }                      //2
 
         [XmlElement(Order = 201)]
-        public string LastPlayed { get; set; }          //2018-09-05T08:07:29.1600786+02:00
+        public DateTime? LastPlayed { get; set; }          //2018-09-05T08:07:29.1600786+02:00
 
         #endregion
 
@@ -82,7 +82,11 @@ namespace Common_PMG.Container.AAPP
         [XmlElement(Order = 302)]
         public int Priority { get; set; }               //1
 
+        [XmlElement(Order =303)]
+        public int? Disc { get; set; }
 
+        [XmlElement(Order =304)]
+        public bool? Installed { get; set; }
 
 
     }

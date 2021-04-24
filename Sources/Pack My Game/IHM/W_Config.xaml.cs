@@ -169,8 +169,10 @@ namespace Pack_My_Game.IHM
             PS.Default.OutPPath = _Model.WorkingPath;
             PS.Default.CCodesPath = _Model.CheatCodesPath;
             // --- Compression
+            PS.Default.opZip = _Model.ZipCompression;
             PS.Default.cZipCompLvl = _Model.ZipLvlCompression;
             PS.Default.c7zCompLvl = _Model.SevZipLvlCompression;
+            PS.Default.op7_Zip = _Model.SevCompression;
             // Options 
             PS.Default.opInfos = _Model.InfosGame;
             PS.Default.opOBGame = _Model.OriginalXMLBackup;
@@ -179,8 +181,13 @@ namespace Pack_My_Game.IHM
             PS.Default.opClones = _Model.ClonesCopy;
             PS.Default.opCheatCodes = _Model.CheatsCopy;
             PS.Default.opMd5 = _Model.MD5Calcul;
-            PS.Default.opZip = _Model.ZipCompression;
-            PS.Default.op7_Zip = _Model.SevCompression;
+            //
+            PS.Default.KeepGameStruct = _Model.KeepGamesStructure;
+            PS.Default.KeepCheatCStruct = _Model.KeepCheatsStructure;
+            PS.Default.KeepManualStruct = _Model.KeepManualsStructure;
+            PS.Default.KeepMusicStruct = _Model.KeepMusicsStructure;
+            PS.Default.KeepVideoStruct = _Model.KeepVideosStructure;
+            //
             PS.Default.opLogFile = _Model.FileLog;
             PS.Default.opLogWindow = _Model.WindowLog;
 

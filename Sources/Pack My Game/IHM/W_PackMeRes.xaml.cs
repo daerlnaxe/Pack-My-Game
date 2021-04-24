@@ -192,11 +192,12 @@ namespace Pack_My_Game.IHM
         }
 
         #region Check / Uncheck
+        /*
         private void Game_Handler(object sender, RoutedEventArgs e)
         {
             RadioButton cb = (RadioButton)sender;
             Model.Game_Handler(cb.Tag, cb.IsChecked);
-        }
+        }*/
 
         private void Manual_Handler(object sender, RoutedEventArgs e)
         {

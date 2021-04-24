@@ -163,20 +163,33 @@
                 <StackPanel>
                     <!-- Zip -->
                     <GroupBox Header="Zip">
-                        <Controls:RegleComp Max="{Binding ZipMaxLvl, FallbackValue=10}" 
+                        <StackPanel>
+                            <CheckBox Grid.Row="0" Grid.Column="0"
+                                      IsChecked="{Binding ZipCompression}"
+                                      Content="{Binding Lang.CompZExp, FallbackValue=CompZExp}"/>
+                            <Controls:RegleComp Max="{Binding ZipMaxLvl, FallbackValue=10}" 
                                             Value="{Binding ZipLvlCompression}"/>
+                        
+                        
+                        </StackPanel>
                     </GroupBox>
                     <!-- 7Zip -->
                     <GroupBox Header="7Zip">
-                        <Controls:RegleComp Max="{Binding SevZipMaxLvl, FallbackValue=6}"
+                        <StackPanel>
+                            <CheckBox Grid.Row="1" Grid.Column="0"
+                                      IsChecked="{Binding SevCompression}"
+                                      Content="{Binding Lang.Comp7ZExp, FallbackValue=Comp7ZExp}"/>
+                            <Controls:RegleComp Max="{Binding SevZipMaxLvl, FallbackValue=6}"
                             Value="{Binding SevZipLvlCompression}"
                             LargeStep="3"                
                             />
+                        </StackPanel>
                     </GroupBox>
                 </StackPanel>
             </TabItem>
             <!-- Options -->
             <TabItem Header="{Binding Lang.OptionsExp, FallbackValue=Options}">
+                <ScrollViewer>
                 <StackPanel>
                     <GroupBox Header="{Binding Lang.ProcessExp, FallbackValue=ProcessExp}">
                         <Grid>
@@ -216,20 +229,19 @@
                         </Grid>
                     </GroupBox>
                     <!-- Compression -->
-                    <GroupBox Header="{Binding Lang.CompExp, FallbackValue=CompExp}">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <CheckBox Grid.Row="0" Grid.Column="0"
-                                      IsChecked="{Binding ZipCompression}"
-                                      Content="{Binding Lang.CompZExp, FallbackValue=CompZExp}"/>
-                            <CheckBox Grid.Row="1" Grid.Column="0"
-                                      IsChecked="{Binding SevCompression}"
-                                      Content="{Binding Lang.Comp7ZExp, FallbackValue=Comp7ZExp}"/>
-
-                        </Grid>
+                    <GroupBox Header="Structure">
+                        <StackPanel>
+                            <CheckBox Content="Keep games Structure"
+                                      IsChecked="{Binding KeepGamesStructure}"/>
+                            <CheckBox Content="Keep cheats Structure" 
+                                      IsChecked="{Binding KeepCheatsStructure}"/>
+                            <CheckBox Content="Keep manuals Structure"
+                                      IsChecked="{Binding KeepManualsStructure}"/>
+                            <CheckBox Content="Keep musics Structure"
+                                      IsChecked="{Binding KeepMusicsStructure}"/>
+                            <CheckBox Content="Keep videos Structure"
+                                      IsChecked="{Binding KeepVideosStructure}"/>
+                        </StackPanel>
                     </GroupBox>
                     <!-- Loggers -->
                     <GroupBox Header="{Binding Lang.LoggersExp, FallbackValue=LoggersExp}">
@@ -248,6 +260,7 @@
                         </Grid>
                     </GroupBox>
                 </StackPanel>
+                </ScrollViewer>
             </TabItem>
         </TabControl>
     </DockPanel>

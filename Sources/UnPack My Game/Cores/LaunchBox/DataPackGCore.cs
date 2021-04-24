@@ -279,25 +279,25 @@ namespace UnPack_My_Game.Cores
             HeTrace.WriteLine($"\tManuals: {Default.Manuals}");
             tmp = Path.Combine(root, Default.Manuals);
             gdc.SetDefaultManual = gpX.ManualPath == null ? null : Path.GetFullPath(gpX.ManualPath, tmp);
-            gdc.SSetManuals = Directory.GetFiles(Path.Combine(tmp), "*.*", SearchOption.AllDirectories).ToList();
+            gdc.AddSManuals = Directory.GetFiles(Path.Combine(tmp), "*.*", SearchOption.AllDirectories).ToList();
 
             // Musics
             HeTrace.WriteLine($"\tMusics: {Default.Musics}");
             tmp = Path.Combine(root, Default.Musics);
             gdc.SetDefaultMusic = gpX.MusicPath == null ? null : Path.GetFullPath(gpX.MusicPath, tmp);
-            gdc.SSetMusics = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();
+            gdc.AddSMusics = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();
 
             // Videos
             HeTrace.WriteLine($"\tVideos: {Default.Videos}");
             tmp = Path.Combine(root, Default.Videos);
             gdc.SetDefaultVideo = gpX.VideoPath == null ? null : Path.GetFullPath(gpX.VideoPath, root);
             gdc.SetDefaultThemeVideo = gpX.ThemeVideoPath == null ? null : Path.GetFullPath(gpX.ThemeVideoPath, root);
-            gdc.SSetVideos = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();
+            gdc.AddSVideos = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories);
 
             // Cheat Codes
             HeTrace.WriteLine($"\tCheatCodes: {Default.CheatCodes}");
             tmp = Path.Combine(root, Default.CheatCodes);
-            gdc.SSetCheatCodes = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();
+            gdc.SetSCheatCodes = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();
 
             // Images
             HeTrace.WriteLine("\tImages");

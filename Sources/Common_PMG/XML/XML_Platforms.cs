@@ -213,7 +213,7 @@ namespace Common_PMG.XML
                             break;
 
                         case "FolderPath":
-                            pfFolder.FolderPath = Path.GetFullPath(field.Value, baseFolder);
+                            pfFolder.FolderPath = string.IsNullOrEmpty(baseFolder) ? field.Value: Path.GetFullPath(field.Value, baseFolder);
                             break;
 
                         default:

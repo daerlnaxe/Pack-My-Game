@@ -102,8 +102,7 @@ namespace Pack_My_Game.Models
         #endregion
 
 
-
-        public DataRep SelectedGame { get; set; }
+        //public DataPlus SelectedGame { get; set; }
         public ObservableCollection<DataPlus> GamesCollection { get; set; } = new ObservableCollection<DataPlus>();
 
         public DataRep SelectedManual { get; set; }
@@ -153,7 +152,7 @@ namespace Pack_My_Game.Models
 
             // Initialisation des fichiers par défaut.
             ChosenGame = GamesCollection.FirstOrDefault(x => x.DestPath.Equals(GameDataC.DefaultApp?.DestPath));
-            ChosenManual = ManualsCollection.FirstOrDefault(x => x.DestPath.Equals(GameDataC?.DefaultManual.DestPath));
+            ChosenManual = ManualsCollection.FirstOrDefault(x => x.DestPath.Equals(GameDataC?.DefaultManual?.DestPath));
             ChosenMusic = MusicsCollection.FirstOrDefault(x => x.DestPath.Equals(GameDataC.DefaultMusic?.DestPath));
             ChosenVideo = VideosCollection.FirstOrDefault(x => x.DestPath.Equals(GameDataC.DefaultVideo?.DestPath));
             ChosenThemeVideo = VideosCollection.FirstOrDefault(x => x.DestPath.Equals(GameDataC.DefaultThemeVideo?.DestPath));
@@ -319,13 +318,13 @@ namespace Pack_My_Game.Models
 
         #region Check / Uncheck
 
+        /*
         internal void Game_Handler(object tag, bool? isChecked)
         {
             if (isChecked == true)
                 SetDefault((DataPlus)tag, GamesCollection, (x) => ChosenGame = x);
-            /* else
-                 UnsetDefault(tag, (x) => ChosenGame = x);*/
-        }
+           
+        }*/
 
         internal void Manual_Handler(object tag, bool? isChecked)
         {
@@ -670,17 +669,17 @@ namespace Pack_My_Game.Models
             /*GameDataC.Reinitialize(GameDataC.Apps, GamesCollection);
             GameDataC.SetDefault(nameof(GameDataC.DefaultApp), ChosenGame);*/
             // Cheats
-            GameDataC.Reinitialize(GameDataC.CheatCodes, CheatsCollection);
+            GameDataC.SetDCheatCodes = CheatsCollection;
             // Manuals
-            GameDataC.SetDefault(nameof(GameDataC.DefaultManual), ChosenManual);
             GameDataC.SetManuals = ManualsCollection;
+            //GameDataC.SetDefault(nameof(GameDataC.DefaultManual), ChosenManual);
             // Musics
-            GameDataC.Reinitialize(GameDataC.Musics, MusicsCollection);
-            GameDataC.SetDefault(nameof(GameDataC.DefaultMusic), ChosenMusic);
+            GameDataC.SetMusics = MusicsCollection;
+            //GameDataC.SetDefault(nameof(GameDataC.DefaultMusic), ChosenMusic);
             // Videos
-            GameDataC.Reinitialize(GameDataC.Videos, VideosCollection);
             GameDataC.SetDefault(nameof(GameDataC.DefaultVideo), ChosenVideo);
             GameDataC.SetDefault(nameof(GameDataC.DefaultThemeVideo), ChosenThemeVideo);
+            GameDataC.AddDVideos = VideosCollection;
 
             return true;
         }
