@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Common_PMG.Container
 {
-    public class Platform
+    public class ContPlatFolders
     {
         /// <summary>
         /// Nom du système

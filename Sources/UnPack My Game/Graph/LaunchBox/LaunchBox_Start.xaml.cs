@@ -87,8 +87,6 @@ namespace UnPack_My_Game.Graph.LaunchBox
         #region Méthodes
         private void LB_Click(object sender, RoutedEventArgs e)
         {
-            _Model.ActiveMethodPage = new P_LBMethod();
-            _Model.Mode = E_Method.LBMethod;
         }
 
         private void DPG_Click(object sender, RoutedEventArgs e)
@@ -99,8 +97,6 @@ namespace UnPack_My_Game.Graph.LaunchBox
 
         private void EB_Click(object sender, RoutedEventArgs e)
         {
-            _Model.ActiveMethodPage = new P_EBMethod();
-            _Model.Mode = E_Method.EBMethod;
         }
         #endregion
 

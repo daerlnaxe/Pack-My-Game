@@ -101,6 +101,8 @@ namespace Pack_My_Game.Models
         public bool InfosGame { get; set; }
         public bool OriginalXMLBackup { get; set; }
         public bool EnhancedXMLBackup { get; set; }
+  //      public bool NoPathXMLBackup { get; set; }
+
         public bool TreeviewFile { get; set; }
         public bool ClonesCopy { get; set; }
         public bool CheatsCopy { get; set; }
@@ -133,7 +135,8 @@ namespace Pack_My_Game.Models
             SevZipLvlCompression = PS.Default.c7zCompLvl;
             // ---
             InfosGame = PS.Default.opInfos;
-            OriginalXMLBackup = PS.Default.opOBGame;
+            OriginalXMLBackup = PS.Default.opTBGame;
+      //      NoPathXMLBackup = PS.Default.opNPBGame;
             EnhancedXMLBackup = PS.Default.opEBGame;
             TreeviewFile = PS.Default.opTreeV;
             ClonesCopy = PS.Default.opClones;

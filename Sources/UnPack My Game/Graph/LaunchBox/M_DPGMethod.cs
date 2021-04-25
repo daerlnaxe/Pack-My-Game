@@ -23,8 +23,8 @@ namespace UnPack_My_Game.Graph.LaunchBox
             }
         }
 
-        private Platform _Plateforme;
-        public Platform Plateforme
+        private ContPlatFolders _Plateforme;
+        public ContPlatFolders Plateforme
         {
             get => _Plateforme;
             set

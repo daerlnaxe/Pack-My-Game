@@ -194,12 +194,12 @@ namespace Pack_My_Game.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool opOBGame {
+        public bool opTBGame {
             get {
-                return ((bool)(this["opOBGame"]));
+                return ((bool)(this["opTBGame"]));
             }
             set {
-                this["opOBGame"] = value;
+                this["opTBGame"] = value;
             }
         }
         
@@ -362,6 +362,15 @@ namespace Pack_My_Game.Properties {
             }
             set {
                 this["KeepCheatCStruct"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool opNPBGame {
+            get {
+                return ((bool)(this["opNPBGame"]));
             }
         }
     }

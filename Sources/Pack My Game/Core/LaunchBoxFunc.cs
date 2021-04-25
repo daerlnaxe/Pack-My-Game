@@ -11,6 +11,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using PS = Pack_My_Game.Properties.Settings;
+using Common_Graph;
+using System.Linq;
 
 namespace Pack_My_Game.Core
 {
@@ -21,16 +23,32 @@ namespace Pack_My_Game.Core
         {
             string platformXmlFile = Path.Combine(PS.Default.LBPath, PS.Default.dPlatforms, $"{selectedPlatform}.xml");
 
-            IEnumerable<ShortGame> filteredGames = new List<ShortGame>( selectedGames);
-            foreach(var g in filteredGames)
-            {                
-                GamePaths game = (GamePaths)XML_Games.Scrap_LBGame<LBGame>(platformXmlFile, GameTag.ID, g.Id);              
+            //IEnumerable<ShortGame> filteredGames = new List<ShortGame>(selectedGames);
+            foreach (var g in selectedGames.ToList())
+            {
 
-                string? res = CheckGameValidity(game);
+                Dictionary<string, bool?> res = CheckGameValidity(g, platformXmlFile);
 
                 bool? keepit = true;
-                if (res != null)
-                    keepit = DxMBox.ShowDial($"Game '{g.Title}' is not 'complete', keep it ?", "Question", E_DxButtons.No | E_DxButtons.Yes, res);
+
+                // Erreur sur le chemin principal
+                if (res == null)
+                {
+                    DxMBox.ShowDial("Main link application is broken");
+
+                    keepit = false;
+                }
+                else
+                {
+                    bool test = true;
+                    // Vérification si c'est utile d'afficher la fenêtre
+                    foreach (var kvp in res)
+                        test &= (bool)kvp.Value;
+
+                    if (test == false)
+                        keepit = SafeBoxes.ShowStatus($"Game status for '{g.Title}'.\nDo you want to keep it ?", "Game status", res);
+                    
+                }
 
                 if (keepit != true)
                 {
@@ -38,13 +56,51 @@ namespace Pack_My_Game.Core
                     g.IsSelected = false;
                     continue;
                 }
+            }
+        }
 
-            }           
+        internal static Dictionary<string, bool?> CheckGameValidity(ShortGame g, string platformXmlFile)
+        {
+            LBGame game = XML_Games.Scrap_LBGame<LBGame>(platformXmlFile, GameTag.ID, g.Id);
 
-            //return selectedGames;
+            //clones
+            var clones = XML_Games.ListClones(platformXmlFile, Tag.GameId, g.Id);
+
+            bool bMG = CheckValidity(game.ApplicationPath);
+
+            if (!bMG)
+                return null;
+
+            Dictionary<string, bool?> yEP = new Dictionary<string, bool?>();
+            yEP.Add("Main Game", bMG);
+            yEP.Add("Manual", CheckValidity(game.ManualPath));
+            yEP.Add("Music", CheckValidity(game.MusicPath));
+            yEP.Add("Video", CheckValidity(game.VideoPath));
+            yEP.Add("ThemeVideo", CheckValidity(game.ThemeVideoPath));
+
+            foreach (var c in clones)
+                yEP.Add(Path.GetFileName(c.ApplicationPath), CheckValidity(c.ApplicationPath));
+
+            return yEP;
+
+            /// <summary>
+            ///  Vérifie que le jeu sélectionné a bien le manuel, la musique et le jeu
+            /// </summary>
+            bool CheckValidity(string link)
+            {
+                string tmp;
+
+                tmp = Path.GetFullPath(link, PS.Default.LBPath);
+                if (!File.Exists(tmp))
+                    return false;
+
+                return true;
+            }
         }
 
 
+        /*
+        [Obsolete]
         internal static string? CheckGameValidity(GamePaths game)
         {
             string res = null;
@@ -59,20 +115,8 @@ namespace Pack_My_Game.Core
 
             return res;
         }
+*/
 
-        /// <summary>
-        ///  Vérifie que le jeu sélectionné a bien le manuel, la musique et le jeu
-        /// </summary>
-        internal static bool CheckValidity(string link)
-        {
-            string tmp;
-
-            tmp = Path.GetFullPath(link, PS.Default.LBPath);
-            if (!File.Exists(tmp))
-                return false;
-
-            return true;
-        }
 
 
     }

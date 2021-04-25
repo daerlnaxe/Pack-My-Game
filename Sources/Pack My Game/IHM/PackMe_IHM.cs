@@ -99,7 +99,7 @@ namespace Pack_My_Game.IHM
             return ChosenFiles;
         }
 
-        internal static void LaunchBoxCore_Recap(string rootFolder, Platform platform, GameDataCont gdC)
+        internal static void LaunchBoxCore_Recap(string rootFolder, ContPlatFolders platform, GameDataCont gdC)
         {
             Application.Current.Dispatcher?.Invoke
                 (

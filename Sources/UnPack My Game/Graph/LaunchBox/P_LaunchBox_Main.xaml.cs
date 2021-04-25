@@ -3,6 +3,8 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using UnPack_My_Game.Cores;
+using UnPack_My_Game.Cores.LaunchBox;
 using UnPack_My_Game.Models.LaunchBox;
 using UnPack_My_Game.Models.Submenus;
 using static UnPack_My_Game.Properties.Settings;
@@ -107,7 +109,7 @@ namespace UnPack_My_Game.Graph.LaunchBox
 
         private void Exec_InjectPlatform(object sender, ExecutedRoutedEventArgs e)
         {
-
+            LBFunc.InjectPlatform();
         }
     }
 }

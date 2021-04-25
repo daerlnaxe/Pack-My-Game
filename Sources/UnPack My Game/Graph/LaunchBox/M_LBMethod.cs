@@ -17,10 +17,10 @@ namespace UnPack_My_Game.Graph.LaunchBox
     {
         public event BasicHandler Error;
 
-        public ObservableCollection<Platform> Machines { get; set; } = new ObservableCollection<Platform>();
+        public ObservableCollection<ContPlatFolders> Machines { get; set; } = new ObservableCollection<ContPlatFolders>();
 
-        private Platform _SelectedPlatform;
-        public Platform SelectPlatform
+        private ContPlatFolders _SelectedPlatform;
+        public ContPlatFolders SelectPlatform
         {
             get => _SelectedPlatform;
             set

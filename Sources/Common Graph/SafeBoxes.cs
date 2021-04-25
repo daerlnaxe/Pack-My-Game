@@ -26,7 +26,7 @@ namespace Common_Graph
             return res;
         }
 
-        public static bool? ShowStatus(string message, string title, Dictionary<string, bool?> states, string trueC, string falseC, string nullC = "#FFFFFFFF", E_DxButtons buttons = E_DxButtons.Yes | E_DxButtons.No)
+        public static bool? ShowStatus(string message, string title, Dictionary<string, bool?> states, string trueC = "#FF60DC32",  string falseC = "#FFFF2323", string nullC = "#FFFFFFFF", E_DxButtons buttons = E_DxButtons.Yes | E_DxButtons.No)
         {
             return Application.Current.Dispatcher?.Invoke
                 (

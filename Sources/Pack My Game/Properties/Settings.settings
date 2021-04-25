@@ -44,7 +44,7 @@
     <Setting Name="UpgradeRequired" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="opOBGame" Type="System.Boolean" Scope="User">
+    <Setting Name="opTBGame" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="opEBGame" Type="System.Boolean" Scope="User">
@@ -87,6 +87,9 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="KeepCheatCStruct" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="opNPBGame" Type="System.Boolean" Scope="Application">
       <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>

@@ -68,7 +68,7 @@ namespace Common_PMG.XML
         /// Lis le fichier xml dédié pour retourner la liste des plateformes - Read dedicated xml file to get the list of platforms
         /// </summary>
         /// <param name="platforms"></param>
-        public static void ListShortPlatforms(string xmlFile, ObservableCollection<Platform> platforms)
+        public static void ListShortPlatforms(string xmlFile, ObservableCollection<ContPlatFolders> platforms)
         {
             try
             {
@@ -80,7 +80,7 @@ namespace Common_PMG.XML
                     if (name == null || folder == null)
                         continue;
 
-                    platforms.Add(new Platform()
+                    platforms.Add(new ContPlatFolders()
                     {
                         Name = name.Value,
                         FolderPath = folder.Value,
@@ -94,15 +94,17 @@ namespace Common_PMG.XML
         }
 
 
+
+
         // --- Get Platform
 
 
 
         // --- GetPlatformPaths
 
-        public static Platform GetDirectPlatform(string xmlFile, int number = 0, string baseFolder = null)
+        public static ContPlatFolders GetDirectPlatform(string xmlFile, int number = 0, string baseFolder = null)
         {
-            Platform zePlatform = new Platform();
+            ContPlatFolders zePlatform = new ContPlatFolders();
             XElement root = XElement.Load(xmlFile);
 
             var platforms = root.Elements("Platform");
@@ -169,9 +171,9 @@ namespace Common_PMG.XML
         /// <returns></returns>
         /// 
         // le but est d'extraire les chemins pour un nom donné
-        public static Platform GetPlatformPaths(string xmlFile, string name, string baseFolder = null)
+        public static ContPlatFolders GetPlatformPaths(string xmlFile, string name)
         {
-            Platform zePlatform = new Platform();
+            ContPlatFolders zePlatform = new ContPlatFolders();
             zePlatform.Name = name;
 
             XElement root = XElement.Load(xmlFile);
@@ -189,9 +191,11 @@ namespace Common_PMG.XML
 
                 if (field.Name.LocalName == "Folder")
                 {
-                    if (string.IsNullOrEmpty(field.Value))
+                    /*if (string.IsNullOrEmpty(field.Value))
                         field.Value = Path.Combine(baseFolder, "Games", name); // Cas ou le dossier est vide (par défaut sur LaunchBox)
                     zePlatform.FolderPath = string.IsNullOrEmpty(baseFolder) ? field.Value : Path.GetFullPath( field.Value, baseFolder);
+                    */
+                    zePlatform.FolderPath = field.Value;
                 }
             }
 
@@ -217,7 +221,8 @@ namespace Common_PMG.XML
                             break;
 
                         case "FolderPath":
-                            pfFolder.FolderPath = string.IsNullOrEmpty(baseFolder) ? field.Value: Path.GetFullPath(field.Value, baseFolder);
+                            //pfFolder.FolderPath = string.IsNullOrEmpty(baseFolder) ? field.Value: Path.GetFullPath(field.Value, baseFolder);
+                            pfFolder.FolderPath = field.Value;
                             break;
 
                         default:
@@ -370,8 +375,8 @@ namespace Common_PMG.XML
             using (XML_Platforms xPlat = new XML_Platforms(platformsFile))
             {
                 XElement root = XElement.Load(platformsFile);
-                xPlat.RemoveElemByChild(Tag.Platform, tag, value);
-                xPlat.RemoveElemByChild(Tag.PlatformFolder, tag, value);
+                /*xPlat.RemoveElemByChild(Tag.Platform, tag, value);
+                xPlat.RemoveElemByChild(Tag.PlatformFolder, tag, value);*/
             }
         }
 
@@ -381,7 +386,7 @@ namespace Common_PMG.XML
         /// <param name="what">Nom de la balise parent à enlever</param>
         /// <param name="field">Champ enfant</param>
         /// <param name="value">Valeur du champ enfant</param>
-        public void RemoveElemByChild(string what, string field, string value)
+        public void RemoveElemByChild(/*XElement root,*/ string what, string field, string value)
         {
             Root.Elements(what)
                 .Where(x => x.Element(field).Value == value)

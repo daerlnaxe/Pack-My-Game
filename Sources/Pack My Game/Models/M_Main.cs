@@ -15,7 +15,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using PS = Pack_My_Game.Properties.Settings;
-
+using Common_Graph;
 
 namespace Pack_My_Game.Models
 {
@@ -38,8 +38,8 @@ namespace Pack_My_Game.Models
 
         // ---
 
-        public Platform SelectedPlatform { get; set; }
-        public ObservableCollection<Platform> Platforms { get; private set; } = new ObservableCollection<Platform>();
+        public ContPlatFolders SelectedPlatform { get; set; }
+        public ObservableCollection<ContPlatFolders> Platforms { get; private set; } = new ObservableCollection<ContPlatFolders>();
 
         // ---
 
@@ -87,7 +87,7 @@ namespace Pack_My_Game.Models
             if (PS.Default.opInfos)
                 Options.Add(Lang.InfosGExp);
 
-            if (PS.Default.opOBGame)
+            if (PS.Default.opTBGame)
                 Options.Add(Lang.OriXBExp);
 
             if (PS.Default.opEBGame)
@@ -249,25 +249,14 @@ namespace Pack_My_Game.Models
         {
             string platformXmlFile = Path.Combine(PS.Default.LBPath, PS.Default.dPlatforms, $"{SelectedPlatform.Name}.xml");
 
-            bool ok = true;
             foreach (ShortGame g in SelectedGames)
             {
-                GamePaths game = (GamePaths)XML_Games.Scrap_LBGame<LBGame>(platformXmlFile, GameTag.ID, g.Id);
+                var res = LaunchBoxFunc.CheckGameValidity(g, platformXmlFile);
 
-                string res = LaunchBoxFunc.CheckGameValidity(game);
+                SafeBoxes.ShowStatus($"Check  {g.Title}", "Game status", res, buttons: E_DxButtons.Ok);
 
-                if (!string.IsNullOrEmpty(res))
-                {
-                    DxMBox.ShowDial($"Game {game.Title} is not ok", "Warning", E_DxButtons.Ok, res);
-                    ok = false;
-                }
             }
-
-            if (ok)
-                DxMBox.ShowDial("Games are ok", buttons: E_DxButtons.Ok);
         }
-
-
 
 
         /// <summary>
@@ -283,7 +272,7 @@ namespace Pack_My_Game.Models
         internal void ExtractDefaultFiles()
         {
             string platformXmlFile = Path.Combine(PS.Default.LBPath, PS.Default.dPlatforms, $"{SelectedPlatform.Name}.xml");
-            Platform p = XML_Platforms.GetPlatformPaths(Path.Combine(LaunchBoxPath, PS.Default.fPlatforms), SelectedPlatform.Name);
+            ContPlatFolders p = XML_Platforms.GetPlatformPaths(Path.Combine(LaunchBoxPath, PS.Default.fPlatforms), SelectedPlatform.Name);
 
             foreach (var g in SelectedGames)
             {
@@ -311,7 +300,7 @@ namespace Pack_My_Game.Models
 
         }
 
-        private string Assign(string file, Platform platform, string category, bool keepStruct)
+        private string Assign(string file, ContPlatFolders platform, string category, bool keepStruct)
         {
             var platformFolder = platform.PlatformFolders.First((x) => x.MediaType.Equals(category, StringComparison.OrdinalIgnoreCase));
 

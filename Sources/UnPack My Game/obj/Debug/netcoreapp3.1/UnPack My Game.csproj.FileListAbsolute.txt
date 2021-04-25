@@ -274,11 +274,8 @@ E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\bin\Debug\netcoreap
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\UnPack My Game.csprojAssemblyReference.cache
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Style.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\LaunchBox_Start.g.cs
-E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_DPGFile.g.cs
-E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_EBMethod.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_LaunchBox.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_LaunchBox_Main.g.cs
-E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_LBMethod.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\W_Config.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\P_Selecter.g.cs
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\P_SubMenu.g.cs
@@ -292,11 +289,8 @@ E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreap
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\UnPack My Game_MarkupCompile.lref
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\App.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\LaunchBox_Start.baml
-E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_DPGFile.baml
-E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_EBMethod.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_LaunchBox.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_LaunchBox_Main.baml
-E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\P_LBMethod.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\LaunchBox\W_Config.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\P_Selecter.baml
 E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\obj\Debug\netcoreapp3.1\Graph\P_SubMenu.baml

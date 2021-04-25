@@ -149,7 +149,7 @@ namespace UnPack_My_Game.Cores
 
             GamePaths gpX = GamePaths.ReadFromJson(dpgFile);
 
-            HeTrace.WriteLine("Platform Step");
+            HeTrace.WriteLine($"Platform Step for {gpX.Platform}");
             string platformsFile = Path.Combine(Default.LaunchBoxPath, Default.fPlatforms);
             bool CheckIfInjectionNeeded = !XML_Custom.TestPresence(platformsFile, Tag.Platform, Tag.Name, gpX.Platform);
             if (CheckIfInjectionNeeded)
@@ -167,7 +167,7 @@ namespace UnPack_My_Game.Cores
             }
 
 
-            Platform zePlatform = XML_Platforms.GetPlatformPaths(platformsFile, gpX.Platform, Default.LaunchBoxPath);
+            ContPlatFolders zePlatform = XML_Platforms.GetPlatformPaths(platformsFile, gpX.Platform);
 
             HeTrace.WriteLine("Preparing files");
             // Préparation des fichiers
@@ -190,7 +190,7 @@ namespace UnPack_My_Game.Cores
             BackupFile(machineXMLFile, backupFolder);
             HeTrace.WriteLine($"Backup of '{machineXMLFile}'");
 
-            InjectInXMLFile(gamePath, gdC, machineXMLFile);
+            InjectInXMLFile(gamePath, gdC, machineXMLFile, zePlatform.FolderPath);
 
             HeTrace.WriteLine($"Done: {gdC.Title}");
         }
@@ -291,8 +291,8 @@ namespace UnPack_My_Game.Cores
             // Videos
             HeTrace.WriteLine($"\tVideos: {Default.Videos}");
             tmp = Path.Combine(root, Default.Videos);
-            gdc.SetDefaultVideo = gpX.VideoPath == null ? null : Path.GetFullPath(gpX.VideoPath, root);
-            gdc.SetDefaultThemeVideo = gpX.ThemeVideoPath == null ? null : Path.GetFullPath(gpX.ThemeVideoPath, root);
+            gdc.SetDefaultVideo = gpX.VideoPath == null ? null : Path.GetFullPath(gpX.VideoPath, tmp);
+            gdc.SetDefaultThemeVideo = gpX.ThemeVideoPath == null ? null : Path.GetFullPath(gpX.ThemeVideoPath, tmp);
             gdc.AddSVideos = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories);
 
             // Cheat Codes
@@ -322,14 +322,20 @@ namespace UnPack_My_Game.Cores
         }
 
 
-        private void AssignTargets(GameDataCont gdC, string root, Platform zePlatform)
+        private void AssignTargets(GameDataCont gdC, string root, ContPlatFolders zePlatform)
         {
+            string platFolderPath = zePlatform.FolderPath;
+            if (string.IsNullOrEmpty(platFolderPath))
+                platFolderPath = Path.Combine(Default.LaunchBoxPath, "Games");
+            else
+                platFolderPath = Path.GetFullPath(platFolderPath, Default.LaunchBoxPath);
+
             string appTarget = string.Empty;
 
             if (Default.wGameNameFolder)
-                appTarget = Path.Combine(zePlatform.FolderPath, Tool.WindowsConv_TitleToFileName( gdC.Title));
+                appTarget = Path.Combine(platFolderPath, Tool.WindowsConv_TitleToFileName(gdC.Title));
             else
-                appTarget = zePlatform.FolderPath;
+                appTarget = platFolderPath;
 
             // Games
             foreach (var app in gdC.Applications)
@@ -342,50 +348,54 @@ namespace UnPack_My_Game.Cores
             //    string destPath = zePlatform.PlatformFolders.FirstOrDefault((x => x.MediaType.Equals(mediatype))).FolderPath;
 
             AssignImages(gdC.Images, root, zePlatform);
-        }
 
 
-        private void AssignTarget(IEnumerable<DataRep> elems, string root, string subFolder, string mediaType, Platform zePlatform)
-        {
-            var destFolder = zePlatform.PlatformFolders.First(x => x.MediaType.Equals(mediaType));
-            string src = Path.Combine(root, subFolder);
-
-            foreach (var e in elems)
-                e.DestPath = e.CurrentPath.Replace(src, destFolder.FolderPath);
-
-        }
-
-
-        private void AssignImages(List<DataRepExt> images, string root, Platform zePlatform)
-        {
-            string prevMedType = string.Empty;
-            string toReplace = string.Empty;
-            PlatformFolder target = null;
-
-            foreach (DataRepExt image in images)
+            void AssignTarget(IEnumerable<DataRep> elems, string root, string subFolder, string mediaType, ContPlatFolders zePlatform)
             {
-                if (!prevMedType.Equals(image.Categorie))
-                {
-                    prevMedType = image.Categorie;
-                    toReplace = Path.Combine(root, Default.Images, image.Categorie);
-                    target = zePlatform.PlatformFolders.FirstOrDefault(x => x.MediaType.Equals(image.Categorie));
-                }
+                var dFolder = zePlatform.PlatformFolders.First(x => x.MediaType.Equals(mediaType));
+                string destFolder = Path.GetFullPath(dFolder.FolderPath, Default.LaunchBoxPath);
 
-                image.DestPath = image.CurrentPath.Replace(toReplace, target.FolderPath);
+                string src = Path.Combine(root, subFolder);
+
+                foreach (var e in elems)
+                    e.DestPath = e.CurrentPath.Replace(src, destFolder);
 
             }
 
+
+            void AssignImages(List<DataRepExt> images, string root, ContPlatFolders zePlatform)
+            {
+                string prevMedType = string.Empty;
+                string toReplace = string.Empty;
+                string target = string.Empty;
+
+                foreach (DataRepExt image in images)
+                {
+                    if (!prevMedType.Equals(image.Categorie))
+                    {
+                        prevMedType = image.Categorie;
+                        toReplace = Path.Combine(root, Default.Images, image.Categorie);
+
+                        PlatformFolder pTarget = zePlatform.PlatformFolders.FirstOrDefault(x => x.MediaType.Equals(image.Categorie));
+                        target = Path.GetFullPath(pTarget.FolderPath, Default.LaunchBoxPath);
+                    }
+
+                    image.DestPath = image.CurrentPath.Replace(toReplace, target);
+
+                }
+
+            }
         }
 
 
-        private void InjectInXMLFile(string gamePath, GameDataCont gdC, string xmlPlatform)
+        private void InjectInXMLFile(string gamePath, GameDataCont gdC, string xmlPlatform, string platFormFolder)
         {
             //DataPlus defGame = gdC.Applications.FirstOrDefault(x => x.IsSelected);
 
             if (gdC.DefaultApp == null)
                 throw new Exception("No default game chosen");
 
-            // Lecture du fichier EBGame
+            // Lecture du fichier TBGame ou EBGame
             string xmlGame = null;
             if (File.Exists(Path.Combine(gamePath, "TBGame.xml")))
                 xmlGame = Path.Combine(gamePath, "TBGame.xml");
@@ -396,7 +406,6 @@ namespace UnPack_My_Game.Cores
             if (xmlGame == null)
                 throw new Exception("No XML file to inject");
 
-
             // Vérification pour voir si le jeu est présent
             using (XML_Games xmlSrc = new XML_Games(xmlGame))
             using (XML_Games xmlPlat = new XML_Games(xmlPlatform))
@@ -405,7 +414,7 @@ namespace UnPack_My_Game.Cores
                 if (xmlPlat.Exists(GameTag.ID, gdC.DefaultApp.Id))
                     remove = IHMStatic.AskDxMBox("Game is already present, remove it ? ", "Question", E_DxButtons.No | E_DxButtons.Yes, gdC.DefaultApp.Name);
 
-                // On enlève si désiré
+                // ----------------- On enlève si désiré
                 if (remove == true)
                 {
                     xmlPlat.Remove_Game(gdC.DefaultApp.Id);
@@ -414,7 +423,7 @@ namespace UnPack_My_Game.Cores
                     xmlPlat.Remove_AlternateN(gdC.DefaultApp.Id);
                 }
 
-                // --- Récupération du jeu.
+                // ----------------- Traitement du jeu.
                 XElement xelGame = xmlSrc.GetGameNode();
 
                 // Modifications
@@ -428,15 +437,11 @@ namespace UnPack_My_Game.Cores
                 ModifElement(xelGame, GameTag.VidPath, gdC.DefaultVideo, false);
                 // ThemeVideo
                 ModifElement(xelGame, GameTag.ThVidPath, gdC.DefaultThemeVideo, false);
-                #region
-                /*xelGame.Element(GameTag.ManPath).Value = gdC.DefaultManual == null ? string.Empty :
-                        DxPath.To_RelativeOrNull(Default.LaunchBoxPath, gdC.DefaultManual?.DestPath);
-                xelGame.Element(GameTag.MusPath).Value = gdC.DefaultMusic == null ? string.Empty :
-                        DxPath.To_RelativeOrNull(Default.LaunchBoxPath, gdC.DefaultMusic?.DestPath);
-                xelGame.Element(GameTag.VidPath).Value = gdC.DefaultVideo == null ? string.Empty :
-                        DxPath.To_RelativeOrNull(Default.LaunchBoxPath, gdC.DefaultVideo?.DestPath);
-                */
-                #endregion
+
+                // Changement du RootFolder
+                if (xelGame.Element(GameTag.RootFolder) != null)
+                    xelGame.Element(GameTag.RootFolder).Value = platFormFolder;
+
 
                 // --- Récupération des clones + modification
                 var xelClones = xmlSrc.GetNodes(Tag.AddApp);
@@ -445,20 +450,20 @@ namespace UnPack_My_Game.Cores
                     var file = gdC.Applications.FirstOrDefault(x => x.Id == clone.Element(CloneTag.Id).Value);
                     if (file != null)
                         ModifElement(clone, Tag.AppPath, file, true);
-                        /*clone.Element(Tag.AppPath).Value =
-                            DxPath.To_RelativeOrNull(Default.LaunchBoxPath, file.DestPath);*/
                 }
 
-                // --- Récupération des Custom Fields
-                var xelCFields = xmlSrc.GetNodes(Tag.CustField);
-
-                // --- Récupération des Alternate Names
-                var xelANs = xmlSrc.GetNodes(Tag.AltName);
-
-                // --------------------------------- Injection ------------------
                 xmlPlat.InjectGame(xelGame);
                 xmlPlat.InjectAddApps(xelClones);
-                xmlPlat.InjectCustomF(xelCFields);
+
+                // ----------------- Custom Fields
+                if (Default.wCustomFields)
+                {
+                    var xelCFields = xmlSrc.GetNodes(Tag.CustField);
+                    xmlPlat.InjectCustomF(xelCFields);
+                }
+
+                // ----------------- Alternate names
+                var xelANs = xmlSrc.GetNodes(Tag.AltName);
                 xmlPlat.InjectAltName(xelANs);
 
                 xmlPlat.Root.Save(xmlPlatform);
@@ -470,10 +475,12 @@ namespace UnPack_My_Game.Cores
 
             // Modification du fichier xml pour l'injection
             */
-            void ModifElement<T>(XElement xelObj, string tag, T elem, bool first) where T : IData
+            void ModifElement<T>(in XElement xelObj, string tag, T elem, bool first) where T : IData
             {
                 var target = xelObj.Element(tag);
                 var value = elem == null ? string.Empty : DxPath.To_Relative(Default.LaunchBoxPath, elem.DestPath);
+                // Pour lever le .\
+                value = value.StartsWith(@".\") ? value.Substring(2) : value;
 
                 // Vérification
                 if (target == null && first)

@@ -42,7 +42,7 @@ namespace Pack_My_Game.Core
     partial class LaunchBoxCore : A_ProgressPersistD, I_ASBase
     {
         public delegate object SignalBoxHandler(object sender, params string[] parameters);
-        public delegate void SignalRecapHandler(object sender, string destination, string title, Platform platform);
+        public delegate void SignalRecapHandler(object sender, string destination, string title, ContPlatFolders platform);
         public delegate E_Decision AskForConflict(object sender, string source, string destination, E_DxConfB buttons = E_DxConfB.All);
         public delegate string[] GetFilesHandler(object sender, List<string> location, string mediatype);
 
@@ -75,7 +75,7 @@ namespace Pack_My_Game.Core
         /// <summary>
         /// Object containing folders
         /// </summary>
-        Platform _ZePlatform { get; }
+        ContPlatFolders _ZePlatform { get; }
 
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace Pack_My_Game.Core
                 return false;
             }
 
-            W_Games gamesWindow = new W_Games();
+            /*W_Games gamesWindow = new W_Games();
             gamesWindow.SelectedGames = selectedGames;
 
             if (gamesWindow.ShowDialog() != true)
@@ -147,7 +147,7 @@ namespace Pack_My_Game.Core
                 return false;
             }
             _SelectedGames = gamesWindow.SelectedGames;
-
+            */
             return true;
 
 
@@ -174,7 +174,7 @@ namespace Pack_My_Game.Core
             #endregion
 
             _XMLPlatformFile = Path.Combine(PS.Default.LBPath, PS.Default.dPlatforms, $"{platformName}.xml");
-            _ZePlatform = XML_Platforms.GetPlatformPaths(Path.Combine(PS.Default.LBPath, PS.Default.fPlatforms), platformName, PS.Default.LBPath);
+            _ZePlatform = XML_Platforms.GetPlatformPaths(Path.Combine(PS.Default.LBPath, PS.Default.fPlatforms), platformName);
 
 
             #region Messages
@@ -212,9 +212,33 @@ namespace Pack_My_Game.Core
 
                 HeTrace.WriteLine($"[Main] PackMe for '{zeGame.Title}' | '{zeGame.Id}'");
 
-                PackMe(zeGame);
-                //2020 PackMe pm = new PackMe(zeGame.ID, platform);
+                // Système de log par jeu
+                if (PS.Default.opLogFile)
+                {
+                    MeSimpleLog gameLog = new MeSimpleLog(Path.Combine(_WFolder, $"{_ZePlatform.Name} - {zeGame.ExploitableFileName}.log"))
+                    {
 
+                    };
+                    gameLog.AddCaller(this);
+                    HeTrace.AddLogger("game", gameLog);
+                }
+
+                try
+                {
+                    PackMe(zeGame);
+
+                }
+                catch (Exception exc)
+                {
+                    HeTrace.WriteLine(exc.Message, this);
+                    HeTrace.WriteLine(exc.StackTrace, this);
+                    SafeBoxes.Dispatch_Mbox(this, exc.Message, "Error", E_DxButtons.Ok);
+                }
+                finally
+                {
+                    HeTrace.RemoveLogger("game");
+
+                }
             }
             return null;
         }
@@ -236,256 +260,236 @@ namespace Pack_My_Game.Core
                 return;
             }
 
-            // Système de log par jeu
-            if (PS.Default.opLogFile)
+
+            // Dossiers
+            string gamePath = Path.Combine(_SystemPath, $"{shGame.ExploitableFileName}");             // New Working Folder
+                                                                                                      //Compress_ZipMode(gamePath, shGame.Title);
+                                                                                                      // Compress_7ZipMode(gamePath, shGame.Title);
+                                                                                                      // Contrôle de collisions pour les dossiers
+            if (Directory.Exists(gamePath))
             {
-                MeSimpleLog gameLog = new MeSimpleLog(Path.Combine(_WFolder, $"{_ZePlatform.Name} - {shGame.ExploitableFileName}.log"))
+                HeTrace.WriteLine($"Directory Exists '{gamePath}'", this);
+                // Demande à l'utilisateur si aucune précédente
+                if (MemorizedDecision == E_Decision.None)
                 {
+                    Application.Current.Dispatcher?.Invoke(() =>
+                        TempDecision = MBDecision.ShowDial(null, gamePath, Common.ObjectLang.FolderEEXp, E_DxConfB.Trash | E_DxConfB.OverWrite));
 
-                };
-                gameLog.AddCaller(this);
-                HeTrace.AddLogger("game", gameLog);
-            }
-
-            try
-            {
-
-                // Dossiers
-                string gamePath = Path.Combine(_SystemPath, $"{shGame.ExploitableFileName}");             // New Working Folder
-                                                                                                          //Compress_ZipMode(gamePath, shGame.Title);
-                                                                                                          // Compress_7ZipMode(gamePath, shGame.Title);
-                                                                                                          // Contrôle de collisions pour les dossiers
-                if (Directory.Exists(gamePath))
-                {
-                    HeTrace.WriteLine($"Directory Exists '{gamePath}'", this);
-                    // Demande à l'utilisateur si aucune précédente
-                    if (MemorizedDecision == E_Decision.None)
+                    switch (TempDecision)
                     {
-                        Application.Current.Dispatcher?.Invoke(() =>
-                            TempDecision = MBDecision.ShowDial(gamePath, null, Common.ObjectLang.FolderEEXp, E_DxConfB.Trash | E_DxConfB.OverWrite));
+                        /*   // Gestion des stops
+                           case E_Decision.Stop:
+                               HeTrace.WriteLine("Stopped by user", this);
+                               HeTrace.RemoveLogger("game");
+                               return;
+                           case E_Decision.StopAll:
+                               HeTrace.WriteLine("Stopped by user", this);
+                               HeTrace.RemoveLogger("game");
+                               throw new OperationCanceledException("Stopped by user");
+                        */
+                        case E_Decision.OverWriteAll:
+                        case E_Decision.TrashAll:
+                            MemorizedDecision = TempDecision;
+                            break;
+                    }
 
-                        switch (TempDecision)
-                        {
-                            /*   // Gestion des stops
-                               case E_Decision.Stop:
-                                   HeTrace.WriteLine("Stopped by user", this);
-                                   HeTrace.RemoveLogger("game");
-                                   return;
-                               case E_Decision.StopAll:
-                                   HeTrace.WriteLine("Stopped by user", this);
-                                   HeTrace.RemoveLogger("game");
-                                   throw new OperationCanceledException("Stopped by user");
-                            */
-                            case E_Decision.OverWriteAll:
-                            case E_Decision.TrashAll:
-                                MemorizedDecision = TempDecision;
-                                break;
-                        }
-
-                        switch (TempDecision)
-                        {
-                            case E_Decision.Trash:
-                            case E_Decision.TrashAll:
-                                HeTrace.WriteLine($"Trash existing folder: '{gamePath}'", this);
-                                OpFolders.Trash(@gamePath);
-                                break;
-                        }
+                    switch (TempDecision)
+                    {
+                        case E_Decision.Trash:
+                        case E_Decision.TrashAll:
+                            HeTrace.WriteLine($"Trash existing folder: '{gamePath}'", this);
+                            OpFolders.Trash(@gamePath);
+                            break;
                     }
                 }
-                // --- On part du principe que tout peut être overwritté à partir de là.
+            }
+            // --- On part du principe que tout peut être overwritté à partir de là.
 
-                // Construction de la structure
-                var tree = MakeStructure(gamePath);
+            // Construction de la structure
+            var tree = MakeStructure(gamePath);
 
-                // ---
+            // ---
 
-                #region Original Backup Game - Before all modifications
-                if (PS.Default.opOBGame)
-                {
-                    XML_Games.TrueBackup(_XMLPlatformFile, shGame.Id, gamePath);
-                }
-                else
-                {
-                    HeTrace.WriteLine("[Run] Original Backup Game disabled");
-                }
-                #endregion
+            #region Original Backup Game - Before all modifications
+            if (PS.Default.opTBGame)
+            {
+                XML_Games.TrueBackup(_XMLPlatformFile, shGame.Id, gamePath);
+            }
+            else
+            {
+                HeTrace.WriteLine("[Run] Original Backup Game disabled");
+            }
+            #endregion
 
+            #region Backup without paths
+            XML_Games.NPBackup(_XMLPlatformFile, shGame.Id, gamePath);
 
-                // Récupération du jeu
-                LBGame lbGame = XML_Games.Scrap_LBGame<LBGame>(_XMLPlatformFile, "ID", shGame.Id);
+            #endregion
 
-                // Récupération des clones
+            // Récupération du jeu
+            LBGame lbGame = XML_Games.Scrap_LBGame<LBGame>(_XMLPlatformFile, "ID", shGame.Id);
 
-
-                HeTrace.WriteLine("Alarms about not managed field are not important except if it's about a path containing datas");
-                HeTrace.WriteLine("EBGames and TBGames don't use a class they copy directly from xml to xml");
-
-                #region Creation of the Infos.xml (on ne récupère que ce que l'on veut)
-                if (PS.Default.opInfos)
-                {
-                    // --- Get game from Launchbox (on a besoin que jusqu'au game info)
-                    XML_Custom.Make_InfoGame(gamePath, lbGame);
-                }
-                else
-                {
-                    HeTrace.WriteLine("[Run] Make info disabled", this);
-                }
-                #endregion
+            // Récupération des clones
 
 
+            HeTrace.WriteLine("Alarms about not managed field are not important except if it's about a path containing datas");
+            HeTrace.WriteLine("EBGames and TBGames don't use a class they copy directly from xml to xml");
 
-                // --- Récupération des fichiers
-                GameDataCont gdC = new GameDataCont(lbGame.Title);
-
-                GetFiles(lbGame, gdC);
-
-                // --- Prepare files;
-                PrepareList(gdC.Applications, tree, PS.Default.KeepGameStruct, "Game");
-                PrepareList(gdC.CheatCodes, tree, PS.Default.KeepCheatCStruct, "CheatCode");
-                PrepareList(gdC.Manuals, tree, PS.Default.KeepManualStruct, "Manual");
-                PrepareList(gdC.Musics, tree, PS.Default.KeepMusicStruct, "Music");
-                PrepareList(gdC.Videos, tree, PS.Default.KeepVideoStruct, "Video");
-                PrepareImages(gdC.Images, tree.Children[Common.Images].Path);
-
-                // --- Copie des fichiers
-                CopyFiles(gdC, tree);
-
-                // --- Récapitulatif permettant de rajouter ou lever des fichiers au pack
-                PackMe_IHM.LaunchBoxCore_Recap(gamePath, _ZePlatform, gdC);
-
-                // --- GamePaths --- 
-                GamePaths gpX = MakeGamePaths(lbGame, gdC, tree);
+            #region Creation of the Infos.xml (on ne récupère que ce que l'on veut)
+            if (PS.Default.opInfos)
+            {
+                // --- Get game from Launchbox (on a besoin que jusqu'au game info)
+                XML_Custom.Make_InfoGame(gamePath, lbGame);
+            }
+            else
+            {
+                HeTrace.WriteLine("[Run] Make info disabled", this);
+            }
+            #endregion
 
 
-                #region Serialization / improved backup of Launchbox datas (with found medias missing) 
-                /* - En théorie on est toujours sur du relative path
-                 * - On a fait un assign sur les dossiers spécifiques
-                 * - On va récupérer la structure exacte sans aucune interprétation et modifier ce que l'on veut
-                 *      - Les Paths
-                 */
-                if (PS.Default.opEBGame)
-                {
-                    Make_EnhanceBackup(gdC, lbGame, gamePath);
-                }
-                else
-                {
-                    HeTrace.WriteLine($"[Run] Enhanced Backup Game disabled", this);
-                }
+            // --- Récupération des fichiers
+            GameDataCont gdC = new GameDataCont(lbGame.Title);
 
-                #endregion
+            GetFiles(lbGame, gdC);
 
-                // --- Création d'un fichier conservant les fichiers par défaut définis par l'utilisateur en vue de réutilisation plus tard
+            // --- Prepare files;
+            PrepareList(gdC.Applications, tree, PS.Default.KeepGameStruct, "Game");
+            PrepareList(gdC.CheatCodes, tree, PS.Default.KeepCheatCStruct, "CheatCode");
+            PrepareList(gdC.Manuals, tree, PS.Default.KeepManualStruct, "Manual");
+            PrepareList(gdC.Musics, tree, PS.Default.KeepMusicStruct, "Music");
+            PrepareList(gdC.Videos, tree, PS.Default.KeepVideoStruct, "Video");
+            PrepareImages(gdC.Images, tree.Children[Common.Images].Path);
 
-                gpX.WriteToJson(Path.Combine(gamePath, "DPGame.json"));
+            // --- Copie des fichiers
+            CopyFiles(gdC, tree);
 
+            // --- Récapitulatif permettant de rajouter ou lever des fichiers au pack
+            PackMe_IHM.LaunchBoxCore_Recap(gamePath, _ZePlatform, gdC);
 
-                // --- On complète l'arborescence
-                FoncSchem.MakeListFolder(tree.Children[Common.Manuals]);
-                FoncSchem.MakeListFolder(tree.Children[Common.Images]);
-                FoncSchem.MakeListFolder(tree.Children[Common.Musics]);
-                FoncSchem.MakeListFolder(tree.Children[Common.Videos]);
-
-                #region Save Struct
-                if (PS.Default.opTreeV)
-                {
-                    FoncSchem.MakeStruct(tree, gamePath);
-                }
-                else
-                {
-                    HeTrace.WriteLine($"[Run] Save Struct disabled", this);
-                }
-                #endregion
-
-                #region 2020 choix du nom
-                string name = PackMe_IHM.AskName(shGame.ExploitableFileName, _SystemPath);
+            // --- GamePaths --- 
+            GamePaths gpX = MakeGamePaths(lbGame, gdC, tree);
 
 
-                // Changement de nom du dossier <= Pour le moment ça ne fait que vérifier s'il peut écrire 
-                //si un dossier a le même nom ça ne pourra pas le renommer
-                ushort i = 0;
+            #region Serialization / improved backup of Launchbox datas (with found medias missing) 
+            /* - En théorie on est toujours sur du relative path
+             * - On a fait un assign sur les dossiers spécifiques
+             * - On va récupérer la structure exacte sans aucune interprétation et modifier ce que l'on veut
+             *      - Les Paths
+             */
+            if (PS.Default.opEBGame)
+            {
+                Make_EnhanceBackup(gdC, lbGame, gamePath);
+            }
+            else
+            {
+                HeTrace.WriteLine($"[Run] Enhanced Backup Game disabled", this);
+            }
 
-                string destFolder = Path.Combine(_SystemPath, name);
+            #endregion
 
-                if (!gamePath.Equals(destFolder))
-                    while (i < 10)
-                        try
-                        {
-                            Directory.Move(gamePath, destFolder);
-                            HeTrace.WriteLine("Folder successfully renamed");
+            // --- Création d'un fichier conservant les fichiers par défaut définis par l'utilisateur en vue de réutilisation plus tard
 
-                            // Attribution du résultat
-                            gamePath = destFolder;
+            gpX.WriteToJson(Path.Combine(gamePath, "DPGame.json"));
 
-                            // Sortie
-                            break;
-                        }
-                        catch (IOException ioe)
-                        {
-                            HeTrace.WriteLine($"Try {i}: {ioe}");
-                            Thread.Sleep(10);
-                            i++;
-                        }
 
-                //string destArchLink = Path.Combine(path, $"{destArchive}");
-                //string destArchLink = Path.Combine(path, gnWindows.ChoosenGameName);
+            // --- On complète l'arborescence
+            FoncSchem.MakeListFolder(tree.Children[Common.Manuals]);
+            FoncSchem.MakeListFolder(tree.Children[Common.Images]);
+            FoncSchem.MakeListFolder(tree.Children[Common.Musics]);
+            FoncSchem.MakeListFolder(tree.Children[Common.Videos]);
 
-                // On verra si on dissocie un jour 
-                //shGame.ExploitableFileName = destFolder;
-                #endregion
+            #region Save Struct
+            if (PS.Default.opTreeV)
+            {
+                FoncSchem.MakeStruct(tree, gamePath);
+            }
+            else
+            {
+                HeTrace.WriteLine($"[Run] Save Struct disabled", this);
+            }
+            #endregion
 
-                #region Compression
-                // Zip
-                if (PS.Default.opZip)
-                {
-                    Compress_ZipMode(gamePath, shGame.Title);
-                }
-                {
-                    HeTrace.WriteLine($"[Run] Zip Compression disabled", this);
-                }
+            #region 2020 choix du nom
+            string name = PackMe_IHM.AskName(shGame.ExploitableFileName, _SystemPath);
 
-                // 7zip
-                if (PS.Default.op7_Zip)
-                {
-                    Compress_7ZipMode(gamePath, shGame.Title);
-                }
-                else
-                {
-                    HeTrace.WriteLine($"[Run] 7Zip Compression disabled", this);
-                }
-                #endregion
 
-                #region suppression du dossier de travail
-                if (SafeBoxes.Dispatch_Mbox(this, "Would you want to ERASE the temp folder", "Erase", E_DxButtons.No | E_DxButtons.Yes, optMessage: shGame.ExploitableFileName) == true)
-                {
+            // Changement de nom du dossier <= Pour le moment ça ne fait que vérifier s'il peut écrire 
+            //si un dossier a le même nom ça ne pourra pas le renommer
+            ushort i = 0;
 
-                    // Erase the temp folder
+            string destFolder = Path.Combine(_SystemPath, name);
+
+            if (!gamePath.Equals(destFolder))
+                while (i < 10)
                     try
                     {
-                        Directory.SetCurrentDirectory(_WFolder);
-                        Directory.Delete(gamePath, true);
-                        HeTrace.WriteLine($"[Run] folder {gamePath} erased", this);
+                        Directory.Move(gamePath, destFolder);
+                        HeTrace.WriteLine("Folder successfully renamed");
 
+                        // Attribution du résultat
+                        gamePath = destFolder;
+
+                        // Sortie
+                        break;
                     }
-                    catch (Exception exc)
+                    catch (IOException ioe)
                     {
-                        HeTrace.WriteLine($"[Run] Error when Erasing temp folder {gamePath}\n{exc.Message }", this);
+                        HeTrace.WriteLine($"Try {i}: {ioe}");
+                        Thread.Sleep(10);
+                        i++;
                     }
+
+            //string destArchLink = Path.Combine(path, $"{destArchive}");
+            //string destArchLink = Path.Combine(path, gnWindows.ChoosenGameName);
+
+            // On verra si on dissocie un jour 
+            //shGame.ExploitableFileName = destFolder;
+            #endregion
+
+            #region Compression
+            // Zip
+            if (PS.Default.opZip)
+            {
+                Compress_ZipMode(gamePath, shGame.Title);
+            }
+            {
+                HeTrace.WriteLine($"[Run] Zip Compression disabled", this);
+            }
+
+            // 7zip
+            if (PS.Default.op7_Zip)
+            {
+                Compress_7ZipMode(gamePath, shGame.Title);
+            }
+            else
+            {
+                HeTrace.WriteLine($"[Run] 7Zip Compression disabled", this);
+            }
+            #endregion
+
+            #region suppression du dossier de travail
+            if (SafeBoxes.Dispatch_Mbox(this, "Would you want to ERASE the temp folder", "Erase", E_DxButtons.No | E_DxButtons.Yes, optMessage: shGame.ExploitableFileName) == true)
+            {
+
+                // Erase the temp folder
+                try
+                {
+                    Directory.SetCurrentDirectory(_WFolder);
+                    Directory.Delete(gamePath, true);
+                    HeTrace.WriteLine($"[Run] folder {gamePath} erased", this);
+
                 }
-                #endregion
+                catch (Exception exc)
+                {
+                    HeTrace.WriteLine($"[Run] Error when Erasing temp folder {gamePath}\n{exc.Message }", this);
+                }
+            }
+            #endregion
 
-                SetStatus(this, new StateArg($"Finished: {lbGame.Title}", CancelFlag));
-            }
-            catch (Exception exc)
-            {
-                HeTrace.WriteLine(exc.Message, this);
-                SafeBoxes.Dispatch_Mbox(this, exc.Message, "Error", E_DxButtons.Ok);
-            }
-            finally
-            {
-                HeTrace.RemoveLogger("game");
-
-            }
+            SetStatus(this, new StateArg($"Finished: {lbGame.Title}", CancelFlag));
         }
+
 
 
 
@@ -504,7 +508,7 @@ namespace Pack_My_Game.Core
             lbGame.ManualPath = DxPath.To_RelativeOrNull(PS.Default.LBPath, gdC.DefaultManual?.CurrentPath);
             lbGame.MusicPath = DxPath.To_RelativeOrNull(PS.Default.LBPath, gdC.DefaultMusic?.CurrentPath);
             lbGame.VideoPath = DxPath.To_RelativeOrNull(PS.Default.LBPath, gdC.DefaultVideo?.CurrentPath);
-            lbGame.ThemeVideoPath = DxPath.To_RelativeOrNull(PS.Default.LBPath, gdC.DefaultThemeVideo?.CurrentPath) ;
+            lbGame.ThemeVideoPath = DxPath.To_RelativeOrNull(PS.Default.LBPath, gdC.DefaultThemeVideo?.CurrentPath);
 
             XML_Games.EnhancedBackup(_XMLPlatformFile, lbGame, gamePath);
         }
@@ -644,7 +648,7 @@ namespace Pack_My_Game.Core
                     string path = Path.GetFullPath(c.ApplicationPath, PS.Default.LBPath);
 
                     if (File.Exists(path))
-                       games.Add(DataPlus.MakeNormal(c.Id, Path.GetFileName(path) ,path));
+                        games.Add(DataPlus.MakeNormal(c.Id, Path.GetFileName(path), path));
 
                 }
             }
@@ -744,8 +748,9 @@ namespace Pack_My_Game.Core
                         continue;
                 }
 
+                string folder = Path.GetFullPath(plfmFolder.FolderPath, PS.Default.LBPath);
                 // Liste du contenu des dossiers
-                foreach (var fichier in Directory.EnumerateFiles(plfmFolder.FolderPath, "*.*", SearchOption.AllDirectories))
+                foreach (var fichier in Directory.EnumerateFiles(folder, "*.*", SearchOption.AllDirectories))
                 {
                     string fileName = Path.GetFileName(fichier);
 
@@ -754,7 +759,7 @@ namespace Pack_My_Game.Core
                         !fileName.StartsWith($"{ lbGame.Title}.{ lbGame.Id}-"))
                         continue;
 
-                    HeTrace.WriteLine($"\t[GetImages] Found '{fichier}' in '{plfmFolder.FolderPath}'");
+                    HeTrace.WriteLine($"\t[GetImages] Found '{fichier}' in '{folder}'");
 
                     DataRepExt tmp = new DataRepExt(plfmFolder.MediaType, fichier);
 
@@ -821,81 +826,79 @@ namespace Pack_My_Game.Core
         #endregion
 
         #region Préparation
-        /*
-    private GamePaths PrepareFiles(GameDataCont gdC, Folder tree)
-    {
-        GamePaths gP = new GamePaths();
 
-
-
-        gP.ApplicationPath = 
-        gP.ManualPath = 
-        gP.MusicPath = 
-
-        gP.VideoPath = gdC.DefaultVideo;
-
-
-
-        return gP;
-    }
-        */
-
-        //private string Prepare
-
-        private void PrepareList<T>(IEnumerable<T> elems, Folder tree, bool keepStruct, string mediatype) where T: DataTrans
+        private void PrepareList<T>(IEnumerable<T> elems, Folder tree, bool keepStruct, string mediatype) where T : DataTrans
         {
             HeTrace.WriteLine($"[{nameof(PrepareList)}] for {mediatype}", this);
             string destLocation = tree.Children[$"{mediatype}s"].Path;
 
-            PlatformFolder folder = null;
-            if (keepStruct && !string.IsNullOrEmpty(mediatype))
+            string folder = null;
+            //PlatformFolder folder = null;
+            if (mediatype == "Game")
+            {
+                folder = _ZePlatform.FolderPath ??= Path.Combine("Games", _ZePlatform.Name);
+            }
+            else if (mediatype == "CheatCode")
+            {
+                folder = Path.Combine(PS.Default.CCodesPath, _ZePlatform.Name);
+            }
+            else if (!string.IsNullOrEmpty(mediatype))
             {
                 // On récupère le dossier concerné par le média
-                folder = _ZePlatform.PlatformFolders.FirstOrDefault(
-                            (x) => x.MediaType.Equals(mediatype, StringComparison.OrdinalIgnoreCase));
+                PlatformFolder pFolder = _ZePlatform.PlatformFolders.FirstOrDefault(
+                              (x) => x.MediaType.Equals(mediatype, StringComparison.OrdinalIgnoreCase));
+
+                folder = pFolder.FolderPath;
             }
 
+            if (folder.Equals(PS.Default.LBPath) || folder.Equals(AppDomain.CurrentDomain.BaseDirectory))
+                throw new Exception($"Error on target folder '{folder}'");
+
+
+            folder = Path.GetFullPath(folder, PS.Default.LBPath);
             foreach (var fichier in elems)
                 PrepareFile(fichier, destLocation, keepStruct, folder);
 
         }
 
-        private /*string*/ void PrepareList(List<DataRep> elems, Folder tree, bool keepStruct, string mediatype)
-        {
-            HeTrace.WriteLine($"[{nameof(PrepareList)}] for {mediatype}", this);
+        #region
+        /* private /*string*//* void PrepareList(List<DataRep> elems, Folder tree, bool keepStruct, string mediatype)
+         {
+             HeTrace.WriteLine($"[{nameof(PrepareList)}] for {mediatype}", this);
 
-            string destLocation = tree.Children[$"{mediatype}s"].Path;
+             string destLocation = tree.Children[$"{mediatype}s"].Path;
 
-            PlatformFolder folder = null;
-            if (keepStruct && !string.IsNullOrEmpty(mediatype))
-            {
-                // On récupère le dossier concerné par le média
-                folder = _ZePlatform.PlatformFolders.FirstOrDefault(
-                            (x) => x.MediaType.Equals(mediatype, StringComparison.OrdinalIgnoreCase));
-            }
+             PlatformFolder folder = null;
+             if (keepStruct && !string.IsNullOrEmpty(mediatype))
+             {
+                 // On récupère le dossier concerné par le média
+                 folder = _ZePlatform.PlatformFolders.FirstOrDefault(
+                             (x) => x.MediaType.Equals(mediatype, StringComparison.OrdinalIgnoreCase));
+             }
 
-            //string futurLink, tail, gpAssign;
-            //gpAssign = string.Empty;
-            foreach (DataRep fichier in elems)
-            {
+             //string futurLink, tail, gpAssign;
+             //gpAssign = string.Empty;
+             foreach (DataRep fichier in elems)
+             {
 
-                PrepareFile(fichier, destLocation, keepStruct, folder);
-                // --- Renvoie pour le GP.
-              /*  if (fichier.IsSelected)
-                    gpAssign = DxPath.To_Relative(destLocation, futurLink);*/
-            }
+                 PrepareFile(fichier, destLocation, keepStruct, folder);
+                 // --- Renvoie pour le GP.
+               /*  if (fichier.IsSelected)
+                     gpAssign = DxPath.To_Relative(destLocation, futurLink);*/
+        /* }
 
-            //return gpAssign;
-        }
+         //return gpAssign;
+     }*/
+        #endregion
 
-        private void PrepareFile(DataTrans fichier, string destLocation, bool keepStruct, PlatformFolder folder)
+        private void PrepareFile(DataTrans fichier, string destLocation, bool keepStruct, string foldertoReplace /*PlatformFolder folder*/)
         {
             string futurLink = string.Empty;
             //tail = string.Empty;
 
-            if (keepStruct && folder != null && fichier.CurrentPath.Contains(folder.FolderPath))
+            if (keepStruct && !string.IsNullOrEmpty(foldertoReplace) /*!= null && fichier.CurrentPath.Contains(folder.FolderPath)*/)
             {
-                string tail = fichier.CurrentPath.Replace(folder.FolderPath, string.Empty).TrimStart('\\');
+                string tail = fichier.CurrentPath.Replace(foldertoReplace /*folder.FolderPath*/, string.Empty).TrimStart('\\');
                 futurLink = Path.Combine(destLocation, tail);
             }
             else
@@ -916,13 +919,13 @@ namespace Pack_My_Game.Core
             {
                 tail = string.Empty;
                 // On récupère la tail
-                PlatformFolder folder = _ZePlatform.PlatformFolders.First(
+                PlatformFolder pFolder = _ZePlatform.PlatformFolders.First(
                                           (x) => x.MediaType.Equals(pkFile.Categorie, StringComparison.OrdinalIgnoreCase));
 
-
-                if (folder != null && pkFile.CurrentPath.Contains(folder.FolderPath))
+                string toReplace = Path.GetFullPath(pFolder.FolderPath, PS.Default.LBPath);
+                if (toReplace != null && pkFile.CurrentPath.Contains(toReplace))
                 {
-                    tail = pkFile.CurrentPath.Replace(folder.FolderPath, string.Empty).TrimStart('\\');
+                    tail = pkFile.CurrentPath.Replace(toReplace, string.Empty).TrimStart('\\');
 
                     pkFile.DestPath = Path.Combine(destLocation, pkFile.Categorie, tail);
                 }

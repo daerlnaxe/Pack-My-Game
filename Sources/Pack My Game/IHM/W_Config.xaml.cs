@@ -175,13 +175,15 @@ namespace Pack_My_Game.IHM
             PS.Default.op7_Zip = _Model.SevCompression;
             // Options 
             PS.Default.opInfos = _Model.InfosGame;
-            PS.Default.opOBGame = _Model.OriginalXMLBackup;
-            PS.Default.opEBGame = _Model.EnhancedXMLBackup;
             PS.Default.opTreeV = _Model.TreeviewFile;
             PS.Default.opClones = _Model.ClonesCopy;
             PS.Default.opCheatCodes = _Model.CheatsCopy;
             PS.Default.opMd5 = _Model.MD5Calcul;
-            //
+            // Backups
+            PS.Default.opTBGame = _Model.OriginalXMLBackup;
+            PS.Default.opEBGame = _Model.EnhancedXMLBackup;
+            //PS.Default.opNPBGame = _Model.NoPathXMLBackup;
+            // Structure
             PS.Default.KeepGameStruct = _Model.KeepGamesStructure;
             PS.Default.KeepCheatCStruct = _Model.KeepCheatsStructure;
             PS.Default.KeepManualStruct = _Model.KeepManualsStructure;

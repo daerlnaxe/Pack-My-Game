@@ -169,8 +169,8 @@
                                       Content="{Binding Lang.CompZExp, FallbackValue=CompZExp}"/>
                             <Controls:RegleComp Max="{Binding ZipMaxLvl, FallbackValue=10}" 
                                             Value="{Binding ZipLvlCompression}"/>
-                        
-                        
+
+
                         </StackPanel>
                     </GroupBox>
                     <!-- 7Zip -->
@@ -190,76 +190,106 @@
             <!-- Options -->
             <TabItem Header="{Binding Lang.OptionsExp, FallbackValue=Options}">
                 <ScrollViewer>
-                <StackPanel>
-                    <GroupBox Header="{Binding Lang.ProcessExp, FallbackValue=ProcessExp}">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <!-- 1ère colonne -->
-                            <CheckBox Grid.Row="0" Grid.Column="0" 
+                    <StackPanel>
+                        <GroupBox Header="{Binding Lang.ProcessExp, FallbackValue=ProcessExp}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <!-- 1ère colonne -->
+                                <CheckBox Grid.Row="0" Grid.Column="0" 
                                   IsChecked="{Binding InfosGame}"
                                   Content="{Binding Lang.InfosGExp, FallbackValue=InfosGExp}"/>
-                            <CheckBox Grid.Row="1" Grid.Column="0" 
-                                  IsChecked="{Binding OriginalXMLBackup}"
-                                  Content="{Binding Lang.OriXBExp, FallbackValue=OriXBExp}"/>
-                            <CheckBox Grid.Row="2" Grid.Column="0" 
-                                  IsChecked="{Binding EnhancedXMLBackup}"
-                                  Content="{Binding Lang.EnXBExp, FallbackValue=EnXBExp}"/>
-                            <CheckBox Grid.Row="3" Grid.Column="0" 
+
+                                
+                                
+                                <CheckBox Grid.Row="1" Grid.Column="0" 
                                   IsChecked="{Binding TreeviewFile}"
                                   Content="{Binding Lang.TViewFExp, FallbackValue=TViewFExp}"/>
-                            <!-- 2nd colonne -->
-                            <CheckBox Grid.Row="0" Grid.Column="1"
-                                  IsChecked="{Binding ClonesCopy}"
-                                  Content="{Binding Lang.CCopyExp, FallbackValue=CCopyExp}"/>
-                            <CheckBox Grid.Row="1" Grid.Column="1" 
-                                  IsChecked="{Binding CheatsCopy}"
-                                  Content="{Binding Lang.CheatsCopyExp, FallbackValue=CheatsCopyExp}"/>
-                            <CheckBox Grid.Row="2" Grid.Column="1" 
+                                <CheckBox Grid.Row="2" Grid.Column="0" 
                                   IsChecked="{Binding MD5Calcul}"
                                   Content="MD5"/>
-                        </Grid>
-                    </GroupBox>
-                    <!-- Compression -->
-                    <GroupBox Header="Structure">
-                        <StackPanel>
-                            <CheckBox Content="Keep games Structure"
+                                <!-- 2nd colonne -->
+                                <CheckBox Grid.Row="0" Grid.Column="1"
+                                  IsChecked="{Binding ClonesCopy}"
+                                  Content="{Binding Lang.CCopyExp, FallbackValue=CCopyExp}"/>
+                                <CheckBox Grid.Row="1" Grid.Column="1" 
+                                  IsChecked="{Binding CheatsCopy}"
+                                  Content="{Binding Lang.CheatsCopyExp, FallbackValue=CheatsCopyExp}"/>
+                                
+                            </Grid>
+                        </GroupBox>
+                        <!-- Backup formats -->
+                        <GroupBox Header="Backup">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <CheckBox Grid.Row="0" Grid.Column="0" 
+                                  IsChecked="{Binding OriginalXMLBackup}"
+                                  Content="{Binding Lang.OriXBExp, FallbackValue=OriXBExp}"/>                                
+                                <CheckBox Grid.Row="1" Grid.Column="0" 
+                                  IsChecked="{Binding EnhancedXMLBackup}"
+                                  Content="{Binding Lang.EnXBExp, FallbackValue=EnXBExp}"/>
+                                <CheckBox Grid.Row="0" Grid.Column="1"  Visibility="Collapsed"
+                                          IsChecked="{Binding NoPathXMLBackup}"
+                                          Content="No Path XML Backup (remove paths on TBGame)"/>
+                            </Grid>
+                        </GroupBox>
+                        <!-- Structure -->
+                        <GroupBox Header="Structure">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <CheckBox Grid.Row="0" Grid.Column="0" Content="Keep games Structure"
                                       IsChecked="{Binding KeepGamesStructure}"/>
-                            <CheckBox Content="Keep cheats Structure" 
+                                <CheckBox Grid.Row="0" Grid.Column="1" Content="Keep cheats Structure" 
                                       IsChecked="{Binding KeepCheatsStructure}"/>
-                            <CheckBox Content="Keep manuals Structure"
+                                <CheckBox Grid.Row="1" Grid.Column="0" Content="Keep manuals Structure"
                                       IsChecked="{Binding KeepManualsStructure}"/>
-                            <CheckBox Content="Keep musics Structure"
+                                <CheckBox Grid.Row="1" Grid.Column="1" Content="Keep musics Structure"
                                       IsChecked="{Binding KeepMusicsStructure}"/>
-                            <CheckBox Content="Keep videos Structure"
+                                <CheckBox Grid.Row="2" Grid.Column="0" Content="Keep videos Structure"
                                       IsChecked="{Binding KeepVideosStructure}"/>
-                        </StackPanel>
-                    </GroupBox>
-                    <!-- Loggers -->
-                    <GroupBox Header="{Binding Lang.LoggersExp, FallbackValue=LoggersExp}">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <CheckBox Grid.Row="0" Grid.Column="0"
+                            </Grid>
+                        </GroupBox>
+                        <!-- Loggers -->
+                        <GroupBox Header="{Binding Lang.LoggersExp, FallbackValue=LoggersExp}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <CheckBox Grid.Row="0" Grid.Column="0"
                                       IsChecked="{Binding FileLog}"
                                       Content="{Binding Lang.FileExp, FallbackValue=FileExp}"/>
-                            <CheckBox Grid.Row="1" Grid.Column="0"
+                                <CheckBox Grid.Row="1" Grid.Column="0"
                                       IsChecked="{Binding WindowLog}"
                                       Content="{Binding Lang.WindowExp, FallbackValue=WindowExp}"/>
 
-                        </Grid>
-                    </GroupBox>
-                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+                    </StackPanel>
                 </ScrollViewer>
             </TabItem>
         </TabControl>

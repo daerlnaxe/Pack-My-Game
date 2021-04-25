@@ -339,6 +339,9 @@ namespace Common_PMG.XML
             #endregion
             return gameLB;
         }
+
+
+
         public static List<Clone> ListClones(string xmlFile)
         {
             List<Clone> aAppz = new List<Clone>();
@@ -610,6 +613,66 @@ namespace Common_PMG.XML
             tbGame.Add(game, addApps, customF, altNames);
 
             tbGame.Save(Path.Combine(destFolder, "TBGame.xml"));
+        }
+
+        /// <summary>
+        /// Backup without paths ~verbatim
+        /// </summary>
+        /// <param name="xMLPlatformFile"></param>
+        /// <param name="id"></param>
+        /// <param name="gamePath"></param>
+        public static void NPBackup(string xmlFile, string id, string destFolder)
+        {
+            XElement root = XElement.Load(xmlFile);
+
+            XElement game = root.Elements("Game")
+                              .Where((x) => x.Element("ID").Value == id)
+                              .SingleOrDefault();
+
+            var addApps = from aApp in root.Elements("AdditionalApplication")
+                          where (string)aApp.Element("GameID").Value == id
+                          select aApp;
+
+            var customF = from cf in root.Elements("CustomField")
+                          where (string)cf.Element("GameID").Value == id
+                          select cf;
+
+            // On récupère les noms alternatifs
+            var altNames = from altN in root.Elements("AlternateName")
+                           where (string)altN.Element("GameID").Value == id
+                           select altN;
+
+            XElement tbGame = new XElement("NBGame");
+            tbGame.Add(new XComment("Verbatim backup - without paths"));
+
+            // Altération des chemins
+            SetFileName(game.Element(Tag.AppPath));
+            SetFileName(game.Element(GameTag.ManPath));
+            SetFileName(game.Element(GameTag.MusPath));
+            SetFileName(game.Element(GameTag.VidPath));
+            SetFileName(game.Element(GameTag.ThVidPath));
+            SetFileName(game.Element(GameTag.ConfPath));
+            if (game.Element(GameTag.RootFolder) != null)
+                SetFileName(game.Element(GameTag.RootFolder));
+            if (game.Element(GameTag.DosBoxPath) != null)
+                game.Element(GameTag.DosBoxPath).Value = string.Empty;
+            if (game.Element(GameTag.ScummVMGDPath) != null)
+                game.Element(GameTag.ScummVMGDPath).Value = string.Empty;
+            // Altération des clones
+            foreach (var app in addApps)
+                SetFileName(app.Element(Tag.AppPath));
+
+            tbGame.Add(game, addApps, customF, altNames);
+
+            tbGame.Save(Path.Combine(destFolder, "NBGame.xml"));
+
+            void SetFileName(in XElement xelElem)
+            {
+                if (xelElem == null)
+                    return;
+
+                xelElem.Value = Path.GetFileName(xelElem.Value);
+            }
         }
 
         /// <summary>

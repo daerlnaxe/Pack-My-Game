@@ -121,13 +121,13 @@ namespace Pack_My_Game.Models
         /// <summary>
         /// Contient les chemins de la plateforme
         /// </summary>
-        public Platform Platform { get; }
+        public ContPlatFolders Platform { get; }
 
         public string GameName { get; }
 
         public GameDataCont GameDataC { get; }
 
-        public M_PackMeRes(string root, Platform platform, GameDataCont gdC)
+        public M_PackMeRes(string root, ContPlatFolders platform, GameDataCont gdC)
         {
             Root = root;
             Platform = platform;

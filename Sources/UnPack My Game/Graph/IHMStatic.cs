@@ -47,6 +47,8 @@ namespace UnPack_My_Game.Graph
                         if (tc.ShowDialog() == true)
                         {
                             Properties.Settings.Default.LastTargetPath = Path.GetDirectoryName(tc.Model.LinkResult);
+                            Properties.Settings.Default.Save();
+
                             return tc.Model.LinkResult;
 
                         }
