@@ -130,7 +130,7 @@ namespace Pack_My_Game.Core
 
                 return false;
             }
-
+            _SelectedGames = selectedGames;
             /*W_Games gamesWindow = new W_Games();
             gamesWindow.SelectedGames = selectedGames;
 

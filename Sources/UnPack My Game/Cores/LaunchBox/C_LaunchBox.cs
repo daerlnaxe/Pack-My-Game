@@ -1,7 +1,4 @@
-﻿using AsyncProgress;
-using AsyncProgress.Basix;
-using Common_PMG;
-using Common_PMG.Container;
+﻿using Common_PMG.Container;
 using Common_PMG.Container.Game;
 using Common_PMG.XML;
 using DxLocalTransf.Copy;
@@ -9,14 +6,10 @@ using DxTBoxCore.Common;
 using DxTBoxCore.Languages;
 using DxTBoxCore.Box_MBox;
 using Hermes;
-using Hermes.Cont;
-using Hermes.Messengers;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Threading;
 using System.Windows;
 using UnPack_My_Game.Decompression;
@@ -24,6 +17,8 @@ using UnPack_My_Game.Graph;
 using UnPack_My_Game.Resources;
 using static UnPack_My_Game.Properties.Settings;
 using Common_Graph;
+using AsyncProgress.Basix;
+using AsyncProgress;
 
 namespace UnPack_My_Game.Cores
 {

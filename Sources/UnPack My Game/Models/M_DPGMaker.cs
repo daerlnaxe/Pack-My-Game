@@ -558,11 +558,11 @@ namespace UnPack_My_Game.Graph
             // --- Copie
 
             OpDFilesExt copyObj = new OpDFilesExt();
-            MawEvo mawEvo = new MawEvo(copyObj);
+            MawEvo<EphemProgressD> mawEvo = new MawEvo<EphemProgressD>(copyObj);
             TaskLauncher launcher = new TaskLauncher()
             {
                 AutoCloseWindow = true,
-                ProgressIHM = new DxDoubleProgress(mawEvo),
+                ProgressIHM = new DxDoubleProgress(mawEvo.Parler),
                 // MethodToRun = ()=> copyObj.CopyANVerif(fileSrc, destFile, true),                 
             };
             launcher.Launch(copyObj);

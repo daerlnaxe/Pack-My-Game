@@ -1,5 +1,0 @@
-﻿System.IO.IOException: La syntaxe du nom de fichier, de répertoire ou de volume est incorrecte. : 'E:\Programmation\Git-Hub\Pack-My-Game\UnPack My Game\bin\Debug\netcoreapp3.1\Logs\2021-03-16 10:25:38'
-   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
-   at System.IO.Directory.CreateDirectory(String path)
-   at Hermes.Messengers.ALogger.ActivateFileLog(String filePath) in E:\Programmation\Git-Hub\Hermes\Sources\Messengers\ALogger.cs:line 52
-Fin
