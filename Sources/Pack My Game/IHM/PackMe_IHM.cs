@@ -15,6 +15,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using static Common_PMG.Tool;
+using DxLocalTransf.Tools;
 
 namespace Pack_My_Game.IHM
 {

@@ -360,7 +360,7 @@ namespace Pack_My_Game.Models
         }
 
 
-        private void SetDefault<T>(T dr, ObservableCollection<T> collection, Action<T> SetChosen) where T : class, IData
+        private void SetDefault<T>(T dr, ObservableCollection<T> collection, Action<T> SetChosen) where T : class, IDataRep
         {
 
             foreach (var elem in collection)
@@ -622,7 +622,7 @@ namespace Pack_My_Game.Models
 
                 //
                 EphemProgress ephem = new EphemProgress();
-                CopyNVerif copyZat = new CopyNVerif();
+                HashCopy copyZat = new HashCopy();
                 copyZat.AskToUser += PackMe_IHM.Ask4_FileConflict2;
 
                 bool copyres = false;
@@ -630,7 +630,7 @@ namespace Pack_My_Game.Models
                 {
                     AutoCloseWindow = true,
                     ProgressIHM = new DxProgressB1(ephem),
-                    MethodToRun = () => copyres = copyZat.CopyANVerif(dr),
+                    MethodToRun = () => copyres = copyZat.CopyOneNVerif(dr),
                 };
                 launcher.Launch(copyZat);
 

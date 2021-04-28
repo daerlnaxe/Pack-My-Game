@@ -17,7 +17,8 @@
     <Window.CommandBindings>
         <!--        -->
         <CommandBinding Command="local:MainWindow.CheckGameValidityCmd" CanExecute="Can_GamesSelected" Executed="Exec_CheckGameValidity"/>
-        <CommandBinding Command="local:MainWindow.ExtractPlatformCmd" CanExecute="Can_GamesSelected" Executed="Exec_ExtractPlatform"/>
+        <CommandBinding Command="local:MainWindow.ExtractPlatformCmd" CanExecute="Can_ExtractPlatform" Executed="Exec_ExtractPlatform"/>
+        <CommandBinding Command="local:MainWindow.ExtractTBGameCmd" CanExecute="Can_GamesSelected" Executed="Exec_ExtractTBGames"/>
         <CommandBinding Command="local:MainWindow.ExtractDefaultFilesCmd" CanExecute="Can_GamesSelected" Executed="Exec_ExtractDefFiles"/>
         <CommandBinding Command="local:Common.ProcessCommand" CanExecute="Can_Process" Executed="Exec_Process"/>
         <CommandBinding Command="local:MainWindow.SelectAllCmd" CanExecute="Can_SelectAll" Executed="Exec_SelectAll"/>
@@ -108,9 +109,18 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Label Content=""/>
-                    <TextBox />
-                    <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="484,0,0,0" Click="button_Click"/>
-
+                    <!-- LaunchBox Path -->
+                    <Label Content="{Binding Lang.LBPathExp, FallbackValue=LBPathExp}"
+                               MouseLeftButtonUp="LaunchBox_MouseLeftButtonUp" Cursor="Help"/>
+                    <TextBlock Grid.Column="1" Style="{StaticResource tblockS}"
+                               Text="{Binding LaunchBoxPath, FallbackValue=LaunchBoxPath}" TextTrimming="CharacterEllipsis"
+                               ToolTip="{Binding LaunchBoxPath}"/>
+                    <!-- Working Path -->
+                    <Label Grid.Row="1" Content="{Binding Lang.WPathExp, FallbackValue=WPathExp}"
+                               MouseLeftButtonUp="WorkingPath_MouseLeftButtonUp" Cursor="Help" />
+                    <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource tblockS}"
+                               Text="{Binding WorkingFolder,FallbackValue=WorkingPath}" TextTrimming="CharacterEllipsis" 
+                               ToolTip="{Binding WorkingFolder}"  />
                 </Grid>
             </GroupBox>
             <!-- Options -->
@@ -177,6 +187,7 @@
                                 <ContextMenu>
                                     <!--                                  -->
                                     <MenuItem Command="local:MainWindow.CheckGameValidityCmd"/>
+                                    <MenuItem Command="local:MainWindow.ExtractTBGameCmd"/>
                                     <MenuItem Command="local:MainWindow.ExtractDefaultFilesCmd"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>

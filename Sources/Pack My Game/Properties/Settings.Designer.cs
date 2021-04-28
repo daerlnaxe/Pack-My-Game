@@ -344,18 +344,6 @@ namespace Pack_My_Game.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool KeepVideoStruct {
-            get {
-                return ((bool)(this["KeepVideoStruct"]));
-            }
-            set {
-                this["KeepVideoStruct"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool KeepCheatCStruct {
             get {
                 return ((bool)(this["KeepCheatCStruct"]));

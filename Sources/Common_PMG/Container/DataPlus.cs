@@ -10,7 +10,7 @@ using System.Text.Json.Serialization;
 namespace Common_PMG.Container
 {
     [JsonConverter(typeof(DataPlusConverter))]
-    public class DataPlus : DataTrans, IData, INotifyPropertyChanged
+    public class DataPlus : DataTrans, IDataRep, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

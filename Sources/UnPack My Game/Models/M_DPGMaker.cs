@@ -171,7 +171,7 @@ namespace UnPack_My_Game.Graph
             /// <remarks>
             /// Ne pas faire de générique car il faut que l'id passe
             /// </remarks>
-            void MakeCollection<T>(IReadOnlyCollection<T> srcCollected, ObservableCollection<T> targetedCollec, string mediatype, Func<T, T> copy) where T : IData
+            void MakeCollection<T>(IReadOnlyCollection<T> srcCollected, ObservableCollection<T> targetedCollec, string mediatype, Func<T, T> copy) where T : IDataRep
             {
                 string pRoot = Path.Combine(Root, mediatype);
                 targetedCollec.Clear();
@@ -250,7 +250,7 @@ namespace UnPack_My_Game.Graph
                 UnsetDefault(selected, (x) => ChosenThemeVideo = x);
         }
 
-        private void SetDefault<T>(T dr, ObservableCollection<T> collection, Action<T> SetChosen) where T : class, IData
+        private void SetDefault<T>(T dr, ObservableCollection<T> collection, Action<T> SetChosen) where T : class, IDataRep
         {
             foreach (var elem in collection)
                 if (dr != elem)

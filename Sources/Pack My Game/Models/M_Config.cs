@@ -113,7 +113,7 @@ namespace Pack_My_Game.Models
         public bool KeepCheatsStructure { get; set; }
         public bool KeepManualsStructure { get; set; }
         public bool KeepMusicsStructure { get; set; }
-        public bool KeepVideosStructure { get; set; }
+      //  public bool KeepVideosStructure { get; set; }
 
         // ---
 
@@ -147,7 +147,7 @@ namespace Pack_My_Game.Models
             KeepCheatsStructure = PS.Default.KeepCheatCStruct;
             KeepManualsStructure = PS.Default.KeepManualStruct;
             KeepMusicsStructure = PS.Default.KeepMusicStruct;
-            KeepVideosStructure = PS.Default.KeepVideoStruct;
+          //  KeepVideosStructure = PS.Default.KeepVideoStruct;
             // ---
             FileLog = PS.Default.opLogFile;
             WindowLog = PS.Default.opLogWindow;

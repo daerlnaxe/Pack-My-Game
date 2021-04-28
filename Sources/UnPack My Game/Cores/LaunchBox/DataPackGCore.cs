@@ -475,7 +475,7 @@ namespace UnPack_My_Game.Cores
 
             // Modification du fichier xml pour l'injection
             */
-            void ModifElement<T>(in XElement xelObj, string tag, T elem, bool first) where T : IData
+            void ModifElement<T>(in XElement xelObj, string tag, T elem, bool first) where T : IDataRep
             {
                 var target = xelObj.Element(tag);
                 var value = elem == null ? string.Empty : DxPath.To_Relative(Default.LaunchBoxPath, elem.DestPath);

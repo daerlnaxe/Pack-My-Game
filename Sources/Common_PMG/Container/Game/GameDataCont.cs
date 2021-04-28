@@ -340,7 +340,7 @@ namespace Common_PMG.Container.Game
         /// <typeparam name="T"></typeparam>
         /// <param name="fichier"></param>
         /// <param name="liste"></param>
-        private void AddWVerif<T>(T fichier, List<T> liste) where T : IData
+        private void AddWVerif<T>(T fichier, List<T> liste) where T : IDataRep
         {
             if (string.IsNullOrEmpty(fichier.CurrentPath))
                 return;

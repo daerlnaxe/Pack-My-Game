@@ -11,6 +11,7 @@ using System;
 using System.IO;
 using System.Windows;
 using static Common_PMG.Tool;
+using DxLocalTransf.Tools;
 
 namespace UnPack_My_Game.Graph
 {

@@ -188,7 +188,7 @@ namespace Pack_My_Game.IHM
             PS.Default.KeepCheatCStruct = _Model.KeepCheatsStructure;
             PS.Default.KeepManualStruct = _Model.KeepManualsStructure;
             PS.Default.KeepMusicStruct = _Model.KeepMusicsStructure;
-            PS.Default.KeepVideoStruct = _Model.KeepVideosStructure;
+            //PS.Default.KeepVideoStruct = _Model.KeepVideosStructure;
             //
             PS.Default.opLogFile = _Model.FileLog;
             PS.Default.opLogWindow = _Model.WindowLog;

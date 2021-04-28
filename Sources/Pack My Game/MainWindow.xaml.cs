@@ -21,6 +21,7 @@ namespace Pack_My_Game
     public partial class MainWindow : Window
     {
         public static readonly RoutedUICommand CheckGameValidityCmd = new RoutedUICommand("Test game links", nameof(CheckGameValidityCmd), typeof(MainWindow));
+        public static readonly RoutedUICommand ExtractTBGameCmd = new RoutedUICommand("Extract True Backup", nameof(ExtractTBGameCmd), typeof(MainWindow));
         public static readonly RoutedUICommand ExtractPlatformCmd = new RoutedUICommand("Extract Platform", "ExtractPlatformCmd", typeof(MainWindow));
         public static readonly RoutedUICommand ExtractDefaultFilesCmd = new RoutedUICommand("Extract Default Files", "ExtractDefaultFilesCmd", typeof(MainWindow));
         public static readonly RoutedUICommand SelectAllCmd = new RoutedUICommand("Select All", "SelectAllCmd", typeof(MainWindow));
@@ -61,10 +62,6 @@ namespace Pack_My_Game
             InitializeComponent();
             DataContext = _Model;
         }
-
-
-
-
 
 
         /// <summary>
@@ -242,6 +239,16 @@ namespace Pack_My_Game
         private void Exec_ExtractDefFiles(object sender, ExecutedRoutedEventArgs e)
         {
             _Model.ExtractDefaultFiles();
+        }
+
+        /// <summary>
+        /// Création d'un fichier TBGame.Xml
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Exec_ExtractTBGames(object sender, ExecutedRoutedEventArgs e)
+        {
+            _Model.ExtractTBGames();
         }
 
         /// <summary>

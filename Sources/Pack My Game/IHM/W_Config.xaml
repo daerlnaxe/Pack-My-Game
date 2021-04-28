@@ -269,8 +269,8 @@
                                       IsChecked="{Binding KeepManualsStructure}"/>
                                 <CheckBox Grid.Row="1" Grid.Column="1" Content="Keep musics Structure"
                                       IsChecked="{Binding KeepMusicsStructure}"/>
-                                <CheckBox Grid.Row="2" Grid.Column="0" Content="Keep videos Structure"
-                                      IsChecked="{Binding KeepVideosStructure}"/>
+                                <!--<CheckBox Grid.Row="2" Grid.Column="0" Content="Keep videos Structure"
+                                      IsChecked="{Binding KeepVideosStructure}"/>-->
                             </Grid>
                         </GroupBox>
                         <!-- Loggers -->

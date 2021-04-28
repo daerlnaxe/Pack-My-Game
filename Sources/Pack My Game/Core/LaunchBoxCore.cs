@@ -358,7 +358,7 @@ namespace Pack_My_Game.Core
             PrepareList(gdC.CheatCodes, tree, PS.Default.KeepCheatCStruct, "CheatCode");
             PrepareList(gdC.Manuals, tree, PS.Default.KeepManualStruct, "Manual");
             PrepareList(gdC.Musics, tree, PS.Default.KeepMusicStruct, "Music");
-            PrepareList(gdC.Videos, tree, PS.Default.KeepVideoStruct, "Video");
+            PrepareList(gdC.Videos, tree, true, "Video");
             PrepareImages(gdC.Images, tree.Children[Common.Images].Path);
 
             // --- Copie des fichiers
@@ -974,8 +974,8 @@ namespace Pack_My_Game.Core
 
         private void CopyFiles(GameDataCont gdC, Folder tree)
         {
-            CopyNVerif copyObj = new CopyNVerif();
-            copyObj.AskToUser += PackMe_IHM.Ask4_FileConflict2;
+            HashCopy objCopy = new HashCopy();
+            objCopy.AskToUser += PackMe_IHM.Ask4_FileConflict2;
 
             HeTrace.WriteLine("[CopyFiles] All files except images");
             // Fusion des fichiers sauf les images
@@ -986,9 +986,9 @@ namespace Pack_My_Game.Core
             Fichiers.AddRange(gdC.Musics);
             Fichiers.AddRange(gdC.Videos);
 
-            PackMe_IHM.DoubleProgress(copyObj, "Copy",
-                (test) => test = copyObj.CopySNVerif(Fichiers),
-                (test) => test = copyObj.CopySNVerif(gdC.Images));
+            PackMe_IHM.DoubleProgress(objCopy, "Copy",
+                (test) => test = objCopy.CopySevNVerif(Fichiers),
+                (test) => test = objCopy.CopySevNVerif(gdC.Images));
             //copyObj.CopySNVerif(Fichiers);
 
         }

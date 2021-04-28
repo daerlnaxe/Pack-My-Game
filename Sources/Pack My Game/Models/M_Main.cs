@@ -16,6 +16,7 @@ using System.IO;
 using System.Linq;
 using PS = Pack_My_Game.Properties.Settings;
 using Common_Graph;
+using DxTBoxCore.BoxChoose;
 
 namespace Pack_My_Game.Models
 {
@@ -258,6 +259,41 @@ namespace Pack_My_Game.Models
             }
         }
 
+        internal void ExtractTBGames()
+        {
+            /*
+            string destFolder;
+            TreeChoose cf = new TreeChoose()
+            {
+                Model = new M_ChooseFolder()
+                {
+                    HideWindowsFolder = true,
+                    Info = "Select a folder to extract",
+                    StartingFolder = PS.Default.OutPPath,
+                    ShowFiles = false,
+                }
+            };
+            if (cf.ShowDialog() == true)
+            {
+                PS.Default.LastKPath = cf.Model.LinkResult;
+                PS.Default.Save();
+                destFolder = cf.Model.LinkResult;
+            }*/
+
+            string platformFile = Path.Combine(PS.Default.LBPath, PS.Default.dPlatforms, $"{SelectedPlatform.Name}.xml");
+
+            foreach (var game in SelectedGames)
+            {
+                string gamefolder = Tool.WindowsConv_TitleToFileName(game.Title);
+                string destFolder = Path.Combine(WorkingFolder, SelectedPlatform.Name, gamefolder);
+                Directory.CreateDirectory(destFolder);
+                XML_Games.TrueBackup(platformFile, game.Id, destFolder);
+            }
+
+            DxMBox.ShowDial("Done");
+        }
+
+
 
         /// <summary>
         /// Extrait les fichiers par défaut choisis dans LaunchBox par rapport à leur racine
@@ -288,7 +324,7 @@ namespace Pack_My_Game.Models
 
                 gp.ManualPath = Assign(gp.ManualPath, p, "Manual", PS.Default.KeepManualStruct);
                 gp.MusicPath = Assign(gp.MusicPath, p, "Music", PS.Default.KeepMusicStruct);
-                gp.VideoPath = Assign(gp.VideoPath, p, "Video", PS.Default.KeepVideoStruct);
+                gp.VideoPath = Assign(gp.VideoPath, p, "Video", true);
                 gp.ThemeVideoPath = Assign(gp.ThemeVideoPath, p, "Video", true);
 
                 string tmp = Path.Combine(WorkingFolder, SelectedPlatform.Name, Tool.WindowsConv_TitleToFileName(gp.Title));
@@ -297,6 +333,7 @@ namespace Pack_My_Game.Models
 
                 gp.WriteToJson(tmp);
             }
+            DxMBox.ShowDial("Done");
 
         }
 
