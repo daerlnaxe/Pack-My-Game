@@ -149,8 +149,10 @@ namespace UnPack_My_Game.Cores
 
             GamePaths gpX = GamePaths.ReadFromJson(dpgFile);
 
-            HeTrace.WriteLine($"Platform Step for {gpX.Platform}");
+            HeTrace.WriteLine($"Platform Step for '{gpX.Platform}'");
             string platformsFile = Path.Combine(Default.LaunchBoxPath, Default.fPlatforms);
+
+
             bool CheckIfInjectionNeeded = !XML_Custom.TestPresence(platformsFile, Tag.Platform, Tag.Name, gpX.Platform);
             if (CheckIfInjectionNeeded)
             {
@@ -158,7 +160,7 @@ namespace UnPack_My_Game.Cores
                 // Backup du fichier de la plateforme;
                 BackupFile(platformsFile, backupFolder);
 
-                string newPFile = IHMStatic.GetAFile(Default.LastTargetPath, "Select the platform xml file", "xml");
+                string newPFile = IHMStatic.GetAFile(Default.LastTargetPath, $"Platform '{gpX.Platform}' doesn't exist. Select the xml file to inject for this platform", "xml");
                 if (string.IsNullOrEmpty(newPFile))
                     throw new Exception("File for injection is not filled");
 
@@ -272,7 +274,8 @@ namespace UnPack_My_Game.Cores
                                             IsSelected = x.IsSelected,
                                         });
 
-            gdc.SSetApplications = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories);
+            if (Directory.Exists(tmp))
+                gdc.SSetApplications = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories);
             /*gdc.SetDefaultApplication = gpX.ApplicationPath == null ? null : Path.GetFullPath(gpX.ApplicationPath, tmp);
             gdc.SetApplications = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();*/
 
@@ -280,30 +283,35 @@ namespace UnPack_My_Game.Cores
             HeTrace.WriteLine($"\tManuals: {Default.Manuals}");
             tmp = Path.Combine(root, Default.Manuals);
             gdc.SetDefaultManual = gpX.ManualPath == null ? null : Path.GetFullPath(gpX.ManualPath, tmp);
-            gdc.AddSManuals = Directory.GetFiles(Path.Combine(tmp), "*.*", SearchOption.AllDirectories).ToList();
+            if (Directory.Exists(tmp))
+                gdc.AddSManuals = Directory.GetFiles(Path.Combine(tmp), "*.*", SearchOption.AllDirectories).ToList();
 
             // Musics
             HeTrace.WriteLine($"\tMusics: {Default.Musics}");
             tmp = Path.Combine(root, Default.Musics);
             gdc.SetDefaultMusic = gpX.MusicPath == null ? null : Path.GetFullPath(gpX.MusicPath, tmp);
-            gdc.AddSMusics = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();
+            if (Directory.Exists(tmp))
+                gdc.AddSMusics = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();
 
             // Videos
             HeTrace.WriteLine($"\tVideos: {Default.Videos}");
             tmp = Path.Combine(root, Default.Videos);
             gdc.SetDefaultVideo = gpX.VideoPath == null ? null : Path.GetFullPath(gpX.VideoPath, tmp);
             gdc.SetDefaultThemeVideo = gpX.ThemeVideoPath == null ? null : Path.GetFullPath(gpX.ThemeVideoPath, tmp);
-            gdc.AddSVideos = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories);
+            if (Directory.Exists(tmp))
+                gdc.AddSVideos = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories);
 
             // Cheat Codes
             HeTrace.WriteLine($"\tCheatCodes: {Default.CheatCodes}");
             tmp = Path.Combine(root, Default.CheatCodes);
-            gdc.SetSCheatCodes = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();
+            if (Directory.Exists(tmp))
+                gdc.SetSCheatCodes = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();
 
             // Images
             HeTrace.WriteLine("\tImages");
             tmp = Path.Combine(root, Default.Images);
-            gdc.Images = PrepareImages(tmp);
+            if (Directory.Exists(tmp))
+                gdc.Images = PrepareImages(tmp);
 
 
             return gdc;

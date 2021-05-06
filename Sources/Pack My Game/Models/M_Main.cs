@@ -307,38 +307,65 @@ namespace Pack_My_Game.Models
         /// </remarks>
         internal void ExtractDefaultFiles()
         {
-            string platformXmlFile = Path.Combine(PS.Default.LBPath, PS.Default.dPlatforms, $"{SelectedPlatform.Name}.xml");
-            ContPlatFolders p = XML_Platforms.GetPlatformPaths(Path.Combine(LaunchBoxPath, PS.Default.fPlatforms), SelectedPlatform.Name);
+            HeTrace.WriteLine($"[{nameof(ExtractDefaultFiles)}] Begin...");
 
-            foreach (var g in SelectedGames)
+            try
             {
-                GamePaths gp = (GamePaths)XML_Games.Scrap_LBGame<LBGame>(platformXmlFile, GameTag.ID, g.Id);
 
-                //clones
-                foreach (var clone in XML_Games.ListClones(platformXmlFile, Tag.GameId, g.Id))
-                    gp.AddApplication(clone.Id, clone.Id, clone.ApplicationPath);
+                string platformXmlFile = Path.Combine(PS.Default.LBPath, PS.Default.dPlatforms, $"{SelectedPlatform.Name}.xml");
+                string platformsFile = Path.Combine(LaunchBoxPath, PS.Default.fPlatforms);
 
-                if (PS.Default.opClones)
-                    foreach (var app in gp.Applications)
-                        app.Name = Assign(app.CurrentPath, SelectedPlatform.FolderPath, PS.Default.KeepGameStruct);
+                ContPlatFolders p = XML_Platforms.GetPlatformPaths(platformsFile, SelectedPlatform.Name);
+                if(p.PlatformFolders.Count == 0)
+                    throw new Exception("Problem with platform name, children folders have a different name");
 
-                gp.ManualPath = Assign(gp.ManualPath, p, "Manual", PS.Default.KeepManualStruct);
-                gp.MusicPath = Assign(gp.MusicPath, p, "Music", PS.Default.KeepMusicStruct);
-                gp.VideoPath = Assign(gp.VideoPath, p, "Video", true);
-                gp.ThemeVideoPath = Assign(gp.ThemeVideoPath, p, "Video", true);
 
-                string tmp = Path.Combine(WorkingFolder, SelectedPlatform.Name, Tool.WindowsConv_TitleToFileName(gp.Title));
-                Directory.CreateDirectory(tmp);
-                tmp = Path.Combine(tmp, "DPGame.json");
 
-                gp.WriteToJson(tmp);
+
+                foreach (var g in SelectedGames)
+                {
+                    HeTrace.WriteLine($"[{nameof(ExtractDefaultFiles)}] extraction for '{g.Title}'");
+
+                    GamePaths gp = (GamePaths)XML_Games.Scrap_LBGame<LBGame>(platformXmlFile, GameTag.ID, g.Id);
+
+                    //clones
+                    foreach (var clone in XML_Games.ListClones(platformXmlFile, Tag.GameId, g.Id))
+                        gp.AddApplication(clone.Id, clone.Id, clone.ApplicationPath);
+
+
+                    if (PS.Default.opClones)
+                        foreach (var app in gp.Applications)
+                            app.Name = Assign(app.CurrentPath, SelectedPlatform.FolderPath, PS.Default.KeepGameStruct);
+
+                    gp.ManualPath = Assign(gp.ManualPath, p, "Manual", PS.Default.KeepManualStruct);
+                    gp.MusicPath = Assign(gp.MusicPath, p, "Music", PS.Default.KeepMusicStruct);
+                    gp.VideoPath = Assign(gp.VideoPath, p, "Video", true);
+                    gp.ThemeVideoPath = Assign(gp.ThemeVideoPath, p, "Video", true);
+
+                    string tmp = Path.Combine(WorkingFolder, SelectedPlatform.Name, Tool.WindowsConv_TitleToFileName(gp.Title));
+
+                    Directory.CreateDirectory(tmp);
+                    tmp = Path.Combine(tmp, "DPGame.json");
+
+                    HeTrace.WriteLine($"[{nameof(ExtractDefaultFiles)}] write to '{tmp}'");
+                    gp.WriteToJson(tmp);
+                }
+
+                DxMBox.ShowDial("Done");
+                HeTrace.WriteLine($"[{nameof(ExtractDefaultFiles)}] Done...");
             }
-            DxMBox.ShowDial("Done");
+            catch (Exception exc)
+            {
+                DxMBox.ShowDial(exc.Message);
+                HeTrace.WriteLine(exc.Message);
+                HeTrace.WriteLine(exc.StackTrace);
 
+            }
         }
 
         private string Assign(string file, ContPlatFolders platform, string category, bool keepStruct)
         {
+            HeTrace.WriteLine($"[Assign] '{file}' - '{category}'");
             var platformFolder = platform.PlatformFolders.First((x) => x.MediaType.Equals(category, StringComparison.OrdinalIgnoreCase));
 
             if (platformFolder != null)

@@ -10,7 +10,7 @@
     <Company>Daerlnaxe Software</Company>
     <Copyright>Copyright ©  2018-2038 Daerlnaxe Software</Copyright>
     <Description>Unpack package for a Frontend</Description>
-    <AssemblyVersion>1.0.1.1</AssemblyVersion>
+    <AssemblyVersion>1.0.1.2</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
