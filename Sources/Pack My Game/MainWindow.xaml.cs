@@ -12,6 +12,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 //using System.Windows.Shapes;
 using PS = Pack_My_Game.Properties.Settings;
+using static Pack_My_Game.Common;
 
 namespace Pack_My_Game
 {
@@ -22,6 +23,7 @@ namespace Pack_My_Game
     {
         public static readonly RoutedUICommand CheckGameValidityCmd = new RoutedUICommand("Test game links", nameof(CheckGameValidityCmd), typeof(MainWindow));
         public static readonly RoutedUICommand ExtractTBGameCmd = new RoutedUICommand("Extract True Backup", nameof(ExtractTBGameCmd), typeof(MainWindow));
+        public static readonly RoutedUICommand ExtractNPGameCmd = new RoutedUICommand("Extract NoPath Backup", nameof(ExtractTBGameCmd), typeof(MainWindow));
         public static readonly RoutedUICommand ExtractPlatformCmd = new RoutedUICommand("Extract Platform", "ExtractPlatformCmd", typeof(MainWindow));
         public static readonly RoutedUICommand ExtractDefaultFilesCmd = new RoutedUICommand("Extract Default Files", "ExtractDefaultFilesCmd", typeof(MainWindow));
         public static readonly RoutedUICommand SelectAllCmd = new RoutedUICommand("Select All", "SelectAllCmd", typeof(MainWindow));
@@ -30,16 +32,7 @@ namespace Pack_My_Game
         private M_Main _Model = new M_Main();
 
 
-        public Visibility ShowParameters
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(_Model.LaunchBoxPath) || string.IsNullOrEmpty(_Model.WorkingFolder))
-                    return Visibility.Hidden;
-                else
-                    return Visibility.Visible;
-            }
-        }
+
 
 
         public string WindowTitle
@@ -50,14 +43,12 @@ namespace Pack_My_Game
                 return $"Pack My Game - {asmbly.GetName().Version}";
 
             }
-
-
         }
 
 
         public MainWindow()
         {
-            _Model = new M_Main();
+             _Model = new M_Main();
 
             InitializeComponent();
             DataContext = _Model;
@@ -71,26 +62,7 @@ namespace Pack_My_Game
         /// <param name="e"></param>
         private void Config_Click(object sender, RoutedEventArgs e)
         {
-            W_Config cfg = new IHM.W_Config();
-
-
-            if (cfg.ShowDialog() == true)
-            {
-                // On recharge le fichier langue
-                _Model.Relocalize();
-                _Model.ReloadConfig();
-
-                //this.Hide();
-                /*this.lLaunchBoxPath.Text = _lbPath = Properties.Settings.Default.LBPath;
-                */
-                // Change language
-                /*   Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
-                   MainWindow child = new MainWindow();
-                   this.Close();
-                   child.ShowDialog();*/
-                //this.InitializeComponent();
-                /*LoadUI();*/
-            }
+            _Model.ShowConfig();
         }
 
         #region explorer
@@ -105,6 +77,12 @@ namespace Pack_My_Game
         }
         #endregion
 
+
+        private void Refresh_Platforms(object sender, RoutedEventArgs e)
+        {
+            _Model.Refresh_Platforms();
+        }
+
         /// <summary>
         /// Platform selected
         /// </summary>
@@ -112,10 +90,8 @@ namespace Pack_My_Game
         /// <param name="e"></param>
         private void Platform_Selected(object sender, SelectionChangedEventArgs e)
         {
-            if (_Model.SelectedPlatform == null)
-                return;
+            _Model.PlatformChanged();
 
-            _Model.LoadGames();
         }
 
         private void Game_Checked(object sender, RoutedEventArgs e)
@@ -134,7 +110,6 @@ namespace Pack_My_Game
         private void Game_WheelMouse(object sender, MouseWheelEventArgs e)
         {
             sv.ScrollToVerticalOffset(sv.VerticalOffset - e.Delta);
-
         }
 
         private void ListGame_DblClick(object sender, MouseButtonEventArgs e)
@@ -208,7 +183,7 @@ namespace Pack_My_Game
             {
                 Model = new M_SaveFile()
                 {
-                    StartingFolder = System.IO.Path.Combine(PS.Default.OutPPath, _Model.SelectedPlatform.Name),
+                    StartingFolder = System.IO.Path.Combine(Config.WorkingFolder, _Model.SelectedPlatform.Name),
                     ShowFiles = true,
                     Info = "Save to ...",
                     FileValue = $"TBPlatform - {_Model.SelectedPlatform.Name}.xml"
@@ -218,10 +193,8 @@ namespace Pack_My_Game
 
             if (ts.ShowDialog() == true)
             {
-                XML_Platforms.ExtractPlatform(Path.Combine(PS.Default.LBPath, PS.Default.fPlatforms), _Model.SelectedPlatform.Name, ts.Model.LinkResult);
+                XML_Platforms.ExtractPlatform(Path.Combine(Config.LaunchBoxPath, Config.PlatformsFile), _Model.SelectedPlatform.Name, ts.Model.LinkResult);
             }
-
-
         }
         #endregion
 
@@ -249,6 +222,11 @@ namespace Pack_My_Game
         private void Exec_ExtractTBGames(object sender, ExecutedRoutedEventArgs e)
         {
             _Model.ExtractTBGames();
+        }
+
+        private void Exec_ExtractNPGame(object sender, ExecutedRoutedEventArgs e)
+        {
+            _Model.Extract_NPBackups();
         }
 
         /// <summary>

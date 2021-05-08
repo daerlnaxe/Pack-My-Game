@@ -68,11 +68,13 @@ namespace Common_PMG.XML
         /// Lis le fichier xml dédié pour retourner la liste des plateformes - Read dedicated xml file to get the list of platforms
         /// </summary>
         /// <param name="platforms"></param>
-        public static void ListShortPlatforms(string xmlFile, ObservableCollection<ContPlatFolders> platforms)
+        public static IEnumerable<ContPlatFolders> ListShortPlatforms(string xmlFile)
         {
             try
             {
-                foreach (XElement p in XElement.Load(xmlFile).Descendants("Platform"))
+                List<ContPlatFolders> platforms = new List<ContPlatFolders>();
+
+                foreach (XElement p in XElement.Load(xmlFile).Elements("Platform"))
                 {
                     var name = p.Element("Name");
                     var folder = p.Element("Folder");
@@ -86,10 +88,13 @@ namespace Common_PMG.XML
                         FolderPath = folder.Value,
                     });
                 }
+
+                return platforms;
             }
             catch (Exception exc)
             {
                 Error?.Invoke(nameof(XML_Platforms), new MessageArg(exc.Message));
+                return null;
             }
         }
 
@@ -337,7 +342,7 @@ namespace Common_PMG.XML
             XElement root = XElement.Load(platformFile);
 
             // Vérification anti doublon
-            if ( Exists(Tag.Name, root.Element(Tag.Platform)?.Element(Tag.Name)?.Value))
+            if (Exists(Tag.Name, root.Element(Tag.Platform)?.Element(Tag.Name)?.Value))
                 return false;
 
             // Injection de la plateforme

@@ -197,7 +197,10 @@ namespace Pack_My_Game.Compression
 
         }
 
-   
+        internal object CompressFolder(string gamePath, string title, object sevZipLvlComp)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// 

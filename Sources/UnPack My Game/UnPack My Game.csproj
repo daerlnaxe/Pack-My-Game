@@ -11,6 +11,7 @@
     <Copyright>Copyright ©  2018-2038 Daerlnaxe Software</Copyright>
     <Description>Unpack package for a Frontend</Description>
     <AssemblyVersion>1.0.1.2</AssemblyVersion>
+    <ApplicationIcon>UnpackMyGame.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>

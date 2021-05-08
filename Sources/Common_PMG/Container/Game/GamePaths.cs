@@ -1,6 +1,7 @@
 ﻿using Common_PMG.Container.Game.LaunchBox;
 using Common_PMG.JSon;
 using Common_PMG.XML;
+using Hermes;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -59,14 +60,14 @@ namespace Common_PMG.Container.Game
 
         public void WriteToJson(string fileName)
         {
+            byte[] jsonUtf8Bytes;
             var options = new JsonSerializerOptions()
             {
                 WriteIndented = true,
             };
+            jsonUtf8Bytes = JsonSerializer.SerializeToUtf8Bytes(this, options);
             #region
             /*
- 
-
             using FileStream fs = File.Create(fileName);
             using var writer = new Utf8JsonWriter(fs, options: writerOptions);
             {                
@@ -90,10 +91,21 @@ namespace Common_PMG.Container.Game
                 writer.Flush();
             }*/
             #endregion
-            string jsonString = JsonSerializer.Serialize(this, options).ToString();
+            /*string jsonString = JsonSerializer.Serialize(this, options).ToString();
+            File.WriteAllText(fileName, jsonString);*/
 
+            try
+            {
 
-            File.WriteAllText(fileName, jsonString);
+                using (var sw = File.Create(fileName))
+                {
+                    sw.Write(jsonUtf8Bytes);
+                }
+            }
+            catch (IOException ioExc)
+            {
+                HeTrace.WriteLine("Error on writing config file");
+            }
         }
 
         public static GamePaths ReadFromJson(string fileName)
@@ -174,7 +186,7 @@ namespace Common_PMG.Container.Game
                 // application path
                 else if (name == Tag.AppPath.ToLower())
                 {
-                    dp.Name= Path.GetFileName(element.Value);
+                    dp.Name = Path.GetFileName(element.Value);
                     dp.IsSelected = true;
                     dp.CurrentPath = element.Value;
                 }
@@ -227,7 +239,7 @@ namespace Common_PMG.Container.Game
         {
             GamePaths gp = new GamePaths()
             {
-                //Id = v.Id,
+                Id = v.Id,
                 Title = v.Title,
                 Platform = v.Platform,
                 ManualPath = v.ManualPath,

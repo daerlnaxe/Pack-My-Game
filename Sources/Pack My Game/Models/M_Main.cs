@@ -15,8 +15,11 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using PS = Pack_My_Game.Properties.Settings;
+using static Pack_My_Game.Common;
 using Common_Graph;
 using DxTBoxCore.BoxChoose;
+using System.Collections.Generic;
+using Pack_My_Game.IHM;
 
 namespace Pack_My_Game.Models
 {
@@ -26,21 +29,42 @@ namespace Pack_My_Game.Models
         // private Language _Lang;
         public Language Lang => Common.ObjectLang;
 
-
         /// <summary>
         /// Dossier de LaunchBox
         /// </summary>
-        public string LaunchBoxPath => PS.Default.LBPath;
+        public string LaunchBoxPath => Config.LaunchBoxPath;
 
 
-        public string WorkingFolder => PS.Default.OutPPath;
+        public string WorkingFolder => Config.WorkingFolder;
 
         public ObservableCollection<string> Options { get; internal set; } = new ObservableCollection<string>();
 
         // ---
 
-        public ContPlatFolders SelectedPlatform { get; set; }
-        public ObservableCollection<ContPlatFolders> Platforms { get; private set; } = new ObservableCollection<ContPlatFolders>();
+        private ContPlatFolders _OldPlatform ;
+        
+        public ContPlatFolders _SelectedPlatforms;
+        public ContPlatFolders SelectedPlatform
+        {
+            get => _SelectedPlatforms;
+            set
+            {
+                _SelectedPlatforms = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        private List<ContPlatFolders> _Platforms;
+        public List<ContPlatFolders> Platforms         
+        {
+            get => _Platforms;
+            set
+            {
+                _Platforms = value;
+                OnPropertyChanged();
+            }
+        }
 
         // ---
 
@@ -67,71 +91,116 @@ namespace Pack_My_Game.Models
             LoadPlatforms();
         }
 
+        internal void ShowConfig()
+        {
+            W_Config cfg = new W_Config();
+            var oldPlatform = SelectedPlatform;
+
+            if (cfg.ShowDialog() == true)
+            {
+                // On recharge le fichier langue
+                Relocalize();
+                ReloadConfig(oldPlatform);
+            }
+        }
+
+
 
         internal void Relocalize()
         {
             OnPropertyChanged(nameof(Lang));
         }
 
-        internal void ReloadConfig()
+        internal void ReloadConfig(ContPlatFolders oldPlatform)
         {
             OnPropertyChanged(nameof(LaunchBoxPath));
             OnPropertyChanged(nameof(WorkingFolder));
             LoadOptions();
-            //LoadPlatforms();
+            LoadPlatforms();
+
+            if (_OldPlatform != null)
+                SelectedPlatform = Platforms.FirstOrDefault(x => x.Name.Equals(_OldPlatform.Name));
+            else
+                SelectedGames.Clear();
         }
 
         private void LoadOptions()
         {
             Options.Clear();
 
-            if (PS.Default.opInfos)
+            if (Config.CreateInfos)
                 Options.Add(Lang.InfosGExp);
 
-            if (PS.Default.opTBGame)
+            if (Config.CreateTBGame)
                 Options.Add(Lang.OriXBExp);
 
-            if (PS.Default.opEBGame)
+            if (Config.CreateEBGame)
                 Options.Add(Lang.EnXBExp);
 
-            if (PS.Default.opTreeV)
+            if (Config.CreateTreeV)
                 Options.Add(Lang.TViewFExp);
 
-            if (PS.Default.opClones)
+            if (Config.CopyClones)
                 Options.Add(Lang.CCopyExp);
 
-            if (PS.Default.opCheatCodes)
+            if (Config.CopyCheats)
                 Options.Add(Lang.CheatsCopyExp);
 
-            if (PS.Default.opZip)
+            if (Config.ZipCompression)
                 Options.Add(Lang.CompZExp);
 
-            if (PS.Default.op7_Zip)
+            if (Config.SevZipCompression)
                 Options.Add(Lang.Comp7ZExp);
         }
 
-        private void LoadPlatforms()
+        internal void PlatformChanged()
         {
-            string xmlFilePlat = Path.Combine(LaunchBoxPath, PS.Default.fPlatforms);
+            if (SelectedPlatform == null || SelectedPlatform.Name.Equals(_OldPlatform?.Name))
+                return;
+
+            LoadGames();
+            _OldPlatform = SelectedPlatform;
+        }
+
+        internal void Refresh_Platforms()
+        {
+            LoadPlatforms();
+
+            if (_OldPlatform != null)
+                SelectedPlatform = Platforms.FirstOrDefault(x => x.Name.Equals(_OldPlatform.Name));
+            else
+                SelectedGames.Clear();
+        }
+
+
+        internal void LoadPlatforms()
+        {
+            if (string.IsNullOrEmpty(LaunchBoxPath))
+                return;
+
+            string xmlFilePlat = Path.Combine(LaunchBoxPath, Config.PlatformsFile);
             if (!File.Exists(xmlFilePlat))
             {
                 HeTrace.WriteLine($"File doesn't exist '{xmlFilePlat}'");
                 return;
             }
 
-            Platforms.Clear();
-            XML_Platforms.ListShortPlatforms(xmlFilePlat, Platforms);
-
+            Platforms = XML_Platforms.ListShortPlatforms(xmlFilePlat)
+                            .OrderBy(x=>x.Name)
+                            .ToList();
         }
 
         internal void LoadGames()
         {
             SelectedGames.Clear();
 
-            string xmlFile = Path.Combine(PS.Default.LBPath, PS.Default.dPlatforms, $"{SelectedPlatform.Name}.xml");
+            string xmlFile = Path.Combine(Config.LaunchBoxPath, Config.PlatformsFolder, $"{SelectedPlatform.Name}.xml");
             AvailableGames = new ObservableCollection<ShortGame>(XML_Games.ListShortGames(xmlFile));
             // throw new NotImplementedException();
         }
+
+
+
 
         internal void AddGame(ShortGame sgame)
         {
@@ -248,14 +317,13 @@ namespace Pack_My_Game.Models
         /// </summary>
         internal void CheckGamesValidity()
         {
-            string platformXmlFile = Path.Combine(PS.Default.LBPath, PS.Default.dPlatforms, $"{SelectedPlatform.Name}.xml");
+            string platformXmlFile = Path.Combine(Config.LaunchBoxPath, Config.PlatformsFolder, $"{SelectedPlatform.Name}.xml");
 
             foreach (ShortGame g in SelectedGames)
             {
                 var res = LaunchBoxFunc.CheckGameValidity(g, platformXmlFile);
 
                 SafeBoxes.ShowStatus($"Check  {g.Title}", "Game status", res, buttons: E_DxButtons.Ok);
-
             }
         }
 
@@ -280,7 +348,7 @@ namespace Pack_My_Game.Models
                 destFolder = cf.Model.LinkResult;
             }*/
 
-            string platformFile = Path.Combine(PS.Default.LBPath, PS.Default.dPlatforms, $"{SelectedPlatform.Name}.xml");
+            string platformFile = Path.Combine(Config.LaunchBoxPath, Config.PlatformsFolder, $"{SelectedPlatform.Name}.xml");
 
             foreach (var game in SelectedGames)
             {
@@ -311,15 +379,12 @@ namespace Pack_My_Game.Models
 
             try
             {
-
-                string platformXmlFile = Path.Combine(PS.Default.LBPath, PS.Default.dPlatforms, $"{SelectedPlatform.Name}.xml");
-                string platformsFile = Path.Combine(LaunchBoxPath, PS.Default.fPlatforms);
+                string platformXmlFile = Path.Combine(Config.LaunchBoxPath, Config.PlatformsFolder, $"{SelectedPlatform.Name}.xml");
+                string platformsFile = Path.Combine(LaunchBoxPath, Config.PlatformsFile);
 
                 ContPlatFolders p = XML_Platforms.GetPlatformPaths(platformsFile, SelectedPlatform.Name);
-                if(p.PlatformFolders.Count == 0)
+                if (p.PlatformFolders.Count == 0)
                     throw new Exception("Problem with platform name, children folders have a different name");
-
-
 
 
                 foreach (var g in SelectedGames)
@@ -332,13 +397,12 @@ namespace Pack_My_Game.Models
                     foreach (var clone in XML_Games.ListClones(platformXmlFile, Tag.GameId, g.Id))
                         gp.AddApplication(clone.Id, clone.Id, clone.ApplicationPath);
 
-
-                    if (PS.Default.opClones)
+                    if (Config.CopyClones)
                         foreach (var app in gp.Applications)
-                            app.Name = Assign(app.CurrentPath, SelectedPlatform.FolderPath, PS.Default.KeepGameStruct);
+                            app.Name = Assign(app.CurrentPath, SelectedPlatform.FolderPath, Config.KeepGameStruct);
 
-                    gp.ManualPath = Assign(gp.ManualPath, p, "Manual", PS.Default.KeepManualStruct);
-                    gp.MusicPath = Assign(gp.MusicPath, p, "Music", PS.Default.KeepMusicStruct);
+                    gp.ManualPath = Assign(gp.ManualPath, p, "Manual", Config.KeepManualStruct);
+                    gp.MusicPath = Assign(gp.MusicPath, p, "Music", Config.KeepMusicStruct);
                     gp.VideoPath = Assign(gp.VideoPath, p, "Video", true);
                     gp.ThemeVideoPath = Assign(gp.ThemeVideoPath, p, "Video", true);
 
@@ -359,7 +423,6 @@ namespace Pack_My_Game.Models
                 DxMBox.ShowDial(exc.Message);
                 HeTrace.WriteLine(exc.Message);
                 HeTrace.WriteLine(exc.StackTrace);
-
             }
         }
 
@@ -388,14 +451,14 @@ namespace Pack_My_Game.Models
         /// <returns></returns>
         private string Assign(string file, string platformPath, bool keepStruct)
         {
-            file = Path.GetFullPath(file, PS.Default.LBPath);
+            file = Path.GetFullPath(file, Config.LaunchBoxPath);
 
             // si c'est vide on laisse tomber
             if (string.IsNullOrEmpty(file))
                 return string.Empty;
 
 
-            platformPath = Path.GetFullPath(platformPath, PS.Default.LBPath);
+            platformPath = Path.GetFullPath(platformPath, Config.LaunchBoxPath);
 
             // si l'on ne retrouve pas on n'assigne rien
             if (!File.Exists(file))
@@ -411,9 +474,31 @@ namespace Pack_My_Game.Models
             return $".\\{Path.GetFileName(file)}";
         }
 
-        private void Check_AllDefaultFiles(LBGame g)
-        {
 
+        internal void Extract_NPBackups()
+        {
+            try
+            {
+                string platformXmlFile = Path.Combine(Config.LaunchBoxPath, Config.PlatformsFolder, $"{SelectedPlatform.Name}.xml");
+
+                foreach (var game in SelectedGames)
+                {
+                    string gamePath = Path.Combine(WorkingFolder, SelectedPlatform.Name, Tool.WindowsConv_TitleToFileName(game.Title));
+
+                    XML_Games.NPBackup(platformXmlFile, game.Id, gamePath);
+
+                }
+
+                DxMBox.ShowDial("Done");
+                HeTrace.WriteLine($"[{nameof(ExtractDefaultFiles)}] Done...");
+            }
+            catch (Exception exc)
+            {
+                DxMBox.ShowDial(exc.Message);
+                HeTrace.WriteLine(exc.Message);
+                HeTrace.WriteLine(exc.StackTrace);
+            }
         }
+
     }
 }

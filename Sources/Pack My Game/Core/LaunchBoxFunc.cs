@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using PS = Pack_My_Game.Properties.Settings;
+using static Pack_My_Game.Common;
 using Common_Graph;
 using System.Linq;
 
@@ -21,7 +22,7 @@ namespace Pack_My_Game.Core
 
         internal static void CheckGamesValidity(ObservableCollection<ShortGame> selectedGames, string selectedPlatform)
         {
-            string platformXmlFile = Path.Combine(PS.Default.LBPath, PS.Default.dPlatforms, $"{selectedPlatform}.xml");
+            string platformXmlFile = Path.Combine(Config.LaunchBoxPath, Config.PlatformsFolder, $"{selectedPlatform}.xml");
 
             //IEnumerable<ShortGame> filteredGames = new List<ShortGame>(selectedGames);
             foreach (var g in selectedGames.ToList())
@@ -34,7 +35,7 @@ namespace Pack_My_Game.Core
                 // Erreur sur le chemin principal
                 if (res == null)
                 {
-                    DxMBox.ShowDial("Main link application is broken");
+                    DxMBox.ShowDial($"Main link application is broken '{g.Title}'");
 
                     keepit = false;
                 }
@@ -90,7 +91,7 @@ namespace Pack_My_Game.Core
             {
                 string tmp;
 
-                tmp = Path.GetFullPath(link, PS.Default.LBPath);
+                tmp = Path.GetFullPath(link, Config.LaunchBoxPath);
                 if (!File.Exists(tmp))
                     return false;
 

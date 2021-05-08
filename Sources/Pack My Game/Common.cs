@@ -18,10 +18,13 @@ namespace Pack_My_Game
         /// </summary>
         internal static string LangFolder => "Languages";
 
+
         /// <summary>
         /// Language Version
         /// </summary>
-        public static string LangVersion => "1.0.0.5";
+        public static string LangVersion => "1.0.0.6";
+
+        public static string ConfigVersion => "1.0.0.3";
 
         #region Médias 
         public static string CheatCodes => "CheatCodes";
@@ -38,7 +41,13 @@ namespace Pack_My_Game
         /// <summary>
         /// Language object
         /// </summary>
-        public static Language ObjectLang { get; internal set; }
+        internal static Language ObjectLang { get; set; }
+
+        /// <summary>
+        /// Configuration object
+        /// </summary>
+        internal static Configuration Config { get; set; }
+
 
         public static readonly RoutedUICommand ProcessCommand = new RoutedUICommand("Process", "Process", typeof(Common));
 

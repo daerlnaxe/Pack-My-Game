@@ -14,14 +14,19 @@
 - 7z and zip compression "</Description>
     <Copyright>Copyright ©  2018-2038 Daerlnaxe Software</Copyright>
     <Company>Daerlnaxe Software</Company>
-    <AssemblyVersion>2.0.0.5</AssemblyVersion>
+    <AssemblyVersion>2.0.0.6</AssemblyVersion>
     <FileVersion>2.0.0.1</FileVersion>
+    <ApplicationIcon>PackMyGame.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="Compression\ZipCompress.cs" />
     <Compile Remove="Core\LaunchBocDeprecated.cs" />
     <Compile Remove="Models\A_Err.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Refresh.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -73,6 +78,12 @@
     <None Include="Compression\ZipCompress.cs" />
     <None Include="Core\LaunchBocDeprecated.cs" />
     <None Include="Models\A_Err.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Refresh.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

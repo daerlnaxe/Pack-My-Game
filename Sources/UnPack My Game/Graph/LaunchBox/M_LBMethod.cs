@@ -40,7 +40,7 @@ namespace UnPack_My_Game.Graph.LaunchBox
             Remove_Error(nameof(SelectPlatform));
             try
             {
-                XML_Platforms.ListShortPlatforms(Common.PlatformsFile, Machines);
+              //  XML_Platforms.ListShortPlatforms(Common.PlatformsFile, Machines);
 
                 /*// Extracting XML datas
                 XML_Functions xf = new XML_Functions();

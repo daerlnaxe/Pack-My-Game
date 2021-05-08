@@ -19,6 +19,7 @@
         <CommandBinding Command="local:MainWindow.CheckGameValidityCmd" CanExecute="Can_GamesSelected" Executed="Exec_CheckGameValidity"/>
         <CommandBinding Command="local:MainWindow.ExtractPlatformCmd" CanExecute="Can_ExtractPlatform" Executed="Exec_ExtractPlatform"/>
         <CommandBinding Command="local:MainWindow.ExtractTBGameCmd" CanExecute="Can_GamesSelected" Executed="Exec_ExtractTBGames"/>
+        <CommandBinding Command="local:MainWindow.ExtractNPGameCmd" CanExecute="Can_GamesSelected" Executed="Exec_ExtractNPGame"/>
         <CommandBinding Command="local:MainWindow.ExtractDefaultFilesCmd" CanExecute="Can_GamesSelected" Executed="Exec_ExtractDefFiles"/>
         <CommandBinding Command="local:Common.ProcessCommand" CanExecute="Can_Process" Executed="Exec_Process"/>
         <CommandBinding Command="local:MainWindow.SelectAllCmd" CanExecute="Can_SelectAll" Executed="Exec_SelectAll"/>
@@ -30,6 +31,7 @@
         -->
         <conv:ChFolderNullConverter x:Key="Fallb" />
         <conv:DataToVisibilityConv x:Key="DataToV" />
+        <conv:VisibleIfPlatforms x:Key="VisibleIfPlatforms"/>
         <x:Array x:Key="testArray" Type="sys:String"
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:sys="clr-namespace:System;assembly=mscorlib">
@@ -120,7 +122,7 @@
                                MouseLeftButtonUp="WorkingPath_MouseLeftButtonUp" Cursor="Help" />
                     <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource tblockS}"
                                Text="{Binding WorkingFolder,FallbackValue=WorkingPath}" TextTrimming="CharacterEllipsis" 
-                               ToolTip="{Binding WorkingFolder}"  />
+                               ToolTip="{Binding WorkingFolder}"/>
                 </Grid>
             </GroupBox>
             <!-- Options -->
@@ -140,7 +142,7 @@
             </GroupBox>
             <!-- parameters -->
             <GroupBox Grid.Row="2" Header="{Binding Lang.ParamsExp,FallbackValue=Parameters}"
-                      Visibility="{Binding ShowParameters, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"
+                      Visibility="{Binding Platforms, Converter={StaticResource VisibleIfPlatforms}}"
                       >
                 <Grid>
                     <Grid.RowDefinitions>
@@ -152,11 +154,13 @@
                     <Grid.ColumnDefinitions >
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="5*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <!-- Choose system -->
-                    <Label Content="{Binding Lang.Ch_System, FallbackValue=Ch_System}" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Label Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center"
+                                Content="{Binding Lang.Ch_System, FallbackValue=Ch_System}" />
                     <ComboBox x:Name="cbPlatforms" Grid.Column="1" 
                               ItemsSource="{Binding Platforms, NotifyOnValidationError=True}" DisplayMemberPath="Name"
                               SelectedItem="{Binding SelectedPlatform}"
@@ -175,8 +179,11 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-
-                    <Button Grid.Column="3" Content="Extract" Command="local:MainWindow.ExtractPlatformCmd"/>
+                    <Button Grid.Column="2" Width="30"   Click="Refresh_Platforms">
+                        <Image RenderOptions.BitmapScalingMode="HighQuality"
+                            Source="/Pack My Game;component/Resources/Refresh.png" Stretch="UniformToFill"/>
+                    </Button>
+                    <Button Grid.Column="4" Content="Extract" Command="local:MainWindow.ExtractPlatformCmd"/>
                     <!-- Choose a game -->
                     <Label Grid.Row="1" Grid.ColumnSpan="2"
                            Content="{Binding Lang.Ch_Games, FallbackValue='Choose Game(s)'}"/>
@@ -189,6 +196,7 @@
                                     <MenuItem Command="local:MainWindow.CheckGameValidityCmd"/>
                                     <MenuItem Command="local:MainWindow.ExtractTBGameCmd"/>
                                     <MenuItem Command="local:MainWindow.ExtractDefaultFilesCmd"/>
+                                    <MenuItem Command="local:MainWindow.ExtractNPGameCmd"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                             <ListView.ItemContainerStyle>

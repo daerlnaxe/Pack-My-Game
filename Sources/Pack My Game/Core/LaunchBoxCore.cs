@@ -25,10 +25,12 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Threading;
 using System.Windows;
-using PS = Pack_My_Game.Properties.Settings;
 using Common_PMG.XML;
 using DxLocalTransf.Copy;
 using Common_Graph;
+using PS = Pack_My_Game.Properties.Settings;
+//using static Pack_My_Game.Properties.Settings;
+using static Pack_My_Game.Common;
 //using Pack_My_Game.Compression;
 
 namespace Pack_My_Game.Core
@@ -167,14 +169,14 @@ namespace Pack_My_Game.Core
             //_PlatformName = platformName;
 
             #region Initialisation des chemins
-            _WFolder = PS.Default.OutPPath;
+            _WFolder = Config.WorkingFolder;
             // Chemin du dossier temporaire du system
             _SystemPath = Path.Combine(_WFolder, platformName);
 
             #endregion
 
-            _XMLPlatformFile = Path.Combine(PS.Default.LBPath, PS.Default.dPlatforms, $"{platformName}.xml");
-            _ZePlatform = XML_Platforms.GetPlatformPaths(Path.Combine(PS.Default.LBPath, PS.Default.fPlatforms), platformName);
+            _XMLPlatformFile = Path.Combine(Config.LaunchBoxPath , Config.PlatformsFolder, $"{platformName}.xml");
+            _ZePlatform = XML_Platforms.GetPlatformPaths(Path.Combine(Config.LaunchBoxPath, Config.PlatformsFile), platformName);
 
 
             #region Messages
@@ -213,7 +215,7 @@ namespace Pack_My_Game.Core
                 HeTrace.WriteLine($"[Main] PackMe for '{zeGame.Title}' | '{zeGame.Id}'");
 
                 // Système de log par jeu
-                if (PS.Default.opLogFile)
+                if (Config.UseLogFile)
                 {
                     MeSimpleLog gameLog = new MeSimpleLog(Path.Combine(_WFolder, $"{_ZePlatform.Name} - {zeGame.ExploitableFileName}.log"))
                     {
@@ -311,7 +313,7 @@ namespace Pack_My_Game.Core
             // ---
 
             #region Original Backup Game - Before all modifications
-            if (PS.Default.opTBGame)
+            if (Config.CreateTBGame)
             {
                 XML_Games.TrueBackup(_XMLPlatformFile, shGame.Id, gamePath);
             }
@@ -336,7 +338,7 @@ namespace Pack_My_Game.Core
             HeTrace.WriteLine("EBGames and TBGames don't use a class they copy directly from xml to xml");
 
             #region Creation of the Infos.xml (on ne récupère que ce que l'on veut)
-            if (PS.Default.opInfos)
+            if (Config.CreateInfos)
             {
                 // --- Get game from Launchbox (on a besoin que jusqu'au game info)
                 XML_Custom.Make_InfoGame(gamePath, lbGame);
@@ -354,10 +356,10 @@ namespace Pack_My_Game.Core
             GetFiles(lbGame, gdC);
 
             // --- Prepare files;
-            PrepareList(gdC.Applications, tree, PS.Default.KeepGameStruct, "Game");
-            PrepareList(gdC.CheatCodes, tree, PS.Default.KeepCheatCStruct, "CheatCode");
-            PrepareList(gdC.Manuals, tree, PS.Default.KeepManualStruct, "Manual");
-            PrepareList(gdC.Musics, tree, PS.Default.KeepMusicStruct, "Music");
+            PrepareList(gdC.Applications, tree, Config.KeepGameStruct, "Game");
+            PrepareList(gdC.CheatCodes, tree, Config.KeepCheatStruct, "CheatCode");
+            PrepareList(gdC.Manuals, tree, Config.KeepManualStruct, "Manual");
+            PrepareList(gdC.Musics, tree, Config.KeepMusicStruct, "Music");
             PrepareList(gdC.Videos, tree, true, "Video");
             PrepareImages(gdC.Images, tree.Children[Common.Images].Path);
 
@@ -377,7 +379,7 @@ namespace Pack_My_Game.Core
              * - On va récupérer la structure exacte sans aucune interprétation et modifier ce que l'on veut
              *      - Les Paths
              */
-            if (PS.Default.opEBGame)
+            if (Config.CreateEBGame)
             {
                 Make_EnhanceBackup(gdC, lbGame, gamePath);
             }
@@ -400,7 +402,7 @@ namespace Pack_My_Game.Core
             FoncSchem.MakeListFolder(tree.Children[Common.Videos]);
 
             #region Save Struct
-            if (PS.Default.opTreeV)
+            if (Config.CreateTreeV)
             {
                 FoncSchem.MakeStruct(tree, gamePath);
             }
@@ -449,7 +451,7 @@ namespace Pack_My_Game.Core
 
             #region Compression
             // Zip
-            if (PS.Default.opZip)
+            if (Common.Config.ZipCompression)
             {
                 Compress_ZipMode(gamePath, shGame.Title);
             }
@@ -458,7 +460,7 @@ namespace Pack_My_Game.Core
             }
 
             // 7zip
-            if (PS.Default.op7_Zip)
+            if (Config.SevZipCompression)
             {
                 Compress_7ZipMode(gamePath, shGame.Title);
             }
@@ -504,11 +506,11 @@ namespace Pack_My_Game.Core
         /// </remarks>
         private void Make_EnhanceBackup(GameDataCont gdC, LBGame lbGame, string gamePath)
         {
-            lbGame.ApplicationPath = DxPath.To_RelativeOrNull(PS.Default.LBPath, gdC.DefaultApp?.CurrentPath);
-            lbGame.ManualPath = DxPath.To_RelativeOrNull(PS.Default.LBPath, gdC.DefaultManual?.CurrentPath);
-            lbGame.MusicPath = DxPath.To_RelativeOrNull(PS.Default.LBPath, gdC.DefaultMusic?.CurrentPath);
-            lbGame.VideoPath = DxPath.To_RelativeOrNull(PS.Default.LBPath, gdC.DefaultVideo?.CurrentPath);
-            lbGame.ThemeVideoPath = DxPath.To_RelativeOrNull(PS.Default.LBPath, gdC.DefaultThemeVideo?.CurrentPath);
+            lbGame.ApplicationPath = DxPath.To_RelativeOrNull(Common.Config.LaunchBoxPath, gdC.DefaultApp?.CurrentPath);
+            lbGame.ManualPath = DxPath.To_RelativeOrNull(Common.Config.LaunchBoxPath, gdC.DefaultManual?.CurrentPath);
+            lbGame.MusicPath = DxPath.To_RelativeOrNull(Common.Config.LaunchBoxPath, gdC.DefaultMusic?.CurrentPath);
+            lbGame.VideoPath = DxPath.To_RelativeOrNull(Common.Config.LaunchBoxPath, gdC.DefaultVideo?.CurrentPath);
+            lbGame.ThemeVideoPath = DxPath.To_RelativeOrNull(Common.Config.LaunchBoxPath, gdC.DefaultThemeVideo?.CurrentPath);
 
             XML_Games.EnhancedBackup(_XMLPlatformFile, lbGame, gamePath);
         }
@@ -612,7 +614,7 @@ namespace Pack_My_Game.Core
             // --- Cas des extensions cue
             if (extension.Equals(".cue", StringComparison.OrdinalIgnoreCase))
             {
-                string srcFile = Path.GetFullPath(lbGame.ApplicationPath, PS.Default.LBPath);
+                string srcFile = Path.GetFullPath(lbGame.ApplicationPath, Common.Config.LaunchBoxPath);
 
                 //Lecture du fichier cue
                 Cue_Scrapper cuecont = new Cue_Scrapper(srcFile);
@@ -628,7 +630,7 @@ namespace Pack_My_Game.Core
                 }
             }
 
-            games.Add(DataPlus.MakeChosen(lbGame.Id, lbGame.Title, Path.GetFullPath(lbGame.ApplicationPath, PS.Default.LBPath)));
+            games.Add(DataPlus.MakeChosen(lbGame.Id, lbGame.Title, Path.GetFullPath(lbGame.ApplicationPath, Common.Config.LaunchBoxPath)));
 
 
 
@@ -636,7 +638,7 @@ namespace Pack_My_Game.Core
             List<Clone> clones = XML_Games.ListClones(_XMLPlatformFile, "GameID", lbGame.Id).ToList();
 
             // tri des doublons / filter duplicates
-            List<Clone> fClones = FilesFunc.DistinctClones(clones, lbGame.ApplicationPath, PS.Default.LBPath);
+            List<Clone> fClones = FilesFunc.DistinctClones(clones, lbGame.ApplicationPath, Common.Config.LaunchBoxPath);
 
 
             if (fClones.Any())
@@ -645,7 +647,7 @@ namespace Pack_My_Game.Core
 
                 foreach (Clone c in fClones)
                 {
-                    string path = Path.GetFullPath(c.ApplicationPath, PS.Default.LBPath);
+                    string path = Path.GetFullPath(c.ApplicationPath, Common.Config.LaunchBoxPath);
 
                     if (File.Exists(path))
                         games.Add(DataPlus.MakeNormal(c.Id, Path.GetFileName(path), path));
@@ -663,7 +665,7 @@ namespace Pack_My_Game.Core
         /// <param name="compCheatCodes"></param>
         private ICollection<string> GetCheatCodes(string toSearch)
         {
-            string CCodesDir = Path.Combine(PS.Default.CCodesPath, _ZePlatform.Name);
+            string CCodesDir = Path.Combine(Config.CCodesPath, _ZePlatform.Name);
             if (!Directory.Exists(CCodesDir))
             {
                 SetStatus(this, new StateArg($"Directory doesn't exist: '{CCodesDir}'", CancelFlag));
@@ -687,7 +689,7 @@ namespace Pack_My_Game.Core
             if (!string.IsNullOrEmpty(dbGamePath))
             {
                 HeTrace.WriteLine($"\t[{nameof(GetFileForSpecifics)}]");
-                string linkFile = Path.GetFullPath(dbGamePath, PS.Default.LBPath);
+                string linkFile = Path.GetFullPath(dbGamePath, Common.Config.LaunchBoxPath);
                 if (File.Exists(linkFile))
                 {
                     return linkFile;
@@ -748,7 +750,7 @@ namespace Pack_My_Game.Core
                         continue;
                 }
 
-                string folder = Path.GetFullPath(plfmFolder.FolderPath, PS.Default.LBPath);
+                string folder = Path.GetFullPath(plfmFolder.FolderPath, Common.Config.LaunchBoxPath);
                 // Liste du contenu des dossiers
                 foreach (var fichier in Directory.EnumerateFiles(folder, "*.*", SearchOption.AllDirectories))
                 {
@@ -779,7 +781,7 @@ namespace Pack_My_Game.Core
         {
 
             // array of files with a part of the name
-            string[] files = Directory.GetFiles(Path.GetFullPath(folder, PS.Default.LBPath), $"{toSearch}*.*", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(Path.GetFullPath(folder, Common.Config.LaunchBoxPath), $"{toSearch}*.*", SearchOption.AllDirectories);
 
             #region processing on files found
             // bypass - 
@@ -840,7 +842,7 @@ namespace Pack_My_Game.Core
             }
             else if (mediatype == "CheatCode")
             {
-                folder = Path.Combine(PS.Default.CCodesPath, _ZePlatform.Name);
+                folder = Path.Combine(Config.CCodesPath, _ZePlatform.Name);
             }
             else if (!string.IsNullOrEmpty(mediatype))
             {
@@ -851,11 +853,11 @@ namespace Pack_My_Game.Core
                 folder = pFolder.FolderPath;
             }
 
-            if (folder.Equals(PS.Default.LBPath) || folder.Equals(AppDomain.CurrentDomain.BaseDirectory))
+            if (folder.Equals(Config.LaunchBoxPath) || folder.Equals(AppDomain.CurrentDomain.BaseDirectory))
                 throw new Exception($"Error on target folder '{folder}'");
 
 
-            folder = Path.GetFullPath(folder, PS.Default.LBPath);
+            folder = Path.GetFullPath(folder, Config.LaunchBoxPath);
             foreach (var fichier in elems)
                 PrepareFile(fichier, destLocation, keepStruct, folder);
 
@@ -922,7 +924,7 @@ namespace Pack_My_Game.Core
                 PlatformFolder pFolder = _ZePlatform.PlatformFolders.First(
                                           (x) => x.MediaType.Equals(pkFile.Categorie, StringComparison.OrdinalIgnoreCase));
 
-                string toReplace = Path.GetFullPath(pFolder.FolderPath, PS.Default.LBPath);
+                string toReplace = Path.GetFullPath(pFolder.FolderPath, Common.Config.LaunchBoxPath);
                 if (toReplace != null && pkFile.CurrentPath.Contains(toReplace))
                 {
                     tail = pkFile.CurrentPath.Replace(toReplace, string.Empty).TrimStart('\\');
@@ -1064,14 +1066,14 @@ namespace Pack_My_Game.Core
             zippy.MaximumProgressT += this.SetMaximum;*/
 
             var res = PackMe_IHM.ZipCompressFolder(zippy, () => zippy.CompressFolder(
-                                         gamePath, title, PS.Default.cZipCompLvl), "Compression Zip");
+                                         gamePath, title, Config.ZipLvlCompression), "Compression Zip");
 
             //ZipCompression.CompressFolder(gamePath, Path.Combine(_SystemPath, shGame.ExploitableFileName), PS.Default.c7zCompLvl);
             if (res != true)
                 return;
 
             #region Création du fichier  MD5
-            if (PS.Default.opMd5)
+            if (Config.CreateMD5)
             {
                 Gen_PlusCalculator calculator = Gen_PlusCalculator.Create(CancelToken);
 
@@ -1104,13 +1106,13 @@ namespace Pack_My_Game.Core
 
 
             var res = (bool?)PackMe_IHM.ZipCompressFolder(sevZippy, () => sevZippy.CompressFolder(
-                                    gamePath, title, PS.Default.c7zCompLvl), "Compression 7z");
+                                    gamePath, title, Config.SevZipLvlCompression), "Compression 7z");
 
             if (res != true)
                 return;
 
             #region Création du fichier  MD5
-            if (PS.Default.opMd5)
+            if (Config.CreateMD5)
             {
                 Gen_PlusCalculator calculator = Gen_PlusCalculator.Create(CancelToken);
 

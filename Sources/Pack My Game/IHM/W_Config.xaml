@@ -165,10 +165,10 @@
                     <GroupBox Header="Zip">
                         <StackPanel>
                             <CheckBox Grid.Row="0" Grid.Column="0"
-                                      IsChecked="{Binding ZipCompression}"
+                                      IsChecked="{Binding Config.ZipCompression}"
                                       Content="{Binding Lang.CompZExp, FallbackValue=CompZExp}"/>
-                            <Controls:RegleComp Max="{Binding ZipMaxLvl, FallbackValue=10}" 
-                                            Value="{Binding ZipLvlCompression}"/>
+                            <Controls:RegleComp Max="{Binding Config.ZipMaxLvlCompression, FallbackValue=10}" 
+                                            Value="{Binding Config.ZipLvlCompression}"/>
 
 
                         </StackPanel>
@@ -177,10 +177,10 @@
                     <GroupBox Header="7Zip">
                         <StackPanel>
                             <CheckBox Grid.Row="1" Grid.Column="0"
-                                      IsChecked="{Binding SevCompression}"
+                                      IsChecked="{Binding Config.SevZipCompression}"
                                       Content="{Binding Lang.Comp7ZExp, FallbackValue=Comp7ZExp}"/>
-                            <Controls:RegleComp Max="{Binding SevZipMaxLvl, FallbackValue=6}"
-                            Value="{Binding SevZipLvlCompression}"
+                            <Controls:RegleComp Max="{Binding Config.SevZipMaxLvlCompression, FallbackValue=6}"
+                            Value="{Binding Config.SevZipLvlCompression}"
                             LargeStep="3"                
                             />
                         </StackPanel>
@@ -205,23 +205,21 @@
                                 </Grid.RowDefinitions>
                                 <!-- 1ère colonne -->
                                 <CheckBox Grid.Row="0" Grid.Column="0" 
-                                  IsChecked="{Binding InfosGame}"
+                                  IsChecked="{Binding Config.CreateInfos}"
                                   Content="{Binding Lang.InfosGExp, FallbackValue=InfosGExp}"/>
-
-                                
                                 
                                 <CheckBox Grid.Row="1" Grid.Column="0" 
-                                  IsChecked="{Binding TreeviewFile}"
+                                  IsChecked="{Binding Config.CreateTreeV}"
                                   Content="{Binding Lang.TViewFExp, FallbackValue=TViewFExp}"/>
                                 <CheckBox Grid.Row="2" Grid.Column="0" 
-                                  IsChecked="{Binding MD5Calcul}"
+                                  IsChecked="{Binding Config.CreateMD5}"
                                   Content="MD5"/>
                                 <!-- 2nd colonne -->
                                 <CheckBox Grid.Row="0" Grid.Column="1"
-                                  IsChecked="{Binding ClonesCopy}"
+                                  IsChecked="{Binding Config.CopyClones}"
                                   Content="{Binding Lang.CCopyExp, FallbackValue=CCopyExp}"/>
                                 <CheckBox Grid.Row="1" Grid.Column="1" 
-                                  IsChecked="{Binding CheatsCopy}"
+                                  IsChecked="{Binding Config.CopyCheats}"
                                   Content="{Binding Lang.CheatsCopyExp, FallbackValue=CheatsCopyExp}"/>
                                 
                             </Grid>
@@ -239,14 +237,14 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <CheckBox Grid.Row="0" Grid.Column="0" 
-                                  IsChecked="{Binding OriginalXMLBackup}"
+                                  IsChecked="{Binding Config.CreateTBGame}"
                                   Content="{Binding Lang.OriXBExp, FallbackValue=OriXBExp}"/>                                
                                 <CheckBox Grid.Row="1" Grid.Column="0" 
-                                  IsChecked="{Binding EnhancedXMLBackup}"
+                                  IsChecked="{Binding Config.CreateEBGame}"
                                   Content="{Binding Lang.EnXBExp, FallbackValue=EnXBExp}"/>
-                                <CheckBox Grid.Row="0" Grid.Column="1"  Visibility="Collapsed"
+                                <!--<CheckBox Grid.Row="0" Grid.Column="1"
                                           IsChecked="{Binding NoPathXMLBackup}"
-                                          Content="No Path XML Backup (remove paths on TBGame)"/>
+                                          Content="No Path XML Backup (remove paths on TBGame)"/>-->
                             </Grid>
                         </GroupBox>
                         <!-- Structure -->
@@ -262,13 +260,13 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <CheckBox Grid.Row="0" Grid.Column="0" Content="Keep games Structure"
-                                      IsChecked="{Binding KeepGamesStructure}"/>
+                                      IsChecked="{Binding Config.KeepGameStruct}"/>
                                 <CheckBox Grid.Row="0" Grid.Column="1" Content="Keep cheats Structure" 
-                                      IsChecked="{Binding KeepCheatsStructure}"/>
+                                      IsChecked="{Binding Config.KeepCheatStruct}"/>
                                 <CheckBox Grid.Row="1" Grid.Column="0" Content="Keep manuals Structure"
-                                      IsChecked="{Binding KeepManualsStructure}"/>
+                                      IsChecked="{Binding Config.KeepManualStruct}"/>
                                 <CheckBox Grid.Row="1" Grid.Column="1" Content="Keep musics Structure"
-                                      IsChecked="{Binding KeepMusicsStructure}"/>
+                                      IsChecked="{Binding Config.KeepMusicStruct}"/>
                                 <!--<CheckBox Grid.Row="2" Grid.Column="0" Content="Keep videos Structure"
                                       IsChecked="{Binding KeepVideosStructure}"/>-->
                             </Grid>
@@ -281,10 +279,10 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <CheckBox Grid.Row="0" Grid.Column="0"
-                                      IsChecked="{Binding FileLog}"
+                                      IsChecked="{Binding Config.UseLogFile}"
                                       Content="{Binding Lang.FileExp, FallbackValue=FileExp}"/>
                                 <CheckBox Grid.Row="1" Grid.Column="0"
-                                      IsChecked="{Binding WindowLog}"
+                                      IsChecked="{Binding Config.UseLogWindow}"
                                       Content="{Binding Lang.WindowExp, FallbackValue=WindowExp}"/>
 
                             </Grid>

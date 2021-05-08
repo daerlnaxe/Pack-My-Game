@@ -1,29 +1,23 @@
-﻿using DxLocalTransf;
+﻿using AsyncProgress.Tools;
+using Common_PMG.Container;
+using Common_PMG.Container.Game;
+using Common_PMG.Models;
+using DxLocalTransf;
+using DxLocalTransf.Copy;
+using DxTBoxCore.Box_MBox;
 using DxTBoxCore.Box_Progress;
 using DxTBoxCore.BoxChoose;
 using HashCalc;
-using Common_PMG.Container;
 using Pack_My_Game.Cont;
-using Pack_My_Game.Files;
+using Pack_My_Game.IHM;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using Common_PMG.Container.Game;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using PS = Pack_My_Game.Properties.Settings;
-using AsyncProgress.Tools;
-using DxLocalTransf.Copy;
-using Pack_My_Game.IHM;
-using DxTBoxCore.Box_MBox;
-using Common_PMG.Models;
+using static Pack_My_Game.Common;
 
 namespace Pack_My_Game.Models
 {
@@ -566,7 +560,7 @@ namespace Pack_My_Game.Models
 
         internal void CopyAstuceF()
         {
-            if (Copy2(PS.Default.LastKPath, Common.CheatCodes, "Select a cheat codes file", CheatsCollection))
+            if (Copy2(Common.Config.LastPath, Common.CheatCodes, "Select a cheat codes file", CheatsCollection))
             {
                 LoadCheatCodes();
             }

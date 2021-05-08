@@ -1,6 +1,7 @@
 ﻿using Hermes;
 using Hermes.Cont;
 using Hermes.Messengers;
+using Pack_My_Game.Cont;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using PS = Pack_My_Game.Properties.Settings;
+using static Pack_My_Game.Common;
 
 namespace Pack_My_Game
 {
@@ -34,38 +36,44 @@ namespace Pack_My_Game
             log.AddCaller(this);
             HeTrace.AddLogger("PackMyGame", log);
 
+            /*
             // Mise à jour des paramètres en cas de changement de version
             if (PS.Default.UpgradeRequired)
             {
                 PS.Default.Upgrade();
                 PS.Default.UpgradeRequired = false;
                 PS.Default.Save();
-            }
+            }*/
 
-            string enLangFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Common.LangFolder, "Lang.en-EN.xml");
-            // Création of languages files if needed
-            if (!File.Exists(enLangFile))
-                XML.XMLLang.Make_ENVersion();
-                    
-            if (!File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Common.LangFolder, "Lang.fr-FR.xml")))
-                XML.XMLLang.Make_FRVersion();
+            // --- Configuration
+            string configFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Config.json");
 
-
-            // Change language according to user preference (first time: null)
-            string langFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Common.LangFolder, $"Lang.{PS.Default.Language}.xml");
-            if (!string.IsNullOrEmpty(PS.Default.Language) && File.Exists(langFile))
+            Config = null;
+            if (!File.Exists(configFile))
             {
-                Common.ObjectLang = XML.XMLLang.Load(langFile);
+                Config = Cont.Configuration.MakeDefault();
+                Config.Save();
+            }
+            else
+            {
+                Config = Cont.Configuration.ReadConfig();
             }
 
-            // In case of file doesn't exist OR older version file
-            if( !File.Exists(langFile) || !Common.ObjectLang.Version.Equals(Common.LangVersion))
+            // Réécriture si le numéro de version diffère
+            if (Config.Version == null || !Common.Config.Version.Equals(Common.ConfigVersion))
             {
-                XML.XMLLang.Make_ENVersion();
-                Common.ObjectLang = XML.XMLLang.Load(enLangFile);
+                Config = Cont.Configuration.MakeDefault();
+                Config.Save();
             }
+
+            // --- Languages
+            Language.Check("en-EN");
+            Language.Check("fr-FR");
+
+            string langFile = Path.Combine( AppDomain.CurrentDomain.BaseDirectory, LangFolder, $"Lang.{Config.Language}.xml");
+
+            ObjectLang = XML.XMLLang.Load(langFile);
 
         }
-
     }
 }

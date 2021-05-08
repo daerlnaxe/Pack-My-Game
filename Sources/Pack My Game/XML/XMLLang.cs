@@ -200,7 +200,6 @@ namespace Pack_My_Game.XML
 
         internal static Cont.Language ShortLoad(string xmlFile)
         {
-
             XElement xelRoot = XElement.Load(xmlFile);
             Cont.Language lang = new Cont.Language();
 
