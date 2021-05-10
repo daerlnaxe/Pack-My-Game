@@ -87,6 +87,7 @@ namespace Pack_My_Game.Models
         public M_Main()
         {
             LoadOptions();
+
             LoadPlatforms();
         }
 
@@ -109,7 +110,6 @@ namespace Pack_My_Game.Models
         }
 
 
-
         internal void Relocalize()
         {
             OnPropertyChanged(nameof(Lang));
@@ -117,7 +117,8 @@ namespace Pack_My_Game.Models
 
         internal void ReloadConfig(Configuration oldConfig)
         {
-            if (oldConfig.LaunchBoxPath ==null || !oldConfig.LaunchBoxPath.Equals(Config.LaunchBoxPath))
+            _Errors.Clear();
+            if (oldConfig.LaunchBoxPath !=null ||  oldConfig.LaunchBoxPath.Equals(Config.LaunchBoxPath))
             {
                 OnPropertyChanged(nameof(LaunchBoxPath));
                 LoadPlatforms();
@@ -181,9 +182,15 @@ namespace Pack_My_Game.Models
 
 
         internal void LoadPlatforms()
-        {
-            if (string.IsNullOrEmpty(LaunchBoxPath))
+        {            
+            if (!Directory.Exists(Config.LaunchBoxPath))
+                Add_Error("LaunchBox doesn't exist", nameof(LaunchBoxPath));
+            if (!Directory.Exists(Config.WorkingFolder))
+                Add_Error("Working folder doesn't exist", nameof(WorkingFolder));
+
+            if (HasErrors)
                 return;
+
 
             string xmlFilePlat = Path.Combine(LaunchBoxPath, Config.PlatformsFile);
             if (!File.Exists(xmlFilePlat))

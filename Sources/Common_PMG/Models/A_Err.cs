@@ -22,7 +22,7 @@ namespace Common_PMG.Models
         }
 
         #region Errors
-        private Dictionary<string, List<string>> _Errors = new Dictionary<string, List<string>>();
+        protected Dictionary<string, List<string>> _Errors = new Dictionary<string, List<string>>();
 
         public virtual bool HasErrors => _Errors.Any();
 
