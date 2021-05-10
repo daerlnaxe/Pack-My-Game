@@ -118,7 +118,7 @@ namespace Pack_My_Game.Models
         internal void ReloadConfig(Configuration oldConfig)
         {
             _Errors.Clear();
-            if (oldConfig.LaunchBoxPath !=null ||  oldConfig.LaunchBoxPath.Equals(Config.LaunchBoxPath))
+            if (oldConfig.LaunchBoxPath ==null ||  oldConfig.LaunchBoxPath.Equals(Config.LaunchBoxPath))
             {
                 OnPropertyChanged(nameof(LaunchBoxPath));
                 LoadPlatforms();

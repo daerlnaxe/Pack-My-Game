@@ -43,13 +43,15 @@
                 <Label Content="{x:Static l:Lang.LaunchBoxF}"
                     MouseLeftButtonUp="LaunchBox_MouseLeftButtonUp" Cursor="Help"/>
                 <TextBlock Grid.Column="1" Style="{StaticResource tblockS}"
-                    Text="{Binding LaunchBoxPath, FallbackValue=LaunchBoxPath}" TextTrimming="CharacterEllipsis"
+                    TextTrimming="CharacterEllipsis"
+                    Text="{Binding LaunchBoxPath, FallbackValue=LaunchBoxPath, NotifyOnValidationError=True}" 
                     ToolTip="{Binding LaunchBoxPath}"/>
                 <!-- Working Path -->
                 <Label Grid.Row="1" Content="{x:Static l:Lang.WorkingFolder}"
                     MouseLeftButtonUp="WorkingPath_MouseLeftButtonUp" Cursor="Help" />
                 <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource tblockS}"
-                    Text="{Binding WorkingFolder, FallbackValue=WorkingPath}" TextTrimming="CharacterEllipsis" 
+                    TextTrimming="CharacterEllipsis" 
+                    Text="{Binding WorkingFolder, FallbackValue=WorkingPath, NotifyOnValidationError=True}" 
                     ToolTip="{Binding WorkingFolder}"/>
             </Grid>
         </GroupBox>

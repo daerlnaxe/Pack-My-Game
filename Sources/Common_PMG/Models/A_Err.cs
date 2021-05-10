@@ -49,6 +49,17 @@ namespace Common_PMG.Models
             ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
         }
 
+        /// <summary>
+        /// Efface toutes les erreurs d'une propriété
+        /// </summary>
+        /// <param name="propertyName"></param>
+        protected void Remove_Errors([CallerMemberName] string propertyName = null)
+        {
+            _Errors.Remove(propertyName);
+
+            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+        }
+
 
         protected void Test_NullValue(object value, [CallerMemberName] string propertyName = null)
         {

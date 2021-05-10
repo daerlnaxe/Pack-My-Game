@@ -7,7 +7,6 @@ using UnPack_My_Game.Cores;
 using UnPack_My_Game.Cores.LaunchBox;
 using UnPack_My_Game.Models.LaunchBox;
 using UnPack_My_Game.Models.Submenus;
-using static UnPack_My_Game.Common;
 using System.Diagnostics;
 using UnPack_My_Game.Models;
 using System.Reflection;
@@ -41,22 +40,14 @@ namespace UnPack_My_Game.Graph.LaunchBox
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            // Check de LaunchBox
-            if (string.IsNullOrEmpty(Config.LaunchBoxPath) ||
-                !File.Exists(Path.Combine(Config.LaunchBoxPath, Config.PlatformsFile)))
-            {
-                DxTBoxCore.Box_MBox.DxMBox.ShowDial("Wrong LaunchBox path", "Warning");
-            }
-            else
-            {
-                _LaunchBoxOk = true;
-            }
+            Model.CheckPaths();   
+
         }
 
 
         private void CanRun(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = _LaunchBoxOk;
+            e.CanExecute = !Model.HasErrors;
         }
 
         /// <summary>
@@ -104,7 +95,7 @@ namespace UnPack_My_Game.Graph.LaunchBox
         {
             if (Model.Config())
             {
-                _LaunchBoxOk = true;
+              //  _LaunchBoxOk = true;
             }
 
         }
@@ -112,12 +103,12 @@ namespace UnPack_My_Game.Graph.LaunchBox
         #region explorer
         private void LaunchBox_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("explorer.exe", Config.LaunchBoxPath);
+            Process.Start("explorer.exe", Model.LaunchBoxPath);
         }
 
         private void WorkingPath_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("explorer.exe", Config.WorkingFolder);
+            Process.Start("explorer.exe", Model.WorkingFolder);
         }
         #endregion
     }

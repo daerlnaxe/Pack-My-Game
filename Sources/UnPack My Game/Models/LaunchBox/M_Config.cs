@@ -28,7 +28,7 @@ namespace UnPack_My_Game.Models.LaunchBox
             {
                 Config.LaunchBoxPath = value;
                 OnPropertyChanged();
-                Remove_Error("Bad Path");
+                Remove_Errors();
 
                 Test_NullValue(value);
             }
@@ -41,6 +41,8 @@ namespace UnPack_My_Game.Models.LaunchBox
             {
                 Config.WorkingFolder = value;
                 OnPropertyChanged();
+                Remove_Errors();
+
                 Test_NullValue(value);
             }
         }
@@ -280,8 +282,13 @@ namespace UnPack_My_Game.Models.LaunchBox
         }
         internal bool Save()
         {
-            if (!File.Exists(Path.Combine(LaunchBoxPath, Config.PlatformsFile)))
+            if (string.IsNullOrEmpty(LaunchBoxPath))
+                Add_Error("Path is null", nameof(LaunchBoxPath));
+            else if (!File.Exists(Path.Combine(LaunchBoxPath, Config.PlatformsFile)))
                 Add_Error("Bad Path", nameof(LaunchBoxPath));
+
+            if (!Directory.Exists(WorkingPath))
+                Add_Error("Wrong working path", nameof(WorkingPath));
 
             Test_NullValue(LaunchBoxPath, nameof(LaunchBoxPath));
             Test_NullValue(Games, nameof(Games));

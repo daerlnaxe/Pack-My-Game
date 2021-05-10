@@ -1,23 +1,23 @@
-﻿using System;
+﻿using Common_PMG.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Controls;
 using UnPack_My_Game.Graph;
 using UnPack_My_Game.Graph.LaunchBox;
 using UnPack_My_Game.Models.Submenus;
+using static UnPack_My_Game.Common;
+
 
 namespace UnPack_My_Game.Models
 {
-    class M_Main: INotifyPropertyChanged
+    class M_Main: A_Err, INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        public new event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Dossier de LaunchBox
@@ -46,6 +46,28 @@ namespace UnPack_My_Game.Models
             };
         }
 
+        internal void CheckPaths()
+        {
+            _Errors.Clear();
+            if (string.IsNullOrEmpty(LaunchBoxPath))
+            {
+                Add_Error("LaunchBox path is null", nameof(LaunchBoxPath));
+            }
+            else if(!File.Exists(Path.Combine(LaunchBoxPath, Common.Config.PlatformsFile)))
+            {
+                Add_Error("LaunchBox path doesn't contain platform file", nameof(LaunchBoxPath));
+            }
+
+            if (string.IsNullOrEmpty(WorkingFolder))
+            {
+                Add_Error("Working folder is null", nameof(WorkingFolder));
+            }
+            else if(!Directory.Exists(WorkingFolder))
+            {
+                Add_Error("Working folder doesn't exist", nameof(WorkingFolder));
+            }
+        }
+
         internal void InjectGame()
         {
             ActivePage = new P_SubMenu()
@@ -64,8 +86,10 @@ namespace UnPack_My_Game.Models
 
         internal bool Config()
         {
+
             if (new W_Config().ShowDialog() == true)
             {
+                _Errors.Clear();
                 OnPropertyChanged(nameof(LaunchBoxPath));
                 OnPropertyChanged(nameof(WorkingFolder));
                 return true;

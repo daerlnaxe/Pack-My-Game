@@ -86,7 +86,7 @@
                                 />
                             <TextBlock Grid.Column="2" >
                                 <TextBlock.Text>
-                                    <MultiBinding Converter="{StaticResource Fallb}" FallbackValue="Lang.Ch_Path" TargetNullValue="...">
+                                    <MultiBinding Converter="{StaticResource Fallb}" FallbackValue="..." TargetNullValue="...">
                                         <Binding Path="LaunchBoxPath" />
                                         <Binding Path="Lang.Ch_LBPath" />
                                     </MultiBinding>
@@ -99,7 +99,7 @@
                                     />
                             <TextBlock Grid.Column="2" Grid.Row="1">
                                 <TextBlock.Text>
-                                    <MultiBinding Converter="{StaticResource Fallb}" FallbackValue="Lang.Ch_Path">
+                                    <MultiBinding Converter="{StaticResource Fallb}" FallbackValue="...">
                                         <Binding Path="WorkingPath" />
                                         <Binding Path="Lang.Ch_Path" />
                                     </MultiBinding>
@@ -122,7 +122,7 @@
                                     />
                             <TextBlock Grid.Column="1">
                                 <TextBlock.Text>
-                                    <MultiBinding Converter="{StaticResource Fallb}" FallbackValue="Lang.Ch_Path">
+                                    <MultiBinding Converter="{StaticResource Fallb}" FallbackValue="...">
                                         <Binding Path="CheatCodesPath" />
                                         <Binding Path="Lang.Ch_Path" />
                                     </MultiBinding>
