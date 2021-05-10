@@ -294,4 +294,7 @@
   <data name="Videos" xml:space="preserve">
     <value>Videos</value>
   </data>
+  <data name="WorkingFolder" xml:space="preserve">
+    <value>Dossier de travail</value>
+  </data>
 </root>

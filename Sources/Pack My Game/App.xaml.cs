@@ -10,7 +10,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using PS = Pack_My_Game.Properties.Settings;
 using static Pack_My_Game.Common;
 
 namespace Pack_My_Game
@@ -22,58 +21,69 @@ namespace Pack_My_Game
     {
         public App()
         {
-            //if (!Directory.Exists(Common.LangFolder))
-            Directory.CreateDirectory(Common.LangFolder);
-            Directory.CreateDirectory(Common.Logs);
-
-            // Tracing
-            MeSimpleLog log = new MeSimpleLog(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Common.Logs, $"{DateTime.Now.ToFileTime()}.log"))
+            try
             {
-                LogLevel = 1,
-                FuncPrefix = EPrefix.Horodating,
-                ByPass = true,
-            };
-            log.AddCaller(this);
-            HeTrace.AddLogger("PackMyGame", log);
+                //if (!Directory.Exists(Common.LangFolder))
+                Directory.CreateDirectory(Common.LangFolder);
+                Directory.CreateDirectory(Common.Logs);
 
-            /*
-            // Mise à jour des paramètres en cas de changement de version
-            if (PS.Default.UpgradeRequired)
-            {
-                PS.Default.Upgrade();
-                PS.Default.UpgradeRequired = false;
-                PS.Default.Save();
-            }*/
+                // Tracing
+                MeSimpleLog log = new MeSimpleLog(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Common.Logs, $"{DateTime.Now.ToFileTime()}.log"))
+                {
+                    LogLevel = 1,
+                    FuncPrefix = EPrefix.Horodating,
+                    ByPass = true,
+                };
+                log.AddCaller(this);
+                HeTrace.AddLogger("PackMyGame", log);
 
-            // --- Configuration
-            string configFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Config.json");
+                /*
+                // Mise à jour des paramètres en cas de changement de version
+                if (PS.Default.UpgradeRequired)
+                {
+                    PS.Default.Upgrade();
+                    PS.Default.UpgradeRequired = false;
+                    PS.Default.Save();
+                }*/
 
-            Config = null;
-            if (!File.Exists(configFile))
-            {
-                Config = Cont.Configuration.MakeDefault();
-                Config.Save();
+                // --- Configuration
+                string configFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Config.json");
+
+                Config = null;
+                if (!File.Exists(configFile))
+                {
+                    Config = Cont.Configuration.MakeDefault();
+                    Config.Save();
+                }
+                else
+                {
+                    Config = Cont.Configuration.ReadConfig();
+                }
+
+                // Réécriture si le numéro de version diffère
+                if (Config.Version == null || !Common.Config.Version.Equals(Common.ConfigVersion))
+                {
+                    Config.Update();
+                    Config.Save();
+                }
+
+                // On remet en hardlink pour le reste de l'application
+                Config.InitPath();
+
+                // --- Languages
+                Language.Check("en-EN");
+                Language.Check("fr-FR");
+
+                string langFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, LangFolder, $"Lang.{Config.Language}.xml");
+
+                ObjectLang = XML.XMLLang.Load(langFile);
             }
-            else
+            catch (Exception exc)
             {
-                Config = Cont.Configuration.ReadConfig();
+                DxTBoxCore.Box_MBox.DxMBox.ShowDial($"{exc.Message}", "Error", optMessage: exc.StackTrace);
+                HeTrace.WriteLine(exc.Message);
+                HeTrace.WriteLine(exc.StackTrace);
             }
-
-            // Réécriture si le numéro de version diffère
-            if (Config.Version == null || !Common.Config.Version.Equals(Common.ConfigVersion))
-            {
-                Config = Cont.Configuration.MakeDefault();
-                Config.Save();
-            }
-
-            // --- Languages
-            Language.Check("en-EN");
-            Language.Check("fr-FR");
-
-            string langFile = Path.Combine( AppDomain.CurrentDomain.BaseDirectory, LangFolder, $"Lang.{Config.Language}.xml");
-
-            ObjectLang = XML.XMLLang.Load(langFile);
-
         }
     }
 }

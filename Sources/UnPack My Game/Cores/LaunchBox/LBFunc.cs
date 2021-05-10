@@ -2,6 +2,7 @@
 using Common_PMG.Container;
 using Common_PMG.XML;
 using DxTBoxCore.Common;
+using Hermes;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using UnPack_My_Game.Graph;
-using static UnPack_My_Game.Properties.Settings;
+using static UnPack_My_Game.Common;
 
 namespace UnPack_My_Game.Cores.LaunchBox
 {
@@ -17,12 +18,20 @@ namespace UnPack_My_Game.Cores.LaunchBox
     {
         public static void InjectPlatform()
         {
+            HeTrace.WriteLine("Platform injection...");
             string backupFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Common.BackUp);
-            string platformsFile = Path.Combine(Default.LaunchBoxPath, Default.fPlatforms);
+            string platformsFile = Path.Combine(Config.LaunchBoxPath, Config.PlatformsFile);
 
 
-            string newPFile = IHMStatic.GetAFile(Default.LastTargetPath, "Select the platform xml file", "xml");
+            string newPFile = IHMStatic.GetAFile(Config.LastTargetPath, "Select the platform xml file", "xml");
 
+            if (string.IsNullOrEmpty(newPFile))
+            {
+                HeTrace.WriteLine("Platform file is null !");
+                return;
+            }
+
+            HeTrace.WriteLine($"Platform selected is '{newPFile}'");
 
             using (XML_Platforms srcPlatform = new XML_Platforms(newPFile))
             using (XML_Platforms lbPlatformes = new XML_Platforms(platformsFile))
@@ -43,10 +52,10 @@ namespace UnPack_My_Game.Cores.LaunchBox
                     return;
 
                 // Backup du fichier de la plateforme;
-                Tool.BackupFile(platformsFile,  backupFolder);
+                Tool.BackupFile(platformsFile, backupFolder);
 
                 // On efface si nécessaire.
-                lbPlatformes.RemoveElemByChild( Tag.Platform, Tag.Name, machineName);
+                lbPlatformes.RemoveElemByChild(Tag.Platform, Tag.Name, machineName);
                 lbPlatformes.RemoveElemByChild(Tag.PlatformFolder, Tag.Platform, machineName);
 
                 lbPlatformes.Save(platformsFile);
@@ -61,6 +70,8 @@ namespace UnPack_My_Game.Cores.LaunchBox
                 lbPlatformes.Save(platformsFile);
 
             }
+
+            HeTrace.WriteLine("Platform injection, done");
         }
     }
 

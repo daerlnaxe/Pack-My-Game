@@ -270,8 +270,6 @@ namespace UnPack_My_Game.Decompression
 
             using (ZipFile archiveZ = ZipFile.Read(fileArchive))
             {
-
-
                 IEnumerable<ZipEntry> files = GetFilesByName(archiveZ, specificfiles);
 
                 if (files.Any())

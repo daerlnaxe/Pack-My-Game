@@ -16,7 +16,7 @@ using System.Linq;
 using System.Threading;
 using UnPack_My_Game.Decompression;
 using UnPack_My_Game.Graph;
-using static UnPack_My_Game.Properties.Settings;
+using static UnPack_My_Game.Common;
 
 
 namespace UnPack_My_Game.Cores
@@ -53,7 +53,7 @@ namespace UnPack_My_Game.Cores
         internal bool MakeDPG_Comp(IEnumerable<DataRep> archives)
         {
             // Check de LaunchBox
-            if (!File.Exists(Path.Combine(Default.LaunchBoxPath, Default.fPlatforms)))
+            if (!File.Exists(Path.Combine(Config.LaunchBoxPath, Config.PlatformsFile)))
             {
                 DxTBoxCore.Box_MBox.DxMBox.ShowDial("Wrong LaunchBoxPath");
                 return false;
@@ -67,7 +67,7 @@ namespace UnPack_My_Game.Cores
                 {
                     ArchiveMode mode = ArchiveMode.None;
 
-                    string gamePath = Path.Combine(Path.GetTempPath(), Path.GetFileNameWithoutExtension(zF.Name));
+                    string gamePath = Path.Combine(Config.WorkingFolder, Path.GetFileNameWithoutExtension(zF.Name));
                     string fileExt = Path.GetExtension(zF.CurrentPath).TrimStart('.');
 
                     // Création du dossier de destination
@@ -125,7 +125,6 @@ namespace UnPack_My_Game.Cores
 
         internal bool MakeDPG_Folder(string path)
         {
-
             MakeDPG(path, ArchiveMode.Folder, path);
 
             return true;
@@ -151,6 +150,11 @@ namespace UnPack_My_Game.Cores
             {
                 HeTrace.WriteLine("DPG Missing, work with TBGame");
                 gpX = GetMainsInfo(gamePath, "TBGame.xml");
+            }
+            else if (File.Exists(Path.Combine(gamePath, "NPGame.xml")))
+            {
+                HeTrace.WriteLine("DPG Missing, work with NPGame");
+                gpX = GetMainsInfo(gamePath, "NPGame.xml");
             }
 
             if (gpX == null)
@@ -187,7 +191,7 @@ namespace UnPack_My_Game.Cores
 
 
             SafeBoxes.LaunchDouble(zippy, () => zippy.ExtractSpecificFiles(archive.CurrentPath, gamePath,
-                                                        "TBGame.xml", "EBGame.xml", "DPGame.json"),
+                                                        "NPGame.xml","TBGame.xml", "EBGame.xml", "DPGame.json"),
                                                         "Zip Extraction");
             /*var res = PackMe_IHM.ZipCompressFolder(zippy, () => zippy.CompressFolder(
                                          gamePath, title, PS.Default.cZipCompLvl), "Compression Zip");*/
@@ -204,7 +208,7 @@ namespace UnPack_My_Game.Cores
             };
 
             SafeBoxes.LaunchDouble(zippy, () => zippy.ExtractSpecificFiles(zF.CurrentPath, gamePath,
-                                                        "TBGame.xml", "EBGame.xml", "DPGame.json"),
+                                                        "NPGame.xml","TBGame.xml", "EBGame.xml", "DPGame.json"),
                                                         "SevenZip Extraction");
         }
 
@@ -314,7 +318,7 @@ namespace UnPack_My_Game.Cores
          //   gpC.SSetApplications = GameDataCompletion(files, Default.Games, "\\", "\\");
             foreach (DataPlus app in gpC.Applications.ToList())
             {
-                tmp = $@"{Default.Games}{app.CurrentPath?.Substring(1)}";
+                tmp = $@"{Config.Games}{app.CurrentPath?.Substring(1)}";
 
                 // Récupération du fichier correspondant
                 var f = files.FirstOrDefault(x => x.StartsWith(tmp));
@@ -329,7 +333,7 @@ namespace UnPack_My_Game.Cores
                 // Si remplacement possible
                 if(!string.IsNullOrEmpty(f))
                 {
-                    app.CurrentPath = f.Replace(Default.Games, ".");
+                    app.CurrentPath = f.Replace(Config.Games, ".");
                     HeTrace.WriteLine($"Changed by {app.CurrentPath}");
                 }
                 else
@@ -341,24 +345,24 @@ namespace UnPack_My_Game.Cores
             }
 
 
-            gpC.SetSCheatCodes = GameDataCompletion(files, Default.CheatCodes, "\\", "\\");
+            gpC.SetSCheatCodes = GameDataCompletion(files, Config.CheatCodes, "\\", "\\");
             // Manuals
-            var tmp2 = $@"{Default.Manuals}{gpC.DefaultManual?.CurrentPath.Substring(1)}";
+            var tmp2 = $@"{Config.Manuals}{gpC.DefaultManual?.CurrentPath.Substring(1)}";
             if (!files.Contains(tmp2))
                 gpC.UnsetDefaultManual();
-            gpC.AddSManuals = GameDataCompletion(files, Default.Manuals, "\\", "\\");
+            gpC.AddSManuals = GameDataCompletion(files, Config.Manuals, "\\", "\\");
             // Musics
-            if (!files.Contains($@"{Default.Musics}{gpC.DefaultMusic?.CurrentPath.Substring(1)}"))
+            if (!files.Contains($@"{Config.Musics}{gpC.DefaultMusic?.CurrentPath.Substring(1)}"))
                 gpC.UnsetDefaultMusic();
-            gpC.AddSMusics = GameDataCompletion(files, Default.Musics, "\\", "\\");
+            gpC.AddSMusics = GameDataCompletion(files, Config.Musics, "\\", "\\");
             // Videos
-            if (!files.Contains($@"{Default.Videos}{gpC.DefaultVideo?.CurrentPath.Substring(1)}"))
+            if (!files.Contains($@"{Config.Videos}{gpC.DefaultVideo?.CurrentPath.Substring(1)}"))
                 gpC.UnsetDefaultVideo();
 
-            if (!files.Contains($@"{Default.Videos}{gpC.DefaultThemeVideo?.CurrentPath.Substring(1)}"))
+            if (!files.Contains($@"{Config.Videos}{gpC.DefaultThemeVideo?.CurrentPath.Substring(1)}"))
                 gpC.UnsetDefaultThemeVideo();
 
-            gpC.AddSVideos = GameDataCompletion(files, Default.Videos, "\\", "\\");
+            gpC.AddSVideos = GameDataCompletion(files, Config.Videos, "\\", "\\");
         }
 
         private List<string> GameDataCompletion(IEnumerable<string> files, string mediatype, string sep, string repSep)

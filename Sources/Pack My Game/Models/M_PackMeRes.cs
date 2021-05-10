@@ -16,7 +16,6 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using PS = Pack_My_Game.Properties.Settings;
 using static Pack_My_Game.Common;
 
 namespace Pack_My_Game.Models

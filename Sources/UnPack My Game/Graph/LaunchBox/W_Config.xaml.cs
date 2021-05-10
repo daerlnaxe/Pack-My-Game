@@ -11,8 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using UnPack_My_Game.Models.LaunchBox;
 using UnPack_My_Game.Resources;
-using PS = UnPack_My_Game.Properties.Settings;
+using static UnPack_My_Game.Common;
 
 namespace UnPack_My_Game.Graph.LaunchBox
 {
@@ -21,16 +22,8 @@ namespace UnPack_My_Game.Graph.LaunchBox
     /// </summary>
     public partial class W_Config : Window
     {
-        private const string _Games = "Games";
-        private const string _CheatCodes = "CheatCodes";
-        private const string _Images = "Images";
-        private const string _Manuals = "Manuals";
-        private const string _Musics = "Musics";
-        private const string _Videos = "Videos";
-
 
         M_Config _Model = new M_Config();
-
 
 
         public W_Config()
@@ -46,22 +39,7 @@ namespace UnPack_My_Game.Graph.LaunchBox
         /// <param name="e"></param>
         private void Find_Launchbox(object sender, RoutedEventArgs e)
         {
-            TreeChoose tc = new TreeChoose()
-            {
-                Model = new M_ChooseRaw()
-                {
-                    Info = Lang.ChooseLBf,
-                    StartingFolder = PS.Default.LaunchBoxPath,
-                    Mode = ChooseMode.Folder,
-                    ShowFiles = false,
-
-                }
-            };
-            if (tc.ShowDialog() == true)
-            {
-                _Model.LaunchBoxPath = tc.LinkResult;
-                //_Model.Set_LaunchBoxPath();
-            }
+            _Model.Find_LaunchBox();
         }
 
         private void tbLBPath_PreviewKeyUp(object sender, KeyEventArgs e)
@@ -71,10 +49,30 @@ namespace UnPack_My_Game.Graph.LaunchBox
 
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ChooseWP_Click(object sender, RoutedEventArgs e)
+        {
+            _Model.ChooseWorkingPath();
+        }
+
+
+
+        private void ChooseCheatsPath_Click(object sender, RoutedEventArgs e)
+        {
+            _Model.ChooseCheatsPath();
+        }
+
+
+
         #region Reset
         private void Reset_Click(object sender, RoutedEventArgs e)
         {
-            _Model.Init();
+            _Model.InitFolders();
         }
         private void ResetT_Click(object sender, RoutedEventArgs e)
         {
@@ -85,42 +83,42 @@ namespace UnPack_My_Game.Graph.LaunchBox
             _Model.Musics = _Musics;
             _Model.Videos = _Videos;
 
-            Properties.Settings.Default.Save();
+            Config.Save();
         }
         private void Raz_Games(object sender, RoutedEventArgs e)
         {
             _Model.Games = _Games;
-            Properties.Settings.Default.Save();
+            Config.Save();
         }
 
         private void Raz_CheatsCodes(object sender, RoutedEventArgs e)
         {
             _Model.CheatCodes = _CheatCodes;
-            Properties.Settings.Default.Save();
+            Config.Save();
         }
 
         private void Raz_Manuals(object sender, RoutedEventArgs e)
         {
             _Model.Manuals = _Manuals;
-            Properties.Settings.Default.Save();
+            Config.Save();
         }
 
         private void Raz_Images(object sender, RoutedEventArgs e)
         {
             _Model.Images = _Images;
-            Properties.Settings.Default.Save();
+            Config.Save();
         }
 
         private void Raz_Musics(object sender, RoutedEventArgs e)
         {
             _Model.Musics = _Musics;
-            Properties.Settings.Default.Save();
+            Config.Save();
         }
 
         private void Raz_Videos(object sender, RoutedEventArgs e)
         {
             _Model.Videos = _Videos;
-            Properties.Settings.Default.Save();
+            Config.Save();
         }
 
 
@@ -161,9 +159,11 @@ namespace UnPack_My_Game.Graph.LaunchBox
 
             }
         }
+
         #endregion
 
 
+ 
     }
 
 }

@@ -10,7 +10,7 @@ using UnPack_My_Game.Models.LaunchBox;
 
 namespace UnPack_My_Game.Models.Submenus
 {
-    class DPGCoreSub : ISubMenu
+    class LaunchBoxInject : ISubMenu
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -31,28 +31,26 @@ namespace UnPack_My_Game.Models.Submenus
             }
         }
 
-        public DPGCoreSub()
+
+        public LaunchBoxInject()
         {
-            Buttons.Add(new MyButtonCommand("File(s)", DPGCore_File));
-            Buttons.Add(new MyButtonCommand("Folder(s)", DPGCore_Folder));
+            Buttons.Add(new MyButtonCommand( "Files", InjectByFiles));
+            Buttons.Add(new MyButtonCommand( "Folders", InjectByFolders));
         }
 
-
-        private void DPGCore_File(object parameter)
-        {
-            ActivePage = new P_Selecter()
-            {
-                Model = new M_LBcDPGUnpack(),
-            };
-        }
-
-        private void DPGCore_Folder(object obj)
+        private void InjectByFiles(object parameter)
         {
             ActivePage = new P_Selecter()
             {
-                Model = new M_LBcDPGFolder(),
+                Model = new M_DPGInjectFi(),
             };
         }
-
+        private void InjectByFolders(object parameter)
+        {
+            ActivePage = new P_Selecter()
+            {
+                Model = new M_DPGInjectFo(),
+            };
+        }
     }
 }

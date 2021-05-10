@@ -11,7 +11,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 //using System.Windows.Shapes;
-using PS = Pack_My_Game.Properties.Settings;
 using static Pack_My_Game.Common;
 
 namespace Pack_My_Game
@@ -32,16 +31,12 @@ namespace Pack_My_Game
         private M_Main _Model = new M_Main();
 
 
-
-
-
         public string WindowTitle
         {
             get
             {
                 Assembly asmbly = Assembly.GetExecutingAssembly();
                 return $"Pack My Game - {asmbly.GetName().Version}";
-
             }
         }
 
@@ -91,14 +86,12 @@ namespace Pack_My_Game
         private void Platform_Selected(object sender, SelectionChangedEventArgs e)
         {
             _Model.PlatformChanged();
-
         }
 
         private void Game_Checked(object sender, RoutedEventArgs e)
         {
             ShortGame sgame = (ShortGame)((CheckBox)sender).Tag;
             _Model.AddGame(sgame);
-
         }
 
         private void Game_Unchecked(object sender, RoutedEventArgs e)
@@ -187,7 +180,6 @@ namespace Pack_My_Game
                     ShowFiles = true,
                     Info = "Save to ...",
                     FileValue = $"TBPlatform - {_Model.SelectedPlatform.Name}.xml"
-
                 }
             };
 

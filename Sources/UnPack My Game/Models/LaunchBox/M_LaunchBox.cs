@@ -68,7 +68,7 @@ namespace UnPack_My_Game.Models.LaunchBox
         //private string _LaunchBoxPath;
         public string LaunchBoxPath
         {
-            get => PS.Default.LaunchBoxPath;
+            get => Common.Config.LaunchBoxPath;
             set
             {
                 PS.Default.LaunchBoxPath = value;

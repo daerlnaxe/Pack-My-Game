@@ -14,7 +14,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using PS = Pack_My_Game.Properties.Settings;
 using static Pack_My_Game.Common;
 
 
@@ -25,7 +24,7 @@ namespace Pack_My_Game.IHM
     /// </summary>
     public partial class W_Config : Window
     {
-        private M_Config _Model = new M_Config();
+        private M_Config _Model;
         //public static bool? Result { get; set; }
 
 
@@ -35,7 +34,7 @@ namespace Pack_My_Game.IHM
             //  Result = null;
             //   _SelectedLanguage = PS.Default.Language;
             InitializeComponent();
-            DataContext = _Model;
+            DataContext = _Model = new M_Config();
         }
 
 

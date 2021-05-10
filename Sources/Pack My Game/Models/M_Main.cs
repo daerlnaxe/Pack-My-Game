@@ -14,7 +14,6 @@ using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using PS = Pack_My_Game.Properties.Settings;
 using static Pack_My_Game.Common;
 using Common_Graph;
 using DxTBoxCore.BoxChoose;
@@ -41,8 +40,8 @@ namespace Pack_My_Game.Models
 
         // ---
 
-        private ContPlatFolders _OldPlatform ;
-        
+        private ContPlatFolders _OldPlatform { get; set; }
+
         public ContPlatFolders _SelectedPlatforms;
         public ContPlatFolders SelectedPlatform
         {
@@ -56,7 +55,7 @@ namespace Pack_My_Game.Models
 
 
         private List<ContPlatFolders> _Platforms;
-        public List<ContPlatFolders> Platforms         
+        public List<ContPlatFolders> Platforms
         {
             get => _Platforms;
             set
@@ -96,12 +95,17 @@ namespace Pack_My_Game.Models
             W_Config cfg = new W_Config();
             var oldPlatform = SelectedPlatform;
 
+            // Conservation de l'ancienne configuration
+            var oldConfig = new Configuration(Common.Config);
+
             if (cfg.ShowDialog() == true)
             {
                 // On recharge le fichier langue
                 Relocalize();
-                ReloadConfig(oldPlatform);
+                ReloadConfig(oldConfig);
             }
+            oldConfig = null;
+
         }
 
 
@@ -111,17 +115,20 @@ namespace Pack_My_Game.Models
             OnPropertyChanged(nameof(Lang));
         }
 
-        internal void ReloadConfig(ContPlatFolders oldPlatform)
+        internal void ReloadConfig(Configuration oldConfig)
         {
-            OnPropertyChanged(nameof(LaunchBoxPath));
+            if (!oldConfig.LaunchBoxPath.Equals(Config.LaunchBoxPath))
+            {
+                OnPropertyChanged(nameof(LaunchBoxPath));
+                LoadPlatforms();
+                SelectedPlatform = null;
+                _OldPlatform = null;
+                AvailableGames = null;
+                SelectedGames.Clear();
+            }
+
             OnPropertyChanged(nameof(WorkingFolder));
             LoadOptions();
-            LoadPlatforms();
-
-            if (_OldPlatform != null)
-                SelectedPlatform = Platforms.FirstOrDefault(x => x.Name.Equals(_OldPlatform.Name));
-            else
-                SelectedGames.Clear();
         }
 
         private void LoadOptions()
@@ -186,7 +193,7 @@ namespace Pack_My_Game.Models
             }
 
             Platforms = XML_Platforms.ListShortPlatforms(xmlFilePlat)
-                            .OrderBy(x=>x.Name)
+                            .OrderBy(x => x.Name)
                             .ToList();
         }
 

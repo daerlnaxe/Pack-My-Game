@@ -1,44 +1,43 @@
-﻿using AsyncProgress;
-using AsyncProgress.Basix;
-using AsyncProgress.Cont;
+﻿using AsyncProgress.Cont;
+using Common_Graph;
+using Common_PMG;
 using Common_PMG.Container;
 using Common_PMG.Container.Game;
 using Common_PMG.XML;
 using DxPaths.Windows;
 using DxTBoxCore.Common;
 using Hermes;
-using Hermes.Cont;
 using Hermes.Messengers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Xml.Linq;
-using UnPack_My_Game.Decompression;
 using UnPack_My_Game.Graph;
-using UnPack_My_Game.Graph.LaunchBox;
-using static UnPack_My_Game.Properties.Settings;
 using static Common_PMG.Tool;
-using Common_Graph;
-using Common_PMG;
+using static UnPack_My_Game.Common;
 
 namespace UnPack_My_Game.Cores
 {
+
     /// <summary>
     /// Processus évolutif
     /// </summary>
     internal class DataPackGCore : C_LaunchBox
     {
+        private string _BackupFolder;
+
         public DataPackGCore()
         {
-
+            _BackupFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Common.BackUp);
         }
 
-
-
+        /// <summary>
+        /// Depack, Copy, Inject
+        /// </summary>
+        /// <param name="games"></param>
+        /// <returns></returns>
         internal bool Depacking(ObservableCollection<DataRep> games)
         {
             ProgressTotal = games.Count();
@@ -54,10 +53,10 @@ namespace UnPack_My_Game.Cores
 
                 List<DataRep> folders = new List<DataRep>();
 
-                // Dépack
+                // Depack
                 foreach (DataRep game in games)
                 {
-                    string tmpPath = Path.Combine(Path.GetTempPath(), Path.GetFileNameWithoutExtension(game.Name));
+                    string tmpPath = Path.Combine(Config.WorkingFolder, Path.GetFileNameWithoutExtension(game.Name));
                     game.DestPath = tmpPath;
 
                     Depacking(game, tmpPath);
@@ -65,13 +64,61 @@ namespace UnPack_My_Game.Cores
                     folders.Add(new DataRep(tmpPath));
                 }
 
-                // Injection
+                // Exportation
+                foreach (DataRep game in games)
+                {
+                    ExportGame(game.DestPath);
+                }
+
+                return true;
+            }
+            catch (Exception exc)
+            {
+                HeTrace.WriteLine(exc.Message);
+                HeTrace.WriteLine(exc.StackTrace);
+                return false;
+            }
+            finally
+            {
+                HeTrace.RemoveMessenger("Mee");
+            }
+        }
+
+        #region
+
+        internal bool InjectGamesFi(ICollection<DataRep> games)
+        {
+            ProgressTotal = games.Count();
+            try
+            {
+                MeEmit mee = new MeEmit()
+                {
+                    ByPass = true,
+                };
+                mee.SignalWrite += (x, y) => this.SetStatus(x, new StateArg(y, false));
+                mee.SignalWriteLine += (x, y) => this.SetStatus(x, new StateArg(y, true));
+                HeTrace.AddMessenger("Mee", mee);
+
+                List<DataRep> folders = new List<DataRep>();
+
+                // Extraction des données
+                foreach (DataRep game in games)
+                {
+                    string tmpPath = Path.Combine(Config.WorkingFolder, Path.GetFileNameWithoutExtension(game.Name));
+                    game.DestPath = tmpPath;
+
+                    // extraction
+                    ExtractDataFiles(game, tmpPath);
+
+                    folders.Add(new DataRep(tmpPath));
+                }
+
+                // Exportation
                 foreach (DataRep game in games)
                 {
                     InjectGame(game.DestPath);
 
                 }
-                //InjectGames(folders);
 
                 return true;
             }
@@ -88,10 +135,11 @@ namespace UnPack_My_Game.Cores
         }
 
 
+        // ---
 
-        #region
-        public override bool InjectGames(ICollection<DataRep> games)
+        public override bool ExportGames(ICollection<DataRep> games)
         {
+            bool result = false;
             try
             {
                 MeEmit mee = new MeEmit()
@@ -106,36 +154,82 @@ namespace UnPack_My_Game.Cores
                 {
                     //string tmpPath = Path.Combine(Path.GetTempPath(), Path.GetFileNameWithoutExtension(game.Name));
 
-                    InjectGame(game.CurrentPath);
+                    ExportGame(game.CurrentPath);
                 }
-                return true;
+                result = true;
             }
 
             catch (Exception exc)
             {
                 HeTrace.WriteLine(exc.Message);
                 HeTrace.WriteLine(exc.StackTrace);
-
+                result = false;
             }
             finally
             {
                 HeTrace.RemoveMessenger("Mee");
             }
-            return false;
+            return result;
         }
 
+
+
+
+        internal bool InjectGamesFo(ICollection<DataRep> games)
+        {
+            bool result = false;
+            try
+            {
+                MeEmit mee = new MeEmit()
+                {
+                    ByPass = true,
+                };
+                mee.SignalWrite += (x, y) => this.SetStatus(x, new StateArg(y, false));
+                mee.SignalWriteLine += (x, y) => this.SetStatus(x, new StateArg(y, false));
+                HeTrace.AddMessenger("Mee", mee);
+
+                foreach (var game in games)
+                { 
+                    InjectGame(game.CurrentPath);
+                }
+
+                result = true;
+            }
+            catch (Exception exc)
+            {
+                HeTrace.WriteLine(exc.Message);
+                HeTrace.WriteLine(exc.StackTrace);
+                result = false;
+            }
+            finally
+            {
+                HeTrace.RemoveMessenger("Mee");
+
+            }
+                return result;
+        }
+
+
+
         /// <summary>
-        /// 
+        /// Copy from folder, inject
         /// </summary>
         /// <param name="gamePath"></param>
-        private void InjectGame(string gamePath)
+        private void ExportGame(string gamePath)
         {
-            //bool backupDone = false;
-            string backupFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Common.BackUp);
-
             if (CheckDirectoryStructure(gamePath) != true)
                 return;
 
+            var gdC = InjectGame(gamePath);
+
+            // Copie des fichiers (on s'appuie sur les dossiers de la plateforme)
+            if (CopyFiles(gdC) == false)
+                return;
+        }
+
+
+        public GameDataCont InjectGame(string gamePath)
+        {
             HeTrace.WriteLine("Dpg Step");
 
             string dpgFile = Path.Combine(gamePath, "DPGame.json");
@@ -150,24 +244,22 @@ namespace UnPack_My_Game.Cores
             GamePaths gpX = GamePaths.ReadFromJson(dpgFile);
 
             HeTrace.WriteLine($"Platform Step for '{gpX.Platform}'");
-            string platformsFile = Path.Combine(Default.LaunchBoxPath, Default.fPlatforms);
-
+            string platformsFile = Path.Combine(Config.LaunchBoxPath, Config.PlatformsFile);
 
             bool CheckIfInjectionNeeded = !XML_Custom.TestPresence(platformsFile, Tag.Platform, Tag.Name, gpX.Platform);
             if (CheckIfInjectionNeeded)
             {
                 HeTrace.WriteLine($"Backup of platforms file");
                 // Backup du fichier de la plateforme;
-                BackupFile(platformsFile, backupFolder);
+                BackupFile(platformsFile, _BackupFolder);
 
-                string newPFile = IHMStatic.GetAFile(Default.LastTargetPath, $"Platform '{gpX.Platform}' doesn't exist. Select the xml file to inject for this platform", "xml");
+                string newPFile = IHMStatic.GetAFile(Config.LastTargetPath, $"Platform '{gpX.Platform}' doesn't exist. Select the xml file to inject for this platform", "xml");
                 if (string.IsNullOrEmpty(newPFile))
                     throw new Exception("File for injection is not filled");
 
                 HeTrace.WriteLine($"Injecting {gpX.Platform} in platforms file for {gpX.Platform}");
                 InjectPlatform(gpX.Platform, newPFile);
             }
-
 
             ContPlatFolders zePlatform = XML_Platforms.GetPlatformPaths(platformsFile, gpX.Platform);
 
@@ -178,23 +270,20 @@ namespace UnPack_My_Game.Cores
             // Manipulation des fichiers
             AssignTargets(gdC, gamePath, zePlatform);
 
-
-            // Copie des fichiers (on s'appuie sur les dossiers de la plateforme)
-            CopyFiles(gdC);
-
-
             // --- Lecture de la plateforme
-            string machineXMLFile = Path.Combine(Default.LaunchBoxPath, Default.dPlatforms, $"{gpX.Platform}.xml");
+            string machineXMLFile = Path.Combine(Config.LaunchBoxPath, Config.PlatformsFolder, $"{gpX.Platform}.xml");
             if (!File.Exists(machineXMLFile))
                 XML_Games.NewPlatform(machineXMLFile);
 
             // Backup platform file
-            BackupFile(machineXMLFile, backupFolder);
+            BackupFile(machineXMLFile, _BackupFolder);
             HeTrace.WriteLine($"Backup of '{machineXMLFile}'");
 
             InjectInXMLFile(gamePath, gdC, machineXMLFile, zePlatform.FolderPath);
 
             HeTrace.WriteLine($"Done: {gdC.Title}");
+
+            return gdC;
         }
 
 
@@ -209,7 +298,7 @@ namespace UnPack_My_Game.Cores
 
 
             // Vérification des dossiers;
-            string gameF = Path.Combine(root, Default.Games);
+            string gameF = Path.Combine(root, Config.Games);
             bool gameDirOk = Directory.Exists(gameF);
 
             if (!gameDirOk)
@@ -222,15 +311,16 @@ namespace UnPack_My_Game.Cores
                 if (!gameDirOk)
                     return false;
 
-                Default.Games = Path.GetFileName(gameF);
-                Default.Save();
+                Config.Games = Path.GetFileName(gameF);
+
+                Config.Save();
             }
 
-            bool cheatCDirOk = Directory.Exists(Path.Combine(root, Default.CheatCodes));
-            bool imageDirOk = Directory.Exists(Path.Combine(root, Default.Images));
-            bool manualDirOk = Directory.Exists(Path.Combine(root, Default.Manuals));
-            bool musicDirOk = Directory.Exists(Path.Combine(root, Default.Musics));
-            bool videoDirOk = Directory.Exists(Path.Combine(root, Default.Videos));
+            bool cheatCDirOk = Directory.Exists(Path.Combine(root, Config.CheatCodes));
+            bool imageDirOk = Directory.Exists(Path.Combine(root, Config.Images));
+            bool manualDirOk = Directory.Exists(Path.Combine(root, Config.Manuals));
+            bool musicDirOk = Directory.Exists(Path.Combine(root, Config.Musics));
+            bool videoDirOk = Directory.Exists(Path.Combine(root, Config.Videos));
 
             bool isOk = true;
             isOk &= gameDirOk;
@@ -262,9 +352,9 @@ namespace UnPack_My_Game.Cores
 
             string tmp = string.Empty;
 
-            HeTrace.WriteLine($"\tGames: {Default.Games}");
+            HeTrace.WriteLine($"\tGames: {Config.Games}");
             // Games
-            tmp = Path.Combine(root, Default.Games);
+            tmp = Path.Combine(root, Config.Games);
             gdc.SetApplications = gpX.Applications.Select(x =>
                                         new DataPlus()
                                         {
@@ -280,36 +370,36 @@ namespace UnPack_My_Game.Cores
             gdc.SetApplications = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();*/
 
             // Manuals
-            HeTrace.WriteLine($"\tManuals: {Default.Manuals}");
-            tmp = Path.Combine(root, Default.Manuals);
+            HeTrace.WriteLine($"\tManuals: {Config.Manuals}");
+            tmp = Path.Combine(root, Config.Manuals);
             gdc.SetDefaultManual = gpX.ManualPath == null ? null : Path.GetFullPath(gpX.ManualPath, tmp);
             if (Directory.Exists(tmp))
                 gdc.AddSManuals = Directory.GetFiles(Path.Combine(tmp), "*.*", SearchOption.AllDirectories).ToList();
 
             // Musics
-            HeTrace.WriteLine($"\tMusics: {Default.Musics}");
-            tmp = Path.Combine(root, Default.Musics);
+            HeTrace.WriteLine($"\tMusics: {Config.Musics}");
+            tmp = Path.Combine(root, Config.Musics);
             gdc.SetDefaultMusic = gpX.MusicPath == null ? null : Path.GetFullPath(gpX.MusicPath, tmp);
             if (Directory.Exists(tmp))
                 gdc.AddSMusics = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();
 
             // Videos
-            HeTrace.WriteLine($"\tVideos: {Default.Videos}");
-            tmp = Path.Combine(root, Default.Videos);
+            HeTrace.WriteLine($"\tVideos: {Config.Videos}");
+            tmp = Path.Combine(root, Config.Videos);
             gdc.SetDefaultVideo = gpX.VideoPath == null ? null : Path.GetFullPath(gpX.VideoPath, tmp);
             gdc.SetDefaultThemeVideo = gpX.ThemeVideoPath == null ? null : Path.GetFullPath(gpX.ThemeVideoPath, tmp);
             if (Directory.Exists(tmp))
                 gdc.AddSVideos = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories);
 
             // Cheat Codes
-            HeTrace.WriteLine($"\tCheatCodes: {Default.CheatCodes}");
-            tmp = Path.Combine(root, Default.CheatCodes);
+            HeTrace.WriteLine($"\tCheatCodes: {Config.CheatCodes}");
+            tmp = Path.Combine(root, Config.CheatCodes);
             if (Directory.Exists(tmp))
                 gdc.SetSCheatCodes = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();
 
             // Images
             HeTrace.WriteLine("\tImages");
-            tmp = Path.Combine(root, Default.Images);
+            tmp = Path.Combine(root, Config.Images);
             if (Directory.Exists(tmp))
                 gdc.Images = PrepareImages(tmp);
 
@@ -334,24 +424,24 @@ namespace UnPack_My_Game.Cores
         {
             string platFolderPath = zePlatform.FolderPath;
             if (string.IsNullOrEmpty(platFolderPath))
-                platFolderPath = Path.Combine(Default.LaunchBoxPath, "Games");
+                platFolderPath = Path.Combine(Config.LaunchBoxPath, "Games");
             else
-                platFolderPath = Path.GetFullPath(platFolderPath, Default.LaunchBoxPath);
+                platFolderPath = Path.GetFullPath(platFolderPath, Config.LaunchBoxPath);
 
             string appTarget = string.Empty;
 
-            if (Default.wGameNameFolder)
+            if (Config.UseGameNameFolder)
                 appTarget = Path.Combine(platFolderPath, Tool.WindowsConv_TitleToFileName(gdC.Title));
             else
                 appTarget = platFolderPath;
 
             // Games
             foreach (var app in gdC.Applications)
-                app.DestPath = app.CurrentPath.Replace(Path.Combine(root, Default.Games), appTarget);
+                app.DestPath = app.CurrentPath.Replace(Path.Combine(root, Config.Games), appTarget);
 
-            AssignTarget(gdC.Manuals, root, Default.Manuals, Tag.MediaTManual, zePlatform);
-            AssignTarget(gdC.Musics, root, Default.Musics, Tag.MediaTMusic, zePlatform);
-            AssignTarget(gdC.Videos, root, Default.Videos, Tag.MediaTVideo, zePlatform);
+            AssignTarget(gdC.Manuals, root, Config.Manuals, Tag.MediaTManual, zePlatform);
+            AssignTarget(gdC.Musics, root, Config.Musics, Tag.MediaTMusic, zePlatform);
+            AssignTarget(gdC.Videos, root, Config.Videos, Tag.MediaTVideo, zePlatform);
 
             //    string destPath = zePlatform.PlatformFolders.FirstOrDefault((x => x.MediaType.Equals(mediatype))).FolderPath;
 
@@ -361,7 +451,7 @@ namespace UnPack_My_Game.Cores
             void AssignTarget(IEnumerable<DataRep> elems, string root, string subFolder, string mediaType, ContPlatFolders zePlatform)
             {
                 var dFolder = zePlatform.PlatformFolders.First(x => x.MediaType.Equals(mediaType));
-                string destFolder = Path.GetFullPath(dFolder.FolderPath, Default.LaunchBoxPath);
+                string destFolder = Path.GetFullPath(dFolder.FolderPath, Config.LaunchBoxPath);
 
                 string src = Path.Combine(root, subFolder);
 
@@ -382,10 +472,10 @@ namespace UnPack_My_Game.Cores
                     if (!prevMedType.Equals(image.Categorie))
                     {
                         prevMedType = image.Categorie;
-                        toReplace = Path.Combine(root, Default.Images, image.Categorie);
+                        toReplace = Path.Combine(root, Config.Images, image.Categorie);
 
                         PlatformFolder pTarget = zePlatform.PlatformFolders.FirstOrDefault(x => x.MediaType.Equals(image.Categorie));
-                        target = Path.GetFullPath(pTarget.FolderPath, Default.LaunchBoxPath);
+                        target = Path.GetFullPath(pTarget.FolderPath, Config.LaunchBoxPath);
                     }
 
                     image.DestPath = image.CurrentPath.Replace(toReplace, target);
@@ -409,6 +499,8 @@ namespace UnPack_My_Game.Cores
                 xmlGame = Path.Combine(gamePath, "TBGame.xml");
             else if (File.Exists(Path.Combine(gamePath, "EBGame.xml")))
                 xmlGame = Path.Combine(gamePath, "EBGame.xml");
+            else if (File.Exists(Path.Combine(gamePath, "NPGame.xml")))
+                xmlGame = Path.Combine(gamePath, "NPGame.xml");
 
             //
             if (xmlGame == null)
@@ -464,7 +556,7 @@ namespace UnPack_My_Game.Cores
                 xmlPlat.InjectAddApps(xelClones);
 
                 // ----------------- Custom Fields
-                if (Default.wCustomFields)
+                if (Config.UseCustomFields)
                 {
                     var xelCFields = xmlSrc.GetNodes(Tag.CustField);
                     xmlPlat.InjectCustomF(xelCFields);
@@ -486,7 +578,7 @@ namespace UnPack_My_Game.Cores
             void ModifElement<T>(in XElement xelObj, string tag, T elem, bool first) where T : IDataRep
             {
                 var target = xelObj.Element(tag);
-                var value = elem == null ? string.Empty : DxPath.To_Relative(Default.LaunchBoxPath, elem.DestPath);
+                var value = elem == null ? string.Empty : DxPath.To_Relative(Config.LaunchBoxPath, elem.DestPath);
                 // Pour lever le .\
                 value = value.StartsWith(@".\") ? value.Substring(2) : value;
 

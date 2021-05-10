@@ -46,7 +46,11 @@ namespace Pack_My_Game
         /// <summary>
         /// Configuration object
         /// </summary>
-        internal static Configuration Config { get; set; }
+        internal static Configuration Config 
+        { 
+            get;
+            set;
+        }
 
 
         public static readonly RoutedUICommand ProcessCommand = new RoutedUICommand("Process", "Process", typeof(Common));

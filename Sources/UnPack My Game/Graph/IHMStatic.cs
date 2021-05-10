@@ -10,8 +10,9 @@ using DxTBoxCore.Box_MBox;
 using System;
 using System.IO;
 using System.Windows;
-using static Common_PMG.Tool;
 using DxLocalTransf.Tools;
+using static Common_PMG.Tool;
+using static UnPack_My_Game.Common;
 
 namespace UnPack_My_Game.Graph
 {
@@ -47,8 +48,8 @@ namespace UnPack_My_Game.Graph
                         };
                         if (tc.ShowDialog() == true)
                         {
-                            Properties.Settings.Default.LastTargetPath = Path.GetDirectoryName(tc.Model.LinkResult);
-                            Properties.Settings.Default.Save();
+                            Config.LastTargetPath = Path.GetDirectoryName(tc.Model.LinkResult);
+                            Config.Save();
 
                             return tc.Model.LinkResult;
 

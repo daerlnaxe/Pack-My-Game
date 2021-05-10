@@ -11,14 +11,13 @@ using UnPack_My_Game.Cores;
 
 namespace UnPack_My_Game.Models.LaunchBox
 {
-    class M_LBCDPGFolder : A_Err, I_Select
+    class M_LBcDPGFolder : A_Err, I_Select
     {
         public string Information => "Inject to LaunchBox";
 
         public string SelectSentence => "Ajoutez des dossiers via le menu contextuel";
 
         public ObservableCollection<DataRep> Elements { get; set; } = new ObservableCollection<DataRep>();
-
 
         public void Add()
         {
@@ -27,19 +26,17 @@ namespace UnPack_My_Game.Models.LaunchBox
                 Description = "Select a folder containing the game",
                 RootFolder = Environment.SpecialFolder.UserProfile,
                 ShowNewFolderButton = false,
-                SelectedPath = Properties.Settings.Default.LastFolderPath,
+                SelectedPath = Common.Config.LastFolderPath,
             };
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                Properties.Settings.Default.LastFolderPath = ofd.SelectedPath;
-                Properties.Settings.Default.Save();
+                Common.Config.LastFolderPath = ofd.SelectedPath;
+                Common.Config.Save();
 
                 Elements.Add(new DataRep(ofd.SelectedPath));
                 Test_HasElement(Elements, nameof(Elements));
             }
         }
-
-
 
         public void RemoveElement(object element)
         {
@@ -68,7 +65,7 @@ namespace UnPack_My_Game.Models.LaunchBox
             {
                 AutoCloseWindow = false,
                 ProgressIHM = new DxStateProgress(lbDPGCore),
-                MethodToRun = () => lbDPGCore.InjectGames(Elements),
+                MethodToRun = () => lbDPGCore.ExportGames(Elements),
             };
 
             launcher.Launch(lbDPGCore);

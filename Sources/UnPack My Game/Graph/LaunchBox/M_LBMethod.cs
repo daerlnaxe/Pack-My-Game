@@ -9,7 +9,6 @@ using System.IO;
 using System.Text;
 using UnPack_My_Game.Models;
 using UnPack_My_Game.Resources;
-using PS = UnPack_My_Game.Properties.Settings;
 
 namespace UnPack_My_Game.Graph.LaunchBox
 {

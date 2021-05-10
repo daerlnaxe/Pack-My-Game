@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pack_My_Game"
         xmlns:conv="clr-namespace:Pack_My_Game.IHM.Converters"
+        xmlns:convc="clr-namespace:Common_Graph.Converters;assembly=Common_Graph"
         xmlns:root="clr-namespace:Pack_My_Game"
         xmlns:l="clr-namespace:Pack_My_Game.Resources"
         xmlns:l2="clr-namespace:DxTBoxCore.Languages;assembly=DxTBoxCore"
@@ -29,7 +30,7 @@
         <root:Common x:Key="Slang"/>
         <!--
         -->
-        <conv:ChFolderNullConverter x:Key="Fallb" />
+        <convc:ChFolderNullConverter x:Key="Fallb" />
         <conv:DataToVisibilityConv x:Key="DataToV" />
         <conv:VisibleIfPlatforms x:Key="VisibleIfPlatforms"/>
         <x:Array x:Key="testArray" Type="sys:String"

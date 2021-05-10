@@ -599,5 +599,14 @@ namespace UnPack_My_Game.Resources {
                 return ResourceManager.GetString("Videos", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Working folder.
+        /// </summary>
+        public static string WorkingFolder {
+            get {
+                return ResourceManager.GetString("WorkingFolder", resourceCulture);
+            }
+        }
     }
 }

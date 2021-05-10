@@ -1,91 +1,124 @@
-﻿using DxTBoxCore.Box_MBox;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using UnPack_My_Game.Graph;
-using UnPack_My_Game.Graph.LaunchBox;
+using UnPack_My_Game.Cores;
+using UnPack_My_Game.Cores.LaunchBox;
+using UnPack_My_Game.Models.LaunchBox;
+using UnPack_My_Game.Models.Submenus;
+using static UnPack_My_Game.Common;
+using System.Diagnostics;
 using UnPack_My_Game.Models;
-using UnPack_My_Game.Resources;
+using System.Reflection;
 
-namespace UnPack_My_Game
+namespace UnPack_My_Game.Graph.LaunchBox
 {
-    /// Interaction logic for MainWindow.xaml
+    /// <summary>
+    /// Logique d'interaction pour LaunchBox_Main.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool _LaunchBoxOk;
 
-        /// <summary>
-        /// Title Showed on Main Window
-        /// </summary>
-        public string Title
-        {
-            get
-            {
-                System.Reflection.Assembly asmbly = System.Reflection.Assembly.GetExecutingAssembly();
-                return $"{asmbly.GetName().Name} - {asmbly.GetName().Version}";
-            }
-        }
+        public static readonly RoutedCommand DepackCmd = new RoutedCommand();
+        public static readonly RoutedCommand InjectGCmd = new RoutedCommand();
+        public static readonly RoutedCommand InjectPCmd = new RoutedCommand();
 
 
 
-        /// <summary>
+        M_Main Model { get; } = new M_Main();
 
         public MainWindow()
         {
-            try
-            {
-                if (!System.IO.Directory.Exists(Common.BackUp))
-                    System.IO.Directory.CreateDirectory(Common.BackUp);
+            Assembly asmbly = Assembly.GetExecutingAssembly();
 
-                // Logs folder
-                System.IO.Directory.CreateDirectory(Common.Logs);
-            }
-            catch(System.IO.IOException exc)
-            {
-                DxMBox.ShowDial(Lang.Err_FolderC, "Error", DxTBoxCore.Common.E_DxButtons.Ok, exc.Message);
-                return;
-            }
+            InitializeComponent();
 
-
-                InitializeComponent();
-            DataContext = this;
+            this.Title = $"Unpack My Game - {asmbly.GetName().Version}";
+            DataContext = Model;
         }
 
-
-        private void LaunchBox_Click(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-
-            new W_Common()
+            // Check de LaunchBox
+            if (string.IsNullOrEmpty(Config.LaunchBoxPath) ||
+                !File.Exists(Path.Combine(Config.LaunchBoxPath, Config.PlatformsFile)))
             {
-                ActivePage = new LaunchBox_Start()
-            }.ShowDialog();
-
-            this.Show();
+                DxTBoxCore.Box_MBox.DxMBox.ShowDial("Wrong LaunchBox path", "Warning");
+            }
+            else
+            {
+                _LaunchBoxOk = true;
+            }
         }
 
-        private void LaunchBoxRevo_Click(object sender, RoutedEventArgs e)
+
+        private void CanRun(object sender, CanExecuteRoutedEventArgs e)
         {
-            this.Hide();
-
-            new W_Common()
-            {
-                ActivePage = new P_LaunchBox_Main()
-
-            }.ShowDialog();
-
-            this.Show();
+            e.CanExecute = _LaunchBoxOk;
         }
+
+        /// <summary>
+        /// Fonctions relatives au Depacking
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Exec_Depack(object sender, ExecutedRoutedEventArgs e)
+        {
+            Model.Depack();
+
+        }
+
+        private void Exec_InjectG(object sender, ExecutedRoutedEventArgs e)
+        {
+            Model.InjectGame();
+        }
+
+        /// <summary>
+        /// Créateur de DPGame
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DPGMaker_Click(object sender, RoutedEventArgs e)
+        {
+            Model.DpgMaker();
+        }
+
+        /// <summary>
+        /// Injection d'une plateforme
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Exec_InjectPlatform(object sender, ExecutedRoutedEventArgs e)
+        {
+            LBFunc.InjectPlatform();
+        }
+
+        /// <summary>
+        /// Configuration
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Config_Click(object sender, RoutedEventArgs e)
+        {
+            if (Model.Config())
+            {
+                _LaunchBoxOk = true;
+            }
+
+        }
+
+        #region explorer
+        private void LaunchBox_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("explorer.exe", Config.LaunchBoxPath);
+        }
+
+        private void WorkingPath_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("explorer.exe", Config.WorkingFolder);
+        }
+        #endregion
     }
 }

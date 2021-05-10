@@ -8,13 +8,14 @@ using UnPack_My_Game.Cores.LaunchBox;
 using UnPack_My_Game.Models.LaunchBox;
 using UnPack_My_Game.Models.Submenus;
 using static UnPack_My_Game.Properties.Settings;
+using static UnPack_My_Game.Common;
 
 namespace UnPack_My_Game.Graph.LaunchBox
 {
     /// <summary>
     /// Logique d'interaction pour LaunchBox_Main.xaml
     /// </summary>
-    public partial class P_LaunchBox_Main : Page, INotifyPropertyChanged
+    public partial class W_LaunchBox_Main : Window, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -38,7 +39,7 @@ namespace UnPack_My_Game.Graph.LaunchBox
 
 
 
-        public P_LaunchBox_Main()
+        public W_LaunchBox_Main()
         {
             InitializeComponent();
             DataContext = this;
@@ -47,7 +48,7 @@ namespace UnPack_My_Game.Graph.LaunchBox
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             // Check de LaunchBox
-            if (File.Exists(Path.Combine(Default.LaunchBoxPath, Default.fPlatforms)))
+            if (File.Exists(Path.Combine(Config.LaunchBoxPath, Default.fPlatforms)))
             {
                 _LaunchBoxOk = true;
             }
@@ -58,16 +59,46 @@ namespace UnPack_My_Game.Graph.LaunchBox
         }
 
 
-        private void Depack_Click(object sender, RoutedEventArgs e)
+        private void CanRun(object sender, CanExecuteRoutedEventArgs e)
         {
-
+            e.CanExecute = _LaunchBoxOk;
         }
 
-        private void InjectG_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Fonctions relatives au Depacking
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Exec_Depack(object sender, ExecutedRoutedEventArgs e)
         {
+            /*   ActivePage = new P_Selecter()
+               {
+                   Model = new M_LBcDPGUnpack(),
+               };*/
 
+            ActivePage = new P_SubMenu()
+            {
+                Driver = new DPGCoreSub(),
+            };
         }
 
+        private void Exec_InjectG(object sender, ExecutedRoutedEventArgs e)
+        {
+            /*    ActivePage = new P_Selecter()
+                {
+                    Model = new M_LBCDPGFolder(),
+                };*/
+            ActivePage = new P_SubMenu()
+            {
+                Driver = new LaunchBoxInject(),
+            };
+        }
+
+        /// <summary>
+        /// Créateur de DPGame
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DPGMaker_Click(object sender, RoutedEventArgs e)
         {
             ActivePage = new P_SubMenu()
@@ -76,7 +107,21 @@ namespace UnPack_My_Game.Graph.LaunchBox
             };
         }
 
+        /// <summary>
+        /// Injection d'une plateforme
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Exec_InjectPlatform(object sender, ExecutedRoutedEventArgs e)
+        {
+            LBFunc.InjectPlatform();
+        }
 
+        /// <summary>
+        /// Configuration
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Config_Click(object sender, RoutedEventArgs e)
         {
             if (new W_Config().ShowDialog() == true)
@@ -86,30 +131,10 @@ namespace UnPack_My_Game.Graph.LaunchBox
 
         }
 
-        private void CanRun(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = _LaunchBoxOk;
-        }
 
-        private void Exec_Depack(object sender, ExecutedRoutedEventArgs e)
-        {
-            ActivePage = new P_Selecter()
-            {
-                Model = new M_LBcDPGUnpack(),
-            };
-        }
 
-        private void Exec_InjectG(object sender, ExecutedRoutedEventArgs e)
-        {
-            ActivePage = new P_Selecter()
-            {
-                Model = new M_LBCDPGFolder(),
-            };
-        }
 
-        private void Exec_InjectPlatform(object sender, ExecutedRoutedEventArgs e)
-        {
-            LBFunc.InjectPlatform();
-        }
+
+
     }
 }

@@ -10,7 +10,7 @@
     <Company>Daerlnaxe Software</Company>
     <Copyright>Copyright ©  2018-2038 Daerlnaxe Software</Copyright>
     <Description>Unpack package for a Frontend</Description>
-    <AssemblyVersion>1.0.1.2</AssemblyVersion>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
     <ApplicationIcon>UnpackMyGame.ico</ApplicationIcon>
   </PropertyGroup>
 
@@ -20,7 +20,24 @@
     <Compile Remove="Cores\LaunchBox\C_LaunchBoxAdapt.cs" />
     <Compile Remove="Cores\LaunchBox\C_LaunchBoxEB.cs" />
     <Compile Remove="Cores\LaunchBox\C_LaunchBoxTB.cs" />
+    <Compile Remove="Graph\LaunchBox\LaunchBox_Start.xaml.cs" />
     <Compile Remove="Graph\LaunchBox\M_DPGMaker.cs" />
+    <Compile Remove="Graph\LaunchBox\P_LaunchBox.xaml.cs" />
+    <Compile Remove="Graph\LaunchBox\W_LaunchBox_Main.xaml.cs" />
+    <Compile Remove="Models\LaunchBox\M_LaunchBox.cs" />
+    <Compile Remove="Models\M_OSource.cs" />
+    <Compile Remove="Models\M_SSource.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Graph\LaunchBox\LaunchBox_Start.xaml" />
+    <Page Remove="Graph\LaunchBox\P_LaunchBox.xaml" />
+    <Page Remove="Graph\LaunchBox\W_LaunchBox_Main.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="Graph\LaunchBox\LaunchBox_Start.xaml.cs" />
+    <None Include="Graph\LaunchBox\W_LaunchBox_Main.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +46,13 @@
     <None Include="Cores\LaunchBox\C_LaunchBoxAdapt.cs" />
     <None Include="Cores\LaunchBox\C_LaunchBoxEB.cs" />
     <None Include="Cores\LaunchBox\C_LaunchBoxTB.cs" />
+    <None Include="Graph\LaunchBox\LaunchBox_Start.xaml" />
+    <None Include="Graph\LaunchBox\P_LaunchBox.xaml" />
+    <None Include="Graph\LaunchBox\P_LaunchBox.xaml.cs" />
+    <None Include="Graph\LaunchBox\W_LaunchBox_Main.xaml" />
+    <None Include="Models\LaunchBox\M_LaunchBox.cs" />
+    <None Include="Models\M_OSource.cs" />
+    <None Include="Models\M_SSource.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,7 +66,7 @@
     <ProjectReference Include="..\..\..\HashCalc\Source\HashCalc.csproj" />
     <ProjectReference Include="..\..\..\Hermes\Sources\Hermes.csproj" />
     <ProjectReference Include="..\..\..\SeverZipSharp\SevenZip\SevenZip.csproj" />
-    <ProjectReference Include="..\Common Graph\Common Graph.csproj" />
+    <ProjectReference Include="..\Common_Graph\Common_Graph.csproj" />
     <ProjectReference Include="..\Common_PMG\Common_PMG.csproj" />
   </ItemGroup>
 
@@ -55,11 +79,6 @@
   <ItemGroup>
     <Compile Update="Graph\W_DPGMaker.xaml.cs">
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Properties\Settings.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Update="Resources\Lang.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -82,13 +101,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.fr-FR.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
   </ItemGroup>
 
   <ItemGroup>

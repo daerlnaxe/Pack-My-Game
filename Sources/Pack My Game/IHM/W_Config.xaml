@@ -1,4 +1,5 @@
-﻿<Window xmlns:Controls="clr-namespace:DxTBoxCore.Controls;assembly=DxTBoxCore"  x:Class="Pack_My_Game.IHM.W_Config"
+﻿<Window      x:Class="Pack_My_Game.IHM.W_Config"
+        xmlns:Controls="clr-namespace:DxTBoxCore.Controls;assembly=DxTBoxCore"  
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +7,7 @@
         xmlns:local="clr-namespace:Pack_My_Game.IHM"
         xmlns:l="clr-namespace:Pack_My_Game.Resources"
         xmlns:l2="clr-namespace:DxTBoxCore.Languages;assembly=DxTBoxCore"
-        xmlns:conv="clr-namespace:Pack_My_Game.IHM.Converters"
+        xmlns:conv2="clr-namespace:Common_Graph.Converters;assembly=Common_Graph"
         xmlns:cmd="clr-namespace:DxTBoxCore.Common;assembly=DxTBoxCore"
         mc:Ignorable="d"
         Title="{Binding Lang.ConfigExp}" Height="450" Width="800" WindowStartupLocation="CenterScreen">
@@ -14,7 +15,7 @@
         <CommandBinding Command="cmd:Commands.Submit" Executed="Exec_Submit"/>
     </Window.CommandBindings>
     <Window.Resources>
-        <conv:ChFolderNullConverter x:Key="Fallb" />
+        <conv2:ChFolderNullConverter x:Key="Fallb" />
         <!-- GroupBox -->
         <Style TargetType="GroupBox" >
             <Setter Property="Margin" Value="5"/>

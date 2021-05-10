@@ -14,7 +14,7 @@
 - 7z and zip compression "</Description>
     <Copyright>Copyright ©  2018-2038 Daerlnaxe Software</Copyright>
     <Company>Daerlnaxe Software</Company>
-    <AssemblyVersion>2.0.0.6</AssemblyVersion>
+    <AssemblyVersion>2.0.1.0</AssemblyVersion>
     <FileVersion>2.0.0.1</FileVersion>
     <ApplicationIcon>PackMyGame.ico</ApplicationIcon>
   </PropertyGroup>
@@ -30,11 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Properties\Settings.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
     <Compile Update="Resources\Lang.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -43,19 +38,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\Clouds\GDrive - Dx\Programmation\CSharp\DxPaths\DxPaths.csproj" />
     <ProjectReference Include="..\..\..\DxTBoxCore\Sources\DxTBoxCore.csproj" />
     <ProjectReference Include="..\..\..\HashCalc\Source\HashCalc.csproj" />
     <ProjectReference Include="..\..\..\Hermes\Sources\Hermes.csproj" />
-    <ProjectReference Include="..\..\..\SeverZipSharp\SevenZip\SevenZip.csproj" />
-    <ProjectReference Include="..\Common Graph\Common Graph.csproj" />
+    <ProjectReference Include="..\..\..\SeverZipSharp\SevenZip\SevenZip.csproj">
+      <ReferenceOutputAssembly></ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\Common_Graph\Common_Graph.csproj" />
     <ProjectReference Include="..\Common_PMG\Common_PMG.csproj" />
   </ItemGroup>
 
@@ -64,10 +54,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="IHM\Config\" />
   </ItemGroup>
 
   <ItemGroup>

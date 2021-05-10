@@ -26,8 +26,7 @@
                             <Button Content="{Binding Name}"
                                     Width="100" Height="25"
                                     Command="{Binding}"
-                                    CommandParameter="raoul"
-                                    />
+                                    CommandParameter="test"/>
                                     
                         </StackPanel>
                     </DataTemplate>

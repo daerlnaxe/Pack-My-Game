@@ -10,8 +10,14 @@ namespace UnPack_My_Game.Models.Submenus
 {
     public interface ISubMenu: INotifyPropertyChanged
     {
+        /// <summary>
+        /// Liste des boutons à afficher
+        /// </summary>
         ObservableCollection<ICommand> Buttons { get; }
 
+        /// <summary>
+        /// Page à afficher
+        /// </summary>
          Page ActivePage { get; }
     }
 }

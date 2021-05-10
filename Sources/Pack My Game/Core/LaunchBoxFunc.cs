@@ -10,7 +10,6 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
-using PS = Pack_My_Game.Properties.Settings;
 using static Pack_My_Game.Common;
 using Common_Graph;
 using System.Linq;

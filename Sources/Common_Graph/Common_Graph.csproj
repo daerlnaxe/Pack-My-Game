@@ -6,11 +6,15 @@
     <Authors>Alexandre CODOUL aka Daerlnaxe</Authors>
     <Company>Daerlnaxe Software</Company>
     <Copyright>Copyright ©  2018-2038 Daerlnaxe Software</Copyright>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
     <PackageReleaseNotes>Graphic part common between two programs
 </PackageReleaseNotes>
     <OutputType>Library</OutputType>
+    <AssemblyName>Common_Graph</AssemblyName>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="WindowsFile.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <Page Remove="Resources\Style.xaml" />
@@ -18,11 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\DxTBoxCore\Sources\DxTBoxCore.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Converters\" />
-    <Folder Include="Graph\" />
+    <ProjectReference Include="..\..\..\Hermes\Sources\Hermes.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +30,7 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </None>
+    <None Include="WindowsFile.cs" />
   </ItemGroup>
 
   <ItemGroup>

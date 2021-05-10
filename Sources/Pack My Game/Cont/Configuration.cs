@@ -1,4 +1,5 @@
-﻿using DxTBoxCore.Box_MBox;
+﻿using Common_PMG.Container;
+using DxTBoxCore.Box_MBox;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,41 +11,25 @@ using System.Text.Json.Serialization;
 namespace Pack_My_Game.Cont
 {
     [Serializable]
-    internal class Configuration
+    internal class Configuration : IConfiguration
     {
+        public string Version { get; set; }
+        
         public string Language { get; set; }
 
 
         #region Paths
 
-        /// <summary>
-        /// Path for LaunchBox
-        /// </summary>
         public string LaunchBoxPath { get; set; }
 
-        /// <summary>
-        /// Dossier temporaire de travail
-        /// </summary>
         public string WorkingFolder { get; set; }
 
-        /// <summary>
-        /// Dossier des cheats codes
-        /// </summary>
         public string CCodesPath { get; set; }
 
-        /// <summary>
-        /// Dernier dossier utilisé
-        /// </summary>
         public string LastPath { get; set; }
 
-        /// <summary>
-        /// Tail to find "platforms.xml"
-        /// </summary>
         public string PlatformsFile { get; set; }
 
-        /// <summary>
-        /// Tail to find 'Platforms' folder
-        /// </summary>
         public string PlatformsFolder { get; set; }
         #endregion
 
@@ -58,16 +43,16 @@ namespace Pack_My_Game.Cont
         public bool ZipCompression { get; set; }
 
         /// <summary>
-        /// Niveau de compression zip (max 10)
+        /// Niveau de compression zip (max 9)
         /// </summary>
-        [Range(1, 10, ErrorMessage = "The number must be between 0 and 11")]
+        [Range(0, 9, ErrorMessage = "The number must be between -1 and 10")]
         public int ZipLvlCompression { get; set; }
 
         /// <summary>
         /// Niveau de compression maximum pour zip
         /// </summary>
         [JsonIgnore]
-        public int ZipMaxLvlCompression => 10;
+        public int ZipMaxLvlCompression => 9;
 
 
         /// <summary>
@@ -78,14 +63,14 @@ namespace Pack_My_Game.Cont
         /// <summary>
         /// Niveau de compression seven zip (max 6)
         /// </summary>
-        [Range(1, 6, ErrorMessage = "The number must be between 0 and 7")]
+        [Range(0, 5, ErrorMessage = "The number must be between -1 and 6")]
         public int SevZipLvlCompression { get; set; }
 
         /// <summary>
         /// Niveau de compression maximum pour seven zip
         /// </summary>
         [JsonIgnore]
-        public int SevZipMaxLvlCompression => 6;
+        public int SevZipMaxLvlCompression => 5;
 
         #endregion
 
@@ -97,10 +82,13 @@ namespace Pack_My_Game.Cont
         /// </summary>
         public bool KeepGameStruct { get; set; }
 
+
+
         /// <summary>
         /// Keep structure for Cheats
         /// </summary>
         public bool KeepCheatStruct { get; set; }
+
 
         /// <summary>
         /// Keep structure for manuals
@@ -164,10 +152,6 @@ namespace Pack_My_Game.Cont
         #endregion
 
 
-        /// <summary>
-        /// Version du fichier de configuration
-        /// </summary>
-        public string Version { get; set; }
 
 
 
@@ -226,11 +210,11 @@ namespace Pack_My_Game.Cont
                 System.Windows.Application.Current.Shutdown();
             }
 
-            if (config.SevZipLvlCompression > 6 || config.SevZipLvlCompression < 1)
-                throw new Exception("Problem on SevenZip level compression, value must be 0<x<7");
+            if (config.SevZipLvlCompression > 5 || config.SevZipLvlCompression < 0)
+                throw new Exception("Problem on SevenZip level compression, value must be -1<x<6");
 
-            if (config.ZipLvlCompression > 10 || config.ZipLvlCompression < 1)
-                throw new Exception("Problem on Zip level compression, value must be 0<x<11");
+            if (config.ZipLvlCompression > 9 || config.ZipLvlCompression < 0)
+                throw new Exception("Problem on Zip level compression, value must be -1<x<10");
 
             return config;
         }
@@ -238,7 +222,8 @@ namespace Pack_My_Game.Cont
 
         internal void Save()
         {
-            WriteConfig("Config.json");
+            string destConfig = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Config.json");
+            WriteConfig(destConfig);
         }
 
         internal void WriteConfig(string outputFile)
@@ -292,9 +277,31 @@ namespace Pack_My_Game.Cont
                 KeepMusicStruct = true,
 
                 ZipCompression = true,
-                ZipLvlCompression = 10,
-                SevZipLvlCompression = 6,
+                ZipLvlCompression = 9,
+                SevZipLvlCompression = 5,
             };
+        }
+
+        /// <summary>
+        /// Met à jour le fichier de configuration
+        /// </summary>
+        internal void Update()
+        {
+            Version = Common.ConfigVersion;
+            // Language
+            if (string.IsNullOrEmpty(Language))
+                Language = "en-EN";
+        }
+
+
+        internal void InitPath()
+        {
+            LaunchBoxPath = String.IsNullOrEmpty(LaunchBoxPath) ? null :
+                                   Path.GetFullPath(LaunchBoxPath, AppDomain.CurrentDomain.BaseDirectory);
+            WorkingFolder = String.IsNullOrEmpty(WorkingFolder) ? null :
+                                   Path.GetFullPath(WorkingFolder, AppDomain.CurrentDomain.BaseDirectory);
+            CCodesPath = String.IsNullOrEmpty(CCodesPath) ? null :
+                                    Path.GetFullPath(CCodesPath, AppDomain.CurrentDomain.BaseDirectory);
         }
 
     }

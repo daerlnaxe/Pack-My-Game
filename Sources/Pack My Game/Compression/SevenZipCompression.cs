@@ -55,6 +55,17 @@ namespace Pack_My_Game.Compression
 
             if (!Directory.Exists(DestinationFolder))
                 Directory.CreateDirectory(destinationFolder);
+
+            //string sSeventZipLink = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "x86", "7z.dll");
+            string sSeventZipLink = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Environment.Is64BitProcess ? "x64" : "x86", "7z.dll");
+
+            //var sevenZipPath = Path.Combine( Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),Environment.Is64BitProcess ? "x64" : "x86", "7z.dll");
+            if (!File.Exists(sSeventZipLink))
+            {
+                string error = "7Zip NATIVE dll Missing, put dll to '/x64/7z.dll' or '/x86/7z.dll' at the root of PackMyGame";
+                throw new Exception(error);
+            }
+            SevenZipCompressor.SetLibraryPath(sSeventZipLink);
         }
 
      
@@ -73,21 +84,16 @@ namespace Pack_My_Game.Compression
                 throw new FileNotFoundException(folderSrc);
 
             //  string archiveName = archiveDest + ".7z";
-            ArchiveLink = archiveDest + ".7z";
+            ArchiveLink = Path.Combine(DestinationFolder, $"{archiveDest}.7z");
 
-            //string sSeventZipLink = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "x86", "7z.dll");
-            string sSeventZipLink = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Environment.Is64BitProcess ? "x64" : "x86", "7z.dll");
+            CompressionLevel cpLevel = (CompressionLevel)cplLvl;
 
-            //var sevenZipPath = Path.Combine( Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),Environment.Is64BitProcess ? "x64" : "x86", "7z.dll");
-            if (!File.Exists(sSeventZipLink))
-                throw new Exception("7Zip dll Missing you must copy the dll according to the version at the root");
-
-            SevenZipCompressor.SetLibraryPath(sSeventZipLink);
+            
             //  var k = SevenZipCompressor.CurrentLibraryFeatures;
 
             SevenZipCompressor szp = new SevenZipCompressor();
 
-            szp.CompressionLevel = CompressionLevel.Ultra;
+            szp.CompressionLevel = cpLevel;
             szp.CompressionMode = CompressionMode.Create;
             szp.ArchiveFormat = OutArchiveFormat.SevenZip;
             szp.DirectoryStructure = true;
@@ -103,9 +109,9 @@ namespace Pack_My_Game.Compression
                     szp.FileCompressionFinished += FileCompressionFinished;
                     szp.CompressionFinished += CompressionFinished;
 
-                    string tmp = $"{Path.GetRandomFileName()}.7z.tmp";
+                    string tmp = Path.Combine(DestinationFolder, $"{Path.GetRandomFileName()}.7z.tmp");
 
-                    szp.CompressDirectory(folderSrc, Path.Combine(DestinationFolder, tmp));
+                    szp.CompressDirectory(folderSrc,  tmp);
 
                     // on renomme
                     File.Move(tmp, ArchiveLink, true);

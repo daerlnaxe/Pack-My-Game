@@ -4,53 +4,47 @@ using DxTBoxCore.Box_Progress;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using UnPack_My_Game.Cores;
-
+using UnPack_My_Game.Models.Submenus;
 
 namespace UnPack_My_Game.Models.LaunchBox
 {
-    class M_LBcDPGUnpack : A_Err, I_Select
+    class M_DPGInjectFo : A_Err, I_Select
     {
-        public string Information => "Unpack to LaunchBox";
+        public string Information => "Injection by Folder(s)";
 
-        public string SelectSentence => "Ajoutez des fichiers via le menu contextuel";
+        public string SelectSentence => "Ajoutez des dossiers via le menu contextuel";
 
-        public ObservableCollection<DataRep> Elements { get; set; } = new ObservableCollection<DataRep>();
+        public ObservableCollection<DataRep> Elements { get; set; }
 
         public void Add()
         {
-            Microsoft.Win32.OpenFileDialog ofd = new Microsoft.Win32.OpenFileDialog()
+            FolderBrowserDialog ofd = new FolderBrowserDialog()
             {
-                Multiselect = true,
-                Filter = "Zip, 7Zip | *.zip;*.7zip;*.7z",
-                InitialDirectory = Common.Config.LastArchivePath,
+                Description = "Select a folder containing the game",
+                RootFolder = Environment.SpecialFolder.UserProfile,
+                ShowNewFolderButton = false,
+                SelectedPath = Common.Config.LastFolderPath,
             };
-
-            if (ofd.ShowDialog() == true)
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
-
-                Common.Config.LastArchivePath = Path.GetDirectoryName(ofd.FileName);
+                Common.Config.LastFolderPath = ofd.SelectedPath;
                 Common.Config.Save();
 
-                foreach (var file in ofd.FileNames)
-                {
-                    if (Elements.FirstOrDefault((x) => x.CurrentPath.Equals(file)) == null)
-                        Elements.Add(new DataRep(file));
-                }
+                Elements.Add(new DataRep(ofd.SelectedPath));
                 Test_HasElement(Elements, nameof(Elements));
             }
         }
-
 
         public void RemoveElement(object element)
         {
             Elements.Remove((DataRep)element);
             Test_HasElement(Elements, nameof(Elements));
         }
-
 
         public void RemoveElements(IList<object> parameter)
         {
@@ -59,8 +53,8 @@ namespace UnPack_My_Game.Models.LaunchBox
                 Elements.Remove(data);
             }
             Test_HasElement(Elements, nameof(Elements));
-
         }
+
 
         public bool Process()
         {
@@ -74,13 +68,12 @@ namespace UnPack_My_Game.Models.LaunchBox
             {
                 AutoCloseWindow = false,
                 ProgressIHM = new DxStateProgress(lbDPGCore),
-                MethodToRun = () => lbDPGCore.Depacking(Elements),
+                MethodToRun = () => lbDPGCore.InjectGamesFo(Elements),
             };
 
             launcher.Launch(lbDPGCore);
 
             return true;
         }
-
     }
 }

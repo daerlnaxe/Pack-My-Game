@@ -14,9 +14,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Common_PMG.Container.Game;
-using PS = UnPack_My_Game.Properties.Settings;
 using AsyncProgress.Tools;
 using Common_PMG.Models;
+using static UnPack_My_Game.Common;
+
 
 namespace UnPack_My_Game.Graph
 {
@@ -149,11 +150,11 @@ namespace UnPack_My_Game.Graph
             Platform = GamePaths.Platform;
 
             // Création des collections (par rapport au changement de nom
-            MakeCollection(GameDataC.Applications, GamesCollection, PS.Default.Games, x => DataPlus.Copy(x));
-            MakeCollection(GameDataC.CheatCodes, CheatsCollection, PS.Default.CheatCodes, x=>DataRep.Copy(x));
-            MakeCollection(GameDataC.Manuals, ManualsCollection, PS.Default.Manuals, x => DataRep.Copy(x));
-            MakeCollection(GameDataC.Musics, MusicsCollection, PS.Default.Musics, x => DataRep.Copy(x));
-            MakeCollection(GameDataC.Videos, VideosCollection, PS.Default.Videos, x => DataRep.Copy(x));
+            MakeCollection(GameDataC.Applications, GamesCollection, Config.Games, x => DataPlus.Copy(x));
+            MakeCollection(GameDataC.CheatCodes, CheatsCollection, Config.CheatCodes, x=>DataRep.Copy(x));
+            MakeCollection(GameDataC.Manuals, ManualsCollection, Config.Manuals, x => DataRep.Copy(x));
+            MakeCollection(GameDataC.Musics, MusicsCollection, Config.Musics, x => DataRep.Copy(x));
+            MakeCollection(GameDataC.Videos, VideosCollection, Config.Videos, x => DataRep.Copy(x));
 
             // Initialisation des fichiers par défaut.
             ChosenGame = GamesCollection.FirstOrDefault(x => x.Name.Equals(GameDataC.DefaultApp?.CurrentPath));
@@ -297,7 +298,7 @@ namespace UnPack_My_Game.Graph
         private void LoadManuals()
         {
             ManualsCollection.Clear();
-            string manualsPath = Path.Combine(Root, PS.Default.Manuals);
+            string manualsPath = Path.Combine(Root, Config.Manuals);
             foreach (string f in Directory.EnumerateFiles(manualsPath, "*.*", SearchOption.AllDirectories))
             {
                 string tmp = f.Replace(manualsPath, ".");
@@ -315,7 +316,7 @@ namespace UnPack_My_Game.Graph
         private void LoadMusics()
         {
             MusicsCollection.Clear();
-            string musicsPath = Path.Combine(Root, PS.Default.Musics);
+            string musicsPath = Path.Combine(Root, Config.Musics);
             foreach (string f in Directory.EnumerateFiles(musicsPath, "*.*", SearchOption.AllDirectories))
             {
                 string tmp = f.Replace(musicsPath, ".");
@@ -332,7 +333,7 @@ namespace UnPack_My_Game.Graph
         private void LoadVideos()
         {
             VideosCollection.Clear();
-            string videosPath = Path.Combine(Root, PS.Default.Videos);
+            string videosPath = Path.Combine(Root, Config.Videos);
             foreach (string f in Directory.EnumerateFiles(videosPath, "*.*", SearchOption.AllDirectories))
             {
                 string tmp = f.Replace(videosPath, ".");
@@ -348,7 +349,7 @@ namespace UnPack_My_Game.Graph
 
         internal void LoadCheatCodes()
         {
-            string cheatsPath = Path.Combine(Root, PS.Default.CheatCodes);
+            string cheatsPath = Path.Combine(Root, Config.CheatCodes);
             CheatsCollection.Clear();
             foreach (string f in Directory.EnumerateFiles(cheatsPath, "*.*", SearchOption.TopDirectoryOnly))
             {
@@ -366,7 +367,7 @@ namespace UnPack_My_Game.Graph
         #region Manuals
         internal void CopyManualF()
         {
-            if (Copy2(PS.Default.LastSpath, PS.Default.Manuals, "Select a manual"))
+            if (Copy2(Config.LastPath, Config.Manuals, "Select a manual"))
             {
                 LoadManuals();
             }
@@ -412,7 +413,7 @@ namespace UnPack_My_Game.Graph
         internal void CopyMusicF()
         {
 
-            if (Copy2(PS.Default.LastSpath, PS.Default.Musics, "Select a music file"))
+            if (Copy2(Config.LastPath, Config.Musics, "Select a music file"))
             {
                 LoadMusics();
             }
@@ -457,7 +458,7 @@ namespace UnPack_My_Game.Graph
 
         internal void CopyVideoF()
         {
-            if (Copy2(PS.Default.LastSpath, PS.Default.Videos, "Select a video file"))
+            if (Copy2(Config.LastPath, Config.Videos, "Select a video file"))
             {
                 LoadVideos();
             }
@@ -494,7 +495,7 @@ namespace UnPack_My_Game.Graph
 
         internal void CopyAstuceF()
         {
-            if (Copy2(PS.Default.LaunchBoxPath, PS.Default.CheatCodes, "Select a cheat codes file"))
+            if (Copy2(Config.LaunchBoxPath, Config.CheatCodes, "Select a cheat codes file"))
             {
                 LoadCheatCodes();
             }
@@ -505,7 +506,7 @@ namespace UnPack_My_Game.Graph
             if (String.IsNullOrEmpty(SelectedCheatFile))
                 return;
 
-            string path = Path.Combine(Root, PS.Default.CheatCodes, SelectedCheatFile);
+            string path = Path.Combine(Root, Config.CheatCodes, SelectedCheatFile);
             if (File.Exists(path))
             {
                 Process.Start(path);
@@ -517,7 +518,7 @@ namespace UnPack_My_Game.Graph
         {
             if (!string.IsNullOrEmpty(SelectedCheatFile))
             {
-                OpDFiles.Trash(Path.Combine(Root, PS.Default.CheatCodes, SelectedCheatFile));
+                OpDFiles.Trash(Path.Combine(Root, Config.CheatCodes, SelectedCheatFile));
                 LoadCheatCodes();
             }
         }
@@ -538,6 +539,8 @@ namespace UnPack_My_Game.Graph
             };
             if (tc.ShowDialog() == true)
             {
+                Config.LastPath = Path.GetDirectoryName(tc.LinkResult);
+                Config.Save();
                 return Copy(tc.LinkResult, Path.Combine(Root, subFolder));
             }
             return false;

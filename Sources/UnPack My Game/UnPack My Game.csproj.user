@@ -2,6 +2,7 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_LastSelectedProfileId>E:\Programmation\Git-Hub\Pack-My-Game\Sources\UnPack My Game\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
+    <ShowAllFiles>false</ShowAllFiles>
   </PropertyGroup>
   <ItemGroup>
     <ApplicationDefinition Update="App.xaml">
@@ -9,15 +10,15 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Graph\LaunchBox\P_LaunchBox_Main.xaml.cs">
+    <None Update="Graph\LaunchBox\W_LaunchBox_Main.xaml.cs">
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Graph\LaunchBox\LaunchBox_Start.xaml.cs">
+    </None>
+    <CodeAnalysisDictionary Update="Graph\LaunchBox\LaunchBox_Start.xaml.cs">
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Graph\LaunchBox\P_LaunchBox.xaml.cs">
+    </CodeAnalysisDictionary>
+    <None Update="Graph\LaunchBox\P_LaunchBox.xaml.cs">
       <SubType>Code</SubType>
-    </Compile>
+    </None>
     <Compile Update="Graph\LaunchBox\W_Config.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -43,15 +44,15 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Graph\LaunchBox\P_LaunchBox_Main.xaml">
+    <None Update="Graph\LaunchBox\W_LaunchBox_Main.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Graph\LaunchBox\LaunchBox_Start.xaml">
+    </None>
+    <None Update="Graph\LaunchBox\LaunchBox_Start.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Graph\LaunchBox\P_LaunchBox.xaml">
+    </None>
+    <None Update="Graph\LaunchBox\P_LaunchBox.xaml">
       <SubType>Designer</SubType>
-    </Page>
+    </None>
     <Page Update="Graph\LaunchBox\W_Config.xaml">
       <SubType>Designer</SubType>
     </Page>

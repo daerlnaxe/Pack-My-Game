@@ -82,7 +82,7 @@ namespace Pack_My_Game.Compression
             if (!Directory.Exists(folder))
                 throw new FileNotFoundException(folder);
 
-            ArchiveLink = archiveDest + ".zip";
+            ArchiveLink = Path.Combine(DestinationFolder, $"{archiveDest}.zip");
 
             // Verification
             if (File.Exists(ArchiveLink))
@@ -116,11 +116,11 @@ namespace Pack_My_Game.Compression
                 {
                     // Get value from enum
                     CompressionLevel cpLvl = (CompressionLevel)cplLvl;
-                    using (ZipFile zipFile = new ZipFile())
+                    using (ZipFile zipFile = new ZipFile(ArchiveLink))
                     {
                         //zipFile.CompressionLevel = Ionic.Zlib.CompressionLevel.BestCompression;
                         zipFile.CompressionLevel = cpLvl;
-                        //zipFile.BufferSize = 4096;
+                        zipFile.BufferSize = 4096;
                         zipFile.AddProgress += AddProgress;
                         zipFile.SaveProgress += SaveProgress;
 
@@ -145,6 +145,7 @@ namespace Pack_My_Game.Compression
                 }
             }
         }
+
 
 
 

@@ -22,11 +22,15 @@ namespace UnPack_My_Game.Decompression
         public SevenZipDecompression()
         {
             //string sSeventZipLink = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "x86", "7z.dll");
-            string sSeventZipLink = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Environment.Is64BitProcess ? "x64" : "x86", "7z.dll");
+            string sSeventZipLink = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, /*Environment.Is64BitProcess ? "x64" : "x86", */ "7z.dll");
 
             //var sevenZipPath = Path.Combine( Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),Environment.Is64BitProcess ? "x64" : "x86", "7z.dll");
             if (!File.Exists(sSeventZipLink))
-                throw new Exception("7Zip dll Missing you must copy the dll according to the version at the root");
+            {
+                string error = "7Zip dll Missing";//, put dll to '/x64/7z.dll' or '/x86/7z.dll' at the root of PackMyGame";
+              
+                throw new Exception(error);
+            }
 
             SevenZipCompressor.SetLibraryPath(sSeventZipLink);
         }
@@ -191,7 +195,6 @@ namespace UnPack_My_Game.Decompression
                 if (TokenSource != null && TokenSource.IsCancellationRequested)
                     return false;
 
-
                 string fileDestination = Path.Combine(destFolder, archiveFI.FileName);
 
                 using (FileStream fs = new FileStream(fileDestination, FileMode.Create, FileAccess.Write))
@@ -207,7 +210,53 @@ namespace UnPack_My_Game.Decompression
             return true;
         }
 
-   
+        public bool ExtractAll(string fileArchive, string destFolder)
+        {
+            /*if (!Directory.Exists(destFolder))
+                return false;*/
+
+            if (!File.Exists(fileArchive))
+                return false;
+
+            //string notFinishedF = Path.Combine(destFolder, "notFinished");
+
+            using (SevenZipExtractor sevenZipExtr = new SevenZipExtractor(fileArchive))
+            {
+                sevenZipExtr.FileExtractionStarted += SevenZipExtr_FileExtractionStarted;
+                sevenZipExtr.FileExtractionFinished += SevenZipExtr_FileExtractionFinished;
+                sevenZipExtr.FileExists += SevenZipExtr_FileExists; ;
+
+                uint max = sevenZipExtr.FilesCount;
+                bool cancelflag = false;
+
+                UpdateStatus?.Invoke(this, new StateArg("7Zip Decompression", cancelflag));
+                UpdateProgress?.Invoke(this, new ProgressArg(0, 100, cancelflag));
+
+                int i = 0;
+                foreach (ArchiveFileInfo archiveFI in sevenZipExtr.ArchiveFileData)
+                {
+                    UpdateProgressT?.Invoke(this, new ProgressArg(i, max, cancelflag));
+                    UpdateStatus?.Invoke(this, new StateArg($"Extracting {archiveFI.FileName}", cancelflag));
+
+                    if (CancelToken.IsCancellationRequested)
+                        return false;
+
+                    string fileDestination = Path.Combine(destFolder, archiveFI.FileName);
+
+                    using (FileStream fs = new FileStream(fileDestination, FileMode.Create, FileAccess.Write))
+                    {
+                        sevenZipExtr.ExtractFile(archiveFI.Index, fs);
+                    }
+
+                    i++;
+                }
+
+                UpdateProgress?.Invoke(this, new ProgressArg(max, max, CancelFlag));
+            }
+
+
+            return true;
+        }
         #endregion
 
         // ---

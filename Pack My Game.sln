@@ -27,11 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AreaSelect", "..\AreaSelect
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DxCCtrl", "..\DxCoreControls\Source\DxCCtrl.csproj", "{3F4E6D55-9EF3-4E28-AB1D-6FD361A24718}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common Graph", "Sources\Common Graph\Common Graph.csproj", "{273949C5-24AA-42CE-923A-E1E4FF007332}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common_PMG", "Sources\Common_PMG\Common_PMG.csproj", "{F8708B31-DC01-433F-ABA4-7D53D11E3344}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncProgress", "..\AsyncProgress\Sources\AsyncProgress.csproj", "{EE480FF0-36E0-4E21-B04F-85BD48FB7AE2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common_Graph", "Sources\Common_Graph\Common_Graph.csproj", "{6FD2CBCF-1753-494A-86CC-FA860DFB5BB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,10 +87,6 @@ Global
 		{3F4E6D55-9EF3-4E28-AB1D-6FD361A24718}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F4E6D55-9EF3-4E28-AB1D-6FD361A24718}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F4E6D55-9EF3-4E28-AB1D-6FD361A24718}.Release|Any CPU.Build.0 = Release|Any CPU
-		{273949C5-24AA-42CE-923A-E1E4FF007332}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{273949C5-24AA-42CE-923A-E1E4FF007332}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{273949C5-24AA-42CE-923A-E1E4FF007332}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{273949C5-24AA-42CE-923A-E1E4FF007332}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F8708B31-DC01-433F-ABA4-7D53D11E3344}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F8708B31-DC01-433F-ABA4-7D53D11E3344}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8708B31-DC01-433F-ABA4-7D53D11E3344}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -99,6 +95,10 @@ Global
 		{EE480FF0-36E0-4E21-B04F-85BD48FB7AE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE480FF0-36E0-4E21-B04F-85BD48FB7AE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE480FF0-36E0-4E21-B04F-85BD48FB7AE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FD2CBCF-1753-494A-86CC-FA860DFB5BB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FD2CBCF-1753-494A-86CC-FA860DFB5BB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FD2CBCF-1753-494A-86CC-FA860DFB5BB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FD2CBCF-1753-494A-86CC-FA860DFB5BB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

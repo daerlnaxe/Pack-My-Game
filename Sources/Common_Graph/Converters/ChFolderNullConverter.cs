@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Text;
 using System.Windows.Data;
 
-namespace Pack_My_Game.IHM.Converters
+namespace Common_Graph.Converters
 {
     public class ChFolderNullConverter : IMultiValueConverter
     {

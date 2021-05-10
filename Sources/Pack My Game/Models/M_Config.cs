@@ -81,7 +81,18 @@ namespace Pack_My_Game.Models
         #endregion
 
 
-        public Configuration Config { get; set; }
+        Configuration _Config;
+        public Configuration Config
+        {
+            get => _Config;
+            private set
+            {
+                _Config = value;
+                OnPropertyChanged();
+
+            }
+        }
+
 
 
         public M_Config()
@@ -181,12 +192,25 @@ namespace Pack_My_Game.Models
 
         internal void Save()
         {
+            Config.LaunchBoxPath = DxPaths.Windows.DxPath.To_RelativeOrNull(
+                                            AppDomain.CurrentDomain.BaseDirectory,
+                                            Config.LaunchBoxPath);
+            Config.WorkingFolder = DxPaths.Windows.DxPath.To_RelativeOrNull(
+                                            AppDomain.CurrentDomain.BaseDirectory,
+                                            Config.WorkingFolder);
+            Config.CCodesPath = DxPaths.Windows.DxPath.To_RelativeOrNull(
+                                            AppDomain.CurrentDomain.BaseDirectory,
+                                            Config.CCodesPath);
+
             //PS.Default.Language = SelectedLanguage;
             Common.ObjectLang = Lang;
             Config.Language = SelectedLanguage.Lang;
 
             Common.Config = Config;
             Common.Config.Save();
+
+            // On remet pour le reste du programme les liens en dur
+            Common.Config.InitPath();
         }
     }
 }

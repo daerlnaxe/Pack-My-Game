@@ -101,7 +101,7 @@ namespace UnPack_My_Game.Cores
                     UpdateStatus?.Invoke(this, $"Work on: {game.Nom}");
 
                     string gameName = Path.GetFileNameWithoutExtension(game.Nom);
-                    string tmpPath = Path.Combine(Path.GetTempPath(), Path.GetFileNameWithoutExtension(game.Nom));
+                    string tmpPath = Path.Combine(Config.Folder, Path.GetFileNameWithoutExtension(game.Nom));
 
                     // Décompression
                     if (Path.GetExtension(game.Path).Equals(".zip", StringComparison.OrdinalIgnoreCase))

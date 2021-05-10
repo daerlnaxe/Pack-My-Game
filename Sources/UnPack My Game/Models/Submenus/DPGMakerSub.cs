@@ -16,9 +16,6 @@ namespace UnPack_My_Game.Models.Submenus
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-
-
-
         /// <summary>
         /// Liste des boutons à afficher
         /// </summary>
@@ -65,12 +62,12 @@ namespace UnPack_My_Game.Models.Submenus
             };
         }
 
-
+        /*
         private void meou(object parameter)
         {
             ActivePage = null;
             Debug.WriteLine("Meou, Meou");
-        }
+        }*/
 
     }
 }

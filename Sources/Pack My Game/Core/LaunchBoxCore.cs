@@ -28,7 +28,6 @@ using System.Windows;
 using Common_PMG.XML;
 using DxLocalTransf.Copy;
 using Common_Graph;
-using PS = Pack_My_Game.Properties.Settings;
 //using static Pack_My_Game.Properties.Settings;
 using static Pack_My_Game.Common;
 //using Pack_My_Game.Compression;
@@ -451,10 +450,11 @@ namespace Pack_My_Game.Core
 
             #region Compression
             // Zip
-            if (Common.Config.ZipCompression)
+            if (Config.ZipCompression)
             {
                 Compress_ZipMode(gamePath, shGame.Title);
             }
+            else
             {
                 HeTrace.WriteLine($"[Run] Zip Compression disabled", this);
             }
@@ -665,11 +665,14 @@ namespace Pack_My_Game.Core
         /// <param name="compCheatCodes"></param>
         private ICollection<string> GetCheatCodes(string toSearch)
         {
+            if (string.IsNullOrEmpty(Config.CCodesPath))
+                return new string[0];
+
             string CCodesDir = Path.Combine(Config.CCodesPath, _ZePlatform.Name);
             if (!Directory.Exists(CCodesDir))
             {
                 SetStatus(this, new StateArg($"Directory doesn't exist: '{CCodesDir}'", CancelFlag));
-                return null;
+                return new string[0];
             }
 
             return GetFilesByPredict(toSearch, CCodesDir, "CheatCodes");
@@ -833,6 +836,13 @@ namespace Pack_My_Game.Core
         {
             HeTrace.WriteLine($"[{nameof(PrepareList)}] for {mediatype}", this);
             string destLocation = tree.Children[$"{mediatype}s"].Path;
+
+
+            // protection
+            if (mediatype == "CheatCode" && string.IsNullOrEmpty(Config.CCodesPath))
+                return;           
+
+
 
             string folder = null;
             //PlatformFolder folder = null;
@@ -1064,6 +1074,9 @@ namespace Pack_My_Game.Core
             zippy.UpdateProgressT += this.SetProgress;
             zippy.UpdateStatus += this.SetStatus;
             zippy.MaximumProgressT += this.SetMaximum;*/
+            zippy.UpdateStatus += (x,y)=> HeTrace.WriteLine(y.Message);
+
+            
 
             var res = PackMe_IHM.ZipCompressFolder(zippy, () => zippy.CompressFolder(
                                          gamePath, title, Config.ZipLvlCompression), "Compression Zip");
@@ -1103,6 +1116,7 @@ namespace Pack_My_Game.Core
                 IsPaused = this.IsPaused,
                 TokenSource = this.TokenSource
             };
+            sevZippy.UpdateStatus += (x, y) => HeTrace.WriteLine(y.Message);
 
 
             var res = (bool?)PackMe_IHM.ZipCompressFolder(sevZippy, () => sevZippy.CompressFolder(

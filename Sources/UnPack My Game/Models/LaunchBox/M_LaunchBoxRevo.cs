@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using UnPack_My_Game.Graph;
 using UnPack_My_Game.Resources;
-using PS = UnPack_My_Game.Properties.Settings;
+using static UnPack_My_Game.Common;
 
 namespace UnPack_My_Game.Models.LaunchBox
 {
@@ -54,10 +54,10 @@ namespace UnPack_My_Game.Models.LaunchBox
         //private string _LaunchBoxPath;
         public string LaunchBoxPath
         {
-            get => PS.Default.LaunchBoxPath;
+            get => Config.LaunchBoxPath;
             set
             {
-                PS.Default.LaunchBoxPath = value;
+                Config.LaunchBoxPath = value;
                 OnPropertyChanged();
 
                 Test_NullValue(value);
@@ -70,10 +70,10 @@ namespace UnPack_My_Game.Models.LaunchBox
         //private string _Games;
         public string Games
         {
-            get => PS.Default.Games;
+            get => Config.Games;
             set
             {
-                PS.Default.Games = value;
+                Config.Games = value;
                 OnPropertyChanged();
 
                 Test_NullValue(value);
@@ -83,10 +83,10 @@ namespace UnPack_My_Game.Models.LaunchBox
         //private string _CheatCodes;
         public string CheatCodes
         {
-            get => PS.Default.CheatCodes;
+            get => Config.CheatCodes;
             set
             {
-                PS.Default.CheatCodes = value;
+                Config.CheatCodes = value;
                 OnPropertyChanged();
 
                 Test_NullValue(value);
@@ -96,10 +96,10 @@ namespace UnPack_My_Game.Models.LaunchBox
         //public string _Images;
         public string Images
         {
-            get => PS.Default.Images;
+            get => Config.Images;
             set
             {
-                PS.Default.Images = value;
+                Config.Images = value;
                 OnPropertyChanged();
                 Test_NullValue(value);
             }
@@ -108,10 +108,10 @@ namespace UnPack_My_Game.Models.LaunchBox
         //private string _Manuals;
         public string Manuals
         {
-            get => PS.Default.Manuals;
+            get => Config.Manuals;
             set
             {
-                PS.Default.Manuals = value;
+                Config.Manuals = value;
                 OnPropertyChanged();
                 Test_NullValue(value);
             }
@@ -120,10 +120,10 @@ namespace UnPack_My_Game.Models.LaunchBox
         //private string _Musics;
         public string Musics
         {
-            get => PS.Default.Musics;
+            get => Config.Musics;
             set
             {
-                PS.Default.Musics = value;
+                Config.Musics = value;
                 OnPropertyChanged();
                 Test_NullValue(value);
             }
@@ -132,10 +132,10 @@ namespace UnPack_My_Game.Models.LaunchBox
         //private string _Videos;
         public string Videos
         {
-            get => PS.Default.Videos;
+            get => Config.Videos;
             set
             {
-                PS.Default.Videos = value;
+                Config.Videos = value;
                 OnPropertyChanged();
                 Test_NullValue(value);
             }
@@ -148,9 +148,8 @@ namespace UnPack_My_Game.Models.LaunchBox
 
         public M_LaunchBoxRevo()
         {
-
             // Vérifications
-            var platformsFile = Path.Combine(PS.Default.LaunchBoxPath, PS.Default.fPlatforms);
+            var platformsFile = Path.Combine(Config.LaunchBoxPath, Config.PlatformsFile);
 
             // Vérification du dossier Launchbox
             if (!File.Exists(platformsFile))
@@ -164,31 +163,7 @@ namespace UnPack_My_Game.Models.LaunchBox
             //Load_Platforms();
         }
 
-        /// <summary>
-        /// Set LaunchBox Path
-        /// </summary>
-        [Obsolete]
-        internal void Set_LaunchBoxPath()
-        {
-            Remove_Error(nameof(LaunchBoxPath));
-
-            if (!Directory.Exists(this.LaunchBoxPath))
-            {
-                Add_Error(Lang.Err_LaunchBoxF, nameof(LaunchBoxPath));
-                return;
-            }
-
-            // Sauvegarde du chemin
-            //Properties.Settings.Default.LastLBpath = LaunchBoxPath;
-            PS.Default.Save();
-
-
-
-
-            //Load_Platforms();
-        }
-
-
+ 
 
         internal void GamesSelected(object sender)
         {
@@ -244,7 +219,7 @@ namespace UnPack_My_Game.Models.LaunchBox
                 return;
 
             // Sauvegarde des folders
-            PS.Default.Save();
+            Config.Save();
 
                 /*15/04/2021
             try

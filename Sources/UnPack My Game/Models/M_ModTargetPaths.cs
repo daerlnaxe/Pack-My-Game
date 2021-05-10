@@ -188,8 +188,7 @@ namespace UnPack_My_Game.Models
 
         public M_ModTargetPaths()
         {
-            OptNameChecked = Properties.Settings.Default.wGameNameFolder;
-
+            OptNameChecked = Common.Config.UseGameNameFolder;
         }
 
         internal void InitializeDatas()

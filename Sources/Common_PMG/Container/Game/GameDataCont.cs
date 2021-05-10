@@ -186,7 +186,9 @@ namespace Common_PMG.Container.Game
         {
             set
             {
-                foreach (var f in value)
+                if (value != null)
+
+                    foreach (var f in value)
                 {
                     AddWVerif(f, CheatCodes);
                 }

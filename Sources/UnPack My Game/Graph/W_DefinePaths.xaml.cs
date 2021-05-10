@@ -60,12 +60,14 @@ namespace UnPack_My_Game.Graph
                     Info = Lang.Choose_Root,
                     HideWindowsFolder = true,
                     ShowFiles = true,
-                    StartingFolder = Properties.Settings.Default.LastTargetPath,
+                    StartingFolder = Common.Config.LastTargetPath,
 
                 }
             };
             if (tc.ShowDialog() == true)
             {
+                Common.Config.LastTargetPath = tc.Model.LinkResult;
+                Common.Config.Save();
                 return tc.Model.LinkResult;
             }
             return null;
