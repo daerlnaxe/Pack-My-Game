@@ -19,6 +19,11 @@
     <ApplicationIcon>PackMyGame.ico</ApplicationIcon>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="Compression\ZipCompress.cs" />
     <Compile Remove="Core\LaunchBocDeprecated.cs" />
