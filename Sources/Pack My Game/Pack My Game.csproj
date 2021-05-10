@@ -22,6 +22,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DebugType>portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
+    <WarningLevel>3</WarningLevel>
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\Pack My Game.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,0 +1,1039 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Pack My Game</name>
+    </assembly>
+    <members>
+        <member name="T:Pack_My_Game.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Common.Logs">
+            <summary>
+            Log Folder
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Common.LangFolder">
+            <summary>
+            Lang Folder
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Common.LangVersion">
+            <summary>
+            Language Version
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Common.Games">
+            <summary>
+            Games
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Common.ObjectLang">
+            <summary>
+            Language object
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Common.Config">
+            <summary>
+            Configuration object
+            </summary>
+        </member>
+        <member name="T:Pack_My_Game.Compression.SevenZipCompression">
+            <summary>
+            
+            </summary>
+            <remarks>Modèle avec Task</remarks>
+        </member>
+        <member name="P:Pack_My_Game.Compression.SevenZipCompression.ArchiveLink">
+            <summary>
+            Archive link
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.Compression.SevenZipCompression.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="destinationFolder"></param>
+            <remarks>
+            Creation of folder destination
+            </remarks>
+        </member>
+        <member name="M:Pack_My_Game.Compression.SevenZipCompression.CompressFolder(System.String,System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="folder">Folder</param>
+            <param name="archiveDest">Archive name</param>
+            <param name="cplLvl">Level of compression</param>
+            <returns></returns>
+        </member>
+        <member name="M:Pack_My_Game.Compression.SevenZipCompression.Compressing(System.Object,SevenZip.ProgressEventArgs)">
+            <summary>
+            Serait la progression sur chaque fichier
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+            <remarks>
+            Niveau de compression
+            </remarks>
+        </member>
+        <member name="P:Pack_My_Game.Compression.ZipCompression.TimeLimit">
+            <summary>
+            Permet de régler un timer pour le calcul des pourcentages des progressions et les émissions
+            du signal
+            </summary>
+            <remarks>
+            Milliseconds
+            </remarks>
+        </member>
+        <member name="P:Pack_My_Game.Compression.ZipCompression.DestinationFolder">
+            <summary>
+            Répertoire de destination
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.Compression.ZipCompression.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="destinationFolder"></param>
+            <remarks>
+            Creation of folder destination
+            </remarks>
+        </member>
+        <member name="M:Pack_My_Game.Compression.ZipCompression.CompressFolder(System.String,System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="folder">Folder to Compress</param>
+            <param name="archiveDest">Enter a name without extension</param>
+            <param name="cplLvl">Niveau de compression 0/1/2</param>
+            <returns></returns>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Configuration.ZipCompression">
+            <summary>
+            Activation de la compression zip
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Configuration.ZipLvlCompression">
+            <summary>
+            Niveau de compression zip (max 9)
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Configuration.ZipMaxLvlCompression">
+            <summary>
+            Niveau de compression maximum pour zip
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Configuration.SevZipCompression">
+            <summary>
+            Activation de la compression 7Z
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Configuration.SevZipLvlCompression">
+            <summary>
+            Niveau de compression seven zip (max 6)
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Configuration.SevZipMaxLvlCompression">
+            <summary>
+            Niveau de compression maximum pour seven zip
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Configuration.KeepGameStruct">
+            <summary>
+            Keep structure for games
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Configuration.KeepCheatStruct">
+            <summary>
+            Keep structure for Cheats
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Configuration.KeepManualStruct">
+            <summary>
+            Keep structure for manuals
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Configuration.KeepMusicStruct">
+            <summary>
+            Keep structure for Music
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Configuration.CopyCheats">
+            <summary>
+            Switch pour gérer les cheats codes
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Configuration.CopyClones">
+            <summary>
+            Switch pour gérer les clones
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Configuration.CreateEBGame">
+            <summary>
+            Switch pour gérer EBGame
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Configuration.CreateTBGame">
+            <summary>
+            Switch pour gérer TBGame
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Configuration.CreateInfos">
+            <summary>
+            Switch pour gérer le fichier infos
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Configuration.CreateTreeV">
+            <summary>
+            Switch pour gérer le TreeView
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Configuration.UseLogFile">
+            <summary>
+            Switch pour gérer le fichier log
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Configuration.UseLogWindow">
+            <summary>
+            Switch pour gérer la fenêtre de log
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Configuration.CreateMD5">
+            <summary>
+            Switch pour manager le MD5
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.Cont.Configuration.Update">
+            <summary>
+            Met à jour le fichier de configuration
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.CCopyExp">
+            <summary>
+            Clones copy
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.Ch_Games">
+            <summary>
+            Choose game(s)
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.Ch_LBPath">
+            <summary>
+            Choose the LaunchBoxPath
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.Ch_Path">
+            <summary>
+            Choose a path
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.Ch_System">
+            <summary>
+            Choose a system
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.CheatsCopyExp">
+            <summary>
+            Cheats Copy
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.CheatsPathExp">
+            <summary>
+            Cheats codes path
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.CompExp">
+            <summary>
+            Compression
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.CompLBMin">
+            <summary>
+            Label compression mini
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.CompLBMoy">
+            <summary>
+            Label compression moyen
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.CompLBMax">
+            <summary>
+            Label compression forte
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.CompZExp">
+            <summary>
+            Zip compression
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.Comp7ZExp">
+            <summary>
+            7Zip Compression
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.ConfigExp">
+            <summary>
+            Configuration
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.EnXBExp">
+            <summary>
+            Enhanced XML backup
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.FileExp">
+            <summary>
+            File
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.FileEExp">
+            <summary>
+            File exists
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.FolderEEXp">
+            <summary>
+            Folder exists
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.GeneralExp">
+            <summary>
+            General
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.InfExp">
+            <summary>
+            Informations
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.InfosGExp">
+            <summary>
+            Infos Games
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.LBPathExp">
+            <summary>
+            Launchbox path
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.LoggersExp">
+            <summary>
+            Loggers
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.LvlCompExp">
+            <summary>
+            Level of Compression
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.MainExp">
+            <summary>
+            Main
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.OptionsExp">
+            <summary>
+            Options
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.OriXBExp">
+            <summary>
+            Original xlm backup
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.PathsExp">
+            <summary>
+            Paths
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.ParamsExp">
+            <summary>
+            Parameters
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.ProcessExp">
+            <summary>
+            Process
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.RegionExp">
+            <summary>
+            Word Region
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.Q_Pack">
+            <summary>
+            Question pack this game
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.Rulz">
+            <summary>
+            2Rules
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.S_Language">
+            <summary>
+            Select a language
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.Select">
+            <summary>
+            Select
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.TitleExp">
+            <summary>
+            Word Title
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.SubmitExp">
+            <summary>
+            Submit
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.TViewFExp">
+            <summary>
+            TreeView File
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.VersionExp">
+            <summary>
+            Word Version
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.WPathExp">
+            <summary>
+            Working path
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Cont.Language.WindowExp">
+            <summary>
+            Window
+            </summary>
+        </member>
+        <member name="T:Pack_My_Game.Core.LaunchBoxCore">
+            <summary>
+            
+            </summary>
+            <remarks>
+            Dans la mesure du possible on n'utilise pas LBGame, on va copier directement le xml
+            </remarks>
+        </member>
+        <member name="P:Pack_My_Game.Core.LaunchBoxCore._SelectedGames">
+            <summary>
+            Liste des jeux
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Core.LaunchBoxCore._ZePlatform">
+            <summary>
+            Object containing folders
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Core.LaunchBoxCore._XMLPlatformFile">
+            <summary>
+            Fichier xml contenant les jeux
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Core.LaunchBoxCore._WFolder">
+            <summary>
+            Repertoire de travail
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Core.LaunchBoxCore._SystemPath">
+            <summary>
+            Répertoire de travail selon la machine (voir si utile)
+            </summary>
+        </member>
+        <member name="F:Pack_My_Game.Core.LaunchBoxCore.MemorizedDecision">
+            <summary>
+            Indique la décision précédente en cas de all.
+            </summary>
+        </member>
+        <member name="F:Pack_My_Game.Core.LaunchBoxCore.TempDecision">
+            <summary>
+            Valable uniquement durant le traitement
+            </summary>
+        </member>
+        <member name="F:Pack_My_Game.Core.LaunchBoxCore._FileConflictDecision">
+            <summary>
+            Used to memorize action to 
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.PrepareToContinue(System.Collections.ObjectModel.ObservableCollection{Common_PMG.Container.Game.ShortGame},System.String)">
+            <summary>
+            Répertoire de travail pour le jeu (voir si utile)
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.#ctor(System.String)">
+            <summary>
+            Sert au traitement de packaging pour un jeu
+            </summary>
+            <param name="iD"></param>
+            <param name="platformName"></param>
+        </member>
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.Run(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="timeSleep"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.PackMe(Common_PMG.Container.Game.ShortGame)">
+            <summary>
+            Travail pour un jeu
+            </summary>
+            <param name="shGame"></param>
+        </member>
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.Make_EnhanceBackup(Common_PMG.Container.Game.GameDataCont,Common_PMG.Container.Game.LaunchBox.LBGame,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="gpX"></param>
+            <param name="lbGame"></param>
+            <param name="gamePath"></param>
+            <remarks>
+            Modifie le lbgame
+            </remarks>
+        </member>
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.MakeStructure(System.String)">
+            <summary>
+            Création de la structure de base
+            </summary>
+            <param name="root"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.GetFiles(Common_PMG.Container.Game.LaunchBox.LBGame,Common_PMG.Container.Game.GameDataCont)">
+            <summary>
+            Récupère tous les fichiers en fonction du LBGame, ainsi que des dossiers de la plateforme
+            </summary>
+            <param name="lbGame"></param>
+            <param name="gpX"></param>
+        </member>
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.GetFilesForGames(Common_PMG.Container.Game.LaunchBox.LBGame)">
+            <summary>
+            
+            </summary>
+            <param name="applicationPath"></param>
+            <param name="applications"></param>
+            <returns>Le fichier sélectionné</returns>
+        </member>
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.GetCheatCodes(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="toSearch"></param>
+            <param name="compCheatCodes"></param>
+        </member>
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.GetFileForSpecifics(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="dbGamePath"></param>
+            <returns>
+            Vérifie et retourne le fichier sélectionné
+            </returns>
+        </member>
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.GetClones(Common_PMG.Container.Game.LaunchBox.LBGame,Common_PMG.Container.Game.GameDataCont)">
+            <summary>
+            
+            </summary>
+            <param name="lbGame"></param>
+            <param name="applications"></param>
+            <remarks>
+            Test l'existance avant
+            </remarks>
+        </member>
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.GetFilesByPredict(System.String,System.String,System.String)">
+            <summary>
+            Récupère les fichiers par "prédiction"
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.CreateHFolders(Pack_My_Game.Cont.Folder,System.String[])">
+            <summary>
+            Create Horizontal arborescence
+            </summary>
+            <param name="tree"></param>
+            <param name="folders"></param>
+        </member>
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.Compress_ZipMode(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="gamePath"></param>
+            <param name="title">Tite du jeu</param>
+        </member>
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.Compress_7ZipMode(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="gamePath"></param>
+            <param name="title">Titre du jeu</param>
+        </member>
+        <member name="F:Pack_My_Game.Files.Cue_Scrapper.Files">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.Files.FilesFunc.Copy(System.String,System.String,System.Boolean)">
+            <summary>
+            Fonction de copie avec affichage de la progression
+            </summary>
+            <param name="fileSrc">File source</param>
+            <param name="destFile">File to destination</param>
+            <param name="overWrite">Ecrasement du fichier de destination</param>
+        </member>
+        <member name="M:Pack_My_Game.Files.FilesFunc.DistinctClones(System.Collections.Generic.List{Common_PMG.Container.AAPP.Clone},System.String,System.String)">
+            <summary>
+            Recherche de clones
+            </summary>
+            <param name="clones"></param>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pack_My_Game.Files.FilesFunc.Choose_AName(System.String,System.String)">
+            <summary>
+            Choisir un nom pour un fichier.
+            </summary>
+            <param name="destFile">Fichier de destination</param>
+            <param name="defFile">Nom de Fichier proposé</param>
+            <remarks>Ne permet pas de stopper si on clot la fenêtre</remarks>
+        </member>
+        <member name="M:Pack_My_Game.Files.FoncSchem.MakeStruct(Pack_My_Game.Cont.Folder,System.String)">
+            <summary>
+            Write structure of folder
+            </summary>
+            <param name="tree"></param>
+            <param name="root"></param>
+        </member>
+        <member name="M:Pack_My_Game.Files.FoncSchem.TraitListFolder(Pack_My_Game.Cont.Folder,System.Int32,System.String[])">
+            <summary>
+            Trait a Folder 
+            </summary>
+            <param name="zeFold"></param>
+            <param name="lvl"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Pack_My_Game.IHM.BoxProgress">
+            <summary>
+            Logique d'interaction pour BoxProgress.xaml
+            </summary>
+            <summary>
+            BoxProgress
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.IHM.BoxProgress.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Pack_My_Game.IHM.PackMe_IHM">
+            <summary>
+            S'occupe de gérer les fenêtres lors du processus de package
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.IHM.PackMe_IHM.Ask4_FileConflict2(System.Object,DxLocalTransf.EFileResult,DxLocalTransf.Cont.FileArgs,DxLocalTransf.Cont.FileArgs)">
+            <summary>
+            Show a window to ask what to do when there is a file conflict
+            </summary>
+            <param name="sender"></param>
+            <param name="source"></param>
+            <param name="destination"></param>
+            <param name="buttons"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pack_My_Game.IHM.PackMe_IHM.Validate_FilesFound(System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Show a window to invite user to validate files found
+            </summary>
+            <param name="sender"></param>
+            <param name="location"></param>
+            <param name="toSearch"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pack_My_Game.IHM.PackMe_IHM.ZipCompressFolder(AsyncProgress.I_AsyncSigD,System.Func{System.Object},System.String)">
+            <summary>
+            
+            </summary>
+            <param name="Objet"></param>
+            <param name="method"></param>
+            <param name="title">Titre de la tâche</param>
+            <returns></returns>
+        </member>
+        <member name="M:Pack_My_Game.IHM.PackMe_IHM.DoubleProgress(AsyncProgress.I_AsyncSigD,System.String,System.Func{System.Object,System.Object}[])">
+            <summary>
+            
+            </summary>
+            <param name="Objet"></param>
+            <param name="method"></param>
+            <param name="title">Titre de la tâche</param>
+            <returns></returns>
+        </member>
+        <member name="T:Pack_My_Game.IHM.W_Cheat">
+            <summary>
+            Logique d'interaction pour W_Cheat.xaml
+            </summary>
+            <summary>
+            W_Cheat
+            </summary>
+        </member>
+        <member name="F:Pack_My_Game.IHM.W_Cheat._CheatCodesPath">
+            <summary>
+            Dossier de sauvegarde des cheat codes
+            </summary>
+        </member>
+        <member name="F:Pack_My_Game.IHM.W_Cheat._CheatFilePath">
+            <summary>
+            Chemin du fichier de cheats 
+            </summary>
+        </member>
+        <member name="F:Pack_My_Game.IHM.W_Cheat._GameName">
+            <summary>
+            Nom du jeu
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.IHM.W_Cheat.limit(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="tmp"></param>
+            <returns></returns>
+            <remarks>
+            Algorithme parfait, ne pas toucher !!! 
+            </remarks>
+        </member>
+        <member name="M:Pack_My_Game.IHM.W_Cheat.CutWord(System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="toCut"></param>
+            <param name="position"></param>
+            <returns></returns>
+            
+            <remarks>
+            algorithme parfait, ne pas toucher !
+            </remarks>
+        </member>
+        <member name="M:Pack_My_Game.IHM.W_Cheat.FormatLine(System.Int32,System.String)">
+            <summary>
+            Formatte une ligne
+            </summary>
+            <param name="maxLength"></param>
+            <param name="line"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pack_My_Game.IHM.W_Cheat.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Pack_My_Game.IHM.W_ChooseName">
+            <summary>
+            Logique d'interaction pour GameNAme.xaml
+            </summary>
+            <summary>
+            W_ChooseName
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.IHM.W_ChooseName.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Pack_My_Game.IHM.W_Config">
+            <summary>
+            Logique d'interaction pour W_Config.xaml
+            </summary>
+            <summary>
+            W_Config
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.IHM.W_Config.ChooseLBPath_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Choose the LaunchBoxPath
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Pack_My_Game.IHM.W_Config.ChooseWP_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Choose the working path
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Pack_My_Game.IHM.W_Config.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Pack_My_Game.IHM.W_Games">
+            <summary>
+            Affiche 
+            </summary>
+            <summary>
+            W_Games
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.IHM.W_Games.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Pack_My_Game.IHM.W_Info">
+            <summary>
+            Logique d'interaction pour W_Info.xaml
+            </summary>
+            <summary>
+            W_Info
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.IHM.W_Info.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Pack_My_Game.IHM.W_PackMeRes">
+            <summary>
+            Logique d'interaction pour W_PackMeRes.xaml
+            </summary>
+            <summary>
+            W_PackMeRes
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.IHM.W_PackMeRes.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Pack_My_Game.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.MainWindow.Config_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            MenuItem Config
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Pack_My_Game.MainWindow.Platform_Selected(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Platform selected
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Pack_My_Game.MainWindow.Exec_ExtractDefFiles(System.Object,System.Windows.Input.ExecutedRoutedEventArgs)">
+            <summary>
+            Création d'un fichier indiquant les fichiers choisis par l'utilisateur dans LaunchBox
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Pack_My_Game.MainWindow.Exec_ExtractTBGames(System.Object,System.Windows.Input.ExecutedRoutedEventArgs)">
+            <summary>
+            Création d'un fichier TBGame.Xml
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Pack_My_Game.MainWindow.Exec_CheckGameValidity(System.Object,System.Windows.Input.ExecutedRoutedEventArgs)">
+            <summary>
+            Vérifie que le manuel, la musique et le jeu sont correctement linkés
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Pack_My_Game.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Models.M_Main.LaunchBoxPath">
+            <summary>
+            Dossier de LaunchBox
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.Models.M_Main.Process">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.Models.M_Main.CheckGamesValidity">
+            <summary>
+            Vérifie que les jeux ont les liens pour les manuels, musiques et jeux valides.
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.Models.M_Main.ExtractDefaultFiles">
+            <summary>
+            Extrait les fichiers par défaut choisis dans LaunchBox par rapport à leur racine
+            Le but est uniquement de déterminer l'emplacement dans la nouvelle hiérarchie
+            </summary>
+            <remarks>
+            Il est impératif que:
+                - les liens soient à jour.
+                - les liens se servent des dossier de la machine
+            Sinon on ne récupère pas.
+            </remarks>
+        </member>
+        <member name="M:Pack_My_Game.Models.M_Main.Assign(System.String,System.String,System.Boolean)">
+            <summary>
+            Cette version ne fait pas d'assignation par défaut
+            </summary>
+            <param name="file"></param>
+            <param name="platformPath"></param>
+            <param name="defaultPlatformPath"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Pack_My_Game.Models.M_PackMeRes.Platform">
+            <summary>
+            Contient les chemins de la plateforme
+            </summary>
+        </member>
+        <member name="T:Pack_My_Game.Resources.Lang">
+            <summary>
+              Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Resources.Lang.ResourceManager">
+            <summary>
+              Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Resources.Lang.Culture">
+            <summary>
+              Remplace la propriété CurrentUICulture du thread actuel pour toutes
+              les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Resources.Lang.CheatsPath">
+            <summary>
+              Recherche une chaîne localisée semblable à Cheats Codes Path.
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Resources.Lang.Choose_WPath">
+            <summary>
+              Recherche une chaîne localisée semblable à Choose a working folder.
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Resources.Lang.ChooseGames">
+            <summary>
+              Recherche une chaîne localisée semblable à Choose game(s).
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Resources.Lang.ChoosePath">
+            <summary>
+              Recherche une chaîne localisée semblable à Choose the path.
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Resources.Lang.ChooseSystem">
+            <summary>
+              Recherche une chaîne localisée semblable à Choose a System (Only Consoles).
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Resources.Lang.Config">
+            <summary>
+              Recherche une chaîne localisée semblable à Configuration.
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Resources.Lang.General">
+            <summary>
+              Recherche une chaîne localisée semblable à General.
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Resources.Lang.Infos">
+            <summary>
+              Recherche une chaîne localisée semblable à Informations.
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Resources.Lang.LBPath">
+            <summary>
+              Recherche une chaîne localisée semblable à Path to LaunchBox.
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Resources.Lang.NoElem">
+            <summary>
+              Recherche une chaîne localisée semblable à No element.
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Resources.Lang.NullValue">
+            <summary>
+              Recherche une chaîne localisée semblable à Null value.
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Resources.Lang.Options">
+            <summary>
+              Recherche une chaîne localisée semblable à Options.
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Resources.Lang.Params">
+            <summary>
+              Recherche une chaîne localisée semblable à Parameters.
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Resources.Lang.Path_Rules">
+             <summary>
+               Recherche une chaîne localisée semblable à Two rules:
+            - Each Manual must be in a folder having the same system name AS the name in launchbox.
+                   ex: F:\CheadCodes\Sega Megadrive\ &amp;&amp; in LaunchBox the system is named Sega Megadrive =&gt; Enter F:\CheadCodes\
+            - To select the manuals, they must have a name beginning by the Name of the game + &quot;-&quot; +(optionnal) something
+                    ex: For Sonic, Cheadcode archive must begin by &apos;Sonic-&apos;
+            
+            Note: As much archive as you want..
+             </summary>
+        </member>
+        <member name="P:Pack_My_Game.Resources.Lang.Paths">
+            <summary>
+              Recherche une chaîne localisée semblable à Paths.
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Resources.Lang.S_Language">
+            <summary>
+              Recherche une chaîne localisée semblable à Select your language.
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Resources.Lang.Select">
+            <summary>
+              Recherche une chaîne localisée semblable à Select.
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Resources.Lang.WPath">
+            <summary>
+              Recherche une chaîne localisée semblable à Working path.
+            </summary>
+        </member>
+        <member name="T:Pack_My_Game.XML.XMLLang">
+            <summary>
+            Create xml language files
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.XML.XMLLang.Load(System.String)">
+            <summary>
+            Load Language File
+            </summary>
+            <param name="xmlFile"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

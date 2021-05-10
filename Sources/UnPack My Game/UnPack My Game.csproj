@@ -12,6 +12,7 @@
     <Description>Unpack package for a Frontend</Description>
     <AssemblyVersion>1.0.2.0</AssemblyVersion>
     <ApplicationIcon>UnpackMyGame.ico</ApplicationIcon>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>
