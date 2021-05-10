@@ -46,7 +46,6 @@ namespace UnPack_My_Game.Graph.LaunchBox
         {
             if (e.Key == Key.Enter)
                 _Model.Set_LaunchBoxPath();
-
         }
 
 
@@ -60,13 +59,10 @@ namespace UnPack_My_Game.Graph.LaunchBox
             _Model.ChooseWorkingPath();
         }
 
-
-
         private void ChooseCheatsPath_Click(object sender, RoutedEventArgs e)
         {
             _Model.ChooseCheatsPath();
         }
-
 
 
         #region Reset

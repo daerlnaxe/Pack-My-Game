@@ -15,9 +15,8 @@ using static UnPack_My_Game.Common;
 
 namespace UnPack_My_Game.Models
 {
-    class M_Main: A_Err, INotifyPropertyChanged
+    class M_Main: A_Err
     {
-        public new event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Dossier de LaunchBox
@@ -34,7 +33,7 @@ namespace UnPack_My_Game.Models
             set
             {
                 _ActivePage = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ActivePage)));
+                OnPropertyChanged();
             }
         }
 
@@ -86,7 +85,6 @@ namespace UnPack_My_Game.Models
 
         internal bool Config()
         {
-
             if (new W_Config().ShowDialog() == true)
             {
                 _Errors.Clear();
