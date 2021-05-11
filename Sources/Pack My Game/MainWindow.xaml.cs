@@ -22,7 +22,7 @@ namespace Pack_My_Game
     {
         public static readonly RoutedUICommand CheckGameValidityCmd = new RoutedUICommand("Test game links", nameof(CheckGameValidityCmd), typeof(MainWindow));
         public static readonly RoutedUICommand ExtractTBGameCmd = new RoutedUICommand("Extract True Backup", nameof(ExtractTBGameCmd), typeof(MainWindow));
-        public static readonly RoutedUICommand ExtractNPGameCmd = new RoutedUICommand("Extract NoPath Backup", nameof(ExtractTBGameCmd), typeof(MainWindow));
+        public static readonly RoutedUICommand ExtractNBGameCmd = new RoutedUICommand("Extract NoPath Backup", nameof(ExtractNBGameCmd), typeof(MainWindow));
         public static readonly RoutedUICommand ExtractPlatformCmd = new RoutedUICommand("Extract Platform", "ExtractPlatformCmd", typeof(MainWindow));
         public static readonly RoutedUICommand ExtractDefaultFilesCmd = new RoutedUICommand("Extract Default Files", "ExtractDefaultFilesCmd", typeof(MainWindow));
         public static readonly RoutedUICommand SelectAllCmd = new RoutedUICommand("Select All", "SelectAllCmd", typeof(MainWindow));
@@ -216,7 +216,7 @@ namespace Pack_My_Game
             _Model.ExtractTBGames();
         }
 
-        private void Exec_ExtractNPGame(object sender, ExecutedRoutedEventArgs e)
+        private void Exec_ExtractNBGame(object sender, ExecutedRoutedEventArgs e)
         {
             _Model.Extract_NPBackups();
         }

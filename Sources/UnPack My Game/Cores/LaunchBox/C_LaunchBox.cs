@@ -96,7 +96,7 @@ namespace UnPack_My_Game.Cores
                     TokenSource = this.TokenSource,
                     IsPaused = this.IsPaused,
                 };
-                zippy.ExtractSpecificFiles(g.CurrentPath, tmpPath, "DPGame.json", "NPGame.xml", "TBGame.xml", "EBGame.xml");
+                zippy.ExtractSpecificFiles(g.CurrentPath, tmpPath, "DPGame.json", "NBGame.xml", "TBGame.xml", "EBGame.xml");
             }
 
             else if (fileExt.Equals("7zip", StringComparison.OrdinalIgnoreCase) || fileExt.Equals("7z", StringComparison.OrdinalIgnoreCase))
@@ -107,7 +107,7 @@ namespace UnPack_My_Game.Cores
                     TokenSource = this.TokenSource,
                     IsPaused = this.IsPaused,
                 };
-                sevZipp.ExtractSpecificFiles(g.CurrentPath, tmpPath, "DPGame.json", "NPGame.xml", "TBGame.xml", "EBGame.xml");
+                sevZipp.ExtractSpecificFiles(g.CurrentPath, tmpPath, "DPGame.json", "NBGame.xml", "TBGame.xml", "EBGame.xml");
             }
             else
                 throw new Exception("File format not managed");

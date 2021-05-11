@@ -134,6 +134,8 @@ namespace Common_PMG.Container.Game
             DefaultThemeVideo = null;
         }
 
+        public string Platform { get; private set; }
+
         // ---
 
 
@@ -394,6 +396,7 @@ namespace Common_PMG.Container.Game
             HeTrace.WriteLine($"Cast {nameof(GameDataCont)} with {nameof(GamePaths)}");
 
             GameDataCont GDC = new GameDataCont(v.Title);
+            GDC.Platform = v.Platform;
             GDC.SetApplications = v.Applications.Select(x => new DataPlus(x));
             //GDC.SetDefaultApplication = v.Applications.Select
 

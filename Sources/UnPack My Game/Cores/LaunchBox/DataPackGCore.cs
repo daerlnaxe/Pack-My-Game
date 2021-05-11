@@ -189,7 +189,7 @@ namespace UnPack_My_Game.Cores
                 HeTrace.AddMessenger("Mee", mee);
 
                 foreach (var game in games)
-                { 
+                {
                     InjectGame(game.CurrentPath);
                 }
 
@@ -206,7 +206,7 @@ namespace UnPack_My_Game.Cores
                 HeTrace.RemoveMessenger("Mee");
 
             }
-                return result;
+            return result;
         }
 
 
@@ -499,8 +499,8 @@ namespace UnPack_My_Game.Cores
                 xmlGame = Path.Combine(gamePath, "TBGame.xml");
             else if (File.Exists(Path.Combine(gamePath, "EBGame.xml")))
                 xmlGame = Path.Combine(gamePath, "EBGame.xml");
-            else if (File.Exists(Path.Combine(gamePath, "NPGame.xml")))
-                xmlGame = Path.Combine(gamePath, "NPGame.xml");
+            else if (File.Exists(Path.Combine(gamePath, "NBGame.xml")))
+                xmlGame = Path.Combine(gamePath, "NBGame.xml");
 
             //
             if (xmlGame == null)
@@ -526,7 +526,11 @@ namespace UnPack_My_Game.Cores
                 // ----------------- Traitement du jeu.
                 XElement xelGame = xmlSrc.GetGameNode();
 
-                // Modifications
+                // ---  Modifications
+                // Changement de la plateforme
+                if (xelGame.Element(Tag.Platform) != null)
+                    xelGame.Element(Tag.Platform).Value = gdC.Platform;
+
                 // App
                 ModifElement(xelGame, Tag.AppPath, gdC.DefaultApp, true);
                 // Manuel

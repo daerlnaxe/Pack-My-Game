@@ -151,10 +151,10 @@ namespace UnPack_My_Game.Cores
                 HeTrace.WriteLine("DPG Missing, work with TBGame");
                 gpX = GetMainsInfo(gamePath, "TBGame.xml");
             }
-            else if (File.Exists(Path.Combine(gamePath, "NPGame.xml")))
+            else if (File.Exists(Path.Combine(gamePath, "NBGame.xml")))
             {
-                HeTrace.WriteLine("DPG Missing, work with NPGame");
-                gpX = GetMainsInfo(gamePath, "NPGame.xml");
+                HeTrace.WriteLine("DPG Missing, work with NBGame");
+                gpX = GetMainsInfo(gamePath, "NBGame.xml");
             }
 
             if (gpX == null)
@@ -191,7 +191,7 @@ namespace UnPack_My_Game.Cores
 
 
             SafeBoxes.LaunchDouble(zippy, () => zippy.ExtractSpecificFiles(archive.CurrentPath, gamePath,
-                                                        "NPGame.xml","TBGame.xml", "EBGame.xml", "DPGame.json"),
+                                                        "NBGame.xml","TBGame.xml", "EBGame.xml", "DPGame.json"),
                                                         "Zip Extraction");
             /*var res = PackMe_IHM.ZipCompressFolder(zippy, () => zippy.CompressFolder(
                                          gamePath, title, PS.Default.cZipCompLvl), "Compression Zip");*/
@@ -208,7 +208,7 @@ namespace UnPack_My_Game.Cores
             };
 
             SafeBoxes.LaunchDouble(zippy, () => zippy.ExtractSpecificFiles(zF.CurrentPath, gamePath,
-                                                        "NPGame.xml","TBGame.xml", "EBGame.xml", "DPGame.json"),
+                                                        "NBGame.xml","TBGame.xml", "EBGame.xml", "DPGame.json"),
                                                         "SevenZip Extraction");
         }
 

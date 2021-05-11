@@ -20,7 +20,7 @@
         <CommandBinding Command="local:MainWindow.CheckGameValidityCmd" CanExecute="Can_GamesSelected" Executed="Exec_CheckGameValidity"/>
         <CommandBinding Command="local:MainWindow.ExtractPlatformCmd" CanExecute="Can_ExtractPlatform" Executed="Exec_ExtractPlatform"/>
         <CommandBinding Command="local:MainWindow.ExtractTBGameCmd" CanExecute="Can_GamesSelected" Executed="Exec_ExtractTBGames"/>
-        <CommandBinding Command="local:MainWindow.ExtractNPGameCmd" CanExecute="Can_GamesSelected" Executed="Exec_ExtractNPGame"/>
+        <CommandBinding Command="local:MainWindow.ExtractNBGameCmd" CanExecute="Can_GamesSelected" Executed="Exec_ExtractNBGame"/>
         <CommandBinding Command="local:MainWindow.ExtractDefaultFilesCmd" CanExecute="Can_GamesSelected" Executed="Exec_ExtractDefFiles"/>
         <CommandBinding Command="local:Common.ProcessCommand" CanExecute="Can_Process" Executed="Exec_Process"/>
         <CommandBinding Command="local:MainWindow.SelectAllCmd" CanExecute="Can_SelectAll" Executed="Exec_SelectAll"/>
@@ -197,7 +197,7 @@
                                     <MenuItem Command="local:MainWindow.CheckGameValidityCmd"/>
                                     <MenuItem Command="local:MainWindow.ExtractTBGameCmd"/>
                                     <MenuItem Command="local:MainWindow.ExtractDefaultFilesCmd"/>
-                                    <MenuItem Command="local:MainWindow.ExtractNPGameCmd"/>
+                                    <MenuItem Command="local:MainWindow.ExtractNBGameCmd"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                             <ListView.ItemContainerStyle>
