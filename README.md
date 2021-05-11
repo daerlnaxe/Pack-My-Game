@@ -56,16 +56,10 @@ Voir plus [PackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Pack-My-Ga
  * PackMyGame: Beta 2.0.1.0
  * UnpackMyGame: Beta 1.0.2.0
 
-See more [PackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Pack-My-Game-*-Development-(En)) / [UnpackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Unpack-My-Game-*-Development-(En))
-
-Voir plus [PackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Pack-My-Game-*-Development-(Fr)) / [UnpackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Unpack-My-Game-*-Development-(Fr))
-
 ### 21/04/2021:
  * Common PMG: Alpha 1.0.0.1
  * PackMyGame: Alpha 2.0.0.2
  * UnPackMyGame: Alpha 1.0.1.0
- 
-See more [PackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Pack-My-Game-*-Development-(En)) / [UnpackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Unpack-My-Game-*-Development-(En))
 
 ### Alpha 2.0.0.0
  * Big changes, the application migrates to wpf system instead of forms.
