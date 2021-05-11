@@ -225,6 +225,8 @@ namespace UnPack_My_Game.Cores
             // Copie des fichiers (on s'appuie sur les dossiers de la plateforme)
             if (CopyFiles(gdC) == false)
                 return;
+
+            HeTrace.WriteLine($"Game exported: {gdC.Title}");
         }
 
 
@@ -257,6 +259,10 @@ namespace UnPack_My_Game.Cores
                 if (string.IsNullOrEmpty(newPFile))
                     throw new Exception("File for injection is not filled");
 
+                // Vérification que c'est la bonne plateforme
+                if (!XML_Custom.TestPresence(newPFile, Tag.Platform, Tag.Name, gpX.Platform))
+                    throw new Exception("File doesn't contain the good platform");
+
                 HeTrace.WriteLine($"Injecting {gpX.Platform} in platforms file for {gpX.Platform}");
                 InjectPlatform(gpX.Platform, newPFile);
             }
@@ -281,7 +287,7 @@ namespace UnPack_My_Game.Cores
 
             InjectInXMLFile(gamePath, gdC, machineXMLFile, zePlatform.FolderPath);
 
-            HeTrace.WriteLine($"Done: {gdC.Title}");
+            HeTrace.WriteLine($"Game injected: {gdC.Title}");
 
             return gdC;
         }
