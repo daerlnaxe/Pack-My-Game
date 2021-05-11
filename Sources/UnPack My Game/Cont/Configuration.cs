@@ -81,6 +81,7 @@ namespace UnPack_My_Game.Cont
         }
 
 
+
         public Configuration(Configuration config)
         {
             this.Version = config.Version;
@@ -142,6 +143,9 @@ namespace UnPack_My_Game.Cont
                 DxMBox.ShowDial(ioExc.Message, "Error on reading config file");
                 System.Windows.Application.Current.Shutdown();
             }
+
+            if (!Directory.Exists(config.LastArchivePath))
+                config.LastArchivePath = null;
 
             /*if (config.SevZipLvlCompression > 6 || config.SevZipLvlCompression < 1)
                 throw new Exception("Problem on SevenZip level compression, value must be 0<x<7");
@@ -234,6 +238,16 @@ namespace UnPack_My_Game.Cont
             // Language
             if (string.IsNullOrEmpty(Language))
                 Language = "en-EN";
+        }
+
+        internal void InitPaths()
+        {
+                LaunchBoxPath = String.IsNullOrEmpty(LaunchBoxPath) ? null :
+                                       Path.GetFullPath(LaunchBoxPath, AppDomain.CurrentDomain.BaseDirectory);
+                WorkingFolder = String.IsNullOrEmpty(WorkingFolder) ? null :
+                                       Path.GetFullPath(WorkingFolder, AppDomain.CurrentDomain.BaseDirectory);
+                CCodesPath = String.IsNullOrEmpty(CCodesPath) ? null :
+                                        Path.GetFullPath(CCodesPath, AppDomain.CurrentDomain.BaseDirectory);
         }
     }
 }

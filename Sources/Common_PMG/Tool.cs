@@ -54,6 +54,8 @@ namespace Common_PMG
                     targetfP += "00.xml";
             }
 
+            Directory.CreateDirectory(Path.GetDirectoryName(targetfP));
+
             //File.Copy(machine,);
             File.Copy(file, targetfP, true);
         }

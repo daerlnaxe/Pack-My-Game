@@ -329,7 +329,9 @@ namespace UnPack_My_Game.Models.LaunchBox
             Common.Config = Config;
             Common.Config.Save();
 
+            Common.Config.InitPaths();
             return true;
+
 
         }
 

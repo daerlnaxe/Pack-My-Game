@@ -27,18 +27,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Unbroken.LaunchBox.Plugins">
-      <HintPath>G:\Frontend\LaunchBox - Test\Core\Unbroken.LaunchBox.Plugins.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Converters\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\DxLocalTrans\DxLocalTrans\DxLocalTransf.csproj" />
     <ProjectReference Include="..\..\..\Hermes\Sources\Hermes.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Unbroken.LaunchBox.Plugins">
+      <HintPath>..\..\..\..\..\FauxLaunchBox\Users\Default\Frontend\LaunchBox - Test\Core\Unbroken.LaunchBox.Plugins.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

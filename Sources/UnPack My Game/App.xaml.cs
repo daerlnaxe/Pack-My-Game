@@ -59,13 +59,7 @@ namespace UnPack_My_Game
                     Config.Save();
                 }
 
-                // On remet en hardlink pour le reste de l'application
-                Config.LaunchBoxPath = String.IsNullOrEmpty(Config.LaunchBoxPath) ? null :
-                                       Path.GetFullPath(Config.LaunchBoxPath, AppDomain.CurrentDomain.BaseDirectory);
-                Config.WorkingFolder = String.IsNullOrEmpty(Config.WorkingFolder) ? null :
-                                       Path.GetFullPath(Config.WorkingFolder, AppDomain.CurrentDomain.BaseDirectory);
-                Config.CCodesPath = String.IsNullOrEmpty(Config.CCodesPath) ? null :
-                                        Path.GetFullPath(Config.CCodesPath, AppDomain.CurrentDomain.BaseDirectory);
+                Config.InitPaths();
             }
             catch(Exception exc)
             {
