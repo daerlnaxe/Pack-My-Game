@@ -51,7 +51,7 @@ no image file in the the destination folder. (28/10/2020 to Modify)
  * PackMyGame: Alpha 2.0.0.2
  * UnPackMyGame: Alpha 1.0.1.0
  
-[See more](https://github.com/daerlnaxe/Pack-My-Game/wiki/Pack-My-Game-*-Development-(En))
+See more [PackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Pack-My-Game-*-Development-(En)) / [UnpackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Unpack-My-Game-*-Development-(En))
 
 ### Alpha 2.0.0.0
  * Big changes, the application migrates to wpf system instead of forms.
