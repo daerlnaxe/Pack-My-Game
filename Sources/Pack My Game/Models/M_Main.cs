@@ -316,7 +316,10 @@ namespace Pack_My_Game.Models
                 {
                     HeTrace.WriteLine($"Remove game(s) from list");
                     foreach (ShortGame sgame in SelectedGames)
+                    {
                         AvailableGames.Remove(sgame);
+                        sgame.IsSelected = false;
+                    }
                 }
 
                 SelectedGames.Clear();

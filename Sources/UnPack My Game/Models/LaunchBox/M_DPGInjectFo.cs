@@ -19,7 +19,7 @@ namespace UnPack_My_Game.Models.LaunchBox
 
         public string SelectSentence => "Ajoutez des dossiers via le menu contextuel";
 
-        public ObservableCollection<DataRep> Elements { get; set; }
+        public ObservableCollection<DataRep> Elements { get; set; } = new ObservableCollection<DataRep>();
 
         public void Add()
         {
