@@ -118,7 +118,7 @@ namespace Pack_My_Game.Models
         internal void ReloadConfig(Configuration oldConfig)
         {
             _Errors.Clear();
-            if (oldConfig.HLaunchBoxPath ==null ||  !oldConfig.HLaunchBoxPath.Equals(Config.HLaunchBoxPath))
+            if (oldConfig.HLaunchBoxPath == null || !oldConfig.HLaunchBoxPath.Equals(Config.HLaunchBoxPath))
             {
                 OnPropertyChanged(nameof(LaunchBoxPath));
                 LoadPlatforms();
@@ -182,7 +182,7 @@ namespace Pack_My_Game.Models
 
 
         internal void LoadPlatforms()
-        {            
+        {
             if (!Directory.Exists(Config.HLaunchBoxPath))
                 Add_Error("LaunchBox doesn't exist", nameof(LaunchBoxPath));
             if (!Directory.Exists(Config.HWorkingFolder))
@@ -315,9 +315,11 @@ namespace Pack_My_Game.Models
                 if (DxMBox.ShowDial($"Remove game(s) from the list ?", "Remove game(s)", E_DxButtons.No | E_DxButtons.Yes) == true)
                 {
                     HeTrace.WriteLine($"Remove game(s) from list");
-                    /*     foreach (ShortGame sgame in selectedGames)
-                             AvailableGames.Remove(sgame);*/
+                    foreach (ShortGame sgame in SelectedGames)
+                        AvailableGames.Remove(sgame);
                 }
+
+                SelectedGames.Clear();
             }
 
             // traiter pour retirer ce qui est traité? voir etc etc
