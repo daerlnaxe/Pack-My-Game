@@ -348,7 +348,7 @@ namespace UnPack_My_Game.Cores
         {
             HeTrace.WriteLine($"[{nameof(PrepareGDC)}]");
 
-            GameDataCont gdc = new GameDataCont(gpX.Title, gpX.Platform) ;
+            GameDataCont gdc = new GameDataCont(gpX.Title, gpX.Platform);
 
             string tmp = string.Empty;
 
@@ -372,22 +372,22 @@ namespace UnPack_My_Game.Cores
             // Manuals
             HeTrace.WriteLine($"\tManuals: {Config.Manuals}");
             tmp = Path.Combine(root, Config.Manuals);
-            gdc.SetDefaultManual = gpX.ManualPath == null ? null : Path.GetFullPath(gpX.ManualPath, tmp);
+            gdc.SetDefaultManual = string.IsNullOrEmpty(gpX.ManualPath)? null : Path.GetFullPath(gpX.ManualPath, tmp);
             if (Directory.Exists(tmp))
                 gdc.AddSManuals = Directory.GetFiles(Path.Combine(tmp), "*.*", SearchOption.AllDirectories).ToList();
 
             // Musics
             HeTrace.WriteLine($"\tMusics: {Config.Musics}");
             tmp = Path.Combine(root, Config.Musics);
-            gdc.SetDefaultMusic = gpX.MusicPath == null ? null : Path.GetFullPath(gpX.MusicPath, tmp);
+            gdc.SetDefaultMusic = string.IsNullOrEmpty(gpX.MusicPath) ? null : Path.GetFullPath(gpX.MusicPath, tmp);
             if (Directory.Exists(tmp))
                 gdc.AddSMusics = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories).ToList();
 
             // Videos
             HeTrace.WriteLine($"\tVideos: {Config.Videos}");
             tmp = Path.Combine(root, Config.Videos);
-            gdc.SetDefaultVideo = gpX.VideoPath == null ? null : Path.GetFullPath(gpX.VideoPath, tmp);
-            gdc.SetDefaultThemeVideo = gpX.ThemeVideoPath == null ? null : Path.GetFullPath(gpX.ThemeVideoPath, tmp);
+            gdc.SetDefaultVideo =  string.IsNullOrEmpty(gpX.VideoPath) ? null : Path.GetFullPath(gpX.VideoPath, tmp);
+            gdc.SetDefaultThemeVideo = string.IsNullOrEmpty(gpX.ThemeVideoPath) ? null : Path.GetFullPath(gpX.ThemeVideoPath, tmp);
             if (Directory.Exists(tmp))
                 gdc.AddSVideos = Directory.GetFiles(tmp, "*.*", SearchOption.AllDirectories);
 
@@ -406,6 +406,7 @@ namespace UnPack_My_Game.Cores
 
             return gdc;
         }
+
 
         public List<DataRepExt> PrepareImages(string root)
         {
@@ -512,11 +513,13 @@ namespace UnPack_My_Game.Cores
             {
                 bool? remove = false;
                 if (xmlPlat.Exists(GameTag.ID, gdC.DefaultApp.Id))
+                {
                     remove = IHMStatic.AskDxMBox("Game is already present, remove it ? ", "Question", E_DxButtons.No | E_DxButtons.Yes, gdC.DefaultApp.Name);
 
-                // ----------------- On enlève si désiré
-                if (remove == true)
-                {
+                    if (remove != true)
+                        return;
+
+                    // ----------------- On enlève si désiré
                     xmlPlat.Remove_Game(gdC.DefaultApp.Id);
                     xmlPlat.Remove_AddApps(gdC.DefaultApp.Id);
                     xmlPlat.Remove_CustomF(gdC.DefaultApp.Id);
