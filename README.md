@@ -45,7 +45,8 @@ no image file in the the destination folder. (28/10/2020 to Modify)
  * UnpackMyGame: Beta 1.0.2.0
 
 See more [PackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Pack-My-Game-*-Development-(En)) / [UnpackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Unpack-My-Game-*-Development-(En))
-Voir plus [PackMyGame] / [UnpackMyGame]
+
+Voir plus [PackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Pack-My-Game-*-Development-(Fr)) / [UnpackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Unpack-My-Game-*-Development-(Fr))
 
 ### (21/04/2021):
  * Common PMG: Alpha 1.0.0.1
