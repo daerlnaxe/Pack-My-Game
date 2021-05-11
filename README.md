@@ -3,6 +3,9 @@ Download folder: https://github.com/daerlnaxe/Pack-My-Game/tree/master/Releases
 
 ## What it does:
  * It copies then compress everything about a game contained in the db of LaunchBox app.
+ * You can reinject with unpack my game into your LaunchBox application.
+ * See Wiki for more ...
+
  * It generates a short xml file with the main information about the game
  * It takes images, pdf manual, video, music, rom file.
  * It takes also the cheatcode files if you fill the path ('GameName-*.*')
@@ -35,12 +38,22 @@ no image file in the the destination folder. (28/10/2020 to Modify)
  * It logs everything during the game treatment in a window, and a file.
 		
 ## Versions
+### (11/05/2021)
+ * Common PMG: Beta 1.0.0.1 (Forget to change version number)
+ * Common Graph: Beta 1.0.0.1
+ * PackMyGame: Beta 2.0.1.0
+ * UnpackMyGame: Beta 1.0.2.0
+
+See more [PackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Pack-My-Game-*-Development-(En)) / [UnpackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Unpack-My-Game-*-Development-(En))
+
+Voir plus [PackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Pack-My-Game-*-Development-(Fr)) / [UnpackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Unpack-My-Game-*-Development-(Fr))
+
 ### (21/04/2021):
  * Common PMG: Alpha 1.0.0.1
  * PackMyGame: Alpha 2.0.0.2
  * UnPackMyGame: Alpha 1.0.1.0
  
-[See more](https://github.com/daerlnaxe/Pack-My-Game/wiki/Pack-My-Game-*-Development-(En))
+See more [PackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Pack-My-Game-*-Development-(En)) / [UnpackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Unpack-My-Game-*-Development-(En))
 
 ### Alpha 2.0.0.0
  * Big changes, the application migrates to wpf system instead of forms.
