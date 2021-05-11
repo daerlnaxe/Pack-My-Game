@@ -350,7 +350,7 @@ namespace Pack_My_Game.Core
 
 
             // --- Récupération des fichiers
-            GameDataCont gdC = new GameDataCont(lbGame.Title);
+            GameDataCont gdC = new GameDataCont(lbGame.Title, lbGame.Platform);
 
             GetFiles(lbGame, gdC);
 

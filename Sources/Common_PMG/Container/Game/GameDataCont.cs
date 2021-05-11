@@ -30,6 +30,7 @@ namespace Common_PMG.Container.Game
         public IReadOnlyCollection<DataPlus> Applications => _Applications.AsReadOnly();
 
         private List<DataRep> _Manuals /* set; */ = new List<DataRep>();
+
         public IReadOnlyList<DataRep> Manuals => _Manuals.AsReadOnly();
 
         public List<DataRep> Musics { get; /*set;*/ } = new List<DataRep>();
@@ -324,10 +325,12 @@ namespace Common_PMG.Container.Game
 
         #endregion
 
-        public GameDataCont(string title)
+        public GameDataCont(string title, string platform)
         {
             Title = title;
+            Platform = platform;
         }
+
 
         public void RemoveApp(DataPlus app)
         {
@@ -395,8 +398,8 @@ namespace Common_PMG.Container.Game
         {
             HeTrace.WriteLine($"Cast {nameof(GameDataCont)} with {nameof(GamePaths)}");
 
-            GameDataCont GDC = new GameDataCont(v.Title);
-            GDC.Platform = v.Platform;
+            GameDataCont GDC = new GameDataCont(v.Title, v.Platform);
+
             GDC.SetApplications = v.Applications.Select(x => new DataPlus(x));
             //GDC.SetDefaultApplication = v.Applications.Select
 

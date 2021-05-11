@@ -348,7 +348,7 @@ namespace UnPack_My_Game.Cores
         {
             HeTrace.WriteLine($"[{nameof(PrepareGDC)}]");
 
-            GameDataCont gdc = new GameDataCont(gpX.Title);
+            GameDataCont gdc = new GameDataCont(gpX.Title, gpX.Platform) ;
 
             string tmp = string.Empty;
 
