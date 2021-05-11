@@ -4,7 +4,7 @@
     <Authors>Alexandre CODOUL aka Daerlnaxe</Authors>
     <Company>Daerlnaxe Software</Company>
     <Copyright>Copyright ©  2018-2038 Daerlnaxe Software</Copyright>
-    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <AssemblyVersion>1.0.0.2</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
