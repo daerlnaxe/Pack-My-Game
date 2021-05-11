@@ -46,6 +46,10 @@ no image file in the the destination folder. (28/10/2020 to Modify)
 
 See more [PackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Pack-My-Game-*-Development-(En)) / [UnpackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Unpack-My-Game-*-Development-(En))
 
+Voir plus [PackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Pack-My-Game-*-Development-(Fr)) / [UnpackMyGame](https://github.com/daerlnaxe/Pack-My-Game/wiki/Unpack-My-Game-*-Development-(Fr))
+
+
+
 ### 11/05/2021
  * Common PMG: Beta 1.0.0.1 (Forget to change version number)
  * Common Graph: Beta 1.0.0.1
