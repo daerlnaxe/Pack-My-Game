@@ -124,6 +124,24 @@ namespace UnPack_My_Game.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Add files by contextual menu..
+        /// </summary>
+        public static string ContM_AddFile {
+            get {
+                return ResourceManager.GetString("ContM_AddFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Add folders by contextual menu..
+        /// </summary>
+        public static string ContM_AddFolder {
+            get {
+                return ResourceManager.GetString("ContM_AddFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Deselect All.
         /// </summary>
         public static string DeSelect_all {
@@ -205,11 +223,20 @@ namespace UnPack_My_Game.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Select a zip file to make DPG file, it will make it, save it in your zip and recalculate md5 file..
+        ///   Recherche une chaîne localisée semblable à Select a zip file to make DPG file..
         /// </summary>
         public static string I_DPGZipFile {
             get {
                 return ResourceManager.GetString("I_DPGZipFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Select a folder to make a DPG file..
+        /// </summary>
+        public static string I_DPGZipFolder {
+            get {
+                return ResourceManager.GetString("I_DPGZipFolder", resourceCulture);
             }
         }
         

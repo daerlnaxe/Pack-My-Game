@@ -10,6 +10,7 @@ using System.Text;
 using System.Windows.Forms;
 using UnPack_My_Game.Cores;
 using UnPack_My_Game.Models.Submenus;
+using UnPack_My_Game.Resources;
 
 namespace UnPack_My_Game.Models.LaunchBox
 {
@@ -17,7 +18,7 @@ namespace UnPack_My_Game.Models.LaunchBox
     {
         public string Information => "Injection by Folder(s)";
 
-        public string SelectSentence => "Ajoutez des dossiers via le menu contextuel";
+        public string SelectSentence => Lang.ContM_AddFolder;
 
         public ObservableCollection<DataRep> Elements { get; set; } = new ObservableCollection<DataRep>();
 

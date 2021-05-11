@@ -17,7 +17,7 @@ namespace UnPack_My_Game.Models.LaunchBox
     class M_DPGUnpack : A_Err, I_Select
     {
         public string Information => Lang.I_DPGZipFile;
-        public string SelectSentence => "Ajoutez des fichiers via le menu contextuel";
+        public string SelectSentence => Lang.ContM_AddFile;
 
         public ObservableCollection<DataRep> Elements { get; set; } = new ObservableCollection<DataRep>();
 

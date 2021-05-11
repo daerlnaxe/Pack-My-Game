@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using UnPack_My_Game.Cores;
-
+using UnPack_My_Game.Resources;
 
 namespace UnPack_My_Game.Models.LaunchBox
 {
@@ -16,7 +16,7 @@ namespace UnPack_My_Game.Models.LaunchBox
     {
         public string Information => "Unpack to LaunchBox";
 
-        public string SelectSentence => "Ajoutez des fichiers via le menu contextuel";
+        public string SelectSentence => Lang.ContM_AddFile;
 
         public ObservableCollection<DataRep> Elements { get; set; } = new ObservableCollection<DataRep>();
 
