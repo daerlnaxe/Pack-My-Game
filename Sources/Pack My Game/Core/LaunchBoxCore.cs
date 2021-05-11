@@ -168,14 +168,14 @@ namespace Pack_My_Game.Core
             //_PlatformName = platformName;
 
             #region Initialisation des chemins
-            _WFolder = Config.WorkingFolder;
+            _WFolder = Config.HWorkingFolder;
             // Chemin du dossier temporaire du system
             _SystemPath = Path.Combine(_WFolder, platformName);
 
             #endregion
 
-            _XMLPlatformFile = Path.Combine(Config.LaunchBoxPath , Config.PlatformsFolder, $"{platformName}.xml");
-            _ZePlatform = XML_Platforms.GetPlatformPaths(Path.Combine(Config.LaunchBoxPath, Config.PlatformsFile), platformName);
+            _XMLPlatformFile = Path.Combine(Config.HLaunchBoxPath , Config.PlatformsFolder, $"{platformName}.xml");
+            _ZePlatform = XML_Platforms.GetPlatformPaths(Path.Combine(Config.HLaunchBoxPath, Config.PlatformsFile), platformName);
 
 
             #region Messages
@@ -506,11 +506,11 @@ namespace Pack_My_Game.Core
         /// </remarks>
         private void Make_EnhanceBackup(GameDataCont gdC, LBGame lbGame, string gamePath)
         {
-            lbGame.ApplicationPath = DxPath.To_RelativeOrNull(Common.Config.LaunchBoxPath, gdC.DefaultApp?.CurrentPath);
-            lbGame.ManualPath = DxPath.To_RelativeOrNull(Common.Config.LaunchBoxPath, gdC.DefaultManual?.CurrentPath);
-            lbGame.MusicPath = DxPath.To_RelativeOrNull(Common.Config.LaunchBoxPath, gdC.DefaultMusic?.CurrentPath);
-            lbGame.VideoPath = DxPath.To_RelativeOrNull(Common.Config.LaunchBoxPath, gdC.DefaultVideo?.CurrentPath);
-            lbGame.ThemeVideoPath = DxPath.To_RelativeOrNull(Common.Config.LaunchBoxPath, gdC.DefaultThemeVideo?.CurrentPath);
+            lbGame.ApplicationPath = DxPath.To_RelativeOrNull(Common.Config.HLaunchBoxPath, gdC.DefaultApp?.CurrentPath);
+            lbGame.ManualPath = DxPath.To_RelativeOrNull(Common.Config.HLaunchBoxPath, gdC.DefaultManual?.CurrentPath);
+            lbGame.MusicPath = DxPath.To_RelativeOrNull(Common.Config.HLaunchBoxPath, gdC.DefaultMusic?.CurrentPath);
+            lbGame.VideoPath = DxPath.To_RelativeOrNull(Common.Config.HLaunchBoxPath, gdC.DefaultVideo?.CurrentPath);
+            lbGame.ThemeVideoPath = DxPath.To_RelativeOrNull(Common.Config.HLaunchBoxPath, gdC.DefaultThemeVideo?.CurrentPath);
 
             XML_Games.EnhancedBackup(_XMLPlatformFile, lbGame, gamePath);
         }
@@ -614,7 +614,7 @@ namespace Pack_My_Game.Core
             // --- Cas des extensions cue
             if (extension.Equals(".cue", StringComparison.OrdinalIgnoreCase))
             {
-                string srcFile = Path.GetFullPath(lbGame.ApplicationPath, Common.Config.LaunchBoxPath);
+                string srcFile = Path.GetFullPath(lbGame.ApplicationPath, Common.Config.HLaunchBoxPath);
 
                 //Lecture du fichier cue
                 Cue_Scrapper cuecont = new Cue_Scrapper(srcFile);
@@ -630,7 +630,7 @@ namespace Pack_My_Game.Core
                 }
             }
 
-            games.Add(DataPlus.MakeChosen(lbGame.Id, lbGame.Title, Path.GetFullPath(lbGame.ApplicationPath, Common.Config.LaunchBoxPath)));
+            games.Add(DataPlus.MakeChosen(lbGame.Id, lbGame.Title, Path.GetFullPath(lbGame.ApplicationPath, Common.Config.HLaunchBoxPath)));
 
 
 
@@ -638,7 +638,7 @@ namespace Pack_My_Game.Core
             List<Clone> clones = XML_Games.ListClones(_XMLPlatformFile, "GameID", lbGame.Id).ToList();
 
             // tri des doublons / filter duplicates
-            List<Clone> fClones = FilesFunc.DistinctClones(clones, lbGame.ApplicationPath, Common.Config.LaunchBoxPath);
+            List<Clone> fClones = FilesFunc.DistinctClones(clones, lbGame.ApplicationPath, Common.Config.HLaunchBoxPath);
 
 
             if (fClones.Any())
@@ -647,7 +647,7 @@ namespace Pack_My_Game.Core
 
                 foreach (Clone c in fClones)
                 {
-                    string path = Path.GetFullPath(c.ApplicationPath, Common.Config.LaunchBoxPath);
+                    string path = Path.GetFullPath(c.ApplicationPath, Common.Config.HLaunchBoxPath);
 
                     if (File.Exists(path))
                         games.Add(DataPlus.MakeNormal(c.Id, Path.GetFileName(path), path));
@@ -665,10 +665,10 @@ namespace Pack_My_Game.Core
         /// <param name="compCheatCodes"></param>
         private ICollection<string> GetCheatCodes(string toSearch)
         {
-            if (string.IsNullOrEmpty(Config.CCodesPath))
+            if (string.IsNullOrEmpty(Config.HCCodesPath))
                 return new string[0];
 
-            string CCodesDir = Path.Combine(Config.CCodesPath, _ZePlatform.Name);
+            string CCodesDir = Path.Combine(Config.HCCodesPath, _ZePlatform.Name);
             if (!Directory.Exists(CCodesDir))
             {
                 SetStatus(this, new StateArg($"Directory doesn't exist: '{CCodesDir}'", CancelFlag));
@@ -692,7 +692,7 @@ namespace Pack_My_Game.Core
             if (!string.IsNullOrEmpty(dbGamePath))
             {
                 HeTrace.WriteLine($"\t[{nameof(GetFileForSpecifics)}]");
-                string linkFile = Path.GetFullPath(dbGamePath, Common.Config.LaunchBoxPath);
+                string linkFile = Path.GetFullPath(dbGamePath, Common.Config.HLaunchBoxPath);
                 if (File.Exists(linkFile))
                 {
                     return linkFile;
@@ -753,7 +753,7 @@ namespace Pack_My_Game.Core
                         continue;
                 }
 
-                string folder = Path.GetFullPath(plfmFolder.FolderPath, Common.Config.LaunchBoxPath);
+                string folder = Path.GetFullPath(plfmFolder.FolderPath, Common.Config.HLaunchBoxPath);
                 // Liste du contenu des dossiers
                 foreach (var fichier in Directory.EnumerateFiles(folder, "*.*", SearchOption.AllDirectories))
                 {
@@ -784,7 +784,7 @@ namespace Pack_My_Game.Core
         {
 
             // array of files with a part of the name
-            string[] files = Directory.GetFiles(Path.GetFullPath(folder, Common.Config.LaunchBoxPath), $"{toSearch}*.*", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(Path.GetFullPath(folder, Common.Config.HLaunchBoxPath), $"{toSearch}*.*", SearchOption.AllDirectories);
 
             #region processing on files found
             // bypass - 
@@ -839,7 +839,7 @@ namespace Pack_My_Game.Core
 
 
             // protection
-            if (mediatype == "CheatCode" && string.IsNullOrEmpty(Config.CCodesPath))
+            if (mediatype == "CheatCode" && string.IsNullOrEmpty(Config.HCCodesPath))
                 return;           
 
 
@@ -852,7 +852,7 @@ namespace Pack_My_Game.Core
             }
             else if (mediatype == "CheatCode")
             {
-                folder = Path.Combine(Config.CCodesPath, _ZePlatform.Name);
+                folder = Path.Combine(Config.HCCodesPath, _ZePlatform.Name);
             }
             else if (!string.IsNullOrEmpty(mediatype))
             {
@@ -863,11 +863,11 @@ namespace Pack_My_Game.Core
                 folder = pFolder.FolderPath;
             }
 
-            if (folder.Equals(Config.LaunchBoxPath) || folder.Equals(AppDomain.CurrentDomain.BaseDirectory))
+            if (folder.Equals(Config.HLaunchBoxPath) || folder.Equals(AppDomain.CurrentDomain.BaseDirectory))
                 throw new Exception($"Error on target folder '{folder}'");
 
 
-            folder = Path.GetFullPath(folder, Config.LaunchBoxPath);
+            folder = Path.GetFullPath(folder, Config.HLaunchBoxPath);
             foreach (var fichier in elems)
                 PrepareFile(fichier, destLocation, keepStruct, folder);
 
@@ -934,7 +934,7 @@ namespace Pack_My_Game.Core
                 PlatformFolder pFolder = _ZePlatform.PlatformFolders.First(
                                           (x) => x.MediaType.Equals(pkFile.Categorie, StringComparison.OrdinalIgnoreCase));
 
-                string toReplace = Path.GetFullPath(pFolder.FolderPath, Common.Config.LaunchBoxPath);
+                string toReplace = Path.GetFullPath(pFolder.FolderPath, Common.Config.HLaunchBoxPath);
                 if (toReplace != null && pkFile.CurrentPath.Contains(toReplace))
                 {
                     tail = pkFile.CurrentPath.Replace(toReplace, string.Empty).TrimStart('\\');

@@ -67,8 +67,6 @@ namespace Pack_My_Game
                     Config.Save();
                 }
 
-                // On remet en hardlink pour le reste de l'application
-                Config.InitPath();
 
                 // --- Languages
                 Language.Check("en-EN");

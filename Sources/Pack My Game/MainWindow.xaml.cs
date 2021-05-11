@@ -176,7 +176,7 @@ namespace Pack_My_Game
             {
                 Model = new M_SaveFile()
                 {
-                    StartingFolder = System.IO.Path.Combine(Config.WorkingFolder, _Model.SelectedPlatform.Name),
+                    StartingFolder = System.IO.Path.Combine(Config.HWorkingFolder, _Model.SelectedPlatform.Name),
                     ShowFiles = true,
                     Info = "Save to ...",
                     FileValue = $"TBPlatform - {_Model.SelectedPlatform.Name}.xml"
@@ -185,7 +185,7 @@ namespace Pack_My_Game
 
             if (ts.ShowDialog() == true)
             {
-                XML_Platforms.ExtractPlatform(Path.Combine(Config.LaunchBoxPath, Config.PlatformsFile), _Model.SelectedPlatform.Name, ts.Model.LinkResult);
+                XML_Platforms.ExtractPlatform(Path.Combine(Config.HLaunchBoxPath, Config.PlatformsFile), _Model.SelectedPlatform.Name, ts.Model.LinkResult);
             }
         }
         #endregion

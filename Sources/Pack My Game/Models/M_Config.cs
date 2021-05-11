@@ -45,10 +45,10 @@ namespace Pack_My_Game.Models
         //  private string _LaunchBoxPath;
         public string LaunchBoxPath
         {
-            get => Config.LaunchBoxPath;
+            get => Config.HLaunchBoxPath;
             set
             {
-                Config.LaunchBoxPath = value;
+                Config.HLaunchBoxPath = value;
                 OnPropertyChanged();
                 Test_NullValue(value);
             }
@@ -57,10 +57,10 @@ namespace Pack_My_Game.Models
         //private string _WorkingPath;
         public string WorkingPath
         {
-            get => Config.WorkingFolder;
+            get => Config.HWorkingFolder;
             set
             {
-                Config.WorkingFolder = value;
+                Config.HWorkingFolder = value;
                 OnPropertyChanged();
                 Test_NullValue(value);
             }
@@ -70,10 +70,10 @@ namespace Pack_My_Game.Models
         //private string _CheatCodesPath;
         public string CheatCodesPath
         {
-            get => Config.CCodesPath;
+            get => Config.HCCodesPath;
             set
             {
-                Config.CCodesPath = value;
+                Config.HCCodesPath = value;
                 OnPropertyChanged();
                 Test_NullValue(value);
             }
@@ -187,30 +187,14 @@ namespace Pack_My_Game.Models
             }
         }
 
-
-
-
         internal void Save()
         {
-            Config.LaunchBoxPath = DxPaths.Windows.DxPath.To_RelativeOrNull(
-                                            AppDomain.CurrentDomain.BaseDirectory,
-                                            Config.LaunchBoxPath);
-            Config.WorkingFolder = DxPaths.Windows.DxPath.To_RelativeOrNull(
-                                            AppDomain.CurrentDomain.BaseDirectory,
-                                            Config.WorkingFolder);
-            Config.CCodesPath = DxPaths.Windows.DxPath.To_RelativeOrNull(
-                                            AppDomain.CurrentDomain.BaseDirectory,
-                                            Config.CCodesPath);
-
             //PS.Default.Language = SelectedLanguage;
             Common.ObjectLang = Lang;
             Config.Language = SelectedLanguage.Lang;
 
             Common.Config = Config;
             Common.Config.Save();
-
-            // On remet pour le reste du programme les liens en dur
-            Common.Config.InitPath();
         }
     }
 }

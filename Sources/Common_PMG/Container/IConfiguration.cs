@@ -19,17 +19,31 @@ namespace Common_PMG.Container
         /// <summary>
         /// Path for LaunchBox
         /// </summary>
-        public string LaunchBoxPath { get; set; }
+        public string HLaunchBoxPath { get; set; }
+        /// <summary>
+        /// Relative path for LaunchBox
+        /// </summary>
+        public string RLaunchBoxPath { get; set; }
 
         /// <summary>
         /// Dossier temporaire de travail
         /// </summary>
-        public string WorkingFolder { get; set; }
+        public string HWorkingFolder { get; set; }
+
+        /// <summary>
+        /// Dossier temporaire de travail (relatif)
+        /// </summary>
+        public string RWorkingFolder { get; set; }
 
         /// <summary>
         /// Dossier des cheats codes
         /// </summary>
-        public string CCodesPath { get; set; }
+        public string HCCodesPath { get; set; }
+
+        /// <summary>
+        /// Dossier des cheats codes (relatif)
+        /// </summary>
+        public string RCCodesPath { get; set; }
 
         /// <summary>
         /// Dernier dossier utilisé

@@ -56,7 +56,7 @@ namespace UnPack_My_Game.Cores
                 // Depack
                 foreach (DataRep game in games)
                 {
-                    string tmpPath = Path.Combine(Config.WorkingFolder, Path.GetFileNameWithoutExtension(game.Name));
+                    string tmpPath = Path.Combine(Config.HWorkingFolder, Path.GetFileNameWithoutExtension(game.Name));
                     game.DestPath = tmpPath;
 
                     Depacking(game, tmpPath);
@@ -104,7 +104,7 @@ namespace UnPack_My_Game.Cores
                 // Extraction des données
                 foreach (DataRep game in games)
                 {
-                    string tmpPath = Path.Combine(Config.WorkingFolder, Path.GetFileNameWithoutExtension(game.Name));
+                    string tmpPath = Path.Combine(Config.HWorkingFolder, Path.GetFileNameWithoutExtension(game.Name));
                     game.DestPath = tmpPath;
 
                     // extraction
@@ -246,7 +246,7 @@ namespace UnPack_My_Game.Cores
             GamePaths gpX = GamePaths.ReadFromJson(dpgFile);
 
             HeTrace.WriteLine($"Platform Step for '{gpX.Platform}'");
-            string platformsFile = Path.Combine(Config.LaunchBoxPath, Config.PlatformsFile);
+            string platformsFile = Path.Combine(Config.HLaunchBoxPath, Config.PlatformsFile);
 
             bool CheckIfInjectionNeeded = !XML_Custom.TestPresence(platformsFile, Tag.Platform, Tag.Name, gpX.Platform);
             if (CheckIfInjectionNeeded)
@@ -277,7 +277,7 @@ namespace UnPack_My_Game.Cores
             AssignTargets(gdC, gamePath, zePlatform);
 
             // --- Lecture de la plateforme
-            string machineXMLFile = Path.Combine(Config.LaunchBoxPath, Config.PlatformsFolder, $"{gpX.Platform}.xml");
+            string machineXMLFile = Path.Combine(Config.HLaunchBoxPath, Config.PlatformsFolder, $"{gpX.Platform}.xml");
             if (!File.Exists(machineXMLFile))
                 XML_Games.NewPlatform(machineXMLFile);
 
@@ -431,9 +431,9 @@ namespace UnPack_My_Game.Cores
         {
             string platFolderPath = zePlatform.FolderPath;
             if (string.IsNullOrEmpty(platFolderPath))
-                platFolderPath = Path.Combine(Config.LaunchBoxPath, "Games");
+                platFolderPath = Path.Combine(Config.HLaunchBoxPath, "Games");
             else
-                platFolderPath = Path.GetFullPath(platFolderPath, Config.LaunchBoxPath);
+                platFolderPath = Path.GetFullPath(platFolderPath, Config.HLaunchBoxPath);
 
             string appTarget = string.Empty;
 
@@ -458,7 +458,7 @@ namespace UnPack_My_Game.Cores
             void AssignTarget(IEnumerable<DataRep> elems, string root, string subFolder, string mediaType, ContPlatFolders zePlatform)
             {
                 var dFolder = zePlatform.PlatformFolders.First(x => x.MediaType.Equals(mediaType));
-                string destFolder = Path.GetFullPath(dFolder.FolderPath, Config.LaunchBoxPath);
+                string destFolder = Path.GetFullPath(dFolder.FolderPath, Config.HLaunchBoxPath);
 
                 string src = Path.Combine(root, subFolder);
 
@@ -482,7 +482,7 @@ namespace UnPack_My_Game.Cores
                         toReplace = Path.Combine(root, Config.Images, image.Categorie);
 
                         PlatformFolder pTarget = zePlatform.PlatformFolders.FirstOrDefault(x => x.MediaType.Equals(image.Categorie));
-                        target = Path.GetFullPath(pTarget.FolderPath, Config.LaunchBoxPath);
+                        target = Path.GetFullPath(pTarget.FolderPath, Config.HLaunchBoxPath);
                     }
 
                     image.DestPath = image.CurrentPath.Replace(toReplace, target);
@@ -591,7 +591,7 @@ namespace UnPack_My_Game.Cores
             void ModifElement<T>(in XElement xelObj, string tag, T elem, bool first) where T : IDataRep
             {
                 var target = xelObj.Element(tag);
-                var value = elem == null ? string.Empty : DxPath.To_Relative(Config.LaunchBoxPath, elem.DestPath);
+                var value = elem == null ? string.Empty : DxPath.To_Relative(Config.HLaunchBoxPath, elem.DestPath);
                 // Pour lever le .\
                 value = value.StartsWith(@".\") ? value.Substring(2) : value;
 

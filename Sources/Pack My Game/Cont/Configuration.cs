@@ -1,4 +1,5 @@
 ﻿using Common_PMG.Container;
+using DxPaths.Windows;
 using DxTBoxCore.Box_MBox;
 using System;
 using System.Collections.Generic;
@@ -14,17 +15,48 @@ namespace Pack_My_Game.Cont
     internal class Configuration : IConfiguration
     {
         public string Version { get; set; }
-        
+
         public string Language { get; set; }
 
 
         #region Paths
+        [JsonIgnore]
+        public string HLaunchBoxPath { get; set; }
 
-        public string LaunchBoxPath { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// get est utilisé par le serializer donc il renvoie un relative link
+        /// set est utilisé pour stocker le chemin donc il place un hardlink
+        /// </remarks>
+        [JsonPropertyName("LaunchBoxPath")]
+        public string RLaunchBoxPath
+        {
+            get => DxPath.To_RelativeOrNull(AppDomain.CurrentDomain.BaseDirectory, HLaunchBoxPath);
+            set => HLaunchBoxPath = string.IsNullOrEmpty(value)? null : Path.GetFullPath(value, AppDomain.CurrentDomain.BaseDirectory);
+        }
 
-        public string WorkingFolder { get; set; }
+        [JsonIgnore]
+        public string HWorkingFolder { get; set; }
 
-        public string CCodesPath { get; set; }
+        [JsonPropertyName("WorkingFolder")]
+        public string RWorkingFolder
+        {
+            get => DxPath.To_RelativeOrNull(AppDomain.CurrentDomain.BaseDirectory, HWorkingFolder);
+            set => HWorkingFolder = string.IsNullOrEmpty(value) ? null : Path.GetFullPath(value, AppDomain.CurrentDomain.BaseDirectory);
+        }
+
+        [JsonIgnore]
+        public string HCCodesPath { get; set; }
+
+        [JsonPropertyName("CCodesPath")]
+        public string RCCodesPath
+        {
+            get => DxPath.To_RelativeOrNull(AppDomain.CurrentDomain.BaseDirectory, HCCodesPath);
+            set => HCCodesPath = string.IsNullOrEmpty(value) ? null : Path.GetFullPath(value, AppDomain.CurrentDomain.BaseDirectory);
+        }
+
 
         public string LastPath { get; set; }
 
@@ -166,10 +198,10 @@ namespace Pack_My_Game.Cont
             this.Version = config.Version;
             this.Language = config.Language;
             //
-            this.LaunchBoxPath = config.LaunchBoxPath;
-            this.WorkingFolder = config.WorkingFolder;
+            this.HLaunchBoxPath = config.HLaunchBoxPath;
+            this.HWorkingFolder = config.HWorkingFolder;
             this.LastPath = config.LastPath;
-            this.CCodesPath = config.CCodesPath;
+            this.HCCodesPath = config.HCCodesPath;
             this.PlatformsFile = config.PlatformsFile;
             this.PlatformsFolder = config.PlatformsFolder;
             //
@@ -215,6 +247,10 @@ namespace Pack_My_Game.Cont
 
             if (config.ZipLvlCompression > 9 || config.ZipLvlCompression < 0)
                 throw new Exception("Problem on Zip level compression, value must be -1<x<10");
+
+            if (!Directory.Exists(config.LastPath))
+                config.LastPath = null;
+
 
             return config;
         }
@@ -293,16 +329,6 @@ namespace Pack_My_Game.Cont
                 Language = "en-EN";
         }
 
-
-        internal void InitPath()
-        {
-            LaunchBoxPath = String.IsNullOrEmpty(LaunchBoxPath) ? null :
-                                   Path.GetFullPath(LaunchBoxPath, AppDomain.CurrentDomain.BaseDirectory);
-            WorkingFolder = String.IsNullOrEmpty(WorkingFolder) ? null :
-                                   Path.GetFullPath(WorkingFolder, AppDomain.CurrentDomain.BaseDirectory);
-            CCodesPath = String.IsNullOrEmpty(CCodesPath) ? null :
-                                    Path.GetFullPath(CCodesPath, AppDomain.CurrentDomain.BaseDirectory);
-        }
 
     }
 }

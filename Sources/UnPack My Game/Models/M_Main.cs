@@ -21,9 +21,9 @@ namespace UnPack_My_Game.Models
         /// <summary>
         /// Dossier de LaunchBox
         /// </summary>
-        public string LaunchBoxPath => Common.Config.LaunchBoxPath;
+        public string LaunchBoxPath => Common.Config.HLaunchBoxPath;
 
-        public string WorkingFolder => Common.Config.WorkingFolder;
+        public string WorkingFolder => Common.Config.HWorkingFolder;
 
 
         private Page _ActivePage;

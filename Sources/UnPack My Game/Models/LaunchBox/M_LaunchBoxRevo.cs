@@ -54,10 +54,10 @@ namespace UnPack_My_Game.Models.LaunchBox
         //private string _LaunchBoxPath;
         public string LaunchBoxPath
         {
-            get => Config.LaunchBoxPath;
+            get => Config.HLaunchBoxPath;
             set
             {
-                Config.LaunchBoxPath = value;
+                Config.HLaunchBoxPath = value;
                 OnPropertyChanged();
 
                 Test_NullValue(value);
@@ -149,7 +149,7 @@ namespace UnPack_My_Game.Models.LaunchBox
         public M_LaunchBoxRevo()
         {
             // Vérifications
-            var platformsFile = Path.Combine(Config.LaunchBoxPath, Config.PlatformsFile);
+            var platformsFile = Path.Combine(Config.HLaunchBoxPath, Config.PlatformsFile);
 
             // Vérification du dossier Launchbox
             if (!File.Exists(platformsFile))

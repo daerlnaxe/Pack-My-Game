@@ -59,7 +59,6 @@ namespace UnPack_My_Game
                     Config.Save();
                 }
 
-                Config.InitPaths();
             }
             catch(Exception exc)
             {

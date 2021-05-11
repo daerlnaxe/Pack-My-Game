@@ -58,7 +58,6 @@ namespace UnPack_My_Game.Graph.LaunchBox
         private void Exec_Depack(object sender, ExecutedRoutedEventArgs e)
         {
             Model.Depack();
-
         }
 
         private void Exec_InjectG(object sender, ExecutedRoutedEventArgs e)

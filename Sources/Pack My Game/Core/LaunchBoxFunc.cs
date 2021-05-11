@@ -21,7 +21,7 @@ namespace Pack_My_Game.Core
 
         internal static void CheckGamesValidity(ObservableCollection<ShortGame> selectedGames, string selectedPlatform)
         {
-            string platformXmlFile = Path.Combine(Config.LaunchBoxPath, Config.PlatformsFolder, $"{selectedPlatform}.xml");
+            string platformXmlFile = Path.Combine(Config.HLaunchBoxPath, Config.PlatformsFolder, $"{selectedPlatform}.xml");
 
             //IEnumerable<ShortGame> filteredGames = new List<ShortGame>(selectedGames);
             foreach (var g in selectedGames.ToList())
@@ -90,7 +90,7 @@ namespace Pack_My_Game.Core
             {
                 string tmp;
 
-                tmp = Path.GetFullPath(link, Config.LaunchBoxPath);
+                tmp = Path.GetFullPath(link, Config.HLaunchBoxPath);
                 if (!File.Exists(tmp))
                     return false;
 

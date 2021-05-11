@@ -23,10 +23,10 @@ namespace UnPack_My_Game.Models.LaunchBox
         //private string _LaunchBoxPath;
         public string LaunchBoxPath
         {
-            get => Config.LaunchBoxPath; //_LaunchBoxPath;
+            get => Config.HLaunchBoxPath; //_LaunchBoxPath;
             set
             {
-                Config.LaunchBoxPath = value;
+                Config.HLaunchBoxPath = value;
                 OnPropertyChanged();
                 Remove_Errors();
 
@@ -36,10 +36,10 @@ namespace UnPack_My_Game.Models.LaunchBox
 
         public string WorkingPath
         {
-            get => Config.WorkingFolder;
+            get => Config.HWorkingFolder;
             set
             {
-                Config.WorkingFolder = value;
+                Config.HWorkingFolder = value;
                 OnPropertyChanged();
                 Remove_Errors();
 
@@ -48,10 +48,10 @@ namespace UnPack_My_Game.Models.LaunchBox
         }
         public string CheatCodesPath
         {
-            get => Config.CCodesPath;
+            get => Config.HCCodesPath;
             set
             {
-                Config.CCodesPath = value;
+                Config.HCCodesPath = value;
                 OnPropertyChanged();
                 Test_NullValue(value);
             }
@@ -221,7 +221,7 @@ namespace UnPack_My_Game.Models.LaunchBox
                 Model = new M_ChooseRaw()
                 {
                     Info = Lang.ChooseLBf,
-                    StartingFolder = Common.Config.LaunchBoxPath,
+                    StartingFolder = Common.Config.HLaunchBoxPath,
                     Mode = ChooseMode.Folder,
                     ShowFiles = false,
 
@@ -316,25 +316,10 @@ namespace UnPack_My_Game.Models.LaunchBox
              Default.Save();*/
 
 
-            Config.LaunchBoxPath = DxPaths.Windows.DxPath.To_RelativeOrNull(
-                                            AppDomain.CurrentDomain.BaseDirectory,
-                                            Config.LaunchBoxPath);
-            Config.WorkingFolder = DxPaths.Windows.DxPath.To_RelativeOrNull(
-                                            AppDomain.CurrentDomain.BaseDirectory,
-                                            Config.WorkingFolder);
-            Config.CCodesPath = DxPaths.Windows.DxPath.To_RelativeOrNull(
-                                            AppDomain.CurrentDomain.BaseDirectory,
-                                            Config.CCodesPath);
-
             Common.Config = Config;
             Common.Config.Save();
 
-            Common.Config.InitPaths();
             return true;
-
-
         }
-
-
     }
 }

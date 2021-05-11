@@ -495,7 +495,7 @@ namespace UnPack_My_Game.Graph
 
         internal void CopyAstuceF()
         {
-            if (Copy2(Config.LaunchBoxPath, Config.CheatCodes, "Select a cheat codes file"))
+            if (Copy2(Config.HLaunchBoxPath, Config.CheatCodes, "Select a cheat codes file"))
             {
                 LoadCheatCodes();
             }

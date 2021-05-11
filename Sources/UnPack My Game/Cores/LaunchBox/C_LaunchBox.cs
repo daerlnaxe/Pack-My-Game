@@ -120,7 +120,7 @@ namespace UnPack_My_Game.Cores
         public bool CheckIfInjectionNeeded(string machineName)
         {
             // --- Lecture du fichier source
-            string platformsFile = Path.Combine(Config.LaunchBoxPath, Config.PlatformsFile);
+            string platformsFile = Path.Combine(Config.HLaunchBoxPath, Config.PlatformsFile);
 
             bool? write = true;
 
@@ -138,7 +138,7 @@ namespace UnPack_My_Game.Cores
 
         public void InjectPlatform(string platform, string newPFile)
         {
-            string platformsFile = Path.Combine(Config.LaunchBoxPath, Config.PlatformsFile);
+            string platformsFile = Path.Combine(Config.HLaunchBoxPath, Config.PlatformsFile);
 
             using (XML_Platforms xPlat = new XML_Platforms(platformsFile))
             {

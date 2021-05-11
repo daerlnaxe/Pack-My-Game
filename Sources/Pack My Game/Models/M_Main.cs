@@ -31,10 +31,10 @@ namespace Pack_My_Game.Models
         /// <summary>
         /// Dossier de LaunchBox
         /// </summary>
-        public string LaunchBoxPath => Config.LaunchBoxPath;
+        public string LaunchBoxPath => Config.HLaunchBoxPath;
 
 
-        public string WorkingFolder => Config.WorkingFolder;
+        public string WorkingFolder => Config.HWorkingFolder;
 
         public ObservableCollection<string> Options { get; internal set; } = new ObservableCollection<string>();
 
@@ -118,7 +118,7 @@ namespace Pack_My_Game.Models
         internal void ReloadConfig(Configuration oldConfig)
         {
             _Errors.Clear();
-            if (oldConfig.LaunchBoxPath ==null ||  !oldConfig.LaunchBoxPath.Equals(Config.LaunchBoxPath))
+            if (oldConfig.HLaunchBoxPath ==null ||  !oldConfig.HLaunchBoxPath.Equals(Config.HLaunchBoxPath))
             {
                 OnPropertyChanged(nameof(LaunchBoxPath));
                 LoadPlatforms();
@@ -183,9 +183,9 @@ namespace Pack_My_Game.Models
 
         internal void LoadPlatforms()
         {            
-            if (!Directory.Exists(Config.LaunchBoxPath))
+            if (!Directory.Exists(Config.HLaunchBoxPath))
                 Add_Error("LaunchBox doesn't exist", nameof(LaunchBoxPath));
-            if (!Directory.Exists(Config.WorkingFolder))
+            if (!Directory.Exists(Config.HWorkingFolder))
                 Add_Error("Working folder doesn't exist", nameof(WorkingFolder));
 
             if (HasErrors)
@@ -208,7 +208,7 @@ namespace Pack_My_Game.Models
         {
             SelectedGames.Clear();
 
-            string xmlFile = Path.Combine(Config.LaunchBoxPath, Config.PlatformsFolder, $"{SelectedPlatform.Name}.xml");
+            string xmlFile = Path.Combine(Config.HLaunchBoxPath, Config.PlatformsFolder, $"{SelectedPlatform.Name}.xml");
             AvailableGames = new ObservableCollection<ShortGame>(XML_Games.ListShortGames(xmlFile));
             // throw new NotImplementedException();
         }
@@ -331,7 +331,7 @@ namespace Pack_My_Game.Models
         /// </summary>
         internal void CheckGamesValidity()
         {
-            string platformXmlFile = Path.Combine(Config.LaunchBoxPath, Config.PlatformsFolder, $"{SelectedPlatform.Name}.xml");
+            string platformXmlFile = Path.Combine(Config.HLaunchBoxPath, Config.PlatformsFolder, $"{SelectedPlatform.Name}.xml");
 
             foreach (ShortGame g in SelectedGames)
             {
@@ -362,7 +362,7 @@ namespace Pack_My_Game.Models
                 destFolder = cf.Model.LinkResult;
             }*/
 
-            string platformFile = Path.Combine(Config.LaunchBoxPath, Config.PlatformsFolder, $"{SelectedPlatform.Name}.xml");
+            string platformFile = Path.Combine(Config.HLaunchBoxPath, Config.PlatformsFolder, $"{SelectedPlatform.Name}.xml");
 
             foreach (var game in SelectedGames)
             {
@@ -393,7 +393,7 @@ namespace Pack_My_Game.Models
 
             try
             {
-                string platformXmlFile = Path.Combine(Config.LaunchBoxPath, Config.PlatformsFolder, $"{SelectedPlatform.Name}.xml");
+                string platformXmlFile = Path.Combine(Config.HLaunchBoxPath, Config.PlatformsFolder, $"{SelectedPlatform.Name}.xml");
                 string platformsFile = Path.Combine(LaunchBoxPath, Config.PlatformsFile);
 
                 ContPlatFolders p = XML_Platforms.GetPlatformPaths(platformsFile, SelectedPlatform.Name);
@@ -465,14 +465,14 @@ namespace Pack_My_Game.Models
         /// <returns></returns>
         private string Assign(string file, string platformPath, bool keepStruct)
         {
-            file = Path.GetFullPath(file, Config.LaunchBoxPath);
+            file = Path.GetFullPath(file, Config.HLaunchBoxPath);
 
             // si c'est vide on laisse tomber
             if (string.IsNullOrEmpty(file))
                 return string.Empty;
 
 
-            platformPath = Path.GetFullPath(platformPath, Config.LaunchBoxPath);
+            platformPath = Path.GetFullPath(platformPath, Config.HLaunchBoxPath);
 
             // si l'on ne retrouve pas on n'assigne rien
             if (!File.Exists(file))
@@ -493,7 +493,7 @@ namespace Pack_My_Game.Models
         {
             try
             {
-                string platformXmlFile = Path.Combine(Config.LaunchBoxPath, Config.PlatformsFolder, $"{SelectedPlatform.Name}.xml");
+                string platformXmlFile = Path.Combine(Config.HLaunchBoxPath, Config.PlatformsFolder, $"{SelectedPlatform.Name}.xml");
 
                 foreach (var game in SelectedGames)
                 {

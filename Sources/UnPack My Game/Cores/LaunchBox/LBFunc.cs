@@ -20,7 +20,7 @@ namespace UnPack_My_Game.Cores.LaunchBox
         {
             HeTrace.WriteLine("Platform injection...");
             string backupFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Common.BackUp);
-            string platformsFile = Path.Combine(Config.LaunchBoxPath, Config.PlatformsFile);
+            string platformsFile = Path.Combine(Config.HLaunchBoxPath, Config.PlatformsFile);
 
 
             string newPFile = IHMStatic.GetAFile(Config.LastTargetPath, "Select the platform xml file", "xml");

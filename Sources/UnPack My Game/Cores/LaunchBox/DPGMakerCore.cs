@@ -53,7 +53,7 @@ namespace UnPack_My_Game.Cores
         internal bool MakeDPG_Comp(IEnumerable<DataRep> archives)
         {
             // Check de LaunchBox
-            if (!File.Exists(Path.Combine(Config.LaunchBoxPath, Config.PlatformsFile)))
+            if (!File.Exists(Path.Combine(Config.HLaunchBoxPath, Config.PlatformsFile)))
             {
                 DxTBoxCore.Box_MBox.DxMBox.ShowDial("Wrong LaunchBoxPath");
                 return false;
@@ -67,7 +67,7 @@ namespace UnPack_My_Game.Cores
                 {
                     ArchiveMode mode = ArchiveMode.None;
 
-                    string gamePath = Path.Combine(Config.WorkingFolder, Path.GetFileNameWithoutExtension(zF.Name));
+                    string gamePath = Path.Combine(Config.HWorkingFolder, Path.GetFileNameWithoutExtension(zF.Name));
                     string fileExt = Path.GetExtension(zF.CurrentPath).TrimStart('.');
 
                     // Création du dossier de destination
