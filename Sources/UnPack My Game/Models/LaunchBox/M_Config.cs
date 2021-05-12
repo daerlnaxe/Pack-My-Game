@@ -8,11 +8,29 @@ using UnPack_My_Game.Resources;
 using static UnPack_My_Game.Common;
 using UnPack_My_Game.Cont;
 using DxTBoxCore.BoxChoose;
+using UnPack_My_Game.Language;
+using System.Globalization;
 
 namespace UnPack_My_Game.Models.LaunchBox
 {
     public class M_Config : A_Err
     {
+        public List<CultureInfo> Languages => LanguageManager.Langues;
+
+        private CultureInfo _Langue;
+        public CultureInfo ChosenLanguage
+        {
+            get => _Langue;
+            set
+            {
+                if (value != _Langue)
+                {
+                    _Langue = value;
+                    LanguageManager.CurrentLanguage = value;
+                }
+            }
+        }
+
         Configuration Config
         {
             get ;
@@ -243,7 +261,7 @@ namespace UnPack_My_Game.Models.LaunchBox
                 Model = new M_ChooseFolder()
                 {
                     HideWindowsFolder = true,
-                    Info = Lang.WorkingFolder,
+                    Info = LanguageManager.Lang.Folder_Working,
                     ShowFiles = true,
                     StartingFolder = Path.GetTempPath(),
                 },

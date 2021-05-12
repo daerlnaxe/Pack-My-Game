@@ -3,7 +3,7 @@
     <SolidColorBrush Color="WhiteSmoke" x:Key="Pale"/>
     <SolidColorBrush Color="#FF132F4B" x:Key="LeftMenu"/>
     <!-- Label -->
-    <Style TargetType="Label" x:Key="lbStyle">
+    <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
         <Setter Property="IsTabStop" Value="False"/>
     </Style>
     <!-- Button -->

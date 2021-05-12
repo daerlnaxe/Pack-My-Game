@@ -11,6 +11,7 @@ using Hermes.Cont;
 using Hermes.Messengers;
 using UnPack_My_Game.Graph;
 using UnPack_My_Game.Graph.LaunchBox;
+using UnPack_My_Game.Language;
 using static UnPack_My_Game.Common;
 
 namespace UnPack_My_Game
@@ -59,6 +60,7 @@ namespace UnPack_My_Game
                     Config.Save();
                 }
 
+                LanguageManager.Init();
             }
             catch(Exception exc)
             {

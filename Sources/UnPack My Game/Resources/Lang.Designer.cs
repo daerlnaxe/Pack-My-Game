@@ -331,15 +331,6 @@ namespace UnPack_My_Game.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à LaunchBox folder.
-        /// </summary>
-        public static string LaunchBoxF {
-            get {
-                return ResourceManager.GetString("LaunchBoxF", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Recherche une chaîne localisée semblable à Manual.
         /// </summary>
         public static string Manual {
@@ -624,15 +615,6 @@ namespace UnPack_My_Game.Resources {
         public static string Videos {
             get {
                 return ResourceManager.GetString("Videos", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Working folder.
-        /// </summary>
-        public static string WorkingFolder {
-            get {
-                return ResourceManager.GetString("WorkingFolder", resourceCulture);
             }
         }
     }

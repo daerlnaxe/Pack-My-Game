@@ -204,9 +204,6 @@
   <data name="Launchbox" xml:space="preserve">
     <value>UnPack pour Launchbox</value>
   </data>
-  <data name="LaunchBoxF" xml:space="preserve">
-    <value>Dossier LaunchBox</value>
-  </data>
   <data name="Manual" xml:space="preserve">
     <value>Manuel</value>
   </data>

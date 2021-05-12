@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:UnPack_My_Game.Graph.LaunchBox"
       mc:Ignorable="d" 
-      xmlns:l="clr-namespace:UnPack_My_Game.Resources"
+      xmlns:r="clr-namespace:UnPack_My_Game.Resources"
+      xmlns:l="clr-namespace:UnPack_My_Game.Language"
       xmlns:lc="clr-namespace:DxTBoxCore.Languages;assembly=DxTBoxCore"
       d:DesignHeight="450" d:DesignWidth="800"
       Loaded="Page_Loaded"
@@ -26,7 +27,7 @@
 
     <DockPanel Margin="10">
         <GroupBox  DockPanel.Dock="Top"
-            Header="Informations" HeaderStringFormat="{}{0}:" 
+            Header="{l:Langue Word_Informations}" HeaderStringFormat="{}{0}:" 
                   >
             <Grid>
                 <Grid.RowDefinitions>
@@ -40,14 +41,14 @@
                 </Grid.ColumnDefinitions>
                 <Label Content=""/>
                 <!-- LaunchBox Path -->
-                <Label Content="{x:Static l:Lang.LaunchBoxF}"
+                <Label Content="{l:Langue Folder_LaunchBox}"
                     MouseLeftButtonUp="LaunchBox_MouseLeftButtonUp" Cursor="Help"/>
                 <TextBlock Grid.Column="1" Style="{StaticResource tblockS}"
                     TextTrimming="CharacterEllipsis"
                     Text="{Binding LaunchBoxPath, FallbackValue=LaunchBoxPath, NotifyOnValidationError=True}" 
                     ToolTip="{Binding LaunchBoxPath}"/>
                 <!-- Working Path -->
-                <Label Grid.Row="1" Content="{x:Static l:Lang.WorkingFolder}"
+                <Label Grid.Row="1" Content="{l:Langue Folder_Working}"
                     MouseLeftButtonUp="WorkingPath_MouseLeftButtonUp" Cursor="Help" />
                 <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource tblockS}"
                     TextTrimming="CharacterEllipsis" 
@@ -62,7 +63,7 @@
         <!-- Left Menu -->
         <StackPanel DockPanel.Dock="Left" Background="{DynamicResource LeftMenu}" HorizontalAlignment="Left">
             <Button Content="Depack" Command="local:MainWindow.DepackCmd"
-                    ToolTip="{x:Static l:Lang.T_OneG}"
+                    ToolTip="{x:Static r:Lang.T_OneG}"
                     />
             <Button Content="Inject" Command="local:MainWindow.InjectGCmd"
                     ToolTip="Inject game(s) by folder(s)" 
@@ -74,7 +75,7 @@
                     Command="local:MainWindow.InjectPCmd"
                     />
             <Separator/>
-            <Button Content="{x:Static l:Lang.Configuration}" Click="Config_Click"/>
+            <Button Content="{x:Static r:Lang.Configuration}" Click="Config_Click"/>
         </StackPanel>
         <!-- Menu -->
         <!--
