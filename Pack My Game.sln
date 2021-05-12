@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyControls", "..\..\..\Clouds\GDrive - Dx\Programmation\CSharp\MyControls\MyControls\MyControls.csproj", "{C097F528-81F2-40E4-9D93-F49422D20B35}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HashCalc", "..\HashCalc\Source\HashCalc.csproj", "{EC24B5F2-CCE6-42CC-BC31-D7B9D3356FB5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DxTBoxCore", "..\DxTBoxCore\Sources\DxTBoxCore.csproj", "{C78ED0F7-00D8-4F0F-814C-EFAE435C67FB}"
@@ -39,10 +37,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C097F528-81F2-40E4-9D93-F49422D20B35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C097F528-81F2-40E4-9D93-F49422D20B35}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C097F528-81F2-40E4-9D93-F49422D20B35}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C097F528-81F2-40E4-9D93-F49422D20B35}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EC24B5F2-CCE6-42CC-BC31-D7B9D3356FB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EC24B5F2-CCE6-42CC-BC31-D7B9D3356FB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC24B5F2-CCE6-42CC-BC31-D7B9D3356FB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
