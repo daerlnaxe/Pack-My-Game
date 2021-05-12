@@ -14,7 +14,7 @@ namespace UnPack_My_Game.Language
      * CurrentCulture pour les dates et les devises
      * CurrentUICulture 
      */
-    static class LanguageManager
+    public static class LanguageManager
     {
         private const string _FileName = "UnpackMyGame.Lang.json";
         private const string _Version = "1.0.0.0";
@@ -52,6 +52,7 @@ namespace UnPack_My_Game.Language
 
             foreach (EventHandler handler in _UICultureChangedHandlers)
             {
+                Debug.WriteLine(((LangueExtension)handler.Target)._Key);
                 handler(typeof(LanguageManager), EventArgs.Empty);
             }
         }
@@ -69,12 +70,12 @@ namespace UnPack_My_Game.Language
                 if (value != Thread.CurrentThread.CurrentUICulture)
                 {
                     Thread.CurrentThread.CurrentUICulture = value;
-                    ChangeLanguage(value);
+                   ChangeLanguage(value);
                 }
             }
         }
 
-        public static List<CultureInfo> Langues = new List<CultureInfo>();
+        public static List<CultureInfo> Langues { get; set; } = new List<CultureInfo>();
 
         /// <summary>
         /// Initialisation du module de langage
@@ -142,7 +143,7 @@ namespace UnPack_My_Game.Language
         private static void ChangeLanguage(CultureInfo value)
         {
             string langFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, value.Name, _FileName);
-            if(!File.Exists(langFile))
+            if (!File.Exists(langFile))
                 langFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "en-US", _FileName);
 
             Lang = LangProvider.Read(langFile);
@@ -150,13 +151,17 @@ namespace UnPack_My_Game.Language
             OnUICultureChanged();
 
         }
-          
+
         internal static object Getvalue(string key)
         {
             if (Lang == null)
                 Lang = LangProvider.Default();
 
-            return typeof(LangProvider).GetProperty(key).GetValue(Lang);
+            var property = typeof(LangProvider).GetProperty(key);
+            if (property != null)
+                return property.GetValue(Lang);
+            else
+                return $"problem_{key}";
         }
     }
 }

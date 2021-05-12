@@ -13,7 +13,7 @@ namespace UnPack_My_Game.Language
     /// </summary>
     class LangueExtension : MarkupExtension
     {
-        private string _Key;
+        public string _Key;
         private WeakReference targetObjectRef;
         private object targetProperty;
 

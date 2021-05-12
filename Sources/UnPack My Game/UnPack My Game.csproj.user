@@ -31,12 +31,12 @@
     <Compile Update="Graph\W_Common.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Graph\W_DefinePaths.xaml.cs">
+    <None Update="Graph\W_DefinePaths.xaml.cs">
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Graph\W_ModTargetPaths.xaml.cs">
+    </None>
+    <None Update="Graph\W_ModTargetPaths.xaml.cs">
       <SubType>Code</SubType>
-    </Compile>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Resources\Lang.fr-FR.resx">
@@ -68,12 +68,12 @@
     <Page Update="Graph\W_Common.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Graph\W_DefinePaths.xaml">
+    <None Update="Graph\W_DefinePaths.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Graph\W_ModTargetPaths.xaml">
+    </None>
+    <None Update="Graph\W_ModTargetPaths.xaml">
       <SubType>Designer</SubType>
-    </Page>
+    </None>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>

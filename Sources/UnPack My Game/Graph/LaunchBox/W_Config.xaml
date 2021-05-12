@@ -10,14 +10,14 @@
         xmlns:l="clr-namespace:UnPack_My_Game.Language"
         xmlns:conv="clr-namespace:Common_Graph.Converters;assembly=Common_Graph"
         mc:Ignorable="d"
-        Title="W_Config" Height="450" Width="800">
+        Title="W_Config" Height="450" Width="800" ResizeMode="NoResize">
     <Window.CommandBindings>
         <CommandBinding Command="cmd:Commands.Submit" CanExecute="Can_Submit" Executed="Exec_Submit" />
     </Window.CommandBindings>
     <!--
     -->
     <Window.Resources>
-        <conv:ChFolderNullConverter x:Key="Fallb" />
+        <conv:ChFolderNullConverter x:Key="Fallb" />        
         <Style TargetType="Button" BasedOn="{StaticResource btStyle}"/>
         <!-- TextBlock -->
         <Style TargetType="TextBlock" >
@@ -32,8 +32,10 @@
         
         <!-- Buttons -->
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
-            <Button Content="{x:Static lc:DxTBLang.Cancel}" IsCancel="True" Click="Close"/>
-            <Button Content="{x:Static lc:DxTBLang.OK}" IsDefault="True" Command="cmd:Commands.Submit"/>
+            <Button Content="{l:Langue Word_Cancel}" 
+                    IsCancel="True" Click="Close"/>
+            <Button Content="{l:Langue Word_Save}" IsDefault="True" 
+                    Command="cmd:Commands.Submit"/>
         </StackPanel>
         <!-- Content -->
         <TabControl>
@@ -50,48 +52,26 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Label x:Name="lbLanguage"
-                           Content="{l:Langue Language}"/>
-                    <ComboBox Margin="5" Grid.Column="1" MinWidth="100"
-                              ItemsSource="{Binding Languages}" DisplayMemberPath="NativeName"     
-                              SelectedItem="{Binding ChosenLanguage}"                              
+                    <Label x:Name="lbLanguage" Margin="5,10"
+                           Content="{l:Langue Word_Languages}"/>
+                    <ComboBox Margin="10" Grid.Column="1" MinWidth="100"
+                              ItemsSource="{Binding Path=(l:LanguageManager.Langues)}"
+                              DisplayMemberPath="NativeName"     
+                              SelectedItem="{Binding Path=(l:LanguageManager.CurrentLanguage)}"                              
+
                               />
                 </Grid>
             </TabItem>
-            <!-- Directories 
-            <TabItem Header="{x:Static l:Lang.AccessF}">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-            -->
-                    <!-- LaunchBox path 
-                    <Label Content="{x:Static l:Lang.LaunchBoxF}" ContentStringFormat="{}{0}:" VerticalAlignment="Center" />
-                    <TextBox x:Name="tbLBPath" Width="300" Grid.Column="1"
-                         Text="{Binding LaunchBoxPath, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" 
-                         ToolTip="{x:Static l:Lang.I_HitEnter}" PreviewKeyUp="tbLBPath_PreviewKeyUp"
-                         />
-                    <Button Grid.Column="2" Content="{x:Static lc:DxTBLang.Browse}" ContentStringFormat="{}{0}..."
-                        Click="Find_Launchbox"
-                        />
-                </Grid>
-            </TabItem>
-            -->
+    
             <!-- Paths -->
-            <TabItem Header="{l:Langue Paths}" >
+            <TabItem Header="{l:Langue Word_Paths}" >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <GroupBox Header="{Binding Lang.MainExp, FallbackValue=MainExp}" Grid.Row="0">
+                    <GroupBox Header="{l:Langue Word_Main}" Grid.Row="0">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
@@ -108,30 +88,23 @@
                                 />
                             <TextBlock Grid.Column="2" >
                                 <TextBlock.Text>
-                                    <MultiBinding Converter="{StaticResource Fallb}" FallbackValue="..." TargetNullValue="...">
+                                    <MultiBinding Converter="{StaticResource Fallb}">
                                         <Binding Path="LaunchBoxPath" />
-                                        <Binding Path="Lang.Ch_LBPath" />
+                                        <Binding Source="(l:LanguageManager.Lang.ChoosePath)" />
                                     </MultiBinding>
                                 </TextBlock.Text>
                             </TextBlock>
+
                             <!-- Working Folder -->
                             <Button Grid.Row="1"
                                 Content="{l:Langue Folder_Working}"
                                 Click="ChooseWP_Click"    
                                     />
-                            <TextBlock Grid.Column="2" Grid.Row="1">
-                                <TextBlock.Text>
-                                    <MultiBinding Converter="{StaticResource Fallb}" FallbackValue="...">
-                                        <Binding Path="WorkingPath" />
-                                        <Binding Path="Lang.Ch_Path" />
-                                    </MultiBinding>
-                                </TextBlock.Text>
-                            </TextBlock>
-                            <!--
-                            -->
+                            <TextBlock Grid.Column="2" Grid.Row="1"
+                                Text="{Binding WorkingPath, FallbackValue='...'}" />
                         </Grid>
                     </GroupBox>
-                    <GroupBox Header="{Binding Lang.OptionsExp, FallbackValue=Options}" Grid.Row="1">
+                    <GroupBox Header="{l:Langue Word_Options}" Grid.Row="1">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
@@ -139,17 +112,17 @@
                             </Grid.ColumnDefinitions>
                             <!--
                             -->
-                            <Button Content="Cheats Codes Path"
+                            <Button Content="{l:Langue Folder_CheatCodes}"
                                     Click="ChooseCheatsPath_Click"
                                     />
-                            <TextBlock Grid.Column="1">
+                            <TextBlock Grid.Column="1" >
                                 <TextBlock.Text>
-                                    <MultiBinding Converter="{StaticResource Fallb}" FallbackValue="...">
-                                        <Binding Path="CheatCodesPath" />
-                                        <Binding Path="Lang.Ch_Path" />
+                                    <MultiBinding Converter="{StaticResource Fallb}" ConverterParameter="{l:Langue ChoosePath}">
+                                        <Binding Path="CheatCodesPath}"  />
                                     </MultiBinding>
                                 </TextBlock.Text>
                             </TextBlock>
+                                
                         </Grid>
                     </GroupBox>
                     <TextBlock Grid.Row="2"
@@ -160,10 +133,10 @@
                 </Grid>
             </TabItem>
             <!-- Structure -->
-            <TabItem Header="{x:Static r:Lang.Arch_Struc}">
+            <TabItem Header="{l:Langue Archive_Structure}">
                 <DockPanel>
                     <StackPanel DockPanel.Dock="Right">
-                        <Button Content="{x:Static r:Lang.ResetF}" Click="ResetT_Click"/>
+                        <Button Content="{l:Langue Reset_Factory}" Click="ResetT_Click"/>
                         <Button Content="Reset" Click="Reset_Click"/>
                     </StackPanel>
                     <Grid Grid.Row="2" >
@@ -197,9 +170,9 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <!-- Parameters -->
-                        <Label Grid.Column="0" Content="{x:Static r:Lang.I_RFolder}" ContentStringFormat="{}{0}:" Grid.ColumnSpan="3"/>
+                        <Label Grid.Column="0" Content="{l:Langue Reset_Folder}" ContentStringFormat="{}{0}:" Grid.ColumnSpan="3"/>
                         <!-- Games -->
-                        <Label Grid.Row="1" Content="{x:Static r:Lang.Games}" />
+                        <Label Grid.Row="1" Content="{l:Langue Word_Games}" />
                         <TextBox Grid.Row="1" Text="{Binding Games, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, FallbackValue=Test}"/>
                         <Button Grid.Row="1" Content="!" Click="Raz_Games"/>
                         <!-- CheatCodes -->
@@ -207,19 +180,19 @@
                         <TextBox Grid.Row="2" Text="{Binding CheatCodes, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
                         <Button Grid.Row="2" Content="!" Click="Raz_CheatsCodes"/>
                         <!-- Manuals -->
-                        <Label Grid.Row="3" Content="{x:Static r:Lang.Manuals}"/>
+                        <Label Grid.Row="3" Content="{l:Langue Word_Manuals}"/>
                         <TextBox Grid.Row="3" Text="{Binding Manuals, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}" />
                         <Button Grid.Row="3" Content="!" Click="Raz_Manuals"/>
                         <!-- Images -->
-                        <Label Grid.Row="4" Content="{x:Static r:Lang.Images}"/>
+                        <Label Grid.Row="4" Content="{l:Langue Word_Images}"/>
                         <TextBox Grid.Row="4" Text="{Binding Images, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
                         <Button Grid.Row="4" Content="!" Click="Raz_Images"/>
                         <!-- Musiques -->
-                        <Label Grid.Row="5" Content="{x:Static r:Lang.Musics}"/>
+                        <Label Grid.Row="5" Content="{l:Langue Word_Musics}"/>
                         <TextBox Grid.Row="5" Text="{Binding Musics, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
                         <Button Grid.Row="5" Content="!" Click="Raz_Musics"/>
                         <!-- Videos -->
-                        <Label Grid.Row="6" Content="{x:Static r:Lang.Videos}"/>
+                        <Label Grid.Row="6" Content="{l:Langue Word_Videos}"/>
                         <TextBox Grid.Row="6" Text="{Binding Videos, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
                         <Button Grid.Row="6" Content="!" Click="Raz_Videos"/>
                     </Grid>
@@ -227,19 +200,19 @@
                 </DockPanel>
 
             </TabItem>
-            <TabItem Header="{x:Static r:Lang.Options}">
+            <TabItem Header="{l:Langue Word_Options}">
                 <Grid Margin="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <!-- Custom Folders -->
-                    <CheckBox Content="{x:Static r:Lang.O_InjectCF}"
+                    <CheckBox Content="{l:Langue InjectCustomFields}"
                               VerticalAlignment="Top" HorizontalAlignment="Left"
                               IsChecked="{Binding WithCustomFields}"
                               />
                     <!-- Placer les roms dans un dossier au nom du jeu -->
-                    <CheckBox Grid.Row="1" Content="Place roms into a folder with the game name"
+                    <CheckBox Grid.Row="1" Content="{l:Langue PlaceRomsToGameName}"
                               IsChecked="{Binding WithFolderGameName}"/>
                 </Grid>
             </TabItem>

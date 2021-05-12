@@ -153,12 +153,6 @@
   <data name="Err_PlatformsF" xml:space="preserve">
     <value>Le fichier xml des platformes est introuvable.</value>
   </data>
-  <data name="Game" xml:space="preserve">
-    <value>Game</value>
-  </data>
-  <data name="Games" xml:space="preserve">
-    <value>Games</value>
-  </data>
   <data name="Images" xml:space="preserve">
     <value>Images</value>
   </data>
@@ -204,18 +198,6 @@
   <data name="Launchbox" xml:space="preserve">
     <value>UnPack pour Launchbox</value>
   </data>
-  <data name="Manual" xml:space="preserve">
-    <value>Manuel</value>
-  </data>
-  <data name="Manuals" xml:space="preserve">
-    <value>Manuels</value>
-  </data>
-  <data name="Music" xml:space="preserve">
-    <value>Musique</value>
-  </data>
-  <data name="Musics" xml:space="preserve">
-    <value>Musiques</value>
-  </data>
   <data name="NoElem" xml:space="preserve">
     <value>Pas d'élement</value>
   </data>
@@ -228,14 +210,8 @@
   <data name="OneG" xml:space="preserve">
     <value>One Game</value>
   </data>
-  <data name="Options" xml:space="preserve">
-    <value>Options</value>
-  </data>
   <data name="O_ChangeAllPlatforms" xml:space="preserve">
     <value>Changer la platforme si différente (utile quand différents noms de système existent)</value>
-  </data>
-  <data name="O_InjectCF" xml:space="preserve">
-    <value>Injecter les champs personnalisés</value>
   </data>
   <data name="Pivot" xml:space="preserve">
     <value>Pivot</value>
@@ -254,9 +230,6 @@
   </data>
   <data name="Remove" xml:space="preserve">
     <value>Enlever</value>
-  </data>
-  <data name="ResetF" xml:space="preserve">
-    <value>Réglages d'usine</value>
   </data>
   <data name="Select_All" xml:space="preserve">
     <value>Selectionnez Tout</value>
@@ -293,14 +266,5 @@
   </data>
   <data name="Validate" xml:space="preserve">
     <value>Valider</value>
-  </data>
-  <data name="Video" xml:space="preserve">
-    <value>Video</value>
-  </data>
-  <data name="Videos" xml:space="preserve">
-    <value>Videos</value>
-  </data>
-  <data name="WorkingFolder" xml:space="preserve">
-    <value>Dossier de travail</value>
   </data>
 </root>

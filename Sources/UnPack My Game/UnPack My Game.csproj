@@ -25,6 +25,8 @@
     <Compile Remove="Graph\LaunchBox\M_DPGMaker.cs" />
     <Compile Remove="Graph\LaunchBox\P_LaunchBox.xaml.cs" />
     <Compile Remove="Graph\LaunchBox\W_LaunchBox_Main.xaml.cs" />
+    <Compile Remove="Graph\W_DefinePaths.xaml.cs" />
+    <Compile Remove="Graph\W_ModTargetPaths.xaml.cs" />
     <Compile Remove="Models\LaunchBox\M_LaunchBox.cs" />
     <Compile Remove="Models\M_OSource.cs" />
     <Compile Remove="Models\M_SSource.cs" />
@@ -34,10 +36,14 @@
     <Page Remove="Graph\LaunchBox\LaunchBox_Start.xaml" />
     <Page Remove="Graph\LaunchBox\P_LaunchBox.xaml" />
     <Page Remove="Graph\LaunchBox\W_LaunchBox_Main.xaml" />
+    <Page Remove="Graph\W_DefinePaths.xaml" />
+    <Page Remove="Graph\W_ModTargetPaths.xaml" />
   </ItemGroup>
 
   <ItemGroup>
     <CodeAnalysisDictionary Include="Graph\LaunchBox\LaunchBox_Start.xaml.cs" />
+    <None Include="Graph\W_ModTargetPaths.xaml.cs" />
+    <None Include="Graph\W_DefinePaths.xaml" />
     <None Include="Graph\LaunchBox\W_LaunchBox_Main.xaml.cs" />
   </ItemGroup>
 
@@ -51,6 +57,8 @@
     <None Include="Graph\LaunchBox\P_LaunchBox.xaml" />
     <None Include="Graph\LaunchBox\P_LaunchBox.xaml.cs" />
     <None Include="Graph\LaunchBox\W_LaunchBox_Main.xaml" />
+    <None Include="Graph\W_DefinePaths.xaml.cs" />
+    <None Include="Graph\W_ModTargetPaths.xaml" />
     <None Include="Models\LaunchBox\M_LaunchBox.cs" />
     <None Include="Models\M_OSource.cs" />
     <None Include="Models\M_SSource.cs" />

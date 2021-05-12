@@ -15,21 +15,23 @@ namespace UnPack_My_Game.Models.LaunchBox
 {
     public class M_Config : A_Err
     {
-        public List<CultureInfo> Languages => LanguageManager.Langues;
+       // public LangProvider Language => LanguageManager.Lang;
 
-        private CultureInfo _Langue;
-        public CultureInfo ChosenLanguage
+        //public List<CultureInfo> Languages=> LanguageManager.Langues;
+
+       // private CultureInfo _Langue;
+      /*  public CultureInfo ChosenLanguage
         {
-            get => _Langue;
+            get => LanguageManager.CurrentLanguage;
             set
             {
-                if (value != _Langue)
+                if (value != LanguageManager.CurrentLanguage)
                 {
-                    _Langue = value;
+         //           _Langue = value;
                     LanguageManager.CurrentLanguage = value;
                 }
             }
-        }
+        }*/
 
         Configuration Config
         {

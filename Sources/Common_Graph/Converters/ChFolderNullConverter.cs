@@ -11,7 +11,7 @@ namespace Common_Graph.Converters
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             if (string.IsNullOrEmpty(values[0] as string))
-                return values[1];
+                return parameter;
 
             return values[0];
 
@@ -19,7 +19,8 @@ namespace Common_Graph.Converters
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            return null;
+           // throw new NotImplementedException();
         }
     }
 }

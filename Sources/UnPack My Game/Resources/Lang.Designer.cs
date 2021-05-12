@@ -79,15 +79,6 @@ namespace UnPack_My_Game.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Archive structure.
-        /// </summary>
-        public static string Arch_Struc {
-            get {
-                return ResourceManager.GetString("Arch_Struc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Recherche une chaîne localisée semblable à Cheat Codes.
         /// </summary>
         public static string CheatCodes {
@@ -174,24 +165,6 @@ namespace UnPack_My_Game.Resources {
         public static string Err_PlatformsF {
             get {
                 return ResourceManager.GetString("Err_PlatformsF", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Game.
-        /// </summary>
-        public static string Game {
-            get {
-                return ResourceManager.GetString("Game", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Games.
-        /// </summary>
-        public static string Games {
-            get {
-                return ResourceManager.GetString("Games", resourceCulture);
             }
         }
         
@@ -304,15 +277,6 @@ namespace UnPack_My_Game.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Images.
-        /// </summary>
-        public static string Images {
-            get {
-                return ResourceManager.GetString("Images", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Recherche une chaîne localisée semblable à Please, choose a method to unpack:.
         /// </summary>
         public static string Intro {
@@ -327,42 +291,6 @@ namespace UnPack_My_Game.Resources {
         public static string Launchbox {
             get {
                 return ResourceManager.GetString("Launchbox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Manual.
-        /// </summary>
-        public static string Manual {
-            get {
-                return ResourceManager.GetString("Manual", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Manuals.
-        /// </summary>
-        public static string Manuals {
-            get {
-                return ResourceManager.GetString("Manuals", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Music.
-        /// </summary>
-        public static string Music {
-            get {
-                return ResourceManager.GetString("Music", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Musics.
-        /// </summary>
-        public static string Musics {
-            get {
-                return ResourceManager.GetString("Musics", resourceCulture);
             }
         }
         
@@ -403,29 +331,11 @@ namespace UnPack_My_Game.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Inject Custom Fields.
-        /// </summary>
-        public static string O_InjectCF {
-            get {
-                return ResourceManager.GetString("O_InjectCF", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Recherche une chaîne localisée semblable à One Game.
         /// </summary>
         public static string OneG {
             get {
                 return ResourceManager.GetString("OneG", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Features.
-        /// </summary>
-        public static string Options {
-            get {
-                return ResourceManager.GetString("Options", resourceCulture);
             }
         }
         
@@ -480,15 +390,6 @@ namespace UnPack_My_Game.Resources {
         public static string Remove {
             get {
                 return ResourceManager.GetString("Remove", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Reset Factory.
-        /// </summary>
-        public static string ResetF {
-            get {
-                return ResourceManager.GetString("ResetF", resourceCulture);
             }
         }
         
@@ -597,24 +498,6 @@ namespace UnPack_My_Game.Resources {
         public static string Validate {
             get {
                 return ResourceManager.GetString("Validate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Video.
-        /// </summary>
-        public static string Video {
-            get {
-                return ResourceManager.GetString("Video", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Videos.
-        /// </summary>
-        public static string Videos {
-            get {
-                return ResourceManager.GetString("Videos", resourceCulture);
             }
         }
     }
