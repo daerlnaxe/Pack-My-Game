@@ -32,38 +32,38 @@ namespace UnPack_My_Game.Language
 
         public CultureInfo CurrentLanguage
         {
-
-            get { return Thread.CurrentThread.CurrentUICulture; }
+            get => Thread.CurrentThread.CurrentUICulture;
             set
             {
-                if (value != Thread.CurrentThread.CurrentUICulture)
+                if (value != null && value != Thread.CurrentThread.CurrentUICulture)
                 {
                     Thread.CurrentThread.CurrentUICulture = value;
-                   ChangeLanguage(value);
+                    ChangeLanguage(value);
                 }
             }
         }
 
-        public static List<CultureInfo> Langues { get; set; } = new List<CultureInfo>();
+        public List<CultureInfo> Langues { get; set; } = new List<CultureInfo>();
 
 
-        public LanguageManager()
+        public LanguageManager(string langTag)
         {
             CurrentManager = this;
-            Init();
+            Init(langTag);
+
         }
 
         /// <summary>
         /// Initialisation du module de langage
         /// </summary>
-        internal void Init()
+        internal void Init(string langTag)
         {
             string appFolder = AppDomain.CurrentDomain.BaseDirectory;
 
             CheckFile(appFolder, "en-US");
             CheckFile(appFolder, "fr-FR");
 
-            List<string> supportedLanguages = new List<string>();
+            //List<string> supportedLanguages = new List<string>();
 
             // Liste des localisations
             var localZ = CultureInfo.GetCultures(CultureTypes.AllCultures).Select(x => x.Name);
@@ -75,54 +75,68 @@ namespace UnPack_My_Game.Language
                 foreach (var l in localZ)
                     if (l.Equals(folder))
                     {
-                        supportedLanguages.Add(l);
-                        Langues.Add(new CultureInfo(l));
+                        if (File.Exists(MakeFileLink(l)))
+                            Langues.Add(new CultureInfo(l));
+
                         break;
                     }
             }
 
-            ChangeLanguage(CurrentLanguage);
+            // Si la valeur n'existe pas, 
+            var language = Langues.FirstOrDefault(x => x.Name.Equals(langTag));
 
-            // Vérifie si le fichier existe et est à jour, sinon fait le nécessaire
-            static void CheckFile(string appFolder, string langName)
-            {
-                LangProvider langObj;
-                string langFile = Path.Combine(appFolder, langName, _FileName);
+            if (language != null)
+                CurrentLanguage = language;
+            else
+                CurrentLanguage = Langues.FirstOrDefault(x => x.Name.Equals("en-US"));
 
-                try
-                {
-                    langObj = LangProvider.Read(langFile);
 
-                    if (string.IsNullOrEmpty(langObj.Version) || !langObj.Version.Equals(Common.LangVersion))
-                        throw new Exception("Bad Version");
-                }
-                catch
-                {
-                    switch (langName)
-                    {
-                        case "fr-FR":
-                            langObj = LangProvider.DefaultFrench();
-                            break;
-                        default:
-                            langObj = LangProvider.Default();
-                            break;
-                    }
-
-                    langObj.Save(langFile);
-                }
-
-            }
         }
 
 
+        // Vérifie si le fichier existe et est à jour, sinon fait le nécessaire
+        static void CheckFile(string appFolder, string langName)
+        {
+            LangProvider langObj;
+            string langFile = Path.Combine(appFolder, langName, _FileName);
 
+            try
+            {
+                langObj = LangProvider.Read(langFile);
+
+                if (string.IsNullOrEmpty(langObj.Version) || !langObj.Version.Equals(Common.LangVersion))
+                    throw new Exception("Bad Version");
+            }
+            catch
+            {
+                switch (langName)
+                {
+                    case "fr-FR":
+                        langObj = LangProvider.DefaultFrench();
+                        break;
+                    default:
+                        langObj = LangProvider.Default();
+                        break;
+                }
+
+                langObj.Save(langFile);
+            }
+
+        }
         private void ChangeLanguage(CultureInfo value)
         {
-            string langFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, value.Name, _FileName);
+            string langFile = MakeFileLink(value.Name);
             if (!File.Exists(langFile))
-                langFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "en-US", _FileName);
+            {
+                CurrentLanguage = Langues.FirstOrDefault(x => x.Name.Equals("en-US"));
+                Langues.Remove(value);
+            }
+            //langFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "en-US", _FileName);
+            else
+            {
 
-            Lang = LangProvider.Read(langFile);
+                Lang = LangProvider.Read(langFile);
+            }
 
             LanguageChanged?.Invoke(CurrentManager, EventArgs.Empty);
 
@@ -138,6 +152,11 @@ namespace UnPack_My_Game.Language
                 return property.GetValue(Lang);
             else
                 return $"problem_{key}";
+        }
+
+        private string MakeFileLink(string value)
+        {
+            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, value, _FileName);
         }
     }
 }

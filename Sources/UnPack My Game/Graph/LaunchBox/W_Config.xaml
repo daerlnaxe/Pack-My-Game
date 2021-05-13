@@ -57,7 +57,8 @@
                     <ComboBox Margin="10" Grid.Column="1" MinWidth="100"
                               ItemsSource="{Binding Languages}"
                               IsSynchronizedWithCurrentItem="True"
-                              DisplayMemberPath="NativeName"     
+                              DisplayMemberPath="NativeName" 
+                              SelectedItem="{Binding ChosenLanguage}"
                               />
                         <!--=(l:LanguageManager.CurrentManager.Langues)}"-->
                 </Grid>

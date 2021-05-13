@@ -234,7 +234,7 @@ namespace UnPack_My_Game.Cont
             return new Configuration
             {
                 Version = Common.ConfigVersion,
-                Language = "en-EN",
+                Language = "en-US",
 
                 PlatformsFile = @"Data\Platforms.xml",
                 PlatformsFolder = @"Data\Platforms\",
@@ -281,7 +281,7 @@ namespace UnPack_My_Game.Cont
 
             // Language
             if (string.IsNullOrEmpty(Language))
-                Language = "en-EN";
+                Language = "en-US";
         }
 
     }
