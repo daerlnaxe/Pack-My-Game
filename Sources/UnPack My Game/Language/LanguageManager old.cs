@@ -13,24 +13,58 @@ namespace UnPack_My_Game.Language
      * Thread.CurrentThread.CurrentUICulture: langue actuelle de l'os
      * CurrentCulture pour les dates et les devises
      * CurrentUICulture 
+     * 
+     * Version basée sur une gestion locale des abonnements
      */
-    public class LanguageManager
+
+    public static class LanguageManager
     {
-        public event EventHandler LanguageChanged;
-
-        /// <summary>
-        /// permet d'appeler le manager actuel de n'importe où
-        /// </summary>
-        public static LanguageManager CurrentManager { get; private set; }
-
         private const string _FileName = "UnpackMyGame.Lang.json";
         private const string _Version = "1.0.0.0";
 
 
         public static LangProvider Lang;
 
+        #region events
+        /// <summary>
+        /// Liste des manager d'events
+        /// </summary>
+        private static HashSet<EventHandler> _UICultureChangedHandlers = new HashSet<EventHandler>();
 
-        public CultureInfo CurrentLanguage
+        /// <summary>
+        /// (Des)Abonnement à l'event
+        /// </summary>
+        public static event EventHandler UICultureChanged
+        {
+            add
+            {
+                _UICultureChangedHandlers.Add(value);
+            }
+            remove
+            {
+                _UICultureChangedHandlers.Remove(value);
+            }
+        }
+
+        /// <summary>
+        /// Signale à tous les abonnés que la culture a changé
+        /// </summary>
+        private static void OnUICultureChanged()
+        {
+            Debug.WriteLine(CurrentLanguage.Name);
+
+            foreach (EventHandler handler in _UICultureChangedHandlers)
+            {
+                Debug.WriteLine(((LangueExtension)handler.Target)._Key);
+                handler(typeof(LanguageManager), EventArgs.Empty);
+            }
+        }
+
+
+
+        #endregion
+
+        public static CultureInfo CurrentLanguage
         {
 
             get { return Thread.CurrentThread.CurrentUICulture; }
@@ -46,17 +80,10 @@ namespace UnPack_My_Game.Language
 
         public static List<CultureInfo> Langues { get; set; } = new List<CultureInfo>();
 
-
-        public LanguageManager()
-        {
-            CurrentManager = this;
-            Init();
-        }
-
         /// <summary>
         /// Initialisation du module de langage
         /// </summary>
-        internal void Init()
+        internal static void Init()
         {
             string appFolder = AppDomain.CurrentDomain.BaseDirectory;
 
@@ -116,7 +143,7 @@ namespace UnPack_My_Game.Language
 
 
 
-        private void ChangeLanguage(CultureInfo value)
+        private static void ChangeLanguage(CultureInfo value)
         {
             string langFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, value.Name, _FileName);
             if (!File.Exists(langFile))
@@ -124,11 +151,11 @@ namespace UnPack_My_Game.Language
 
             Lang = LangProvider.Read(langFile);
 
-            LanguageChanged?.Invoke(CurrentManager, EventArgs.Empty);
+            OnUICultureChanged();
 
         }
 
-        internal static object GetValue(string key)
+        internal static object Getvalue(string key)
         {
             if (Lang == null)
                 Lang = LangProvider.Default();

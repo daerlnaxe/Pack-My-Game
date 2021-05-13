@@ -55,11 +55,11 @@
                     <Label x:Name="lbLanguage" Margin="5,10"
                            Content="{l:Langue Word_Languages}"/>
                     <ComboBox Margin="10" Grid.Column="1" MinWidth="100"
-                              ItemsSource="{Binding Path=(l:LanguageManager.Langues)}"
+                              ItemsSource="{Binding Languages}"
+                              IsSynchronizedWithCurrentItem="True"
                               DisplayMemberPath="NativeName"     
-                              SelectedItem="{Binding Path=(l:LanguageManager.CurrentLanguage)}"                              
-
                               />
+                        <!--=(l:LanguageManager.CurrentManager.Langues)}"-->
                 </Grid>
             </TabItem>
     
@@ -115,11 +115,10 @@
                             <Button Content="{l:Langue Folder_CheatCodes}"
                                     Click="ChooseCheatsPath_Click"
                                     />
+                            <TextBlock x:Name="ChoosePath"/>
                             <TextBlock Grid.Column="1" >
                                 <TextBlock.Text>
-                                    <MultiBinding Converter="{StaticResource Fallb}" ConverterParameter="{l:Langue ChoosePath}">
-                                        <Binding Path="CheatCodesPath}"  />
-                                    </MultiBinding>
+                                    <l:Path Property="{Binding CheatCodesPath}" ReplacementKey="ChoosePath"  Converter="{StaticResource Fallb}"  />
                                 </TextBlock.Text>
                             </TextBlock>
                                 

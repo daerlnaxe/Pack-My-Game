@@ -8,10 +8,12 @@ namespace Common_Graph.Converters
 {
     public class ChFolderNullConverter : IMultiValueConverter
     {
+
+
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if (string.IsNullOrEmpty(values[0] as string))
-                return parameter;
+            if (string.IsNullOrEmpty(values[0] as string) && values.Length > 0)
+                return values[1];
 
             return values[0];
 
@@ -20,7 +22,7 @@ namespace Common_Graph.Converters
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
             return null;
-           // throw new NotImplementedException();
+            // throw new NotImplementedException();
         }
     }
 }

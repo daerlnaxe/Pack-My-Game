@@ -10,6 +10,8 @@ using UnPack_My_Game.Cont;
 using DxTBoxCore.BoxChoose;
 using UnPack_My_Game.Language;
 using System.Globalization;
+using System.ComponentModel;
+using System.Windows.Data;
 
 namespace UnPack_My_Game.Models.LaunchBox
 {
@@ -17,7 +19,7 @@ namespace UnPack_My_Game.Models.LaunchBox
     {
        // public LangProvider Language => LanguageManager.Lang;
 
-        //public List<CultureInfo> Languages=> LanguageManager.Langues;
+        public ICollectionView Languages { get; set; }
 
        // private CultureInfo _Langue;
       /*  public CultureInfo ChosenLanguage
@@ -219,6 +221,10 @@ namespace UnPack_My_Game.Models.LaunchBox
 
         public M_Config()
         {
+            // Copy sinon provoque une erreur
+            Languages = CollectionViewSource.GetDefaultView(LanguageManager.Langues);
+            Languages.CurrentChanged += (s,e) => LanguageManager.CurrentManager.CurrentLanguage = (CultureInfo)Languages.CurrentItem;
+
             Config = new Configuration(Common.Config);
         }
 

@@ -27,6 +27,8 @@
     <Compile Remove="Graph\LaunchBox\W_LaunchBox_Main.xaml.cs" />
     <Compile Remove="Graph\W_DefinePaths.xaml.cs" />
     <Compile Remove="Graph\W_ModTargetPaths.xaml.cs" />
+    <Compile Remove="Language\LanguageManager old.cs" />
+    <Compile Remove="Language\LangueExtension old.cs" />
     <Compile Remove="Models\LaunchBox\M_LaunchBox.cs" />
     <Compile Remove="Models\M_OSource.cs" />
     <Compile Remove="Models\M_SSource.cs" />
@@ -59,6 +61,8 @@
     <None Include="Graph\LaunchBox\W_LaunchBox_Main.xaml" />
     <None Include="Graph\W_DefinePaths.xaml.cs" />
     <None Include="Graph\W_ModTargetPaths.xaml" />
+    <None Include="Language\LanguageManager old.cs" />
+    <None Include="Language\LangueExtension old.cs" />
     <None Include="Models\LaunchBox\M_LaunchBox.cs" />
     <None Include="Models\M_OSource.cs" />
     <None Include="Models\M_SSource.cs" />
