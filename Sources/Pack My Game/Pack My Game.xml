@@ -42,11 +42,6 @@
             Games
             </summary>
         </member>
-        <member name="P:Pack_My_Game.Common.ObjectLang">
-            <summary>
-            Language object
-            </summary>
-        </member>
         <member name="P:Pack_My_Game.Common.Config">
             <summary>
             Configuration object
@@ -230,211 +225,6 @@
         <member name="M:Pack_My_Game.Cont.Configuration.Update">
             <summary>
             Met à jour le fichier de configuration
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.CCopyExp">
-            <summary>
-            Clones copy
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.Ch_Games">
-            <summary>
-            Choose game(s)
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.Ch_LBPath">
-            <summary>
-            Choose the LaunchBoxPath
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.Ch_Path">
-            <summary>
-            Choose a path
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.Ch_System">
-            <summary>
-            Choose a system
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.CheatsCopyExp">
-            <summary>
-            Cheats Copy
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.CheatsPathExp">
-            <summary>
-            Cheats codes path
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.CompExp">
-            <summary>
-            Compression
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.CompLBMin">
-            <summary>
-            Label compression mini
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.CompLBMoy">
-            <summary>
-            Label compression moyen
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.CompLBMax">
-            <summary>
-            Label compression forte
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.CompZExp">
-            <summary>
-            Zip compression
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.Comp7ZExp">
-            <summary>
-            7Zip Compression
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.ConfigExp">
-            <summary>
-            Configuration
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.EnXBExp">
-            <summary>
-            Enhanced XML backup
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.FileExp">
-            <summary>
-            File
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.FileEExp">
-            <summary>
-            File exists
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.FolderEEXp">
-            <summary>
-            Folder exists
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.GeneralExp">
-            <summary>
-            General
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.InfExp">
-            <summary>
-            Informations
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.InfosGExp">
-            <summary>
-            Infos Games
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.LBPathExp">
-            <summary>
-            Launchbox path
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.LoggersExp">
-            <summary>
-            Loggers
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.LvlCompExp">
-            <summary>
-            Level of Compression
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.MainExp">
-            <summary>
-            Main
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.OptionsExp">
-            <summary>
-            Options
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.OriXBExp">
-            <summary>
-            Original xlm backup
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.PathsExp">
-            <summary>
-            Paths
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.ParamsExp">
-            <summary>
-            Parameters
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.ProcessExp">
-            <summary>
-            Process
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.RegionExp">
-            <summary>
-            Word Region
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.Q_Pack">
-            <summary>
-            Question pack this game
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.Rulz">
-            <summary>
-            2Rules
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.S_Language">
-            <summary>
-            Select a language
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.Select">
-            <summary>
-            Select
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.TitleExp">
-            <summary>
-            Word Title
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.SubmitExp">
-            <summary>
-            Submit
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.TViewFExp">
-            <summary>
-            TreeView File
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.VersionExp">
-            <summary>
-            Word Version
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.WPathExp">
-            <summary>
-            Working path
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Cont.Language.WindowExp">
-            <summary>
-            Window
             </summary>
         </member>
         <member name="T:Pack_My_Game.Core.LaunchBoxCore">
@@ -831,6 +621,374 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:Pack_My_Game.Language.DataModule">
+            <summary>
+            A pour charge de contenir la valeur et changer quand la langue change
+            </summary>
+            <remarks>
+            Les weaks events permettent de s'abonner sans compromettre le garbage collector
+            </remarks>
+        </member>
+        <member name="F:Pack_My_Game.Language.DataModule._key">
+            <summary>
+            Clé de liaison pour la valeur à traduire
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.DataModule.Value">
+            <summary>
+            Renvoie la valeur correspondant à la clé
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.Language.DataModule.#ctor(System.String)">
+            <summary>
+            Initialise avec une clé correspondant à la valeur à traduire 
+            Abonnement à l'event changement de langue
+            </summary>
+            <param name="key">The key.</param>
+        </member>
+        <member name="M:Pack_My_Game.Language.DataModule.ReceiveWeakEvent(System.Type,System.Object,System.EventArgs)">
+            <summary>
+            Signale la mise à jour de la valeur quand un changement de langue se produit
+            </summary>
+            <param name="managerType"></param>
+            <param name="sender"></param>
+            <param name="e"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pack_My_Game.Language.DataModule.Finalize">
+            <summary>
+            On enlève l'écoute
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Choose_Games">
+            <summary>
+            Choose game(s)
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Choose_LBPath">
+            <summary>
+            Choose the LaunchBoxPath
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Choose_Language">
+            <summary>
+            Choose a language
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Choose_Path">
+            <summary>
+            Choose the path
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Choose_System">
+            <summary>
+            Choose a system
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Comp_Lvl">
+            <summary>
+            Level of Compression
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Comp_Min">
+            <summary>
+            Label min compression
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Comp_Moy">
+            <summary>
+            Label moy compression
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Comp_Max">
+            <summary>
+            Label strong compression forte
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Comp_Zip">
+            <summary>
+            Zip compression
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Comp_7Z">
+            <summary>
+            7Zip Compression
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Copy_Clones">
+            <summary>
+            Clones copy
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Copy_Cheats">
+            <summary>
+            Cheats Copy
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.File_Ex">
+            <summary>
+            File exists
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Files_Found">
+            <summary>
+            Files found
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Folder_Ex">
+            <summary>
+            Folder exists
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Path_Cheats">
+            <summary>
+            Cheats codes path
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Path_Working">
+            <summary>
+            Working path
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Path_Launchbox">
+            <summary>
+            Launchbox path
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Opt_EnXB">
+            <summary>
+            Enhanced XML backup
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Opt_InfosG">
+            <summary>
+            Infos Games
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Opt_OriXB">
+            <summary>
+            Original xlm backup
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Opt_TViewF">
+            <summary>
+            TreeView File
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Opt_Loggers">
+            <summary>
+            Loggers
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Opt_Window">
+            <summary>
+            Log window
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Q_Pack">
+            <summary>
+            Question pack this game
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Add">
+            <summary>
+            Add
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Cancel">
+            <summary>
+            Cancel
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Cheats">
+            <summary>
+            Cheats
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Compression">
+            <summary>
+            Compression
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Configuration">
+            <summary>
+            Configuration
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Credits">
+            <summary>
+            Credits
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Delete">
+            <summary>
+            Delete
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_File">
+            <summary>
+            File
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Games">
+            <summary>
+            Games
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_General">
+            <summary>
+            General
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Help">
+            <summary>
+            Help
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Informations">
+            <summary>
+            Informations
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Main">
+            <summary>
+            Main
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Manuals">
+            <summary>
+            Manuels
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Musics">
+            <summary>
+            Musics
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Ok">
+            <summary>
+            Ok
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Options">
+            <summary>
+            Options
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Paths">
+            <summary>
+            Paths
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Params">
+            <summary>
+            Parameters
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Process">
+            <summary>
+            Process
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Region">
+            <summary>
+            Word Region
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Result">
+            <summary>
+            Result
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Select">
+            <summary>
+            Select
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Selected">
+            <summary>
+            Selected
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Submit">
+            <summary>
+            Submit
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Title">
+            <summary>
+            Title
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Version">
+            <summary>
+            Word Version
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Videos">
+            <summary>
+            Videos
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Long_Credits">
+            <summary>
+            Credits
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Long_Help">
+            <summary>
+            Help
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Long_Rulz">
+            <summary>
+            2Rules
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.Language.LangContent.Default">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Pack_My_Game.Language.LanguageManager.Instance">
+            <summary>
+            permet d'appeler le manager actuel de n'importe où
+            </summary>
+            <remarks>
+            On initialise par là, pour que la partie wpf puisse en créer un en design
+            </remarks>
+        </member>
+        <member name="M:Pack_My_Game.Language.LanguageManager.Init(System.String)">
+            <summary>
+            Initialisation du module de langage
+            </summary>
+        </member>
+        <member name="T:Pack_My_Game.Language.LangueChangedEventManager">
+            <summary>
+            Gestion des abonnements par les DataModule
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangueChangedEventManager.CurrentManager">
+            <summary>
+            Manager unique, permet de mettre des fonctions statiques appelables de n'importe où
+            </summary>
+            <remarks>
+            Initialize un nouveau si aucun n'existe
+            </remarks>
+        </member>
+        <member name="M:Pack_My_Game.Language.LangueChangedEventManager.AddListener(Pack_My_Game.Language.LanguageManager,System.Windows.IWeakEventListener)">
+            <summary>
+            Ajoute un élément à l'écoute de l'event
+            </summary>
+            <param name="currentManager">Le manager qui émet les events quand la langue change</param>
+            <param name="listener">L'élement qui écoute le manager</param>
+        </member>
+        <member name="T:Pack_My_Game.Language.LangueExtension">
+            <summary>
+            Ajoute une fonction de traduction au xaml
+            </summary>
+        </member>
         <member name="T:Pack_My_Game.MainWindow">
             <summary>
             Interaction logic for MainWindow.xaml
@@ -1031,18 +1189,6 @@
             <summary>
               Recherche une chaîne localisée semblable à Working path.
             </summary>
-        </member>
-        <member name="T:Pack_My_Game.XML.XMLLang">
-            <summary>
-            Create xml language files
-            </summary>
-        </member>
-        <member name="M:Pack_My_Game.XML.XMLLang.Load(System.String)">
-            <summary>
-            Load Language File
-            </summary>
-            <param name="xmlFile"></param>
-            <returns></returns>
         </member>
     </members>
 </doc>

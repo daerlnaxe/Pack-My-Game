@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
-namespace UnPack_My_Game.Language
+namespace Pack_My_Game.Language
 {
     /*
      * Thread.CurrentThread.CurrentUICulture: langue actuelle de l'os
@@ -18,16 +18,43 @@ namespace UnPack_My_Game.Language
     {
         public event EventHandler LanguageChanged;
 
+        public static LanguageManager _CurrentManager;
         /// <summary>
         /// permet d'appeler le manager actuel de n'importe où
         /// </summary>
-        public static LanguageManager CurrentManager { get; private set; }
+        /// <remarks>
+        /// On initialise par là, pour que la partie wpf puisse en créer un en design
+        /// </remarks>
+        public static LanguageManager Instance 
+        {
+            get
+            {
+                if (_CurrentManager == null)
+                    _CurrentManager = new LanguageManager("en-US");
+
+                return _CurrentManager;
+            }
+        }
 
         private const string _FileName = "UnpackMyGame.Lang.json";
-        //private const string _Version = "1.0.0.0";
+        //public const string CurrentVersion = "1.0.0.0";
 
+        public static LangContent Lang;
 
-        public static LangProvider Lang;
+        /*
+        public static LangContent Lang
+        {
+            get
+            {
+                if (Lang == null)
+                    _Lang = LangContent.Default();
+                return _Lang;
+            }
+            set
+            {
+                _Lang = value;
+            }
+        }*/
 
 
         public CultureInfo CurrentLanguage
@@ -49,7 +76,7 @@ namespace UnPack_My_Game.Language
 
         public LanguageManager(string langTag)
         {
-            CurrentManager = this;
+            _CurrentManager = this;
             Init(langTag);
         }
 
@@ -92,12 +119,12 @@ namespace UnPack_My_Game.Language
             // Vérifie si le fichier existe et est à jour, sinon fait le nécessaire
             static void CheckFile(string appFolder, string langName)
             {
-                LangProvider langObj;
+                LangContent langObj;
                 string langFile = Path.Combine(appFolder, langName, _FileName);
 
                 try
                 {
-                    langObj = LangProvider.Read(langFile);
+                    langObj = LangContent.Load(langFile);
 
                     if (string.IsNullOrEmpty(langObj.Version) || !langObj.Version.Equals(Common.LangVersion))
                         throw new Exception("Bad Version");
@@ -107,10 +134,10 @@ namespace UnPack_My_Game.Language
                     switch (langName)
                     {
                         case "fr-FR":
-                            langObj = LangProvider.DefaultFrench();
+                            langObj = LangContent.DefaultFrench();
                             break;
                         default:
-                            langObj = LangProvider.Default();
+                            langObj = LangContent.Default();
                             break;
                     }
 
@@ -128,18 +155,18 @@ namespace UnPack_My_Game.Language
             if (!File.Exists(langFile))
                 langFile = MakeFileLink("en-US");
 
-            Lang = LangProvider.Read(langFile);
+            Lang = LangContent.Load(langFile);
 
-            LanguageChanged?.Invoke(CurrentManager, EventArgs.Empty);
+            LanguageChanged?.Invoke(this, EventArgs.Empty);
 
         }
 
-        internal static object GetValue(string key)
+        internal object GetValue(string key)
         {
             if (Lang == null)
-                Lang = LangProvider.Default();
+                Lang = LangContent.Default();
 
-            var property = typeof(LangProvider).GetProperty(key);
+            var property = typeof(LangContent).GetProperty(key);
             if (property != null)
                 return property.GetValue(Lang);
             else

@@ -29,7 +29,7 @@ namespace Pack_My_Game.Models
 
         public string Root { get; private set; }
 
-        public Language Lang => Common.ObjectLang;
+       // public Language Lang => Common.ObjectLang;
 
         #region Chosen
         DataPlus _ChosenGame;

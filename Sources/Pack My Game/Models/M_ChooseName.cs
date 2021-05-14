@@ -8,7 +8,7 @@ namespace Pack_My_Game.Models
 {
     public class M_ChooseName : A_Err
     {
-        public Language Lang => Common.ObjectLang;
+        //public Language Lang => Common.ObjectLang;
         public string GameName { get; set; }
         public string Message { get; set; }
 

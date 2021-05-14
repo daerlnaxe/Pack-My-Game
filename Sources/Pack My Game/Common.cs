@@ -41,7 +41,7 @@ namespace Pack_My_Game
         /// <summary>
         /// Language object
         /// </summary>
-        internal static Language ObjectLang { get; set; }
+     //   internal static Language ObjectLang { get; set; }
 
         /// <summary>
         /// Configuration object

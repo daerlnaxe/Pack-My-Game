@@ -55,7 +55,7 @@ namespace Pack_My_Game.IHM
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _Model.Relocalize();
+            //_Model.Relocalize();
 
             /*      if (string.IsNullOrEmpty(_Model.SelectedLanguage))
                       return;

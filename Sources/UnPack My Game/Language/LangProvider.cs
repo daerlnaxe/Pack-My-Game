@@ -15,11 +15,17 @@ namespace UnPack_My_Game.Language
         /// </summary>
         public string Version { get; set; }
 
+        /// <summary>
+        /// Chercher le dossier launchbox
+        /// </summary>
+        public string ChoosePath { get; set; } = "Choose the path";
+
 
         #region Commun
         /// <summary>
         /// Chemin vers LaunchBox
         /// </summary>
+        [JsonPropertyName("Folder.LaunchBox")]
         public string Folder_LaunchBox { get; set; }
 
         /// <summary>
@@ -137,10 +143,6 @@ namespace UnPack_My_Game.Language
         /// </summary>
         public string PlaceRomsToGameName { get; set; } = "Place roms into a folder with the game name";
 
-        /// <summary>
-        /// Chercher le dossier launchbox
-        /// </summary>
-        public string ChoosePath { get; set; } = "Choose the path";
 
         internal void Update()
         {
@@ -205,6 +207,9 @@ namespace UnPack_My_Game.Language
             {
                 Version = Common.LangVersion,
 
+                //
+                ChoosePath = "Choisir le chemin",
+                //
                 Folder_CheatCodes = "Dossier CheatCodes",
                 Folder_LaunchBox = "Dossier LaunchBox",
                 Folder_Working = "Dossier de travail",
@@ -223,8 +228,7 @@ namespace UnPack_My_Game.Language
                 Reset_Factory = "Réglages d'usine",
                 InjectCustomFields = "Injecter les champs personnalisés",
                 PlaceRomsToGameName = "Placer les roms dans un dossier portant le nom du jeu",
-                //
-                ChoosePath = "Choisir le chemin",
+
                 
 
 

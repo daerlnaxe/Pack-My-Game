@@ -2,6 +2,7 @@
 using Common_PMG.XML;
 using DxTBoxCore.BoxChoose;
 using Pack_My_Game.IHM;
+using Pack_My_Game.Language;
 using Pack_My_Game.Models;
 using System.Diagnostics;
 using System.IO;
@@ -146,7 +147,7 @@ namespace Pack_My_Game
             {
                 Title = "Credits",
                 Message = "Credits",
-                Texteuh = _Model.Lang.Credits,
+                Texteuh = LanguageManager.Lang.Word_Credits,
             };
             window.ShowDialog();
         }
@@ -157,7 +158,7 @@ namespace Pack_My_Game
             {
                 Title = "Help",
                 Message = "Help",
-                Texteuh = _Model.Lang.Help,
+                Texteuh = LanguageManager.Lang.Word_Help,
             };
             window.ShowDialog();
         }

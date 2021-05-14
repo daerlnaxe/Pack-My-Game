@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Pack_My_Game.Cont
 {
-    public class Language : INotifyPropertyChanged
+    public class LangCont : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

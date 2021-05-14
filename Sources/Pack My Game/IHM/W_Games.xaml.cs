@@ -24,7 +24,7 @@ namespace Pack_My_Game.IHM
     public partial class W_Games : Window, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public Language Lang => Common.ObjectLang;
+        //public Language Lang => Common.ObjectLang;
 
 
         public ObservableCollection<ShortGame> SelectedGames { get; set; }

@@ -16,6 +16,7 @@ using System.Linq;
 using System.Windows;
 using static Common_PMG.Tool;
 using DxLocalTransf.Tools;
+using Pack_My_Game.Language;
 
 namespace Pack_My_Game.IHM
 {
@@ -47,7 +48,7 @@ namespace Pack_My_Game.IHM
                         {
                             Model = new DxTBoxCore.Box_Decisions.M_Decision()
                             {
-                                Message = Common.ObjectLang.FileEExp,
+                                Message = LanguageManager.Lang.File_Ex,
                                 Source = fileSrc.Path,
                                 Destination = fileDest.Path,
 
@@ -108,7 +109,7 @@ namespace Pack_My_Game.IHM
                 {
                     W_PackMeRes W_res = new W_PackMeRes()
                     {
-                        Title = $"{Common.ObjectLang.ResultExp} - {gdC.Title}",
+                        Title = $"{LanguageManager.Lang.Word_Result} - {gdC.Title}",
                         Model = new M_PackMeRes(rootFolder, platform, gdC),
 
                     };

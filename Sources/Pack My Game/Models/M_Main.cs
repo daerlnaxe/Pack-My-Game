@@ -22,11 +22,11 @@ using Pack_My_Game.IHM;
 
 namespace Pack_My_Game.Models
 {
-    public class M_Main : A_Err, I_Lang
+    public class M_Main : A_Err//, I_Lang
     {
 
         // private Language _Lang;
-        public Language Lang => Common.ObjectLang;
+        //public LangContent Lang => Common.ObjectLang;
 
         /// <summary>
         /// Dossier de LaunchBox
@@ -102,7 +102,7 @@ namespace Pack_My_Game.Models
             if (cfg.ShowDialog() == true)
             {
                 // On recharge le fichier langue
-                Relocalize();
+            //    Relocalize();
                 ReloadConfig(oldConfig);
             }
             oldConfig = null;
@@ -110,10 +110,10 @@ namespace Pack_My_Game.Models
         }
 
 
-        internal void Relocalize()
+     /*   internal void Relocalize()
         {
             OnPropertyChanged(nameof(Lang));
-        }
+        }*/
 
         internal void ReloadConfig(Configuration oldConfig)
         {
@@ -136,7 +136,7 @@ namespace Pack_My_Game.Models
         {
             Options.Clear();
 
-            if (Config.CreateInfos)
+            /*if (Config.CreateInfos)
                 Options.Add(Lang.InfosGExp);
 
             if (Config.CreateTBGame)
@@ -158,7 +158,7 @@ namespace Pack_My_Game.Models
                 Options.Add(Lang.CompZExp);
 
             if (Config.SevZipCompression)
-                Options.Add(Lang.Comp7ZExp);
+                Options.Add(Lang.Comp7ZExp);*/
         }
 
         internal void PlatformChanged()

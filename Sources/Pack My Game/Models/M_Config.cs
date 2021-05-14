@@ -1,6 +1,7 @@
 ﻿using Common_PMG.Models;
 using DxTBoxCore.BoxChoose;
 using Pack_My_Game.Cont;
+using Pack_My_Game.Language;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,7 +15,7 @@ namespace Pack_My_Game.Models
         #region Languages
 
         //public string[] Languages { get; set; } = { "en-EN", "fr-FR" };
-        public List<Language> Languages { get; set; } = new List<Language>();
+        /*public List<Language> Languages { get; set; } = new List<Language>();
 
         public Language Lang { get; set; }
 
@@ -29,8 +30,9 @@ namespace Pack_My_Game.Models
 
                 _SelectedLanguage = value;
             }
-        }
+        }*/
 
+        /*
         internal void Relocalize()
         {
             string xmlFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Common.LangFolder, $"Lang.{SelectedLanguage.Lang}.xml");
@@ -38,7 +40,7 @@ namespace Pack_My_Game.Models
             OnPropertyChanged(nameof(Lang));
             OnPropertyChanged(nameof(LaunchBoxPath));
             OnPropertyChanged(nameof(CheatCodesPath));
-        }
+        }*/
         #endregion
 
         #region Paths
@@ -97,11 +99,11 @@ namespace Pack_My_Game.Models
 
         public M_Config()
         {
-            Lang = Common.ObjectLang;
+            // Lang = Common.ObjectLang;
 
             Config = new Configuration(Common.Config);
 
-
+            /*
             // Loading of all xml languages files
             foreach (var f in Directory.EnumerateFiles(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Common.LangFolder), "*.xml", SearchOption.TopDirectoryOnly))
             {
@@ -112,10 +114,10 @@ namespace Pack_My_Game.Models
                 Languages.Add(objLang);
             }
 
-            SelectedLanguage = Languages.FirstOrDefault(x => x.Lang.Equals(Common.ObjectLang.Lang));
+            SelectedLanguage = Languages.FirstOrDefault(x => x.Lang.Equals(Common.ObjectLang.Lang));*/
         }
 
- 
+
         internal void ChooseLaunchBoxPath()
         {
 
@@ -124,7 +126,7 @@ namespace Pack_My_Game.Models
                 Model = new M_ChooseFolder()
                 {
                     HideWindowsFolder = true,
-                    Info = Lang.Ch_LBPath,
+                    Info = LanguageManager.Lang.Choose_LBPath,
                     ShowFiles = true,
                     StartingFolder = Config.LastPath,// PS.Default.LastKPath,
                 },
@@ -148,7 +150,7 @@ namespace Pack_My_Game.Models
                 Model = new M_ChooseFolder()
                 {
                     HideWindowsFolder = true,
-                    Info = Lang.Ch_LBPath,
+                    Info = LanguageManager.Lang.Choose_Path,
                     ShowFiles = true,
                     StartingFolder = Config.LastPath,
                 },
@@ -170,7 +172,7 @@ namespace Pack_My_Game.Models
                 Model = new M_ChooseFolder()
                 {
                     HideWindowsFolder = true,
-                    Info = Lang.Ch_LBPath,
+                    Info = LanguageManager.Lang.Choose_Path,
                     ShowFiles = true,
                     StartingFolder = Config.LastPath,
 
@@ -182,16 +184,16 @@ namespace Pack_My_Game.Models
             {
                 Common.Config.LastPath = tc.LinkResult;
                 Common.Config.Save();
-                
-                Config.LastPath  = CheatCodesPath = tc.LinkResult;
+
+                Config.LastPath = CheatCodesPath = tc.LinkResult;
             }
         }
 
         internal void Save()
         {
             //PS.Default.Language = SelectedLanguage;
-            Common.ObjectLang = Lang;
-            Config.Language = SelectedLanguage.Lang;
+            //Common.ObjectLang = Lang;
+            //Config.Language = SelectedLanguage.Lang;
 
             Common.Config = Config;
             Common.Config.Save();

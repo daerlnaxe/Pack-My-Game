@@ -2,6 +2,7 @@
 using Hermes.Cont;
 using Hermes.Messengers;
 using Pack_My_Game.Cont;
+using Pack_My_Game.Language;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -69,12 +70,8 @@ namespace Pack_My_Game
 
 
                 // --- Languages
-                Language.Check("en-EN");
-                Language.Check("fr-FR");
+                new LanguageManager(Config.Language);
 
-                string langFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, LangFolder, $"Lang.{Config.Language}.xml");
-
-                ObjectLang = XML.XMLLang.Load(langFile);
             }
             catch (Exception exc)
             {

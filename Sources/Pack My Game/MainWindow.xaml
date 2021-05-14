@@ -7,7 +7,7 @@
         xmlns:conv="clr-namespace:Pack_My_Game.IHM.Converters"
         xmlns:convc="clr-namespace:Common_Graph.Converters;assembly=Common_Graph"
         xmlns:root="clr-namespace:Pack_My_Game"
-        xmlns:l="clr-namespace:Pack_My_Game.Resources"
+        xmlns:l="clr-namespace:Pack_My_Game.Language"
         xmlns:l2="clr-namespace:DxTBoxCore.Languages;assembly=DxTBoxCore"
         mc:Ignorable="d"
         Title="{Binding WindowTitle, 
@@ -80,16 +80,16 @@
     <DockPanel>
         <!-- Menu -->
         <Menu DockPanel.Dock="Top" Height="20" >
-            <MenuItem Header="{Binding Lang.ConfigExp, FallbackValue='Configuration'}" Click="Config_Click" />
+            <MenuItem Header="{l:Langue Word_Configuration}" Click="Config_Click" />
             <MenuItem Header="?">
-                <MenuItem Header="Credits" Click="Credits_Click" />
-                <MenuItem Header="Help" Click="Help_Click" />
+                <MenuItem Header="{l:Langue Word_Credits}" Click="Credits_Click" />
+                <MenuItem Header="{l:Langue Word_Help}" Click="Help_Click" />
             </MenuItem>
         </Menu>
         <!--Buttons -->
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
             <!--            -->
-            <Button Content="{Binding Lang.ProcessExp, FallbackValue=ProcessExp}" Command="local:Common.ProcessCommand"/>
+            <Button Content="{l:Langue Word_Process}" Command="local:Common.ProcessCommand"/>
         </StackPanel>
         <!-- Center -->
         <Grid Margin="0,5,0,5">

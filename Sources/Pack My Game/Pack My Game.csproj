@@ -32,8 +32,11 @@
 
   <ItemGroup>
     <Compile Remove="Compression\ZipCompress.cs" />
+    <Compile Remove="Cont\LangCont.cs" />
     <Compile Remove="Core\LaunchBocDeprecated.cs" />
+    <Compile Remove="Language\LangProvider.cs" />
     <Compile Remove="Models\A_Err.cs" />
+    <Compile Remove="XML\XMLLang.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -73,8 +76,11 @@
 
   <ItemGroup>
     <None Include="Compression\ZipCompress.cs" />
+    <None Include="Cont\LangCont.cs" />
     <None Include="Core\LaunchBocDeprecated.cs" />
+    <None Include="Language\LangProvider.cs" />
     <None Include="Models\A_Err.cs" />
+    <None Include="XML\XMLLang.cs" />
   </ItemGroup>
 
   <ItemGroup>
