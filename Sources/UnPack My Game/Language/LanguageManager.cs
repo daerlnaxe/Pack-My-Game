@@ -39,7 +39,7 @@ namespace UnPack_My_Game.Language
                 if (value != Thread.CurrentThread.CurrentUICulture)
                 {
                     Thread.CurrentThread.CurrentUICulture = value;
-                   ChangeLanguage(value);
+                    ChangeLanguage(value);
                 }
             }
         }
@@ -63,7 +63,6 @@ namespace UnPack_My_Game.Language
             CheckFile(appFolder, "en-US");
             CheckFile(appFolder, "fr-FR");
 
-            List<string> supportedLanguages = new List<string>();
 
             // Liste des localisations
             var localZ = CultureInfo.GetCultures(CultureTypes.AllCultures).Select(x => x.Name);
@@ -75,8 +74,9 @@ namespace UnPack_My_Game.Language
                 foreach (var l in localZ)
                     if (l.Equals(folder))
                     {
-                        supportedLanguages.Add(l);
-                        Langues.Add(new CultureInfo(l));
+                        if (File.Exists(MakeFileLink(l)))
+                            Langues.Add(new CultureInfo(l));
+
                         break;
                     }
             }
@@ -87,7 +87,7 @@ namespace UnPack_My_Game.Language
             if (language == null)
                 language = Langues.FirstOrDefault(x => x.Name.Equals("en-US"));
 
-            Thread.CurrentThread.CurrentUICulture = language;
+            CurrentLanguage = language;
 
             // Vérifie si le fichier existe et est à jour, sinon fait le nécessaire
             static void CheckFile(string appFolder, string langName)
@@ -124,9 +124,9 @@ namespace UnPack_My_Game.Language
 
         private void ChangeLanguage(CultureInfo value)
         {
-            string langFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, value.Name, _FileName);
+            string langFile = MakeFileLink(value.Name);
             if (!File.Exists(langFile))
-                langFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "en-US", _FileName);
+                langFile = MakeFileLink("en-US");
 
             Lang = LangProvider.Read(langFile);
 
@@ -144,6 +144,11 @@ namespace UnPack_My_Game.Language
                 return property.GetValue(Lang);
             else
                 return $"problem_{key}";
+        }
+
+        private string MakeFileLink(string value)
+        {
+            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, value, _FileName);
         }
     }
 }
