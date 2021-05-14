@@ -79,42 +79,6 @@ namespace Pack_My_Game.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Choose game(s).
-        /// </summary>
-        public static string ChooseGames {
-            get {
-                return ResourceManager.GetString("ChooseGames", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Choose the path.
-        /// </summary>
-        public static string ChoosePath {
-            get {
-                return ResourceManager.GetString("ChoosePath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Choose a System (Only Consoles).
-        /// </summary>
-        public static string ChooseSystem {
-            get {
-                return ResourceManager.GetString("ChooseSystem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Configuration.
-        /// </summary>
-        public static string Config {
-            get {
-                return ResourceManager.GetString("Config", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Recherche une chaîne localisée semblable à General.
         /// </summary>
         public static string General {
@@ -133,15 +97,6 @@ namespace Pack_My_Game.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Path to LaunchBox.
-        /// </summary>
-        public static string LBPath {
-            get {
-                return ResourceManager.GetString("LBPath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Recherche une chaîne localisée semblable à No element.
         /// </summary>
         public static string NoElem {
@@ -156,24 +111,6 @@ namespace Pack_My_Game.Resources {
         public static string NullValue {
             get {
                 return ResourceManager.GetString("NullValue", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Options.
-        /// </summary>
-        public static string Options {
-            get {
-                return ResourceManager.GetString("Options", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Parameters.
-        /// </summary>
-        public static string Params {
-            get {
-                return ResourceManager.GetString("Params", resourceCulture);
             }
         }
         
@@ -207,15 +144,6 @@ namespace Pack_My_Game.Resources {
         public static string S_Language {
             get {
                 return ResourceManager.GetString("S_Language", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Select.
-        /// </summary>
-        public static string Select {
-            get {
-                return ResourceManager.GetString("Select", resourceCulture);
             }
         }
         

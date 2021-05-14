@@ -120,20 +120,8 @@
   <data name="CheatsPath" xml:space="preserve">
     <value>Chemin cheat codes</value>
   </data>
-  <data name="ChooseGames" xml:space="preserve">
-    <value>Choisir un/des jeu(x)</value>
-  </data>
-  <data name="ChoosePath" xml:space="preserve">
-    <value>Choisissez le chemin</value>
-  </data>
-  <data name="ChooseSystem" xml:space="preserve">
-    <value>Choisir un système (Consoles uniquement)</value>
-  </data>
   <data name="Choose_WPath" xml:space="preserve">
     <value>Choisir un dossier de travail</value>
-  </data>
-  <data name="Config" xml:space="preserve">
-    <value>Configuration</value>
   </data>
   <data name="General" xml:space="preserve">
     <value>Général</value>
@@ -141,20 +129,11 @@
   <data name="Infos" xml:space="preserve">
     <value>Informations</value>
   </data>
-  <data name="LBPath" xml:space="preserve">
-    <value>Chemin LaunchBox</value>
-  </data>
   <data name="NoElem" xml:space="preserve">
     <value>Pas d'élement</value>
   </data>
   <data name="NullValue" xml:space="preserve">
     <value>Valeur nulle</value>
-  </data>
-  <data name="Options" xml:space="preserve">
-    <value>Options</value>
-  </data>
-  <data name="Params" xml:space="preserve">
-    <value>Paramètres</value>
   </data>
   <data name="Paths" xml:space="preserve">
     <value>Chemins</value>
@@ -167,9 +146,6 @@ ex: F:\CheadCodes\Sega Megadrive\ &amp;&amp; in LaunchBox the system is named Se
 ex: For Sonic, Cheadcode archive must begin by 'Sonic-'
 
 Note: Autant d'archives que vous voulez.</value>
-  </data>
-  <data name="Select" xml:space="preserve">
-    <value>Sélectionnez</value>
   </data>
   <data name="S_Language" xml:space="preserve">
     <value>Sélectionnez votre langue</value>

@@ -127,7 +127,7 @@ namespace Pack_My_Game.Language
         /// <summary>
         /// Launchbox path
         /// </summary>
-        public string Path_Launchbox { get; set; } = "LaunchBox Path";
+        public string Path_LaunchBox { get; set; } = "LaunchBox path";
 
         // ---
 
@@ -183,6 +183,11 @@ namespace Pack_My_Game.Language
         public string Word_Add { get; set; } = "Add";
 
         /// <summary>
+        /// All
+        /// </summary>
+        public string Word_All { get; set; } = "All";
+
+        /// <summary>
         /// Cancel
         /// </summary>
         public string Word_Cancel { get; set; } = "Cancel";
@@ -211,6 +216,11 @@ namespace Pack_My_Game.Language
         /// Delete
         /// </summary>
         public string Word_Delete { get; set; } = "Delete";
+
+        /// <summary>
+        /// Extract
+        /// </summary>
+        public string Word_Extract { get; set; } = "Extract";
 
         /// <summary>
         /// File
@@ -251,6 +261,11 @@ namespace Pack_My_Game.Language
         /// Musics
         /// </summary>
         public string Word_Musics { get; set; } = "Musics";
+
+        /// <summary>
+        /// None
+        /// </summary>
+        public string Word_None { get; set; } = "None";
 
         /// <summary>
         /// Ok
@@ -466,20 +481,23 @@ namespace Pack_My_Game.Language
                 Opt_Window = "Fenêtre de traçage",
                 //
                 Path_Cheats = "Chemin cheat codes",
-                Path_Launchbox = "Chemin launchBox",
+                Path_LaunchBox = "Chemin LaunchBox",
                 Path_Working = "Dossier de travail",
                 //
                 Q_Pack = "Packer ce jeu",
-                Q_PackGames= "Etes vous sûr(e) de vouloir packer ces jeux ?",
+                Q_PackGames = "Etes vous sûr(e) de vouloir packer ces jeux ?",
                 //
                 Word_Add = "Ajouter",
+                Word_All = "Tous",
                 Word_Cancel = "Annuler",
                 Word_Delete = "Effacer",
+                Word_Extract = "Extraire",
                 Word_File = "Fichier",
                 Word_General = "Général",
                 Word_Main = "Principal,",
                 Word_Manuals = "Manuels",
                 Word_Musics = "Musics",
+                Word_None = "Aucun",
                 Word_Params = "Paramètres",
                 Word_Paths = "Chemins",
                 Word_Process = "Procéder",

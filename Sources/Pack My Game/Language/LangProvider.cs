@@ -47,11 +47,6 @@ namespace Pack_My_Game.Language
             }
         }
 
-        public LangProvider()
-        {
-            throw new Exception("beee");
-
-        }
 
 
         public void Initialize(string langTag)

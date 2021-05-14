@@ -750,7 +750,7 @@
             Working path
             </summary>
         </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Path_Launchbox">
+        <member name="P:Pack_My_Game.Language.LangContent.Path_LaunchBox">
             <summary>
             Launchbox path
             </summary>
@@ -795,6 +795,11 @@
             Add
             </summary>
         </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_All">
+            <summary>
+            All
+            </summary>
+        </member>
         <member name="P:Pack_My_Game.Language.LangContent.Word_Cancel">
             <summary>
             Cancel
@@ -823,6 +828,11 @@
         <member name="P:Pack_My_Game.Language.LangContent.Word_Delete">
             <summary>
             Delete
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Extract">
+            <summary>
+            Extract
             </summary>
         </member>
         <member name="P:Pack_My_Game.Language.LangContent.Word_File">
@@ -863,6 +873,11 @@
         <member name="P:Pack_My_Game.Language.LangContent.Word_Musics">
             <summary>
             Musics
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_None">
+            <summary>
+            None
             </summary>
         </member>
         <member name="P:Pack_My_Game.Language.LangContent.Word_Ok">
@@ -1104,26 +1119,6 @@
               Recherche une chaîne localisée semblable à Choose a working folder.
             </summary>
         </member>
-        <member name="P:Pack_My_Game.Resources.Lang.ChooseGames">
-            <summary>
-              Recherche une chaîne localisée semblable à Choose game(s).
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Resources.Lang.ChoosePath">
-            <summary>
-              Recherche une chaîne localisée semblable à Choose the path.
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Resources.Lang.ChooseSystem">
-            <summary>
-              Recherche une chaîne localisée semblable à Choose a System (Only Consoles).
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Resources.Lang.Config">
-            <summary>
-              Recherche une chaîne localisée semblable à Configuration.
-            </summary>
-        </member>
         <member name="P:Pack_My_Game.Resources.Lang.General">
             <summary>
               Recherche une chaîne localisée semblable à General.
@@ -1134,11 +1129,6 @@
               Recherche une chaîne localisée semblable à Informations.
             </summary>
         </member>
-        <member name="P:Pack_My_Game.Resources.Lang.LBPath">
-            <summary>
-              Recherche une chaîne localisée semblable à Path to LaunchBox.
-            </summary>
-        </member>
         <member name="P:Pack_My_Game.Resources.Lang.NoElem">
             <summary>
               Recherche une chaîne localisée semblable à No element.
@@ -1147,16 +1137,6 @@
         <member name="P:Pack_My_Game.Resources.Lang.NullValue">
             <summary>
               Recherche une chaîne localisée semblable à Null value.
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Resources.Lang.Options">
-            <summary>
-              Recherche une chaîne localisée semblable à Options.
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Resources.Lang.Params">
-            <summary>
-              Recherche une chaîne localisée semblable à Parameters.
             </summary>
         </member>
         <member name="P:Pack_My_Game.Resources.Lang.Path_Rules">
@@ -1178,11 +1158,6 @@
         <member name="P:Pack_My_Game.Resources.Lang.S_Language">
             <summary>
               Recherche une chaîne localisée semblable à Select your language.
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Resources.Lang.Select">
-            <summary>
-              Recherche une chaîne localisée semblable à Select.
             </summary>
         </member>
         <member name="P:Pack_My_Game.Resources.Lang.WPath">

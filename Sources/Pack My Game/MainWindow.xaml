@@ -100,7 +100,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <!-- Informations -->
-            <GroupBox Grid.Row="0" Header="{Binding Lang.InfExp, FallbackValue=Informations}" HeaderStringFormat="{}{0}:">
+            <GroupBox Grid.Row="0" Header="{l:Langue Word_Informations}" HeaderStringFormat="{}{0}:">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -113,21 +113,29 @@
                     </Grid.ColumnDefinitions>
                     <Label Content=""/>
                     <!-- LaunchBox Path -->
-                    <Label Content="{Binding Lang.LBPathExp, FallbackValue=LBPathExp}"
+                    <Label Content="{l:Langue Path_LaunchBox}"
                                MouseLeftButtonUp="LaunchBox_MouseLeftButtonUp" Cursor="Help"/>
                     <TextBlock Grid.Column="1" Style="{StaticResource tblockS}"
-                               Text="{Binding LaunchBoxPath, FallbackValue=LaunchBoxPath}" TextTrimming="CharacterEllipsis"
-                               ToolTip="{Binding LaunchBoxPath}"/>
+                               TextTrimming="CharacterEllipsis"
+                               ToolTip="{Binding LaunchBoxPath}">
+                        <TextBlock.Text>
+                            <l:Path Converter="{StaticResource Fallb}" Property="{Binding LaunchBoxPath}" ReplacementKey="Choose_LBPath"/>
+                        </TextBlock.Text>
+                    </TextBlock>
                     <!-- Working Path -->
-                    <Label Grid.Row="1" Content="{Binding Lang.WPathExp, FallbackValue=WPathExp}"
+                    <Label Grid.Row="1" Content="{l:Langue Path_Working}"
                                MouseLeftButtonUp="WorkingPath_MouseLeftButtonUp" Cursor="Help" />
                     <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource tblockS}"
-                               Text="{Binding WorkingFolder,FallbackValue=WorkingPath}" TextTrimming="CharacterEllipsis" 
-                               ToolTip="{Binding WorkingFolder}"/>
+                               TextTrimming="CharacterEllipsis" 
+                               ToolTip="{Binding WorkingFolder}">
+                        <TextBlock.Text>
+                            <l:Path Property="{Binding WorkingFolder}" Converter="{StaticResource Fallb}" ReplacementKey="Choose_Path"/>
+                        </TextBlock.Text>
+                    </TextBlock>
                 </Grid>
             </GroupBox>
             <!-- Options -->
-            <GroupBox Grid.Row="1" Header="{Binding Lang.OptionsExp, FallbackValue=Options}">
+            <GroupBox Grid.Row="1" Header="{l:Langue Word_Options}">
                 <ItemsControl ItemsSource="{Binding Options, FallbackValue={StaticResource testArray}}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
@@ -142,7 +150,7 @@
                 </ItemsControl>
             </GroupBox>
             <!-- parameters -->
-            <GroupBox Grid.Row="2" Header="{Binding Lang.ParamsExp,FallbackValue=Parameters}"
+            <GroupBox Grid.Row="2" Header="{l:Langue Word_Parameters}"
                       Visibility="{Binding Platforms, Converter={StaticResource VisibleIfPlatforms}}"
                       >
                 <Grid>
@@ -161,14 +169,14 @@
                     </Grid.ColumnDefinitions>
                     <!-- Choose system -->
                     <Label Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center"
-                                Content="{Binding Lang.Ch_System, FallbackValue=Ch_System}" />
+                                Content="{l:Langue Choose_System}" />
                     <ComboBox x:Name="cbPlatforms" Grid.Column="1" 
                               ItemsSource="{Binding Platforms, NotifyOnValidationError=True}" DisplayMemberPath="Name"
                               SelectedItem="{Binding SelectedPlatform}"
                               SelectionChanged="Platform_Selected"
                               />
 
-                    <TextBlock Text="{Binding Lang.Select, FallbackValue=Select}" IsHitTestVisible="False" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock Text="{l:Langue Word_Select}" IsHitTestVisible="False" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <TextBlock.Style>
                             <Style TargetType="TextBlock">
                                 <Setter Property="Visibility" Value="Hidden"/>
@@ -184,10 +192,11 @@
                         <Image RenderOptions.BitmapScalingMode="HighQuality"
                             Source="/Pack My Game;component/Resources/Refresh.png" Stretch="UniformToFill"/>
                     </Button>
-                    <Button Grid.Column="4" Content="Extract" Command="local:MainWindow.ExtractPlatformCmd"/>
+                    <Button Grid.Column="4" Content="{l:Langue Word_Extract}"
+                            Command="local:MainWindow.ExtractPlatformCmd"/>
                     <!-- Choose a game -->
                     <Label Grid.Row="1" Grid.ColumnSpan="2"
-                           Content="{Binding Lang.Ch_Games, FallbackValue='Choose Game(s)'}"/>
+                           Content="{l:Langue Choose_Games}"/>
                     <ScrollViewer x:Name="sv"  Grid.Row="2" Grid.ColumnSpan="4" VerticalScrollBarVisibility="Auto" 
                                   IsEnabled="{Binding NoGame, NotifyOnValidationError=True}">
                         <ListView ItemsSource="{Binding AvailableGames}"  PreviewMouseWheel="Game_WheelMouse">
@@ -214,9 +223,9 @@
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Header="{Binding Lang.TitleExp, FallbackValue=TitleExp}" DisplayMemberBinding="{Binding Title}" />
-                                    <GridViewColumn Header="{Binding Lang.VersionExp, FallbackValue=VersionExp}" DisplayMemberBinding="{Binding Version}" />
-                                    <GridViewColumn Header="{Binding Lang.RegionExp, FallbackValue=RegionExp}" DisplayMemberBinding="{Binding Region}" />
+                                    <GridViewColumn Header="{l:Langue Word_Title}" DisplayMemberBinding="{Binding Title}" />
+                                    <GridViewColumn Header="{l:Langue Word_Version}" DisplayMemberBinding="{Binding Version}" />
+                                    <GridViewColumn Header="{l:Langue Word_Region}" DisplayMemberBinding="{Binding Region}" />
                                 </GridView>
                             </ListView.View>
                             <!--
@@ -236,8 +245,8 @@
                     </ScrollViewer>
                     <!-- All/None -->
                     <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="3">
-                        <Button Content="All" Margin="0,5,0,5" Command="local:MainWindow.SelectAllCmd"/>
-                        <Button Content="None" Command="local:MainWindow.SelectNoneCmd"/>
+                        <Button Content="{l:Langue Word_All}" Margin="0,5,0,5" Command="local:MainWindow.SelectAllCmd"/>
+                        <Button Content="{l:Langue Word_None}" Command="local:MainWindow.SelectNoneCmd"/>
                     </StackPanel>
                 </Grid>
             </GroupBox>

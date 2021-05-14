@@ -120,20 +120,8 @@
   <data name="CheatsPath" xml:space="preserve">
     <value>Cheats Codes Path</value>
   </data>
-  <data name="ChooseGames" xml:space="preserve">
-    <value>Choose game(s)</value>
-  </data>
-  <data name="ChoosePath" xml:space="preserve">
-    <value>Choose the path</value>
-  </data>
-  <data name="ChooseSystem" xml:space="preserve">
-    <value>Choose a System (Only Consoles)</value>
-  </data>
   <data name="Choose_WPath" xml:space="preserve">
     <value>Choose a working folder</value>
-  </data>
-  <data name="Config" xml:space="preserve">
-    <value>Configuration</value>
   </data>
   <data name="General" xml:space="preserve">
     <value>General</value>
@@ -141,20 +129,11 @@
   <data name="Infos" xml:space="preserve">
     <value>Informations</value>
   </data>
-  <data name="LBPath" xml:space="preserve">
-    <value>Path to LaunchBox</value>
-  </data>
   <data name="NoElem" xml:space="preserve">
     <value>No element</value>
   </data>
   <data name="NullValue" xml:space="preserve">
     <value>Null value</value>
-  </data>
-  <data name="Options" xml:space="preserve">
-    <value>Options</value>
-  </data>
-  <data name="Params" xml:space="preserve">
-    <value>Parameters</value>
   </data>
   <data name="Paths" xml:space="preserve">
     <value>Paths</value>
@@ -167,9 +146,6 @@
         ex: For Sonic, Cheadcode archive must begin by 'Sonic-'
 
 Note: As much archive as you want.</value>
-  </data>
-  <data name="Select" xml:space="preserve">
-    <value>Select</value>
   </data>
   <data name="S_Language" xml:space="preserve">
     <value>Select your language</value>

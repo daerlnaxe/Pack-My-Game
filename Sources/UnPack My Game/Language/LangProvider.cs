@@ -18,7 +18,7 @@ namespace UnPack_My_Game.Language
         /// <summary>
         /// Chercher le dossier launchbox
         /// </summary>
-        public string ChoosePath { get; set; } = "Choose the path";
+        public string Choose_Path { get; set; } = "Choose the path";
 
 
         #region Commun
@@ -208,7 +208,7 @@ namespace UnPack_My_Game.Language
                 Version = Common.LangVersion,
 
                 //
-                ChoosePath = "Choisir le chemin",
+                Choose_Path = "Choisir le chemin",
                 //
                 Folder_CheatCodes = "Dossier CheatCodes",
                 Folder_LaunchBox = "Dossier LaunchBox",

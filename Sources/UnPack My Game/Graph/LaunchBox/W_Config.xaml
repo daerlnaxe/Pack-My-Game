@@ -17,7 +17,7 @@
     <!--
     -->
     <Window.Resources>
-        <conv:ChFolderNullConverter x:Key="Fallb" />        
+        <conv:ChFolderNullConverter x:Key="Fallb" />
         <Style TargetType="Button" BasedOn="{StaticResource btStyle}"/>
         <!-- TextBlock -->
         <Style TargetType="TextBlock" >
@@ -29,7 +29,7 @@
         </Style>
     </Window.Resources>
     <DockPanel>
-        
+
         <!-- Buttons -->
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
             <Button Content="{l:Langue Word_Cancel}" 
@@ -62,7 +62,7 @@
                               />
                 </Grid>
             </TabItem>
-    
+
             <!-- Paths -->
             <TabItem Header="{l:Langue Word_Paths}" >
                 <Grid>
@@ -88,10 +88,9 @@
                                 />
                             <TextBlock Grid.Column="2" >
                                 <TextBlock.Text>
-                                    <MultiBinding Converter="{StaticResource Fallb}">
-                                        <Binding Path="LaunchBoxPath" />
-                                        <Binding Source="(l:LanguageManager.Lang.ChoosePath)" />
-                                    </MultiBinding>
+                                    <l:Path Converter="{StaticResource Fallb}"
+                                        Property="{Binding LaunchBoxPath}"
+                                            ReplacementKey="Choose_Path" />
                                 </TextBlock.Text>
                             </TextBlock>
 
@@ -100,8 +99,12 @@
                                 Content="{l:Langue Folder_Working}"
                                 Click="ChooseWP_Click"    
                                     />
-                            <TextBlock Grid.Column="2" Grid.Row="1"
-                                Text="{Binding WorkingPath, FallbackValue='...'}" />
+                            <TextBlock Grid.Column="2" Grid.Row="1">
+                                <TextBlock.Text>
+                                    <l:Path Converter="{StaticResource Fallb}"
+                                            Property="{Binding WorkingPath}" ReplacementKey="Choose_Path"/>
+                                </TextBlock.Text>
+                            </TextBlock>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="{l:Langue Word_Options}" Grid.Row="1">
@@ -118,10 +121,10 @@
                             <TextBlock x:Name="ChoosePath"/>
                             <TextBlock Grid.Column="1" >
                                 <TextBlock.Text>
-                                    <l:Path Property="{Binding CheatCodesPath}" ReplacementKey="ChoosePath"  Converter="{StaticResource Fallb}"  />
+                                    <l:Path Property="{Binding CheatCodesPath}" ReplacementKey="Choose_Path"  Converter="{StaticResource Fallb}"  />
                                 </TextBlock.Text>
                             </TextBlock>
-                                
+
                         </Grid>
                     </GroupBox>
                     <TextBlock Grid.Row="2"
