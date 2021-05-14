@@ -1,5 +1,6 @@
 ﻿using Common_PMG.Models;
 using Pack_My_Game.Cont;
+using Pack_My_Game.Language;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +9,6 @@ namespace Pack_My_Game.Models
 {
     public class M_ChooseName : A_Err
     {
-        //public Language Lang => Common.ObjectLang;
         public string GameName { get; set; }
         public string Message { get; set; }
 
@@ -37,7 +37,7 @@ namespace Pack_My_Game.Models
             string archivePath = System.IO.Path.Combine(_Root, ArchiveName);
             if (!ArchiveName.Equals(GameName) && System.IO.Directory.Exists(archivePath))
             {
-                Add_Error("Folder exists", nameof(ArchiveName));
+                Add_Error(LanguageManager.Instance.Lang.Folder_Ex, nameof(ArchiveName));
                 return false;
             }
 

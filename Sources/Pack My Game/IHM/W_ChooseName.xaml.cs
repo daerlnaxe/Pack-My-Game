@@ -12,7 +12,7 @@ namespace Pack_My_Game.IHM
     {
         public M_ChooseName Model { get; set; }
 
-        public static readonly RoutedUICommand SubmitCmd = new RoutedUICommand("Submit", "SubmitCmd", typeof(W_ChooseName));
+        
 
         public W_ChooseName()
         {

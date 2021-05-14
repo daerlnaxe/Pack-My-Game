@@ -128,12 +128,12 @@ namespace Pack_My_Game.IHM
                 {
                     W_ChooseName gnWindows = new W_ChooseName()
                     {
-                        Title = "Choose a Name",
+                        Title = "",
                         Model = new M_ChooseName(root)
                         {
                             GameName = exploitableFileName,
                             ArchiveName = exploitableFileName,
-                            Message = "Select archive name",
+                            Message =LanguageManager.Instance.Lang.S_GiveArchName,
                         }
                     };
 

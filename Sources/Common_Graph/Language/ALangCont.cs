@@ -146,6 +146,12 @@ namespace Common_Graph.Language
         public string Word_Manuals { get; set; } = "Manuals";
 
         /// <summary>
+        /// Message
+        /// </summary>
+        [JsonPropertyName("Word.Message")]
+        public string Word_Message { get; set; } = "Message";
+
+        /// <summary>
         /// Musics
         /// </summary>
         [JsonPropertyName("Word.Musics")]

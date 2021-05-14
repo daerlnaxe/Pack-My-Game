@@ -4,12 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pack_My_Game.IHM"
+        xmlns:r ="clr-namespace:Pack_My_Game"
+        xmlns:l ="clr-namespace:Pack_My_Game.Language"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="GameName" Height="200" Width="800"
+        Title="{l:Langue S_GiveArchName}" Height="200" Width="800"
         Loaded="Window_Loaded">
     <Window.CommandBindings>
-        <CommandBinding Command="local:W_ChooseName.SubmitCmd" CanExecute="Can_Submit" Executed="Exec_Submit"/>
+        <CommandBinding Command="r:Common.SubmitCommand" CanExecute="Can_Submit" Executed="Exec_Submit"/>
     </Window.CommandBindings>
     <Window.Resources>
         <Style TargetType="Label" BasedOn="{StaticResource lblStyle}"/>
@@ -24,7 +26,7 @@
         </StackPanel>
         <!-- Buttons -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Bottom">
-            <Button Command="local:W_ChooseName.SubmitCmd" Content="{Binding Lang.SubmitExp, FallbackValue='SubmitExp'}" IsDefault="True"/>
+            <Button Command="r:Common.SubmitCommand" Content="{l:Langue Word_Submit}" IsDefault="True"/>
         </StackPanel>
         <Grid>
             <Grid.RowDefinitions>
@@ -37,11 +39,11 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <!-- Game Title -->
-            <Label Content="Game Title"/>
+            <Label Content="{l:Langue S_GameTitle}"/>
             <TextBox Grid.Column="1" IsEnabled="False"  VerticalAlignment="Center"
                      Text="{Binding GameName, FallbackValue=GameName}"/>
             <!-- Name Chosen -->
-            <Label Grid.Row="1" Content="{Binding ChosenName, FallbackValue=ChosenName}"/>
+            <Label Grid.Row="1" Content="{l:Langue S_ArchiveName}"/>
             <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" 
                      Text="{Binding ArchiveName, FallbackValue=ArchiveName, 
                         UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>

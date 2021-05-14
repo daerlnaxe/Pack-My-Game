@@ -13,9 +13,9 @@
     <Compile Update="IHM\W_Config.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="IHM\W_Games.xaml.cs">
+    <None Update="IHM\W_Games.xaml.cs">
       <SubType>Code</SubType>
-    </Compile>
+    </None>
     <Compile Update="IHM\W_Info.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -33,9 +33,9 @@
     <Page Update="IHM\W_Config.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="IHM\W_Games.xaml">
+    <None Update="IHM\W_Games.xaml">
       <SubType>Designer</SubType>
-    </Page>
+    </None>
     <Page Update="IHM\W_Info.xaml">
       <SubType>Designer</SubType>
     </Page>

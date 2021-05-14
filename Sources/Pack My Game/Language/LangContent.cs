@@ -197,12 +197,30 @@ namespace Pack_My_Game.Language
 
         // ---
 
+
+        /// <summary>
+        /// Archive Name
+        /// </summary>
+        public string S_ArchiveName { get; set; } = "Archive name";
+        /// <summary>
+        /// Enter your cheat codes
+        /// </summary>
+        public string S_EnterYourCC { get; set; } = "Enter your cheat codes";
+
+        /// <summary>
+        /// Game title
+        /// </summary>
+        public string S_GameTitle { get; set; } = "Game title";
+
+        /// <summary>
+        /// Give an archive name
+        /// </summary>
+        public string S_GiveArchName { get; set; } = "Give an archive name";
+
         /// <summary>
         /// Width Limit
         /// </summary>
         public string S_WidthLimit { get; set; } = "Width limit";
-
-        public string S_EnterYourCC { get; set; } = "Enter your cheat codes";
         // ---
 
         #region Words
@@ -422,8 +440,11 @@ namespace Pack_My_Game.Language
                 Q_Pack = "Packer ce jeu",
                 Q_PackGames = "Etes vous sûr(e) de vouloir packer ces jeux ?",
                 //
-                S_WidthLimit = "Limite de largeur",
+                S_ArchiveName ="Nom d'archive",
                 S_EnterYourCC = "Entre vos cheats codes",
+                S_GameTitle = "Titre du jeu",
+                S_GiveArchName="Donnez un nom d'archive",
+                S_WidthLimit = "Limite de largeur",
                 //
                 Word_Active = "Activé",
                 Word_Extract = "Extraire",

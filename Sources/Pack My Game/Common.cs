@@ -56,6 +56,7 @@ namespace Pack_My_Game
 
         public static readonly RoutedUICommand ProcessCommand =
             new RoutedUICommand(LanguageManager.Instance.Lang.Word_Process, "Process", typeof(Common));
-
+        public static readonly RoutedUICommand SubmitCommand =
+            new RoutedUICommand(LanguageManager.Instance.Lang.Word_Submit, "Submit", typeof(Common));
     }
 }

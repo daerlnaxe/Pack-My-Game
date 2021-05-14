@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pack_My_Game.IHM"
+        xmlns:l="clr-namespace:Pack_My_Game.Language"
         mc:Ignorable="d"
         Title="W_Info" Height="450" Width="800">
     <Window.Resources>
@@ -20,7 +21,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>            
         </Grid.RowDefinitions>
-        <Label Content="{Binding Message, FallbackValue=Message}"/> 
+        <Label Content="{l:Langue Word_Message}"/> 
         <!-- Texte -->
         <ScrollViewer Grid.Row="1">
             <TextBlock  Text="{Binding Texteuh, FallbackValue=Texteuh}" TextWrapping="Wrap" Margin="0,10,0,10" Padding="5"/>            
@@ -28,7 +29,8 @@
         <!-- Signature -->
         <TextBlock Grid.Row="2" Text="A.CODOUL aka Daerlnaxe/Axenn" HorizontalAlignment="Right" Height="50"/>
         <!-- Buttons -->
-        <Button Grid.Row="3" Content="{Binding Lang.OkExp, FallbackValue=OkExp}" HorizontalAlignment="Right" IsDefault="True" IsCancel="True" /> 
+        <Button Grid.Row="3" Content="{l:Langue Word_Ok}" MinWidth="50"
+                HorizontalAlignment="Right" IsDefault="True" IsCancel="True" /> 
             
         
         

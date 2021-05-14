@@ -569,19 +569,6 @@
             InitializeComponent
             </summary>
         </member>
-        <member name="T:Pack_My_Game.IHM.W_Games">
-            <summary>
-            Affiche 
-            </summary>
-            <summary>
-            W_Games
-            </summary>
-        </member>
-        <member name="M:Pack_My_Game.IHM.W_Games.InitializeComponent">
-            <summary>
-            InitializeComponent
-            </summary>
-        </member>
         <member name="T:Pack_My_Game.IHM.W_Info">
             <summary>
             Logique d'interaction pour W_Info.xaml
@@ -785,6 +772,26 @@
         <member name="P:Pack_My_Game.Language.LangContent.Q_Pack">
             <summary>
             Question pack this game
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.S_ArchiveName">
+            <summary>
+            Archive Name
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.S_EnterYourCC">
+            <summary>
+            Enter your cheat codes
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.S_GameTitle">
+            <summary>
+            Game title
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.S_GiveArchName">
+            <summary>
+            Give an archive name
             </summary>
         </member>
         <member name="P:Pack_My_Game.Language.LangContent.S_WidthLimit">
