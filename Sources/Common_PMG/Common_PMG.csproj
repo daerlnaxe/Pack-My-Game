@@ -28,6 +28,7 @@
 
   <ItemGroup>
     <Folder Include="Converters\" />
+    <Folder Include="Language\" />
   </ItemGroup>
 
   <ItemGroup>

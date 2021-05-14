@@ -12,7 +12,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using UnPack_My_Game.Language;
 using UnPack_My_Game.Models.LaunchBox;
 using UnPack_My_Game.Resources;
 using static UnPack_My_Game.Common;

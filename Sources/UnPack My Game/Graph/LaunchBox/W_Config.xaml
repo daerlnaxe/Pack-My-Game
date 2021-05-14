@@ -7,7 +7,7 @@
         xmlns:lc="clr-namespace:DxTBoxCore.Languages;assembly=DxTBoxCore"
         xmlns:cmd="clr-namespace:DxTBoxCore.Common;assembly=DxTBoxCore"
         xmlns:r="clr-namespace:UnPack_My_Game.Resources"
-        xmlns:l="clr-namespace:UnPack_My_Game.Language"
+        xmlns:l="clr-namespace:DxTranslation;assembly=DxTranslation"
         xmlns:conv="clr-namespace:Common_Graph.Converters;assembly=Common_Graph"
         mc:Ignorable="d"
         Title="W_Config" Height="450" Width="800" ResizeMode="NoResize">

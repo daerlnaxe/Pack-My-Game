@@ -1,4 +1,5 @@
 ﻿using DxTBoxCore.Box_MBox;
+using DxTranslation;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,14 +9,13 @@ using System.Text.Json.Serialization;
 
 namespace UnPack_My_Game.Language
 {
-    public class LangProvider
+    public class LangContent: ILanguage
     {
         /// <summary>
         /// Version du fichier
         /// </summary>
         public string Version { get; set; }
 
-        public string Name { get; set; } = "Marre";
 
         #region Commun
         /// <summary>
@@ -149,10 +149,10 @@ namespace UnPack_My_Game.Language
         }
 
 
-        internal static LangProvider Read(string file)
+        internal static LangContent Read(string file)
         {
             string jsonString = File.ReadAllText(file);
-            return JsonSerializer.Deserialize<LangProvider>(jsonString);
+            return JsonSerializer.Deserialize<LangContent>(jsonString);
 
         }
 
@@ -185,9 +185,9 @@ namespace UnPack_My_Game.Language
             }
         }
 
-        internal static LangProvider Default()
+        internal static LangContent Default()
         {
-            return new LangProvider()
+            return new LangContent()
             {
                 Version = Common.LangVersion,
                 Folder_LaunchBox = "LaunchBox folder",
@@ -200,9 +200,9 @@ namespace UnPack_My_Game.Language
         }
 
 
-        internal static LangProvider DefaultFrench()
+        internal static LangContent DefaultFrench()
         {
-            return new LangProvider()
+            return new LangContent()
             {
                 Version = Common.LangVersion,
 

@@ -8,10 +8,10 @@ using UnPack_My_Game.Resources;
 using static UnPack_My_Game.Common;
 using UnPack_My_Game.Cont;
 using DxTBoxCore.BoxChoose;
-using UnPack_My_Game.Language;
 using System.Globalization;
 using System.ComponentModel;
 using System.Windows.Data;
+using DxTranslation;
 
 namespace UnPack_My_Game.Models.LaunchBox
 {
@@ -268,7 +268,7 @@ namespace UnPack_My_Game.Models.LaunchBox
                 Model = new M_ChooseFolder()
                 {
                     HideWindowsFolder = true,
-                    Info = LanguageManager.Lang.Folder_Working,
+                    Info = (string)LanguageManager.LangProvider.TranslateValue("Folder_Working"),
                     ShowFiles = true,
                     StartingFolder = Path.GetTempPath(),
                 },

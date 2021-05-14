@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:UnPack_My_Game.Graph.LaunchBox"
       mc:Ignorable="d" 
       xmlns:r="clr-namespace:UnPack_My_Game.Resources"
-      xmlns:l="clr-namespace:UnPack_My_Game.Language"
+      xmlns:l="clr-namespace:DxTranslation;assembly=DxTranslation"
       xmlns:lc="clr-namespace:DxTBoxCore.Languages;assembly=DxTBoxCore"
       d:DesignHeight="450" d:DesignWidth="800"
       Loaded="Page_Loaded"

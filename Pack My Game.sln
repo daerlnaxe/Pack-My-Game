@@ -31,6 +31,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncProgress", "..\AsyncPr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common_Graph", "Sources\Common_Graph\Common_Graph.csproj", "{6FD2CBCF-1753-494A-86CC-FA860DFB5BB1}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DxTranslation", "..\DxTranslation\Sources\DxTranslation.csproj", "{AA84E20A-EA33-4741-97EA-9FE2AFD718C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{6FD2CBCF-1753-494A-86CC-FA860DFB5BB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FD2CBCF-1753-494A-86CC-FA860DFB5BB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FD2CBCF-1753-494A-86CC-FA860DFB5BB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA84E20A-EA33-4741-97EA-9FE2AFD718C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA84E20A-EA33-4741-97EA-9FE2AFD718C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA84E20A-EA33-4741-97EA-9FE2AFD718C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA84E20A-EA33-4741-97EA-9FE2AFD718C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
