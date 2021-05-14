@@ -665,24 +665,34 @@
             Choose game(s)
             </summary>
         </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Choose_LBPath">
-            <summary>
-            Choose the LaunchBoxPath
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Choose_Language">
-            <summary>
-            Choose a language
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Choose_Path">
-            <summary>
-            Choose the path
-            </summary>
-        </member>
         <member name="P:Pack_My_Game.Language.LangContent.Choose_System">
             <summary>
             Choose a system
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Cmd_TestGmLinks">
+            <summary>
+            Command Test Game Links
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Cmd_ExtTBGame">
+            <summary>
+            Command Extract TBGame
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Cmd_ExtNBGame">
+            <summary>
+            Command extract NPGame
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Cmd_ExtPlatform">
+            <summary>
+            Command extract Platform
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Cmd_ExtDef">
+            <summary>
+            Command extract default file
             </summary>
         </member>
         <member name="P:Pack_My_Game.Language.LangContent.Comp_Lvl">
@@ -740,21 +750,6 @@
             Folder exists
             </summary>
         </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Path_Cheats">
-            <summary>
-            Cheats codes path
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Path_Working">
-            <summary>
-            Working path
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Path_LaunchBox">
-            <summary>
-            Launchbox path
-            </summary>
-        </member>
         <member name="P:Pack_My_Game.Language.LangContent.Opt_EnXB">
             <summary>
             Enhanced XML backup
@@ -790,21 +785,6 @@
             Question pack this game
             </summary>
         </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Word_Add">
-            <summary>
-            Add
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Word_All">
-            <summary>
-            All
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Word_Cancel">
-            <summary>
-            Cancel
-            </summary>
-        </member>
         <member name="P:Pack_My_Game.Language.LangContent.Word_Cheats">
             <summary>
             Cheats
@@ -815,19 +795,9 @@
             Compression
             </summary>
         </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Word_Configuration">
-            <summary>
-            Configuration
-            </summary>
-        </member>
         <member name="P:Pack_My_Game.Language.LangContent.Word_Credits">
             <summary>
             Credits
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Word_Delete">
-            <summary>
-            Delete
             </summary>
         </member>
         <member name="P:Pack_My_Game.Language.LangContent.Word_Extract">
@@ -835,74 +805,14 @@
             Extract
             </summary>
         </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Word_File">
-            <summary>
-            File
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Word_Games">
-            <summary>
-            Games
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Word_General">
-            <summary>
-            General
-            </summary>
-        </member>
         <member name="P:Pack_My_Game.Language.LangContent.Word_Help">
             <summary>
             Help
             </summary>
         </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Word_Informations">
-            <summary>
-            Informations
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Word_Main">
-            <summary>
-            Main
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Word_Manuals">
-            <summary>
-            Manuels
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Word_Musics">
-            <summary>
-            Musics
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Word_None">
-            <summary>
-            None
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Word_Ok">
-            <summary>
-            Ok
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Word_Options">
-            <summary>
-            Options
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Word_Paths">
-            <summary>
-            Paths
-            </summary>
-        </member>
         <member name="P:Pack_My_Game.Language.LangContent.Word_Params">
             <summary>
             Parameters
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Word_Process">
-            <summary>
-            Process
             </summary>
         </member>
         <member name="P:Pack_My_Game.Language.LangContent.Word_Region">
@@ -915,19 +825,9 @@
             Result
             </summary>
         </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Word_Select">
-            <summary>
-            Select
-            </summary>
-        </member>
         <member name="P:Pack_My_Game.Language.LangContent.Word_Selected">
             <summary>
             Selected
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Word_Submit">
-            <summary>
-            Submit
             </summary>
         </member>
         <member name="P:Pack_My_Game.Language.LangContent.Word_Title">
@@ -938,11 +838,6 @@
         <member name="P:Pack_My_Game.Language.LangContent.Word_Version">
             <summary>
             Word Version
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Word_Videos">
-            <summary>
-            Videos
             </summary>
         </member>
         <member name="P:Pack_My_Game.Language.LangContent.Long_Credits">
@@ -960,7 +855,7 @@
             2Rules
             </summary>
         </member>
-        <member name="M:Pack_My_Game.Language.LangContent.Default">
+        <member name="M:Pack_My_Game.Language.LangContent.MakeDefault">
             <summary>
             
             </summary>
@@ -1109,26 +1004,6 @@
               les recherches de ressources à l'aide de cette classe de ressource fortement typée.
             </summary>
         </member>
-        <member name="P:Pack_My_Game.Resources.Lang.CheatsPath">
-            <summary>
-              Recherche une chaîne localisée semblable à Cheats Codes Path.
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Resources.Lang.Choose_WPath">
-            <summary>
-              Recherche une chaîne localisée semblable à Choose a working folder.
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Resources.Lang.General">
-            <summary>
-              Recherche une chaîne localisée semblable à General.
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Resources.Lang.Infos">
-            <summary>
-              Recherche une chaîne localisée semblable à Informations.
-            </summary>
-        </member>
         <member name="P:Pack_My_Game.Resources.Lang.NoElem">
             <summary>
               Recherche une chaîne localisée semblable à No element.
@@ -1149,21 +1024,6 @@
             
             Note: As much archive as you want..
              </summary>
-        </member>
-        <member name="P:Pack_My_Game.Resources.Lang.Paths">
-            <summary>
-              Recherche une chaîne localisée semblable à Paths.
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Resources.Lang.S_Language">
-            <summary>
-              Recherche une chaîne localisée semblable à Select your language.
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Resources.Lang.WPath">
-            <summary>
-              Recherche une chaîne localisée semblable à Working path.
-            </summary>
         </member>
     </members>
 </doc>
