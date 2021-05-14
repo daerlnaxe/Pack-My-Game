@@ -47,16 +47,16 @@ namespace UnPack_My_Game.Language
         public static List<CultureInfo> Langues { get; set; } = new List<CultureInfo>();
 
 
-        public LanguageManager()
+        public LanguageManager(string langTag)
         {
             CurrentManager = this;
-            Init();
+            Init(langTag);
         }
 
         /// <summary>
         /// Initialisation du module de langage
         /// </summary>
-        internal void Init()
+        internal void Init(string langTag)
         {
             string appFolder = AppDomain.CurrentDomain.BaseDirectory;
 
@@ -81,7 +81,13 @@ namespace UnPack_My_Game.Language
                     }
             }
 
-            ChangeLanguage(CurrentLanguage);
+            // Si la valeur n'existe pas, 
+            var language = Langues.FirstOrDefault(x => x.Name.Equals(langTag));
+
+            if (language == null)
+                language = Langues.FirstOrDefault(x => x.Name.Equals("en-US"));
+
+            Thread.CurrentThread.CurrentUICulture = language;
 
             // Vérifie si le fichier existe et est à jour, sinon fait le nécessaire
             static void CheckFile(string appFolder, string langName)

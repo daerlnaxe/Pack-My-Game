@@ -22,18 +22,18 @@ namespace UnPack_My_Game.Models.LaunchBox
         public ICollectionView Languages { get; set; }
 
        // private CultureInfo _Langue;
-      /*  public CultureInfo ChosenLanguage
+        public CultureInfo ChosenLanguage
         {
-            get => LanguageManager.CurrentLanguage;
+            get => LanguageManager.CurrentManager.CurrentLanguage;
             set
             {
-                if (value != LanguageManager.CurrentLanguage)
+                if (value != LanguageManager.CurrentManager.CurrentLanguage)
                 {
-         //           _Langue = value;
-                    LanguageManager.CurrentLanguage = value;
+                    LanguageManager.CurrentManager.CurrentLanguage = value;
+                    Config.Language = value.Name;
                 }
             }
-        }*/
+        }
 
         Configuration Config
         {
@@ -223,7 +223,7 @@ namespace UnPack_My_Game.Models.LaunchBox
         {
             // Copy sinon provoque une erreur
             Languages = CollectionViewSource.GetDefaultView(LanguageManager.Langues);
-            Languages.CurrentChanged += (s,e) => LanguageManager.CurrentManager.CurrentLanguage = (CultureInfo)Languages.CurrentItem;
+            //Languages.CurrentChanged += (s,e) => LanguageManager.CurrentManager.CurrentLanguage = (CultureInfo)Languages.CurrentItem;
 
             Config = new Configuration(Common.Config);
         }

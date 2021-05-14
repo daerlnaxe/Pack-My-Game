@@ -58,8 +58,8 @@
                               ItemsSource="{Binding Languages}"
                               IsSynchronizedWithCurrentItem="True"
                               DisplayMemberPath="NativeName"     
+                              SelectedItem="{Binding ChosenLanguage}"
                               />
-                        <!--=(l:LanguageManager.CurrentManager.Langues)}"-->
                 </Grid>
             </TabItem>
     
