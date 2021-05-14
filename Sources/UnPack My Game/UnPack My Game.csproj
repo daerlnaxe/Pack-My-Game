@@ -21,7 +21,6 @@
     <Compile Remove="Cores\LaunchBox\C_LaunchBoxAdapt.cs" />
     <Compile Remove="Cores\LaunchBox\C_LaunchBoxEB.cs" />
     <Compile Remove="Cores\LaunchBox\C_LaunchBoxTB.cs" />
-    <Compile Remove="Graph\LaunchBox\LaunchBox_Start.xaml.cs" />
     <Compile Remove="Graph\LaunchBox\M_DPGMaker.cs" />
     <Compile Remove="Graph\LaunchBox\P_LaunchBox.xaml.cs" />
     <Compile Remove="Graph\LaunchBox\W_LaunchBox_Main.xaml.cs" />
@@ -42,7 +41,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <CodeAnalysisDictionary Include="Graph\LaunchBox\LaunchBox_Start.xaml.cs" />
     <None Include="Graph\W_ModTargetPaths.xaml.cs" />
     <None Include="Graph\W_DefinePaths.xaml" />
     <None Include="Graph\LaunchBox\W_LaunchBox_Main.xaml.cs" />

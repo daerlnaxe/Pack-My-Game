@@ -70,29 +70,11 @@ namespace UnPack_My_Game.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Cheat Codes.
-        /// </summary>
-        public static string CheatCodes {
-            get {
-                return ResourceManager.GetString("CheatCodes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Recherche une chaîne localisée semblable à Choose root, without platform Name..
         /// </summary>
         public static string Choose_Root {
             get {
                 return ResourceManager.GetString("Choose_Root", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Configuration.
-        /// </summary>
-        public static string Configuration {
-            get {
-                return ResourceManager.GetString("Configuration", resourceCulture);
             }
         }
         

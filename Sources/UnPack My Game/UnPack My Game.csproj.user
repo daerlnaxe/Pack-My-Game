@@ -13,9 +13,9 @@
     <None Update="Graph\LaunchBox\W_LaunchBox_Main.xaml.cs">
       <SubType>Code</SubType>
     </None>
-    <CodeAnalysisDictionary Update="Graph\LaunchBox\LaunchBox_Start.xaml.cs">
+    <Compile Update="Graph\LaunchBox\LaunchBox_Start.xaml.cs">
       <SubType>Code</SubType>
-    </CodeAnalysisDictionary>
+    </Compile>
     <None Update="Graph\LaunchBox\P_LaunchBox.xaml.cs">
       <SubType>Code</SubType>
     </None>

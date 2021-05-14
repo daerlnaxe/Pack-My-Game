@@ -194,6 +194,18 @@ namespace Common_Graph.Language
         public string Word_Process { get; set; } = "Process";
 
         /// <summary>
+        /// Reload
+        /// </summary>
+        [JsonPropertyName("Word.Reload")]
+        public string Word_Reload { get; set; } = "Reload";
+
+        /// <summary>
+        /// Reset
+        /// </summary>
+        [JsonPropertyName("Word.Reset")]
+        public string Word_Reset { get; set; } = "Reset";
+
+        /// <summary>
         /// Sauvegarder
         /// </summary>
         [JsonPropertyName("Word.Save")]
@@ -265,6 +277,8 @@ namespace Common_Graph.Language
             Word_Paths = "Chemins";
             Word_Procedure = "Procédure";
             Word_Process = "Procéder";
+            Word_Reload = "Recharger";
+            Word_Reset = "Réinitialiser";
             Word_Save = "Sauver";
             Word_Select = "Sélectionnez";
             Word_Submit = "Soumettre";

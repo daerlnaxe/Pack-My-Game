@@ -202,6 +202,17 @@ namespace Pack_My_Game.Language
         /// Archive Name
         /// </summary>
         public string S_ArchiveName { get; set; } = "Archive name";
+
+        /// <summary>
+        /// Default video
+        /// </summary>
+        public string S_DefaultVideo { get; set; } = "Default video";
+
+        /// <summary>
+        /// Default theme video
+        /// </summary>
+        public string S_DefaultThemeVideo { get; set; } = "Default theme video";
+
         /// <summary>
         /// Enter your cheat codes
         /// </summary>
@@ -216,6 +227,11 @@ namespace Pack_My_Game.Language
         /// Give an archive name
         /// </summary>
         public string S_GiveArchName { get; set; } = "Give an archive name";
+
+        /// <summary>
+        /// Open Folder
+        /// </summary>
+        public string S_OpenFolder { get; set; } = "Open folder";
 
         /// <summary>
         /// Width Limit
@@ -440,10 +456,13 @@ namespace Pack_My_Game.Language
                 Q_Pack = "Packer ce jeu",
                 Q_PackGames = "Etes vous sûr(e) de vouloir packer ces jeux ?",
                 //
-                S_ArchiveName ="Nom d'archive",
+                S_ArchiveName = "Nom d'archive",
+                S_DefaultThemeVideo = "Thème video par défaut",
+                S_DefaultVideo = "Video par défaut",
                 S_EnterYourCC = "Entre vos cheats codes",
                 S_GameTitle = "Titre du jeu",
-                S_GiveArchName="Donnez un nom d'archive",
+                S_GiveArchName = "Donnez un nom d'archive",
+                S_OpenFolder = "Ouvrir le dossier",
                 S_WidthLimit = "Limite de largeur",
                 //
                 Word_Active = "Activé",

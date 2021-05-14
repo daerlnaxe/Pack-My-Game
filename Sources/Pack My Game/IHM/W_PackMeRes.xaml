@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pack_My_Game.IHM"
+        xmlns:l="clr-namespace:Pack_My_Game.Language"
         xmlns:conv="clr-namespace:Pack_My_Game.IHM.Converters"
         mc:Ignorable="d"
         Title="Result" Height="600" Width="800"
@@ -60,30 +61,30 @@
     <DockPanel>
         <!-- Menu -->
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="{Binding Lang.CheatsExp, FallbackValue=CheatsExp}">
+            <MenuItem Header="{l:Langue Word_Cheats}">
                 <MenuItem Header="JeuxVideo.com" Click="JVCom_Click"/>
             </MenuItem>
         </Menu>
         <!-- Content -->
         <DockPanel Margin="5">
             <!-- Message -->
-            <Label Content="{Binding Lang.FilesFoundExp, FallbackValue=FilesFoundex}" 
+            <Label Content="{l:Langue Files_Found}" 
                    DockPanel.Dock="Top" Margin="0,0,0,15"/>
             <!-- Bottom Buttons -->
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right" Margin="10">
-                <Button  Content="{Binding Lang.OkExp, FallbackValue=OkExp}" IsDefault="True" Click="Ok_Click" />
+                <Button  Content="{l:Langue Word_Ok}" MinWidth="50" IsDefault="True" Click="Ok_Click" />
             </StackPanel>
             <!-- Right Buttons -->
             <StackPanel DockPanel.Dock="Right" Margin="5,2,5,2">
-                <Button Content="Reset" Click="Reset"/>
-                <Button Content="Reload" Click="Reload_Click"/>
-                <Button Content="Open Folder" Click="OpenFolder_Click"/>
+                <Button Content="{l:Langue Word_Reset}" Click="Reset"/>
+                <Button Content="{l:Langue Word_Reload}" Click="Reload_Click"/>
+                <Button Content="{l:Langue S_OpenFolder}" Click="OpenFolder_Click"/>
             </StackPanel>
             <!-- Content -->
             <!-- Fichiers -->
             <TabControl TabStripPlacement="Left">
                 <!-- Games -->
-                <TabItem Header="{Binding Lang.GamesExp, FallbackValue=GamesExp}">
+                <TabItem Header="{l:Langue Word_Games}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -94,7 +95,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <!-- Sélectionné -->
-                        <Label Content="{Binding Lang.SelectedExp, FallbackValue=SelectedExp}"/>
+                        <Label Content="{l:Langue Word_Selected}"/>
                         <TextBlock Text="{Binding ChosenGame.Name, FallbackValue=Selected}"/>
                         <!-- Liste -->
                         <ListView Grid.Row="1" ItemsSource="{Binding GamesCollection}" >
@@ -119,7 +120,7 @@
                     </Grid>
                 </TabItem>
                 <!-- Manuals -->
-                <TabItem Header="{Binding Lang.ManualsExp, FallbackValue=ManualsExp}">
+                <TabItem Header="{l:Langue Word_Manuals}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -130,7 +131,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <!-- Selected -->
-                        <Label Content="{Binding Lang.SelectedExp, FallbackValue=SelectedExp}"/>
+                        <Label Content="{l:Langue Word_Selected}"/>
                         <TextBlock Text="{Binding ChosenManual.Name, FallbackValue=Selected, TargetNullValue=...}"/>
                         <!-- Liste -->
                         <ListView x:Name="lvManuals" Grid.Row="1" 
@@ -156,7 +157,7 @@
                     </Grid>
                 </TabItem>
                 <!-- Musics -->
-                <TabItem Header="{Binding Lang.MusicsExp, FallbackValue=MusicsExp}">
+                <TabItem Header="{l:Langue Word_Musics}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -167,7 +168,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <!-- Selected -->
-                        <Label Content="{Binding Lang.SelectedExp, FallbackValue=SelectedExp}"/>
+                        <Label Content="{l:Langue Word_Selected}"/>
                         <TextBlock Text="{Binding ChosenMusic.Name, FallbackValue=Selected, TargetNullValue=...}"/>
                         <!-- Liste of Musics -->
                         <ListView x:Name="lvMusics" Grid.Row="1" 
@@ -192,7 +193,7 @@
                     </Grid>
                 </TabItem>
                 <!-- Videos -->
-                <TabItem Header="{Binding Lang.VideosExp, FallbackValue=VideosExp}">
+                <TabItem Header="{l:Langue Word_Videos}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -204,9 +205,9 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <!-- Selected -->
-                        <Label Content="Default Video"/>
+                        <Label Content="{l:Langue S_DefaultVideo}"/>
                         <TextBlock Text="{Binding ChosenVideo.Name, FallbackValue=Selected, TargetNullValue= ...}"/>
-                        <Label Grid.Row="1" Content="Default ThemeVideo"/>
+                        <Label Grid.Row="1" Content="{l:Langue S_DefaultThemeVideo}"/>
                         <TextBlock Grid.Row="1" Text="{Binding ChosenThemeVideo.Name, FallbackValue=Selected, TargetNullValue= ...}"/>
                         <!-- Liste of Videos -->
                         <ListView x:Name="lvVideos" Grid.Row="2"
@@ -236,7 +237,7 @@
                     </Grid>
                 </TabItem>
                 <!-- CheatCodes -->
-                <TabItem Header="{Binding Lang.CheatsExp, FallbackValue=CheatsExp}">
+                <TabItem Header="{l:Langue Word_Cheats}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>

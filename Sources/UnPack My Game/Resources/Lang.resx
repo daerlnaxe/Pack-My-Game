@@ -120,14 +120,8 @@
   <data name="AccessF" xml:space="preserve">
     <value>Access folders</value>
   </data>
-  <data name="CheatCodes" xml:space="preserve">
-    <value>Cheat Codes</value>
-  </data>
   <data name="Choose_Root" xml:space="preserve">
     <value>Choose root, without platform Name.</value>
-  </data>
-  <data name="Configuration" xml:space="preserve">
-    <value>Configuration</value>
   </data>
   <data name="ContM_AddFile" xml:space="preserve">
     <value>Add files by contextual menu.</value>

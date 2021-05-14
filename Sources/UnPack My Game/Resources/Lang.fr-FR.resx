@@ -120,12 +120,6 @@
   <data name="AccessF" xml:space="preserve">
     <value>Dossiers d'accès</value>
   </data>
-  <data name="Arch_Struc" xml:space="preserve">
-    <value>Structure de l'archive</value>
-  </data>
-  <data name="CheatCodes" xml:space="preserve">
-    <value>Cheat Codes</value>
-  </data>
   <data name="Choose_Root" xml:space="preserve">
     <value>Choisir une racine, sans nom de plateforme.</value>
   </data>

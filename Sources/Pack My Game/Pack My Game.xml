@@ -779,6 +779,16 @@
             Archive Name
             </summary>
         </member>
+        <member name="P:Pack_My_Game.Language.LangContent.S_DefaultVideo">
+            <summary>
+            Default video
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.S_DefaultThemeVideo">
+            <summary>
+            Default theme video
+            </summary>
+        </member>
         <member name="P:Pack_My_Game.Language.LangContent.S_EnterYourCC">
             <summary>
             Enter your cheat codes
@@ -792,6 +802,11 @@
         <member name="P:Pack_My_Game.Language.LangContent.S_GiveArchName">
             <summary>
             Give an archive name
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.S_OpenFolder">
+            <summary>
+            Open Folder
             </summary>
         </member>
         <member name="P:Pack_My_Game.Language.LangContent.S_WidthLimit">
