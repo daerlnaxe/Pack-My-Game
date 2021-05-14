@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using DxTranslation;
 using Hermes;
 using Hermes.Cont;
 using Hermes.Messengers;
@@ -61,8 +60,8 @@ namespace UnPack_My_Game
                     Config.Save();
                 }
 
-                LanguageManager.LangProvider = new LanguageProvider();
-                new LanguageManager(Config.Language);
+                new LanguageManager();
+
                 //LanguageManager.Init();
             }
             catch(Exception exc)

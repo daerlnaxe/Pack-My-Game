@@ -1,5 +1,4 @@
-﻿using DxTranslation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -9,7 +8,7 @@ using System.Threading;
 
 namespace UnPack_My_Game.Language
 {
-    class LanguageProvider : ILangProvider
+    class LangProvider 
     {
         private const string _FileName = "UnpackMyGame.Lang.json";
         private LangContent _LangContent;

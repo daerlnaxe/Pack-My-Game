@@ -11,7 +11,7 @@ using DxTBoxCore.BoxChoose;
 using System.Globalization;
 using System.ComponentModel;
 using System.Windows.Data;
-using DxTranslation;
+using UnPack_My_Game.Language;
 
 namespace UnPack_My_Game.Models.LaunchBox
 {
@@ -21,17 +21,19 @@ namespace UnPack_My_Game.Models.LaunchBox
 
         public ICollectionView Languages { get; set; }
 
-        //private CultureInfo _ChosenLanguage;
-        public CultureInfo ChosenLanguage 
+       // private CultureInfo _Langue;
+      /*  public CultureInfo ChosenLanguage
         {
-            get => LanguageManager.CurrentManager.CurrentLanguage;
+            get => LanguageManager.CurrentLanguage;
             set
             {
-                LanguageManager.CurrentManager.CurrentLanguage = value;
-             //   _ChosenLanguage = value;
-                Config.Language = value.Name;
+                if (value != LanguageManager.CurrentLanguage)
+                {
+         //           _Langue = value;
+                    LanguageManager.CurrentLanguage = value;
+                }
             }
-        }
+        }*/
 
         Configuration Config
         {
@@ -219,12 +221,11 @@ namespace UnPack_My_Game.Models.LaunchBox
 
         public M_Config()
         {
-            // Provoque une erreur avec une liste ordinaire si on bind sur le langage courant
-            Languages = CollectionViewSource.GetDefaultView(LanguageManager.CurrentManager.Langues);
-     //       Languages.CurrentChanged += (s,e) => LanguageManager.CurrentManager.CurrentLanguage = (CultureInfo)Languages.CurrentItem;
+            // Copy sinon provoque une erreur
+            Languages = CollectionViewSource.GetDefaultView(LanguageManager.Langues);
+            Languages.CurrentChanged += (s,e) => LanguageManager.CurrentManager.CurrentLanguage = (CultureInfo)Languages.CurrentItem;
 
             Config = new Configuration(Common.Config);
-            ChosenLanguage = LanguageManager.CurrentManager.CurrentLanguage;
         }
 
         public void InitFolders()
@@ -268,7 +269,7 @@ namespace UnPack_My_Game.Models.LaunchBox
                 Model = new M_ChooseFolder()
                 {
                     HideWindowsFolder = true,
-                    Info = (string)LanguageManager.LangProvider.TranslateValue("Folder_Working"),
+                    Info = LanguageManager.Lang.Folder_Working,
                     ShowFiles = true,
                     StartingFolder = Path.GetTempPath(),
                 },

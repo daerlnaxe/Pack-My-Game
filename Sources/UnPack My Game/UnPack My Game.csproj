@@ -10,7 +10,7 @@
     <Company>Daerlnaxe Software</Company>
     <Copyright>Copyright ©  2018-2038 Daerlnaxe Software</Copyright>
     <Description>Unpack package for a Frontend</Description>
-    <AssemblyVersion>1.0.2.2</AssemblyVersion>
+    <AssemblyVersion>1.0.2.3</AssemblyVersion>
     <ApplicationIcon>UnpackMyGame.ico</ApplicationIcon>
     <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
@@ -27,6 +27,7 @@
     <Compile Remove="Graph\LaunchBox\W_LaunchBox_Main.xaml.cs" />
     <Compile Remove="Graph\W_DefinePaths.xaml.cs" />
     <Compile Remove="Graph\W_ModTargetPaths.xaml.cs" />
+    <Compile Remove="Language\LanguageProvider.cs" />
     <Compile Remove="Models\LaunchBox\M_LaunchBox.cs" />
     <Compile Remove="Models\M_OSource.cs" />
     <Compile Remove="Models\M_SSource.cs" />
@@ -59,6 +60,7 @@
     <None Include="Graph\LaunchBox\W_LaunchBox_Main.xaml" />
     <None Include="Graph\W_DefinePaths.xaml.cs" />
     <None Include="Graph\W_ModTargetPaths.xaml" />
+    <None Include="Language\LanguageProvider.cs" />
     <None Include="Models\LaunchBox\M_LaunchBox.cs" />
     <None Include="Models\M_OSource.cs" />
     <None Include="Models\M_SSource.cs" />
@@ -72,7 +74,6 @@
     <ProjectReference Include="..\..\..\..\..\Clouds\GDrive - Dx\Programmation\CSharp\DxPaths\DxPaths.csproj" />
     <ProjectReference Include="..\..\..\AreaSelect\AreaSelect.csproj" />
     <ProjectReference Include="..\..\..\DxTBoxCore\Sources\DxTBoxCore.csproj" />
-    <ProjectReference Include="..\..\..\DxTranslation\Sources\DxTranslation.csproj" />
     <ProjectReference Include="..\..\..\HashCalc\Source\HashCalc.csproj" />
     <ProjectReference Include="..\..\..\Hermes\Sources\Hermes.csproj" />
     <ProjectReference Include="..\..\..\SeverZipSharp\SevenZip\SevenZip.csproj" />
