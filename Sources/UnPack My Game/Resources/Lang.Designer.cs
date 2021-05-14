@@ -70,15 +70,6 @@ namespace UnPack_My_Game.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Add.
-        /// </summary>
-        public static string Add {
-            get {
-                return ResourceManager.GetString("Add", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Recherche une chaîne localisée semblable à Cheat Codes.
         /// </summary>
         public static string CheatCodes {
@@ -93,15 +84,6 @@ namespace UnPack_My_Game.Resources {
         public static string Choose_Root {
             get {
                 return ResourceManager.GetString("Choose_Root", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Choose the LaunchBox folder.
-        /// </summary>
-        public static string ChooseLBf {
-            get {
-                return ResourceManager.GetString("ChooseLBf", resourceCulture);
             }
         }
         
@@ -358,15 +340,6 @@ namespace UnPack_My_Game.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Process.
-        /// </summary>
-        public static string Process {
-            get {
-                return ResourceManager.GetString("Process", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Recherche une chaîne localisée semblable à Are you sure you want to continue ?.
         /// </summary>
         public static string Q_Continue {
@@ -381,15 +354,6 @@ namespace UnPack_My_Game.Resources {
         public static string Question {
             get {
                 return ResourceManager.GetString("Question", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Remove.
-        /// </summary>
-        public static string Remove {
-            get {
-                return ResourceManager.GetString("Remove", resourceCulture);
             }
         }
         

@@ -61,42 +61,6 @@ namespace Pack_My_Game.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Cheats Codes Path.
-        /// </summary>
-        public static string CheatsPath {
-            get {
-                return ResourceManager.GetString("CheatsPath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Choose a working folder.
-        /// </summary>
-        public static string Choose_WPath {
-            get {
-                return ResourceManager.GetString("Choose_WPath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à General.
-        /// </summary>
-        public static string General {
-            get {
-                return ResourceManager.GetString("General", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Informations.
-        /// </summary>
-        public static string Infos {
-            get {
-                return ResourceManager.GetString("Infos", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Recherche une chaîne localisée semblable à No element.
         /// </summary>
         public static string NoElem {
@@ -126,33 +90,6 @@ namespace Pack_My_Game.Resources {
         public static string Path_Rules {
             get {
                 return ResourceManager.GetString("Path_Rules", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Paths.
-        /// </summary>
-        public static string Paths {
-            get {
-                return ResourceManager.GetString("Paths", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Select your language.
-        /// </summary>
-        public static string S_Language {
-            get {
-                return ResourceManager.GetString("S_Language", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Working path.
-        /// </summary>
-        public static string WPath {
-            get {
-                return ResourceManager.GetString("WPath", resourceCulture);
             }
         }
     }

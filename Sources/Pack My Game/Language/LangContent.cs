@@ -6,10 +6,12 @@ using System.Runtime.CompilerServices;
 using System.IO;
 using System.Text.Json;
 using DxTBoxCore.Box_MBox;
+using Common_Graph.Language;
+using System.Text.Json.Serialization;
 
 namespace Pack_My_Game.Language
 {
-    public class LangContent// : INotifyPropertyChanged
+    public class LangContent : ALangCont// : INotifyPropertyChanged
     {
         //public event PropertyChangedEventHandler PropertyChanged;
 
@@ -18,11 +20,7 @@ namespace Pack_My_Game.Language
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }*/
 
-        public string Lang { get; internal set; }
-        public string Version { get; internal set; }
-        public string Name { get; internal set; }
 
-        // ---
 
         /// <summary>
         /// Choose game(s)
@@ -30,24 +28,40 @@ namespace Pack_My_Game.Language
         public string Choose_Games { get; set; } = "Choose game(s)";
 
         /// <summary>
-        /// Choose the LaunchBoxPath
-        /// </summary>
-        public string Choose_LBPath { get; set; } = "Choose the LaunchBox path";
-
-        /// <summary>
-        /// Choose a language
-        /// </summary>
-        public string Choose_Language { get; set; } = "Choose a Language";
-
-        /// <summary>
-        /// Choose the path
-        /// </summary>
-        public string Choose_Path { get; set; } = "Choose the path";
-
-        /// <summary>
         /// Choose a system
         /// </summary>
         public string Choose_System { get; set; } = "Choose a system (Consoles)";
+
+        // ---
+        /// <summary>
+        /// Command Test Game Links
+        /// </summary>
+        [JsonPropertyName("Cmd.TestGmLinks")]
+        public string Cmd_TestGmLinks { get; set; } = "Test game links";
+
+        /// <summary>
+        /// Command Extract TBGame
+        /// </summary>
+        [JsonPropertyName("Cmd.ExtTBGame")]
+        public string Cmd_ExtTBGame { get; set; } = " Extract True Backup";
+
+        /// <summary>
+        /// Command extract NPGame
+        /// </summary>
+        [JsonPropertyName("Cmd.ExtNBGame")]
+        public string Cmd_ExtNBGame { get; set; } = "Extract NoPath Backup";
+
+        /// <summary>
+        /// Command extract Platform
+        /// </summary>
+        [JsonPropertyName("Cmd.ExtPlatform")]
+        public string Cmd_ExtPlatform { get; set; } = "Extract Platform";
+
+        /// <summary>
+        /// Command extract default file
+        /// </summary>
+        [JsonPropertyName("Cmd.ExtDef")]
+        public string Cmd_ExtDef { get; internal set; } = "Extract Default File";
 
         // ---
 
@@ -114,23 +128,6 @@ namespace Pack_My_Game.Language
 
         // ---
 
-        /// <summary>
-        /// Cheats codes path
-        /// </summary>
-        public string Path_Cheats { get; set; } = "Cheats codes path";
-
-        /// <summary>
-        /// Working path
-        /// </summary>
-        public string Path_Working { get; set; } = "Working path";
-
-        /// <summary>
-        /// Launchbox path
-        /// </summary>
-        public string Path_LaunchBox { get; set; } = "LaunchBox path";
-
-        // ---
-
         #region options
         /// <summary>
         /// Enhanced XML backup
@@ -177,120 +174,44 @@ namespace Pack_My_Game.Language
         // ---
 
         #region Words
-        /// <summary>
-        /// Add
-        /// </summary>
-        public string Word_Add { get; set; } = "Add";
-
-        /// <summary>
-        /// All
-        /// </summary>
-        public string Word_All { get; set; } = "All";
-
-        /// <summary>
-        /// Cancel
-        /// </summary>
-        public string Word_Cancel { get; set; } = "Cancel";
 
         /// <summary>
         /// Cheats
         /// </summary>
+        [JsonPropertyName("Word.Cheats")]
         public string Word_Cheats { get; set; } = "Cheats";
 
         /// <summary>
         /// Compression
         /// </summary>
+        [JsonPropertyName("Word.Compression")]
         public string Word_Compression { get; set; } = "Compression";
-
-        /// <summary>
-        /// Configuration
-        /// </summary>
-        public string Word_Configuration { get; set; } = "Configuration";
 
         /// <summary>
         /// Credits
         /// </summary>
+        [JsonPropertyName("Word.Credits")]
         public string Word_Credits { get; set; } = "Credits";
-
-        /// <summary>
-        /// Delete
-        /// </summary>
-        public string Word_Delete { get; set; } = "Delete";
 
         /// <summary>
         /// Extract
         /// </summary>
+        [JsonPropertyName("Word.Extract")]
         public string Word_Extract { get; set; } = "Extract";
-
-        /// <summary>
-        /// File
-        /// </summary>
-        public string Word_File { get; set; } = "File";
-
-        /// <summary>
-        /// Games
-        /// </summary>
-        public string Word_Games { get; set; } = "Games";
-
-        /// <summary>
-        /// General
-        /// </summary>
-        public string Word_General { get; set; } = "General";
 
         /// <summary>
         /// Help
         /// </summary>
+        [JsonPropertyName("Word.Help")]
         public string Word_Help { get; set; } = "Help";
-
-        /// <summary>
-        /// Informations
-        /// </summary>
-        public string Word_Informations { get; set; } = "Informations";
-
-        /// <summary>
-        /// Main
-        /// </summary>
-        public string Word_Main { get; set; } = "Main";
-
-        /// <summary>
-        /// Manuels
-        /// </summary>
-        public string Word_Manuals { get; set; } = "Manuals";
-
-        /// <summary>
-        /// Musics
-        /// </summary>
-        public string Word_Musics { get; set; } = "Musics";
-
-        /// <summary>
-        /// None
-        /// </summary>
-        public string Word_None { get; set; } = "None";
-
-        /// <summary>
-        /// Ok
-        /// </summary>
-        public string Word_Ok { get; set; } = "OK";
-
-        /// <summary>
-        /// Options
-        /// </summary>
-        public string Word_Options { get; set; } = "Options";
-
-        /// <summary>
-        /// Paths
-        /// </summary>
-        public string Word_Paths { get; set; } = "Paths";
 
         /// <summary>
         /// Parameters
         /// </summary>
+        [JsonPropertyName("Word.Params")]
         public string Word_Params { get; set; } = "Parameters";
 
-        /// <summary>
-        /// Process
-        /// </summary>
-        public string Word_Process { get; set; } = "Process";
+
 
         /// <summary>
         /// Word Region
@@ -303,19 +224,9 @@ namespace Pack_My_Game.Language
         public string Word_Result { get; set; } = "Result";
 
         /// <summary>
-        /// Select
-        /// </summary>
-        public string Word_Select { get; set; } = "Select";
-
-        /// <summary>
         /// Selected
         /// </summary>
         public string Word_Selected { get; set; } = "Selected";
-
-        /// <summary>
-        /// Submit
-        /// </summary>
-        public string Word_Submit { get; set; } = "Submit";
 
         /// <summary>
         /// Title
@@ -326,12 +237,6 @@ namespace Pack_My_Game.Language
         /// Word Version
         /// </summary>
         public string Word_Version { get; set; } = "Version";
-
-        /// <summary>
-        /// Videos
-        /// </summary>
-        public string Word_Videos { get; set; } = "Videos";
-
 
         #endregion
 
@@ -356,8 +261,6 @@ namespace Pack_My_Game.Language
 
         //--- a rajouter
         public string ListGamesExp { get; internal set; }
-
-
 
         internal static LangContent Load(string langFile)
         {
@@ -409,13 +312,11 @@ namespace Pack_My_Game.Language
         /// 
         /// </summary>
         /// <returns></returns>
-        internal static LangContent Default()
+        internal static LangContent MakeDefault()
         {
-            return new LangContent()
+            LangContent lang = new LangContent()
             {
-                Version = Common.LangVersion,
-                Lang = "en-US",
-                Name = "English",
+
                 //
                 Long_Credits =
                 "#Crédits, Thanks to:\r\n" +
@@ -425,7 +326,7 @@ namespace Pack_My_Game.Language
                 "\t- DotNetZip creator, very good job, amazing ! \r\n" +
                 "\t- SevenZip creator, big thanks & bravo ! \r\n" +
                 "\r\n\r\n\r\n\t\t\t\t\t\tGreetings.",
-                Long_Help=
+                Long_Help =
                 "Step to the left, step to the righ, clap your hands....Ok... sorry... " +
                 "\r\n\r\nIt's a bacic to help you." +
                 "\r\n\r\nWhat is it for... nothing, get out of the way ^^:" +
@@ -444,21 +345,18 @@ namespace Pack_My_Game.Language
                 @"    ex: For Sonic, Cheadcode archive must begin by 'Sonic-'\n\n" +
                 "Note: As much archive as you want.",
             };
+
+            lang.SetDefault(Common.LangVersion);
+
+            return lang;
         }
+
 
         internal static LangContent DefaultFrench()
         {
-            return new LangContent()
+            LangContent lang = new LangContent()
             {
-                Version = Common.LangVersion,
-                Lang = "fr-FR",
-                Name = "Français",
-
-                //
                 Choose_Games = "Choisir un/des jeu(x)",
-                Choose_LBPath = "Choisissez le chemin de LaunchBox",
-                Choose_Language = "Choisissez une langue",
-                Choose_Path = "Choisissez le chemin",
                 Choose_System = "Choisissez un système (Consoles)",
                 //
                 Comp_Lvl = "Niveau de compression",
@@ -479,35 +377,18 @@ namespace Pack_My_Game.Language
                 Opt_OriXB = "Copie XML originel",
                 Opt_TViewF = "Fichier d'arborescence",
                 Opt_Window = "Fenêtre de traçage",
-                //
-                Path_Cheats = "Chemin cheat codes",
-                Path_LaunchBox = "Chemin LaunchBox",
-                Path_Working = "Dossier de travail",
+
                 //
                 Q_Pack = "Packer ce jeu",
                 Q_PackGames = "Etes vous sûr(e) de vouloir packer ces jeux ?",
                 //
-                Word_Add = "Ajouter",
-                Word_All = "Tous",
-                Word_Cancel = "Annuler",
-                Word_Delete = "Effacer",
                 Word_Extract = "Extraire",
-                Word_File = "Fichier",
-                Word_General = "Général",
-                Word_Main = "Principal,",
-                Word_Manuals = "Manuels",
-                Word_Musics = "Musics",
-                Word_None = "Aucun",
                 Word_Params = "Paramètres",
-                Word_Paths = "Chemins",
-                Word_Process = "Procéder",
                 Word_Region = "Région",
                 Word_Result = "Résultat",
-                Word_Select = "Sélectionnez",
                 Word_Selected = "Sélectionné",
-                Word_Submit = "Soumettre",
                 Word_Title = "Titre",
-                Word_Videos = "Videos",
+
                 //
                 Long_Credits =
                 "#Crédits, Merci à:\r\n" +
@@ -538,7 +419,11 @@ namespace Pack_My_Game.Language
 
 
             };
+
+            lang.SetFrenchDefault(Common.LangVersion);
+            return lang;
         }
+
 
     }
 }

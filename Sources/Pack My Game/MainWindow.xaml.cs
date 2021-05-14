@@ -21,13 +21,13 @@ namespace Pack_My_Game
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static readonly RoutedUICommand CheckGameValidityCmd = new RoutedUICommand("Test game links", nameof(CheckGameValidityCmd), typeof(MainWindow));
-        public static readonly RoutedUICommand ExtractTBGameCmd = new RoutedUICommand("Extract True Backup", nameof(ExtractTBGameCmd), typeof(MainWindow));
-        public static readonly RoutedUICommand ExtractNBGameCmd = new RoutedUICommand("Extract NoPath Backup", nameof(ExtractNBGameCmd), typeof(MainWindow));
-        public static readonly RoutedUICommand ExtractPlatformCmd = new RoutedUICommand("Extract Platform", "ExtractPlatformCmd", typeof(MainWindow));
-        public static readonly RoutedUICommand ExtractDefaultFilesCmd = new RoutedUICommand("Extract Default Files", "ExtractDefaultFilesCmd", typeof(MainWindow));
-        public static readonly RoutedUICommand SelectAllCmd = new RoutedUICommand("Select All", "SelectAllCmd", typeof(MainWindow));
-        public static readonly RoutedUICommand SelectNoneCmd = new RoutedUICommand("Select None", "SelectNoneCmd", typeof(MainWindow));
+        public static readonly RoutedUICommand CheckGameValidityCmd = new RoutedUICommand(LanguageManager.Lang.Cmd_TestGmLinks, nameof(CheckGameValidityCmd), typeof(MainWindow));
+        public static readonly RoutedUICommand ExtractTBGameCmd = new RoutedUICommand(LanguageManager.Lang.Cmd_ExtTBGame, nameof(ExtractTBGameCmd), typeof(MainWindow));
+        public static readonly RoutedUICommand ExtractNBGameCmd = new RoutedUICommand(LanguageManager.Lang.Cmd_ExtNBGame, nameof(ExtractNBGameCmd), typeof(MainWindow));
+        public static readonly RoutedUICommand ExtractPlatformCmd = new RoutedUICommand(LanguageManager.Lang.Cmd_ExtPlatform, "ExtractPlatformCmd", typeof(MainWindow));
+        public static readonly RoutedUICommand ExtractDefaultFilesCmd = new RoutedUICommand(LanguageManager.Lang.Cmd_ExtDef, "ExtractDefaultFilesCmd", typeof(MainWindow));
+        public static readonly RoutedUICommand SelectAllCmd = new RoutedUICommand(LanguageManager.Lang.Select_All, "SelectAllCmd", typeof(MainWindow));
+        public static readonly RoutedUICommand SelectNoneCmd = new RoutedUICommand(LanguageManager.Lang.Select_None, "SelectNoneCmd", typeof(MainWindow));
 
         private M_Main _Model = new M_Main();
 

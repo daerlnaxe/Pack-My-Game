@@ -110,7 +110,7 @@ namespace UnPack_My_Game.Language
                             langObj = LangProvider.DefaultFrench();
                             break;
                         default:
-                            langObj = LangProvider.Default();
+                            langObj = LangProvider.MakeDefault();
                             break;
                     }
 
@@ -137,7 +137,7 @@ namespace UnPack_My_Game.Language
         internal static object GetValue(string key)
         {
             if (Lang == null)
-                Lang = LangProvider.Default();
+                Lang = LangProvider.MakeDefault();
 
             var property = typeof(LangProvider).GetProperty(key);
             if (property != null)

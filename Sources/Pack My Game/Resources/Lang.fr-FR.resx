@@ -117,26 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CheatsPath" xml:space="preserve">
-    <value>Chemin cheat codes</value>
-  </data>
-  <data name="Choose_WPath" xml:space="preserve">
-    <value>Choisir un dossier de travail</value>
-  </data>
-  <data name="General" xml:space="preserve">
-    <value>Général</value>
-  </data>
-  <data name="Infos" xml:space="preserve">
-    <value>Informations</value>
-  </data>
   <data name="NoElem" xml:space="preserve">
     <value>Pas d'élement</value>
   </data>
   <data name="NullValue" xml:space="preserve">
     <value>Valeur nulle</value>
-  </data>
-  <data name="Paths" xml:space="preserve">
-    <value>Chemins</value>
   </data>
   <data name="Path_Rules" xml:space="preserve">
     <value>Deux règles:
@@ -146,11 +131,5 @@ ex: F:\CheadCodes\Sega Megadrive\ &amp;&amp; in LaunchBox the system is named Se
 ex: For Sonic, Cheadcode archive must begin by 'Sonic-'
 
 Note: Autant d'archives que vous voulez.</value>
-  </data>
-  <data name="S_Language" xml:space="preserve">
-    <value>Sélectionnez votre langue</value>
-  </data>
-  <data name="WPath" xml:space="preserve">
-    <value>Dossier de travail</value>
   </data>
 </root>

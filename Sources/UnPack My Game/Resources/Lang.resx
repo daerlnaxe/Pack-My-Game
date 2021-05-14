@@ -120,14 +120,8 @@
   <data name="AccessF" xml:space="preserve">
     <value>Access folders</value>
   </data>
-  <data name="Add" xml:space="preserve">
-    <value>Add</value>
-  </data>
   <data name="CheatCodes" xml:space="preserve">
     <value>Cheat Codes</value>
-  </data>
-  <data name="ChooseLBf" xml:space="preserve">
-    <value>Choose the LaunchBox folder</value>
   </data>
   <data name="Choose_Root" xml:space="preserve">
     <value>Choose root, without platform Name.</value>
@@ -216,17 +210,11 @@
   <data name="Platform" xml:space="preserve">
     <value>Platform</value>
   </data>
-  <data name="Process" xml:space="preserve">
-    <value>Process</value>
-  </data>
   <data name="Question" xml:space="preserve">
     <value>Question</value>
   </data>
   <data name="Q_Continue" xml:space="preserve">
     <value>Are you sure you want to continue ?</value>
-  </data>
-  <data name="Remove" xml:space="preserve">
-    <value>Remove</value>
   </data>
   <data name="Select_All" xml:space="preserve">
     <value>Select All</value>

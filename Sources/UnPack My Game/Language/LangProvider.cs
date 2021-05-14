@@ -1,4 +1,5 @@
-﻿using DxTBoxCore.Box_MBox;
+﻿using Common_Graph.Language;
+using DxTBoxCore.Box_MBox;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,87 +9,13 @@ using System.Text.Json.Serialization;
 
 namespace UnPack_My_Game.Language
 {
-    public class LangProvider
+    public class LangProvider : ALangCont
     {
-        /// <summary>
-        /// Version du fichier
-        /// </summary>
-        public string Version { get; set; }
-
-        /// <summary>
-        /// Chercher le dossier launchbox
-        /// </summary>
-        public string Choose_Path { get; set; } = "Choose the path";
-
-
-        #region Commun
-        /// <summary>
-        /// Chemin vers LaunchBox
-        /// </summary>
-        [JsonPropertyName("Folder.LaunchBox")]
-        public string Folder_LaunchBox { get; set; }
-
-        /// <summary>
-        /// Dossier de travail
-        /// </summary>
-        public string Folder_Working { get; set; }
-
-        /// <summary>
-        /// Dossier des cheats codes
-        /// </summary>
-        public string Folder_CheatCodes { get; set; }
-        #endregion
-
-        /// <summary>
-        /// Annuler
-        /// </summary>
-        [JsonPropertyName("Word.Cancel")]
-        public string Word_Cancel { get; set; } = "Cancel";
-
-        /// <summary>
-        /// Jeux
-        /// </summary>
-        [JsonPropertyName("Word.Games")]
-        public string Word_Games { get; set; } = "Games";
-
-        /// <summary>
-        /// Onglet général
-        /// </summary>
-        [JsonPropertyName("Word.General")]
-        public string Word_General { get; set; } = "General";
-
-        [JsonPropertyName("Word.Images")]
-        public string Word_Images { get; set; } = "Images";
-
-        /// <summary>
-        /// Mot Informations
-        /// </summary>
-        [JsonPropertyName("Word.Informations")]
-        public string Word_Informations { get; set; } = "Informations";
-
         /// <summary>
         /// Langue
         /// </summary>
         [JsonPropertyName("Word.Languages")]
         public string Word_Languages { get; set; } = "Languages";
-
-        /// <summary>
-        /// Principal
-        /// </summary>
-        [JsonPropertyName("Word.Main")]
-        public string Word_Main { get; set; } = "Main";
-
-        /// <summary>
-        /// Manuels
-        /// </summary>
-        [JsonPropertyName("Word.Manuals")]
-        public string Word_Manuals { get; set; } = "Manuals";
-
-        /// <summary>
-        /// Musiques
-        /// </summary>
-        [JsonPropertyName("Word.Musics")]
-        public string Word_Musics { get; set; } = "Musics";
 
         /// <summary>
         /// Sauvegarder
@@ -97,28 +24,11 @@ namespace UnPack_My_Game.Language
         public string Word_Save { get; set; } = "Save";
 
         /// <summary>
-        /// Options
-        /// </summary>
-        [JsonPropertyName("Word.Options")]
-        public string Word_Options { get; set; } = "Options";
-
-        /// <summary>
-        /// Paths
-        /// </summary>
-        [JsonPropertyName("Word.Paths")]
-        public string Word_Paths { get; set; } = "Paths";
-
-        /// <summary>
         /// Video
         /// </summary>
         [JsonPropertyName("Word.Video")]
         public string Word_Video { get; set; } = "Video";
 
-        /// <summary>
-        /// Video
-        /// </summary>
-        [JsonPropertyName("Word.Videos")]
-        public string Word_Videos { get; set; } = "Videos";
 
         // ---
         public string Archive_Structure { get; set; } = "Archive structure";
@@ -186,41 +96,22 @@ namespace UnPack_My_Game.Language
             }
         }
 
-        internal static LangProvider Default()
+        internal static LangProvider MakeDefault()
         {
-            return new LangProvider()
+            LangProvider lang = new LangProvider()
             {
-                Version = Common.LangVersion,
-                Folder_LaunchBox = "LaunchBox folder",
-                Folder_Working = "Working folder",
-                Folder_CheatCodes = "CheatCodes folder"
-                // --- Configuration
-
 
             };
+            lang.SetDefault(Common.LangVersion);
+            return lang;
         }
 
 
         internal static LangProvider DefaultFrench()
         {
-            return new LangProvider()
+            LangProvider lang = new LangProvider()
             {
-                Version = Common.LangVersion,
-
-                //
-                Choose_Path = "Choisir le chemin",
-                //
-                Folder_CheatCodes = "Dossier CheatCodes",
-                Folder_LaunchBox = "Dossier LaunchBox",
-                Folder_Working = "Dossier de travail",
                 // 
-                Word_Cancel = "Annuler",
-                Word_General = "Général",
-                Word_Languages = "Langues",
-                Word_Main = "Principal",
-                Word_Manuals = "Manuals",
-                Word_Musics = "Musiques",
-                Word_Paths = "Chemins",
                 Word_Save = "Sauver",
                 //
                 Archive_Structure = "Structure de l'archive",
@@ -229,10 +120,9 @@ namespace UnPack_My_Game.Language
                 InjectCustomFields = "Injecter les champs personnalisés",
                 PlaceRomsToGameName = "Placer les roms dans un dossier portant le nom du jeu",
 
-                
-
-
             };
+            lang.SetFrenchDefault(Common.LangVersion);
+            return lang;
+        }
     }
-}
 }

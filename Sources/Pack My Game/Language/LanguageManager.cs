@@ -137,7 +137,7 @@ namespace Pack_My_Game.Language
                             langObj = LangContent.DefaultFrench();
                             break;
                         default:
-                            langObj = LangContent.Default();
+                            langObj = LangContent.MakeDefault();
                             break;
                     }
 
@@ -164,7 +164,7 @@ namespace Pack_My_Game.Language
         internal object GetValue(string key)
         {
             if (Lang == null)
-                Lang = LangContent.Default();
+                Lang = LangContent.MakeDefault();
 
             var property = typeof(LangContent).GetProperty(key);
             if (property != null)
