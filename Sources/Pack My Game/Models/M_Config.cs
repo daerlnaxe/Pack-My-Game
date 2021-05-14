@@ -126,7 +126,7 @@ namespace Pack_My_Game.Models
                 Model = new M_ChooseFolder()
                 {
                     HideWindowsFolder = true,
-                    Info = LanguageManager.Lang.Choose_LBPath,
+                    Info = LanguageManager.Instance.Lang.Choose_LBPath,
                     ShowFiles = true,
                     StartingFolder = Config.LastPath,// PS.Default.LastKPath,
                 },
@@ -150,7 +150,7 @@ namespace Pack_My_Game.Models
                 Model = new M_ChooseFolder()
                 {
                     HideWindowsFolder = true,
-                    Info = LanguageManager.Lang.Choose_Path,
+                    Info = LanguageManager.Instance.Lang.Choose_Path,
                     ShowFiles = true,
                     StartingFolder = Config.LastPath,
                 },
@@ -172,7 +172,7 @@ namespace Pack_My_Game.Models
                 Model = new M_ChooseFolder()
                 {
                     HideWindowsFolder = true,
-                    Info = LanguageManager.Lang.Choose_Path,
+                    Info = LanguageManager.Instance.Lang.Choose_Path,
                     ShowFiles = true,
                     StartingFolder = Config.LastPath,
 

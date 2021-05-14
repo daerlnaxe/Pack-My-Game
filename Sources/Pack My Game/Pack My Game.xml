@@ -429,19 +429,6 @@
             <param name="lvl"></param>
             <returns></returns>
         </member>
-        <member name="T:Pack_My_Game.IHM.BoxProgress">
-            <summary>
-            Logique d'interaction pour BoxProgress.xaml
-            </summary>
-            <summary>
-            BoxProgress
-            </summary>
-        </member>
-        <member name="M:Pack_My_Game.IHM.BoxProgress.InitializeComponent">
-            <summary>
-            InitializeComponent
-            </summary>
-        </member>
         <member name="T:Pack_My_Game.IHM.PackMe_IHM">
             <summary>
             S'occupe de gérer les fenêtres lors du processus de package
@@ -725,16 +712,6 @@
             7Zip Compression
             </summary>
         </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Copy_Clones">
-            <summary>
-            Clones copy
-            </summary>
-        </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Copy_Cheats">
-            <summary>
-            Cheats Copy
-            </summary>
-        </member>
         <member name="P:Pack_My_Game.Language.LangContent.File_Ex">
             <summary>
             File exists
@@ -750,6 +727,16 @@
             Folder exists
             </summary>
         </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Opt_CopyClones">
+            <summary>
+            Clones copy
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Opt_CopyCheats">
+            <summary>
+            Cheats Copy
+            </summary>
+        </member>
         <member name="P:Pack_My_Game.Language.LangContent.Opt_EnXB">
             <summary>
             Enhanced XML backup
@@ -758,6 +745,26 @@
         <member name="P:Pack_My_Game.Language.LangContent.Opt_InfosG">
             <summary>
             Infos Games
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Opt_KeepGmStruct">
+            <summary>
+            Keep Games Structure
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Opt_KeepCheatStruct">
+            <summary>
+            Keep Cheat Structure
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Opt_KeepManStruct">
+            <summary>
+            Keep Manual Structure
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Opt_KeepMusStruct">
+            <summary>
+            Keep Music Structure
             </summary>
         </member>
         <member name="P:Pack_My_Game.Language.LangContent.Opt_OriXB">
@@ -770,11 +777,6 @@
             TreeView File
             </summary>
         </member>
-        <member name="P:Pack_My_Game.Language.LangContent.Opt_Loggers">
-            <summary>
-            Loggers
-            </summary>
-        </member>
         <member name="P:Pack_My_Game.Language.LangContent.Opt_Window">
             <summary>
             Log window
@@ -783,6 +785,16 @@
         <member name="P:Pack_My_Game.Language.LangContent.Q_Pack">
             <summary>
             Question pack this game
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.S_WidthLimit">
+            <summary>
+            Width Limit
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Active">
+            <summary>
+            Active
             </summary>
         </member>
         <member name="P:Pack_My_Game.Language.LangContent.Word_Cheats">
@@ -803,6 +815,11 @@
         <member name="P:Pack_My_Game.Language.LangContent.Word_Extract">
             <summary>
             Extract
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Word_Format">
+            <summary>
+            Format
             </summary>
         </member>
         <member name="P:Pack_My_Game.Language.LangContent.Word_Help">
@@ -905,6 +922,46 @@
             </summary>
             <summary>
             MainWindow
+            </summary>
+        </member>
+        <member name="F:Pack_My_Game.MainWindow.CheckGameValidityCmd">
+            <summary>
+            Vérifie si les liens sont valides
+            </summary>
+        </member>
+        <member name="F:Pack_My_Game.MainWindow.ExtractTBGameCmd">
+            <summary>
+            Extrait un fichier True Backup
+            </summary>
+        </member>
+        <member name="F:Pack_My_Game.MainWindow.ExtractNBGameCmd">
+            <summary>
+            Extrait un fichier No Path Backup
+            </summary>
+        </member>
+        <member name="F:Pack_My_Game.MainWindow.ExtractPlatformCmd">
+            <summary>
+            Extrait un fichier plateforme
+            </summary>
+        </member>
+        <member name="F:Pack_My_Game.MainWindow.ExtractDefaultFilesCmd">
+            <summary>
+            Extrait un fichier DPGame.json
+            </summary>
+        </member>
+        <member name="F:Pack_My_Game.MainWindow.SelectAllCmd">
+            <summary>
+            Sélectionne tout
+            </summary>
+        </member>
+        <member name="F:Pack_My_Game.MainWindow.SelectNoneCmd">
+            <summary>
+            Sélectionne rien
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.MainWindow.WindowTitle">
+            <summary>
+            Titre de la fenêtre
             </summary>
         </member>
         <member name="M:Pack_My_Game.MainWindow.Config_Click(System.Object,System.Windows.RoutedEventArgs)">
@@ -1024,6 +1081,36 @@
             
             Note: As much archive as you want..
              </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
         </member>
     </members>
 </doc>

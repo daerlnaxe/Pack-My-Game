@@ -74,6 +74,12 @@ namespace Common_Graph.Language
         public string Word_All { get; set; } = "All";
 
         /// <summary>
+        /// Backup
+        /// </summary>
+        [JsonPropertyName("Word.Backup")]
+        public string Word_Backup { get; set; } = "Backup";
+
+        /// <summary>
         /// Cancel
         /// </summary>
         [JsonPropertyName("Word.Cancel")]
@@ -122,6 +128,12 @@ namespace Common_Graph.Language
         public string Word_Informations { get; set; } = "Informations";
 
         /// <summary>
+        /// Loggers
+        /// </summary>
+        [JsonPropertyName("Word.Loggers")]
+        public string Word_Loggers { get; set; } = "Loggers";
+
+        /// <summary>
         /// Main
         /// </summary>
         [JsonPropertyName("Word.Main")]
@@ -164,16 +176,34 @@ namespace Common_Graph.Language
         public string Word_Paths { get; set; } = "Paths";
 
         /// <summary>
+        /// Procedure
+        /// </summary>
+        [JsonPropertyName("Word.Procedure")]
+        public string Word_Procedure { get; set; } = "Procedure";
+
+        /// <summary>
         /// Process
         /// </summary>
         [JsonPropertyName("Word.Process")]
         public string Word_Process { get; set; } = "Process";
 
         /// <summary>
+        /// Sauvegarder
+        /// </summary>
+        [JsonPropertyName("Word.Save")]
+        public string Word_Save { get; set; } = "Save";
+
+        /// <summary>
         /// Select
         /// </summary>
         [JsonPropertyName("Word.Select")]
         public string Word_Select { get; set; } = "Select";
+
+        /// <summary>
+        /// Structure
+        /// </summary>
+        [JsonPropertyName("Word.Structure")]
+        public string Word_Structure { get; set; } = "Structure";
 
         /// <summary>
         /// Submit
@@ -221,12 +251,15 @@ namespace Common_Graph.Language
             Word_Delete = "Effacer";
             Word_File = "Fichier";
             Word_General = "Général";
+            Word_Loggers = "Traçage";
             Word_Main = "Principal,";
             Word_Manuals = "Manuels";
             Word_Musics = "Musics";
             Word_None = "Aucun";
             Word_Paths = "Chemins";
+            Word_Procedure = "Procédure";
             Word_Process = "Procéder";
+            Word_Save = "Sauver";
             Word_Select = "Sélectionnez";
             Word_Submit = "Soumettre";
             Word_Videos = "Videos";

@@ -17,11 +17,7 @@ namespace UnPack_My_Game.Language
         [JsonPropertyName("Word.Languages")]
         public string Word_Languages { get; set; } = "Languages";
 
-        /// <summary>
-        /// Sauvegarder
-        /// </summary>
-        [JsonPropertyName("Word.Save")]
-        public string Word_Save { get; set; } = "Save";
+
 
         /// <summary>
         /// Video
@@ -111,8 +107,6 @@ namespace UnPack_My_Game.Language
         {
             LangProvider lang = new LangProvider()
             {
-                // 
-                Word_Save = "Sauver",
                 //
                 Archive_Structure = "Structure de l'archive",
                 Reset_Folder = "Reset un dossier",

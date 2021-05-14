@@ -97,15 +97,9 @@ namespace Pack_My_Game.Language
 
         // ---
 
-        /// <summary>
-        /// Clones copy
-        /// </summary>
-        public string Copy_Clones { get; set; } = "Clones copy";
 
-        /// <summary>
-        /// Cheats Copy
-        /// </summary>
-        public string Copy_Cheats { get; set; } = "Cheats copy";
+
+
 
         // ---
 
@@ -129,6 +123,17 @@ namespace Pack_My_Game.Language
         // ---
 
         #region options
+
+        /// <summary>
+        /// Clones copy
+        /// </summary>
+        public string Opt_CopyClones { get; set; } = "Copy clones";
+
+        /// <summary>
+        /// Cheats Copy
+        /// </summary>
+        public string Opt_CopyCheats { get; set; } = "Copy cheats";
+
         /// <summary>
         /// Enhanced XML backup
         /// </summary>
@@ -140,6 +145,28 @@ namespace Pack_My_Game.Language
         public string Opt_InfosG { get; set; } = "Infos Games";
 
         /// <summary>
+        /// Keep Games Structure
+        /// </summary>
+        public string Opt_KeepGmStruct { get; set; } = "Keep games Structure";
+
+        /// <summary>
+        /// Keep Cheat Structure
+        /// </summary>
+        public string Opt_KeepCheatStruct { get; set; } = "Keep cheats Structure";
+
+        /// <summary>
+        /// Keep Manual Structure
+        /// </summary>
+        public string Opt_KeepManStruct { get; set; } = "Keep manuals Structure";
+
+        /// <summary>
+        /// Keep Music Structure
+        /// </summary>
+        public string Opt_KeepMusStruct { get; set; } = "Keep musics Structure";
+
+
+
+        /// <summary>
         /// Original xlm backup
         /// </summary>
         public string Opt_OriXB { get; set; } = "Original XML Backup";
@@ -149,10 +176,7 @@ namespace Pack_My_Game.Language
         /// </summary>
         public string Opt_TViewF { get; set; } = "Treeview File";
 
-        /// <summary>
-        /// Loggers
-        /// </summary>
-        public string Opt_Loggers { get; set; } = "Log file";
+
 
         /// <summary>
         /// Log window
@@ -173,7 +197,20 @@ namespace Pack_My_Game.Language
 
         // ---
 
+        /// <summary>
+        /// Width Limit
+        /// </summary>
+        public string S_WidthLimit { get; set; } = "Width limit";
+
+        public string S_EnterYourCC { get; set; } = "Enter your cheat codes";
+        // ---
+
         #region Words
+        /// <summary>
+        /// Active
+        /// </summary>
+        [JsonPropertyName("Word.Active")]
+        public string Word_Active { get; set; } = "Active";
 
         /// <summary>
         /// Cheats
@@ -200,6 +237,12 @@ namespace Pack_My_Game.Language
         public string Word_Extract { get; set; } = "Extract";
 
         /// <summary>
+        /// Format
+        /// </summary>
+        [JsonPropertyName("Word.Format")]
+        public string Word_Format { get; set; } = "Format";
+
+        /// <summary>
         /// Help
         /// </summary>
         [JsonPropertyName("Word.Help")]
@@ -210,8 +253,6 @@ namespace Pack_My_Game.Language
         /// </summary>
         [JsonPropertyName("Word.Params")]
         public string Word_Params { get; set; } = "Parameters";
-
-
 
         /// <summary>
         /// Word Region
@@ -364,16 +405,15 @@ namespace Pack_My_Game.Language
                 Comp_Zip = "Compression Zip",
                 Comp_7Z = "Compression 7Zip",
                 //
-                Copy_Clones = "Copie des clones",
-                Copy_Cheats = "Copie des cheatcodes",
                 //
                 Files_Found = "Fichiers trouvés",
                 File_Ex = "Le fichier existe",
                 //
                 Folder_Ex = "Le dossier existe",
                 //
+                Opt_CopyClones = "Copie des clones",
+                Opt_CopyCheats = "Copie des cheatcodes",
                 Opt_EnXB = "Copie XML amélioré",
-                Opt_Loggers = "Fichier de traçage",
                 Opt_OriXB = "Copie XML originel",
                 Opt_TViewF = "Fichier d'arborescence",
                 Opt_Window = "Fenêtre de traçage",
@@ -382,7 +422,12 @@ namespace Pack_My_Game.Language
                 Q_Pack = "Packer ce jeu",
                 Q_PackGames = "Etes vous sûr(e) de vouloir packer ces jeux ?",
                 //
+                S_WidthLimit = "Limite de largeur",
+                S_EnterYourCC = "Entre vos cheats codes",
+                //
+                Word_Active = "Activé",
                 Word_Extract = "Extraire",
+                Word_Format = "Formatter",
                 Word_Params = "Paramètres",
                 Word_Region = "Région",
                 Word_Result = "Résultat",

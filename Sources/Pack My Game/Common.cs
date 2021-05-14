@@ -1,4 +1,5 @@
 ﻿using Pack_My_Game.Cont;
+using Pack_My_Game.Language;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -53,7 +54,8 @@ namespace Pack_My_Game
         }
 
 
-        public static readonly RoutedUICommand ProcessCommand = new RoutedUICommand("Process", "Process", typeof(Common));
+        public static readonly RoutedUICommand ProcessCommand =
+            new RoutedUICommand(LanguageManager.Instance.Lang.Word_Process, "Process", typeof(Common));
 
     }
 }

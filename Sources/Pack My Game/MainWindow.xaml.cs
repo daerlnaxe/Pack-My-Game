@@ -21,17 +21,47 @@ namespace Pack_My_Game
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static readonly RoutedUICommand CheckGameValidityCmd = new RoutedUICommand(LanguageManager.Lang.Cmd_TestGmLinks, nameof(CheckGameValidityCmd), typeof(MainWindow));
-        public static readonly RoutedUICommand ExtractTBGameCmd = new RoutedUICommand(LanguageManager.Lang.Cmd_ExtTBGame, nameof(ExtractTBGameCmd), typeof(MainWindow));
-        public static readonly RoutedUICommand ExtractNBGameCmd = new RoutedUICommand(LanguageManager.Lang.Cmd_ExtNBGame, nameof(ExtractNBGameCmd), typeof(MainWindow));
-        public static readonly RoutedUICommand ExtractPlatformCmd = new RoutedUICommand(LanguageManager.Lang.Cmd_ExtPlatform, "ExtractPlatformCmd", typeof(MainWindow));
-        public static readonly RoutedUICommand ExtractDefaultFilesCmd = new RoutedUICommand(LanguageManager.Lang.Cmd_ExtDef, "ExtractDefaultFilesCmd", typeof(MainWindow));
-        public static readonly RoutedUICommand SelectAllCmd = new RoutedUICommand(LanguageManager.Lang.Select_All, "SelectAllCmd", typeof(MainWindow));
-        public static readonly RoutedUICommand SelectNoneCmd = new RoutedUICommand(LanguageManager.Lang.Select_None, "SelectNoneCmd", typeof(MainWindow));
+        /// <summary>
+        /// Vérifie si les liens sont valides
+        /// </summary>
+        public static readonly RoutedUICommand CheckGameValidityCmd =
+            new RoutedUICommand(LanguageManager.Instance.Lang.Cmd_TestGmLinks, nameof(CheckGameValidityCmd), typeof(MainWindow));
+        /// <summary>
+        /// Extrait un fichier True Backup
+        /// </summary>
+        public static readonly RoutedUICommand ExtractTBGameCmd =
+            new RoutedUICommand(LanguageManager.Instance.Lang.Cmd_ExtTBGame, nameof(ExtractTBGameCmd), typeof(MainWindow));
+        /// <summary>
+        /// Extrait un fichier No Path Backup
+        /// </summary>
+        public static readonly RoutedUICommand ExtractNBGameCmd =
+            new RoutedUICommand(LanguageManager.Instance.Lang.Cmd_ExtNBGame, nameof(ExtractNBGameCmd), typeof(MainWindow));
+        /// <summary>
+        /// Extrait un fichier plateforme
+        /// </summary>
+        public static readonly RoutedUICommand ExtractPlatformCmd =
+            new RoutedUICommand(LanguageManager.Instance.Lang.Cmd_ExtPlatform, "ExtractPlatformCmd", typeof(MainWindow));
+        /// <summary>
+        /// Extrait un fichier DPGame.json
+        /// </summary>
+        public static readonly RoutedUICommand ExtractDefaultFilesCmd =
+            new RoutedUICommand(LanguageManager.Instance.Lang.Cmd_ExtDef, "ExtractDefaultFilesCmd", typeof(MainWindow));
+        /// <summary>
+        /// Sélectionne tout
+        /// </summary>
+        public static readonly RoutedUICommand SelectAllCmd =
+            new RoutedUICommand(LanguageManager.Instance.Lang.Select_All, "SelectAllCmd", typeof(MainWindow));
+        /// <summary>
+        /// Sélectionne rien
+        /// </summary>
+        public static readonly RoutedUICommand SelectNoneCmd =
+            new RoutedUICommand(LanguageManager.Instance.Lang.Select_None, "SelectNoneCmd", typeof(MainWindow));
 
         private M_Main _Model = new M_Main();
 
-
+        /// <summary>
+        /// Titre de la fenêtre
+        /// </summary>
         public string WindowTitle
         {
             get
@@ -147,7 +177,7 @@ namespace Pack_My_Game
             {
                 Title = "Credits",
                 Message = "Credits",
-                Texteuh = LanguageManager.Lang.Word_Credits,
+                Texteuh = LanguageManager.Instance.Lang.Word_Credits,
             };
             window.ShowDialog();
         }
@@ -158,7 +188,7 @@ namespace Pack_My_Game
             {
                 Title = "Help",
                 Message = "Help",
-                Texteuh = LanguageManager.Lang.Word_Help,
+                Texteuh = LanguageManager.Instance.Lang.Word_Help,
             };
             window.ShowDialog();
         }

@@ -275,7 +275,7 @@ namespace Pack_My_Game.Core
                 if (MemorizedDecision == E_Decision.None)
                 {
                     Application.Current.Dispatcher?.Invoke(() =>
-                        TempDecision = MBDecision.ShowDial(null, gamePath, LanguageManager.Lang.Folder_Ex, E_DxConfB.Trash | E_DxConfB.OverWrite));
+                        TempDecision = MBDecision.ShowDial(null, gamePath, LanguageManager.Instance.Lang.Folder_Ex, E_DxConfB.Trash | E_DxConfB.OverWrite));
 
                     switch (TempDecision)
                     {

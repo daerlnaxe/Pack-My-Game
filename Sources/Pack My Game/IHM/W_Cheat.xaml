@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pack_My_Game.IHM"
+        xmlns:l="clr-namespace:Pack_My_Game.Language"
         mc:Ignorable="d"
-        Title="W_Cheat" Height="450" Width="800">
+        Title="Cheat Code" Height="450" Width="800">
     <Window.CommandBindings>
         <CommandBinding Command="local:W_Cheat.SaveCmd" CanExecute="Can_Save" Executed="Exec_Save"/>
         <CommandBinding Command="local:W_Cheat.OkCmd" CanExecute="Can_Ok" Executed="Exec_Ok"/>
@@ -16,6 +17,7 @@
         </Style>
         <Style TargetType="Button" BasedOn="{StaticResource btStyle}">
             <Setter Property="Margin" Value="3"/>
+            <Setter Property="MinWidth" Value="50"/>
         </Style>
     </Window.Resources>
     <DockPanel>
@@ -33,7 +35,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <!--  -->
-                <Label Content="Enter your cheat codes" VerticalContentAlignment="Bottom"/>
+                <Label Content="{l:Langue S_EnterYourCC}" VerticalContentAlignment="Bottom"/>
                 <!-- Options -->
                 <GroupBox Header="Options" Grid.Column="2">
                     <Grid>
@@ -43,10 +45,10 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Label Content="Width limit" VerticalContentAlignment="Center"/>
+                        <Label Content="{l:Langue S_WidthLimit}" VerticalContentAlignment="Center"/>
                         <TextBox Width="100" Text="{Binding MaxLength}" Grid.Column="1" Margin="5"/>
-                        <CheckBox Content="Active" Grid.Column="2"  IsChecked="{Binding FormatActive}" Checked="Active_Checked"/>
-                        <Button Content="Crop" Grid.Column="3" Click="Crop_Click"/>
+                        <CheckBox Content="{l:Langue Word_Active}" Grid.Column="2"  IsChecked="{Binding FormatActive}" Checked="Active_Checked"/>
+                        <Button Content="{l:Langue Word_Format}" Grid.Column="3" Click="Crop_Click"/>
                     </Grid>
                 </GroupBox>
             </Grid>
@@ -58,9 +60,9 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Button Content="Save" Command="local:W_Cheat.SaveCmd"/>
-                <Button Content="Cancel" Grid.Column="2" IsCancel="True"/>
-                <Button Content="Ok" Grid.Column="3" Command="local:W_Cheat.OkCmd"/>
+                <Button Content="{l:Langue Word_Save}" Command="local:W_Cheat.SaveCmd"/>
+                <Button Content="{l:Langue Word_Cancel}" Grid.Column="2" IsCancel="True"/>
+                <Button Content="{l:Langue Word_Ok}" Grid.Column="3" Command="local:W_Cheat.OkCmd"/>
             </Grid>
             <!-- Texte -->
             <TextBox x:Name="tbMain"  Margin="0,5,0,5"

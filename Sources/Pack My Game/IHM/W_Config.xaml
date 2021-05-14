@@ -1,12 +1,11 @@
-﻿<Window      x:Class="Pack_My_Game.IHM.W_Config"
+﻿<Window x:Class="Pack_My_Game.IHM.W_Config"
         xmlns:Controls="clr-namespace:DxTBoxCore.Controls;assembly=DxTBoxCore"  
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pack_My_Game.IHM"
-        xmlns:l="clr-namespace:Pack_My_Game.Resources"
-        xmlns:l2="clr-namespace:DxTBoxCore.Languages;assembly=DxTBoxCore"
+        xmlns:l="clr-namespace:Pack_My_Game.Language"
         xmlns:conv2="clr-namespace:Common_Graph.Converters;assembly=Common_Graph"
         xmlns:cmd="clr-namespace:DxTBoxCore.Common;assembly=DxTBoxCore"
         mc:Ignorable="d"
@@ -53,12 +52,12 @@
     <DockPanel Margin="5">
         <!-- Buttons -->
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="{Binding Lang.SubmitExp, FallbackValue=Submit}" Command="cmd:Commands.Submit"/>
+            <Button Content="{l:Langue Word_Submit}" Command="cmd:Commands.Submit"/>
 
         </StackPanel>
         <TabControl Margin="5" >
             <!-- General -->
-            <TabItem Header="{Binding Lang.GeneralExp, FallbackValue=General}">
+            <TabItem Header="{l:Langue Word_General}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -71,7 +70,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Label x:Name="lbLanguage" Style="{StaticResource lbSty}"
-                           Content="{Binding Lang.S_Language, FallbackValue='S_Language'}"/>
+                           Content="{l:Langue Choose_Language}"/>
                     <ComboBox Margin="5" Grid.Column="1"
                               ItemsSource="{Binding Languages}"
                               DisplayMemberPath="Name"
@@ -84,14 +83,14 @@
                 </Grid>
             </TabItem>
             <!-- Paths -->
-            <TabItem Header="{Binding Lang.PathsExp, FallbackValue=Paths}" >
+            <TabItem Header="{l:Langue Word_Paths}" >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <GroupBox Header="{Binding Lang.MainExp, FallbackValue=MainExp}" Grid.Row="0">
+                    <GroupBox Header="{l:Langue Word_Main}" Grid.Row="0">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
@@ -103,35 +102,33 @@
                             </Grid.RowDefinitions>
                             <!-- LaunchBox Folder -->
                             <Button 
-                                Content="{Binding Lang.LBPathExp, FallbackValue=LBPathExp}"
+                                Content="{l:Langue Path_LaunchBox}"
                                 Click="ChooseLBPath_Click"
                                 />
                             <TextBlock Grid.Column="2" >
                                 <TextBlock.Text>
-                                    <MultiBinding Converter="{StaticResource Fallb}" FallbackValue="Lang.Ch_Path">
-                                        <Binding Path="LaunchBoxPath" />
-                                        <Binding Path="Lang.Ch_LBPath" />
-                                    </MultiBinding>
+                                    <l:Path Converter="{StaticResource Fallb}"
+                                            Property="{Binding LaunchBoxPath}"
+                                            ReplacementKey="Choose_LBPath" />
                                 </TextBlock.Text>
                             </TextBlock>
                             <!-- Working Folder -->
                             <Button Grid.Row="1"
-                                Content="{Binding Lang.WPathExp, FallbackValue='Working path'}"
+                                Content="{l:Langue Path_Working}"
                                 Click="ChooseWP_Click"    
                                     />
                             <TextBlock Grid.Column="2" Grid.Row="1">
                                 <TextBlock.Text>
-                                    <MultiBinding Converter="{StaticResource Fallb}" FallbackValue="Lang.Ch_Path">
-                                        <Binding Path="WorkingPath" />
-                                        <Binding Path="Lang.Ch_Path" />
-                                    </MultiBinding>
+                                    <l:Path Converter="{StaticResource Fallb}"
+                                            Property="{Binding WorkingPath}"
+                                            ReplacementKey="Choose_Path" />
                                 </TextBlock.Text>
                             </TextBlock>
                             <!--
                             -->
                         </Grid>
                     </GroupBox>
-                    <GroupBox Header="{Binding Lang.OptionsExp, FallbackValue=Options}" Grid.Row="1">
+                    <GroupBox Header="{l:Langue Word_Options}" Grid.Row="1">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
@@ -139,15 +136,14 @@
                             </Grid.ColumnDefinitions>
                             <!--
                             -->
-                            <Button Content="{Binding Lang.CheatsPathExp, FallbackValue='CheatsPathExp'}"
+                            <Button Content="{l:Langue Path_CheatCodes}"
                                     Click="ChooseCheatsPath_Click"
                                     />
                             <TextBlock Grid.Column="1">
                                 <TextBlock.Text>
-                                    <MultiBinding Converter="{StaticResource Fallb}" FallbackValue="Lang.Ch_Path">
-                                        <Binding Path="CheatCodesPath" />
-                                        <Binding Path="Lang.Ch_Path" />
-                                    </MultiBinding>
+                                    <l:Path Converter="{StaticResource Fallb}"
+                                            Property="{Binding CheatCodesPath}"
+                                            ReplacementKey="Choose_Path" />
                                 </TextBlock.Text>
                             </TextBlock>
                         </Grid>
@@ -160,18 +156,17 @@
                 </Grid>
             </TabItem>
             <!-- Compression -->
-            <TabItem Header="{Binding Lang.CompExp, FallbackValue=Compression}">
+            <TabItem Header="{l:Langue Word_Compression}">
                 <StackPanel>
                     <!-- Zip -->
                     <GroupBox Header="Zip">
                         <StackPanel>
                             <CheckBox Grid.Row="0" Grid.Column="0"
                                       IsChecked="{Binding Config.ZipCompression}"
-                                      Content="{Binding Lang.CompZExp, FallbackValue=CompZExp}"/>
-                            <Controls:RegleComp Max="{Binding Config.ZipMaxLvlCompression, FallbackValue=10}" 
-                                            Value="{Binding Config.ZipLvlCompression}"/>
-
-
+                                      Content="{l:Langue Compression_Zip}"/>
+                            <Controls:RegleComp 
+                                Max="{Binding Config.ZipMaxLvlCompression, FallbackValue=10}" 
+                                Value="{Binding Config.ZipLvlCompression}"/>
                         </StackPanel>
                     </GroupBox>
                     <!-- 7Zip -->
@@ -179,7 +174,7 @@
                         <StackPanel>
                             <CheckBox Grid.Row="1" Grid.Column="0"
                                       IsChecked="{Binding Config.SevZipCompression}"
-                                      Content="{Binding Lang.Comp7ZExp, FallbackValue=Comp7ZExp}"/>
+                                      Content="{l:Langue Compression_7z}"/>
                             <Controls:RegleComp Max="{Binding Config.SevZipMaxLvlCompression, FallbackValue=6}"
                             Value="{Binding Config.SevZipLvlCompression}"
                             LargeStep="3"                
@@ -189,10 +184,10 @@
                 </StackPanel>
             </TabItem>
             <!-- Options -->
-            <TabItem Header="{Binding Lang.OptionsExp, FallbackValue=Options}">
+            <TabItem Header="{l:Langue Word_Options}">
                 <ScrollViewer>
                     <StackPanel>
-                        <GroupBox Header="{Binding Lang.ProcessExp, FallbackValue=ProcessExp}">
+                        <GroupBox Header="{l:Langue Word_Procedure}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -206,27 +201,26 @@
                                 </Grid.RowDefinitions>
                                 <!-- 1ère colonne -->
                                 <CheckBox Grid.Row="0" Grid.Column="0" 
-                                  IsChecked="{Binding Config.CreateInfos}"
-                                  Content="{Binding Lang.InfosGExp, FallbackValue=InfosGExp}"/>
-                                
+                                  Content="{l:Langue Opt_InfosG}"
+                                  IsChecked="{Binding Config.CreateInfos}"/>
                                 <CheckBox Grid.Row="1" Grid.Column="0" 
-                                  IsChecked="{Binding Config.CreateTreeV}"
-                                  Content="{Binding Lang.TViewFExp, FallbackValue=TViewFExp}"/>
+                                  Content="{l:Langue Opt_TViewF}"
+                                  IsChecked="{Binding Config.CreateTreeV}"  />
                                 <CheckBox Grid.Row="2" Grid.Column="0" 
                                   IsChecked="{Binding Config.CreateMD5}"
                                   Content="MD5"/>
                                 <!-- 2nd colonne -->
                                 <CheckBox Grid.Row="0" Grid.Column="1"
-                                  IsChecked="{Binding Config.CopyClones}"
-                                  Content="{Binding Lang.CCopyExp, FallbackValue=CCopyExp}"/>
+                                  Content="{l:Langue Opt_CopyClones}"
+                                  IsChecked="{Binding Config.CopyClones}"/>
                                 <CheckBox Grid.Row="1" Grid.Column="1" 
-                                  IsChecked="{Binding Config.CopyCheats}"
-                                  Content="{Binding Lang.CheatsCopyExp, FallbackValue=CheatsCopyExp}"/>
-                                
+                                  Content="{l:Langue Opt_CopyCheats}"
+                                  IsChecked="{Binding Config.CopyCheats}"   />
+
                             </Grid>
                         </GroupBox>
                         <!-- Backup formats -->
-                        <GroupBox Header="Backup">
+                        <GroupBox Header="{l:Langue Word_Backup}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
@@ -238,18 +232,18 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <CheckBox Grid.Row="0" Grid.Column="0" 
-                                  IsChecked="{Binding Config.CreateTBGame}"
-                                  Content="{Binding Lang.OriXBExp, FallbackValue=OriXBExp}"/>                                
+                                  Content="{l:Langue Opt_OriXB}"
+                                  IsChecked="{Binding Config.CreateTBGame}"/>
                                 <CheckBox Grid.Row="1" Grid.Column="0" 
-                                  IsChecked="{Binding Config.CreateEBGame}"
-                                  Content="{Binding Lang.EnXBExp, FallbackValue=EnXBExp}"/>
+                                  Content="{l:Langue Opt_EnXB}"
+                                  IsChecked="{Binding Config.CreateEBGame}"/>
                                 <!--<CheckBox Grid.Row="0" Grid.Column="1"
                                           IsChecked="{Binding NoPathXMLBackup}"
                                           Content="No Path XML Backup (remove paths on TBGame)"/>-->
                             </Grid>
                         </GroupBox>
                         <!-- Structure -->
-                        <GroupBox Header="Structure">
+                        <GroupBox Header="{l:Langue Word_Structure}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
@@ -260,31 +254,35 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <CheckBox Grid.Row="0" Grid.Column="0" Content="Keep games Structure"
-                                      IsChecked="{Binding Config.KeepGameStruct}"/>
-                                <CheckBox Grid.Row="0" Grid.Column="1" Content="Keep cheats Structure" 
-                                      IsChecked="{Binding Config.KeepCheatStruct}"/>
-                                <CheckBox Grid.Row="1" Grid.Column="0" Content="Keep manuals Structure"
-                                      IsChecked="{Binding Config.KeepManualStruct}"/>
-                                <CheckBox Grid.Row="1" Grid.Column="1" Content="Keep musics Structure"
-                                      IsChecked="{Binding Config.KeepMusicStruct}"/>
+                                <CheckBox Grid.Row="0" Grid.Column="0"
+                                    Content="{l:Langue Opt_KeepGmStruct}"
+                                    IsChecked="{Binding Config.KeepGameStruct}"/>
+                                <CheckBox Grid.Row="0" Grid.Column="1"
+                                    Content="{l:Langue Opt_KeepCheatStruct}" 
+                                    IsChecked="{Binding Config.KeepCheatStruct}"/>
+                                <CheckBox Grid.Row="1" Grid.Column="0"
+                                    Content="Opt_KeepManStruct"
+                                    IsChecked="{Binding Config.KeepManualStruct}"/>
+                                <CheckBox Grid.Row="1" Grid.Column="1"
+                                    Content="{l:Langue Opt_KeepMusStruct}"
+                                    IsChecked="{Binding Config.KeepMusicStruct}"/>
                                 <!--<CheckBox Grid.Row="2" Grid.Column="0" Content="Keep videos Structure"
                                       IsChecked="{Binding KeepVideosStructure}"/>-->
                             </Grid>
                         </GroupBox>
                         <!-- Loggers -->
-                        <GroupBox Header="{Binding Lang.LoggersExp, FallbackValue=LoggersExp}">
+                        <GroupBox Header="{l:Langue Word_Loggers}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <CheckBox Grid.Row="0" Grid.Column="0"
-                                      IsChecked="{Binding Config.UseLogFile}"
-                                      Content="{Binding Lang.FileExp, FallbackValue=FileExp}"/>
+                                      Content="{l:Langue Word_File}"
+                                      IsChecked="{Binding Config.UseLogFile}"/>
                                 <CheckBox Grid.Row="1" Grid.Column="0"
-                                      IsChecked="{Binding Config.UseLogWindow}"
-                                      Content="{Binding Lang.WindowExp, FallbackValue=WindowExp}"/>
+                                      Content="{l:Langue Opt_Window}"
+                                      IsChecked="{Binding Config.UseLogWindow}"/>
 
                             </Grid>
                         </GroupBox>

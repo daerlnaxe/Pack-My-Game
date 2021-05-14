@@ -4,9 +4,6 @@
     <_LastSelectedProfileId>E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="IHM\BoxProgress.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="IHM\W_Cheat.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -27,9 +24,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="IHM\BoxProgress.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="IHM\W_Cheat.xaml">
       <SubType>Designer</SubType>
     </Page>

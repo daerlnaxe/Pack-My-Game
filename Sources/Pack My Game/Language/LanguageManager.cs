@@ -39,7 +39,7 @@ namespace Pack_My_Game.Language
         private const string _FileName = "UnpackMyGame.Lang.json";
         //public const string CurrentVersion = "1.0.0.0";
 
-        public static LangContent Lang;
+        public LangContent Lang;
 
         /*
         public static LangContent Lang

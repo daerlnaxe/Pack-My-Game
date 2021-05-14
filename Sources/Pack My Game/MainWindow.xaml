@@ -8,7 +8,6 @@
         xmlns:convc="clr-namespace:Common_Graph.Converters;assembly=Common_Graph"
         xmlns:root="clr-namespace:Pack_My_Game"
         xmlns:l="clr-namespace:Pack_My_Game.Language"
-        xmlns:l2="clr-namespace:DxTBoxCore.Languages;assembly=DxTBoxCore"
         mc:Ignorable="d"
         Title="{Binding WindowTitle, 
                 RelativeSource={RelativeSource Mode=Self},
