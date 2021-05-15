@@ -49,14 +49,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Resources\Lang.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Lang.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\Clouds\GDrive - Dx\Programmation\CSharp\DxPaths\DxPaths.csproj" />
     <ProjectReference Include="..\..\..\DxTBoxCore\Sources\DxTBoxCore.csproj" />
     <ProjectReference Include="..\..\..\HashCalc\Source\HashCalc.csproj" />
@@ -66,13 +58,6 @@
     </ProjectReference>
     <ProjectReference Include="..\Common_Graph\Common_Graph.csproj" />
     <ProjectReference Include="..\Common_PMG\Common_PMG.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Resources\Lang.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Lang.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

@@ -23,7 +23,7 @@ namespace Pack_My_Game
         /// <summary>
         /// Language Version
         /// </summary>
-        public static string LangVersion => "1.0.0.6";
+        public static string LangVersion => "1.0.0.0";
 
         public static string ConfigVersion => "1.0.0.3";
 

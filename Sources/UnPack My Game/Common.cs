@@ -13,7 +13,7 @@ namespace UnPack_My_Game
         /// <summary>
         /// Language Version
         /// </summary>
-        public static string LangVersion => "1.0.0.1";
+        public static string LangVersion => "1.0.0.0";
 
         public static Configuration Config 
         { 

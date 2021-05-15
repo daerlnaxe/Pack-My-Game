@@ -1,6 +1,5 @@
 ﻿using DxTBoxCore.BoxChoose;
 using Pack_My_Game.Models;
-using Pack_My_Game.Resources;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

@@ -1067,42 +1067,35 @@
             Contient les chemins de la plateforme
             </summary>
         </member>
-        <member name="T:Pack_My_Game.Resources.Lang">
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
             <summary>
-              Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
+            GeneratedInternalTypeHelper
             </summary>
         </member>
-        <member name="P:Pack_My_Game.Resources.Lang.ResourceManager">
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
             <summary>
-              Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+            CreateInstance
             </summary>
         </member>
-        <member name="P:Pack_My_Game.Resources.Lang.Culture">
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
             <summary>
-              Remplace la propriété CurrentUICulture du thread actuel pour toutes
-              les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+            GetPropertyValue
             </summary>
         </member>
-        <member name="P:Pack_My_Game.Resources.Lang.NoElem">
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
             <summary>
-              Recherche une chaîne localisée semblable à No element.
+            SetPropertyValue
             </summary>
         </member>
-        <member name="P:Pack_My_Game.Resources.Lang.NullValue">
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
             <summary>
-              Recherche une chaîne localisée semblable à Null value.
+            CreateDelegate
             </summary>
         </member>
-        <member name="P:Pack_My_Game.Resources.Lang.Path_Rules">
-             <summary>
-               Recherche une chaîne localisée semblable à Two rules:
-            - Each Manual must be in a folder having the same system name AS the name in launchbox.
-                   ex: F:\CheadCodes\Sega Megadrive\ &amp;&amp; in LaunchBox the system is named Sega Megadrive =&gt; Enter F:\CheadCodes\
-            - To select the manuals, they must have a name beginning by the Name of the game + &quot;-&quot; +(optionnal) something
-                    ex: For Sonic, Cheadcode archive must begin by &apos;Sonic-&apos;
-            
-            Note: As much archive as you want..
-             </summary>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
         </member>
     </members>
 </doc>
