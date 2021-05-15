@@ -39,6 +39,25 @@ namespace Common_Graph.Language
         // ---
 
         /// <summary>
+        /// File exists
+        /// </summary>
+        public string File_Ex { get; set; } = "File exists";
+
+        /// <summary>
+        /// Files found
+        /// </summary>
+        public string Files_Found { get; set; } = "Files found";
+
+        // ---
+
+        /// <summary>
+        /// Folder exists
+        /// </summary>
+        public string Folder_Ex { get; internal set; } = "Folder exists";
+
+        // ---
+
+        /// <summary>
         /// Cheats codes path
         /// </summary>
         [JsonPropertyName("Path.CheatCodes")]
@@ -55,6 +74,28 @@ namespace Common_Graph.Language
         /// </summary>
         [JsonPropertyName("Path.Working")]
         public string Path_Working { get; set; } = "Working path";
+
+        // ---
+
+        /// <summary>
+        /// Default video
+        /// </summary>
+        public string S_DefaultVideo { get; set; } = "Default video";
+
+        /// <summary>
+        /// Default theme video
+        /// </summary>
+        public string S_DefaultThemeVideo { get; set; } = "Default theme video";
+
+        /// <summary>
+        /// Delete by yourself
+        /// </summary>
+        public string S_DeleteByYs { get; set; } = "Delete By Yourself";
+        /// <summary>
+        /// Open Folder
+        /// </summary>
+        public string S_OpenFolder { get; set; } = "Open folder";
+        // ---
 
         /// <summary>
         /// Select all
@@ -136,6 +177,12 @@ namespace Common_Graph.Language
         public string Word_Images { get; set; } = "Images";
 
         /// <summary>
+        /// Information
+        /// </summary>
+        [JsonPropertyName("Word.Information")]
+        public string Word_Information { get; set; } = "Information";
+
+        /// <summary>
         /// Informations
         /// </summary>
         [JsonPropertyName("Word.Informations")]
@@ -196,6 +243,12 @@ namespace Common_Graph.Language
         public string Word_Paths { get; set; } = "Paths";
 
         /// <summary>
+        /// Platform
+        /// </summary>
+        [JsonPropertyName("Word.Platform")]
+        public string Word_Platform { get; set; } = "Platform";
+
+        /// <summary>
         /// Procedure
         /// </summary>
         [JsonPropertyName("Word.Procedure")]
@@ -226,6 +279,12 @@ namespace Common_Graph.Language
         public string Word_Reset { get; set; } = "Reset";
 
         /// <summary>
+        /// Result
+        /// </summary>
+        [JsonPropertyName("Word.Result")]
+        public string Word_Result { get; set; } = "Result";
+
+        /// <summary>
         /// Sauvegarder
         /// </summary>
         [JsonPropertyName("Word.Save")]
@@ -236,6 +295,12 @@ namespace Common_Graph.Language
         /// </summary>
         [JsonPropertyName("Word.Select")]
         public string Word_Select { get; set; } = "Select";
+
+        /// <summary>
+        /// Selected
+        /// </summary>
+        [JsonPropertyName("Word.Selected")]
+        public string Word_Selected { get; set; } = "Selected";
 
         /// <summary>
         /// Structure
@@ -278,9 +343,19 @@ namespace Common_Graph.Language
             //
             Err_LaunchBoxF = "Le dossier LaunchBox n'existe pas.";
             //
+            Files_Found = "Fichiers trouvés";
+            File_Ex = "Le fichier existe";
+            //
+            Folder_Ex = "Le dossier existe";
+            //
             Path_CheatCodes = "Chemin cheat codes";
             Path_LaunchBox = "Chemin LaunchBox";
             Path_Working = "Dossier de travail";
+            //
+            S_DefaultThemeVideo = "Thème video par défaut";
+            S_DefaultVideo = "Video par défaut";
+            S_DeleteByYs = "Effacez par vous même";
+            S_OpenFolder = "Ouvrir le dossier";
             //
             Select_All = "Tout sélectionner";
             Select_None = "Sélectionner aucun";
@@ -297,13 +372,16 @@ namespace Common_Graph.Language
             Word_Musics = "Musics";
             Word_None = "Aucun";
             Word_Paths = "Chemins";
+            Word_Platform = "Plateforme";
             Word_Procedure = "Procédure";
             Word_Process = "Procéder";
             Word_Reload = "Recharger";
             Word_Remove = "Enlever";
             Word_Reset = "Réinitialiser";
+            Word_Result = "Résultat";
             Word_Save = "Sauver";
             Word_Select = "Sélectionnez";
+            Word_Selected = "Sélectionné";
             Word_Submit = "Soumettre";
             Word_Videos = "Videos";
             //

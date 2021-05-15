@@ -36,11 +36,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Update="Resources\Lang.fr-FR.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <None Update="Graph\LaunchBox\LaunchBox_Start.xaml">
       <SubType>Designer</SubType>
     </None>

@@ -14,11 +14,11 @@ using System.Threading;
 using System.Windows;
 using UnPack_My_Game.Decompression;
 using UnPack_My_Game.Graph;
-using UnPack_My_Game.Resources;
 using Common_Graph;
 using AsyncProgress.Basix;
 using AsyncProgress;
 using static UnPack_My_Game.Common;
+using UnPack_My_Game.Language;
 
 namespace UnPack_My_Game.Cores
 {
@@ -307,7 +307,9 @@ namespace UnPack_My_Game.Cores
             {
                 Application.Current.Dispatcher?.Invoke(() =>
                    {
-                       DxMBox.ShowDial(Lang.I_DelByYourself, "Info", DxTBoxCore.Common.E_DxButtons.Ok, $"{DxTBLang.Delete}: {tmpPath}");
+                       DxMBox.ShowDial(
+                           LanguageManager.Instance.Lang.S_DeleteByYs,
+                           LanguageManager.Instance.Lang.Word_Information, E_DxButtons.Ok, $"{DxTBLang.Delete}: {tmpPath}");
 
                    });
 

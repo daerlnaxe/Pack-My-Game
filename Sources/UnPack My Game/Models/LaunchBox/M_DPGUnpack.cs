@@ -1,17 +1,12 @@
 ﻿using Common_PMG.Container;
 using Common_PMG.Models;
-using DxTBoxCore.Async_Box_Progress;
 using DxTBoxCore.Box_Progress;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Text;
 using UnPack_My_Game.Cores;
-using UnPack_My_Game.Decompression;
 using UnPack_My_Game.Language;
-using UnPack_My_Game.Resources;
 
 namespace UnPack_My_Game.Models.LaunchBox
 {

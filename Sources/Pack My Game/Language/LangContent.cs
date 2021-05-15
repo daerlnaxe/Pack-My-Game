@@ -95,30 +95,6 @@ namespace Pack_My_Game.Language
         /// </summary>
         public string Comp_7Z { get; set; } = "7Zip Compression";
 
-        // ---
-
-
-
-
-
-        // ---
-
-        /// <summary>
-        /// File exists
-        /// </summary>
-        public string File_Ex { get; set; } = "File exists";
-
-        /// <summary>
-        /// Files found
-        /// </summary>
-        public string Files_Found { get; set; } = "Files found";
-
-        // ---
-
-        /// <summary>
-        /// Folder exists
-        /// </summary>
-        public string Folder_Ex { get; internal set; } = "Folder exists";
 
         // ---
 
@@ -203,15 +179,6 @@ namespace Pack_My_Game.Language
         /// </summary>
         public string S_ArchiveName { get; set; } = "Archive name";
 
-        /// <summary>
-        /// Default video
-        /// </summary>
-        public string S_DefaultVideo { get; set; } = "Default video";
-
-        /// <summary>
-        /// Default theme video
-        /// </summary>
-        public string S_DefaultThemeVideo { get; set; } = "Default theme video";
 
         /// <summary>
         /// Enter your cheat codes
@@ -228,10 +195,6 @@ namespace Pack_My_Game.Language
         /// </summary>
         public string S_GiveArchName { get; set; } = "Give an archive name";
 
-        /// <summary>
-        /// Open Folder
-        /// </summary>
-        public string S_OpenFolder { get; set; } = "Open folder";
 
         /// <summary>
         /// Width Limit
@@ -292,16 +255,6 @@ namespace Pack_My_Game.Language
         /// Word Region
         /// </summary>
         public string Word_Region { get; set; } = "Region";
-
-        /// <summary>
-        /// Result
-        /// </summary>
-        public string Word_Result { get; set; } = "Result";
-
-        /// <summary>
-        /// Selected
-        /// </summary>
-        public string Word_Selected { get; set; } = "Selected";
 
         /// <summary>
         /// Title
@@ -439,30 +392,21 @@ namespace Pack_My_Game.Language
                 Comp_Zip = "Compression Zip",
                 Comp_7Z = "Compression 7Zip",
                 //
-                //
-                Files_Found = "Fichiers trouvés",
-                File_Ex = "Le fichier existe",
-                //
-                Folder_Ex = "Le dossier existe",
-                //
                 Opt_CopyClones = "Copie des clones",
                 Opt_CopyCheats = "Copie des cheatcodes",
                 Opt_EnXB = "Copie XML amélioré",
                 Opt_OriXB = "Copie XML originel",
                 Opt_TViewF = "Fichier d'arborescence",
                 Opt_Window = "Fenêtre de traçage",
-
                 //
                 Q_Pack = "Packer ce jeu",
                 Q_PackGames = "Etes vous sûr(e) de vouloir packer ces jeux ?",
                 //
                 S_ArchiveName = "Nom d'archive",
-                S_DefaultThemeVideo = "Thème video par défaut",
-                S_DefaultVideo = "Video par défaut",
+
                 S_EnterYourCC = "Entre vos cheats codes",
                 S_GameTitle = "Titre du jeu",
                 S_GiveArchName = "Donnez un nom d'archive",
-                S_OpenFolder = "Ouvrir le dossier",
                 S_WidthLimit = "Limite de largeur",
                 //
                 Word_Active = "Activé",
@@ -470,8 +414,6 @@ namespace Pack_My_Game.Language
                 Word_Format = "Formatter",
                 Word_Params = "Paramètres",
                 Word_Region = "Région",
-                Word_Result = "Résultat",
-                Word_Selected = "Sélectionné",
                 Word_Title = "Titre",
 
                 //

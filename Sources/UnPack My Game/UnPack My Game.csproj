@@ -91,27 +91,6 @@
     <Compile Update="Graph\W_DPGMaker.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Resources\Lang.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Lang.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Resources\Lang.fr-FR.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Lang.fr-FR.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Resources\Lang.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Lang.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Lang.fr-FR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Lang.fr-FR.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
