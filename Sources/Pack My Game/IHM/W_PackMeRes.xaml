@@ -139,9 +139,9 @@
                           SelectedItem="{Binding SelectedManual}" >
                             <ListView.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="{Binding Lang.AddExp}" Click="Add_ManualF"/>
-                                    <MenuItem Header="Open" Command="local:W_PackMeRes.OpenManualCmd"/>
-                                    <MenuItem Header="{Binding Lang.DeleteExp}" Command="local:W_PackMeRes.RemoveManualCmd" />
+                                    <MenuItem Header="{l:Langue Word_Add}" Click="Add_ManualF"/>
+                                    <MenuItem Header="{l:Langue Word_Open}" Command="local:W_PackMeRes.OpenManualCmd"/>
+                                    <MenuItem Header="{l:Langue Word_Delete}" Command="local:W_PackMeRes.RemoveManualCmd" />
                                 </ContextMenu>
                             </ListView.ContextMenu>
                             <ListView.ItemTemplate>
@@ -175,9 +175,9 @@
                           ItemsSource="{Binding MusicsCollection}" SelectedItem="{Binding SelectedMusic}">
                             <ListView.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="{Binding Lang.AddExp}" Click="Add_MusicF"/>
-                                    <MenuItem Header="Open" Command="local:W_PackMeRes.OpenMusicCmd"/>
-                                    <MenuItem Header="{Binding Lang.DeleteExp}" Command="local:W_PackMeRes.RemoveMusicCmd"/>
+                                    <MenuItem Header="{l:Langue Word_Add}" Click="Add_MusicF"/>
+                                    <MenuItem Header="{l:Langue Word_Open}" Command="local:W_PackMeRes.OpenMusicCmd"/>
+                                    <MenuItem Header="{l:Langue Word_Delete}" Command="local:W_PackMeRes.RemoveMusicCmd"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                             <ListView.ItemTemplate>
@@ -220,9 +220,9 @@
                                     <MenuItem Command="local:W_PackMeRes.SetThemeVideoCmd" CommandParameter="true"/>
                                     <MenuItem Command="local:W_PackMeRes.UnsetThemeVideoCmd" CommandParameter="false"/>
                                     <Separator/>
-                                    <MenuItem Header="{Binding Lang.AddExp}" Click="Add_VideoF"/>
-                                    <MenuItem Header="Open" Command="local:W_PackMeRes.OpenVideoCmd"/>
-                                    <MenuItem Header="{Binding Lang.DeleteExp}" Command="local:W_PackMeRes.RemoveVideoCmd"/>
+                                    <MenuItem Header="{l:Langue Word_Add}" Click="Add_VideoF"/>
+                                    <MenuItem Header="{l:Langue Word_Open}" Command="local:W_PackMeRes.OpenVideoCmd"/>
+                                    <MenuItem Header="{l:Langue Word_Delete}" Command="local:W_PackMeRes.RemoveVideoCmd"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                             <ListView.ItemTemplate>
@@ -258,10 +258,10 @@
                             SelectedItem="{Binding SelectedCheatFile}" >
                             <ListView.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="{Binding Lang.AddExp}" Click="Add_CheatF"/>
-                                    <MenuItem Header="New" Click="New_CheatF"/>
-                                    <MenuItem Header="Open" Command="local:W_PackMeRes.OpenCheatCmd"/>
-                                    <MenuItem Header="{Binding Lang.DeleteExp}" Command="local:W_PackMeRes.RemoveCheatCmd"/>
+                                    <MenuItem Header="{l:Langue Word_Add}" Click="Add_CheatF"/>
+                                    <MenuItem Header="{l:Langue Word_New}" Click="New_CheatF"/>
+                                    <MenuItem Header="{l:Langue Word_Open}" Command="local:W_PackMeRes.OpenCheatCmd"/>
+                                    <MenuItem Header="{l:Langue Word_Delete}" Command="local:W_PackMeRes.RemoveCheatCmd"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                         </ListView>

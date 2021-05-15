@@ -29,7 +29,6 @@ namespace Pack_My_Game.Models
 
         public string Root { get; private set; }
 
-       // public Language Lang => Common.ObjectLang;
 
         #region Chosen
         DataPlus _ChosenGame;
@@ -590,6 +589,7 @@ namespace Pack_My_Game.Models
 
         private bool Copy2(string srcFolder, string subFolder, string message, Collection<DataRep> collec)
         {
+            srcFolder = Path.GetFullPath(srcFolder, Config.HLaunchBoxPath);
             DataRep dr = null;
 
             TreeChoose tc = new TreeChoose()

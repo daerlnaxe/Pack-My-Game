@@ -219,6 +219,12 @@ namespace Common_Graph.Language
         public string Word_Musics { get; set; } = "Musics";
 
         /// <summary>
+        /// New
+        /// </summary>
+        [JsonPropertyName("Word.New")]
+        public string Word_New { get; set; } = "New";
+
+        /// <summary>
         /// None
         /// </summary>
         [JsonPropertyName("Word.None")]
@@ -229,6 +235,12 @@ namespace Common_Graph.Language
         /// </summary>
         [JsonPropertyName("Word.Ok")]
         public string Word_Ok { get; set; } = "OK";
+
+        /// <summary>
+        /// Open
+        /// </summary>
+        [JsonPropertyName("Word.Open")]
+        public string Word_Open { get; set; } = "Open";
 
         /// <summary>
         /// Options
@@ -370,7 +382,9 @@ namespace Common_Graph.Language
             Word_Main = "Principal,";
             Word_Manuals = "Manuels";
             Word_Musics = "Musics";
+            Word_New = "Nouveau";
             Word_None = "Aucun";
+            Word_Open = "Ouvrir";
             Word_Paths = "Chemins";
             Word_Platform = "Plateforme";
             Word_Procedure = "Procédure";

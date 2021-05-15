@@ -220,7 +220,7 @@ namespace UnPack_My_Game.Models.LaunchBox
 
         public M_Config()
         {
-            LanguageManager.Instance.Init(Common.Config.Language);
+            LanguageManager.Init();
             // Copy sinon provoque une erreur
             Languages = CollectionViewSource.GetDefaultView(LanguageManager.Langues);
             //Languages.CurrentChanged += (s,e) => LanguageManager.CurrentManager.CurrentLanguage = (CultureInfo)Languages.CurrentItem;
