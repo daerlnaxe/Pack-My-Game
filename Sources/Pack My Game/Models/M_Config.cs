@@ -119,7 +119,7 @@ namespace Pack_My_Game.Models
 
         public M_Config()
         {
-            LanguageManager.Instance.Init(Common.Config.Language);
+            LanguageManager.Init();
 
             // Lang = Common.ObjectLang;
             Languages = CollectionViewSource.GetDefaultView(LanguageManager.Langues);

@@ -27,11 +27,6 @@
             Log Folder
             </summary>
         </member>
-        <member name="P:Pack_My_Game.Common.LangFolder">
-            <summary>
-            Lang Folder
-            </summary>
-        </member>
         <member name="P:Pack_My_Game.Common.LangVersion">
             <summary>
             Language Version
@@ -754,6 +749,11 @@
             Log window
             </summary>
         </member>
+        <member name="P:Pack_My_Game.Language.LangContent.Q_KeepIt">
+            <summary>
+            Question, keep it ?
+            </summary>
+        </member>
         <member name="P:Pack_My_Game.Language.LangContent.Q_Pack">
             <summary>
             Question pack this game
@@ -769,6 +769,16 @@
             Enter your cheat codes
             </summary>
         </member>
+        <member name="P:Pack_My_Game.Language.LangContent.S_GameStatus">
+            <summary>
+            Game Status
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.S_GameStatus4">
+            <summary>
+            Game Status for
+            </summary>
+        </member>
         <member name="P:Pack_My_Game.Language.LangContent.S_GameTitle">
             <summary>
             Game title
@@ -777,6 +787,11 @@
         <member name="P:Pack_My_Game.Language.LangContent.S_GiveArchName">
             <summary>
             Give an archive name
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Language.LangContent.S_MainLAppBroken">
+            <summary>
+            Main link application is broken
             </summary>
         </member>
         <member name="P:Pack_My_Game.Language.LangContent.S_WidthLimit">
@@ -868,7 +883,7 @@
             On initialise par là, pour que la partie wpf puisse en créer un en design
             </remarks>
         </member>
-        <member name="M:Pack_My_Game.Language.LanguageManager.Init(System.String)">
+        <member name="M:Pack_My_Game.Language.LanguageManager.Init">
             <summary>
             Initialisation du module de langage
             </summary>
@@ -1025,6 +1040,36 @@
         <member name="P:Pack_My_Game.Models.M_PackMeRes.Platform">
             <summary>
             Contient les chemins de la plateforme
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
             </summary>
         </member>
     </members>

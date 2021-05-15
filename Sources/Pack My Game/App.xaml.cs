@@ -25,7 +25,6 @@ namespace Pack_My_Game
             try
             {
                 //if (!Directory.Exists(Common.LangFolder))
-                Directory.CreateDirectory(Common.LangFolder);
                 Directory.CreateDirectory(Common.Logs);
 
                 // Tracing
@@ -69,7 +68,8 @@ namespace Pack_My_Game
                 }
 
                 // --- Languages
-                LanguageManager.Instance.Init(Config.Language);
+                LanguageManager.Init();
+                LanguageManager.Instance.ChangeLanguage(Config.Language);
                
 
             }

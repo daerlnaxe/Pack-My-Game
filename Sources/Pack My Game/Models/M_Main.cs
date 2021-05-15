@@ -347,7 +347,7 @@ namespace Pack_My_Game.Models
             {
                 var res = LaunchBoxFunc.CheckGameValidity(g, platformXmlFile);
 
-                SafeBoxes.ShowStatus($"Check  {g.Title}", "Game status", res, buttons: E_DxButtons.Ok);
+                SafeBoxes.ShowStatus($"Check  {g.Title}", LanguageManager.Instance.Lang.S_GameStatus, res, buttons: E_DxButtons.Ok);
             }
         }
 

@@ -13,6 +13,7 @@ using System.Text;
 using static Pack_My_Game.Common;
 using Common_Graph;
 using System.Linq;
+using Pack_My_Game.Language;
 
 namespace Pack_My_Game.Core
 {
@@ -34,7 +35,7 @@ namespace Pack_My_Game.Core
                 // Erreur sur le chemin principal
                 if (res == null)
                 {
-                    DxMBox.ShowDial($"Main link application is broken '{g.Title}'");
+                    DxMBox.ShowDial($"{LanguageManager.Instance.Lang.S_MainLAppBroken} '{g.Title}'");
 
                     keepit = false;
                 }
@@ -46,7 +47,11 @@ namespace Pack_My_Game.Core
                         test &= (bool)kvp.Value;
 
                     if (test == false)
-                        keepit = SafeBoxes.ShowStatus($"Game status for '{g.Title}'.\nDo you want to keep it ?", "Game status", res);
+                        keepit = SafeBoxes.ShowStatus(
+                            $"{LanguageManager.Instance.Lang.S_GameStatus4} '{g.Title}'." +
+                            $"\n{LanguageManager.Instance.Lang.Q_KeepIt}",
+                            LanguageManager.Instance.Lang.S_GameStatus,
+                            res); 
                     
                 }
 

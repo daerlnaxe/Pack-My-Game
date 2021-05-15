@@ -25,7 +25,7 @@ namespace Pack_My_Game.Language
         /// <remarks>
         /// On initialise par là, pour que la partie wpf puisse en créer un en design
         /// </remarks>
-        public static LanguageManager Instance 
+        public static LanguageManager Instance
         {
             get
             {
@@ -81,7 +81,7 @@ namespace Pack_My_Game.Language
         /// <summary>
         /// Initialisation du module de langage
         /// </summary>
-        internal void Init(string langTag)
+        internal static void Init()
         {
             string appFolder = AppDomain.CurrentDomain.BaseDirectory;
 
@@ -107,13 +107,7 @@ namespace Pack_My_Game.Language
                     }
             }
 
-            // Si la valeur n'existe pas, 
-            var language = Langues.FirstOrDefault(x => x.Name.Equals(langTag));
 
-            if (language == null)
-                language = Langues.FirstOrDefault(x => x.Name.Equals("en-US"));
-
-            CurrentLanguage = language;
 
             // Vérifie si le fichier existe et est à jour, sinon fait le nécessaire
             static void CheckFile(string appFolder, string langName)
@@ -145,11 +139,23 @@ namespace Pack_My_Game.Language
             }
         }
 
+        internal void ChangeLanguage(string langTag)
+        {
+            // Si la valeur n'existe pas, 
+            var language = Langues.FirstOrDefault(x => x.Name.Equals(langTag));
+
+            if (language == null)
+                language = Langues.FirstOrDefault(x => x.Name.Equals("en-US"));
+
+            CurrentLanguage = language;
+        }
+
         private void ChangeLanguage(CultureInfo value)
         {
             string langFile = MakeFileLink(value.Name);
-            if (!File.Exists(langFile))
-                langFile = MakeFileLink("en-US");
+
+            /*if (!File.Exists(langFile))
+                langFile = MakeFileLink("en-US");*/
 
             Lang = LangContent.Load(langFile);
 

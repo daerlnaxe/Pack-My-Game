@@ -101,9 +101,9 @@ namespace Pack_My_Game.IHM
             return ChosenFiles;
         }
 
-        internal static void LaunchBoxCore_Recap(string rootFolder, ContPlatFolders platform, GameDataCont gdC)
+        internal static bool? LaunchBoxCore_Recap(string rootFolder, ContPlatFolders platform, GameDataCont gdC)
         {
-            Application.Current.Dispatcher?.Invoke
+            return Application.Current.Dispatcher?.Invoke
                 (
                 () =>
                 {
@@ -113,7 +113,7 @@ namespace Pack_My_Game.IHM
                         Model = new M_PackMeRes(rootFolder, platform, gdC),
 
                     };
-                    W_res.ShowDialog();
+                    return W_res.ShowDialog();
                 }
                 );
         }

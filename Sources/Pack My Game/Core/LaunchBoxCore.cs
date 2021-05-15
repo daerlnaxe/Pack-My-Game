@@ -367,7 +367,8 @@ namespace Pack_My_Game.Core
             CopyFiles(gdC, tree);
 
             // --- Récapitulatif permettant de rajouter ou lever des fichiers au pack
-            PackMe_IHM.LaunchBoxCore_Recap(gamePath, _ZePlatform, gdC);
+            if (PackMe_IHM.LaunchBoxCore_Recap(gamePath, _ZePlatform, gdC) != true)
+                throw new Exception("Stopped by user");
 
             // --- GamePaths --- 
             GamePaths gpX = MakeGamePaths(lbGame, gdC, tree);
@@ -819,7 +820,10 @@ namespace Pack_My_Game.Core
 
             if (filteredFiles.Count <= 0)
             {
-                SafeBoxes.Dispatch_Mbox(this, $"Searching for { mediatype} returned 0 result", $"Searching for { mediatype}", E_DxButtons.Ok);
+                SafeBoxes.Dispatch_Mbox(this, 
+                    $"{LanguageManager.Instance.Lang.S_SearchFor} {mediatype}: 0 {LanguageManager.Instance.Lang.Word_Result}",
+                    $"{LanguageManager.Instance.Lang.S_SearchFor} { mediatype}",
+                    E_DxButtons.Ok);
             }
             else
             {

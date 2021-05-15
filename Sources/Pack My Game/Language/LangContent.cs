@@ -163,6 +163,10 @@ namespace Pack_My_Game.Language
         #endregion
 
         // ---
+        /// <summary>
+        /// Question, keep it ?
+        /// </summary>
+        public object Q_KeepIt { get; set; } = "Do you want to keep it ?";
 
         /// <summary>
         /// Question pack this game
@@ -179,11 +183,20 @@ namespace Pack_My_Game.Language
         /// </summary>
         public string S_ArchiveName { get; set; } = "Archive name";
 
-
         /// <summary>
         /// Enter your cheat codes
         /// </summary>
         public string S_EnterYourCC { get; set; } = "Enter your cheat codes";
+
+        /// <summary>
+        /// Game Status
+        /// </summary>
+        public string S_GameStatus { get; set; } = "Game status";
+
+        /// <summary>
+        /// Game Status for
+        /// </summary>
+        public string S_GameStatus4 { get; set; } = "Game status for";
 
         /// <summary>
         /// Game title
@@ -195,6 +208,15 @@ namespace Pack_My_Game.Language
         /// </summary>
         public string S_GiveArchName { get; set; } = "Give an archive name";
 
+        /// <summary>
+        /// Main link application is broken
+        /// </summary>
+        public string S_MainLAppBroken { get; set; } = "Main link application is broken";
+
+        /// <summary>
+        /// Search for
+        /// </summary>
+        public string S_SearchFor { get; set; } = "Search for";
 
         /// <summary>
         /// Width Limit
@@ -289,6 +311,7 @@ namespace Pack_My_Game.Language
 
         //--- a rajouter
         public string ListGamesExp { get; internal set; }
+        
 
         internal static LangContent Load(string langFile)
         {
@@ -399,14 +422,19 @@ namespace Pack_My_Game.Language
                 Opt_TViewF = "Fichier d'arborescence",
                 Opt_Window = "Fenêtre de traçage",
                 //
+                Q_KeepIt = "Voulez vous le garder ?",
                 Q_Pack = "Packer ce jeu",
                 Q_PackGames = "Etes vous sûr(e) de vouloir packer ces jeux ?",
                 //
                 S_ArchiveName = "Nom d'archive",
 
                 S_EnterYourCC = "Entre vos cheats codes",
+                S_GameStatus = "Etat du jeu",
+                S_GameStatus4 = "Etat du jeu pour",
                 S_GameTitle = "Titre du jeu",
                 S_GiveArchName = "Donnez un nom d'archive",
+                S_MainLAppBroken = "Lien de l'application principale cassé",
+                S_SearchFor = "Recherche de",
                 S_WidthLimit = "Limite de largeur",
                 //
                 Word_Active = "Activé",
@@ -443,8 +471,6 @@ namespace Pack_My_Game.Language
                 "-Pour sélectionner les manuels, ils doivent avoir un nom commençant par le Nom du jeu + \"-\" + (optionnel)quelque chose." + Environment.NewLine +
                 @"    ex: Pour Sonic, l'Archive Cheadcode doit commencer par  'Sonic-'" + Environment.NewLine + Environment.NewLine +
                 "Note: Autant d'archives que vous voulez.",
-
-
             };
 
             lang.SetFrenchDefault(Common.LangVersion);

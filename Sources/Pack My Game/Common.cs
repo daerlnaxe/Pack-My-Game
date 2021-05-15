@@ -15,12 +15,6 @@ namespace Pack_My_Game
         public static string Logs => "Logs";
 
         /// <summary>
-        /// Lang Folder
-        /// </summary>
-        internal static string LangFolder => "Languages";
-
-
-        /// <summary>
         /// Language Version
         /// </summary>
         public static string LangVersion => "1.0.0.0";

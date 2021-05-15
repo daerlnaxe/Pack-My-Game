@@ -9,7 +9,7 @@
         xmlns:conv2="clr-namespace:Common_Graph.Converters;assembly=Common_Graph"
         xmlns:cmd="clr-namespace:DxTBoxCore.Common;assembly=DxTBoxCore"
         mc:Ignorable="d"
-        Title="{Binding Lang.ConfigExp}" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="{l:Langue Word_Configuration}" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Window.CommandBindings>
         <CommandBinding Command="cmd:Commands.Submit" Executed="Exec_Submit"/>
     </Window.CommandBindings>
