@@ -99,13 +99,17 @@ namespace Pack_My_Game.Models
 
             // Conservation de l'ancienne configuration
             var oldConfig = new Configuration(Common.Config);
+            var oldLanguage = LanguageManager.Instance.CurrentLanguage;
 
             if (cfg.ShowDialog() == true)
             {
                 // On recharge le fichier langue
             //    Relocalize();
                 ReloadConfig(oldConfig);
+                return;
             }
+
+            LanguageManager.Instance.CurrentLanguage = oldLanguage;
             oldConfig = null;
 
         }

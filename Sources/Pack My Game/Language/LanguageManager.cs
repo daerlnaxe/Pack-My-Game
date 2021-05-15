@@ -78,9 +78,6 @@ namespace Pack_My_Game.Language
         public static List<CultureInfo> Langues { get; set; } = new List<CultureInfo>();
 
 
-
-
-
         /// <summary>
         /// Initialisation du module de langage
         /// </summary>
@@ -145,11 +142,8 @@ namespace Pack_My_Game.Language
 
                     langObj.Save(langFile);
                 }
-
             }
         }
-
-
 
         private void ChangeLanguage(CultureInfo value)
         {
@@ -175,7 +169,7 @@ namespace Pack_My_Game.Language
                 return $"problem_{key}";
         }
 
-        private string MakeFileLink(string value)
+        private static string MakeFileLink(string value)
         {
             return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, value, _FileName);
         }

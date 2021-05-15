@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows.Controls;
 using UnPack_My_Game.Graph;
 using UnPack_My_Game.Graph.LaunchBox;
+using UnPack_My_Game.Language;
 using UnPack_My_Game.Models.Submenus;
 using static UnPack_My_Game.Common;
 
@@ -85,6 +86,7 @@ namespace UnPack_My_Game.Models
 
         internal bool Config()
         {
+            var oldLang = LanguageManager.Instance.CurrentLanguage;
             if (new W_Config().ShowDialog() == true)
             {
                 _Errors.Clear();
@@ -93,6 +95,7 @@ namespace UnPack_My_Game.Models
                 return true;
             }
 
+            LanguageManager.Instance.CurrentLanguage = oldLang;
             return false;
         }
     }

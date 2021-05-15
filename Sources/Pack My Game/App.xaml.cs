@@ -43,7 +43,7 @@ namespace Pack_My_Game
                 if (PS.Default.UpgradeRequired)
                 {
                     PS.Default.Upgrade();
-                    PS.Default.UpgradeRequired = false;
+                    PS.Default.U-pgradeRequired = false;
                     PS.Default.Save();
                 }*/
 
@@ -67,7 +67,6 @@ namespace Pack_My_Game
                     Config.Update();
                     Config.Save();
                 }
-
 
                 // --- Languages
                 LanguageManager.Instance.Init(Config.Language);

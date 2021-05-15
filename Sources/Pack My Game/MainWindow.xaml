@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pack_My_Game"
+        xmlns:ui="clr-namespace:Pack_My_Game.IHM"
         xmlns:conv="clr-namespace:Pack_My_Game.IHM.Converters"
         xmlns:convc="clr-namespace:Common_Graph.Converters;assembly=Common_Graph"
         xmlns:root="clr-namespace:Pack_My_Game"
@@ -21,7 +22,7 @@
         <CommandBinding Command="local:MainWindow.ExtractTBGameCmd" CanExecute="Can_GamesSelected" Executed="Exec_ExtractTBGames"/>
         <CommandBinding Command="local:MainWindow.ExtractNBGameCmd" CanExecute="Can_GamesSelected" Executed="Exec_ExtractNBGame"/>
         <CommandBinding Command="local:MainWindow.ExtractDefaultFilesCmd" CanExecute="Can_GamesSelected" Executed="Exec_ExtractDefFiles"/>
-        <CommandBinding Command="local:Common.ProcessCommand" CanExecute="Can_Process" Executed="Exec_Process"/>
+        <CommandBinding Command="ui:Commands.ProcessCommand" CanExecute="Can_Process" Executed="Exec_Process"/>
         <CommandBinding Command="local:MainWindow.SelectAllCmd" CanExecute="Can_SelectAll" Executed="Exec_SelectAll"/>
         <CommandBinding Command="local:MainWindow.SelectNoneCmd" CanExecute="Can_DeselectAll" Executed="Exec_SelectNone"/>
     </Window.CommandBindings>
@@ -88,7 +89,7 @@
         <!--Buttons -->
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
             <!--            -->
-            <Button Content="{l:Langue Word_Process}" Command="local:Common.ProcessCommand"/>
+            <Button Content="{l:Langue Word_Process}" Command="ui:Commands.ProcessCommand"/>
         </StackPanel>
         <!-- Center -->
         <Grid Margin="0,5,0,5">
