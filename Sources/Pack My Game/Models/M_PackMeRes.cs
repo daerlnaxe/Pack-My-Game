@@ -278,6 +278,9 @@ namespace Pack_My_Game.Models
 
         private void LoadFiles2(string path, ObservableCollection<DataRep> collection)
         {
+            if (!Directory.Exists(path))
+                return;
+
             foreach (string f in Directory.EnumerateFiles(path, "*.*", SearchOption.AllDirectories))
             {
                 // on ajoute que si non présent
