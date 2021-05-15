@@ -74,7 +74,7 @@
                     <ComboBox Margin="5" Grid.Column="1"
                               ItemsSource="{Binding Languages}"
                               DisplayMemberPath="Name"
-                              SelectedItem="{Binding SelectedLanguage}" SelectionChanged="ComboBox_SelectionChanged"
+                              SelectedItem="{Binding ChosenLanguage}" SelectionChanged="ComboBox_SelectionChanged"
                               
                               />
                     <!--

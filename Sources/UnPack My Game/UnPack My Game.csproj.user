@@ -10,12 +10,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <None Update="Graph\LaunchBox\W_LaunchBox_Main.xaml.cs">
+    <None Update="Graph\LaunchBox\LaunchBox_Start.xaml.cs">
       <SubType>Code</SubType>
     </None>
-    <Compile Update="Graph\LaunchBox\LaunchBox_Start.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <None Update="Graph\LaunchBox\P_LaunchBox.xaml.cs">
       <SubType>Code</SubType>
     </None>
@@ -44,9 +41,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Update="Graph\LaunchBox\W_LaunchBox_Main.xaml">
-      <SubType>Designer</SubType>
-    </None>
     <None Update="Graph\LaunchBox\LaunchBox_Start.xaml">
       <SubType>Designer</SubType>
     </None>

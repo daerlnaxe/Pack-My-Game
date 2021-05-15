@@ -70,7 +70,8 @@ namespace Pack_My_Game
 
 
                 // --- Languages
-                new LanguageManager(Config.Language);
+                LanguageManager.Instance.Init(Config.Language);
+               
 
             }
             catch (Exception exc)

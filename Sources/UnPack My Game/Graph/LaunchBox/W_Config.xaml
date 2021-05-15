@@ -53,7 +53,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Label x:Name="lbLanguage" Margin="5,10"
-                           Content="{l:Langue Word_Languages}"/>
+                           Content="{l:Langue Choose_Language}"/>
                     <ComboBox Margin="10" Grid.Column="1" MinWidth="100"
                               ItemsSource="{Binding Languages}"
                               IsSynchronizedWithCurrentItem="True"
@@ -83,7 +83,7 @@
                             </Grid.RowDefinitions>
                             <!-- LaunchBox Folder -->
                             <Button 
-                                Content="{l:Langue Folder_LaunchBox}"
+                                Content="{l:Langue Path_LaunchBox}"
                                 Click="Find_Launchbox"
                                 />
                             <TextBlock Grid.Column="2" >
@@ -96,7 +96,7 @@
 
                             <!-- Working Folder -->
                             <Button Grid.Row="1"
-                                Content="{l:Langue Folder_Working}"
+                                Content="{l:Langue Path_Working}"
                                 Click="ChooseWP_Click"    
                                     />
                             <TextBlock Grid.Column="2" Grid.Row="1">
@@ -115,7 +115,7 @@
                             </Grid.ColumnDefinitions>
                             <!--
                             -->
-                            <Button Content="{l:Langue Folder_CheatCodes}"
+                            <Button Content="{l:Langue Path_CheatCodes}"
                                     Click="ChooseCheatsPath_Click"
                                     />
                             <TextBlock x:Name="ChoosePath"/>
@@ -138,8 +138,8 @@
             <TabItem Header="{l:Langue Archive_Structure}">
                 <DockPanel>
                     <StackPanel DockPanel.Dock="Right">
-                        <Button Content="{l:Langue Reset_Factory}" Click="ResetT_Click"/>
-                        <Button Content="Reset" Click="Reset_Click"/>
+                        <Button Content="{l:Langue S_ResetFactory}" Click="ResetT_Click"/>
+                        <Button Content="{l:Langue Word_Reset}" Click="Reset_Click"/>
                     </StackPanel>
                     <Grid Grid.Row="2" >
                         <Grid.Resources>
@@ -172,13 +172,13 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <!-- Parameters -->
-                        <Label Grid.Column="0" Content="{l:Langue Reset_Folder}" ContentStringFormat="{}{0}:" Grid.ColumnSpan="3"/>
+                        <Label Grid.Column="0" Content="{l:Langue S_ResetFolder}" ContentStringFormat="{}{0}:" Grid.ColumnSpan="3"/>
                         <!-- Games -->
                         <Label Grid.Row="1" Content="{l:Langue Word_Games}" />
                         <TextBox Grid.Row="1" Text="{Binding Games, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, FallbackValue=Test}"/>
                         <Button Grid.Row="1" Content="!" Click="Raz_Games"/>
                         <!-- CheatCodes -->
-                        <Label Grid.Row="2" Content="{x:Static r:Lang.CheatCodes}"/>
+                        <Label Grid.Row="2" Content="{l:Langue Word_CheatCodes}"/>
                         <TextBox Grid.Row="2" Text="{Binding CheatCodes, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
                         <Button Grid.Row="2" Content="!" Click="Raz_CheatsCodes"/>
                         <!-- Manuals -->
@@ -209,12 +209,12 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <!-- Custom Folders -->
-                    <CheckBox Content="{l:Langue InjectCustomFields}"
+                    <CheckBox Content="{l:Langue S_InjectCustomFields}"
                               VerticalAlignment="Top" HorizontalAlignment="Left"
                               IsChecked="{Binding WithCustomFields}"
                               />
                     <!-- Placer les roms dans un dossier au nom du jeu -->
-                    <CheckBox Grid.Row="1" Content="{l:Langue PlaceRomsToGameName}"
+                    <CheckBox Grid.Row="1" Content="{l:Langue S_PlaceRomsToGameName}"
                               IsChecked="{Binding WithFolderGameName}"/>
                 </Grid>
             </TabItem>

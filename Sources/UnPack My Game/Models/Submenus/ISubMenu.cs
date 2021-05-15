@@ -10,6 +10,8 @@ namespace UnPack_My_Game.Models.Submenus
 {
     public interface ISubMenu: INotifyPropertyChanged
     {
+        string Category { get; }
+
         /// <summary>
         /// Liste des boutons à afficher
         /// </summary>

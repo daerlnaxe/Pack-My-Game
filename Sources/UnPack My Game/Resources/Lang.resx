@@ -123,20 +123,11 @@
   <data name="Choose_Root" xml:space="preserve">
     <value>Choose root, without platform Name.</value>
   </data>
-  <data name="ContM_AddFile" xml:space="preserve">
-    <value>Add files by contextual menu.</value>
-  </data>
-  <data name="ContM_AddFolder" xml:space="preserve">
-    <value>Add folders by contextual menu.</value>
-  </data>
   <data name="DeSelect_all" xml:space="preserve">
     <value>Deselect All</value>
   </data>
   <data name="Err_FolderC" xml:space="preserve">
     <value>Folder creation denied, look if you have rights to write into the application folder.</value>
-  </data>
-  <data name="Err_LaunchBoxF" xml:space="preserve">
-    <value>LaunchBox folder doesn't exist.</value>
   </data>
   <data name="Err_PlatformsF" xml:space="preserve">
     <value>Platforms xml file is unreachable.</value>
@@ -152,12 +143,6 @@
   </data>
   <data name="I_DelByYourself" xml:space="preserve">
     <value>You must delete manually this folder</value>
-  </data>
-  <data name="I_DPGZipFile" xml:space="preserve">
-    <value>Select a zip file to make DPG file.</value>
-  </data>
-  <data name="I_DPGZipFolder" xml:space="preserve">
-    <value>Select a folder to make a DPG file.</value>
   </data>
   <data name="I_EBMethod" xml:space="preserve">
     <value>Enhanced Backup method: use paths from EBGame.xml to copy files, LaunchBox will create at the next launch the platform, but you will have to specify folders (you can use SappPasRoot plugin).It's the last luck method. </value>

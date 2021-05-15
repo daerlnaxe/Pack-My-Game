@@ -60,7 +60,7 @@ namespace UnPack_My_Game
                     Config.Save();
                 }
 
-                new LanguageManager(Config.Language);
+                LanguageManager.Instance.Init(Config.Language);
 
                 //LanguageManager.Init();
             }

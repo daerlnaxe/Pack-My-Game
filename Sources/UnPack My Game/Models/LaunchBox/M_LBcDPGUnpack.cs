@@ -8,15 +8,16 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using UnPack_My_Game.Cores;
+using UnPack_My_Game.Language;
 using UnPack_My_Game.Resources;
 
 namespace UnPack_My_Game.Models.LaunchBox
 {
     class M_LBcDPGUnpack : A_Err, I_Select
     {
-        public string Information => "Unpack to LaunchBox";
+        public string Information => LanguageManager.Instance.Lang.S_UnpackTLaunchBox;
 
-        public string SelectSentence => Lang.ContM_AddFile;
+        public string SelectSentence => LanguageManager.Instance.Lang.T_AddFileCM;
 
         public ObservableCollection<DataRep> Elements { get; set; } = new ObservableCollection<DataRep>();
 

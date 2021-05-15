@@ -21,13 +21,15 @@
     <Compile Remove="Cores\LaunchBox\C_LaunchBoxAdapt.cs" />
     <Compile Remove="Cores\LaunchBox\C_LaunchBoxEB.cs" />
     <Compile Remove="Cores\LaunchBox\C_LaunchBoxTB.cs" />
+    <Compile Remove="Graph\LaunchBox\LaunchBox_Start.xaml.cs" />
     <Compile Remove="Graph\LaunchBox\M_DPGMaker.cs" />
     <Compile Remove="Graph\LaunchBox\P_LaunchBox.xaml.cs" />
-    <Compile Remove="Graph\LaunchBox\W_LaunchBox_Main.xaml.cs" />
     <Compile Remove="Graph\W_DefinePaths.xaml.cs" />
     <Compile Remove="Graph\W_ModTargetPaths.xaml.cs" />
     <Compile Remove="Language\LanguageProvider.cs" />
+    <Compile Remove="Models\LaunchBox\M_Depack.cs" />
     <Compile Remove="Models\LaunchBox\M_LaunchBox.cs" />
+    <Compile Remove="Models\LaunchBox\M_LaunchBoxRevo.cs" />
     <Compile Remove="Models\M_OSource.cs" />
     <Compile Remove="Models\M_SSource.cs" />
   </ItemGroup>
@@ -35,15 +37,14 @@
   <ItemGroup>
     <Page Remove="Graph\LaunchBox\LaunchBox_Start.xaml" />
     <Page Remove="Graph\LaunchBox\P_LaunchBox.xaml" />
-    <Page Remove="Graph\LaunchBox\W_LaunchBox_Main.xaml" />
     <Page Remove="Graph\W_DefinePaths.xaml" />
     <Page Remove="Graph\W_ModTargetPaths.xaml" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Graph\LaunchBox\LaunchBox_Start.xaml.cs" />
     <None Include="Graph\W_ModTargetPaths.xaml.cs" />
     <None Include="Graph\W_DefinePaths.xaml" />
-    <None Include="Graph\LaunchBox\W_LaunchBox_Main.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -55,11 +56,12 @@
     <None Include="Graph\LaunchBox\LaunchBox_Start.xaml" />
     <None Include="Graph\LaunchBox\P_LaunchBox.xaml" />
     <None Include="Graph\LaunchBox\P_LaunchBox.xaml.cs" />
-    <None Include="Graph\LaunchBox\W_LaunchBox_Main.xaml" />
     <None Include="Graph\W_DefinePaths.xaml.cs" />
     <None Include="Graph\W_ModTargetPaths.xaml" />
     <None Include="Language\LanguageProvider.cs" />
+    <None Include="Models\LaunchBox\M_Depack.cs" />
     <None Include="Models\LaunchBox\M_LaunchBox.cs" />
+    <None Include="Models\LaunchBox\M_LaunchBoxRevo.cs" />
     <None Include="Models\M_OSource.cs" />
     <None Include="Models\M_SSource.cs" />
   </ItemGroup>

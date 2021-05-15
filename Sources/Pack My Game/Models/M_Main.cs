@@ -19,6 +19,7 @@ using Common_Graph;
 using DxTBoxCore.BoxChoose;
 using System.Collections.Generic;
 using Pack_My_Game.IHM;
+using Pack_My_Game.Language;
 
 namespace Pack_My_Game.Models
 {
@@ -136,29 +137,29 @@ namespace Pack_My_Game.Models
         {
             Options.Clear();
 
-            /*if (Config.CreateInfos)
-                Options.Add(Lang.InfosGExp);
+            if (Config.CreateInfos)
+                Options.Add(LanguageManager.Instance.Lang.Opt_InfosG);
 
             if (Config.CreateTBGame)
-                Options.Add(Lang.OriXBExp);
+                Options.Add(LanguageManager.Instance.Lang.Opt_OriXB);
 
             if (Config.CreateEBGame)
-                Options.Add(Lang.EnXBExp);
+                Options.Add(LanguageManager.Instance.Lang.Opt_EnXB);
 
             if (Config.CreateTreeV)
-                Options.Add(Lang.TViewFExp);
+                Options.Add(LanguageManager.Instance.Lang.Opt_TViewF);
 
             if (Config.CopyClones)
-                Options.Add(Lang.CCopyExp);
+                Options.Add(LanguageManager.Instance.Lang.Opt_CopyClones);
 
             if (Config.CopyCheats)
-                Options.Add(Lang.CheatsCopyExp);
+                Options.Add(LanguageManager.Instance.Lang.Opt_CopyCheats);
 
             if (Config.ZipCompression)
-                Options.Add(Lang.CompZExp);
+                Options.Add(LanguageManager.Instance.Lang.Comp_Zip);
 
             if (Config.SevZipCompression)
-                Options.Add(Lang.Comp7ZExp);*/
+                Options.Add(LanguageManager.Instance.Lang.Comp_7Z);
         }
 
         internal void PlatformChanged()
@@ -184,7 +185,7 @@ namespace Pack_My_Game.Models
         internal void LoadPlatforms()
         {
             if (!Directory.Exists(Config.HLaunchBoxPath))
-                Add_Error("LaunchBox doesn't exist", nameof(LaunchBoxPath));
+                Add_Error(LanguageManager.Instance.Lang.Err_LaunchBoxF, nameof(LaunchBoxPath));
             if (!Directory.Exists(Config.HWorkingFolder))
                 Add_Error("Working folder doesn't exist", nameof(WorkingFolder));
 

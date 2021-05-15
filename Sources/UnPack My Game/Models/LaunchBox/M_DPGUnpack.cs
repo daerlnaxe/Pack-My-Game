@@ -10,14 +10,15 @@ using System.Linq;
 using System.Text;
 using UnPack_My_Game.Cores;
 using UnPack_My_Game.Decompression;
+using UnPack_My_Game.Language;
 using UnPack_My_Game.Resources;
 
 namespace UnPack_My_Game.Models.LaunchBox
 {
     class M_DPGUnpack : A_Err, I_Select
     {
-        public string Information => Lang.I_DPGZipFile;
-        public string SelectSentence => Lang.ContM_AddFile;
+        public string Information => LanguageManager.Instance.Lang.S_DPGwArchive;
+        public string SelectSentence => LanguageManager.Instance.Lang.T_AddFileCM;
 
         public ObservableCollection<DataRep> Elements { get; set; } = new ObservableCollection<DataRep>();
 

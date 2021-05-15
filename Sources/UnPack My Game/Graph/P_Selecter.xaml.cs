@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UnPack_My_Game.Language;
 using UnPack_My_Game.Models;
 using UnPack_My_Game.Models.LaunchBox;
 using UnPack_My_Game.Resources;
@@ -22,15 +23,16 @@ namespace UnPack_My_Game.Graph
     /// </summary>
     public partial class P_Selecter : Page
     {
-        public static readonly RoutedUICommand AddCmd = new RoutedUICommand(Lang.Add, "AddCmd", typeof(P_Selecter));
-        public static readonly RoutedUICommand RemoveCmd = new RoutedUICommand(Lang.Remove, "RemoveCmd", typeof(P_Selecter));
-        public static readonly RoutedUICommand ProcessCmd = new RoutedUICommand(Lang.Process, "ProcessCmd", typeof(P_Selecter));
+        public static readonly RoutedUICommand AddCmd = new RoutedUICommand(LanguageManager.Instance.Lang.Word_Add, "AddCmd", typeof(P_Selecter));
+        public static readonly RoutedUICommand RemoveCmd = new RoutedUICommand(LanguageManager.Instance.Lang.Word_Remove, "RemoveCmd", typeof(P_Selecter));
+        public static readonly RoutedUICommand ProcessCmd = new RoutedUICommand(LanguageManager.Instance.Lang.Word_Process, "ProcessCmd", typeof(P_Selecter));
 
         public I_Select Model { get; set; }
 
         public P_Selecter()
         {
             InitializeComponent();
+            DataContext = null;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

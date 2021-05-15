@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows.Controls;
 using System.Windows.Input;
 using UnPack_My_Game.Graph;
+using UnPack_My_Game.Language;
 using UnPack_My_Game.Models.LaunchBox;
 
 namespace UnPack_My_Game.Models.Submenus
@@ -13,6 +14,7 @@ namespace UnPack_My_Game.Models.Submenus
     class DPGCoreSub : ISubMenu
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        public string Category => LanguageManager.Instance.Lang.Word_Import;
 
         public ObservableCollection<ICommand> Buttons
         {
@@ -31,14 +33,15 @@ namespace UnPack_My_Game.Models.Submenus
             }
         }
 
+
         public DPGCoreSub()
         {
-            Buttons.Add(new MyButtonCommand("File(s)", DPGCore_File));
-            Buttons.Add(new MyButtonCommand("Folder(s)", DPGCore_Folder));
+            Buttons.Add(new MyButtonCommand(LanguageManager.Instance.Lang.Word_Archive_s, LBcDPG_Unpack));
+            Buttons.Add(new MyButtonCommand(LanguageManager.Instance.Lang.Word_Folder_s, LBcDPG_Folder));
         }
 
 
-        private void DPGCore_File(object parameter)
+        private void LBcDPG_Unpack(object parameter)
         {
             ActivePage = new P_Selecter()
             {
@@ -46,7 +49,7 @@ namespace UnPack_My_Game.Models.Submenus
             };
         }
 
-        private void DPGCore_Folder(object obj)
+        private void LBcDPG_Folder(object obj)
         {
             ActivePage = new P_Selecter()
             {

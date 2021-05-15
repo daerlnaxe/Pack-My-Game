@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnPack_My_Game.Models;
-using UnPack_My_Game.Resources;
 using static UnPack_My_Game.Common;
 using UnPack_My_Game.Cont;
 using DxTBoxCore.BoxChoose;
@@ -24,12 +23,12 @@ namespace UnPack_My_Game.Models.LaunchBox
        // private CultureInfo _Langue;
         public CultureInfo ChosenLanguage
         {
-            get => LanguageManager.CurrentManager.CurrentLanguage;
+            get => LanguageManager.Instance.CurrentLanguage;
             set
             {
-                if (value != LanguageManager.CurrentManager.CurrentLanguage)
+                if (value != LanguageManager.Instance.CurrentLanguage)
                 {
-                    LanguageManager.CurrentManager.CurrentLanguage = value;
+                    LanguageManager.Instance.CurrentLanguage = value;
                     Config.Language = value.Name;
                 }
             }
@@ -208,7 +207,7 @@ namespace UnPack_My_Game.Models.LaunchBox
 
             if (!Directory.Exists(this.LaunchBoxPath))
             {
-                Add_Error(Lang.Err_LaunchBoxF, nameof(LaunchBoxPath));
+                Add_Error(LanguageManager.Instance.Lang.Err_LaunchBoxF, nameof(LaunchBoxPath));
                 return;
             }
 
@@ -221,6 +220,7 @@ namespace UnPack_My_Game.Models.LaunchBox
 
         public M_Config()
         {
+            LanguageManager.Instance.Init(Common.Config.Language);
             // Copy sinon provoque une erreur
             Languages = CollectionViewSource.GetDefaultView(LanguageManager.Langues);
             //Languages.CurrentChanged += (s,e) => LanguageManager.CurrentManager.CurrentLanguage = (CultureInfo)Languages.CurrentItem;
@@ -246,7 +246,7 @@ namespace UnPack_My_Game.Models.LaunchBox
             {
                 Model = new M_ChooseRaw()
                 {
-                    Info = Lang.ChooseLBf,
+                    Info = LanguageManager.Instance.Lang.Choose_LBPath,
                     StartingFolder = Common.Config.HLaunchBoxPath,
                     Mode = ChooseMode.Folder,
                     ShowFiles = false,
@@ -269,7 +269,7 @@ namespace UnPack_My_Game.Models.LaunchBox
                 Model = new M_ChooseFolder()
                 {
                     HideWindowsFolder = true,
-                    Info = LanguageManager.Lang.Folder_Working,
+                    Info = LanguageManager.Instance.Lang.Path_Working,
                     ShowFiles = true,
                     StartingFolder = Path.GetTempPath(),
                 },
@@ -290,7 +290,7 @@ namespace UnPack_My_Game.Models.LaunchBox
                 Model = new M_ChooseFolder()
                 {
                     HideWindowsFolder = true,
-                    Info = Lang.CheatCodes,
+                    Info = LanguageManager.Instance.Lang.Choose_Path,
                     ShowFiles = true,
                     StartingFolder = Config.LastPath,
 

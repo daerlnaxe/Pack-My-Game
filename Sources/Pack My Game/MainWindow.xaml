@@ -149,7 +149,7 @@
                 </ItemsControl>
             </GroupBox>
             <!-- parameters -->
-            <GroupBox Grid.Row="2" Header="{l:Langue Word_Parameters}"
+            <GroupBox Grid.Row="2" Header="{l:Langue Word_Params}"
                       Visibility="{Binding Platforms, Converter={StaticResource VisibleIfPlatforms}}"
                       >
                 <Grid>

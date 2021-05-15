@@ -30,13 +30,17 @@ namespace Pack_My_Game.Language
             get
             {
                 if (_CurrentManager == null)
-                    _CurrentManager = new LanguageManager("en-US");
+                {
+                    _CurrentManager = new LanguageManager();
+                    _CurrentManager.CurrentLanguage = Thread.CurrentThread.CurrentCulture;
+
+                }
 
                 return _CurrentManager;
             }
         }
 
-        private const string _FileName = "UnpackMyGame.Lang.json";
+        private const string _FileName = "PackMyGame.Lang.json";
         //public const string CurrentVersion = "1.0.0.0";
 
         public LangContent Lang;
@@ -74,11 +78,8 @@ namespace Pack_My_Game.Language
         public static List<CultureInfo> Langues { get; set; } = new List<CultureInfo>();
 
 
-        public LanguageManager(string langTag)
-        {
-            _CurrentManager = this;
-            Init(langTag);
-        }
+
+
 
         /// <summary>
         /// Initialisation du module de langage
@@ -91,6 +92,7 @@ namespace Pack_My_Game.Language
             CheckFile(appFolder, "fr-FR");
 
 
+            Langues.Clear();
             // Liste des localisations
             var localZ = CultureInfo.GetCultures(CultureTypes.AllCultures).Select(x => x.Name);
 

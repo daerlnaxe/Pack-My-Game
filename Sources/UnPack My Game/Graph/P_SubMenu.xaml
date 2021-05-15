@@ -13,8 +13,13 @@
     </Page.Resources>
 
     <DockPanel>
+        <!-- Title -->
+        <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Right"
+            FontSize="20" Margin="10,0"
+            Text="{Binding Category, FallbackValue=Category}"/>
+
         <!-- Menu -->
-        <StackPanel DockPanel.Dock="Left" MinWidth="100">
+        <StackPanel DockPanel.Dock="Left" MinWidth="100" Margin="0,6"> 
          <!--
             <Button Content="File(s)" Click="DPGFile_Click"/>
             <Button Content="Folder(s)" Click="DPGFolder_Click"/>
@@ -34,6 +39,7 @@
             </ItemsControl>
         </StackPanel>
         <!-- Contenu -->
-        <Frame NavigationUIVisibility="Hidden" Content="{Binding ActivePage}"/>
+        <Frame NavigationUIVisibility="Hidden" Margin="10,15"
+               Content="{Binding ActivePage}"/>
     </DockPanel>
 </Page>

@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:UnPack_My_Game.Graph.LaunchBox"
       mc:Ignorable="d" 
-      xmlns:r="clr-namespace:UnPack_My_Game.Resources"
+
       xmlns:l="clr-namespace:UnPack_My_Game.Language"
       xmlns:lc="clr-namespace:DxTBoxCore.Languages;assembly=DxTBoxCore"
       d:DesignHeight="450" d:DesignWidth="800"
@@ -41,14 +41,14 @@
                 </Grid.ColumnDefinitions>
                 <Label Content=""/>
                 <!-- LaunchBox Path -->
-                <Label Content="{l:Langue Folder_LaunchBox}"
+                <Label Content="{l:Langue Path_LaunchBox}"
                     MouseLeftButtonUp="LaunchBox_MouseLeftButtonUp" Cursor="Help"/>
                 <TextBlock Grid.Column="1" Style="{StaticResource tblockS}"
                     TextTrimming="CharacterEllipsis"
                     Text="{Binding LaunchBoxPath, FallbackValue=LaunchBoxPath, NotifyOnValidationError=True}" 
                     ToolTip="{Binding LaunchBoxPath}"/>
                 <!-- Working Path -->
-                <Label Grid.Row="1" Content="{l:Langue Folder_Working}"
+                <Label Grid.Row="1" Content="{l:Langue Path_Working}"
                     MouseLeftButtonUp="WorkingPath_MouseLeftButtonUp" Cursor="Help" />
                 <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource tblockS}"
                     TextTrimming="CharacterEllipsis" 
@@ -62,20 +62,18 @@
         -->
         <!-- Left Menu -->
         <StackPanel DockPanel.Dock="Left" Background="{DynamicResource LeftMenu}" HorizontalAlignment="Left">
-            <Button Content="Depack" Command="local:MainWindow.DepackCmd"
-                    ToolTip="{x:Static r:Lang.T_OneG}"
-                    />
-            <Button Content="Inject" Command="local:MainWindow.InjectGCmd"
-                    ToolTip="Inject game(s) by folder(s)" 
-                    />
+            <Button Content="{l:Langue Word_Import}" ToolTip="{l:Langue T_Import}"
+                    Command="local:MainWindow.DepackCmd"/>
+            <Button Content="{l:Langue Word_Inject}" ToolTip="{l:Langue T_InjectGame}"
+                    Command="local:MainWindow.InjectGCmd" />
             <Separator/>
-            <Button Content="DPG Maker" ToolTip="Make a dpg with tbgame or ebgame"                    
+            <Button Content="{l:Langue S_DPGCreator}" ToolTip="{l:Langue T_DPGCreator}"                    
                     Click="DPGMaker_Click"/>
-            <Button Content="Inject Platform"
+            <Button Content="{l:Langue S_InjectPlatform}" ToolTip="{l:Langue T_InjectPlatform}"
                     Command="local:MainWindow.InjectPCmd"
                     />
             <Separator/>
-            <Button Content="{x:Static r:Lang.Configuration}" Click="Config_Click"/>
+            <Button Content="{l:Langue Word_Configuration}" Click="Config_Click"/>
         </StackPanel>
         <!-- Menu -->
         <!--

@@ -21,13 +21,26 @@ namespace UnPack_My_Game.Language
         /// <summary>
         /// permet d'appeler le manager actuel de n'importe où
         /// </summary>
-        public static LanguageManager CurrentManager { get; private set; }
+        private static LanguageManager _CurrentManager;
+        public static LanguageManager Instance
+        {
+            get 
+            {
+                if (_CurrentManager == null)
+                {
+                    _CurrentManager = new LanguageManager();
+                    _CurrentManager.CurrentLanguage = Thread.CurrentThread.CurrentCulture;
+                }
+
+                return _CurrentManager;
+            }  
+        }
 
         private const string _FileName = "UnpackMyGame.Lang.json";
         //private const string _Version = "1.0.0.0";
 
 
-        public static LangProvider Lang;
+        public LangProvider Lang;
 
 
         public CultureInfo CurrentLanguage
@@ -47,11 +60,6 @@ namespace UnPack_My_Game.Language
         public static List<CultureInfo> Langues { get; set; } = new List<CultureInfo>();
 
 
-        public LanguageManager(string langTag)
-        {
-            CurrentManager = this;
-            Init(langTag);
-        }
 
         /// <summary>
         /// Initialisation du module de langage
@@ -63,7 +71,7 @@ namespace UnPack_My_Game.Language
             CheckFile(appFolder, "en-US");
             CheckFile(appFolder, "fr-FR");
 
-
+            Langues.Clear();
             // Liste des localisations
             var localZ = CultureInfo.GetCultures(CultureTypes.AllCultures).Select(x => x.Name);
 
@@ -130,11 +138,11 @@ namespace UnPack_My_Game.Language
 
             Lang = LangProvider.Read(langFile);
 
-            LanguageChanged?.Invoke(CurrentManager, EventArgs.Empty);
+            LanguageChanged?.Invoke(this, EventArgs.Empty);
 
         }
 
-        internal static object GetValue(string key)
+        internal object GetValue(string key)
         {
             if (Lang == null)
                 Lang = LangProvider.MakeDefault();

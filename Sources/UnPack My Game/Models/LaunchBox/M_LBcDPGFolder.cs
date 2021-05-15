@@ -8,15 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using UnPack_My_Game.Cores;
+using UnPack_My_Game.Language;
 using UnPack_My_Game.Resources;
 
 namespace UnPack_My_Game.Models.LaunchBox
 {
     class M_LBcDPGFolder : A_Err, I_Select
     {
-        public string Information => "Export & Inject to LaunchBox";
+        public string Information => LanguageManager.Instance.Lang.S_ImportILaunchBox;
 
-        public string SelectSentence => Lang.ContM_AddFolder;
+        public string SelectSentence => LanguageManager.Instance.Lang.T_AddFolderCM;
 
         public ObservableCollection<DataRep> Elements { get; set; } = new ObservableCollection<DataRep>();
 

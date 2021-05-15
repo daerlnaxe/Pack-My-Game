@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows.Controls;
 using System.Windows.Input;
 using UnPack_My_Game.Graph;
+using UnPack_My_Game.Language;
 using UnPack_My_Game.Models.LaunchBox;
 
 namespace UnPack_My_Game.Models.Submenus
@@ -13,6 +14,8 @@ namespace UnPack_My_Game.Models.Submenus
     class LaunchBoxInject : ISubMenu
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public string Category => LanguageManager.Instance.Lang.Word_Inject;
 
         public ObservableCollection<ICommand> Buttons
         {
@@ -34,8 +37,8 @@ namespace UnPack_My_Game.Models.Submenus
 
         public LaunchBoxInject()
         {
-            Buttons.Add(new MyButtonCommand( "Files", InjectByFiles));
-            Buttons.Add(new MyButtonCommand( "Folders", InjectByFolders));
+            Buttons.Add(new MyButtonCommand( LanguageManager.Instance.Lang.Word_Archive_s, InjectByFiles));
+            Buttons.Add(new MyButtonCommand( LanguageManager.Instance.Lang.Word_Folder_s, InjectByFolders));
         }
 
         private void InjectByFiles(object parameter)

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using UnPack_My_Game.Cores;
+using UnPack_My_Game.Language;
 using UnPack_My_Game.Models.Submenus;
 using UnPack_My_Game.Resources;
 
@@ -16,9 +17,9 @@ namespace UnPack_My_Game.Models.LaunchBox
 {
     class M_DPGInjectFo : A_Err, I_Select
     {
-        public string Information => "Injection by Folder(s)";
+        public string Information => LanguageManager.Instance.Lang.S_InjectbFolder;
 
-        public string SelectSentence => Lang.ContM_AddFolder;
+        public string SelectSentence => LanguageManager.Instance.Lang.T_AddFolderCM;
 
         public ObservableCollection<DataRep> Elements { get; set; } = new ObservableCollection<DataRep>();
 

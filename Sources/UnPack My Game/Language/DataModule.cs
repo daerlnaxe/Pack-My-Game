@@ -25,7 +25,7 @@ namespace UnPack_My_Game.Language
         /// <summary>
         /// Renvoie la valeur correspondant à la clé
         /// </summary>
-        public object Value => LanguageManager.GetValue(_key);
+        public object Value => LanguageManager.Instance.GetValue(_key);
 
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace UnPack_My_Game.Language
         public DataModule(string key)
         {
             _key = key;
-            LangueChangedEventManager.AddListener( LanguageManager.CurrentManager,this);
+            LangueChangedEventManager.AddListener( LanguageManager.Instance, this);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace UnPack_My_Game.Language
         /// </summary>
         ~DataModule()
         {
-            LangueChangedEventManager.RemoveListener(LanguageManager.CurrentManager, this);
+            LangueChangedEventManager.RemoveListener(LanguageManager.Instance, this);
         }
     }
 }

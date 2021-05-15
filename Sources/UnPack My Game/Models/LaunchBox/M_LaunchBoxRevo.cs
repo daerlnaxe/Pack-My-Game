@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Linq;
 using UnPack_My_Game.Graph;
+using UnPack_My_Game.Language;
 using UnPack_My_Game.Resources;
 using static UnPack_My_Game.Common;
 
@@ -182,7 +183,7 @@ namespace UnPack_My_Game.Models.LaunchBox
             // Vérification des données
             Test_NullValue(LaunchBoxPath, nameof(LaunchBoxPath));
             if (!Directory.Exists(this.LaunchBoxPath))
-                Add_Error(Lang.Err_LaunchBoxF, nameof(LaunchBoxPath));
+                Add_Error(LanguageManager.Instance.Lang.Err_LaunchBoxF, nameof(LaunchBoxPath));
 
             Test_NullValue(Games, nameof(Games));
             Test_NullValue(CheatCodes, nameof(CheatCodes));

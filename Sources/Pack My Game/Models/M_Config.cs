@@ -4,15 +4,35 @@ using Pack_My_Game.Cont;
 using Pack_My_Game.Language;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.IO;
 using System.Linq;
-
+using System.Windows.Data;
 
 namespace Pack_My_Game.Models
 {
     class M_Config : A_Err
     {
         #region Languages
+
+
+        public ICollectionView Languages { get; set; }
+
+        // private CultureInfo _Langue;
+        public CultureInfo ChosenLanguage
+        {
+            get => LanguageManager.Instance.CurrentLanguage;
+            set
+            {
+                if (value != LanguageManager.Instance.CurrentLanguage)
+                {
+                    LanguageManager.Instance.CurrentLanguage = value;
+                    Config.Language = value.Name;
+                }
+            }
+        }
+
 
         //public string[] Languages { get; set; } = { "en-EN", "fr-FR" };
         /*public List<Language> Languages { get; set; } = new List<Language>();
@@ -99,7 +119,10 @@ namespace Pack_My_Game.Models
 
         public M_Config()
         {
+            LanguageManager.Instance.Init(Common.Config.Language);
+
             // Lang = Common.ObjectLang;
+            Languages = CollectionViewSource.GetDefaultView(LanguageManager.Langues);
 
             Config = new Configuration(Common.Config);
 

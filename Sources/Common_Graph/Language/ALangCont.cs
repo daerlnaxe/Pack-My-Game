@@ -31,6 +31,14 @@ namespace Common_Graph.Language
         // ---
 
         /// <summary>
+        /// Error LaunchBox folder doesn't exist
+        /// </summary>
+        [JsonPropertyName("Err.LaunchBoxF")]
+        public string Err_LaunchBoxF { get; set; } = "LaunchBox folder doesn't exist.";
+
+        // ---
+
+        /// <summary>
         /// Cheats codes path
         /// </summary>
         [JsonPropertyName("Path.CheatCodes")]
@@ -84,6 +92,12 @@ namespace Common_Graph.Language
         /// </summary>
         [JsonPropertyName("Word.Cancel")]
         public string Word_Cancel { get; set; } = "Cancel";
+
+        /// <summary>
+        /// Cheat Codes
+        /// </summary>
+        [JsonPropertyName("Word.CheatCodes")]
+        public string Word_CheatCodes { get; set; } = "Cheat Codes";
 
         /// <summary>
         /// Configuration
@@ -200,6 +214,12 @@ namespace Common_Graph.Language
         public string Word_Reload { get; set; } = "Reload";
 
         /// <summary>
+        /// Remove
+        /// </summary>
+        [JsonPropertyName("Word.Remove")]
+        public string Word_Remove { get; set; } = "Remove";
+
+        /// <summary>
         /// Reset
         /// </summary>
         [JsonPropertyName("Word.Reset")]
@@ -255,6 +275,8 @@ namespace Common_Graph.Language
             Choose_LBPath = "Choisissez le chemin de LaunchBox";
             Choose_Language = "Choisissez une langue";
             Choose_Path = "Choisissez le chemin";
+            //
+            Err_LaunchBoxF = "Le dossier LaunchBox n'existe pas.";
             //
             Path_CheatCodes = "Chemin cheat codes";
             Path_LaunchBox = "Chemin LaunchBox";

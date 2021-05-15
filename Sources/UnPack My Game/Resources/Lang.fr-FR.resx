@@ -123,20 +123,11 @@
   <data name="Choose_Root" xml:space="preserve">
     <value>Choisir une racine, sans nom de plateforme.</value>
   </data>
-  <data name="ContM_AddFile" xml:space="preserve">
-    <value>Ajouter des fichiers par le menu contextuel.</value>
-  </data>
-  <data name="ContM_AddFolder" xml:space="preserve">
-    <value>Ajoutez des dossiers par le menu contextuel.</value>
-  </data>
   <data name="DeSelect_all" xml:space="preserve">
     <value>Désélectionnez Tout</value>
   </data>
   <data name="Err_FolderC" xml:space="preserve">
     <value>Creation de dossier refusée, regardez si vous avez les droits pour écrire dans le dossier de l'application.</value>
-  </data>
-  <data name="Err_LaunchBoxF" xml:space="preserve">
-    <value>Le dossier LaunchBox n'existe pas.</value>
   </data>
   <data name="Err_PlatformsF" xml:space="preserve">
     <value>Le fichier xml des platformes est introuvable.</value>
@@ -152,12 +143,6 @@
   </data>
   <data name="I_DelByYourself" xml:space="preserve">
     <value>Vous devez effacer manuellement ce dossier</value>
-  </data>
-  <data name="I_DPGZipFile" xml:space="preserve">
-    <value>Selectionner un fichier zip pour faire un fichier DPG.</value>
-  </data>
-  <data name="I_DPGZipFolder" xml:space="preserve">
-    <value>Selectionner un dossier pour faire un fichier DPG.</value>
   </data>
   <data name="I_EBMethod" xml:space="preserve">
     <value>Enhanced Backup methode: utilise les chemins de EBGame.xml pour copier les fichiers. LaunchBox va réer au prochain démarrage la plateforme, mais vous aurez à specifier les dossiers (vous pouvez utiliser le plugin SappPasRoot). C'est la méthode de la dernière chance.</value>
