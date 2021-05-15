@@ -39,10 +39,10 @@
         <Style TargetType="Controls:RegleComp" >
             <Setter Property="MinAdjust" Value="5,0,0,0"/>
             <Setter Property="MaxAdjust" Value="0,0,-10,0"/>
-            <Setter Property="MinLabel" Value="{Binding Lang.CompLBMin, FallbackValue=Stock}"/>
-            <Setter Property="MediumLabel" Value="{Binding Lang.CompLBMoy, FallbackValue=Fast}"/>
-            <Setter Property="MaxLabel" Value="{Binding Lang.CompLBMax, FallbackValue=Optimal(Best)}"/>
-            <Setter Property="Description" Value="{Binding Lang.LvlCompExp, FallbackValue=LvlCompExp}"/>
+            <Setter Property="MinLabel" Value="{l:Langue Comp_Min}"/>
+            <Setter Property="MediumLabel" Value="{l:Langue Comp_Moy}"/>
+            <Setter Property="MaxLabel" Value="{l:Langue Comp_Max}"/>
+            <Setter Property="Description" Value="{l:Langue Comp_Lvl}"/>
         </Style>
         <!-- Button -->
         <Style TargetType="Button" BasedOn="{StaticResource btStyle}">
@@ -163,7 +163,7 @@
                         <StackPanel>
                             <CheckBox Grid.Row="0" Grid.Column="0"
                                       IsChecked="{Binding Config.ZipCompression}"
-                                      Content="{l:Langue Compression_Zip}"/>
+                                      Content="{l:Langue Comp_Zip}"/>
                             <Controls:RegleComp 
                                 Max="{Binding Config.ZipMaxLvlCompression, FallbackValue=10}" 
                                 Value="{Binding Config.ZipLvlCompression}"/>
@@ -174,7 +174,7 @@
                         <StackPanel>
                             <CheckBox Grid.Row="1" Grid.Column="0"
                                       IsChecked="{Binding Config.SevZipCompression}"
-                                      Content="{l:Langue Compression_7z}"/>
+                                      Content="{l:Langue Comp_7Z}"/>
                             <Controls:RegleComp Max="{Binding Config.SevZipMaxLvlCompression, FallbackValue=6}"
                             Value="{Binding Config.SevZipLvlCompression}"
                             LargeStep="3"                
