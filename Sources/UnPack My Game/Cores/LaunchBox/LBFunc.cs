@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using UnPack_My_Game.Graph;
+using UnPack_My_Game.Language;
 using static UnPack_My_Game.Common;
 
 namespace UnPack_My_Game.Cores.LaunchBox
@@ -23,7 +24,7 @@ namespace UnPack_My_Game.Cores.LaunchBox
             string platformsFile = Path.Combine(Config.HLaunchBoxPath, Config.PlatformsFile);
 
 
-            string newPFile = IHMStatic.GetAFile(Config.LastTargetPath, "Select the platform xml file", "xml");
+            string newPFile = IHMStatic.GetAFile(Config.LastTargetPath, LanguageManager.Instance.Lang.S_XmlPlatform, "xml");
 
             if (string.IsNullOrEmpty(newPFile))
             {

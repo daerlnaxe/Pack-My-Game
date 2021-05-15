@@ -300,6 +300,7 @@ namespace Common_Graph.Language
             Word_Procedure = "Procédure";
             Word_Process = "Procéder";
             Word_Reload = "Recharger";
+            Word_Remove = "Enlever";
             Word_Reset = "Réinitialiser";
             Word_Save = "Sauver";
             Word_Select = "Sélectionnez";

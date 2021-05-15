@@ -69,7 +69,13 @@ namespace UnPack_My_Game.Language
         /// Unpack To LaunchBox
         /// </summary>
         public string S_UnpackTLaunchBox { get; set; } = "Unpack to LaunchBox";
-        //
+
+        /// <summary>
+        /// Select the xml platform file
+        /// </summary>
+        public string S_XmlPlatform { get; set; } = "Select the xml platform file";
+
+        // ---
 
         /// <summary>
         /// Add files by contextual menu
@@ -213,11 +219,12 @@ namespace UnPack_My_Game.Language
                 S_InjectbFile = "Injection par fichier(s)",
                 S_InjectbFolder = "Injection par dossier(s)",
                 S_InjectCustomFields = "Injecter les champs personnalisés",
-                S_InjectPlatform = "Injecter 1 Machine",
+                S_InjectPlatform = "Injecter Machine",
                 S_ResetFolder = "Reset un dossier",
                 S_ResetFactory = "Réglages d'usine",
                 S_PlaceRomsToGameName = "Placer les roms dans un dossier portant le nom du jeu",
                 S_UnpackTLaunchBox = "Dépacker vers LaunchBox",
+                S_XmlPlatform = "Sélectionnez le fichier xml de la machine",
                 T_AddFileCM = "Ajouter un/des fichier(s) par le menu contextuel",
                 T_AddFolderCM = "Ajouter un/des dossier(s) par le menu contextuel",
                 T_DPGCreator = "Crée un DPG avec un fichier TBGame ou EBGame",
