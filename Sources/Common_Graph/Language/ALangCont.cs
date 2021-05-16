@@ -153,6 +153,11 @@ namespace Common_Graph.Language
         public string Word_Delete { get; set; } = "Delete";
 
         /// <summary>
+        /// Default
+        /// </summary>
+        [JsonPropertyName("Word.Default")]
+        public string Word_Default { get; set; } = "Default";
+        /// <summary>
         /// File
         /// </summary>
         [JsonPropertyName("Word.File")]
@@ -303,6 +308,12 @@ namespace Common_Graph.Language
         public string Word_Save { get; set; } = "Save";
 
         /// <summary>
+        /// Search
+        /// </summary>
+        [JsonPropertyName("Word.Search")]
+        public string Word_Search { get; set; } = "Search";
+
+        /// <summary>
         /// Select
         /// </summary>
         [JsonPropertyName("Word.Select")]
@@ -325,6 +336,12 @@ namespace Common_Graph.Language
         /// </summary>
         [JsonPropertyName("Word.Submit")]
         public string Word_Submit { get; set; } = "Submit";
+
+        /// <summary>
+        /// Suggested
+        /// </summary>
+        [JsonPropertyName("Word.Suggested")]
+        public string Word_Suggested { get; set; } = "Suggested";
 
         /// <summary>
         /// Videos
@@ -375,6 +392,7 @@ namespace Common_Graph.Language
             Word_Add = "Ajouter";
             Word_All = "Tous";
             Word_Cancel = "Annuler";
+            Word_Default = "Défaut";
             Word_Delete = "Effacer";
             Word_File = "Fichier";
             Word_General = "Général";
@@ -394,9 +412,11 @@ namespace Common_Graph.Language
             Word_Reset = "Réinitialiser";
             Word_Result = "Résultat";
             Word_Save = "Sauver";
+            Word_Search = "Cherche";
             Word_Select = "Sélectionnez";
             Word_Selected = "Sélectionné";
             Word_Submit = "Soumettre";
+            Word_Suggested = "Suggéré";
             Word_Videos = "Videos";
             //
 

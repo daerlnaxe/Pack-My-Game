@@ -1,0 +1,361 @@
+﻿<Window x:Class="Pack_My_Game.IHM.W_PackMePrev"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pack_My_Game.IHM"
+        xmlns:l="clr-namespace:Pack_My_Game.Language"
+        xmlns:conv="clr-namespace:Pack_My_Game.IHM.Converters"
+        mc:Ignorable="d"
+        Title="Result"  Width="1024" Height="768"
+                WindowStartupLocation="CenterScreen"
+
+        Loaded="Window_Loaded"
+        >
+    <Window.CommandBindings>
+        <!-- Games -->
+        <!-- Manuals -->
+        <CommandBinding Command="local:Commands.OpenManualCmd" CanExecute="Can_Manual" Executed="Exec_OpenManual"/>
+        <CommandBinding Command="local:Commands.DeleteManualCmd" CanExecute="Can_Manual" Executed="Exec_RemoveManual"/>
+        <!-- Musics -->
+        <CommandBinding Command="local:Commands.OpenMusicCmd" CanExecute="Can_Music" Executed="Exec_OpenMusic"/>
+        <CommandBinding Command="local:Commands.DeleteMusicCmd" CanExecute="Can_Music" Executed="Exec_RemoveMusic"/>
+        <!-- Videos -->
+        <CommandBinding Command="local:Commands.OpenVideoCmd" CanExecute="Can_Video" Executed="Exec_OpenVideo"/>
+        <CommandBinding Command="local:Commands.DeleteVideoCmd" CanExecute="Can_Video" Executed="Exec_RemoveVideo"/>
+        <!-- Cheats -->
+        <CommandBinding Command="local:Commands.OpenCheatCmd" CanExecute="Can_Cheat" Executed="Exec_OpenCheat"/>
+        <CommandBinding Command="local:Commands.DeleteCheatCmd" CanExecute="Can_Cheat" Executed="Exec_RemoveCheat"/>
+        <!-- Recherche -->        
+        <CommandBinding Command="local:Commands.ResetCommand" CanExecute="Can_Search" Executed="Exec_ResetWords"/>
+        <CommandBinding Command="local:Commands.SearchCmd" CanExecute="Can_Search" Executed="Exec_Search"/>
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Command="local:Commands.ResetCommand" Modifiers="Ctrl" Key="R" />
+        <KeyBinding Command="local:Commands.SearchCmd" Modifiers="Ctrl" Key="F" />
+    </Window.InputBindings>
+    <Window.Resources>
+        <conv:EnableIfElementsConv x:Key="EnableIfElements"/>
+        <!-- scrollviewer -->
+        <Style TargetType="ScrollViewer">
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="Margin" Value="0,10"/>
+        </Style>
+        <!-- Label -->
+        <Style TargetType="Label" BasedOn="{StaticResource lblStyle}">
+
+        </Style>
+
+        <!-- Listview -->
+        <Style TargetType="ListView">
+            <Setter Property="Grid.Column" Value="0"/>
+            <Setter Property="Grid.ColumnSpan" Value="2"/>
+            <Setter Property="Margin" Value="0,5"/>
+        </Style>
+        <!-- Boutons -->
+        <Style TargetType="Button" BasedOn="{StaticResource btStyle}">
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+    </Window.Resources>
+    <DockPanel>
+
+        <!-- Bottom Buttons -->
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right" Margin="10">
+            <Button  Content="{l:Langue Word_Ok}" MinWidth="50" Click="Ok_Click" />
+        </StackPanel>
+
+        <!-- Content -->
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <!-- Message -->
+            <Label Grid.ColumnSpan="3" Margin="0,0,0,15" Visibility="Collapsed"/>
+            <!-- Content -->
+            <!-- Fichiers -->
+            <TabControl TabStripPlacement="Left" Grid.Row="1" Grid.Column="1">
+                <TabControl.Resources>
+                    <!-- Textbox -->
+                    <Style TargetType="TextBlock" BasedOn="{StaticResource tbStyle}">
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="Grid.Column" Value="1"/>
+                    </Style>
+                </TabControl.Resources>
+                <!-- Games -->
+                <TabItem Header="{l:Langue Word_Games}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!-- Sélectionné -->
+                        <Label Content="{l:Langue Word_Default}"/>
+                        <TextBlock Text="{Binding ChosenGame.Name, FallbackValue=Selected}"/>
+                        <Label Grid.Row="1" Content="{l:Langue Files_Found}" />
+                        <!-- Liste -->
+                        <ListView Grid.Row="2" ItemsSource="{Binding GamesCollection}" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <RadioButton IsChecked="{Binding IsSelected}" Tag="{Binding}" IsEnabled="False" Focusable="False"/>
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                    </Grid>
+                </TabItem>
+                <!-- Manuals -->
+                <TabItem Header="{l:Langue Word_Manuals}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!-- Selected -->
+                        <Label Content="{l:Langue Word_Default}"/>
+                        <TextBlock Text="{Binding ChosenManual.Name, FallbackValue=..., TargetNullValue=...}"/>
+                        <!-- Liste -->
+                        <Label Grid.Row="1" Content="{l:Langue Files_Found}" />
+                        <ListView x:Name="lvManuals" Grid.Row="2" 
+                            ItemsSource="{Binding ManualsCollection}"
+                            SelectedItem="{Binding SelectedManual}" >
+                            <ListView.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="{l:Langue Word_Open}"
+                                              Command="local:Commands.OpenManualCmd"/>
+                                    <MenuItem Header="{l:Langue Word_Remove}"
+                                              Command="local:Commands.DeleteManualCmd" />
+                                </ContextMenu>
+                            </ListView.ContextMenu>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                        <TextBlock Text="{Binding Name}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <!-- Liste suggérés -->
+                        <Label Grid.Row="3" Content="{l:Langue Word_Suggested}" />
+                        <ListView Grid.Row="4" 
+                            ItemsSource="{Binding EligibleManuals}"
+                            SelectedItem="{Binding EligibleManualSelected}">
+                            <ListView.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="{l:Langue Word_Add}" Click="Add_Manual"/>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
+                        </ListView>
+                    </Grid>
+                </TabItem>
+                <!-- Musics -->
+                <TabItem Header="{l:Langue Word_Musics}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!-- Selected -->
+                        <Label Content="{l:Langue Word_Selected}"/>
+                        <TextBlock Text="{Binding ChosenMusic.Name, FallbackValue=..., TargetNullValue=...}"/>
+                        <!-- Musics List -->
+                        <Label Grid.Row="1" Content="{l:Langue Files_Found}" />
+                        <ListView x:Name="lvMusics" Grid.Row="2" 
+                          ItemsSource="{Binding MusicsCollection}" SelectedItem="{Binding SelectedMusic}">
+                            <ListView.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="{l:Langue Word_Add}" Click="Add_Music"/>
+                                    <MenuItem Header="{l:Langue Word_Open}" Command="local:Commands.OpenMusicCmd"/>
+                                    <MenuItem Header="{l:Langue Word_Delete}" Command="local:Commands.DeleteMusicCmd"/>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                        <TextBlock Text="{Binding Name}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <!-- Liste suggérés -->
+                        <Label Grid.Row="3" Content="{l:Langue Word_Suggested}" />
+                        <ListView Grid.Row="4" 
+                            ItemsSource="{Binding EligibleMusics}"
+                            SelectedItem="{Binding EligibleManualSelected}">
+                            <ListView.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="{l:Langue Word_Add}" Click="Add_Music"/>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
+                        </ListView>
+                    </Grid>
+                </TabItem>
+                <!-- Videos -->
+                <TabItem Header="{l:Langue Word_Videos}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!-- Selected -->
+                        <Label Content="{l:Langue S_DefaultVideo}"/>
+                        <TextBlock Text="{Binding ChosenVideo.Name, FallbackValue=..., TargetNullValue= ...}"/>
+                        <Label Grid.Row="1" Content="{l:Langue S_DefaultThemeVideo}"/>
+                        <TextBlock Grid.Row="1" Text="{Binding ChosenThemeVideo.Name, FallbackValue=..., TargetNullValue= ...}"/>
+                        <!-- -->
+                        <Label Grid.Row="2" Content="{l:Langue Files_Found}"/>
+                        <!-- Liste of Videos -->
+                        <ListView x:Name="lvVideos" Grid.Row="3"
+                            ItemsSource="{Binding VideosCollection}"
+                            SelectedItem="{Binding SelectedVideo}" >
+                            <ListView.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="{l:Langue Word_Add}" Click="Add_Video"/>
+                                    <MenuItem Header="{l:Langue Word_Open}" Command="local:Commands.OpenVideoCmd"/>
+                                    <MenuItem Header="{l:Langue Word_Delete}" Command="local:Commands.DeleteVideoCmd"/>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <CheckBox IsChecked="{Binding IsSelected}" IsHitTestVisible="False"/>
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <!-- Liste suggérés -->
+                        <Label Grid.Row="4" Content="{l:Langue Word_Suggested}" />
+                        <ListView Grid.Row="5" 
+                            ItemsSource="{Binding EligibleVideos}"
+                            SelectedItem="{Binding EligibleVideoSelected}">
+                            <ListView.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="{l:Langue Word_Add}" Click="Add_Video"/>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
+                        </ListView>
+                    </Grid>
+                </TabItem>
+                <!-- CheatCodes -->
+                <TabItem Header="{l:Langue Word_Cheats}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!-- Selected -->
+                        <!--
+                        <Label Content="{Binding Lang.SelectedExp, FallbackValue=SelectedExp}"/>
+                        <TextBlock Text="{Binding ChosenCheatF.Name, FallbackValue=Selected}"/>
+                        -->
+                        <!-- Liste -->
+                        <Label Content="{l:Langue Files_Found}" />
+                        <ListView x:Name="lvCheats" Grid.Row="1" 
+                            ItemsSource="{Binding CheatsCollection}" DisplayMemberPath="Name"
+                            SelectedItem="{Binding SelectedCheatFile}" >
+                            <ListView.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="{l:Langue Word_Add}" Click="Add_Cheat"/>
+                                    <MenuItem Header="{l:Langue Word_Open}" Command="local:Commands.OpenCheatCmd"/>
+                                    <MenuItem Header="{l:Langue Word_Delete}" Command="local:Commands.DeleteCheatCmd"/>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
+                        </ListView>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+
+            <!-- Right Buttons -->
+                <StackPanel Grid.Row="1" Grid.Column="2" Margin="5,0">
+                    <Button Content="{l:Langue Word_Reset}" Click="Reset"/>
+            </StackPanel>
+            <!-- Recherche -->
+            <Expander Grid.Row="2" Grid.ColumnSpan="3" Header="Recherche" IsExpanded="True">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <!-- Message -->
+                    <TextBox Padding="3,0" Margin="5,0" VerticalAlignment="Center"
+                        Text="{Binding SearchString, UpdateSourceTrigger=PropertyChanged,
+                             TargetNullValue='Write title or words, then hit enter', FallbackValue=Hitbox}"
+                             PreviewKeyDown="Recherche_PreviewKeyDown"     />
+                    <!-- Items -->
+                    <ItemsControl Grid.Row="1" Margin="5" ItemsSource="{Binding WordsToSearch}">
+                        <!-- Conteneur -->
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <!-- Objets -->
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Margin="5" Padding="3"
+                                        BorderBrush="LightBlue" BorderThickness="1" CornerRadius="5">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding}"/>
+                                    <Button Grid.Column="1" Click="Remove_Word" Tag="{Binding}"/>
+                                </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <!-- Buttons -->
+                    <StackPanel Grid.Row="2" Orientation="Horizontal">
+                        <Button Content="{l:Langue Word_Reset}" Command="local:Commands.ResetCommand"  VerticalAlignment="Center"/>
+                        <Button Content="{l:Langue Word_Process}" Command="local:Commands.SearchCmd" VerticalAlignment="Center"/>                        
+                    </StackPanel>
+                </Grid>
+            </Expander>
+
+
+        </Grid>
+    </DockPanel>
+</Window>

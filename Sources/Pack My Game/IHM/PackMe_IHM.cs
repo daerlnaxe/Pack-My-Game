@@ -101,6 +101,37 @@ namespace Pack_My_Game.IHM
             return ChosenFiles;
         }
 
+        /// <summary>
+        /// Affiche en safe la fenêtre pré-copy
+        /// </summary>
+        /// <param name="gamePath"></param>
+        /// <param name="zePlatform"></param>
+        /// <param name="gdC"></param>
+        /// <returns></returns>
+        internal static bool? LaunchBoxCore_Prev(string gamePath, ContPlatFolders platform, GameDataCont gdC)
+        {
+            return Application.Current.Dispatcher?.Invoke
+             (
+             () =>
+             {
+                 W_PackMePrev W_res = new W_PackMePrev()
+                 {
+                     Title = $"{LanguageManager.Instance.Lang.Word_Result} - {gdC.Title}",
+                     Model = new M_PackMePrev( platform, gdC),
+
+                 };
+                 return W_res.ShowDialog();
+             }
+             );
+        }
+
+        /// <summary>
+        /// Affiche en safe la fenêtre de résultat
+        /// </summary>
+        /// <param name="rootFolder"></param>
+        /// <param name="platform"></param>
+        /// <param name="gdC"></param>
+        /// <returns></returns>
         internal static bool? LaunchBoxCore_Recap(string rootFolder, ContPlatFolders platform, GameDataCont gdC)
         {
             return Application.Current.Dispatcher?.Invoke
@@ -240,6 +271,7 @@ namespace Pack_My_Game.IHM
                 ); ;
 
         }
+
 
 
         /*

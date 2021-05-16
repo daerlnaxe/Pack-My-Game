@@ -355,6 +355,9 @@ namespace Pack_My_Game.Core
 
             GetFiles(lbGame, gdC);
 
+            if (PackMe_IHM.LaunchBoxCore_Prev(gamePath, _ZePlatform, gdC) != true)
+                throw new Exception("Stopped by user");
+
             // --- Prepare files;
             PrepareList(gdC.Applications, tree, Config.KeepGameStruct, "Game");
             PrepareList(gdC.CheatCodes, tree, Config.KeepCheatStruct, "CheatCode");

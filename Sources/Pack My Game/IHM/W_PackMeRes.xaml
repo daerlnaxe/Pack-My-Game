@@ -15,21 +15,21 @@
     <Window.CommandBindings>
         <!-- Games -->
         <!-- Manuals -->
-        <CommandBinding Command="local:W_PackMeRes.OpenManualCmd" CanExecute="Can_Manual" Executed="Exec_OpenManual"/>
-        <CommandBinding Command="local:W_PackMeRes.RemoveManualCmd" CanExecute="Can_Manual" Executed="Exec_RemoveManual"/>
+        <CommandBinding Command="local:Commands.OpenManualCmd" CanExecute="Can_Manual" Executed="Exec_OpenManual"/>
+        <CommandBinding Command="local:Commands.RemoveManualCmd" CanExecute="Can_Manual" Executed="Exec_RemoveManual"/>
         <!-- Musics -->
-        <CommandBinding Command="local:W_PackMeRes.OpenMusicCmd" CanExecute="Can_Music" Executed="Exec_OpenMusic"/>
-        <CommandBinding Command="local:W_PackMeRes.RemoveMusicCmd" CanExecute="Can_Music" Executed="Exec_RemoveMusic"/>
+        <CommandBinding Command="local:Commands.OpenMusicCmd" CanExecute="Can_Music" Executed="Exec_OpenMusic"/>
+        <CommandBinding Command="local:Commands.RemoveMusicCmd" CanExecute="Can_Music" Executed="Exec_RemoveMusic"/>
         <!-- Videos -->
-        <CommandBinding Command="local:W_PackMeRes.OpenVideoCmd" CanExecute="Can_Video" Executed="Exec_OpenVideo"/>
-        <CommandBinding Command="local:W_PackMeRes.RemoveVideoCmd" CanExecute="Can_Video" Executed="Exec_RemoveVideo"/>
+        <CommandBinding Command="local:Commands.OpenVideoCmd" CanExecute="Can_Video" Executed="Exec_OpenVideo"/>
+        <CommandBinding Command="local:Commands.RemoveVideoCmd" CanExecute="Can_Video" Executed="Exec_RemoveVideo"/>
         <CommandBinding Command="local:W_PackMeRes.SetVideoCmd" CanExecute="Can_Video" Executed="Exec_HandleVideo"/>
         <CommandBinding Command="local:W_PackMeRes.UnsetVideoCmd" CanExecute="Can_UnsetVideo" Executed="Exec_HandleVideo"/>
         <CommandBinding Command="local:W_PackMeRes.SetThemeVideoCmd" CanExecute="Can_Video" Executed="Exec_HandleThemeVideo"/>
         <CommandBinding Command="local:W_PackMeRes.UnsetThemeVideoCmd" CanExecute="Can_UnsetThemeVideo" Executed="Exec_HandleThemeVideo"/>
         <!-- Cheats -->
-        <CommandBinding Command="local:W_PackMeRes.OpenCheatCmd" CanExecute="Can_Cheat" Executed="Exec_OpenCheat"/>
-        <CommandBinding Command="local:W_PackMeRes.RemoveCheatCmd" CanExecute="Can_Cheat" Executed="Exec_RemoveCheat"/>
+        <CommandBinding Command="local:Commands.OpenCheatCmd" CanExecute="Can_Cheat" Executed="Exec_OpenCheat"/>
+        <CommandBinding Command="local:Commands.RemoveCheatCmd" CanExecute="Can_Cheat" Executed="Exec_RemoveCheat"/>
     </Window.CommandBindings>
     <Window.Resources>
         <conv:EnableIfElementsConv x:Key="EnableIfElements"/>

@@ -60,8 +60,6 @@ namespace Pack_My_Game.Core
 
             // Images
             gdC.Images = GetImagesFiles(lbGame, possibilities);
-
-
         }
 
 
@@ -108,7 +106,6 @@ namespace Pack_My_Game.Core
             }
 
             games.Add(DataPlus.MakeChosen(lbGame.Id, lbGame.Title, Path.GetFullPath(lbGame.ApplicationPath, Common.Config.HLaunchBoxPath)));
-
 
 
             // ---  Récupération des clones
@@ -351,7 +348,7 @@ namespace Pack_My_Game.Core
                 }
             }
 
-            if (filteredFiles.Count <= 0)
+           /* if (filteredFiles.Count <= 0)
             {
                 SafeBoxes.Dispatch_Mbox(this,
                     $"{LanguageManager.Instance.Lang.S_SearchFor} {mediatype}: 0 {LanguageManager.Instance.Lang.Word_Result}",
@@ -361,7 +358,7 @@ namespace Pack_My_Game.Core
             else
             {
                 //filteredFiles = PackMe_IHM.Validate_FilesFound(filteredFiles, mediatype).ToList();
-            }
+            }*/
 
             return filteredFiles;
         }

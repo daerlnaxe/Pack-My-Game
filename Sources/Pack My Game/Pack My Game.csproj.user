@@ -19,7 +19,7 @@
     <Compile Update="IHM\W_Info.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="IHM\W_PackMeRes.xaml.cs">
+    <Compile Update="IHM\W_PackMePrev.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -27,6 +27,9 @@
     <None Update="Deprecated\W_PackMeRes.xaml">
       <SubType>Designer</SubType>
     </None>
+    <Page Update="IHM\W_PackMeRes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="IHM\W_Cheat.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -42,7 +45,7 @@
     <Page Update="IHM\W_Info.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="IHM\W_PackMeRes.xaml">
+    <Page Update="IHM\W_PackMePrev.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\Style.xaml">

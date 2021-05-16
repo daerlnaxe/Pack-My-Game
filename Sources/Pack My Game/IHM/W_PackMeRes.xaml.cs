@@ -19,33 +19,16 @@ namespace Pack_My_Game.IHM
     /// </summary>
     public partial class W_PackMeRes : Window
     {
-
-        public static readonly RoutedUICommand DeleteCmd = new RoutedUICommand("Delete", "DeleteCmd", typeof(W_PackMeRes));
-
-        public static readonly RoutedUICommand OpenCheatCmd = new RoutedUICommand("Open", "OpenCheatCmd", typeof(W_PackMeRes));
-        public static readonly RoutedUICommand RemoveCheatCmd = new RoutedUICommand("Delete", "RemoveCheatCmd", typeof(W_PackMeRes));
-
-        public static readonly RoutedUICommand OpenManualCmd = new RoutedUICommand("Open", "OpenManualCmd", typeof(W_PackMeRes));
-        public static readonly RoutedUICommand RemoveManualCmd = new RoutedUICommand("Delete", "RemoveManualCmd", typeof(W_PackMeRes));
-
-        public static readonly RoutedUICommand OpenMusicCmd = new RoutedUICommand("Open", "OpenMusicCmd", typeof(W_PackMeRes));
-        public static readonly RoutedUICommand RemoveMusicCmd = new RoutedUICommand("Delete", "RemoveMusicCmd", typeof(W_PackMeRes));
-
-        public static readonly RoutedUICommand OpenVideoCmd = new RoutedUICommand("Open", "OpenVideoCmd", typeof(W_PackMeRes));
-        public static readonly RoutedUICommand RemoveVideoCmd = new RoutedUICommand("Delete", "RemoveVideoCmd", typeof(W_PackMeRes));
-
         public static readonly RoutedUICommand SetVideoCmd = new RoutedUICommand("Set Video", "SetVideoCmd", typeof(W_PackMeRes));
         public static readonly RoutedUICommand UnsetVideoCmd = new RoutedUICommand("Unset Video", "UnsetVideoCmd", typeof(W_PackMeRes));
         public static readonly RoutedUICommand SetThemeVideoCmd = new RoutedUICommand("Set ThemeVideo", "SetThemeVideoCmd", typeof(W_PackMeRes));
         public static readonly RoutedUICommand UnsetThemeVideoCmd = new RoutedUICommand("Unset ThemeVideo", "UnsetThemeVideoCmd", typeof(W_PackMeRes));
 
-
-
         public M_PackMeRes Model;
+
+
         public W_PackMeRes()
         {
-
-
             InitializeComponent();
         }
 

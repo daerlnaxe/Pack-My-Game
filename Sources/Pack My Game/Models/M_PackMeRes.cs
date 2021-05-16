@@ -9,6 +9,7 @@ using DxTBoxCore.Box_Progress;
 using DxTBoxCore.BoxChoose;
 using HashCalc;
 using Pack_My_Game.Cont;
+using Pack_My_Game.Files;
 using Pack_My_Game.IHM;
 using System;
 using System.Collections.Generic;
@@ -21,110 +22,29 @@ using static Pack_My_Game.Common;
 namespace Pack_My_Game.Models
 {
 
-    public class M_PackMeRes : A_Err
+    public class M_PackMeRes : M_PackMe
     {
         /*public static event DoubleHandler UpdateProgress;
         public static event MessageHandler UpdateStatus;
         public static event DoubleHandler MaximumProgress;*/
 
-        public string Root { get; private set; }
 
-
-        #region Chosen
-        DataPlus _ChosenGame;
-        public DataPlus ChosenGame
-        {
-            get => _ChosenGame;
-            set
-            {
-                _ChosenGame = value;
-                OnPropertyChanged();
-            }
-        }
-
-        //public DataRep ChosenCheatF { get; set; }
-
-
-        DataRep _ChosenManual;
-        public DataRep ChosenManual
-        {
-            get => _ChosenManual;
-            set
-            {
-                _ChosenManual = value;
-                OnPropertyChanged();
-            }
-        }
-
-
-        DataRep _ChosenMusic;
-        public DataRep ChosenMusic
-        {
-            get => _ChosenMusic;
-            set
-            {
-                _ChosenMusic = value;
-                OnPropertyChanged();
-            }
-        }
-
-
-
-        DataRep _ChosenVideo;
-        public DataRep ChosenVideo
-        {
-            get => _ChosenVideo;
-            set
-            {
-                _ChosenVideo = value;
-                OnPropertyChanged();
-            }
-        }
-
-        DataRep _ChosenThemeVideo;
-        public DataRep ChosenThemeVideo
-        {
-            get => _ChosenThemeVideo;
-            set
-            {
-                _ChosenThemeVideo = value;
-                OnPropertyChanged();
-            }
-        }
-        #endregion
-
-
-        //public DataPlus SelectedGame { get; set; }
-        public ObservableCollection<DataPlus> GamesCollection { get; set; } = new ObservableCollection<DataPlus>();
-
-        public DataRep SelectedManual { get; set; }
-        public ObservableCollection<DataRep> ManualsCollection { get; set; } = new ObservableCollection<DataRep>();
-
-        public DataRep SelectedMusic { get; set; }
-        public ObservableCollection<DataRep> MusicsCollection { get; set; } = new ObservableCollection<DataRep>();
-
-
-        public DataRep SelectedVideo { get; set; }
-        public ObservableCollection<DataRep> VideosCollection { get; set; } = new ObservableCollection<DataRep>();
-
-        public DataRep SelectedCheatFile { get; set; }
-        public ObservableCollection<DataRep> CheatsCollection { get; set; } = new ObservableCollection<DataRep>();
-
-        /// <summary>
-        /// Contient les chemins de la plateforme
-        /// </summary>
-        public ContPlatFolders Platform { get; }
-
+        // ---
         public string GameName { get; }
 
-        public GameDataCont GameDataC { get; }
 
-        public M_PackMeRes(string root, ContPlatFolders platform, GameDataCont gdC)
+
+        // ---
+
+        public M_PackMeRes(string root, ContPlatFolders platform, GameDataCont gdC) : base(root,platform, gdC)
         {
-            Root = root;
-            Platform = platform;
             GameName = gdC.Title;
-            GameDataC = gdC;
+
+            _GamesPath = Path.Combine(Root, Common.Games);
+            _CheatsPath = Path.Combine(Root, Common.CheatCodes);
+            _ManualsPath = Path.Combine(Root, Common.Manuals);
+            _MusicsPath = Path.Combine(Root, Common.Musics);
+            _VideosPath = Path.Combine(Root, Common.Videos);
 
             Init();
         }
@@ -133,14 +53,18 @@ namespace Pack_My_Game.Models
 
         #region initialisation
 
-        internal void Init()
+
+        /// <summary>
+        /// Ajoute les fichiers par défaut et charge les fichiers dans les dossiers
+        /// </summary>
+        public override void Init()
         {
             // Création des collections (par rapport au changement de nom
-            MakeCollection(GameDataC.Applications, GamesCollection, Common.Games);
-            MakeCollection(GameDataC.CheatCodes, CheatsCollection, Common.CheatCodes);
-            MakeCollection(GameDataC.Manuals, ManualsCollection, Common.Manuals);
-            MakeCollection(GameDataC.Musics, MusicsCollection, Common.Musics);
-            MakeCollection(GameDataC.Videos, VideosCollection, Common.Videos);
+            MakeCollection(GameDataC.Applications, GamesCollection, _GamesPath);
+            MakeCollection(GameDataC.CheatCodes, CheatsCollection, _CheatsPath);
+            MakeCollection(GameDataC.Manuals, ManualsCollection, _ManualsPath);
+            MakeCollection(GameDataC.Musics, MusicsCollection, _MusicsPath);
+            MakeCollection(GameDataC.Videos, VideosCollection, _VideosPath);
 
             // Initialisation des fichiers par défaut.
             ChosenGame = GamesCollection.FirstOrDefault(x => x.DestPath.Equals(GameDataC.DefaultApp?.DestPath));
@@ -151,33 +75,42 @@ namespace Pack_My_Game.Models
 
             LoadFiles();
         }
+        /// <summary>
+        /// Initialize une collection avec une copie modifiée des datareps pour montrer l'arborescence dans le nom
+        /// </summary>
+        /// <param name="srcCollected"></param>
+        /// <param name="targetedCollec"></param>
+        /// <param name="mediatype"></param>
+        protected void MakeCollection(IEnumerable<DataRep> srcCollected, ObservableCollection<DataRep> targetedCollec, string link)
+        {
+            //     string pRoot = Path.Combine(Root, link);
+            targetedCollec.Clear();
+            foreach (DataRep elem in srcCollected)
+            {
+                DataRep dr = DataRep.DataRepFactory(elem);
+                dr.Name = dr.DestPath.Replace(link, ".");
+                targetedCollec.Add(dr);
+            }
+        }
 
-        private void MakeCollection(IEnumerable<DataPlus> srcCollected, ObservableCollection<DataPlus> targetedCollec, string mediatype)
-        {            
-            string pRoot = Path.Combine(Root, mediatype);
+        /// <summary>
+        /// Initialize une collection avec une copie modifiée des datareps pour montrer l'arborescence dans le nom
+        /// </summary>
+        /// <param name="srcCollected"></param>
+        /// <param name="targetedCollec"></param>
+        /// <param name="mediatype"></param>
+        protected void MakeCollection(IEnumerable<DataPlus> srcCollected, ObservableCollection<DataPlus> targetedCollec, string link)
+        {
+            //       string pRoot = Path.Combine(Root, link);
             targetedCollec.Clear();
             foreach (DataPlus elem in srcCollected)
             {
                 DataPlus dp = new DataPlus(elem);
-                dp.Name = elem.DestPath.Replace(pRoot, ".");
+                dp.Name = elem.DestPath.Replace(link, ".");
                 targetedCollec.Add(dp);
             }
         }
 
-
-
-        private void MakeCollection(IEnumerable<DataRep> srcCollected, ObservableCollection<DataRep> targetedCollec, string mediatype)
-        {
-            string pRoot = Path.Combine(Root, mediatype);
-            targetedCollec.Clear();
-            foreach (DataRep elem in srcCollected)
-            {
-
-                DataRep dr = DataRep.DataRepFactory(elem);
-                dr.Name = dr.DestPath.Replace(pRoot, ".");
-                targetedCollec.Add(dr);
-            }
-        }
 
         internal void LoadFiles()
         {
@@ -239,6 +172,8 @@ namespace Pack_My_Game.Models
             #endregion
         }
 
+
+
         private void LoadVideos()
         {
             string videosPath = Path.Combine(Root, Common.Videos);
@@ -261,6 +196,8 @@ namespace Pack_My_Game.Models
             #endregion
         }
 
+
+
         internal void LoadCheatCodes()
         {
             string cheatsPath = Path.Combine(Root, Common.CheatCodes);
@@ -275,6 +212,7 @@ namespace Pack_My_Game.Models
             LoadFiles2(cheatsPath, CheatsCollection);
             TestFiles(CheatsCollection);
         }
+
 
         private void LoadFiles2(string path, ObservableCollection<DataRep> collection)
         {
@@ -311,6 +249,7 @@ namespace Pack_My_Game.Models
         }
         #endregion
 
+
         #region Check / Uncheck
 
         /*
@@ -318,7 +257,7 @@ namespace Pack_My_Game.Models
         {
             if (isChecked == true)
                 SetDefault((DataPlus)tag, GamesCollection, (x) => ChosenGame = x);
-           
+
         }*/
 
         internal void Manual_Handler(object tag, bool? isChecked)
@@ -421,6 +360,7 @@ namespace Pack_My_Game.Models
     */
 
         #region Manuals
+
         internal void CopyManualF()
         {
             PlatformFolder pFolder = Platform.PlatformFolders.FirstOrDefault((x) => x.MediaType == "Manual");
@@ -430,19 +370,6 @@ namespace Pack_My_Game.Models
             {
                 LoadManuals();
             }
-        }
-
-        internal void OpenManual()
-        {
-            if (SelectedManual == null)
-                return;
-
-            //string path = Path.Combine(Root, Common.Manuals, SelectedManual);
-            Process p = new Process();
-            p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = SelectedManual.CurrentPath;
-            p.Start();
-
         }
 
         internal void LaunchPage(string page)
@@ -486,18 +413,7 @@ namespace Pack_My_Game.Models
             }
         }
 
-        internal void OpenMusic()
-        {
-            if (SelectedMusic == null)
-                return;
 
-            //string path = Path.Combine(Root, Common.Musics, SelectedMusic);
-            Process p = new Process();
-            p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = SelectedMusic.CurrentPath;
-            p.Start();
-
-        }
 
         internal void RemoveMusicF()
         {
@@ -517,17 +433,7 @@ namespace Pack_My_Game.Models
 
         #region Videos
 
-        internal void OpenVideo()
-        {
-            if (SelectedVideo == null)
-                return;
 
-            //string path = Path.Combine(Root, Common.Videos, SelectedVideo);
-            Process p = new Process();
-            p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = SelectedVideo.CurrentPath;
-            p.Start();
-        }
 
         internal void CopyVideoF()
         {
@@ -582,16 +488,7 @@ namespace Pack_My_Game.Models
             window.ShowDialog();
         }
 
-        internal void OpenCheatInDefaultEditor()
-        {
-            if (SelectedCheatFile != null)
-                return;
 
-            if (File.Exists(SelectedCheatFile.DestPath))
-            {
-                Process.Start(SelectedCheatFile.DestPath);
-            }
-        }
 
 
         internal void RemoveCheatF()
@@ -670,13 +567,12 @@ namespace Pack_My_Game.Models
         {
             this.Test_HasElement(GamesCollection, nameof(GamesCollection));
 
-
             if (HasErrors)
                 return false;
 
             // Jeux
             GameDataC.SetApplications = GamesCollection;
-                
+
             /*GameDataC.Reinitialize(GameDataC.Apps, GamesCollection);
             GameDataC.SetDefault(nameof(GameDataC.DefaultApp), ChosenGame);*/
             // Cheats

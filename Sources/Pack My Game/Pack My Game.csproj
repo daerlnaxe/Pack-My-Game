@@ -34,6 +34,8 @@
     <Compile Remove="Compression\ZipCompress.cs" />
     <Compile Remove="Cont\LangCont.cs" />
     <Compile Remove="Core\LaunchBocDeprecated.cs" />
+    <Compile Remove="Deprecated\LaunchBocDeprecated.cs" />
+    <Compile Remove="Deprecated\W_PackMeRes - Copier.xaml.cs" />
     <Compile Remove="Deprecated\W_PackMeRes.xaml.cs" />
     <Compile Remove="IHM\W_Games.xaml.cs" />
     <Compile Remove="Language\LangProvider.cs" />
@@ -46,11 +48,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="Deprecated\W_PackMePrev.xaml" />
     <Page Remove="Deprecated\W_PackMeRes.xaml" />
     <Page Remove="IHM\W_Games.xaml" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Deprecated\LaunchBocDeprecated.cs" />
     <None Include="Deprecated\W_PackMeRes.xaml.cs">
       <SubType>Code</SubType>
     </None>
@@ -75,7 +79,6 @@
   <ItemGroup>
     <None Include="Compression\ZipCompress.cs" />
     <None Include="Cont\LangCont.cs" />
-    <None Include="Deprecated\LaunchBocDeprecated.cs" />
     <None Include="Deprecated\W_PackMeRes.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
@@ -92,6 +95,19 @@
     <Resource Include="Resources\Refresh.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="IHM\W_PackMeRes.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="IHM\W_PackMeRes.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 
 </Project>

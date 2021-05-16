@@ -48,7 +48,7 @@ namespace Pack_My_Game.Files
         {
             string gamePath = Path.GetFullPath(applicationPath, launchboxPath);
 
-            List <Clone> clonestmp = new List<Clone>();
+            List<Clone> clonestmp = new List<Clone>();
 
             foreach (Clone c in clones)
             {
@@ -60,7 +60,7 @@ namespace Pack_My_Game.Files
                 }
 
                 // On cherche si c'est pas déjà présent dans clonestmp
-               // var kk = clonestmp.FirstOrDefault(x => c.ApplicationPath.Equals(x.ApplicationPath));
+                // var kk = clonestmp.FirstOrDefault(x => c.ApplicationPath.Equals(x.ApplicationPath));
                 if (clonestmp.FirstOrDefault(x => c.ApplicationPath.Equals(x.ApplicationPath)) != null)
                     continue;
 
@@ -111,6 +111,56 @@ namespace Pack_My_Game.Files
         }
             */
             return "";//2021 newDestFile;
+        }
+
+
+        /// <summary>
+        /// Récupère les mots importants d'une chaine
+        /// </summary>
+        /// <param name="searchString"></param>
+        /// <returns></returns>
+        internal static IEnumerable<string> GetDefiningWords(string searchString)
+        {
+            if (string.IsNullOrEmpty(searchString))
+                return null; 
+
+            searchString = searchString.Trim();
+
+            if (string.IsNullOrEmpty(searchString))
+                return null;
+
+            searchString = searchString.Replace('_', ' ');
+            searchString = searchString.Replace('-', ' ');
+
+            List<string> tmp = new List<string>();
+
+            foreach (string word in searchString.Split(' '))
+            {
+                if (
+                    // En
+                    word.ToLower().Equals("of") ||
+                    word.ToLower().Equals("the") ||
+                    word.ToLower().Equals("a") ||
+                    word.ToLower().Equals("in") ||
+                    word.ToLower().Equals("'n") ||
+                    // Fr
+                    word.ToLower().Equals("on") ||
+                    word.ToLower().Equals("un") ||
+                    word.ToLower().Equals("une") ||
+                    word.ToLower().Equals("le") ||
+                    word.ToLower().Equals("et") ||
+                    word.ToLower().Equals("la") ||
+                    word.ToLower().Equals("les") ||
+                    word.ToLower().Equals("l'") ||
+                    // Jap
+                    word.ToLower().Equals("no")
+                    )
+                    continue;
+
+                tmp.Add(word);
+            }
+
+            return tmp;
         }
     }
 

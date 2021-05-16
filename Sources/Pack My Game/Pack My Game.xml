@@ -426,6 +426,13 @@
             <param name="defFile">Nom de Fichier proposé</param>
             <remarks>Ne permet pas de stopper si on clot la fenêtre</remarks>
         </member>
+        <member name="M:Pack_My_Game.Files.FilesFunc.GetDefiningWords(System.String)">
+            <summary>
+            Récupère les mots importants d'une chaine
+            </summary>
+            <param name="searchString"></param>
+            <returns></returns>
+        </member>
         <member name="M:Pack_My_Game.Files.FoncSchem.MakeStruct(Pack_My_Game.Cont.Folder,System.String)">
             <summary>
             Write structure of folder
@@ -463,6 +470,24 @@
             <param name="sender"></param>
             <param name="location"></param>
             <param name="toSearch"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pack_My_Game.IHM.PackMe_IHM.LaunchBoxCore_Prev(System.String,Common_PMG.Container.ContPlatFolders,Common_PMG.Container.Game.GameDataCont)">
+            <summary>
+            Affiche en safe la fenêtre pré-copy
+            </summary>
+            <param name="gamePath"></param>
+            <param name="zePlatform"></param>
+            <param name="gdC"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pack_My_Game.IHM.PackMe_IHM.LaunchBoxCore_Recap(System.String,Common_PMG.Container.ContPlatFolders,Common_PMG.Container.Game.GameDataCont)">
+            <summary>
+            Affiche en safe la fenêtre de résultat
+            </summary>
+            <param name="rootFolder"></param>
+            <param name="platform"></param>
+            <param name="gdC"></param>
             <returns></returns>
         </member>
         <member name="M:Pack_My_Game.IHM.PackMe_IHM.ZipCompressFolder(AsyncProgress.I_AsyncSigD,System.Func{System.Object},System.String)">
@@ -590,6 +615,19 @@
             </summary>
         </member>
         <member name="M:Pack_My_Game.IHM.W_Info.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Pack_My_Game.IHM.W_PackMePrev">
+            <summary>
+            Logique d'interaction pour W_PackMeRes.xaml
+            </summary>
+            <summary>
+            W_PackMePrev
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.IHM.W_PackMePrev.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>
@@ -1059,10 +1097,189 @@
             <param name="defaultPlatformPath"></param>
             <returns></returns>
         </member>
-        <member name="P:Pack_My_Game.Models.M_PackMeRes.Platform">
+        <!-- Badly formed XML comment ignored for member "T:Pack_My_Game.Models.M_PackMe" -->
+        <member name="P:Pack_My_Game.Models.M_PackMe.SelectedCheatFile">
+            <summary>
+            Cheat code sélectionné
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Models.M_PackMe.SelectedManual">
+            <summary>
+            Manuel sélectionné
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Models.M_PackMe.SelectedMusic">
+            <summary>
+            Musique sélectionnée
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Models.M_PackMe.SelectedVideo">
+            <summary>
+            Vidéo sélectionnée
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Models.M_PackMe.CheatsCollection">
+            <summary>
+            Liste des cheats à copier
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Models.M_PackMe.GamesCollection">
+            <summary>
+            Liste des Jeux
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Models.M_PackMe.ManualsCollection">
+            <summary>
+            Liste des manuels
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Models.M_PackMe.MusicsCollection">
+            <summary>
+            Liste des musiques
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Models.M_PackMe.VideosCollection">
+            <summary>
+            Liste des vidéos
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Models.M_PackMe.GameDataC">
+            <summary>
+            GameDataCont de référence
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Models.M_PackMe.Platform">
             <summary>
             Contient les chemins de la plateforme
             </summary>
+        </member>
+        <member name="M:Pack_My_Game.Models.M_PackMe.#ctor(System.String,Common_PMG.Container.ContPlatFolders,Common_PMG.Container.Game.GameDataCont)">
+            <summary>
+            Constructeur obligatoire
+            </summary>
+            <param name="platform"></param>
+        </member>
+        <member name="M:Pack_My_Game.Models.M_PackMe.Init">
+            <summary>
+            Initialisation
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.Models.M_PackMe.OpenManual">
+            <summary>
+            Ouverture d'un manuel
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.Models.M_PackMe.OpenMusic">
+            <summary>
+            Ouverture d'une musique
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.Models.M_PackMe.OpenVideo">
+            <summary>
+            Ouverture d'une vidéo
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.Models.M_PackMe.OpenCheatInDefaultEditor">
+            <summary>
+            Ouverture d'un cheat code dans l'éditeur par défaut
+            </summary>
+        </member>
+        <member name="T:Pack_My_Game.Models.M_PackMePrev">
+            <summary>
+            Model de l'IHM de présentation des fichiers à copier
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Models.M_PackMePrev.EligibleManualSelected">
+            <summary>
+            Manuel suggéré selectionné
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Models.M_PackMePrev.EligibleMusicSelected">
+            <summary>
+            Musique suggérée sélectionnée
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Models.M_PackMePrev.EligibleVideoSelected">
+            <summary>
+            Vidéo suggérée sélectionnée
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Models.M_PackMePrev.WordsToSearch">
+            <summary>
+            Liste de mots à chercher dans chaque fichier
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Models.M_PackMePrev.EligibleManuals">
+            <summary>
+            Manuels trouvés par la recherche
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Models.M_PackMePrev.EligibleMusics">
+            <summary>
+            Musiques trouvées par la recherche
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Models.M_PackMePrev.EligibleVideos">
+            <summary>
+            Vidéos trouvées par la recherche
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.Models.M_PackMePrev.MakeCollection(System.Collections.Generic.IEnumerable{Common_PMG.Container.DataRep},System.Collections.ObjectModel.ObservableCollection{Common_PMG.Container.DataRep},System.String)">
+            <summary>
+            Initialize une collection avec une copie modifiée des datareps pour montrer l'arborescence dans le nom
+            </summary>
+            <param name="srcCollected"></param>
+            <param name="targetedCollec"></param>
+            <param name="mediatype"></param>
+        </member>
+        <member name="M:Pack_My_Game.Models.M_PackMePrev.MakeCollection(System.Collections.Generic.IEnumerable{Common_PMG.Container.DataPlus},System.Collections.ObjectModel.ObservableCollection{Common_PMG.Container.DataPlus},System.String)">
+            <summary>
+            Initialize une collection avec une copie modifiée des datareps pour montrer l'arborescence dans le nom
+            </summary>
+            <param name="srcCollected"></param>
+            <param name="targetedCollec"></param>
+            <param name="mediatype"></param>
+        </member>
+        <member name="M:Pack_My_Game.Models.M_PackMePrev.AddManual">
+            <summary>
+            Ajoute un manuel à la liste à copier
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.Models.M_PackMePrev.RemoveManual">
+            <summary>
+            Enlève un manuel de la liste à copier
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.Models.M_PackMePrev.RemoveMusic">
+            <summary>
+            Enlève une musique de la liste à copier
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.Models.M_PackMePrev.RemoveVideo">
+            <summary>
+            Enlève une vidéo de la liste à copier
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.Models.M_PackMeRes.Init">
+            <summary>
+            Ajoute les fichiers par défaut et charge les fichiers dans les dossiers
+            </summary>
+        </member>
+        <member name="M:Pack_My_Game.Models.M_PackMeRes.MakeCollection(System.Collections.Generic.IEnumerable{Common_PMG.Container.DataRep},System.Collections.ObjectModel.ObservableCollection{Common_PMG.Container.DataRep},System.String)">
+            <summary>
+            Initialize une collection avec une copie modifiée des datareps pour montrer l'arborescence dans le nom
+            </summary>
+            <param name="srcCollected"></param>
+            <param name="targetedCollec"></param>
+            <param name="mediatype"></param>
+        </member>
+        <member name="M:Pack_My_Game.Models.M_PackMeRes.MakeCollection(System.Collections.Generic.IEnumerable{Common_PMG.Container.DataPlus},System.Collections.ObjectModel.ObservableCollection{Common_PMG.Container.DataPlus},System.String)">
+            <summary>
+            Initialize une collection avec une copie modifiée des datareps pour montrer l'arborescence dans le nom
+            </summary>
+            <param name="srcCollected"></param>
+            <param name="targetedCollec"></param>
+            <param name="mediatype"></param>
         </member>
         <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
             <summary>
