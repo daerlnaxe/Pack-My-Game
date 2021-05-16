@@ -107,8 +107,6 @@ namespace Pack_My_Game.Language
                     }
             }
 
-
-
             // Vérifie si le fichier existe et est à jour, sinon fait le nécessaire
             static void CheckFile(string appFolder, string langName)
             {

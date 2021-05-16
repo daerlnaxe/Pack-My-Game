@@ -224,11 +224,67 @@
         </member>
         <member name="T:Pack_My_Game.Core.LaunchBoxCore">
             <summary>
+            Find files
+            </summary>
+            <summary>
             
             </summary>
             <remarks>
             Dans la mesure du possible on n'utilise pas LBGame, on va copier directement le xml
             </remarks>
+        </member>
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.GetFiles(Common_PMG.Container.Game.LaunchBox.LBGame,Common_PMG.Container.Game.GameDataCont)">
+            <summary>
+            Récupère tous les fichiers en fonction du LBGame, ainsi que des dossiers de la plateforme
+            </summary>
+            <param name="lbGame"></param>
+            <param name="gpX"></param>
+        </member>
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.GetFilesForGames(Common_PMG.Container.Game.LaunchBox.LBGame)">
+            <summary>
+            
+            </summary>
+            <param name="applicationPath"></param>
+            <param name="applications"></param>
+            <returns>Le fichier sélectionné</returns>
+        </member>
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.GetImagesFiles(Common_PMG.Container.Game.LaunchBox.LBGame,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Récupère les images
+            </summary>
+            <param name="possibilities">Possibilités de nom des fichiers</param>
+            <param name="lbGame"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.GetBasicPossibilities(System.String,System.String)">
+            <summary>
+            Récupère les possibilités de nom d'un fichier (niveau basique)
+            </summary>
+            <param name="id"></param>
+            <param name="title"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.GetFileForSpecifics(System.String,System.String)">
+            <summary>
+            Fait les vérifications nécessaires avant de renvoyer le lien d'un fichier entré dans la db
+            </summary>
+            <param name="dbGamePath"></param>
+            <returns>
+            Vérifie et retourne le fichier sélectionné
+            </returns>
+        </member>
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.GetMoreFiles(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Interface avec predict pour récupérer le bon dossier
+            </summary>
+            <param name="mediatype"></param>
+            <param name="titleElements"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.GetFilesByPredict(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.String)">
+            <summary>
+            Récupère les fichiers par "prédiction"
+            </summary>
         </member>
         <member name="P:Pack_My_Game.Core.LaunchBoxCore._SelectedGames">
             <summary>
@@ -313,51 +369,12 @@
             <param name="root"></param>
             <returns></returns>
         </member>
-        <member name="M:Pack_My_Game.Core.LaunchBoxCore.GetFiles(Common_PMG.Container.Game.LaunchBox.LBGame,Common_PMG.Container.Game.GameDataCont)">
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.SplitTitle(System.String)">
             <summary>
-            Récupère tous les fichiers en fonction du LBGame, ainsi que des dossiers de la plateforme
+            Renvoie les possibilités à chercher
             </summary>
-            <param name="lbGame"></param>
-            <param name="gpX"></param>
-        </member>
-        <member name="M:Pack_My_Game.Core.LaunchBoxCore.GetFilesForGames(Common_PMG.Container.Game.LaunchBox.LBGame)">
-            <summary>
-            
-            </summary>
-            <param name="applicationPath"></param>
-            <param name="applications"></param>
-            <returns>Le fichier sélectionné</returns>
-        </member>
-        <member name="M:Pack_My_Game.Core.LaunchBoxCore.GetCheatCodes(System.String)">
-            <summary>
-            
-            </summary>
-            <param name="toSearch"></param>
-            <param name="compCheatCodes"></param>
-        </member>
-        <member name="M:Pack_My_Game.Core.LaunchBoxCore.GetFileForSpecifics(System.String)">
-            <summary>
-            
-            </summary>
-            <param name="dbGamePath"></param>
-            <returns>
-            Vérifie et retourne le fichier sélectionné
-            </returns>
-        </member>
-        <member name="M:Pack_My_Game.Core.LaunchBoxCore.GetClones(Common_PMG.Container.Game.LaunchBox.LBGame,Common_PMG.Container.Game.GameDataCont)">
-            <summary>
-            
-            </summary>
-            <param name="lbGame"></param>
-            <param name="applications"></param>
-            <remarks>
-            Test l'existance avant
-            </remarks>
-        </member>
-        <member name="M:Pack_My_Game.Core.LaunchBoxCore.GetFilesByPredict(System.String,System.String,System.String)">
-            <summary>
-            Récupère les fichiers par "prédiction"
-            </summary>
+            <param name="gameTitle"></param>
+            <returns></returns>
         </member>
         <member name="M:Pack_My_Game.Core.LaunchBoxCore.CreateHFolders(Pack_My_Game.Cont.Folder,System.String[])">
             <summary>
@@ -366,14 +383,14 @@
             <param name="tree"></param>
             <param name="folders"></param>
         </member>
-        <member name="M:Pack_My_Game.Core.LaunchBoxCore.Compress_ZipMode(System.String,System.String)">
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.Compress_ZipMode(System.String)">
             <summary>
             
             </summary>
             <param name="gamePath"></param>
             <param name="title">Tite du jeu</param>
         </member>
-        <member name="M:Pack_My_Game.Core.LaunchBoxCore.Compress_7ZipMode(System.String,System.String)">
+        <member name="M:Pack_My_Game.Core.LaunchBoxCore.Compress_7ZipMode(System.String)">
             <summary>
             
             </summary>
@@ -1045,6 +1062,36 @@
         <member name="P:Pack_My_Game.Models.M_PackMeRes.Platform">
             <summary>
             Contient les chemins de la plateforme
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
             </summary>
         </member>
     </members>

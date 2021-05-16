@@ -84,32 +84,6 @@ namespace Pack_My_Game.Compression
 
             ArchiveLink = Path.Combine(DestinationFolder, $"{archiveDest}.zip");
 
-            // Verification
-            if (File.Exists(ArchiveLink))
-            {
-                //var res = MessageBox.Show(", do you want to delete it or abort ?", "ok", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                ////var res = MB_Decision.Show("Zip File Exists for this game", "Alert", destination: zipName, buttons: MB_Decision.Mode.NoStop);
-                ////if (res == MB_Decision.Result.Pass)
-                ////{
-                ////    //MessageBox.Show("Zip Compression Aborted", "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                ////    return false;
-                ////}
-                ////else if (res == MB_Decision.Result.Trash)
-                ////{
-                ////    // Move to Recycle.Bin
-                ////    try
-                ////    {
-                ////        FileSystem.DeleteDirectory(zipName, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
-                ////    }
-                ////    catch (Exception e)
-                ////    {
-                ////        Debug.WriteLine(e.Message);
-                ////    }
-                ////}
-            }
-
-
             while (true)    // Le while est là pour essayer de régler un problème au lieu de simplement stopper
             {
                 try
@@ -131,6 +105,8 @@ namespace Pack_My_Game.Compression
                         //Task.Run(() => zipFile.Save(zipName));
                         zipFile.AddDirectory(folder);
                         zipFile.Save(ArchiveLink);
+
+                        UpdateStatus?.Invoke(this, new StateArg("Zip Compression Achieved"));
                     }
 
                     return true;

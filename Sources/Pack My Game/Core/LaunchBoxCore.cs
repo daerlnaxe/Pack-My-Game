@@ -175,7 +175,7 @@ namespace Pack_My_Game.Core
 
             #endregion
 
-            _XMLPlatformFile = Path.Combine(Config.HLaunchBoxPath , Config.PlatformsFolder, $"{platformName}.xml");
+            _XMLPlatformFile = Path.Combine(Config.HLaunchBoxPath, Config.PlatformsFolder, $"{platformName}.xml");
             _ZePlatform = XML_Platforms.GetPlatformPaths(Path.Combine(Config.HLaunchBoxPath, Config.PlatformsFile), platformName);
 
 
@@ -443,18 +443,15 @@ namespace Pack_My_Game.Core
                         i++;
                     }
 
-            //string destArchLink = Path.Combine(path, $"{destArchive}");
-            //string destArchLink = Path.Combine(path, gnWindows.ChoosenGameName);
+            gamePath = destFolder;
 
-            // On verra si on dissocie un jour 
-            //shGame.ExploitableFileName = destFolder;
             #endregion
 
             #region Compression
             // Zip
             if (Config.ZipCompression)
             {
-                Compress_ZipMode(gamePath, shGame.Title);
+                Compress_ZipMode(gamePath);
             }
             else
             {
@@ -464,7 +461,7 @@ namespace Pack_My_Game.Core
             // 7zip
             if (Config.SevZipCompression)
             {
-                Compress_7ZipMode(gamePath, shGame.Title);
+                Compress_7ZipMode(gamePath);
             }
             else
             {
@@ -552,286 +549,92 @@ namespace Pack_My_Game.Core
 
         #region Get Files
 
-        /// <summary>
-        /// Récupère tous les fichiers en fonction du LBGame, ainsi que des dossiers de la plateforme
-        /// </summary>
-        /// <param name="lbGame"></param>
-        /// <param name="gpX"></param>
-        private void GetFiles(LBGame lbGame, GameDataCont gdC)
-        {
-            HeTrace.WriteLine($"[GetFiles]", this);
-
-            // 2021 - Formatage de la chaine pour éviter les erreurs
-            string toSearch = lbGame.Title.Replace(':', '_').Replace('\'', '_').Replace("__", "_");
-
-            // Jeu principal + Clones
-            gdC.SetApplications = GetFilesForGames(lbGame);
-
-            // CheatCodes
-            gdC.SetSCheatCodes = GetCheatCodes(toSearch);
-
-            // Manuels
-            gdC.SetDefaultManual = GetFileForSpecifics(lbGame.ManualPath);
-            gdC.AddSManuals = GetMoreFiles("Manual", toSearch);
-
-            // Musics 
-            gdC.SetDefaultMusic = GetFileForSpecifics(lbGame.MusicPath);
-            gdC.AddSMusics = GetMoreFiles("Music", toSearch);
-
-            // Videos
-            gdC.SetDefaultVideo = GetFileForSpecifics(lbGame.VideoPath);
-            gdC.SetDefaultThemeVideo = GetFileForSpecifics(lbGame.ThemeVideoPath);
-            gdC.AddSVideos = GetMoreFiles("Video", toSearch);
-
-            //GetMoreFiles(toSearch, gpX.CompVideos, "Video", gpX.VideoPath, gpX.ThemeVideoPath);
-
-            // Images
-            gdC.Images = GetImagesFiles(lbGame, toSearch/*, gpX.Images*/);
-
-
-        }
+     
 
         /// <summary>
-        /// 
+        /// Renvoie les possibilités à chercher
         /// </summary>
-        /// <param name="applicationPath"></param>
-        /// <param name="applications"></param>
-        /// <returns>Le fichier sélectionné</returns>
-        private ICollection<DataPlus> GetFilesForGames(LBGame lbGame)
+        /// <param name="gameTitle"></param>
+        /// <returns></returns>
+        private IEnumerable<string> SplitTitle(string gameTitle)
         {
-            List<DataPlus> games = new List<DataPlus>();
+            List<string> words = new List<string>();
+            if (
+                gameTitle.StartsWith("The ", StringComparison.OrdinalIgnoreCase) ||
+                gameTitle.StartsWith("Les ", StringComparison.OrdinalIgnoreCase)
+                )
+                gameTitle = gameTitle.Substring(4);
+            else if (
+                gameTitle.StartsWith("Le ", StringComparison.OrdinalIgnoreCase) ||
+                gameTitle.StartsWith("La ", StringComparison.OrdinalIgnoreCase)
+                )
+                gameTitle = gameTitle.Substring(3);
+            else if (gameTitle.StartsWith("A ", StringComparison.OrdinalIgnoreCase))
+                gameTitle = gameTitle.Substring(2);
 
-            HeTrace.WriteLine($"\t[GetFilesForGames]", this);
 
-            if (string.IsNullOrEmpty(lbGame.ApplicationPath))
-                throw new ArgumentNullException("[GetFiles] Folder of application path is empty");
+            string tmp = gameTitle
+                            /*.Replace(" the ", "|", StringComparison.OrdinalIgnoreCase)
+                            .Replace(" of ", "|", StringComparison.OrdinalIgnoreCase)
+                            .Replace(" a ", "|", StringComparison.OrdinalIgnoreCase)
+                            .Replace(" le ", "|", StringComparison.OrdinalIgnoreCase)
+                            .Replace(" la ", "|", StringComparison.OrdinalIgnoreCase)
+                            .Replace(" les ", "|", StringComparison.OrdinalIgnoreCase)*/
+                            .Replace("  ", "|")
+                            .Replace("\'n", "|")
+                            .Replace("__", "|")
+                            .Replace(',', '|')
+                            .Replace(' ', '|')
+                            .Replace('_', '|')
+                            .Replace('-', '|')
+                            .Replace(':', '|')
+                            .Replace('\'', '|');
 
-            string extension = Path.GetExtension(lbGame.ApplicationPath);
-
-            // si aucune extension on ne pack pas le fichier
-            if (string.IsNullOrEmpty(extension))
-                throw new ArgumentNullException("[GetFiles] Extension of application is null");
-
-
-            // --- Cas des extensions cue
-            if (extension.Equals(".cue", StringComparison.OrdinalIgnoreCase))
+            foreach (string word in tmp.Split('|'))
             {
-                string srcFile = Path.GetFullPath(lbGame.ApplicationPath, Common.Config.HLaunchBoxPath);
-
-                //Lecture du fichier cue
-                Cue_Scrapper cuecont = new Cue_Scrapper(srcFile);
-
-                //Folder containing files
-                string sourceFold = Path.GetDirectoryName(srcFile);
-
-                // Fonctionne avec le nom du fichier
-                foreach (string fileName in cuecont.Files)
-                {
-                    // Donne le lien complet vers le fichier
-                    games.Add(DataPlus.MakeNormal(Path.Combine(sourceFold, fileName)));
-                }
-            }
-
-            games.Add(DataPlus.MakeChosen(lbGame.Id, lbGame.Title, Path.GetFullPath(lbGame.ApplicationPath, Common.Config.HLaunchBoxPath)));
-
-
-
-            // ---  Récupération des clones
-            List<Clone> clones = XML_Games.ListClones(_XMLPlatformFile, "GameID", lbGame.Id).ToList();
-
-            // tri des doublons / filter duplicates
-            List<Clone> fClones = FilesFunc.DistinctClones(clones, lbGame.ApplicationPath, Common.Config.HLaunchBoxPath);
-
-
-            if (fClones.Any())
-            {
-                HeTrace.WriteLine($"\t[{nameof(GetClones)}] found: '{fClones.Count()}'", this);
-
-                foreach (Clone c in fClones)
-                {
-                    string path = Path.GetFullPath(c.ApplicationPath, Common.Config.HLaunchBoxPath);
-
-                    if (File.Exists(path))
-                        games.Add(DataPlus.MakeNormal(c.Id, Path.GetFileName(path), path));
-
-                }
-            }
-
-            return games;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="toSearch"></param>
-        /// <param name="compCheatCodes"></param>
-        private ICollection<string> GetCheatCodes(string toSearch)
-        {
-            if (string.IsNullOrEmpty(Config.HCCodesPath))
-                return new string[0];
-
-            string CCodesDir = Path.Combine(Config.HCCodesPath, _ZePlatform.Name);
-            if (!Directory.Exists(CCodesDir))
-            {
-                SetStatus(this, new StateArg($"Directory doesn't exist: '{CCodesDir}'", CancelFlag));
-                return new string[0];
-            }
-
-            return GetFilesByPredict(toSearch, CCodesDir, "CheatCodes");
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="dbGamePath"></param>
-        /// <returns>
-        /// Vérifie et retourne le fichier sélectionné
-        /// </returns>
-        private string GetFileForSpecifics(string dbGamePath)
-        {
-
-            // Si le fichier indiqué dans le fichier du jeu existe
-            if (!string.IsNullOrEmpty(dbGamePath))
-            {
-                HeTrace.WriteLine($"\t[{nameof(GetFileForSpecifics)}]");
-                string linkFile = Path.GetFullPath(dbGamePath, Common.Config.HLaunchBoxPath);
-                if (File.Exists(linkFile))
-                {
-                    return linkFile;
-                }
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="lbGame"></param>
-        /// <param name="applications"></param>
-        /// <remarks>
-        /// Test l'existance avant
-        /// </remarks>
-        private void GetClones(LBGame lbGame, GameDataCont gdC)
-        {
-
-        }
-
-        private List<string> GetMoreFiles(string mediatype, /*List<string> list,*/ string toSearch/*, params string[] fields*/)
-        {
-            // On récupère le dossier concerné par le média
-            PlatformFolder folder = _ZePlatform.PlatformFolders.First(
-                                            (x) => x.MediaType.Equals(mediatype, StringComparison.OrdinalIgnoreCase));
-
-            //List<string> filteredFiles = GetFilesByPredict(toSearch, folder.FolderPath, mediatype);
-            List<string> filteredFiles = GetFilesByPredict(toSearch, folder.FolderPath, mediatype);
-
-            /*
-            foreach (string f in filteredFiles)
-            {
-                // Evite de prendre en double ceux qui sont sélectionnés
-                if (fields.Contains(f))
+                if (string.IsNullOrEmpty(word))
                     continue;
 
-                HeTrace.WriteLine($"\t[GetMoreFiles] found: '{f}'", this);
-                GameDataCont.AddWVerif(f, files);
-            }*/
-            return filteredFiles;
+                words.Add(word);
+            }
+
+            return words;
         }
 
-        private List<DataRepExt> GetImagesFiles(LBGame lbGame, string toSearch/*, List<DataRepExt> images*/)
+        private Dictionary<string, string> FindPossibilities(LBGame game, IEnumerable<string> titleElements)
         {
-            //Queue<string> lPackFile = new Queue<string>();
-            List<DataRepExt> images = new List<DataRepExt>();
+            Dictionary<string, string> possibilities = new Dictionary<string, string>();
+            possibilities.Add("id", game.Id);
 
-            foreach (PlatformFolder plfmFolder in _ZePlatform.PlatformFolders)
+            int i = 1;
+            string sEmpty, sSpace, s8;
+            sEmpty = sSpace = s8 = string.Empty;
+            foreach (string element in titleElements)
             {
-                //filtre sur tout ce qui n'est pas image
-                switch (plfmFolder.MediaType)
+                sEmpty += element;
+                sSpace += $"{element} ";
+                s8 += $"{element}_";
+
+                if (i == 3)
                 {
-                    case "Manual":
-                    case "Music":
-                    case "Theme Video":
-                    case "Video":
-                        continue;
+                    possibilities.Add("3Empty", new string(sEmpty));
+                    possibilities.Add("3Space", new string(sSpace).TrimEnd(' '));
+                    possibilities.Add("3_", new string(s8).TrimEnd('_'));
                 }
-
-                string folder = Path.GetFullPath(plfmFolder.FolderPath, Common.Config.HLaunchBoxPath);
-                // Liste du contenu des dossiers
-                foreach (var fichier in Directory.EnumerateFiles(folder, "*.*", SearchOption.AllDirectories))
-                {
-                    string fileName = Path.GetFileName(fichier);
-
-                    if (
-                        !fileName.StartsWith($"{toSearch}-") &&
-                        !fileName.StartsWith($"{ lbGame.Title}.{ lbGame.Id}-"))
-                        continue;
-
-                    HeTrace.WriteLine($"\t[GetImages] Found '{fichier}' in '{folder}'");
-
-                    DataRepExt tmp = new DataRepExt(plfmFolder.MediaType, fichier);
-
-                    //   lPackFile.Enqueue(fichier);
-                    images.Add(tmp);
-                }
+                i++;
             }
 
-            return images;
+            possibilities.Add("FullEmpty", sEmpty);
+            possibilities.Add("FullSpace", sSpace.TrimEnd(' '));
+            possibilities.Add("Full_", s8.TrimEnd('_'));
+
+            return possibilities;
         }
 
 
-        /// <summary>
-        /// Récupère les fichiers par "prédiction"
-        /// </summary>
-        internal List<string> GetFilesByPredict(string toSearch, string folder, string mediatype)
-        {
 
-            // array of files with a part of the name
-            string[] files = Directory.GetFiles(Path.GetFullPath(folder, Common.Config.HLaunchBoxPath), $"{toSearch}*.*", SearchOption.AllDirectories);
 
-            #region processing on files found
-            // bypass - 
-            string[] bypass = new string[] { "-", " -" };
-
-            List<string> filteredFiles = new List<string>();
-            foreach (string fichier in files)
-            {
-                string filename = Path.GetFileNameWithoutExtension(fichier);
-                // Test if total match
-                if (filename.Equals(toSearch))
-                {
-                    // On ajoute à la liste des checkbox
-                    filteredFiles.Add(fichier);
-                }
-                //Test if match with bypass
-                else
-                {
-                    // On test avec chaque bypass
-                    foreach (var b in bypass)
-                    {
-                        if (filename.StartsWith(toSearch + b))
-                        {
-                            // On ajoute à la liste des checkbox
-                            filteredFiles.Add(fichier);
-                            break;
-                        }
-                    }
-                }
-            }
-
-            if (filteredFiles.Count <= 0)
-            {
-                SafeBoxes.Dispatch_Mbox(this, 
-                    $"{LanguageManager.Instance.Lang.S_SearchFor} {mediatype}: 0 {LanguageManager.Instance.Lang.Word_Result}",
-                    $"{LanguageManager.Instance.Lang.S_SearchFor} { mediatype}",
-                    E_DxButtons.Ok);
-            }
-            else
-            {
-                //filteredFiles = PackMe_IHM.Validate_FilesFound(filteredFiles, mediatype).ToList();
-            }
-
-            return filteredFiles;
-        }
+   
 
         #endregion
 
@@ -845,7 +648,7 @@ namespace Pack_My_Game.Core
 
             // protection
             if (mediatype == "CheatCode" && string.IsNullOrEmpty(Config.HCCodesPath))
-                return;           
+                return;
 
 
 
@@ -955,7 +758,7 @@ namespace Pack_My_Game.Core
 
         #endregion
 
-
+        #region copy
         private GamePaths MakeGamePaths(LBGame lbGame, GameDataCont gdC, Folder tree)
         {
             GamePaths gpX = GamePaths.CreateBasic(lbGame);
@@ -1068,8 +871,32 @@ namespace Pack_My_Game.Core
         /// </summary>
         /// <param name="gamePath"></param>
         /// <param name="title">Tite du jeu</param>
-        private void Compress_ZipMode(string gamePath, string title)
+        private void Compress_ZipMode(string gamePath)
         {
+            var archiveLink = Path.Combine(_SystemPath, $"{Path.GetFileName(gamePath)}.zip");
+            if (File.Exists(archiveLink))
+            {
+                var Length = DxLocalTransf.Tools.FileSizeFormatter.Convert(new FileInfo(archiveLink).Length);
+                var resConflict = SafeBoxes.Ask4_DestConflict
+                    (
+                        LanguageManager.Instance.Lang.File_Ex, archiveLink, Length,
+                        E_DxConfB.OverWrite | E_DxConfB.Trash
+                    );
+
+                switch (resConflict)
+                {
+                    case E_Decision.OverWriteAll:
+                    case E_Decision.OverWrite:
+                        File.Delete(archiveLink);
+                        break;
+                    case E_Decision.Trash:
+                    case E_Decision.TrashAll:
+                        OpDFiles.Trash(archiveLink);
+                        break;
+                }
+            }
+
+
             ZipCompression zippy = new ZipCompression(_SystemPath)
             {
                 IsPaused = this.IsPaused,
@@ -1079,12 +906,12 @@ namespace Pack_My_Game.Core
             zippy.UpdateProgressT += this.SetProgress;
             zippy.UpdateStatus += this.SetStatus;
             zippy.MaximumProgressT += this.SetMaximum;*/
-            zippy.UpdateStatus += (x,y)=> HeTrace.WriteLine(y.Message);
+            zippy.UpdateStatus += (x, y) => HeTrace.WriteLine(y.Message);
 
-            
+
 
             var res = PackMe_IHM.ZipCompressFolder(zippy, () => zippy.CompressFolder(
-                                         gamePath, title, Config.ZipLvlCompression), "Compression Zip");
+                                         gamePath, Path.GetFileName(gamePath), Config.ZipLvlCompression), "Compression Zip");
 
             //ZipCompression.CompressFolder(gamePath, Path.Combine(_SystemPath, shGame.ExploitableFileName), PS.Default.c7zCompLvl);
             if (res != true)
@@ -1114,8 +941,31 @@ namespace Pack_My_Game.Core
         /// </summary>
         /// <param name="gamePath"></param>
         /// <param name="title">Titre du jeu</param>
-        private void Compress_7ZipMode(string gamePath, string title)
+        private void Compress_7ZipMode(string gamePath)
         {
+            var archiveLink = Path.Combine(_SystemPath, $"{Path.GetFileName(gamePath)}.7z");
+            if (File.Exists(archiveLink))
+            {
+                var Length = DxLocalTransf.Tools.FileSizeFormatter.Convert(new FileInfo(archiveLink).Length);
+                var resConflict = SafeBoxes.Ask4_DestConflict
+                    (
+                        LanguageManager.Instance.Lang.File_Ex, archiveLink, Length,
+                        E_DxConfB.OverWrite | E_DxConfB.Trash
+                    );
+
+                switch (resConflict)
+                {
+                    case E_Decision.OverWriteAll:
+                    case E_Decision.OverWrite:
+                        File.Delete(archiveLink);
+                        break;
+                    case E_Decision.Trash:
+                    case E_Decision.TrashAll:
+                        OpDFiles.Trash(archiveLink);
+                        break;
+                }
+            }
+
             SevenZipCompression sevZippy = new SevenZipCompression(_SystemPath)
             {
                 IsPaused = this.IsPaused,
@@ -1125,7 +975,7 @@ namespace Pack_My_Game.Core
 
 
             var res = (bool?)PackMe_IHM.ZipCompressFolder(sevZippy, () => sevZippy.CompressFolder(
-                                    gamePath, title, Config.SevZipLvlCompression), "Compression 7z");
+                                    gamePath, Path.GetFileName(gamePath), Config.SevZipLvlCompression), "Compression 7z");
 
             if (res != true)
                 return;

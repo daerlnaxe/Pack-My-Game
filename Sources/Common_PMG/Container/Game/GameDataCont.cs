@@ -192,9 +192,9 @@ namespace Common_PMG.Container.Game
                 if (value != null)
 
                     foreach (var f in value)
-                {
-                    AddWVerif(f, CheatCodes);
-                }
+                    {
+                        AddWVerif(f, CheatCodes);
+                    }
             }
         }
 
@@ -233,7 +233,7 @@ namespace Common_PMG.Container.Game
                 }
             }
         }
-      
+
         /// <summary>
         /// Add Manuals (no clear)
         /// </summary>
@@ -241,10 +241,11 @@ namespace Common_PMG.Container.Game
         {
             set
             {
-                foreach (var f in value)
-                {
-                    AddWVerif(f, _Manuals);
-                }
+                if (value != null)
+                    foreach (var f in value)
+                    {
+                        AddWVerif(f, _Manuals);
+                    }
             }
         }
 
@@ -270,15 +271,16 @@ namespace Common_PMG.Container.Game
                 }
             }
         }
-       
+
         public ICollection<string> AddSMusics
         {
             set
             {
-                foreach (var f in value)
-                {
-                    AddWVerif(f, Musics);
-                }
+                if (value != null)
+                    foreach (var f in value)
+                    {
+                        AddWVerif(f, Musics);
+                    }
             }
         }
 
@@ -316,10 +318,11 @@ namespace Common_PMG.Container.Game
         {
             set
             {
-                foreach (var f in value)
-                {
-                    AddWVerif(f, Videos);
-                }
+                if (value != null)
+                    foreach (var f in value)
+                    {
+                        AddWVerif(f, Videos);
+                    }
             }
         }
 

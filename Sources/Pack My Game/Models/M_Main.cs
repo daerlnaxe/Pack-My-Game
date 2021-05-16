@@ -325,9 +325,9 @@ namespace Pack_My_Game.Models
                         AvailableGames.Remove(sgame);
                         sgame.IsSelected = false;
                     }
+                    SelectedGames.Clear();
                 }
 
-                SelectedGames.Clear();
             }
 
             // traiter pour retirer ce qui est traité? voir etc etc

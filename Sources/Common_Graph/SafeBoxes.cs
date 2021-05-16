@@ -8,6 +8,7 @@ using System.Windows.Media;
 using AsyncProgress;
 using AsyncProgress.Tools;
 using DxTBoxCore.Box_Progress;
+using DxLocalTransf;
 
 namespace Common_Graph
 {
@@ -26,7 +27,7 @@ namespace Common_Graph
             return res;
         }
 
-        public static bool? ShowStatus(string message, string title, Dictionary<string, bool?> states, string trueC = "#FF60DC32",  string falseC = "#FFFF2323", string nullC = "#FFFFFFFF", E_DxButtons buttons = E_DxButtons.Yes | E_DxButtons.No)
+        public static bool? ShowStatus(string message, string title, Dictionary<string, bool?> states, string trueC = "#FF60DC32", string falseC = "#FFFF2323", string nullC = "#FFFFFFFF", E_DxButtons buttons = E_DxButtons.Yes | E_DxButtons.No)
         {
             return Application.Current.Dispatcher?.Invoke
                 (
@@ -72,6 +73,39 @@ namespace Common_Graph
                     }
                 ); ;
 
+        }
+
+        /// <summary>
+        /// Show a window to ask what to do when there is a conflict 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="target"></param>
+        /// <param name="buttons"></param>
+        /// <returns></returns>
+        public static E_Decision? Ask4_DestConflict(string message, string target, string infoSup, E_DxConfB buttons)
+        {
+
+            return Application.Current.Dispatcher?.Invoke
+                (
+                    () =>
+                    {
+                        DxTBoxCore.Box_Decisions.MBDecision boxDeciz = new DxTBoxCore.Box_Decisions.MBDecision()
+                        {
+                            Model = new DxTBoxCore.Box_Decisions.M_Decision()
+                            {
+                                Message = message,
+                                Destination = target,
+                                DestInfo = infoSup,
+                            },
+                            Buttons = buttons,
+                        };
+
+                        boxDeciz.ShowDialog();
+
+                        return boxDeciz.Model.Decision;
+
+                    }
+                );
         }
 
     }

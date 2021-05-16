@@ -44,7 +44,7 @@ namespace Pack_My_Game.IHM
                 (
                     () =>
                     {
-                        DxTBoxCore.Box_Decisions.MBDecision boxDeciz = new DxTBoxCore.Box_Decisions.MBDecision()
+                        DxTBoxCore.Box_Decisions.MBDecisionD boxDeciz = new DxTBoxCore.Box_Decisions.MBDecisionD()
                         {
                             Model = new DxTBoxCore.Box_Decisions.M_Decision()
                             {
@@ -133,7 +133,7 @@ namespace Pack_My_Game.IHM
                         {
                             GameName = exploitableFileName,
                             ArchiveName = exploitableFileName,
-                            Message =LanguageManager.Instance.Lang.S_GiveArchName,
+                            Message = LanguageManager.Instance.Lang.S_GiveArchName,
                         }
                     };
 
@@ -226,7 +226,7 @@ namespace Pack_My_Game.IHM
                     {
                         EphemProgressD ephem = new EphemProgressD(objet)
                         {
-                             TaskName = title,
+                            TaskName = title,
                         };
 
                         TasksLauncher launcher = new TasksLauncher()

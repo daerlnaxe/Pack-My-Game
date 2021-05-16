@@ -707,5 +707,126 @@ namespace Pack_My_Game.Core
             //this.UpdateProgress?.Invoke(100);
 
         }
+
+
+        /// <summary>
+        /// Récupère les fichiers par "prédiction"
+        /// </summary>
+        [Obsolete]
+        internal List<string> GetFilesByPredict(string toSearch, string folder, string mediatype)
+        {
+
+            // array of files with a part of the name
+            string[] files = Directory.GetFiles(Path.GetFullPath(folder, Common.Config.HLaunchBoxPath), $"{toSearch}*.*", SearchOption.AllDirectories);
+
+            #region processing on files found
+            // bypass - 
+            string[] bypass = new string[] { "-", " -" };
+
+            List<string> filteredFiles = new List<string>();
+            foreach (string fichier in files)
+            {
+                string filename = Path.GetFileNameWithoutExtension(fichier);
+                // Test if total match
+                if (filename.Equals(toSearch))
+                {
+                    // On ajoute à la liste des checkbox
+                    filteredFiles.Add(fichier);
+                }
+                //Test if match with bypass
+                else
+                {
+                    // On test avec chaque bypass
+                    foreach (var b in bypass)
+                    {
+                        if (filename.StartsWith(toSearch + b))
+                        {
+                            // On ajoute à la liste des checkbox
+                            filteredFiles.Add(fichier);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (filteredFiles.Count <= 0)
+            {
+                SafeBoxes.Dispatch_Mbox(this,
+                    $"{LanguageManager.Instance.Lang.S_SearchFor} {mediatype}: 0 {LanguageManager.Instance.Lang.Word_Result}",
+                    $"{LanguageManager.Instance.Lang.S_SearchFor} { mediatype}",
+                    E_DxButtons.Ok);
+            }
+            else
+            {
+                //filteredFiles = PackMe_IHM.Validate_FilesFound(filteredFiles, mediatype).ToList();
+            }
+
+            return filteredFiles;
+        }
+
+
+        /// <summary>
+        /// Récupère les fichiers CheatsCodes
+        /// </summary>
+        /// <param name="possibilities">Possibilités des noms de fichier</param>
+        /// <param name="compCheatCodes"></param>
+        [Obsolete]
+        private ICollection<string> GetCheatCodes(Dictionary<string, string> possibilities)
+        {
+            if (string.IsNullOrEmpty(Config.HCCodesPath))
+                return new string[0];
+
+            string CCodesDir = Path.Combine(Config.HCCodesPath, _ZePlatform.Name);
+            if (!Directory.Exists(CCodesDir))
+            {
+                SetStatus(this, new StateArg($"Directory doesn't exist: '{CCodesDir}'", CancelFlag));
+                return new string[0];
+            }
+
+            return GetFilesByPredict(possibilities, CCodesDir, "CheatCodes");
+        }
+
+
+
+        [Obsolete]
+        private List<DataRepExt> GetImagesFiles(LBGame lbGame, string toSearch/*, List<DataRepExt> images*/)
+        {
+            //Queue<string> lPackFile = new Queue<string>();
+            List<DataRepExt> images = new List<DataRepExt>();
+
+            foreach (PlatformFolder plfmFolder in _ZePlatform.PlatformFolders)
+            {
+                //filtre sur tout ce qui n'est pas image
+                switch (plfmFolder.MediaType)
+                {
+                    case "Manual":
+                    case "Music":
+                    case "Theme Video":
+                    case "Video":
+                        continue;
+                }
+
+                string folder = Path.GetFullPath(plfmFolder.FolderPath, Common.Config.HLaunchBoxPath);
+                // Liste du contenu des dossiers
+                foreach (var fichier in Directory.EnumerateFiles(folder, "*.*", SearchOption.AllDirectories))
+                {
+                    string fileName = Path.GetFileName(fichier);
+
+                    if (
+                        !fileName.StartsWith($"{toSearch}-") &&
+                        !fileName.StartsWith($"{ lbGame.Title}.{ lbGame.Id}-"))
+                        continue;
+
+                    HeTrace.WriteLine($"\t[GetImages] Found '{fichier}' in '{folder}'");
+
+                    DataRepExt tmp = new DataRepExt(plfmFolder.MediaType, fichier);
+
+                    //   lPackFile.Enqueue(fichier);
+                    images.Add(tmp);
+                }
+            }
+
+            return images;
+        }
     }
 }

@@ -428,7 +428,7 @@ namespace Pack_My_Game.Language
                 //
                 S_ArchiveName = "Nom d'archive",
 
-                S_EnterYourCC = "Entre vos cheats codes",
+                S_EnterYourCC = "Entrez vos codes de triche",
                 S_GameStatus = "Etat du jeu",
                 S_GameStatus4 = "Etat du jeu pour",
                 S_GameTitle = "Titre du jeu",

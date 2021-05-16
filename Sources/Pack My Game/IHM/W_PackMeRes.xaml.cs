@@ -153,14 +153,13 @@ namespace Pack_My_Game.IHM
 
         private void New_CheatF(object sender, RoutedEventArgs e)
         {
-            W_Cheat window = new W_Cheat(System.IO.Path.Combine(Model.Root, Common.CheatCodes), Model.GameName);
-            window.ShowDialog();
+            Model.NewCheatF();
         }
 
         private void Exec_OpenCheat(object sender, ExecutedRoutedEventArgs e)
         {
-            W_Cheat window = new W_Cheat(System.IO.Path.Combine(Model.Root, Common.CheatCodes), Model.GameName, Model.SelectedCheatFile.DestPath);
-            window.ShowDialog();
+            Model.OpenCheat();
+
         }
 
         private void Exec_RemoveCheat(object sender, ExecutedRoutedEventArgs e)

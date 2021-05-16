@@ -219,7 +219,7 @@
                                     <GridViewColumn >
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <CheckBox IsChecked="{Binding IsSelected}" Checked="Game_Checked" Unchecked="Game_Unchecked" Tag="{Binding}"/>
+                                                <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay}" Checked="Game_Checked" Unchecked="Game_Unchecked" Tag="{Binding}"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>

@@ -164,6 +164,8 @@ namespace Pack_My_Game.Models
             }
         }
 
+
+
         private void MakeCollection(IEnumerable<DataRep> srcCollected, ObservableCollection<DataRep> targetedCollec, string mediatype)
         {
             string pRoot = Path.Combine(Root, mediatype);
@@ -236,8 +238,6 @@ namespace Pack_My_Game.Models
             }*/
             #endregion
         }
-
-
 
         private void LoadVideos()
         {
@@ -567,7 +567,22 @@ namespace Pack_My_Game.Models
             }
         }
 
+        internal void NewCheatF()
+        {
+            W_Cheat window = new W_Cheat(System.IO.Path.Combine(Root, Common.CheatCodes), GameName);
+            if (window.ShowDialog() == true)
+            {
+                LoadCheatCodes();
+            }
+        }
+
         internal void OpenCheat()
+        {
+            W_Cheat window = new W_Cheat(Path.Combine(Root, Common.CheatCodes), GameName, SelectedCheatFile.DestPath);
+            window.ShowDialog();
+        }
+
+        internal void OpenCheatInDefaultEditor()
         {
             if (SelectedCheatFile != null)
                 return;
