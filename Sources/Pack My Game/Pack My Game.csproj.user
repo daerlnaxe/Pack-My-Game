@@ -24,6 +24,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Update="Deprecated\W_PackMeRes.xaml">
+      <SubType>Designer</SubType>
+    </None>
     <Page Update="IHM\W_Cheat.xaml">
       <SubType>Designer</SubType>
     </Page>

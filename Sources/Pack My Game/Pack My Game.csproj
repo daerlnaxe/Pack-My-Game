@@ -34,6 +34,7 @@
     <Compile Remove="Compression\ZipCompress.cs" />
     <Compile Remove="Cont\LangCont.cs" />
     <Compile Remove="Core\LaunchBocDeprecated.cs" />
+    <Compile Remove="Deprecated\W_PackMeRes.xaml.cs" />
     <Compile Remove="IHM\W_Games.xaml.cs" />
     <Compile Remove="Language\LangProvider.cs" />
     <Compile Remove="Models\A_Err.cs" />
@@ -45,7 +46,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="Deprecated\W_PackMeRes.xaml" />
     <Page Remove="IHM\W_Games.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Deprecated\W_PackMeRes.xaml.cs">
+      <SubType>Code</SubType>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -67,7 +75,12 @@
   <ItemGroup>
     <None Include="Compression\ZipCompress.cs" />
     <None Include="Cont\LangCont.cs" />
-    <None Include="Core\LaunchBocDeprecated.cs" />
+    <None Include="Deprecated\LaunchBocDeprecated.cs" />
+    <None Include="Deprecated\W_PackMeRes.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
     <None Include="IHM\W_Games.xaml" />
     <None Include="IHM\W_Games.xaml.cs" />
     <None Include="Language\LangProvider.cs" />

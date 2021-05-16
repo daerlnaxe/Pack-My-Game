@@ -19,7 +19,7 @@ using PS = Pack_My_Game.Properties.Settings;
 
 namespace Pack_My_Game.Core
 {
-    partial class LaunchBoxCore
+    partial class LaunchBoxCoreDeprecated
     {
 
 
