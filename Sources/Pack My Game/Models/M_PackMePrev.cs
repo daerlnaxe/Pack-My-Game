@@ -15,7 +15,7 @@ namespace Pack_My_Game.Models
     /// <summary>
     /// Model de l'IHM de présentation des fichiers à copier
     /// </summary>
-    public class M_PackMePrev: M_PackMe
+    public class M_PackMePrev : M_PackMe
     {
 
         #region Recherche
@@ -29,6 +29,11 @@ namespace Pack_My_Game.Models
                 OnPropertyChanged();
             }
         }
+
+        /// <summary>
+        /// Cheat suggéré selectionné
+        /// </summary>
+        public string EligibleCheatSelected { get; set; }
 
         /// <summary>
         /// Manuel suggéré selectionné
@@ -54,6 +59,11 @@ namespace Pack_My_Game.Models
         /// <summary>
         /// Manuels trouvés par la recherche
         /// </summary>
+        public ObservableCollection<string> EligibleCheats{ get; set; } = new ObservableCollection<string>();
+
+        /// <summary>
+        /// Manuels trouvés par la recherche
+        /// </summary>
         public ObservableCollection<string> EligibleManuals { get; set; } = new ObservableCollection<string>();
 
         /// <summary>
@@ -69,21 +79,21 @@ namespace Pack_My_Game.Models
 
         // ---
 
-        public M_PackMePrev(ContPlatFolders platform, GameDataCont gdC) :base(Config.HLaunchBoxPath, platform, gdC)
+        public M_PackMePrev(ContPlatFolders platform, GameDataCont gdC) : base(Config.HLaunchBoxPath, platform, gdC)
         {
             _GamesPath = Path.GetFullPath(Platform.FolderPath, Config.HLaunchBoxPath);
 
             _CheatsPath = Config.HCCodesPath;
 
-            var manTail = platform.PlatformFolders.First(x=>x.MediaType.Equals("Manual")).FolderPath;
+            var manTail = platform.PlatformFolders.First(x => x.MediaType.Equals("Manual")).FolderPath;
             if (!string.IsNullOrEmpty(manTail))
-                _ManualsPath = Path.GetFullPath(manTail, Config.HLaunchBoxPath );
+                _ManualsPath = Path.GetFullPath(manTail, Config.HLaunchBoxPath);
 
             var musTail = platform.PlatformFolders.First(x => x.MediaType.Equals("Music")).FolderPath;
             if (!string.IsNullOrEmpty(musTail))
                 _MusicsPath = Path.GetFullPath(musTail, Config.HLaunchBoxPath);
 
-            var vidTail = platform.PlatformFolders.First(x=> x.MediaType.Equals("Video")).FolderPath;
+            var vidTail = platform.PlatformFolders.First(x => x.MediaType.Equals("Video")).FolderPath;
             if (!string.IsNullOrEmpty(vidTail))
                 _VideosPath = Path.GetFullPath(vidTail, Config.HLaunchBoxPath);
 
@@ -91,9 +101,9 @@ namespace Pack_My_Game.Models
         }
 
         public override void Init()
-        { 
+        {
             // Création des collections (par rapport au changement de nom
-            MakeCollection(GameDataC.Applications, GamesCollection, _GamesPath );
+            MakeCollection(GameDataC.Applications, GamesCollection, _GamesPath);
             MakeCollection(GameDataC.CheatCodes, CheatsCollection, _CheatsPath);
             MakeCollection(GameDataC.Manuals, ManualsCollection, _ManualsPath);
             MakeCollection(GameDataC.Musics, MusicsCollection, _MusicsPath);
@@ -179,7 +189,7 @@ namespace Pack_My_Game.Models
         {
             WordsToSearch.Clear();
         }
-        internal void SearchFiles( )
+        internal void SearchFiles()
         {
             //SearchIn("");
             SearchIn("Manual", EligibleManuals, ManualsCollection);
@@ -216,13 +226,18 @@ namespace Pack_My_Game.Models
 
         internal void AddCheat()
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(EligibleCheatSelected))
+                return;
+
+            if (CheckCollection(CheatsCollection, EligibleCheatSelected))
+                return;
+
+            DataRep tmp = new DataRep(EligibleManualSelected);
+            tmp.Name = tmp.CurrentPath.Replace(_CheatsPath, ".");
+            CheatsCollection.Add(tmp);
+            EligibleCheats.Remove(EligibleCheatSelected);
         }
 
-        internal void RemoveCheat()
-        {
-            throw new NotImplementedException();
-        }
 
 
         /// <summary>
@@ -281,12 +296,18 @@ namespace Pack_My_Game.Models
 
         #region
 
+        internal void RemoveCheat()
+        {
+            CheatsCollection.Remove(SelectedCheatFile);
+        }
+
+
         /// <summary>
         /// Enlève un manuel de la liste à copier
         /// </summary>
         internal void RemoveManual()
         {
-            if(!SelectedManual.IsSelected)
+            if (!SelectedManual.IsSelected)
                 ManualsCollection.Remove(SelectedManual);
             else
                 DxMBox.ShowDial("Default file, you can't remove it for the while");

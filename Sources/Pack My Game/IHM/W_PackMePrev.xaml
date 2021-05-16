@@ -275,6 +275,8 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -286,15 +288,25 @@
                         <TextBlock Text="{Binding ChosenCheatF.Name, FallbackValue=Selected}"/>
                         -->
                         <!-- Liste -->
-                        <Label Content="{l:Langue Files_Found}" />
+                        <Label Content="{l:Langue Word_Suggested}" />
                         <ListView x:Name="lvCheats" Grid.Row="1" 
                             ItemsSource="{Binding CheatsCollection}" DisplayMemberPath="Name"
                             SelectedItem="{Binding SelectedCheatFile}" >
                             <ListView.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="{l:Langue Word_Add}" Click="Add_Cheat"/>
                                     <MenuItem Header="{l:Langue Word_Open}" Command="local:Commands.OpenCheatCmd"/>
                                     <MenuItem Header="{l:Langue Word_Delete}" Command="local:Commands.DeleteCheatCmd"/>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
+                        </ListView>
+                        <!-- Liste suggérés -->
+                        <Label Grid.Row="3" Content="{l:Langue Word_Suggested}" />
+                        <ListView Grid.Row="4" 
+                            ItemsSource="{Binding EligibleCheats}"
+                            SelectedItem="{Binding EligibleCheatSelected}">
+                            <ListView.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="{l:Langue Word_Add}" Click="Add_Cheat"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                         </ListView>
