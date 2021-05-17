@@ -14,7 +14,8 @@ namespace Pack_My_Game.IHM.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var link = (string)value;
-            if (link ==null)
+
+            if (string.IsNullOrEmpty(link))
                 return null;
 
             var width = 0;

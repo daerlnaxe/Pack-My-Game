@@ -350,12 +350,13 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Image x:Name="img" Source="{Binding}"                                                
+                                        <Image x:Name="img" Source="{Binding CurrentPath}"                                                
                                                Width="48" HorizontalAlignment="Left"
                                                Stretch="Uniform" StretchDirection="Both"  RenderOptions.BitmapScalingMode="HighQuality" />
                                         <StackPanel Grid.Column="1" Margin="10,0">
-                                            <TextBlock Text="{Binding Converter={StaticResource SizeToText }}" Margin="0,5"/>
-                                            <TextBlock Text="{Binding}" TextTrimming="CharacterEllipsis" ToolTip="{Binding}"/>
+                                            <TextBlock Text="{Binding Categorie}" HorizontalAlignment="Left"/>
+                                            <TextBlock Text="{Binding Name}"/>
+                                            <TextBlock Text="{Binding CurrentPath, Converter={StaticResource SizeToText }}" Margin="0,5"/>
                                         </StackPanel>
                                     </StackPanel>
                                 </DataTemplate>

@@ -61,7 +61,7 @@ namespace Pack_My_Game.IHM
 
         private void Exec_OpenEligImage(object sender, ExecutedRoutedEventArgs e)
         {
-            Model.OpenImage(Model.EligibleImageSelected);
+            Model.OpenImage(Model.EligibleImageSelected.CurrentPath);
         }
 
         private void Exec_OpenImage(object sender, ExecutedRoutedEventArgs e)
