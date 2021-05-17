@@ -1153,7 +1153,7 @@
             Contient les chemins de la plateforme
             </summary>
         </member>
-        <member name="M:Pack_My_Game.Models.M_PackMe.#ctor(System.String,Common_PMG.Container.ContPlatFolders,Common_PMG.Container.Game.GameDataCont)">
+        <member name="M:Pack_My_Game.Models.M_PackMe.#ctor(Common_PMG.Container.ContPlatFolders,Common_PMG.Container.Game.GameDataCont)">
             <summary>
             Constructeur obligatoire
             </summary>
@@ -1189,6 +1189,11 @@
             Model de l'IHM de présentation des fichiers à copier
             </summary>
         </member>
+        <member name="P:Pack_My_Game.Models.M_PackMePrev.EligibleCheatSelected">
+            <summary>
+            Cheat suggéré selectionné
+            </summary>
+        </member>
         <member name="P:Pack_My_Game.Models.M_PackMePrev.EligibleManualSelected">
             <summary>
             Manuel suggéré selectionné
@@ -1207,6 +1212,11 @@
         <member name="P:Pack_My_Game.Models.M_PackMePrev.WordsToSearch">
             <summary>
             Liste de mots à chercher dans chaque fichier
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Models.M_PackMePrev.EligibleCheats">
+            <summary>
+            Manuels trouvés par la recherche
             </summary>
         </member>
         <member name="P:Pack_My_Game.Models.M_PackMePrev.EligibleManuals">

@@ -32,19 +32,20 @@ namespace Pack_My_Game.Models
         // ---
         public string GameName { get; }
 
-
+        private string _Root;
 
         // ---
 
-        public M_PackMeRes(string root, ContPlatFolders platform, GameDataCont gdC) : base(root,platform, gdC)
+        public M_PackMeRes(string root, ContPlatFolders platform, GameDataCont gdC) : base(platform, gdC)
         {
             GameName = gdC.Title;
+            _Root = root;
 
-            _GamesPath = Path.Combine(Root, Common.Games);
-            _CheatsPath = Path.Combine(Root, Common.CheatCodes);
-            _ManualsPath = Path.Combine(Root, Common.Manuals);
-            _MusicsPath = Path.Combine(Root, Common.Musics);
-            _VideosPath = Path.Combine(Root, Common.Videos);
+            _GamesPath = Path.Combine(_Root, Common.Games);
+            _CheatsPath = Path.Combine(_Root, Common.CheatCodes);
+            _ManualsPath = Path.Combine(_Root, Common.Manuals);
+            _MusicsPath = Path.Combine(_Root, Common.Musics);
+            _VideosPath = Path.Combine(_Root, Common.Videos);
 
             Init();
         }
@@ -132,8 +133,7 @@ namespace Pack_My_Game.Models
 
         private void LoadManuals()
         {
-            string manualsPath = Path.Combine(Root, Common.Manuals);
-            LoadFiles2(manualsPath, ManualsCollection);
+            LoadFiles2( _ManualsPath, ManualsCollection);
             TestFiles(ManualsCollection, ChosenManual);
             #region
             /*foreach (string f in Directory.EnumerateFiles(manualsPath, "*.*", SearchOption.AllDirectories))
@@ -152,8 +152,7 @@ namespace Pack_My_Game.Models
 
         private void LoadMusics()
         {
-            string musicsPath = Path.Combine(Root, Common.Musics);
-            LoadFiles2(musicsPath, MusicsCollection);
+            LoadFiles2(_MusicsPath, MusicsCollection);
             TestFiles(MusicsCollection, ChosenMusic);
             #region
             /*
@@ -176,8 +175,7 @@ namespace Pack_My_Game.Models
 
         private void LoadVideos()
         {
-            string videosPath = Path.Combine(Root, Common.Videos);
-            LoadFiles2(videosPath, VideosCollection);
+            LoadFiles2(_VideosPath, VideosCollection);
             TestFiles(VideosCollection, ChosenVideo, ChosenThemeVideo);
 
             #region
@@ -200,7 +198,6 @@ namespace Pack_My_Game.Models
 
         internal void LoadCheatCodes()
         {
-            string cheatsPath = Path.Combine(Root, Common.CheatCodes);
             /*CheatsCollection.Clear();
             foreach (string f in Directory.EnumerateFiles(Path.Combine(Root, Common.CheatCodes), "*.*", SearchOption.TopDirectoryOnly))
             {
@@ -209,7 +206,7 @@ namespace Pack_My_Game.Models
                 dr.DestPath = f;
                 CheatsCollection.Add();
             }*/
-            LoadFiles2(cheatsPath, CheatsCollection);
+            LoadFiles2(_CheatsPath, CheatsCollection);
             TestFiles(CheatsCollection);
         }
 
@@ -382,7 +379,7 @@ namespace Pack_My_Game.Models
 
         internal void LoadFolder()
         {
-            Process.Start("explorer.exe", Root);
+            Process.Start("explorer.exe", $"\"{_Root}\"");
         }
 
         internal void RemoveManualF()
@@ -475,7 +472,7 @@ namespace Pack_My_Game.Models
 
         internal void NewCheatF()
         {
-            W_Cheat window = new W_Cheat(System.IO.Path.Combine(Root, Common.CheatCodes), GameName);
+            W_Cheat window = new W_Cheat(_CheatsPath, GameName);
             if (window.ShowDialog() == true)
             {
                 LoadCheatCodes();
@@ -484,7 +481,7 @@ namespace Pack_My_Game.Models
 
         internal void OpenCheat()
         {
-            W_Cheat window = new W_Cheat(Path.Combine(Root, Common.CheatCodes), GameName, SelectedCheatFile.DestPath);
+            W_Cheat window = new W_Cheat(_CheatsPath, GameName, SelectedCheatFile.DestPath);
             window.ShowDialog();
         }
 
@@ -519,7 +516,8 @@ namespace Pack_My_Game.Models
             };
             if (tc.ShowDialog() == true)
             {
-                string folderDest = Path.Combine(Root, subFolder);
+
+                string folderDest = Path.Combine(_Root, subFolder);
                 dr = DataTrans.MakeSrcnDest<DataRep>(tc.LinkResult, subFolder);
                 dr.Name = dr.DestPath.Replace(subFolder, ".");
 

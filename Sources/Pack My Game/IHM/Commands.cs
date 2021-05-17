@@ -27,13 +27,23 @@ namespace Pack_My_Game.IHM
 
 
         // --- Cheats
+        public static readonly RoutedUICommand AddCheatCmd =
+                new RoutedUICommand(Instance.Lang.Word_Add, "AddCheadCmd", typeof(Commands));
+
         public static readonly RoutedUICommand OpenCheatCmd =
                 new RoutedUICommand(Instance.Lang.Word_Open, "OpenCheatCmd", typeof(Commands));
 
         public static readonly RoutedUICommand DeleteCheatCmd =
                 new RoutedUICommand(Instance.Lang.Word_Delete, "DeleteCheatCmd", typeof(Commands));
 
+        // --- Jeux
+        public static readonly RoutedUICommand AddGameCmd =
+                new RoutedUICommand(Instance.Lang.Word_Add, "AddGameCmd", typeof(Commands));
+
         // --- Manuals
+        public static readonly RoutedUICommand AddManualCmd =
+        new RoutedUICommand(Instance.Lang.Word_Add, "AddManualCmd", typeof(Commands));
+
         public static readonly RoutedUICommand OpenManualCmd =
                 new RoutedUICommand(Instance.Lang.Word_Open, "OpenManualCmd", typeof(Commands));
 
@@ -41,13 +51,19 @@ namespace Pack_My_Game.IHM
                 new RoutedUICommand(Instance.Lang.Word_Delete, "DeleteManualCmd", typeof(Commands));
 
         // --- Musics
+        public static readonly RoutedUICommand AddMusicCmd =
+                new RoutedUICommand(Instance.Lang.Word_Add, "AddMusicCmd", typeof(Commands));
+
         public static readonly RoutedUICommand OpenMusicCmd =
                 new RoutedUICommand(Instance.Lang.Word_Open, "OpenMusicCmd", typeof(Commands));
 
         public static readonly RoutedUICommand DeleteMusicCmd =
                 new RoutedUICommand(Instance.Lang.Word_Delete, "DeleteMusicCmd", typeof(Commands));
-        
+
         // --- Videos
+        public static readonly RoutedUICommand AddVideoCmd =
+                new RoutedUICommand(Instance.Lang.Word_Add, "AddVideoCmd", typeof(Commands));
+
         public static readonly RoutedUICommand OpenVideoCmd =
                 new RoutedUICommand(Instance.Lang.Word_Open, "OpenVideoCmd", typeof(Commands));
 

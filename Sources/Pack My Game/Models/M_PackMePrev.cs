@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Media;
 using static Pack_My_Game.Common;
 
 namespace Pack_My_Game.Models
@@ -59,7 +60,7 @@ namespace Pack_My_Game.Models
         /// <summary>
         /// Manuels trouvés par la recherche
         /// </summary>
-        public ObservableCollection<string> EligibleCheats{ get; set; } = new ObservableCollection<string>();
+        public ObservableCollection<string> EligibleCheats { get; set; } = new ObservableCollection<string>();
 
         /// <summary>
         /// Manuels trouvés par la recherche
@@ -75,13 +76,72 @@ namespace Pack_My_Game.Models
         /// Vidéos trouvées par la recherche
         /// </summary>
         public ObservableCollection<string> EligibleVideos { get; set; } = new ObservableCollection<string>();
+        public int FilesFound => EligibleCheats.Count() + EligibleManuals.Count + EligibleMusics.Count() + EligibleVideos.Count();
+
         #endregion
 
+        #region Colors
+
+        
+        public Brush CheatsColor
+        {
+            get
+            {
+                if (EligibleCheats.Any())
+                    return Brushes.Blue;
+                else if (!CheatsCollection.Any())
+                    return Brushes.Red;
+                else
+                    return Brushes.Black;
+            }
+        }
+
+        public Brush ManualsColor
+        {
+            get
+            {
+                if (EligibleManuals.Any())
+                    return Brushes.Blue;
+                else if (!ManualsCollection.Any())
+                    return Brushes.Red;
+                else
+                    return Brushes.Black;
+            }
+        }
+
+        public Brush MusicsColor
+        {
+            get
+            {
+                if (EligibleMusics.Any())
+                    return Brushes.Blue;
+                else if (!MusicsCollection.Any())
+                    return Brushes.Red;
+                else
+                    return Brushes.Black;
+            }
+        }
+        public Brush VideosColor
+        {
+            get
+            {
+                if (EligibleVideos.Any())
+                    return Brushes.Blue;
+                else if (!VideosCollection.Any())
+                    return Brushes.Red;
+                else
+                    return Brushes.Black;
+            }
+        }
+        #endregion
         // ---
 
-        public M_PackMePrev(ContPlatFolders platform, GameDataCont gdC) : base(Config.HLaunchBoxPath, platform, gdC)
+        public M_PackMePrev(ContPlatFolders platform, GameDataCont gdC) : base(platform, gdC)
         {
-            _GamesPath = Path.GetFullPath(Platform.FolderPath, Config.HLaunchBoxPath);
+            if (string.IsNullOrEmpty(platform.FolderPath))
+                _GamesPath = Path.Combine(Config.HLaunchBoxPath, "Games", platform.Name);
+            else
+                _GamesPath = Path.GetFullPath(Platform.FolderPath, Config.HLaunchBoxPath);
 
             _CheatsPath = Config.HCCodesPath;
 
@@ -188,6 +248,10 @@ namespace Pack_My_Game.Models
         internal void ResetSearch()
         {
             WordsToSearch.Clear();
+            EligibleCheats.Clear();
+            EligibleManuals.Clear();
+            EligibleMusics.Clear();
+            EligibleVideos.Clear();
         }
         internal void SearchFiles()
         {
@@ -219,6 +283,11 @@ namespace Pack_My_Game.Models
                         collection.Add(f);
                 }
             }
+            OnPropertyChanged(nameof(FilesFound));
+            OnPropertyChanged(nameof(ManualsColor));
+            OnPropertyChanged(nameof(MusicsColor));
+            OnPropertyChanged(nameof(VideosColor));
+            OnPropertyChanged(nameof(CheatsColor));
 
         }
 
@@ -226,7 +295,7 @@ namespace Pack_My_Game.Models
 
         internal void AddCheat()
         {
-            if (string.IsNullOrEmpty(EligibleCheatSelected))
+            /*if (string.IsNullOrEmpty(EligibleCheatSelected))
                 return;
 
             if (CheckCollection(CheatsCollection, EligibleCheatSelected))
@@ -235,7 +304,9 @@ namespace Pack_My_Game.Models
             DataRep tmp = new DataRep(EligibleManualSelected);
             tmp.Name = tmp.CurrentPath.Replace(_CheatsPath, ".");
             CheatsCollection.Add(tmp);
-            EligibleCheats.Remove(EligibleCheatSelected);
+            EligibleCheats.Remove(EligibleCheatSelected);*/
+            AddBehavior(EligibleCheatSelected, _CheatsPath, CheatsCollection, EligibleCheats);
+            OnPropertyChanged(nameof(CheatsColor));
         }
 
 
@@ -245,7 +316,7 @@ namespace Pack_My_Game.Models
         /// </summary>
         internal void AddManual()
         {
-            if (string.IsNullOrEmpty(EligibleManualSelected))
+            /*if (string.IsNullOrEmpty(EligibleManualSelected))
                 return;
 
             if (CheckCollection(ManualsCollection, EligibleManualSelected))
@@ -254,12 +325,15 @@ namespace Pack_My_Game.Models
             DataRep tmp = new DataRep(EligibleManualSelected);
             tmp.Name = tmp.CurrentPath.Replace(_ManualsPath, ".");
             ManualsCollection.Add(tmp);
-            EligibleManuals.Remove(EligibleManualSelected);
+            EligibleManuals.Remove(EligibleManualSelected);*/
+            AddBehavior(EligibleManualSelected, _ManualsPath, ManualsCollection, EligibleManuals);
+            OnPropertyChanged(nameof(ManualsColor));
+
         }
 
         internal void AddMusic()
         {
-            if (string.IsNullOrEmpty(EligibleMusicSelected))
+            /*if (string.IsNullOrEmpty(EligibleMusicSelected))
                 return;
 
             if (CheckCollection(MusicsCollection, EligibleMusicSelected))
@@ -268,12 +342,14 @@ namespace Pack_My_Game.Models
             DataRep tmp = new DataRep(EligibleMusicSelected);
             tmp.Name = tmp.CurrentPath.Replace(_MusicsPath, ".");
             MusicsCollection.Add(tmp);
-            EligibleMusics.Remove(EligibleMusicSelected);
+            EligibleMusics.Remove(EligibleMusicSelected);*/
+            AddBehavior(EligibleMusicSelected, _MusicsPath, MusicsCollection, EligibleMusics);
+            OnPropertyChanged(nameof(MusicsColor));
         }
 
         internal void AddVideo()
         {
-            if (string.IsNullOrEmpty(EligibleVideoSelected))
+            /*if (string.IsNullOrEmpty(EligibleVideoSelected))
                 return;
 
             if (CheckCollection(VideosCollection, EligibleVideoSelected))
@@ -282,23 +358,34 @@ namespace Pack_My_Game.Models
             DataRep tmp = new DataRep(EligibleVideoSelected);
             tmp.Name = tmp.CurrentPath.Replace(_VideosPath, ".");
             VideosCollection.Add(tmp);
-            EligibleVideos.Remove(EligibleVideoSelected);
+            EligibleVideos.Remove(EligibleVideoSelected);*/
+            AddBehavior(EligibleVideoSelected, _VideosPath, VideosCollection, EligibleVideos);
+            OnPropertyChanged(nameof(VideosColor));
         }
 
-        private bool CheckCollection(ObservableCollection<DataRep> Collection, string selected)
+        private void AddBehavior(string value, string categPath, ObservableCollection<DataRep> collection, ObservableCollection<string> eligibleCollec)
         {
-            foreach (var elem in Collection)
-                if (elem.CurrentPath.Equals(selected, StringComparison.OrdinalIgnoreCase))
-                    return true;
+            if (string.IsNullOrEmpty(value))
+                return;
 
-            return false;
+            foreach (var elem in collection)
+                if (elem.CurrentPath.Equals(value, StringComparison.OrdinalIgnoreCase))
+                    return;
+
+            DataRep tmp = new DataRep(value);
+            tmp.Name = tmp.CurrentPath.Replace(categPath, ".");
+            collection.Add(tmp);
+            eligibleCollec.Remove(value);
+
+            OnPropertyChanged(nameof(FilesFound));
         }
 
         #region
 
         internal void RemoveCheat()
         {
-            CheatsCollection.Remove(SelectedCheatFile);
+            RemoveBehavior(SelectedCheatFile, CheatsCollection, EligibleCheats);
+            OnPropertyChanged(nameof(CheatsColor));
         }
 
 
@@ -307,10 +394,8 @@ namespace Pack_My_Game.Models
         /// </summary>
         internal void RemoveManual()
         {
-            if (!SelectedManual.IsSelected)
-                ManualsCollection.Remove(SelectedManual);
-            else
-                DxMBox.ShowDial("Default file, you can't remove it for the while");
+            RemoveBehavior(SelectedManual, ManualsCollection, EligibleManuals);
+            OnPropertyChanged(nameof(ManualsColor));
         }
 
         /// <summary>
@@ -318,10 +403,12 @@ namespace Pack_My_Game.Models
         /// </summary>
         internal void RemoveMusic()
         {
-            if (!SelectedMusic.IsSelected)
+            /*if (!SelectedMusic.IsSelected)
                 MusicsCollection.Remove(SelectedMusic);
             else
-                DxMBox.ShowDial("Default file, you can't remove it for the while");
+                DxMBox.ShowDial("Default file, you can't remove it for the while");*/
+            RemoveBehavior(SelectedMusic, MusicsCollection, EligibleMusics);
+            OnPropertyChanged(nameof(MusicsColor));
         }
 
         /// <summary>
@@ -329,13 +416,34 @@ namespace Pack_My_Game.Models
         /// </summary>
         internal void RemoveVideo()
         {
-            if (!SelectedVideo.IsSelected)
-                VideosCollection.Remove(SelectedVideo);
-            else
-                DxMBox.ShowDial("Default file, you can't remove it for the while");
+            RemoveBehavior(SelectedVideo, VideosCollection, EligibleVideos);
+            OnPropertyChanged(nameof(VideosColor));
         }
 
+        private void RemoveBehavior(DataRep selected, Collection<DataRep> collec, Collection<string> eligibleCollec)
+        {
+            if (selected == null)
+                return;
+
+            if (selected.IsSelected)
+            {
+                DxMBox.ShowDial("Default file, you can't remove it for the while");
+                return;
+            }
+
+            collec.Remove(selected);
+
+            foreach (var elem in eligibleCollec)
+                if (elem.Equals(selected.CurrentPath, StringComparison.OrdinalIgnoreCase))
+                    return;
+
+            eligibleCollec.Add(selected.CurrentPath);
+
+            OnPropertyChanged(nameof(FilesFound));
+        }
         #endregion
+
+
 
 
         internal bool Apply_Modifs()

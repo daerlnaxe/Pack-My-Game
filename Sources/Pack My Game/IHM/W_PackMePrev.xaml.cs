@@ -33,16 +33,18 @@ namespace Pack_My_Game.IHM
 
         }
 
+        #region Games
+        
+        // ...
+
+        #endregion
+
         #region Manuels
         private void Can_Manual(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = Model.ManualsCollection.Any();
         }
 
-        private void Add_Manual(object sender, RoutedEventArgs e)
-        {
-            Model.AddManual();
-        }
 
         private void Exec_OpenManual(object sender, ExecutedRoutedEventArgs e)
         {
@@ -54,6 +56,17 @@ namespace Pack_My_Game.IHM
             Model.RemoveManual();
         }
 
+        private void Can_AddManual(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = Model.EligibleManuals.Any();
+        }
+
+        private void Exec_AddManual(object sender, ExecutedRoutedEventArgs e)
+        {
+
+            Model.AddManual();
+        }
+
         #endregion
 
         #region Musique
@@ -61,10 +74,6 @@ namespace Pack_My_Game.IHM
         {
             e.CanExecute = Model.MusicsCollection.Any();
 
-        }
-        private void Add_Music(object sender, RoutedEventArgs e)
-        {
-            Model.AddMusic();
         }
 
         private void Exec_OpenMusic(object sender, ExecutedRoutedEventArgs e)
@@ -76,17 +85,22 @@ namespace Pack_My_Game.IHM
         {
             Model.RemoveMusic();
         }
+
+        private void Can_AddMusic(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = Model.EligibleMusics.Any();
+        }
+
+        private void Exec_AddMusic(object sender, ExecutedRoutedEventArgs e)
+        {
+            Model.AddMusic();
+        }
         #endregion
 
         #region Video
         private void Can_Video(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = Model.VideosCollection.Any();
-        }
-
-        private void Add_Video(object sender, RoutedEventArgs e)
-        {
-            Model.AddVideo();
         }
 
         private void Exec_OpenVideo(object sender, ExecutedRoutedEventArgs e)
@@ -98,17 +112,23 @@ namespace Pack_My_Game.IHM
         {
             Model.RemoveVideo();
         }
+
+
+        private void Can_AddVideo(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = Model.EligibleVideos.Any();
+        }
+
+        private void Exec_AddVideo(object sender, ExecutedRoutedEventArgs e)
+        {
+            Model.AddVideo();
+        }
         #endregion
 
         #region Cheats
         private void Can_Cheat(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = Model.CheatsCollection.Any();
-        }
-
-        private void Add_Cheat(object sender, RoutedEventArgs e)
-        {
-            Model.AddCheat();
         }
 
         private void Exec_OpenCheat(object sender, ExecutedRoutedEventArgs e)
@@ -119,6 +139,15 @@ namespace Pack_My_Game.IHM
         private void Exec_RemoveCheat(object sender, ExecutedRoutedEventArgs e)
         {
             Model.RemoveCheat();
+        }
+        private void Can_AddCheat(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = Model.EligibleCheats.Any();
+        }
+
+        private void Exec_AddCheat(object sender, ExecutedRoutedEventArgs e)
+        {
+            Model.AddCheat();
         }
         #endregion
 

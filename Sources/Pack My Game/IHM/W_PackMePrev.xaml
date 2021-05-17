@@ -7,7 +7,7 @@
         xmlns:l="clr-namespace:Pack_My_Game.Language"
         xmlns:conv="clr-namespace:Pack_My_Game.IHM.Converters"
         mc:Ignorable="d"
-        Title="Result"  Width="1024" Height="768"
+        Title="Preview Copy"  Width="1024" Height="768"
                 WindowStartupLocation="CenterScreen"
 
         Loaded="Window_Loaded"
@@ -15,15 +15,19 @@
     <Window.CommandBindings>
         <!-- Games -->
         <!-- Manuals -->
+        <CommandBinding Command="local:Commands.AddManualCmd" CanExecute="Can_AddManual" Executed="Exec_AddManual"/>
         <CommandBinding Command="local:Commands.OpenManualCmd" CanExecute="Can_Manual" Executed="Exec_OpenManual"/>
         <CommandBinding Command="local:Commands.DeleteManualCmd" CanExecute="Can_Manual" Executed="Exec_RemoveManual"/>
         <!-- Musics -->
+        <CommandBinding Command="local:Commands.AddMusicCmd" CanExecute="Can_AddMusic" Executed="Exec_AddMusic"/>
         <CommandBinding Command="local:Commands.OpenMusicCmd" CanExecute="Can_Music" Executed="Exec_OpenMusic"/>
         <CommandBinding Command="local:Commands.DeleteMusicCmd" CanExecute="Can_Music" Executed="Exec_RemoveMusic"/>
         <!-- Videos -->
+        <CommandBinding Command="local:Commands.AddVideoCmd" CanExecute="Can_AddVideo" Executed="Exec_AddVideo"/>
         <CommandBinding Command="local:Commands.OpenVideoCmd" CanExecute="Can_Video" Executed="Exec_OpenVideo"/>
         <CommandBinding Command="local:Commands.DeleteVideoCmd" CanExecute="Can_Video" Executed="Exec_RemoveVideo"/>
         <!-- Cheats -->
+        <CommandBinding Command="local:Commands.AddCheatCmd" CanExecute="Can_AddCheat" Executed="Exec_AddCheat"/>
         <CommandBinding Command="local:Commands.OpenCheatCmd" CanExecute="Can_Cheat" Executed="Exec_OpenCheat"/>
         <CommandBinding Command="local:Commands.DeleteCheatCmd" CanExecute="Can_Cheat" Executed="Exec_RemoveCheat"/>
         <!-- Recherche -->        
@@ -109,7 +113,6 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <RadioButton IsChecked="{Binding IsSelected}" Tag="{Binding}" IsEnabled="False" Focusable="False"/>
                                         <TextBlock Text="{Binding Name}"/>
                                     </StackPanel>
                                 </DataTemplate>
@@ -119,7 +122,7 @@
                     </Grid>
                 </TabItem>
                 <!-- Manuals -->
-                <TabItem Header="{l:Langue Word_Manuals}">
+                <TabItem Header="{l:Langue Word_Manuals}" Foreground="{Binding ManualsColor}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -161,14 +164,14 @@
                             SelectedItem="{Binding EligibleManualSelected}">
                             <ListView.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="{l:Langue Word_Add}" Click="Add_Manual"/>
+                                    <MenuItem Header="{l:Langue Word_Add}" Command="local:Commands.AddManualCmd"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                         </ListView>
                     </Grid>
                 </TabItem>
                 <!-- Musics -->
-                <TabItem Header="{l:Langue Word_Musics}">
+                <TabItem Header="{l:Langue Word_Musics}" Foreground="{Binding MusicsColor}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -190,7 +193,6 @@
                           ItemsSource="{Binding MusicsCollection}" SelectedItem="{Binding SelectedMusic}">
                             <ListView.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="{l:Langue Word_Add}" Click="Add_Music"/>
                                     <MenuItem Header="{l:Langue Word_Open}" Command="local:Commands.OpenMusicCmd"/>
                                     <MenuItem Header="{l:Langue Word_Delete}" Command="local:Commands.DeleteMusicCmd"/>
                                 </ContextMenu>
@@ -205,17 +207,17 @@
                         <Label Grid.Row="3" Content="{l:Langue Word_Suggested}" />
                         <ListView Grid.Row="4" 
                             ItemsSource="{Binding EligibleMusics}"
-                            SelectedItem="{Binding EligibleManualSelected}">
+                            SelectedItem="{Binding EligibleMusicSelected}">
                             <ListView.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="{l:Langue Word_Add}" Click="Add_Music"/>
+                                    <MenuItem Header="{l:Langue Word_Add}" Command="local:Commands.AddMusicCmd"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                         </ListView>
                     </Grid>
                 </TabItem>
                 <!-- Videos -->
-                <TabItem Header="{l:Langue Word_Videos}">
+                <TabItem Header="{l:Langue Word_Videos}" Foreground="{Binding VideosColor}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -242,7 +244,6 @@
                             SelectedItem="{Binding SelectedVideo}" >
                             <ListView.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="{l:Langue Word_Add}" Click="Add_Video"/>
                                     <MenuItem Header="{l:Langue Word_Open}" Command="local:Commands.OpenVideoCmd"/>
                                     <MenuItem Header="{l:Langue Word_Delete}" Command="local:Commands.DeleteVideoCmd"/>
                                 </ContextMenu>
@@ -250,7 +251,6 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <CheckBox IsChecked="{Binding IsSelected}" IsHitTestVisible="False"/>
                                         <TextBlock Text="{Binding Name}"/>
                                     </StackPanel>
                                 </DataTemplate>
@@ -263,14 +263,14 @@
                             SelectedItem="{Binding EligibleVideoSelected}">
                             <ListView.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="{l:Langue Word_Add}" Click="Add_Video"/>
+                                    <MenuItem Header="{l:Langue Word_Add}" Command="local:Commands.AddVideoCmd"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                         </ListView>
                     </Grid>
                 </TabItem>
                 <!-- CheatCodes -->
-                <TabItem Header="{l:Langue Word_Cheats}">
+                <TabItem Header="{l:Langue Word_Cheats}" Foreground="{Binding CheatsColor}"> 
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -306,7 +306,7 @@
                             SelectedItem="{Binding EligibleCheatSelected}">
                             <ListView.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="{l:Langue Word_Add}" Click="Add_Cheat"/>
+                                    <MenuItem Header="{l:Langue Word_Add}" Command="local:Commands.AddCheatCmd"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                         </ListView>
@@ -319,11 +319,14 @@
                     <Button Content="{l:Langue Word_Reset}" Click="Reset"/>
             </StackPanel>
             <!-- Recherche -->
-            <Expander Grid.Row="2" Grid.ColumnSpan="3" Header="Recherche" IsExpanded="True">
+            <Border Grid.Row="2" Grid.ColumnSpan="2" Margin="0,10"
+                    BorderBrush="LightGray" BorderThickness="1" CornerRadius="5" >
+            <Expander Grid.Row="2" Grid.ColumnSpan="2" Header="Recherche" IsExpanded="True" Padding="5">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="100"/>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -359,14 +362,17 @@
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
+                    <!-- Number files found -->
+                    <Label Grid.Row="2" HorizontalAlignment="Right"
+                           Content="{Binding FilesFound}" ContentStringFormat="{}{0} files found"/>
                     <!-- Buttons -->
-                    <StackPanel Grid.Row="2" Orientation="Horizontal">
+                    <StackPanel Grid.Row="3" Orientation="Horizontal">
                         <Button Content="{l:Langue Word_Reset}" Command="local:Commands.ResetCommand"  VerticalAlignment="Center"/>
                         <Button Content="{l:Langue Word_Process}" Command="local:Commands.SearchCmd" VerticalAlignment="Center"/>                        
                     </StackPanel>
                 </Grid>
             </Expander>
-
+            </Border>
 
         </Grid>
     </DockPanel>

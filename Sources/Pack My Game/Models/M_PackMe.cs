@@ -131,7 +131,7 @@ namespace Pack_My_Game.Models
         public ObservableCollection<DataRep> VideosCollection { get; set; } = new ObservableCollection<DataRep>();
 
 
-        public string Root { get; private set; }
+      //  public string Root { get; private set; }
         protected string _CheatsPath;
         protected string _GamesPath;
         protected string _ManualsPath;
@@ -154,7 +154,7 @@ namespace Pack_My_Game.Models
         /// Constructeur obligatoire
         /// </summary>
         /// <param name="platform"></param>
-        public M_PackMe(string root, ContPlatFolders platform, GameDataCont gdC)
+        public M_PackMe(ContPlatFolders platform, GameDataCont gdC)
         {
             Platform = platform;
             GameDataC = gdC;

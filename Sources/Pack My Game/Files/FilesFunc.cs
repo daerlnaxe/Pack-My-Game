@@ -131,6 +131,7 @@ namespace Pack_My_Game.Files
 
             searchString = searchString.Replace('_', ' ');
             searchString = searchString.Replace('-', ' ');
+            searchString = searchString.Replace(":", string.Empty);
 
             List<string> tmp = new List<string>();
 
