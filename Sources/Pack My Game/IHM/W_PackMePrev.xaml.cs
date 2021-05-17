@@ -34,9 +34,45 @@ namespace Pack_My_Game.IHM
         }
 
         #region Games
-        
+
         // ...
 
+        #endregion
+
+        #region Images
+
+
+        private void Can_EligImage(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = Model.EligibleImages.Any();
+        }
+
+        private void Can_Image(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = Model.ImagesCollection.Any();
+        }
+
+        private void Exec_AddImage(object sender, ExecutedRoutedEventArgs e)
+        {
+            lvImages.Visibility = Visibility.Collapsed;
+            Model.AddImage();
+            lvImages.Visibility = Visibility.Visible;
+        }
+
+        private void Exec_OpenEligImage(object sender, ExecutedRoutedEventArgs e)
+        {
+            Model.OpenImage(Model.EligibleImageSelected);
+        }
+
+        private void Exec_OpenImage(object sender, ExecutedRoutedEventArgs e)
+        {
+            Model.OpenImage(Model.ImageSelected.CurrentPath);
+        }
+
+        private void Exec_RemoveImage(object sender, ExecutedRoutedEventArgs e)
+        {
+            Model.RemoveImage();
+        }
         #endregion
 
         #region Manuels
@@ -161,11 +197,12 @@ namespace Pack_My_Game.IHM
         #region Recherche
         private void Recherche_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Space && (Keyboard.IsKeyDown(Key.LeftCtrl) ||  Keyboard.IsKeyDown(Key.RightCtrl) ))
+            /*
+            if (e.Key == Key.Space && (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl)))
             {
                 Model.SearchString = string.Empty;
                 e.Handled = true;
-            }
+            }*/
 
             if (e.Key == Key.Enter)
             {
@@ -183,6 +220,15 @@ namespace Pack_My_Game.IHM
         {
             if (Model != null)
                 e.CanExecute = Model.WordsToSearch.Any();
+        }
+
+        private void Exec_SelectBox(object sender, ExecutedRoutedEventArgs e)
+        {
+            //Keyboard.ClearFocus();
+            Keyboard.Focus(SearchBox);
+            //SearchBox.SelectionStart = 0;
+            //SearchBox.SelectionLength = 0;
+            Model.SearchString = string.Empty;
         }
 
         private void Exec_ResetWords(object sender, ExecutedRoutedEventArgs e)
@@ -208,5 +254,54 @@ namespace Pack_My_Game.IHM
         }
 
 
+        /*
+        /// <summary>
+        /// Gère le scroll sur l'image pour n'afficher que ce qui est nécessaire
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HandleScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            var scrollViewer = (FrameworkElement)sender;
+            var visibleAreaEntered = false;
+            var visibleAreaLeft = false;
+            var invisibleItemDisplayed = 0;
+
+            foreach (Common_PMG.Container.Game.DataRepImg image in lvImages.Items)
+            {
+                if (image.IsSelected)
+                    continue;
+
+                var listBoxItem = (FrameworkElement)lvImages.ItemContainerGenerator.ContainerFromItem(image);
+
+                if (visibleAreaLeft == false && IsFullyOrPartiallyVisible(listBoxItem, scrollViewer))
+                {
+                    visibleAreaEntered = true;
+                }
+                else if (visibleAreaEntered)
+                {
+                    visibleAreaLeft = true;
+                }
+
+
+                if (visibleAreaEntered)
+                {
+                    if (visibleAreaLeft && ++invisibleItemDisplayed > 10)
+                        break;
+
+                    image.IsSelected = true;
+                }
+
+                //
+                bool IsFullyOrPartiallyVisible(FrameworkElement child, FrameworkElement scrollViewer)
+                {
+                    var childTransform = child.TransformToAncestor(scrollViewer);
+                    var childRectangle = childTransform.TransformBounds(
+                                              new Rect(new Point(0, 0), child.RenderSize));
+                    var ownerRectangle = new Rect(new Point(0, 0), scrollViewer.RenderSize);
+                    return ownerRectangle.IntersectsWith(childRectangle);
+                }
+            }
+        }*/
     }
 }

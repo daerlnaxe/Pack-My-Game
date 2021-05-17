@@ -36,7 +36,7 @@ namespace Common_PMG.Container.Game
         public List<DataRep> Musics { get; /*set;*/ } = new List<DataRep>();
         public List<DataRep> Videos { get; /*set;*/ } = new List<DataRep>();
         public List<DataRep> CheatCodes { get; /*set;*/ } = new List<DataRep>();
-        public List<DataRepExt> Images { get; set; } = new List<DataRepExt>();
+        public List<DataRepImg> Images { get; set; } = new List<DataRepImg>();
 
         public int NumberofFiles => Applications.Count() +
                                     Manuals.Count() +

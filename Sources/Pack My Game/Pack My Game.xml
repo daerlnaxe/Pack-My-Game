@@ -1194,6 +1194,11 @@
             Cheat suggéré selectionné
             </summary>
         </member>
+        <member name="P:Pack_My_Game.Models.M_PackMePrev.EligibleImageSelected">
+            <summary>
+            Image suggéré selectionné
+            </summary>
+        </member>
         <member name="P:Pack_My_Game.Models.M_PackMePrev.EligibleManualSelected">
             <summary>
             Manuel suggéré selectionné
@@ -1217,6 +1222,11 @@
         <member name="P:Pack_My_Game.Models.M_PackMePrev.EligibleCheats">
             <summary>
             Manuels trouvés par la recherche
+            </summary>
+        </member>
+        <member name="P:Pack_My_Game.Models.M_PackMePrev.EligibleImages">
+            <summary>
+            Images trouvés par la recherche
             </summary>
         </member>
         <member name="P:Pack_My_Game.Models.M_PackMePrev.EligibleManuals">

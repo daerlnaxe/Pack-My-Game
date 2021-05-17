@@ -141,10 +141,10 @@ namespace Pack_My_Game.Core
         /// <param name="possibilities">Possibilités de nom des fichiers</param>
         /// <param name="lbGame"></param>
         /// <returns></returns>
-        private List<DataRepExt> GetImagesFiles(LBGame lbGame, Dictionary<string, string> possibilities)
+        private List<DataRepImg> GetImagesFiles(LBGame lbGame, Dictionary<string, string> possibilities)
         {
             //Queue<string> lPackFile = new Queue<string>();
-            List<DataRepExt> images = new List<DataRepExt>();
+            List<DataRepImg> images = new List<DataRepImg>();
 
             foreach (PlatformFolder plfmFolder in _ZePlatform.PlatformFolders)
             {
@@ -198,7 +198,7 @@ namespace Pack_My_Game.Core
                     if (res)
                     {
                         HeTrace.WriteLine($"\t[GetImages] Found '{fichier}' in '{folder}'");
-                        DataRepExt tmp = new DataRepExt(plfmFolder.MediaType, fichier);
+                        DataRepImg tmp = new DataRepImg(plfmFolder.MediaType, fichier);
                         images.Add(tmp);
                         
                     }

@@ -236,6 +236,7 @@
                         </ListView>
                     </Grid>
                 </TabItem>
+                
                 <!-- CheatCodes -->
                 <TabItem Header="{l:Langue Word_Cheats}">
                     <Grid>

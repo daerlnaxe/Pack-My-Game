@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Pack_My_Game.IHM"
         xmlns:l="clr-namespace:Pack_My_Game.Language"
         xmlns:conv="clr-namespace:Pack_My_Game.IHM.Converters"
+        xmlns:conv2 ="clr-namespace:DxTBoxCore.Converters;assembly=DxTBoxCore"
         mc:Ignorable="d"
         Title="Preview Copy"  Width="1024" Height="768"
                 WindowStartupLocation="CenterScreen"
@@ -14,6 +15,11 @@
         >
     <Window.CommandBindings>
         <!-- Games -->
+        <!-- Images -->
+        <CommandBinding Command="local:Commands.AddImageCmd" CanExecute="Can_EligImage" Executed="Exec_AddImage"/>
+        <CommandBinding Command="local:Commands.OpenDestImageCmd"  CanExecute="Can_EligImage" Executed="Exec_OpenEligImage"/>
+        <CommandBinding Command="local:Commands.OpenSrcImageCmd" CanExecute="Can_Image" Executed="Exec_OpenImage"/>
+        <CommandBinding Command="local:Commands.DeleteImageCmd" CanExecute="Can_Image" Executed="Exec_RemoveImage"/>
         <!-- Manuals -->
         <CommandBinding Command="local:Commands.AddManualCmd" CanExecute="Can_AddManual" Executed="Exec_AddManual"/>
         <CommandBinding Command="local:Commands.OpenManualCmd" CanExecute="Can_Manual" Executed="Exec_OpenManual"/>
@@ -30,16 +36,20 @@
         <CommandBinding Command="local:Commands.AddCheatCmd" CanExecute="Can_AddCheat" Executed="Exec_AddCheat"/>
         <CommandBinding Command="local:Commands.OpenCheatCmd" CanExecute="Can_Cheat" Executed="Exec_OpenCheat"/>
         <CommandBinding Command="local:Commands.DeleteCheatCmd" CanExecute="Can_Cheat" Executed="Exec_RemoveCheat"/>
-        <!-- Recherche -->        
+        <!-- Recherche -->
+        <CommandBinding Command="local:Commands.SelectCommand" Executed="Exec_SelectBox"/>
         <CommandBinding Command="local:Commands.ResetCommand" CanExecute="Can_Search" Executed="Exec_ResetWords"/>
         <CommandBinding Command="local:Commands.SearchCmd" CanExecute="Can_Search" Executed="Exec_Search"/>
     </Window.CommandBindings>
     <Window.InputBindings>
+        <KeyBinding Command="local:Commands.SelectCommand" Modifiers="Ctrl" Key="F" />
         <KeyBinding Command="local:Commands.ResetCommand" Modifiers="Ctrl" Key="R" />
-        <KeyBinding Command="local:Commands.SearchCmd" Modifiers="Ctrl" Key="F" />
+        <KeyBinding Command="local:Commands.SearchCmd" Modifiers="Ctrl" Key="G" />
     </Window.InputBindings>
     <Window.Resources>
+        <conv2:TrueToVisible x:Key="True2Visible"/>
         <conv:EnableIfElementsConv x:Key="EnableIfElements"/>
+        <conv:WidthHeightToText x:Key="SizeToText"/>
         <!-- scrollviewer -->
         <Style TargetType="ScrollViewer">
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
@@ -153,7 +163,7 @@
                             </ListView.ContextMenu>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                        <TextBlock Text="{Binding Name}"/>
+                                    <TextBlock Text="{Binding Name}"/>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
@@ -199,7 +209,7 @@
                             </ListView.ContextMenu>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                        <TextBlock Text="{Binding Name}"/>
+                                    <TextBlock Text="{Binding Name}"/>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
@@ -269,8 +279,92 @@
                         </ListView>
                     </Grid>
                 </TabItem>
+                <!-- Images -->
+                <TabItem Header="{l:Langue Word_Images}" Foreground="{Binding ImagesColor}" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!-- Musics List -->
+                        <Label Content="{l:Langue Files_Found}" />
+                        <Label Grid.Column="1" Content="{Binding ImagesCollection.Count}" />
+                        <ListView x:Name="lvImages" Grid.Row="2" 
+                                ItemsSource="{Binding ImagesCollection}"
+                                SelectedItem="{Binding ImageSelected}"                                  
+                                  >
+                            <ListView.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="{l:Langue Word_Open}" Command="local:Commands.OpenSrcImageCmd"/>
+                                    <MenuItem Header="{l:Langue Word_Delete}" Command="local:Commands.DeleteImageCmd"/>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
+                            <!-- Panel Images -->
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <!-- Items -->
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image x:Name="img" Source="{Binding CurrentPath}"                                                
+                                               Width="48" HorizontalAlignment="Left"
+                                               Stretch="Uniform" StretchDirection="Both"  RenderOptions.BitmapScalingMode="HighQuality" />
+                                            <StackPanel Grid.Column="1" Margin="10,0">
+                                                <TextBlock Text="{Binding Categorie}" HorizontalAlignment="Left"/>
+                                                <TextBlock Text="{Binding Name}"/>
+                                                <TextBlock Text="{Binding CurrentPath, Converter={StaticResource SizeToText }}" Margin="0,5"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <!-- Liste suggérés -->
+                        <Label Grid.Row="3" Content="{l:Langue Word_Suggested}" />
+                        <ListView Grid.Row="4" 
+                            ItemsSource="{Binding EligibleImages}"
+                            SelectedItem="{Binding EligibleImageSelected}">
+                            <!-- Contextual Menu-->
+                            <ListView.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="{l:Langue Word_Add}" Command="local:Commands.AddImageCmd"/>
+                                    <MenuItem Header="{l:Langue Word_Open}" Command="local:Commands.OpenDestImageCmd"/>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
+                            <!-- Panel Images Eligibles -->
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <!-- Items -->
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image x:Name="img" Source="{Binding}"                                                
+                                               Width="48" HorizontalAlignment="Left"
+                                               Stretch="Uniform" StretchDirection="Both"  RenderOptions.BitmapScalingMode="HighQuality" />
+                                        <StackPanel Grid.Column="1" Margin="10,0">
+                                            <TextBlock Text="{Binding Converter={StaticResource SizeToText }}" Margin="0,5"/>
+                                            <TextBlock Text="{Binding}" TextTrimming="CharacterEllipsis" ToolTip="{Binding}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </TabItem>
                 <!-- CheatCodes -->
-                <TabItem Header="{l:Langue Word_Cheats}" Foreground="{Binding CheatsColor}"> 
+                <TabItem Header="{l:Langue Word_Cheats}" Foreground="{Binding CheatsColor}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -315,63 +409,71 @@
             </TabControl>
 
             <!-- Right Buttons -->
-                <StackPanel Grid.Row="1" Grid.Column="2" Margin="5,0">
-                    <Button Content="{l:Langue Word_Reset}" Click="Reset"/>
+            <StackPanel Grid.Row="1" Grid.Column="2" Margin="5,0">
+                <Button Content="{l:Langue Word_Reset}" Click="Reset"/>
             </StackPanel>
             <!-- Recherche -->
             <Border Grid.Row="2" Grid.ColumnSpan="2" Margin="0,10"
                     BorderBrush="LightGray" BorderThickness="1" CornerRadius="5" >
-            <Expander Grid.Row="2" Grid.ColumnSpan="2" Header="Recherche" IsExpanded="True" Padding="5">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="100"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <!-- Message -->
-                    <TextBox Padding="3,0" Margin="5,0" VerticalAlignment="Center"
+                <Expander Grid.Row="2" Grid.ColumnSpan="2" Header="Recherche"
+                          IsExpanded="True" Padding="5" ToolTip="Ctrl+F to add word(s), ctrl+G to search, ctrl+R to reset">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <!-- Message -->
+                        <TextBox x:Name="SearchBox" Padding="3,0" Margin="5,0" VerticalAlignment="Center"
                         Text="{Binding SearchString, UpdateSourceTrigger=PropertyChanged,
                              TargetNullValue='Write title or words, then hit enter', FallbackValue=Hitbox}"
                              PreviewKeyDown="Recherche_PreviewKeyDown"     />
-                    <!-- Items -->
-                    <ItemsControl Grid.Row="1" Margin="5" ItemsSource="{Binding WordsToSearch}">
-                        <!-- Conteneur -->
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <!-- Objets -->
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Border Margin="5" Padding="3"
+                        <!-- Items -->
+                        <ItemsControl Grid.Row="1" Margin="5" ItemsSource="{Binding WordsToSearch}">
+                            <!-- Conteneur -->
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <!-- Objets -->
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Margin="5" Padding="3"
                                         BorderBrush="LightBlue" BorderThickness="1" CornerRadius="5">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Text="{Binding}"/>
-                                    <Button Grid.Column="1" Click="Remove_Word" Tag="{Binding}"/>
-                                </Grid>
-                                </Border>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                    <!-- Number files found -->
-                    <Label Grid.Row="2" HorizontalAlignment="Right"
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="{Binding}"/>
+                                            <Button Grid.Column="1" Click="Remove_Word" Tag="{Binding}" Width="12" Padding="1">
+                                                <Button.Content>
+                                                    
+                                                <Image Source="/Pack My Game;component/Resources/BlueCross-96.png"
+                                                       StretchDirection="DownOnly"  Stretch="Uniform" />
+                                                </Button.Content>
+                                            </Button>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <!-- Number files found -->
+                        <Label Grid.Row="2" HorizontalAlignment="Right"
                            Content="{Binding FilesFound}" ContentStringFormat="{}{0} files found"/>
-                    <!-- Buttons -->
-                    <StackPanel Grid.Row="3" Orientation="Horizontal">
-                        <Button Content="{l:Langue Word_Reset}" Command="local:Commands.ResetCommand"  VerticalAlignment="Center"/>
-                        <Button Content="{l:Langue Word_Process}" Command="local:Commands.SearchCmd" VerticalAlignment="Center"/>                        
-                    </StackPanel>
-                </Grid>
-            </Expander>
+                        <!-- Buttons -->
+                        <StackPanel Grid.Row="3" Orientation="Horizontal">
+                            <Button Content="{l:Langue Word_Select}" Visibility="Collapsed" Command="local:Commands.SelectCommand"/>
+                            <Button Content="{l:Langue Word_Reset}" Command="local:Commands.ResetCommand"  VerticalAlignment="Center"/>
+                            <Button Content="{l:Langue Word_Process}" Command="local:Commands.SearchCmd" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </Expander>
             </Border>
 
         </Grid>

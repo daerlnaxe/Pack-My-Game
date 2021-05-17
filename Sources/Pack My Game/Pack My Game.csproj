@@ -44,6 +44,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\BlueCross-96.png" />
     <None Remove="Resources\Refresh.png" />
   </ItemGroup>
 
@@ -92,6 +93,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\BlueCross-96.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Refresh.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>

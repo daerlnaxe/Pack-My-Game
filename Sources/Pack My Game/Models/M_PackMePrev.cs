@@ -5,6 +5,7 @@ using Pack_My_Game.Files;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,10 @@ namespace Pack_My_Game.Models
     /// </summary>
     public class M_PackMePrev : M_PackMe
     {
+        public DataRepImg ImageSelected { get; set; }
+        public ObservableCollection<DataRepImg> ImagesCollection { get; set; } = new ObservableCollection<DataRepImg>();
+
+        private string _ImagesPath;
 
         #region Recherche
         private string _SearchString;
@@ -37,14 +42,23 @@ namespace Pack_My_Game.Models
         public string EligibleCheatSelected { get; set; }
 
         /// <summary>
+        /// Image suggéré selectionné
+        /// </summary>
+        public string EligibleImageSelected { get; set; }
+
+        /// <summary>
         /// Manuel suggéré selectionné
         /// </summary>
         public string EligibleManualSelected { get; set; }
+
+
 
         /// <summary>
         /// Musique suggérée sélectionnée
         /// </summary>
         public string EligibleMusicSelected { get; set; }
+
+
 
         /// <summary>
         /// Vidéo suggérée sélectionnée
@@ -63,6 +77,12 @@ namespace Pack_My_Game.Models
         public ObservableCollection<string> EligibleCheats { get; set; } = new ObservableCollection<string>();
 
         /// <summary>
+        /// Images trouvés par la recherche
+        /// </summary>
+        public ObservableCollection<string> EligibleImages { get; set; } = new ObservableCollection<string>();
+
+
+        /// <summary>
         /// Manuels trouvés par la recherche
         /// </summary>
         public ObservableCollection<string> EligibleManuals { get; set; } = new ObservableCollection<string>();
@@ -76,13 +96,17 @@ namespace Pack_My_Game.Models
         /// Vidéos trouvées par la recherche
         /// </summary>
         public ObservableCollection<string> EligibleVideos { get; set; } = new ObservableCollection<string>();
-        public int FilesFound => EligibleCheats.Count() + EligibleManuals.Count + EligibleMusics.Count() + EligibleVideos.Count();
+        public int FilesFound =>    EligibleCheats.Count() +
+                                    EligibleImages.Count()+
+                                    EligibleManuals.Count +
+                                    EligibleMusics.Count() + 
+                                    EligibleVideos.Count();
 
         #endregion
 
         #region Colors
 
-        
+
         public Brush CheatsColor
         {
             get
@@ -90,6 +114,18 @@ namespace Pack_My_Game.Models
                 if (EligibleCheats.Any())
                     return Brushes.Blue;
                 else if (!CheatsCollection.Any())
+                    return Brushes.Red;
+                else
+                    return Brushes.Black;
+            }
+        }
+        public Brush ImagesColor
+        {
+            get
+            {
+                if (EligibleImages.Any())
+                    return Brushes.Blue;
+                else if (!ImagesCollection.Any())
                     return Brushes.Red;
                 else
                     return Brushes.Black;
@@ -133,6 +169,8 @@ namespace Pack_My_Game.Models
                     return Brushes.Black;
             }
         }
+
+
         #endregion
         // ---
 
@@ -144,6 +182,13 @@ namespace Pack_My_Game.Models
                 _GamesPath = Path.GetFullPath(Platform.FolderPath, Config.HLaunchBoxPath);
 
             _CheatsPath = Config.HCCodesPath;
+            var tmpPlat = platform.PlatformFolders.First(x =>
+                                                        x.FolderPath.Contains("Box") &&
+                                                        x.FolderPath.Contains(platform.Name)
+                                                        );
+            string imgTail = tmpPlat.FolderPath.Substring(0, tmpPlat.FolderPath.IndexOf(platform.Name));
+            if (!string.IsNullOrEmpty(imgTail))
+                _ImagesPath = Path.GetFullPath(imgTail, Config.HLaunchBoxPath);
 
             var manTail = platform.PlatformFolders.First(x => x.MediaType.Equals("Manual")).FolderPath;
             if (!string.IsNullOrEmpty(manTail))
@@ -168,6 +213,7 @@ namespace Pack_My_Game.Models
             MakeCollection(GameDataC.Manuals, ManualsCollection, _ManualsPath);
             MakeCollection(GameDataC.Musics, MusicsCollection, _MusicsPath);
             MakeCollection(GameDataC.Videos, VideosCollection, _VideosPath);
+            MakeCollection(GameDataC.Images);
 
             // Initialisation des fichiers par défaut.
             ChosenGame = GamesCollection.FirstOrDefault(x => x.CurrentPath.Equals(GameDataC.DefaultApp?.CurrentPath));
@@ -179,6 +225,8 @@ namespace Pack_My_Game.Models
             FillWords(GameDataC.Title);
             SearchFiles();
         }
+
+
 
         /// <summary>
         /// Initialize une collection avec une copie modifiée des datareps pour montrer l'arborescence dans le nom
@@ -213,6 +261,18 @@ namespace Pack_My_Game.Models
                 targetedCollec.Add(dp);
             }
         }
+
+        private void MakeCollection(List<DataRepImg> images)
+        {
+            ImagesCollection.Clear();
+            foreach (DataRepImg elem in images)
+            {
+                var dre = new DataRepImg(elem);
+                dre.Name = $@".\{dre.CurrentPath.Substring(dre.CurrentPath.IndexOf(dre.Categorie))}";
+                ImagesCollection.Add(dre);
+            }
+        }
+
 
         #region Recherche de fichiers supplémentaires
 
@@ -249,24 +309,37 @@ namespace Pack_My_Game.Models
         {
             WordsToSearch.Clear();
             EligibleCheats.Clear();
+            EligibleImages.Clear();
             EligibleManuals.Clear();
             EligibleMusics.Clear();
             EligibleVideos.Clear();
+
+            OnPropertyChanged(nameof(CheatsColor));
+            OnPropertyChanged(nameof(ImagesColor));
+            OnPropertyChanged(nameof(ManualsColor));
+            OnPropertyChanged(nameof(MusicsColor));
+            OnPropertyChanged(nameof(VideosColor));
+            OnPropertyChanged(nameof(FilesFound));
         }
         internal void SearchFiles()
         {
             //SearchIn("");
-            SearchIn("Manual", EligibleManuals, ManualsCollection);
-            SearchIn("Music", EligibleMusics, MusicsCollection);
-            SearchIn("Video", EligibleVideos, VideosCollection);
+            //SearchIn("Manual", EligibleManuals, ManualsCollection);
+            SearchIn(_CheatsPath, EligibleCheats, CheatsCollection);
+            // Images
+            SearchIn(_ImagesPath, EligibleImages, ImagesCollection);
+            SearchIn(_ManualsPath, EligibleManuals, ManualsCollection);
+            SearchIn(_MusicsPath, EligibleMusics, MusicsCollection);
+            SearchIn(_VideosPath, EligibleVideos, VideosCollection);
 
-            void SearchIn(string mediatype, ObservableCollection<string> collection, ObservableCollection<DataRep> collectionRef)
+            void SearchIn<T>(string srcFolder, ObservableCollection<string> collection, ObservableCollection<T> collectionRef) where T : DataRep
             {
-                PlatformFolder pFolder = Platform.PlatformFolders.FirstOrDefault((x) => x.MediaType == mediatype);
-                if (pFolder == null)
+                //PlatformFolder pFolder = Platform.PlatformFolders.FirstOrDefault((x) => x.MediaType == mediatype);
+                /*if (pFolder == null)
                     return;
 
-                string srcFolder = Path.GetFullPath(pFolder.FolderPath, Config.HLaunchBoxPath);
+                string srcFolder = Path.GetFullPath(pFolder.FolderPath, Config.HLaunchBoxPath);*/
+
 
                 if (!Directory.Exists(srcFolder))
                     return;
@@ -284,10 +357,11 @@ namespace Pack_My_Game.Models
                 }
             }
             OnPropertyChanged(nameof(FilesFound));
+            OnPropertyChanged(nameof(CheatsColor));
+            OnPropertyChanged(nameof(ImagesColor));
             OnPropertyChanged(nameof(ManualsColor));
             OnPropertyChanged(nameof(MusicsColor));
             OnPropertyChanged(nameof(VideosColor));
-            OnPropertyChanged(nameof(CheatsColor));
 
         }
 
@@ -305,10 +379,17 @@ namespace Pack_My_Game.Models
             tmp.Name = tmp.CurrentPath.Replace(_CheatsPath, ".");
             CheatsCollection.Add(tmp);
             EligibleCheats.Remove(EligibleCheatSelected);*/
-            AddBehavior(EligibleCheatSelected, _CheatsPath, CheatsCollection, EligibleCheats);
+            AddBehavior(new DataRep(EligibleCheatSelected), _CheatsPath, CheatsCollection, EligibleCheats);
             OnPropertyChanged(nameof(CheatsColor));
         }
 
+        internal void AddImage()
+        {
+            string relative = Path.GetRelativePath(Config.HLaunchBoxPath, EligibleImageSelected);
+            var tmp = Platform.PlatformFolders.FirstOrDefault(x => relative.Contains( x.FolderPath));
+            DataRepImg data = new DataRepImg(tmp.MediaType, EligibleImageSelected);
+            AddBehavior(data, _ImagesPath, ImagesCollection, EligibleImages);
+        }
 
 
         /// <summary>
@@ -326,7 +407,7 @@ namespace Pack_My_Game.Models
             tmp.Name = tmp.CurrentPath.Replace(_ManualsPath, ".");
             ManualsCollection.Add(tmp);
             EligibleManuals.Remove(EligibleManualSelected);*/
-            AddBehavior(EligibleManualSelected, _ManualsPath, ManualsCollection, EligibleManuals);
+            AddBehavior(new DataRep(EligibleManualSelected), _ManualsPath, ManualsCollection, EligibleManuals);
             OnPropertyChanged(nameof(ManualsColor));
 
         }
@@ -343,7 +424,7 @@ namespace Pack_My_Game.Models
             tmp.Name = tmp.CurrentPath.Replace(_MusicsPath, ".");
             MusicsCollection.Add(tmp);
             EligibleMusics.Remove(EligibleMusicSelected);*/
-            AddBehavior(EligibleMusicSelected, _MusicsPath, MusicsCollection, EligibleMusics);
+            AddBehavior(new DataRep(EligibleMusicSelected), _MusicsPath, MusicsCollection, EligibleMusics);
             OnPropertyChanged(nameof(MusicsColor));
         }
 
@@ -359,28 +440,43 @@ namespace Pack_My_Game.Models
             tmp.Name = tmp.CurrentPath.Replace(_VideosPath, ".");
             VideosCollection.Add(tmp);
             EligibleVideos.Remove(EligibleVideoSelected);*/
-            AddBehavior(EligibleVideoSelected, _VideosPath, VideosCollection, EligibleVideos);
+            AddBehavior(new DataRep(EligibleVideoSelected), _VideosPath, VideosCollection, EligibleVideos);
             OnPropertyChanged(nameof(VideosColor));
         }
 
-        private void AddBehavior(string value, string categPath, ObservableCollection<DataRep> collection, ObservableCollection<string> eligibleCollec)
+        private void AddBehavior<T>(T value, string categPath, ObservableCollection<T> collection, ObservableCollection<string> eligibleCollec) where T : DataRep, new()
         {
-            if (string.IsNullOrEmpty(value))
+            if (value ==null)
                 return;
 
             foreach (var elem in collection)
-                if (elem.CurrentPath.Equals(value, StringComparison.OrdinalIgnoreCase))
+                if (elem.CurrentPath.Equals(value.CurrentPath, StringComparison.OrdinalIgnoreCase))
                     return;
 
-            DataRep tmp = new DataRep(value);
-            tmp.Name = tmp.CurrentPath.Replace(categPath, ".");
-            collection.Add(tmp);
-            eligibleCollec.Remove(value);
+            value.Name = value.CurrentPath.Replace(categPath, ".");
+            collection.Add(value);
+            eligibleCollec.Remove(value.CurrentPath);
 
             OnPropertyChanged(nameof(FilesFound));
         }
 
         #region
+
+
+        internal void OpenImage(string imgSelected)
+        {
+            if (String.IsNullOrEmpty(imgSelected))
+                return;
+
+            //string path = Path.Combine(Root, Common.Musics, SelectedMusic);
+            Process p = new Process();
+            p.StartInfo.UseShellExecute = true;
+            p.StartInfo.FileName = imgSelected;
+            p.Start();
+
+        }
+
+
 
         internal void RemoveCheat()
         {
@@ -388,6 +484,11 @@ namespace Pack_My_Game.Models
             OnPropertyChanged(nameof(CheatsColor));
         }
 
+        internal void RemoveImage()
+        {
+            RemoveBehavior(ImageSelected, ImagesCollection, EligibleImages);
+            OnPropertyChanged(nameof(ImagesColor));
+        }
 
         /// <summary>
         /// Enlève un manuel de la liste à copier
@@ -420,7 +521,7 @@ namespace Pack_My_Game.Models
             OnPropertyChanged(nameof(VideosColor));
         }
 
-        private void RemoveBehavior(DataRep selected, Collection<DataRep> collec, Collection<string> eligibleCollec)
+        private void RemoveBehavior<T>(T selected, Collection<T> collec, Collection<string> eligibleCollec)where T:DataRep
         {
             if (selected == null)
                 return;

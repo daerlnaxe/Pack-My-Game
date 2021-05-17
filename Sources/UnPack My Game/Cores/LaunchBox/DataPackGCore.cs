@@ -414,14 +414,14 @@ namespace UnPack_My_Game.Cores
         }
 
 
-        public List<DataRepExt> PrepareImages(string root)
+        public List<DataRepImg> PrepareImages(string root)
         {
-            List<DataRepExt> files = new List<DataRepExt>();
+            List<DataRepImg> files = new List<DataRepImg>();
             var folders = Directory.GetDirectories(root);
 
             foreach (string d in folders)
                 foreach (string f in Directory.EnumerateFiles(d, "*.*", SearchOption.AllDirectories))
-                    files.Add(new DataRepExt(Path.GetFileName(d), f));
+                    files.Add(new DataRepImg(Path.GetFileName(d), f));
 
             return files;
         }
@@ -468,13 +468,13 @@ namespace UnPack_My_Game.Cores
             }
 
 
-            void AssignImages(List<DataRepExt> images, string root, ContPlatFolders zePlatform)
+            void AssignImages(List<DataRepImg> images, string root, ContPlatFolders zePlatform)
             {
                 string prevMedType = string.Empty;
                 string toReplace = string.Empty;
                 string target = string.Empty;
 
-                foreach (DataRepExt image in images)
+                foreach (DataRepImg image in images)
                 {
                     if (!prevMedType.Equals(image.Categorie))
                     {

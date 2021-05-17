@@ -734,11 +734,11 @@ namespace Pack_My_Game.Core
 
 
 
-        private void PrepareImages(List<DataRepExt> images, string destLocation)
+        private void PrepareImages(List<DataRepImg> images, string destLocation)
         {
             E_Decision resMem = E_Decision.None;
             string tail;
-            foreach (DataRepExt pkFile in images)
+            foreach (DataRepImg pkFile in images)
             {
                 tail = string.Empty;
                 // On récupère la tail

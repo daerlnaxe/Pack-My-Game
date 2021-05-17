@@ -486,8 +486,6 @@ namespace Pack_My_Game.Models
         }
 
 
-
-
         internal void RemoveCheatF()
         {
             if (SelectedCheatFile != null)

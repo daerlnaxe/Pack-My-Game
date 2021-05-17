@@ -10,6 +10,9 @@ namespace Pack_My_Game.IHM
         public static readonly RoutedUICommand ProcessCommand =
                 new RoutedUICommand(Instance.Lang.Word_Process, "ProcessCmd", typeof(Commands));
 
+        public static readonly RoutedUICommand SelectCommand =
+            new RoutedUICommand(Instance.Lang.Word_Select, "SelectCmd", typeof(Commands));
+
         public static readonly RoutedUICommand SubmitCommand =
                 new RoutedUICommand(Instance.Lang.Word_Submit, "SubmitCmd", typeof(Commands));
 
@@ -39,6 +42,19 @@ namespace Pack_My_Game.IHM
         // --- Jeux
         public static readonly RoutedUICommand AddGameCmd =
                 new RoutedUICommand(Instance.Lang.Word_Add, "AddGameCmd", typeof(Commands));
+
+        // --- Images
+        public static readonly RoutedUICommand AddImageCmd =
+        new RoutedUICommand(Instance.Lang.Word_Add, "AddImageCmd", typeof(Commands));
+
+        public static readonly RoutedUICommand OpenSrcImageCmd =
+                new RoutedUICommand(Instance.Lang.Word_Open, "OpenSrcImageCmd", typeof(Commands));
+        
+        public static readonly RoutedUICommand OpenDestImageCmd =
+         new RoutedUICommand(Instance.Lang.Word_Open, "OpenDestImageCmd", typeof(Commands));
+
+        public static readonly RoutedUICommand DeleteImageCmd =
+                new RoutedUICommand(Instance.Lang.Word_Delete, "DeleteImageCmd", typeof(Commands));
 
         // --- Manuals
         public static readonly RoutedUICommand AddManualCmd =
