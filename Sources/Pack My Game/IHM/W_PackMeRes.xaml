@@ -15,20 +15,20 @@
     <Window.CommandBindings>
         <!-- Games -->
         <!-- Manuals -->
-        <CommandBinding Command="local:Commands.OpenManualCmd" CanExecute="Can_Manual" Executed="Exec_OpenManual"/>
+        <CommandBinding Command="local:Commands.OpenManualCmd" Executed="Exec_OpenManual"/>
         <CommandBinding Command="local:Commands.DeleteManualCmd" CanExecute="Can_Manual" Executed="Exec_RemoveManual"/>
         <!-- Musics -->
-        <CommandBinding Command="local:Commands.OpenMusicCmd" CanExecute="Can_Music" Executed="Exec_OpenMusic"/>
+        <CommandBinding Command="local:Commands.OpenMusicCmd" Executed="Exec_OpenMusic"/>
         <CommandBinding Command="local:Commands.DeleteMusicCmd" CanExecute="Can_Music" Executed="Exec_RemoveMusic"/>
         <!-- Videos -->
-        <CommandBinding Command="local:Commands.OpenVideoCmd" CanExecute="Can_Video" Executed="Exec_OpenVideo"/>
+        <CommandBinding Command="local:Commands.OpenVideoCmd" Executed="Exec_OpenVideo"/>
         <CommandBinding Command="local:Commands.DeleteVideoCmd" CanExecute="Can_Video" Executed="Exec_RemoveVideo"/>
         <CommandBinding Command="local:W_PackMeRes.SetVideoCmd" CanExecute="Can_Video" Executed="Exec_HandleVideo"/>
         <CommandBinding Command="local:W_PackMeRes.UnsetVideoCmd" CanExecute="Can_UnsetVideo" Executed="Exec_HandleVideo"/>
         <CommandBinding Command="local:W_PackMeRes.SetThemeVideoCmd" CanExecute="Can_Video" Executed="Exec_HandleThemeVideo"/>
         <CommandBinding Command="local:W_PackMeRes.UnsetThemeVideoCmd" CanExecute="Can_UnsetThemeVideo" Executed="Exec_HandleThemeVideo"/>
         <!-- Cheats -->
-        <CommandBinding Command="local:Commands.OpenCheatCmd" CanExecute="Can_Cheat" Executed="Exec_OpenCheat"/>
+        <CommandBinding Command="local:Commands.OpenCheatCmd" Executed="Exec_OpenCheat"/>
         <CommandBinding Command="local:Commands.DeleteCheatCmd" CanExecute="Can_Cheat" Executed="Exec_RemoveCheat"/>
     </Window.CommandBindings>
     <Window.Resources>
@@ -103,8 +103,8 @@
                                 <ContextMenu Visibility="Collapsed">
                                     <MenuItem Header="{Binding Lang.AddExp}" Click="Add_GameF"/>
                                     <MenuItem Header="{Binding Lang.DeleteExp}"
-                                      IsEnabled="{Binding GamesCollection.Count, Converter={StaticResource EnableIfElements} }"
-                                      Click="Remove_GameF"/>
+                                        IsEnabled="{Binding GamesCollection.Count, Converter={StaticResource EnableIfElements} }"
+                                        Click="Remove_GameF"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                             <ListView.ItemTemplate>
@@ -116,7 +116,6 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-
                     </Grid>
                 </TabItem>
                 <!-- Manuals -->
@@ -135,13 +134,13 @@
                         <TextBlock Text="{Binding ChosenManual.Name, FallbackValue=Selected, TargetNullValue=...}"/>
                         <!-- Liste -->
                         <ListView x:Name="lvManuals" Grid.Row="1" 
-                          ItemsSource="{Binding ManualsCollection}"
-                          SelectedItem="{Binding SelectedManual}" >
+                            ItemsSource="{Binding ManualsCollection}"
+                            SelectedItem="{Binding SelectedManual}" >
                             <ListView.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="{l:Langue Word_Add}" Click="Add_ManualF"/>
-                                    <MenuItem Header="{l:Langue Word_Open}" Command="local:Commands.OpenManualCmd"/>
-                                    <MenuItem Header="{l:Langue Word_Delete}" Command="local:Commands.DeleteManualCmd" />
+                                    <MenuItem Command="local:Commands.OpenManualCmd"/>
+                                    <MenuItem Command="local:Commands.DeleteManualCmd" />
                                 </ContextMenu>
                             </ListView.ContextMenu>
                             <ListView.ItemTemplate>
@@ -176,8 +175,8 @@
                             <ListView.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="{l:Langue Word_Add}" Click="Add_MusicF"/>
-                                    <MenuItem Header="{l:Langue Word_Open}" Command="local:Commands.OpenMusicCmd"/>
-                                    <MenuItem Header="{l:Langue Word_Delete}" Command="local:Commands.DeleteMusicCmd"/>
+                                    <MenuItem Command="local:Commands.OpenMusicCmd"/>
+                                    <MenuItem Command="local:Commands.DeleteMusicCmd"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                             <ListView.ItemTemplate>
@@ -221,8 +220,8 @@
                                     <MenuItem Command="local:W_PackMeRes.UnsetThemeVideoCmd" CommandParameter="false"/>
                                     <Separator/>
                                     <MenuItem Header="{l:Langue Word_Add}" Click="Add_VideoF"/>
-                                    <MenuItem Header="{l:Langue Word_Open}" Command="local:Commands.OpenVideoCmd"/>
-                                    <MenuItem Header="{l:Langue Word_Delete}" Command="local:Commands.DeleteVideoCmd"/>
+                                    <MenuItem Command="local:Commands.OpenVideoCmd"/>
+                                    <MenuItem Command="local:Commands.DeleteVideoCmd"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                             <ListView.ItemTemplate>
@@ -261,8 +260,8 @@
                                 <ContextMenu>
                                     <MenuItem Header="{l:Langue Word_Add}" Click="Add_CheatF"/>
                                     <MenuItem Header="{l:Langue Word_New}" Click="New_CheatF"/>
-                                    <MenuItem Header="{l:Langue Word_Open}" Command="local:Commands.OpenCheatCmd"/>
-                                    <MenuItem Header="{l:Langue Word_Delete}" Command="local:Commands.DeleteCheatCmd"/>
+                                    <MenuItem Command="local:Commands.OpenCheatCmd"/>
+                                    <MenuItem Command="local:Commands.DeleteCheatCmd"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                         </ListView>

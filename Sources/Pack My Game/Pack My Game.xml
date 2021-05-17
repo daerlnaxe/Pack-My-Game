@@ -1164,22 +1164,22 @@
             Initialisation
             </summary>
         </member>
-        <member name="M:Pack_My_Game.Models.M_PackMe.OpenManual">
+        <member name="M:Pack_My_Game.Models.M_PackMe.OpenManual(System.String)">
             <summary>
             Ouverture d'un manuel
             </summary>
         </member>
-        <member name="M:Pack_My_Game.Models.M_PackMe.OpenMusic">
+        <member name="M:Pack_My_Game.Models.M_PackMe.OpenMusic(System.String)">
             <summary>
             Ouverture d'une musique
             </summary>
         </member>
-        <member name="M:Pack_My_Game.Models.M_PackMe.OpenVideo">
+        <member name="M:Pack_My_Game.Models.M_PackMe.OpenVideo(System.String)">
             <summary>
             Ouverture d'une vidéo
             </summary>
         </member>
-        <member name="M:Pack_My_Game.Models.M_PackMe.OpenCheatInDefaultEditor">
+        <member name="M:Pack_My_Game.Models.M_PackMe.OpenCheatInDefaultEditor(System.String)">
             <summary>
             Ouverture d'un cheat code dans l'éditeur par défaut
             </summary>

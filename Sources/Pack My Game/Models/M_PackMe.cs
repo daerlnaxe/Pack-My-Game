@@ -131,7 +131,7 @@ namespace Pack_My_Game.Models
         public ObservableCollection<DataRep> VideosCollection { get; set; } = new ObservableCollection<DataRep>();
 
 
-      //  public string Root { get; private set; }
+        //  public string Root { get; private set; }
         protected string _CheatsPath;
         protected string _GamesPath;
         protected string _ManualsPath;
@@ -166,7 +166,7 @@ namespace Pack_My_Game.Models
         /// </summary>
         public abstract void Init();
 
-   
+
 
 
         // ---
@@ -176,15 +176,15 @@ namespace Pack_My_Game.Models
         /// <summary>
         /// Ouverture d'un manuel
         /// </summary>
-        internal void OpenManual()
+        internal void OpenManual(string manual)
         {
-            if (SelectedManual == null)
+            if (string.IsNullOrEmpty(manual))
                 return;
 
             //string path = Path.Combine(Root, Common.Manuals, SelectedManual);
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = SelectedManual.CurrentPath;
+            p.StartInfo.FileName = manual;
             p.Start();
 
         }
@@ -192,15 +192,15 @@ namespace Pack_My_Game.Models
         /// <summary>
         /// Ouverture d'une musique
         /// </summary>
-        internal void OpenMusic()
+        internal void OpenMusic(string music)
         {
-            if (SelectedMusic == null)
+            if (string.IsNullOrEmpty(music))
                 return;
 
             //string path = Path.Combine(Root, Common.Musics, SelectedMusic);
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = SelectedMusic.CurrentPath;
+            p.StartInfo.FileName = music;
             p.Start();
 
         }
@@ -208,32 +208,29 @@ namespace Pack_My_Game.Models
         /// <summary>
         /// Ouverture d'une vidéo
         /// </summary>
-        internal void OpenVideo()
+        internal void OpenVideo(string video)
         {
-            if (SelectedVideo == null)
+            if (string.IsNullOrEmpty(video))
                 return;
 
             //string path = Path.Combine(Root, Common.Videos, SelectedVideo);
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;
-            p.StartInfo.FileName = SelectedVideo.CurrentPath;
+            p.StartInfo.FileName = video;
             p.Start();
         }
 
         /// <summary>
         /// Ouverture d'un cheat code dans l'éditeur par défaut
         /// </summary>
-        internal void OpenCheatInDefaultEditor()
+        internal void OpenCheatInDefaultEditor(string cheatF)
         {
-            if (SelectedCheatFile != null)
+            if (string.IsNullOrEmpty(cheatF))
                 return;
 
-            if (File.Exists(SelectedCheatFile.DestPath))
-            {
-                Process.Start(SelectedCheatFile.DestPath);
-            }
+            Process.Start(cheatF);
         }
-        
+
         #endregion
     }
 }

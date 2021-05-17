@@ -399,10 +399,10 @@ namespace Pack_My_Game.Models
 
         internal void AddCheat()
         {
-            /*if (string.IsNullOrEmpty(EligibleCheatSelected))
+            if (string.IsNullOrEmpty(EligibleCheatSelected))
                 return;
 
-            if (CheckCollection(CheatsCollection, EligibleCheatSelected))
+            /*if (CheckCollection(CheatsCollection, EligibleCheatSelected))
                 return;
 
             DataRep tmp = new DataRep(EligibleManualSelected);
@@ -435,10 +435,10 @@ namespace Pack_My_Game.Models
         /// </summary>
         internal void AddManual()
         {
-            /*if (string.IsNullOrEmpty(EligibleManualSelected))
+            if (string.IsNullOrEmpty(EligibleManualSelected))
                 return;
 
-            if (CheckCollection(ManualsCollection, EligibleManualSelected))
+            /*if (CheckCollection(ManualsCollection, EligibleManualSelected))
                 return;
 
             DataRep tmp = new DataRep(EligibleManualSelected);
@@ -452,10 +452,10 @@ namespace Pack_My_Game.Models
 
         internal void AddMusic()
         {
-            /*if (string.IsNullOrEmpty(EligibleMusicSelected))
+            if (string.IsNullOrEmpty(EligibleMusicSelected))
                 return;
 
-            if (CheckCollection(MusicsCollection, EligibleMusicSelected))
+            /*if (CheckCollection(MusicsCollection, EligibleMusicSelected))
                 return;
 
             DataRep tmp = new DataRep(EligibleMusicSelected);
@@ -468,10 +468,10 @@ namespace Pack_My_Game.Models
 
         internal void AddVideo()
         {
-            /*if (string.IsNullOrEmpty(EligibleVideoSelected))
+           if (string.IsNullOrEmpty(EligibleVideoSelected))
                 return;
 
-            if (CheckCollection(VideosCollection, EligibleVideoSelected))
+         /*   if (CheckCollection(VideosCollection, EligibleVideoSelected))
                 return;
 
             DataRep tmp = new DataRep(EligibleVideoSelected);
@@ -598,9 +598,6 @@ namespace Pack_My_Game.Models
         }
         #endregion
 
-
-
-
         internal bool Apply_Modifs()
         {
             this.Test_HasElement(GamesCollection, nameof(GamesCollection));
@@ -612,6 +609,8 @@ namespace Pack_My_Game.Models
             GameDataC.SetApplications = GamesCollection;
             // Cheats
             GameDataC.SetDCheatCodes = CheatsCollection;
+            // Images
+            GameDataC.Images = ImagesCollection.ToList();
             // Manuals
             GameDataC.SetManuals = ManualsCollection;
             // Musics

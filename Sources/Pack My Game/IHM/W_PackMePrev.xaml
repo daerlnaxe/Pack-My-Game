@@ -16,26 +16,26 @@
     <Window.CommandBindings>
         <!-- Games -->
         <!-- Images -->
-        <CommandBinding Command="local:Commands.AddImageCmd" CanExecute="Can_EligImage" Executed="Exec_AddImage"/>
-        <CommandBinding Command="local:Commands.OpenDestImageCmd"  CanExecute="Can_EligImage" Executed="Exec_OpenEligImage"/>
-        <CommandBinding Command="local:Commands.OpenSrcImageCmd" CanExecute="Can_Image" Executed="Exec_OpenImage"/>
-        <CommandBinding Command="local:Commands.DeleteImageCmd" CanExecute="Can_Image" Executed="Exec_RemoveImage"/>
+        <CommandBinding Command="local:Commands.AddImageCmd" Executed="Exec_AddImage"/>
+        <CommandBinding Command="local:Commands.OpenImageCmd" Executed="Exec_OpenEligImage"/>
+        <CommandBinding Command="local:Commands.DeleteImageCmd" Executed="Exec_RemoveImage"/>
         <!-- Manuals -->
-        <CommandBinding Command="local:Commands.AddManualCmd" CanExecute="Can_AddManual" Executed="Exec_AddManual"/>
-        <CommandBinding Command="local:Commands.OpenManualCmd" CanExecute="Can_Manual" Executed="Exec_OpenManual"/>
-        <CommandBinding Command="local:Commands.DeleteManualCmd" CanExecute="Can_Manual" Executed="Exec_RemoveManual"/>
+        <CommandBinding Command="local:Commands.AddManualCmd" Executed="Exec_AddManual"/>
+        <!--<CommandBinding Command="local:Commands.OpenManualCmd" CanExecute="Can_EligManual" Executed="Exec_OpenEligManual"/>-->
+        <CommandBinding Command="local:Commands.OpenManualCmd" Executed="Exec_OpenManual"/>
+        <CommandBinding Command="local:Commands.DeleteManualCmd" Executed="Exec_RemoveManual"/>
         <!-- Musics -->
-        <CommandBinding Command="local:Commands.AddMusicCmd" CanExecute="Can_AddMusic" Executed="Exec_AddMusic"/>
-        <CommandBinding Command="local:Commands.OpenMusicCmd" CanExecute="Can_Music" Executed="Exec_OpenMusic"/>
-        <CommandBinding Command="local:Commands.DeleteMusicCmd" CanExecute="Can_Music" Executed="Exec_RemoveMusic"/>
+        <CommandBinding Command="local:Commands.AddMusicCmd" Executed="Exec_AddMusic"/>
+        <CommandBinding Command="local:Commands.OpenMusicCmd" Executed="Exec_OpenMusic"/>
+        <CommandBinding Command="local:Commands.DeleteMusicCmd" Executed="Exec_RemoveMusic"/>
         <!-- Videos -->
-        <CommandBinding Command="local:Commands.AddVideoCmd" CanExecute="Can_AddVideo" Executed="Exec_AddVideo"/>
-        <CommandBinding Command="local:Commands.OpenVideoCmd" CanExecute="Can_Video" Executed="Exec_OpenVideo"/>
-        <CommandBinding Command="local:Commands.DeleteVideoCmd" CanExecute="Can_Video" Executed="Exec_RemoveVideo"/>
+        <CommandBinding Command="local:Commands.AddVideoCmd"  Executed="Exec_AddVideo"/>
+        <CommandBinding Command="local:Commands.OpenVideoCmd" Executed="Exec_OpenVideo"/>
+        <CommandBinding Command="local:Commands.DeleteVideoCmd" Executed="Exec_RemoveVideo"/>
         <!-- Cheats -->
-        <CommandBinding Command="local:Commands.AddCheatCmd" CanExecute="Can_AddCheat" Executed="Exec_AddCheat"/>
-        <CommandBinding Command="local:Commands.OpenCheatCmd" CanExecute="Can_Cheat" Executed="Exec_OpenCheat"/>
-        <CommandBinding Command="local:Commands.DeleteCheatCmd" CanExecute="Can_Cheat" Executed="Exec_RemoveCheat"/>
+        <CommandBinding Command="local:Commands.AddCheatCmd" Executed="Exec_AddCheat"/>
+        <CommandBinding Command="local:Commands.OpenCheatCmd" Executed="Exec_OpenCheat"/>
+        <CommandBinding Command="local:Commands.DeleteCheatCmd" Executed="Exec_RemoveCheat"/>
         <!-- Recherche -->
         <CommandBinding Command="local:Commands.SelectCommand" Executed="Exec_SelectBox"/>
         <CommandBinding Command="local:Commands.ResetCommand" CanExecute="Can_Search" Executed="Exec_ResetWords"/>
@@ -128,7 +128,6 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-
                     </Grid>
                 </TabItem>
                 <!-- Manuals -->
@@ -154,11 +153,9 @@
                             ItemsSource="{Binding ManualsCollection}"
                             SelectedItem="{Binding SelectedManual}" >
                             <ListView.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="{l:Langue Word_Open}"
-                                              Command="local:Commands.OpenManualCmd"/>
-                                    <MenuItem Header="{l:Langue Word_Remove}"
-                                              Command="local:Commands.DeleteManualCmd" />
+                                <ContextMenu IsEnabled="{Binding ManualsCollection.Count, Converter={StaticResource EnableIfElements}}">
+                                    <MenuItem Command="local:Commands.OpenManualCmd" CommandParameter="{Binding SelectedManual.CurrentPath}"/>
+                                    <MenuItem Command="local:Commands.DeleteManualCmd" />
                                 </ContextMenu>
                             </ListView.ContextMenu>
                             <ListView.ItemTemplate>
@@ -173,8 +170,9 @@
                             ItemsSource="{Binding EligibleManuals}"
                             SelectedItem="{Binding EligibleManualSelected}">
                             <ListView.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="{l:Langue Word_Add}" Command="local:Commands.AddManualCmd"/>
+                                <ContextMenu IsEnabled="{Binding EligibleManuals.Count, Converter={StaticResource EnableIfElements}}">
+                                    <MenuItem Command="local:Commands.AddManualCmd"/>
+                                    <MenuItem Command="local:Commands.OpenManualCmd" CommandParameter="{Binding EligibleManualSelected}"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                         </ListView>
@@ -202,9 +200,9 @@
                         <ListView x:Name="lvMusics" Grid.Row="2" 
                           ItemsSource="{Binding MusicsCollection}" SelectedItem="{Binding SelectedMusic}">
                             <ListView.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="{l:Langue Word_Open}" Command="local:Commands.OpenMusicCmd"/>
-                                    <MenuItem Header="{l:Langue Word_Delete}" Command="local:Commands.DeleteMusicCmd"/>
+                                <ContextMenu IsEnabled="{Binding MusicsCollection.Count, Converter={StaticResource EnableIfElements} }">
+                                    <MenuItem Command="local:Commands.OpenMusicCmd" CommandParameter="{Binding SelectedMusic.CurrentPath}"/>
+                                    <MenuItem Command="local:Commands.DeleteMusicCmd"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                             <ListView.ItemTemplate>
@@ -219,8 +217,9 @@
                             ItemsSource="{Binding EligibleMusics}"
                             SelectedItem="{Binding EligibleMusicSelected}">
                             <ListView.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="{l:Langue Word_Add}" Command="local:Commands.AddMusicCmd"/>
+                                <ContextMenu IsEnabled="{Binding EligibleMusics.Count, Converter={StaticResource EnableIfElements}}">
+                                    <MenuItem Command="local:Commands.AddMusicCmd"/>
+                                    <MenuItem Command="local:Commands.OpenMusicCmd" CommandParameter="{Binding EligibleMusicSelected}"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                         </ListView>
@@ -253,9 +252,9 @@
                             ItemsSource="{Binding VideosCollection}"
                             SelectedItem="{Binding SelectedVideo}" >
                             <ListView.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="{l:Langue Word_Open}" Command="local:Commands.OpenVideoCmd"/>
-                                    <MenuItem Header="{l:Langue Word_Delete}" Command="local:Commands.DeleteVideoCmd"/>
+                                <ContextMenu IsEnabled="{Binding VideosCollection.Count, Converter={StaticResource EnableIfElements}}">
+                                    <MenuItem Command="local:Commands.OpenVideoCmd" CommandParameter="{Binding SelectedVideo.CurrentPath}"/>
+                                    <MenuItem Command="local:Commands.DeleteVideoCmd"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                             <ListView.ItemTemplate>
@@ -272,8 +271,9 @@
                             ItemsSource="{Binding EligibleVideos}"
                             SelectedItem="{Binding EligibleVideoSelected}">
                             <ListView.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="{l:Langue Word_Add}" Command="local:Commands.AddVideoCmd"/>
+                                <ContextMenu IsEnabled="{Binding EligibleVideos.Count, Converter={StaticResource EnableIfElements}}">
+                                    <MenuItem Command="local:Commands.AddVideoCmd"/>
+                                    <MenuItem Command="local:Commands.OpenVideoCmd" CommandParameter="{Binding EligibleVideoSelected}"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                         </ListView>
@@ -298,12 +298,11 @@
                         <Label Grid.Column="1" Content="{Binding ImagesCollection.Count}" />
                         <ListView x:Name="lvImages" Grid.Row="2" 
                                 ItemsSource="{Binding ImagesCollection}"
-                                SelectedItem="{Binding ImageSelected}"                                  
-                                  >
+                                SelectedItem="{Binding ImageSelected}">
                             <ListView.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="{l:Langue Word_Open}" Command="local:Commands.OpenSrcImageCmd"/>
-                                    <MenuItem Header="{l:Langue Word_Delete}" Command="local:Commands.DeleteImageCmd"/>
+                                <ContextMenu IsEnabled="{Binding ImagesCollection.Count, Converter={StaticResource EnableIfElements}}">
+                                    <MenuItem Command="local:Commands.OpenImageCmd" CommandParameter="{Binding ImageSelected.CurrentPath}"/>
+                                    <MenuItem Command="local:Commands.DeleteImageCmd"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                             <!-- Panel Images -->
@@ -315,16 +314,16 @@
                             <!-- Items -->
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Image x:Name="img" Source="{Binding CurrentPath}"                                                
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image x:Name="img" Source="{Binding CurrentPath}"                                                
                                                Width="48" HorizontalAlignment="Left"
                                                Stretch="Uniform" StretchDirection="Both"  RenderOptions.BitmapScalingMode="HighQuality" />
-                                            <StackPanel Grid.Column="1" Margin="10,0">
-                                                <TextBlock Text="{Binding Categorie}" HorizontalAlignment="Left"/>
-                                                <TextBlock Text="{Binding Name}"/>
-                                                <TextBlock Text="{Binding CurrentPath, Converter={StaticResource SizeToText }}" Margin="0,5"/>
-                                            </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="10,0">
+                                            <TextBlock Text="{Binding Categorie}" HorizontalAlignment="Left"/>
+                                            <TextBlock Text="{Binding Name}"/>
+                                            <TextBlock Text="{Binding CurrentPath, Converter={StaticResource SizeToText }}" Margin="0,5"/>
                                         </StackPanel>
+                                    </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
@@ -335,9 +334,9 @@
                             SelectedItem="{Binding EligibleImageSelected}">
                             <!-- Contextual Menu-->
                             <ListView.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="{l:Langue Word_Add}" Command="local:Commands.AddImageCmd"/>
-                                    <MenuItem Header="{l:Langue Word_Open}" Command="local:Commands.OpenDestImageCmd"/>
+                                <ContextMenu IsEnabled="{Binding EligibleImages.Count, Converter={StaticResource EnableIfElements}}">
+                                    <MenuItem Command="local:Commands.AddImageCmd"/>
+                                    <MenuItem Command="local:Commands.OpenImageCmd" CommandParameter="{Binding EligibleImageSelected.CurrentPath}"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                             <!-- Panel Images Eligibles -->
@@ -388,9 +387,9 @@
                             ItemsSource="{Binding CheatsCollection}" DisplayMemberPath="Name"
                             SelectedItem="{Binding SelectedCheatFile}" >
                             <ListView.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="{l:Langue Word_Open}" Command="local:Commands.OpenCheatCmd"/>
-                                    <MenuItem Header="{l:Langue Word_Delete}" Command="local:Commands.DeleteCheatCmd"/>
+                                <ContextMenu IsEnabled="{Binding CheatsCollection.Count, Converter={StaticResource EnableIfElements}}">
+                                    <MenuItem Command="local:Commands.OpenCheatCmd" CommandParameter="{Binding SelectedCheatFile.CurrentPath}"/>
+                                    <MenuItem Command="local:Commands.DeleteCheatCmd"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                         </ListView>
@@ -400,8 +399,9 @@
                             ItemsSource="{Binding EligibleCheats}"
                             SelectedItem="{Binding EligibleCheatSelected}">
                             <ListView.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="{l:Langue Word_Add}" Command="local:Commands.AddCheatCmd"/>
+                                <ContextMenu IsEnabled="{Binding EligibleCheats.Count, Converter={StaticResource EnableIfElements}}">
+                                    <MenuItem Command="local:Commands.AddCheatCmd"/>
+                                    <MenuItem Command="local:Commands.OpenCheatCmd" CommandParameter="{Binding EligibleCheatSelected}"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                         </ListView>
@@ -454,8 +454,8 @@
                                             <TextBlock Text="{Binding}"/>
                                             <Button Grid.Column="1" Click="Remove_Word" Tag="{Binding}" Width="12" Padding="1">
                                                 <Button.Content>
-                                                    
-                                                <Image Source="/Pack My Game;component/Resources/BlueCross-96.png"
+
+                                                    <Image Source="/Pack My Game;component/Resources/BlueCross-96.png"
                                                        StretchDirection="DownOnly"  Stretch="Uniform" />
                                                 </Button.Content>
                                             </Button>
