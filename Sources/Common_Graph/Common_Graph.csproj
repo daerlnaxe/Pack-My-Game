@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <RootNamespace>Common_Graph</RootNamespace>
     <UseWPF>true</UseWPF>
     <Authors>Alexandre CODOUL aka Daerlnaxe</Authors>
@@ -11,6 +11,7 @@
 </PackageReleaseNotes>
     <OutputType>Library</OutputType>
     <AssemblyName>Common_Graph</AssemblyName>
+    <Platforms>AnyCPU;x86;x64</Platforms>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="WindowsFile.cs" />

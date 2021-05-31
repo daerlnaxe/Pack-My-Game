@@ -133,7 +133,7 @@ namespace Pack_My_Game.Models
 
         private void LoadManuals()
         {
-            LoadFiles2( _ManualsPath, ManualsCollection);
+            LoadFiles2(_ManualsPath, ManualsCollection);
             TestFiles(ManualsCollection, ChosenManual);
             #region
             /*foreach (string f in Directory.EnumerateFiles(manualsPath, "*.*", SearchOption.AllDirectories))
@@ -384,17 +384,17 @@ namespace Pack_My_Game.Models
 
         internal void RemoveManualF()
         {
+            if (SelectedManual == null)
+                return;
+
             if (SelectedManual.IsSelected)
             {
                 DxMBox.ShowDial("You must select another before to delete it");
                 return;
             }
 
-            if (SelectedManual != null)
-            {
-                OpDFiles.Trash(SelectedManual.DestPath);
-                LoadManuals();
-            }
+            OpDFiles.Trash(SelectedManual.DestPath);
+            LoadManuals();
         }
         #endregion
 
@@ -414,17 +414,17 @@ namespace Pack_My_Game.Models
 
         internal void RemoveMusicF()
         {
+            if (SelectedMusic == null)
+                return;
+
             if (SelectedMusic.IsSelected)
             {
                 DxMBox.ShowDial("You must select another before to delete it");
                 return;
             }
 
-            if (SelectedMusic != null)
-            {
-                OpDFiles.Trash(SelectedMusic.DestPath);
-                LoadMusics();
-            }
+            OpDFiles.Trash(SelectedMusic.DestPath);
+            LoadMusics();
         }
         #endregion
 
@@ -445,17 +445,17 @@ namespace Pack_My_Game.Models
 
         internal void RemoveVideoF()
         {
+            if (SelectedVideo == null)
+                return;
+
             if (SelectedVideo.IsSelected)
             {
                 DxMBox.ShowDial("You must select another before to delete it");
                 return;
             }
 
-            if (SelectedVideo != null)
-            {
-                OpDFiles.Trash(SelectedVideo.DestPath);
-                LoadVideos();
-            }
+            OpDFiles.Trash(SelectedVideo.DestPath);
+            LoadVideos();
         }
 
         #endregion
@@ -512,6 +512,7 @@ namespace Pack_My_Game.Models
                     StartingFolder = srcFolder
                 }
             };
+
             if (tc.ShowDialog() == true)
             {
 

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <RootNamespace>Pack_My_Game</RootNamespace>
     <UseWPF>true</UseWPF>
     <Authors>Alexandre CODOUL aka Daerlnaxe</Authors>
@@ -14,9 +14,10 @@
 - 7z and zip compression "</Description>
     <Copyright>Copyright ©  2018-2038 Daerlnaxe Software</Copyright>
     <Company>Daerlnaxe Software</Company>
-    <AssemblyVersion>2.0.1.2</AssemblyVersion>
+    <AssemblyVersion>2.0.2.1</AssemblyVersion>
     <FileVersion>2.0.0.1</FileVersion>
     <ApplicationIcon>PackMyGame.ico</ApplicationIcon>
+    <Platforms>AnyCPU;x86;x64</Platforms>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -26,8 +27,33 @@
     <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <WarningLevel>3</WarningLevel>
+    <DocumentationFile />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <WarningLevel>3</WarningLevel>
+    <DocumentationFile />
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\Pack My Game.xml</DocumentationFile>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DocumentationFile>E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\Pack My Game.xml</DocumentationFile>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <DocumentationFile>E:\Programmation\Git-Hub\Pack-My-Game\Sources\Pack My Game\Pack My Game.xml</DocumentationFile>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>

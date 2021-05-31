@@ -228,7 +228,10 @@ namespace Pack_My_Game.Models
             if (string.IsNullOrEmpty(cheatF))
                 return;
 
-            Process.Start(cheatF);
+            Process p = new Process();
+            p.StartInfo.UseShellExecute = true;
+            p.StartInfo.FileName = cheatF;
+            p.Start();
         }
 
         #endregion

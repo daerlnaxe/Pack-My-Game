@@ -69,7 +69,7 @@ namespace Pack_My_Game.IHM
 
         private void Exec_OpenManual(object sender, ExecutedRoutedEventArgs e)
         {
-            Model.OpenManual(Model.SelectedManual.CurrentPath);
+            Model.OpenManual(Model.SelectedManual?.CurrentPath);
         }
 
         private void Exec_RemoveManual(object sender, ExecutedRoutedEventArgs e)
@@ -92,7 +92,7 @@ namespace Pack_My_Game.IHM
 
         private void Exec_OpenMusic(object sender, ExecutedRoutedEventArgs e)
         {
-            Model.OpenMusic(Model.SelectedMusic.CurrentPath);
+            Model.OpenMusic(Model.SelectedMusic?.CurrentPath);
         }
 
         private void Exec_RemoveMusic(object sender, ExecutedRoutedEventArgs e)
@@ -114,7 +114,7 @@ namespace Pack_My_Game.IHM
 
         private void Exec_OpenVideo(object sender, ExecutedRoutedEventArgs e)
         {
-            Model.OpenVideo(Model.SelectedVideo.CurrentPath);
+            Model.OpenVideo(Model.SelectedVideo?.CurrentPath);
         }
 
         private void Exec_RemoveVideo(object sender, ExecutedRoutedEventArgs e)

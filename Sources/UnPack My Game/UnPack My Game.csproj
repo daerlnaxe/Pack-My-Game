@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <RootNamespace>UnPack_My_Game</RootNamespace>
     <UseWPF>true</UseWPF>
     <AssemblyName>UnPack My Game</AssemblyName>
@@ -13,6 +13,7 @@
     <AssemblyVersion>1.0.2.3</AssemblyVersion>
     <ApplicationIcon>UnpackMyGame.ico</ApplicationIcon>
     <NeutralLanguage>en</NeutralLanguage>
+    <Platforms>AnyCPU;x86;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
